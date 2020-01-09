@@ -1,0 +1,31 @@
+<table>
+    <caption>
+        Input datasets
+    </caption>
+    <thead>
+        <th style="width: 10%;">Specifier</th>
+        <th style="width: 10%;">Title</th>
+        <th style="width: 5%;">Reanalysis</th>
+        <th style="width: 5%;">Years</th>
+        <th style="width: 5%;">Resolution</th>
+        <th style="width: 5%;">Coverage</th>
+        <th style="width: 5%;">Bias target</th>
+        <th style="width: 5%;">Priority</th>
+        <th style="width: 30%;">Comments</th>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td><strong>{{ row.specifier }}</strong></td>
+            <td>{{ row.title }}</td>
+            <td>{{ row.reanalysis }}</td>
+            <td>{{ row.years }}</td>
+            <td>{{ row.resolution }}</td>
+            <td>{{ row.coverage }}</td>
+            <td>{{ row.bias_target }}</td>
+            <td>{{ row.priority }}</td>
+            <td>{{ row.comments }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
