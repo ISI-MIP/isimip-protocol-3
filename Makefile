@@ -4,10 +4,10 @@ sectors = agriculture biodiversity biomes coastal energy forestry health lakes m
 all: schema html
 
 schema:
-	python3 bin/schema.py OutputData $(sectors)
+	python3 bin/generate_schema.py OutputData $(sectors)
 
 html:
-	python3 bin/protocol.py $(sectors)
+	python3 bin/generate_protocol.py $(sectors)
 
 clean:
 	rm -r output
