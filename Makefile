@@ -9,7 +9,10 @@ schema:
 html:
 	python3 bin/generate_protocol.py $(sectors)
 
+gh-pages: all
+	ghp-import output
+
 clean:
 	rm -r output
 
-.PHONY: schema html clean
+.PHONY: schema html gh-pages clean
