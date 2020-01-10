@@ -10,7 +10,7 @@ html:
 	python3 bin/generate_protocol.py $(sectors)
 
 gh-pages: all
-	ghp-import output
+	ghp-import -n output
 
 clean:
 	rm -r output

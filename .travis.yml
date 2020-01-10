@@ -1,0 +1,16 @@
+language: python
+python: '3.7'
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+install:
+- pip install -r requirements.txt
+- pip install ghp-import
+
+script:
+- make
+- ghp-import --no-jekyll --push output
+
