@@ -16,9 +16,11 @@ def main():
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
+        # step 1: open input schema
         with open(input_path) as f:
             schema = json.loads(f.read())
 
+        # step 2: loop over properties/identifiers/properties and add enums from definition files
         for identifier, properties in schema['properties']['identifiers']['properties'].items():
             definition_path = os.path.join('definitions', '{}.json'.format(identifier))
 
@@ -31,6 +33,7 @@ def main():
             except IOError:
                 pass
 
+        # step 3: write json schema
         with open(output_path, 'w') as f:
             f.write(json.dumps(schema, indent=2))
 

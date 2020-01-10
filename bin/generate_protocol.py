@@ -6,7 +6,7 @@ import re
 import pypandoc
 from jinja2 import Template
 
-pattern = re.compile(r'\[\[\s*(\w+)\s*\]\]')
+shortcode_pattern = re.compile(r'\[\[\s*(\w+)\s*\]\]')
 
 
 def main():
@@ -22,33 +22,32 @@ def main():
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
+        # step 1: open md file and convert to html
         with open(input_path) as f:
-            content = f.read()
-            matches = pattern.finditer(content)
+            content = pypandoc.convert_text(f.read(), 'html', format='md')
 
-            for match in matches:
-                template = match.group(1)
-                definition_path = os.path.join('definitions', '{}.json'.format(template))
-                template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
+        # step 2: replace [[ ]] shortcodes with rendered jinja2 templates
+        for match in shortcode_pattern.finditer(content):
+            template = match.group(1)
+            definition_path = os.path.join('definitions', '{}.json'.format(template))
+            template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
-                with open(definition_path) as f:
-                    rows = []
-                    for row in json.loads(f.read()):
-                        if 'sectors' not in row or sector in row['sectors']:
-                            rows.append(row)
+            with open(definition_path) as f:
+                rows = []
+                for row in json.loads(f.read()):
+                    if 'sectors' not in row or sector in row['sectors']:
+                        rows.append(row)
 
-                with open(template_path) as f:
-                    template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
+            with open(template_path) as f:
+                template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
 
-                content = content.replace(match.group(0), template.render(rows=rows))
+            content = content.replace(match.group(0), template.render(rows=rows))
 
-        html = pypandoc.convert_text(content, 'html', format='md')
-
+        # step 3: render content into layout template
         with open(layout_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
-
         with open(output_path, 'w') as f:
-            f.write(template.render(sector=sector, content=html))
+            f.write(template.render(sector=sector, content=content))
 
 
 if __name__ == "__main__":
