@@ -4,7 +4,15 @@ sudo: false
 
 cache:
   directories:
-    - $HOME/.cache/pip
+  - $HOME/.cache/pip
+
+env:
+- GIT_SSH_COMMAND="ssh -i .id_rsa"
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_de4c339528c9_key -iv $encrypted_de4c339528c9_iv -in .id_rsa.enc -out .id_rsa -d
+- chmod 600 .id_rsa
+- "git remote set-url origin git@github.com:ISI-MIP/isimip-protocol-3b"
 
 install:
 - pip install -r requirements.txt
@@ -12,5 +20,5 @@ install:
 
 script:
 - make
-- ghp-import --no-jekyll --push output
-
+- ghp-import --no-jekyll output
+- git push -f origin gh-pages:gh-pages
