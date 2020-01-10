@@ -1,20 +1,16 @@
-ISIMIP3b protocol - Biomes
-==========================
+# ISIMIP3b protocol - Biomes
 
 Scenario specification
 ----------------------
 
-[[ scenarios ]]
-
-[[ climate_scenario ]]
-[[ soc_scenario ]]
+{{ definition(sector, 'scenarios') }}
 
 Forcing data
 ------------
 
 ### Climate forcing data
 
-[[ climate_forcing ]]
+{{ definition(sector, 'climate_forcing') }}
 
 ### Socio-economic forcing data
 
@@ -23,4 +19,8 @@ Output data
 
 ### Output variables
 
-[[ variable ]]
+{{ definition(sector, 'variable') }}
+
+### Conventions for File Names and Formats
+
+{% include 'includes/file_conventions.md' %}

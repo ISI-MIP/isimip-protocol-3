@@ -1,12 +1,9 @@
 import argparse
 import json
 import os
-import re
 
-import pypandoc
-from jinja2 import Template
-
-shortcode_pattern = re.compile(r'\[\[\s*(\w+)\s*\]\]')
+from jinja2 import Environment, FileSystemLoader, Template
+from markdown import markdown
 
 
 def main():
@@ -22,32 +19,41 @@ def main():
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        # step 1: open md file and convert to html
+        # step 1: open protocol and render using jinja2
         with open(input_path) as f:
-            content = pypandoc.convert_text(f.read(), 'html', format='md')
+            template_string = f.read()
 
-        # step 2: replace [[ ]] shortcodes with rendered jinja2 templates
-        for match in shortcode_pattern.finditer(content):
-            template = match.group(1)
-            definition_path = os.path.join('definitions', '{}.json'.format(template))
-            template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
+        # step 2: render the template using jinja2
+        enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
+        template = enviroment.from_string(template_string)
+        md = template.render(sector=sector, definition=Definition())
 
-            with open(definition_path) as f:
-                rows = []
-                for row in json.loads(f.read()):
-                    if 'sectors' not in row or sector in row['sectors']:
-                        rows.append(row)
+        # step 3: convert markdown to html
+        html = markdown(md)
 
-            with open(template_path) as f:
-                template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
-
-            content = content.replace(match.group(0), template.render(rows=rows))
-
-        # step 3: render content into layout template
+        # step 4: render content into layout template
         with open(layout_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
         with open(output_path, 'w') as f:
-            f.write(template.render(sector=sector, content=content))
+            f.write(template.render(sector=sector, content=html))
+
+
+class Definition(object):
+
+    def __call__(self, sector, template):
+        definition_path = os.path.join('definitions', '{}.json'.format(template))
+        template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
+
+        with open(definition_path) as f:
+            rows = []
+            for row in json.loads(f.read()):
+                if 'sectors' not in row or sector in row['sectors']:
+                    rows.append(row)
+
+        with open(template_path) as f:
+            template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
+
+        return template.render(rows=rows)
 
 
 if __name__ == "__main__":
