@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import subprocess
 
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
@@ -11,6 +12,8 @@ def main():
     parser.add_argument('sectors', type=str, nargs='+', help='sectors to process')
 
     args = parser.parse_args()
+
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode()
 
     for sector in args.sectors:
         input_path = os.path.join('protocol', '{}.md'.format(sector))
@@ -35,7 +38,7 @@ def main():
         with open(layout_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
         with open(output_path, 'w') as f:
-            f.write(template.render(sector=sector, content=html))
+            f.write(template.render(sector=sector, content=html, commit=commit))
 
 
 class Definition(object):

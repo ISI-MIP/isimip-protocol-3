@@ -10,9 +10,9 @@
                 body {
                     background-color: white;
                     box-shadow: 0 0 10px #666;
-                    width: 1024px;
+                    width: 1000px;
                     margin: 0 auto;
-                    padding: 40px 20px;
+                    padding: 40px 80px 120px 80px;
                 }
             }
             @media print {
@@ -57,9 +57,30 @@
                 padding: 5px;
                 font-size: small;
             }
+            header {
+                font-size: small;
+                color: silver;
+                height: 60px;
+            }
+            p.logo img {
+                height: 40px;
+                float: left;
+            }
+            p.commit {
+                float: right;
+            }
         </style>
     </head>
     <body>
+        <header>
+            <p class="logo">
+                <a href="https://www.isimip.org">
+                    <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
+                </a>
+            </p>
+            <p class="commit">{{ commit }}</p>
+        </header>
+
         {{ content|safe }}
     </body>
 </html>
