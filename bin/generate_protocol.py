@@ -13,7 +13,7 @@ def main():
 
     args = parser.parse_args()
 
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode()
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
 
     for sector in args.sectors:
         input_path = os.path.join('protocol', '{}.md'.format(sector))

@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import subprocess
 
 
 def main():
@@ -9,6 +10,8 @@ def main():
     parser.add_argument('sectors', type=str, nargs='+', help='sectors to process')
 
     args = parser.parse_args()
+
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
 
     for sector in args.sectors:
         input_path = os.path.join('schema', args.product, '{}.json'.format(sector))
@@ -19,6 +22,7 @@ def main():
         # step 1: open input schema
         with open(input_path) as f:
             schema = json.loads(f.read())
+            schema['$comment'] = 'Git commit: {}'.format(commit)
 
         # step 2: loop over properties/identifiers/properties and add enums from definition files
         for identifier, properties in schema['properties']['identifiers']['properties'].items():
