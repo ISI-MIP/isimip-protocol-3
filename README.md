@@ -1,6 +1,13 @@
 ISIMIP3b protocol
 =================
 
+This project builds sector-specific ISIMIP protocols from a common data source.
+Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
+
+The rendered protocols are found at isimip.github.io. For example,
+the [agriculture protocol](https://isi-mip.github.io/isimip-protocol-3b/protocol/agriculture.html).
+
+
 Setup
 -----
 
@@ -9,6 +16,20 @@ pip install -r requirements.txt
 ```
 
 Usage
+-----
+
+Edit the markdown files for each sector under [protocol](protocol).
+Edit [file_conventions.md](protocol/includes/file_conventions.md) to
+add common text to all sectors. Edit definitions under [definitions](definitions/).
+
+You can clone this repository and work and render the files locally.
+You can also edit the markdown files at github directly. With a delay of minutes,
+your updates will be visible at `https://isi-mip.github.io/isimip-protocol-3b/protocol/<sector>.html`.
+
+As a rule, we should keep sector-specific text to a minimum and cover
+as much structure as possible by machine-readable code under [definitions](definitions/).
+
+Render
 -----
 
 You can use the `Makefile`:
