@@ -6,6 +6,8 @@ import subprocess
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
 
+URL = 'https://github.com/ISI-MIP/isimip-protocol-3b'
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,7 +15,8 @@ def main():
 
     args = parser.parse_args()
 
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    commit_url = URL + '/commit/' + commit_hash
 
     for sector in args.sectors:
         input_path = os.path.join('protocol', '{}.md'.format(sector))
@@ -38,7 +41,8 @@ def main():
         with open(layout_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
         with open(output_path, 'w') as f:
-            f.write(template.render(sector=sector, content=html, commit=commit))
+            f.write(template.render(sector=sector, content=html,
+                                    commit_url=commit_url, commit_hash=commit_hash))
 
 
 class Definition(object):

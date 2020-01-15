@@ -10,9 +10,9 @@
                 body {
                     background-color: white;
                     box-shadow: 0 0 10px #666;
-                    width: 1000px;
+                    width: 50rem;
                     margin: 0 auto;
-                    padding: 40px 80px 120px 80px;
+                    padding: 4rem;
                 }
             }
             @media print {
@@ -28,23 +28,37 @@
                 }
             }
             body {
-                font-family: sans;
+                font-family: DroidSans, Helvetica, Arial, sans;
+                font-size: 12pt;
+                line-height: 1.4rem;
+            }
+            h2 {
+                margin: 2rem 0;
+            }
+            h3 {
+                margin: 1rem 0;
+            }
+            h5 {
+                margin: 0;
+                font-size: 1rem;
             }
             table {
                 border-collapse: collapse;
-                margin-bottom: 20px;
+
+                margin-top: 1rem;
+                margin-bottom: 2rem;
                 width: 100%;
             }
             table, th, td {
                 border: 1px solid silver;
             }
             th, td {
-                padding: 10px;
-                font-size: 10px;
+                padding: 0.8rem;
+                font-size: 0.7em;
             }
             caption {
                 text-align: left;
-                font-size: 10px;
+                font-size: 0.5em;
             }
             table .red {
                 background-color: #E5B8B7;
@@ -53,21 +67,22 @@
                 background-color: #e5e5e5;
             }
             code {
-                background-color: silver;
-                padding: 5px;
-                font-size: small;
+                font-size: 0.8rem;
+                color: #333;
             }
             header {
                 font-size: small;
-                color: silver;
-                height: 60px;
+                height: 4rem;
             }
             p.logo img {
-                height: 40px;
+                height: 2rem;
                 float: left;
             }
             p.commit {
                 float: right;
+            }
+            header a, header a:hover, header a:visited, header a:focus {
+                color: silver;
             }
         </style>
     </head>
@@ -78,7 +93,11 @@
                     <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
                 </a>
             </p>
-            <p class="commit">{{ commit }}</p>
+            <p class="commit">
+                <a href="{{ commit_url }}">
+                    {{ commit_hash }}
+                </a>
+            </p>
         </header>
 
         {{ content|safe }}
