@@ -20,7 +20,27 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {}) }}
+{{ table('variable', sector, {
+    'Key model output': [
+        'yield',
+        'pirrww'
+    ],
+    'Key diagnostic variables': [
+        'aet',
+        'initr',
+        'plantday',
+        'anthday',
+        'matyday'
+    ],
+    'Additional output variables (optional)': [
+        'biom',
+        'sco2',
+        'sn2o',
+        'tnup',
+        'tnin',
+        'tnloss'
+    ]
+}) }}
 
 ### Conventions for File Names and Formats
 

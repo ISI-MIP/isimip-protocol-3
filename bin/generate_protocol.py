@@ -108,7 +108,7 @@ class Table(object):
             table = rows
 
         with open(template_path) as f:
-            template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
+            template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
         return template.render(table=table)
 

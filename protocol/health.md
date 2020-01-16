@@ -20,7 +20,14 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {}) }}
+{{ table('variable', sector, {
+    'Key variables': [
+        'ancold',
+        'anheat',
+        'btm',
+        'pop'
+    ]
+}) }}
 
 ### Conventions for File Names and Formats
 
