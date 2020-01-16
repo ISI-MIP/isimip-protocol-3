@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import subprocess
+from collections import OrderedDict
 
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
@@ -32,7 +33,7 @@ def main():
         # step 2: render the template using jinja2
         enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
         template = enviroment.from_string(template_string)
-        md = template.render(sector=sector, definition=Definition())
+        md = template.render(sector=sector, table=Table())
 
         # step 3: convert markdown to html
         html = markdown(md)
@@ -45,22 +46,71 @@ def main():
                                     commit_url=commit_url, commit_hash=commit_hash))
 
 
-class Definition(object):
+class Table(object):
 
-    def __call__(self, sector, template):
+    def __call__(self, template, sector=None, order=None):
         definition_path = os.path.join('definitions', '{}.json'.format(template))
         template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
+        # open the definition file and read in every row from the sector
         with open(definition_path) as f:
+            definitions = json.loads(f.read())
+
+        # filter rows by sector
+        if sector:
             rows = []
-            for row in json.loads(f.read()):
+            for row in definitions:
                 if 'sectors' not in row or sector in row['sectors']:
                     rows.append(row)
+        else:
+            rows = definitions
+
+        # apply order argument
+        if isinstance(order, dict):
+            # if order is a dict, it determines groups and rows in these groups
+            table = OrderedDict()
+            for group, specifiers in order.items():
+                table[group] = []
+
+                if specifiers:
+                    for specifier in specifiers:
+                        # loop over rows, add row to group and remove it from rows
+                        for row in rows:
+                            if specifier == row['specifier']:
+                                table[group].append(row)
+                                rows.remove(row)
+                                break
+                else:
+                    # if specifiers is None or [], add everything
+                    table[group] = rows
+                    rows = []
+
+            # append everything which was not appended yet in a special group 'Other'
+            if rows:
+                table['Other'] = rows
+
+        elif isinstance(order, list):
+            # if order is a list, it determines the order of rows
+            table = []
+            for specifier in order:
+                # loop over rows, add row to table and remove it from rows
+                for row in rows:
+                    if specifier == row['specifier']:
+                        table.append(row)
+                        rows.remove(row)
+                        break
+
+                # append everything which was not appended yet at the end
+                table += rows
+
+        else:
+            # if order is not given, just use the rows in the order of the file
+            table = rows
 
         with open(template_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
 
-        return template.render(rows=rows)
+        return template.render(table=table)
 
 
 if __name__ == "__main__":

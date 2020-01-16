@@ -46,19 +46,19 @@ The file name format is:
 
 ##### bias_correction
 
-{{ definition(sector, 'bias_correction') }}
+{{ table('bias_correction', sector) }}
 
 ##### climate_scenario
 
-{{ definition(sector, 'climate_scenario') }}
+{{ table('climate_scenario', sector) }}
 
 ##### soc_scenario
 
-{{ definition(sector, 'soc_scenario') }}
+{{ table('soc_scenario', sector) }}
 
 ##### co2sens_scenario
 
-{{ definition(sector, 'co2sens_scenario') }}
+{{ table('co2sens_scenario', sector) }}
 
 Note: even models in which CO2 has no effect should use the co2 identifier relevant to the
 experiment.
@@ -74,7 +74,7 @@ station within a river basin, the tag should have the format [basin]-[station].
 
 ##### timestep
 
-{{ definition(sector, 'timestep') }}
+{{ table('timestep', sector) }}
 
 ##### start‐year/end‐year
 

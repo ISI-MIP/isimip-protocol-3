@@ -7,6 +7,12 @@
         <th style="width: 30%;">Comments</th>
     </thead>
     <tbody>
+        {% for group, rows in table.items() %}
+        <tr>
+            <td colspan="5" class="gray">
+                <strong>{{ group }}</strong>
+            </td>
+        </tr>
         {% for row in rows %}
         <tr>
             <td><strong>{{ row.specifier }}</strong></td>
@@ -15,6 +21,7 @@
             <td>{{ row.resolution }}</td>
             <td>{{ row.comment }}</td>
         </tr>
+        {% endfor %}
         {% endfor %}
     </tbody>
 </table>

@@ -3,14 +3,14 @@
 Scenario specification
 ----------------------
 
-{{ definition(sector, 'scenarios') }}
+{{ table('scenarios', sector) }}
 
 Forcing data
 ------------
 
 ### Climate forcing data
 
-{{ definition(sector, 'climate_forcing') }}
+{{ table('climate_forcing', sector) }}
 
 ### Socio-economic forcing data
 
@@ -19,7 +19,7 @@ Output data
 
 ### Output variables
 
-{{ definition(sector, 'variable') }}
+{{ table('variable', sector, {}) }}
 
 ### Conventions for File Names and Formats
 

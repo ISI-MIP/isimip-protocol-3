@@ -4,14 +4,14 @@ ISIMIP3b protocol - Water
 Scenario specification
 ----------------------
 
-{{ definition(sector, 'scenarios') }}
+{{ table('scenarios', sector) }}
 
 Forcing data
 ------------
 
 ### Climate forcing data
 
-{{ definition(sector, 'climate_forcing') }}
+{{ table('climate_forcing', sector) }}
 
 ### Socio-economic forcing data
 
@@ -20,7 +20,60 @@ Output data
 
 ### Output variables
 
-{{ definition(sector, 'variable') }}
+{{ table('variable', sector, {
+    'Hydrological variables': [
+        'qtot',
+        'qs',
+        'qsb',
+        'qr',
+        'qg',
+        'dis',
+        'maxdis',
+        'mindis',
+        'evap',
+        'potevap',
+        'soilmost',
+        'rootmost',
+        'soilmostfroz',
+        'tsl',
+        'snd',
+        'swe',
+        'tws',
+        'canopystor',
+        'glacierstor',
+        'groundwstor',
+        'lakestor',
+        'wetlandstor',
+        'reservoirstor',
+        'riverstor',
+        'thawdepth',
+        'triver',
+        'rainf',
+        'snowf'
+    ],
+    'Water management variables (for models that consider water management/human impacts)': [
+        'pirrww',
+        'airrww',
+        'pirruse',
+        'airruse',
+        'airrusegreen',
+        'pirrusegreen',
+        'arainfusegreen',
+        'adomww',
+        'adomuse',
+        'amanww',
+        'amanuse',
+        'aelecww',
+        'aelecuse',
+        'aliveww',
+        'aliveuse',
+        'atotuse',
+        'atotww',
+        'ptotww',
+        'ptotuse'
+    ],
+    'Other variables': None
+}) }}
 
 ### Conventions for File Names and Formats
 
