@@ -1,5 +1,5 @@
-ISIMIP3b protocol - Regional forests
-====================================
+ISIMIP3b protocol - Lakes (local)
+==================================
 
 {% include 'includes/01.scenario.md' %}
 

@@ -1,19 +1,9 @@
-ISIMIP3b protocol - Water
-=========================
+ISIMIP3b protocol - Water (regional)
+====================================
 
-Scenario specification
-----------------------
+{% include 'includes/01.scenario.md' %}
 
-{{ table('scenarios', sector) }}
-
-Forcing data
-------------
-
-### Climate forcing data
-
-{{ table('climate_forcing', sector) }}
-
-### Socio-economic forcing data
+{% include 'includes/02.forcing.md' %}
 
 Output data
 -----------
@@ -75,6 +65,4 @@ Output data
     'Other variables': None
 }) }}
 
-### Conventions for File Names and Formats
-
-{% include 'includes/file_conventions.md' %}
+{% include 'includes/04.file_conventions.md' %}

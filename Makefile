@@ -1,5 +1,6 @@
-sectors = agriculture biodiversity biomes coastal energy forestry health lakes marine-fishery \
-          permafrost water
+sectors = agriculture biodiversity biomes coastal energy forestry health \
+          lakes_global lakes_local marine-fishery_global marine-fishery_regional \
+          permafrost water_global water_regional
 
 all: schema html
 

@@ -1,0 +1,29 @@
+<table>
+    <thead>
+        <th style="width: 12%;">Specifier</th>
+        <th style="width: 12%;">Long name</th>
+        <th style="width: 12%;">Unit (NetCDF format)</th>
+        <th style="width: 12%;">Spatial Resolution</th>
+        <th style="width: 12%;">Temporal Resolution</th>
+    </thead>
+    <tbody>
+        {% for group, rows in table.items() %}
+        <tr>
+            <td colspan="6" class="gray">
+                <strong>{{ group }}</strong>
+            </td>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>
+                <strong>{{ row.usage if row.usage else row.specifier }}</strong>
+            </td>
+            <td>{{ row.title }}</td>
+            <td>{{ row.unit }}</td>
+            <td>{{ row.resolution }}</td>
+            <td>{{ row.frequency }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
