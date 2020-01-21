@@ -20,8 +20,8 @@ make
 or the Python scripts directly:
 
 ```bash
-python3 bin/generate_protocol.py <sector>            # creates the html protocol for a sector
-python3 bin/generate_schema.py <product> <sector>    # creates the json schema for a sector
+python3 build/protocol.py  # creates the html protocol for each sector
+python3 build/schema.py    # creates the json schema for each sector
 ```
 
 Deploy on GitHub pages
