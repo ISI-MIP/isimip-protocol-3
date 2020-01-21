@@ -1,5 +1,6 @@
-ISIMIP3b protocol - Fisheries and Marine Ecosystems (global)
-============================================================
+# {{ simulation_round.title }} simulation protocol - {{ sector.title }}
+
+{% include 'includes/00.introduction.md' %}
 
 {% include 'includes/01.scenario.md' %}
 
@@ -10,7 +11,7 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {
+{{ table('variable', {
     'Mandatory output from global and regional models (provide as many as possible)': [
         'tsb',
         'tcb',

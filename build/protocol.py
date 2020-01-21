@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 import subprocess
@@ -11,44 +10,47 @@ URL = 'https://github.com/ISI-MIP/isimip-protocol-3b'
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('sectors', type=str, nargs='+', help='sectors to process')
-
-    args = parser.parse_args()
+    simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
+    sectors = json.loads(open('definitions/sector.json').read())
 
     commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
     commit_url = URL + '/commit/' + commit_hash
 
-    for sector in args.sectors:
-        input_path = os.path.join('protocol', '{}.md'.format(sector))
-        output_path = os.path.join('output/protocol', '{}.html'.format(sector))
-        layout_path = os.path.join('templates', 'layout.html')
+    for simulation_round in simulation_rounds:
+        for sector in sectors:
+            input_path = os.path.join('protocol', '{}.md'.format(sector['specifier']))
+            output_path = os.path.join('output/protocol', simulation_round['specifier'], '{}.html'.format(sector['specifier']))
+            layout_path = os.path.join('templates', 'layout.html')
 
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        # step 1: open protocol and render using jinja2
-        with open(input_path) as f:
-            template_string = f.read()
+            # step 1: open protocol and render using jinja2
+            with open(input_path) as f:
+                template_string = f.read()
 
-        # step 2: render the template using jinja2
-        enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
-        template = enviroment.from_string(template_string)
-        md = template.render(sector=sector, table=Table())
+            # step 2: render the template using jinja2
+            enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
+            template = enviroment.from_string(template_string)
+            md = template.render(simulation_round=simulation_round, sector=sector, table=Table(simulation_round, sector))
 
-        # step 3: convert markdown to html
-        html = markdown(md)
+            # step 3: convert markdown to html
+            html = markdown(md)
 
-        # step 4: render content into layout template
-        with open(layout_path) as f:
-            template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
-        with open(output_path, 'w') as f:
-            f.write(template.render(sector=sector, content=html,
-                                    commit_url=commit_url, commit_hash=commit_hash))
+            # step 4: render content into layout template
+            with open(layout_path) as f:
+                template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
+            with open(output_path, 'w') as f:
+                f.write(template.render(simulation_round=simulation_round, sector=sector,
+                                        content=html, commit_url=commit_url, commit_hash=commit_hash))
 
 
 class Table(object):
 
-    def __call__(self, template, sector=None, order=None):
+    def __init__(self, simulation_round, sector):
+        self.simulation_round = simulation_round
+        self.sector = sector
+
+    def __call__(self, template, order=None):
         definition_path = os.path.join('definitions', '{}.json'.format(template))
         template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
@@ -56,14 +58,12 @@ class Table(object):
         with open(definition_path) as f:
             definitions = json.loads(f.read())
 
-        # filter rows by sector
-        if sector:
-            rows = []
-            for row in definitions:
-                if 'sectors' not in row or sector in row['sectors']:
+        # filter rows by simulation_round and/or sector
+        rows = []
+        for row in definitions:
+            if 'simulation_rounds' not in row or self.simulation_round['specifier'] in row['simulation_rounds']:
+                if 'sectors' not in row or self.sector['specifier'] in row['sectors']:
                     rows.append(row)
-        else:
-            rows = definitions
 
         # apply order argument
         if isinstance(order, dict):
@@ -80,7 +80,7 @@ class Table(object):
                                 table_row = {}
                                 for key, value in row.items():
                                     if isinstance(value, dict):
-                                        table_row[key] = value.get(sector, '')
+                                        table_row[key] = value.get(self.sector['specifier'], '')
                                     else:
                                         table_row[key] = value
 
@@ -117,7 +117,7 @@ class Table(object):
         with open(template_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
-        return template.render(table=table)
+        return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector)
 
 
 if __name__ == "__main__":

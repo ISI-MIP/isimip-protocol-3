@@ -1,5 +1,6 @@
-ISIMIP3b protocol - Agriculture
-===============================
+# {{ simulation_round.title }} simulation protocol - {{ sector.title }}
+
+{% include 'includes/00.introduction.md' %}
 
 {% include 'includes/01.scenario.md' %}
 
@@ -10,7 +11,7 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {
+{{ table('variable', {
     'Key model output': [
         'yield',
         'pirrww'
@@ -34,7 +35,7 @@ Output data
 
 #### Crops
 
-{{ table('crop', sector, {
+{{ table('crop', {
     'Major crops': [
         'whe', 'mai', 'soy', 'ric'
     ],
@@ -43,10 +44,10 @@ Output data
 
 #### Irrigation
 
-{{ table('irrigation', sector) }}
+{{ table('irrigation') }}
 
 #### Harmonization
 
-{{ table('harmonization', sector) }}
+{{ table('harmonization') }}
 
 {% include 'includes/04.file_conventions.md' %}

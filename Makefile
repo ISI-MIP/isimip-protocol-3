@@ -1,14 +1,10 @@
-sectors = agriculture biodiversity biomes coastal energy forestry health \
-          lakes_global lakes_local marine-fishery_global marine-fishery_regional \
-          permafrost water_global water_regional
+all: protocol schema
 
-all: schema html
+protocol:
+	python3 build/protocol.py
 
 schema:
-	python3 bin/generate_schema.py OutputData $(sectors)
-
-html:
-	python3 bin/generate_protocol.py $(sectors)
+	python3 build/schema.py
 
 gh-pages: all
 	ghp-import --no-jekyll --push --force output
@@ -16,4 +12,4 @@ gh-pages: all
 clean:
 	rm -r output
 
-.PHONY: schema html gh-pages clean
+.PHONY: protocol schema gh-pages clean

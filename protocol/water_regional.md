@@ -1,5 +1,6 @@
-ISIMIP3b protocol - Water (regional)
-====================================
+# {{ simulation_round.title }} simulation protocol - {{ sector.title }}
+
+{% include 'includes/00.introduction.md' %}
 
 {% include 'includes/01.scenario.md' %}
 
@@ -10,7 +11,7 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {
+{{ table('variable', {
     'Hydrological variables': [
         'qtot',
         'qs',
@@ -67,6 +68,6 @@ Output data
 
 ### Additional information for regional hydrological models
 
-{{ table('basin', sector) }}
+{{ table('basin') }}
 
 {% include 'includes/04.file_conventions.md' %}

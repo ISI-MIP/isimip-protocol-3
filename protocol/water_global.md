@@ -1,5 +1,6 @@
-ISIMIP3b protocol - Water (global)
-==================================
+# {{ simulation_round.title }} simulation protocol - {{ sector.title }}
+
+{% include 'includes/00.introduction.md' %}
 
 {% include 'includes/01.scenario.md' %}
 
@@ -10,7 +11,7 @@ Output data
 
 ### Output variables
 
-{{ table('variable', sector, {
+{{ table('variable', {
     'Hydrological variables': [
         'qtot',
         'qs',
@@ -82,7 +83,7 @@ The reporting of the crop yield-related outputs differs from the reporting of ot
 
 Simulations should be provided for the four major crops (wheat, maize, soy, and rice) but output for other crops and also bioenergy crops is highly welcome, too.
 
-{{ table('crop', sector, {
+{{ table('crop', {
     'Major crops': [
         'whe', 'mai', 'soy', 'ric'
     ],
@@ -92,6 +93,6 @@ Simulations should be provided for the four major crops (wheat, maize, soy, and 
 Yields simulations provided in the water sector should account for irrigation water constraints. For each crop, yields should be reported separately for irrigated land (cirr for “constrained irrigation”) and rainfed land (noirr). This complements the full irrigation (firr) pure crop runs requested in the agriculture part of the protocol.
 Those models that cannot simulate time varying management/human impacts/fertilizer input should keep these fixed at year 2000 levels throughout the simulations.
 
-{{ table('irrigation', sector) }}
+{{ table('irrigation') }}
 
 {% include 'includes/04.file_conventions.md' %}

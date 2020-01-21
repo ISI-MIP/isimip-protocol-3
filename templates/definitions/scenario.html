@@ -1,0 +1,140 @@
+<table>
+    <thead>
+        <tr>
+            <th style="width: 10%;">Experiment</th>
+            <th style="width: 25%;">Short description</th>
+            <th style="width: 10%;">Input</th>
+
+            {% if simulation_round.specifier == 'ISIMIP3a' %}
+            <th style="width: 15%;">Spin up</th>
+            <th style="width: 15%;">Historical</th>
+            {% endif %}
+
+            {% if simulation_round.specifier == 'ISIMIP3b' %}
+            <th style="width: 10%;">Pre-industrial</th>
+            <th style="width: 10%;">Historical</th>
+            <th style="width: 10%;">Future</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in table %}
+        <tr>
+            <td rowspan="2">
+                <strong>{{ row.title }}</strong>
+                {% if row.subtitle %}<br />{{ row.subtitle }}{% endif%}
+            </td>
+            <td>
+                <strong>CF:</strong> {{ row.description.climate }}
+            </td>
+            <td>
+                {{ row.input.climate }}
+            </td>
+
+            {% if simulation_round.specifier == 'ISIMIP3a' %}
+
+                {% if row.spin_up.climate %}
+                <td class="gray">
+                    <strong>{{ row.spin_up.climate }}</strong>
+                </td>
+                {% else %}
+                <td rowspan="2">
+                    {{ row.spin_up }}
+                </td>
+                {% endif %}
+
+                {% if row.historical.climate %}
+                <td class="gray">
+                    <strong>{{ row.historical.climate }}</strong>
+                </td>
+                {% else %}
+                <td rowspan="2">
+                    {{ row.historical }}
+                </td>
+                {% endif %}
+
+            {% endif %}
+
+            {% if simulation_round.specifier == 'ISIMIP3b' %}
+
+                {% if row.pre_industrial.climate %}
+                <td class="gray">
+                    <strong>{{ row.pre_industrial.climate }}</strong>
+                </td>
+                {% else %}
+                <td rowspan="2">
+                    {{ row.pre_industrial }}
+                </td>
+                {% endif %}
+
+                {% if row.historical.climate %}
+                <td class="gray">
+                    <strong>{{ row.historical.climate }}</strong>
+                </td>
+                {% else %}
+                <td rowspan="2">
+                    {{ row.historical }}
+                </td>
+                {% endif %}
+
+                {% if row.future.climate %}
+                <td class="red">
+                    <strong>{{ row.future.climate }}</strong>
+                </td>
+                {% else %}
+                <td rowspan="2">
+                    {{ row.future }}
+                </td>
+                {% endif %}
+
+            {% endif %}
+        </tr>
+        <tr>
+            <td>
+                <strong>DHF:</strong> {{ row.description.soc }}
+            </td>
+            <td>
+                {{ row.input.soc }}
+            </td>
+
+            {% if simulation_round.specifier == 'ISIMIP3a' %}
+
+                {% if row.spin_up.soc %}
+                <td class="gray">
+                    <strong>{{ row.spin_up.soc }}</strong>
+                </td>
+                {% endif %}
+
+                {% if row.historical.soc %}
+                <td class="gray">
+                    <strong>{{ row.historical.soc }}</strong>
+                </td>
+                {% endif %}
+
+            {% endif %}
+
+            {% if simulation_round.specifier == 'ISIMIP3b' %}
+
+                {% if row.pre_industrial.soc %}
+                <td class="gray">
+                    <strong>{{ row.pre_industrial.soc }}</strong>
+                </td>
+                {% endif %}
+
+                {% if row.historical.soc %}
+                <td class="gray">
+                    <strong>{{ row.historical.soc }}</strong>
+                </td>
+                {% endif %}
+
+                {% if row.future.soc %}
+                <td class="red">
+                    <strong>{{ row.future.soc }}</strong>
+                </td>
+                {% endif %}
+
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
