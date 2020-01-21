@@ -1,11 +1,11 @@
 <table>
     <thead>
-        <th style="width: 12%;">Specifier</th>
-        <th style="width: 12%;">Long name</th>
-        <th style="width: 12%;">Unit (NetCDF format)</th>
-        <th style="width: 12%;">Spatial Resolution</th>
-        <th style="width: 12%;">Temporal Resolution</th>
-        <th style="width: 40%;">Comments</th>
+        <th style="width: 20%;">Specifier</th>
+        <th style="width: 20%;">Long name</th>
+        <th style="width: 10%;">Unit (NetCDF format)</th>
+        <th style="width: 10%;">Spatial Resolution</th>
+        <th style="width: 10%;">Temporal Resolution</th>
+        <th style="width: 30%;">Comments</th>
     </thead>
     <tbody>
         {% for group, rows in table.items() %}
@@ -17,7 +17,7 @@
         {% for row in rows %}
         <tr>
             <td>
-                <strong>{{ row.usage if row.usage else row.specifier }}</strong>
+                <strong>{{ row.specifier }}{{ '-' if row.extension }}{{ row.extension }}</strong>
             </td>
             <td>{{ row.title }}</td>
             <td>{{ row.unit }}</td>

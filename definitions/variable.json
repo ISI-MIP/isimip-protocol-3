@@ -1,7 +1,7 @@
 [
   {
     "specifier": "yield",
-    "usage": "yield-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Crop yields",
     "unit": "dry matter (t ha-1 per growing season)",
     "resolution": "0.5°x0.5°",
@@ -13,11 +13,23 @@
   },
   {
     "specifier": "pirrww",
-    "usage": "pirrww-<crop>-<irrigation>",
+    "extension": {
+      "agriculture": "<crop>-<irrigation>",
+      "water_global": "",
+      "water_local": ""
+    },
     "title": "Irrigation water withdrawal (assuming unlimited water supply)",
-    "unit": "mm per growing season",
+    "unit": {
+      "agriculture": "mm per growing season",
+      "water_global": "kg m-2 s-1",
+      "water_local": "kg m-2 s-1"
+    },
     "resolution": "0.5°x0.5°",
-    "frequency": "seasonal",
+    "frequency": {
+      "agriculture": "seasonal",
+      "water_global": "monthly",
+      "water_local": "monthly"
+    },
     "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall), assuming no losses in conveyance and application.",
     "sectors": [
       "agriculture",
@@ -27,7 +39,7 @@
   },
   {
     "specifier": "aet",
-    "usage": "aet-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Actual evapotranspiration",
     "unit": "mm per growing season",
     "resolution": "0.5°x0.5°",
@@ -39,7 +51,7 @@
   },
   {
     "specifier": "initr",
-    "usage": "initr-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Nitrogen application rate",
     "unit": "kg ha-1 per growing season",
     "resolution": "0.5°x0.5°",
@@ -51,7 +63,7 @@
   },
   {
     "specifier": "plantday",
-    "usage": "plantday-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Actual planting dates",
     "unit": "Day of year",
     "resolution": "0.5°x0.5°",
@@ -63,7 +75,7 @@
   },
   {
     "specifier": "anthday",
-    "usage": "anthday-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Anthesis dates",
     "unit": "Days from planting date",
     "resolution": "0.5°x0.5°",
@@ -75,7 +87,7 @@
   },
   {
     "specifier": "matyday",
-    "usage": "matyday-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Maturity dates",
     "unit": "Days from planting date",
     "resolution": "0.5°x0.5°",
@@ -87,7 +99,7 @@
   },
   {
     "specifier": "harvday",
-    "usage": "harvday-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "",
     "unit": "",
     "resolution": "0.5°x0.5°",
@@ -99,7 +111,7 @@
   },
   {
     "specifier": "biom",
-    "usage": "biom-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Above ground biomass (dry matter)",
     "unit": "t ha-1 per growing season",
     "resolution": "0.5°x0.5°",
@@ -111,7 +123,7 @@
   },
   {
     "specifier": "sco2",
-    "usage": "sco2-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Soil carbon emissions ",
     "unit": "kg C ha-1",
     "resolution": "0.5°x0.5°",
@@ -123,7 +135,7 @@
   },
   {
     "specifier": "sn2o",
-    "usage": "sn2o-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Nitrous oxide emissions",
     "unit": "kg N2O-N ha-1",
     "resolution": "0.5°x0.5°",
@@ -135,7 +147,7 @@
   },
   {
     "specifier": "tnup",
-    "usage": "tnup-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Total N uptake (total growing season sum)",
     "unit": "kg ha -1 yr -1",
     "resolution": "0.5°x0.5°",
@@ -147,7 +159,7 @@
   },
   {
     "specifier": "tnin",
-    "usage": "tnin-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Total N inputs (total growing season sum)",
     "unit": "kg ha -1 yr -1",
     "resolution": "0.5°x0.5°",
@@ -159,7 +171,7 @@
   },
   {
     "specifier": "tnloss",
-    "usage": "tnloss-<crop>-<irrigation>",
+    "extension": "<crop>-<irrigation>",
     "title": "Total N losses (total growing season sum)",
     "unit": "kg ha -1 yr -1",
     "resolution": "0.5°x0.5°",
@@ -363,8 +375,9 @@
     "specifier": "qtot",
     "title": "Runoff",
     "unit": "kg m-2 s-1",
-    "resolution": "daily* (0.5°x0.5°)",
-    "comment": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "montly, daily",
+    "comment": "Total runoff leaving the land portion of the grid cell",
     "sectors": [
       "water_global",
       "water_regional",
@@ -374,10 +387,24 @@
   },
   {
     "specifier": "cveg",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass in Vegetation",
     "unit": "kg m-2",
-    "resolution": "per pft and gridcell total",
-    "comment": "",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "as kg carbon*m-2",
     "sectors": [
       "biomes",
       "forestry",
@@ -386,10 +413,24 @@
   },
   {
     "specifier": "cvegag",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass in aboveground vegetation biomass",
     "unit": "kg m-2",
-    "resolution": "per pft and gridcell total",
-    "comment": "",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2",
     "sectors": [
       "biomes",
       "forestry",
@@ -398,10 +439,24 @@
   },
   {
     "specifier": "cvegbg",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass in belowground vegetation biomass",
     "unit": "kg m-2",
-    "resolution": "per pft and gridcell total",
-    "comment": "",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2",
     "sectors": [
       "biomes",
       "forestry",
@@ -410,10 +465,24 @@
   },
   {
     "specifier": "clitter",
+    "extension": {
+      "biomes": "",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass in Litter Pool",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2, Info for each individual pool.",
     "sectors": [
       "biomes",
       "forestry",
@@ -422,10 +491,24 @@
   },
   {
     "specifier": "csoil",
+    "extension": {
+      "biomes": "",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass in Soil Pool",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2, Info for each individual soil layer",
     "sectors": [
       "biomes",
       "forestry",
@@ -434,10 +517,24 @@
   },
   {
     "specifier": "gpp",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass Flux out of Atmosphere due to Gross Primary Production on Land",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2 s-1",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2*s-1",
     "sectors": [
       "biomes",
       "forestry",
@@ -446,10 +543,24 @@
   },
   {
     "specifier": "ra",
+    "extension": {
+      "biomes": "",
+      "forestry": "<species/total>",
+      "permafrost": ""
+    },
     "title": "Carbon Mass Flux into Atmosphere due to Autotrophic (Plant) Respiration on Land",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2 s-1",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2*s-1",
     "sectors": [
       "biomes",
       "forestry",
@@ -458,10 +569,24 @@
   },
   {
     "specifier": "npp",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Carbon Mass Flux out of Atmosphere due to Net Primary Production on Land",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2 s-1",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2*s-1",
     "sectors": [
       "biomes",
       "forestry",
@@ -510,10 +635,24 @@
   },
   {
     "specifier": "rh",
+    "extension": {
+      "biomes": "",
+      "forestry": "total",
+      "permafrost": ""
+    },
     "title": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land",
     "unit": "kg m-2 s-1",
-    "resolution": "per gridcell",
-    "comment": "",
+    "resolution": {
+      "biomes": "per pft and gridcell total",
+      "forestry": "per species and stand total",
+      "permafrost": "per pft and gridcell total"
+    },
+    "frequency": {
+      "biomes": "daily",
+      "forestry": "annual",
+      "permafrost": "daily"
+    },
+    "comment": "As kg carbon*m-2*s-1",
     "sectors": [
       "biomes",
       "forestry",
@@ -555,10 +694,10 @@
   },
   {
     "specifier": "rr",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Root autotrophic respiration",
+    "unit": "kg m-2 s-1",
+    "resolution": "daily",
+    "comment": "As kg carbon * m-2 * s-1",
     "sectors": [
       "biomes",
       "forestry"
@@ -566,10 +705,16 @@
   },
   {
     "specifier": "fapar",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>"
+    },
     "title": "Fraction of absorbed photosynthetically active radiation",
     "unit": "%",
     "resolution": "per species and stand total",
-    "comment": "",
+    "frequency": "daily",
+    "comment": "Value between 0 and 100.",
     "sectors": [
       "biomes",
       "forestry",
@@ -578,10 +723,36 @@
   },
   {
     "specifier": "lai",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>",
+      "water_global": "",
+      "water_regional": ""
+    },
     "title": "Leaf Area Index",
     "unit": "1",
-    "resolution": "per pft and gridcell average",
-    "comment": "",
+    "resolution": {
+      "biomes": "per pft and gridcell average",
+      "forestry": "per pft and gridcell average",
+      "permafrost": "per pft and gridcell average",
+      "water_global": "per gridcell",
+      "water_regional": "per gridcell"
+    },
+    "frequency": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft>",
+      "water_global": "constant or monthly",
+      "water_regional": "constant or monthly"
+    },
+    "comment": {
+      "biomes": "",
+      "forestry": "",
+      "permafrost": "",
+      "water_global": "If used by, or computed by the model.",
+      "water_regional": "If used by, or computed by the model."
+    },
     "sectors": [
       "biomes",
       "forestry",
@@ -592,6 +763,7 @@
   },
   {
     "specifier": "pft",
+    "extension": "<pft>",
     "title": "Plant Functional Type Grid Fraction",
     "unit": "%",
     "resolution": "per gridcell",
@@ -618,10 +790,17 @@
   },
   {
     "specifier": "intercep",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>"
+    },
+    "title": "Evaporation from Canopy (interception)",
+    "unit": "kg m-2 s-1",
+    "resolution": {
+      "biomes": "per pft and gridcell",
+      "forestry": "per species and stand total"
+    },
+    "comment": "The canopy evaporation+sublimation (if present in model).",
     "sectors": [
       "biomes",
       "forestry"
@@ -629,10 +808,11 @@
   },
   {
     "specifier": "esoil",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Water Evaporation from Soil",
+    "unit": "kg m-2 s-1",
+    "resolution": "per gridcell",
+    "frequency": "daily, monthly",
+    "comment": "Includes sublimation.",
     "sectors": [
       "biomes",
       "forestry",
@@ -642,9 +822,17 @@
   },
   {
     "specifier": "trans",
+    "extension": {
+      "biomes": "<pft>",
+      "forestry": "<species/total>"
+    },
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": {
+      "biomes": "per pft and gridcell",
+      "forestry": "per species and stand total"
+    },
+    "frequency": "daily, monthly",
     "comment": "",
     "sectors": [
       "biomes",
@@ -654,9 +842,10 @@
   {
     "specifier": "soilmoist",
     "title": "Soil moisture for each layer",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2",
+    "resolution": "per gridcell",
+    "frequency": "daily (monthly)",
+    "comment": "If possible, please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil moisture of entire column.",
     "sectors": [
       "biomes",
       "forestry",
@@ -668,9 +857,10 @@
   {
     "specifier": "qs",
     "title": "Surface runoff",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2 s-1",
+    "resolution": "per gridcell",
+    "frequency": "daily (monthly)",
+    "comment": "The total surface runoff leaving the land portion of the grid cell.",
     "sectors": [
       "biomes",
       "water_global",
@@ -680,10 +870,11 @@
   },
   {
     "specifier": "soilmoistfroz",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Frozen soil moisture for each layer",
+    "unit": "kg m-2",
+    "resolution": "per gridcell",
+    "frequency": "monthly",
+    "comment": "Please provide soil moisture for all depth levels and indicate depth in m. Please provide for purposes of permafrost sector.",
     "sectors": [
       "biomes",
       "water_global",
@@ -693,10 +884,11 @@
   },
   {
     "specifier": "snd",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Snow depth",
+    "unit": "m",
+    "resolution": "per gridcell",
+    "frequency": "montly",
+    "comment": "Grid cell mean depth of snowpack.",
     "sectors": [
       "biomes",
       "water_global",
@@ -706,10 +898,11 @@
   },
   {
     "specifier": "swe",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Snow water equivalent",
+    "unit": "kg m-2",
+    "resolution": "per gridcell",
+    "frequency": "montly",
+    "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell (As for Water sector).",
     "sectors": [
       "biomes",
       "water_global",
@@ -719,10 +912,11 @@
   },
   {
     "specifier": "thawdepth",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Annual maximum thaw depth",
+    "unit": "m",
+    "resolution": "per gridcell",
+    "frequency": "montly",
+    "comment": "Calculated from daily thaw depths.",
     "sectors": [
       "biomes",
       "water_global",
@@ -732,8 +926,13 @@
   },
   {
     "specifier": "cleaf",
-    "title": "",
-    "unit": "",
+    "extension": {
+      "biomes": "<pool>",
+      "forestry": "",
+      "permafrost": ""
+    },
+    "title": "Carbon Mass in Leaves",
+    "unit": "kg m-2",
     "resolution": "",
     "comment": "",
     "sectors": [
@@ -744,8 +943,13 @@
   },
   {
     "specifier": "cwood",
-    "title": "",
-    "unit": "",
+    "extension": {
+      "biomes": "<pool>",
+      "forestry": "",
+      "permafrost": ""
+    },
+    "title": "Carbon Mass in Wood",
+    "unit": "kg m-2",
     "resolution": "",
     "comment": "",
     "sectors": [
@@ -756,8 +960,13 @@
   },
   {
     "specifier": "croot",
-    "title": "",
-    "unit": "",
+    "extension": {
+      "biomes": "<pool>",
+      "forestry": "",
+      "permafrost": ""
+    },
+    "title": "Carbon Mass in Roots",
+    "unit": "kg m-2",
     "resolution": "",
     "comment": "",
     "sectors": [
@@ -768,10 +977,11 @@
   },
   {
     "specifier": "tsl",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Temperature of Soil",
+    "unit": "K",
+    "resolution": "per gridcell",
+    "frequency": "daily",
+    "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\".",
     "sectors": [
       "biomes",
       "forestry",
@@ -803,9 +1013,11 @@
   },
   {
     "specifier": "dbh",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Mean DBH",
+    "unit": "cm",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -813,39 +1025,45 @@
   },
   {
     "specifier": "dbhdomhei",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Mean DBH of 100 highest trees",
+    "unit": "cm",
+    "resolution": "stand total",
+    "frequency": "annual",
+    "comment": "100 highest trees per hectare.",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "hei",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "extension": "<species/total>",
+    "title": "Stand Height",
+    "unit": "ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
+    "comment": "For models including natural regeneration this variable may not make sense, please report domhei.",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "domhei",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Dominant Height",
+    "unit": "m2 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
+    "comment": "Mean height of the 100 highest trees per hectare.",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "density",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Stand Density",
+    "unit": "m2 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -853,9 +1071,11 @@
   },
   {
     "specifier": "ba",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Basal Area",
+    "unit": "m2 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -863,9 +1083,11 @@
   },
   {
     "specifier": "mort",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Volume of Dead Trees",
+    "unit": "m3 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -873,19 +1095,23 @@
   },
   {
     "specifier": "harv",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "extension": "<species/total>",
+    "title": "Harvest by dbh-class",
+    "unit": "m3 ha-1",
+    "resolution": "per species and stand total and dbh-class",
+    "frequency": "annual",
+    "comment": "Either dbh classes or total",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "stemno",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Remaining stem number after disturbance and management by dbh class",
+    "unit": "ha-1",
+    "resolution": "per species and stand total and dbh-class",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -893,9 +1119,11 @@
   },
   {
     "specifier": "vol",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Stand Volume",
+    "unit": "m3 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -903,29 +1131,35 @@
   },
   {
     "specifier": "age",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "extension": "<species/total>",
+    "title": "Tree age by dbh class",
+    "unit": "yr",
+    "resolution": "per species and stand total and dbh-class",
+    "frequency": "annual",
+    "comment": "Either dbh classes or total",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "nee",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "extension": "total",
+    "title": "Net Ecosystem Exchange",
+    "unit": "kg m-2 s-1",
+    "resolution": "per stand",
+    "frequency": "annual",
+    "comment": "As kg carbon*m-2*s-1",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "mai",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<species/total>",
+    "title": "Mean Annual Increment",
+    "unit": "m3 ha-1",
+    "resolution": "per species and stand total",
+    "frequency": "annual",
     "comment": "",
     "sectors": [
       "forestry"
@@ -933,7 +1167,8 @@
   },
   {
     "specifier": "species",
-    "title": "",
+    "extension": "<species/total>",
+    "title": "Species composition",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -943,7 +1178,8 @@
   },
   {
     "specifier": "mortstemno",
-    "title": "",
+    "extension": "<species/total>",
+    "title": "Removed stem numbers by size class by natural mortality",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -953,7 +1189,8 @@
   },
   {
     "specifier": "harvstemno",
-    "title": "",
+    "extension": "<species/total>",
+    "title": "Removed stem numbers by size class by management",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -963,9 +1200,10 @@
   },
   {
     "specifier": "dist",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "extension": "<dist-name>",
+    "title": "Volume of disturbance damage",
+    "unit": "m3 ha-1",
+    "resolution": "per species and stand total",
     "comment": "",
     "sectors": [
       "forestry"
@@ -973,9 +1211,10 @@
   },
   {
     "specifier": "nlit",
-    "title": "",
+    "extension": "<species/total>",
+    "title": "Nitrogen of annual Litter",
     "unit": "",
-    "resolution": "",
+    "resolution": "per species and stand total",
     "comment": "",
     "sectors": [
       "forestry"
@@ -983,9 +1222,10 @@
   },
   {
     "specifier": "nsoil",
-    "title": "",
+    "extension": "total",
+    "title": "Nitrogen in Soil",
     "unit": "",
-    "resolution": "",
+    "resolution": "per stand total",
     "comment": "",
     "sectors": [
       "forestry"
@@ -993,7 +1233,8 @@
   },
   {
     "specifier": "nppleaf",
-    "title": "",
+    "extension": "<species>",
+    "title": "Net Primary Production allocated to leaf biomass",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -1003,7 +1244,8 @@
   },
   {
     "specifier": "npproot",
-    "title": "",
+    "extension": "<species>",
+    "title": "Net Primary Production allocated to fine root biomass",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -1013,7 +1255,8 @@
   },
   {
     "specifier": "nppagwood",
-    "title": "",
+    "extension": "<species>",
+    "title": "Net Primary Production allocated to above ground wood biomass",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -1023,7 +1266,8 @@
   },
   {
     "specifier": "nppbgwood",
-    "title": "",
+    "extension": "<species>",
+    "title": "Net Primary Production allocated to below ground wood biomass",
     "unit": "",
     "resolution": "",
     "comment": "",
@@ -1033,10 +1277,11 @@
   },
   {
     "specifier": "strat",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Thermal stratification",
+    "unit": "1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
+    "comment": "1 if lake grid cell is thermally stratified, 0 if lake grid cell is not thermally stratified",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1044,10 +1289,11 @@
   },
   {
     "specifier": "thermodepth",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Depth of Thermocline",
+    "unit": "m",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
+    "comment": "Depth corresponding the maximum water density gradient",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1055,10 +1301,12 @@
   },
   {
     "specifier": "watertemp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Water temperature",
+    "unit": "K",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
+    "depth": "Full Profile",
+    "comment": "Simulated water temperature.  Layer averages and full profiles.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1066,10 +1314,11 @@
   },
   {
     "specifier": "surftemp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Surface temperature",
+    "unit": "K",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "Average of the upper layer in case not simulated directly.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1077,10 +1326,11 @@
   },
   {
     "specifier": "bottemp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Bottom temperature",
+    "unit": "K",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "Average of the lowest layer in case not simulated directly.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1088,10 +1338,11 @@
   },
   {
     "specifier": "ice",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Lake ice cover",
+    "unit": "1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
+    "comment": "1 if ice cover is present in lake grid cell, 0 if no ice cover is present in lake grid cell",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1099,10 +1350,12 @@
   },
   {
     "specifier": "lakeicefrac",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Lake layer ice mass fraction",
+    "unit": "1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Mean Epi",
+    "comment": "Fraction of mass of a given layer taken up by ice",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1110,9 +1363,10 @@
   },
   {
     "specifier": "icethick",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Ice thickness",
+    "unit": "m",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1121,9 +1375,10 @@
   },
   {
     "specifier": "snowthick",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Snow thickness",
+    "unit": "m",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1132,9 +1387,10 @@
   },
   {
     "specifier": "icetemp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Temperature at the ice upper surface",
+    "unit": "K",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1143,9 +1399,10 @@
   },
   {
     "specifier": "snowtemp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Temperature at the snow upper surface",
+    "unit": "K",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1154,10 +1411,11 @@
   },
   {
     "specifier": "sensheatf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Sensible heat flux at the lake-atmosphere interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1165,10 +1423,11 @@
   },
   {
     "specifier": "latentheatf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Latent heat flux at the lake-atmosphere interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1176,10 +1435,11 @@
   },
   {
     "specifier": "momf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Momentum flux at the lake-atmosphere interface",
+    "unit": "kg m-1 s-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1187,10 +1447,11 @@
   },
   {
     "specifier": "swup",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Upward shortwave radiation flux at the lake-atmosphere interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards. Not to be confused with net shortwave radiation.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1198,10 +1459,11 @@
   },
   {
     "specifier": "lwup",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Upward longwave radiation flux at the lake-atmosphere interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards. Not to be confused with net longwave radiation.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1209,10 +1471,10 @@
   },
   {
     "specifier": "lakeheatf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Downward heat flux at the lake-atmosphere interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards. the residual term of the surface energy balance, i.e. the net amount of energy that enters the lake on daily time scale: lakeheatf = swdown - swup + lwdown - lwup - sensheatf - latenheatf (terms defined positive when directed upwards)",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1220,10 +1482,12 @@
   },
   {
     "specifier": "turbdiffheat",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Turbulent diffusivity of heat",
+    "unit": "m2 s-1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Only if computed by the model.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1231,10 +1495,11 @@
   },
   {
     "specifier": "albedo",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Surface albedo",
+    "unit": "1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "Albedo of the surface interacting with the atmosphere (water, ice or snow).",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1242,10 +1507,11 @@
   },
   {
     "specifier": "extcoeff",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Light extinction coefficient",
+    "unit": "m-1",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "constant",
+    "comment": "Only to be reported for global models, local models should use extcoeff as input.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1253,10 +1519,11 @@
   },
   {
     "specifier": "sedheatf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Sediment upward heat flux at the lake-sediment interface",
+    "unit": "W m-2",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "comment": "Positive if upwards. Only if computed by the model.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1264,10 +1531,12 @@
   },
   {
     "specifier": "chl",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Chlorophyll Concentration",
+    "unit": "g-3 m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Total water chlorophyll concentration – indicator of phytoplankton.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1275,10 +1544,12 @@
   },
   {
     "specifier": "phytobio",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Phytoplankton Functional group biomass",
+    "unit": "mole m-3 as carbon",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Different models will have different numbers of functional groups so that the reporting of these will vary by model.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1286,10 +1557,12 @@
   },
   {
     "specifier": "zoobio",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Phytoplankton Functional group biomass",
+    "unit": "mole m-3 as carbon",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Total simulated Zooplankton biomass.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1297,9 +1570,11 @@
   },
   {
     "specifier": "tp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Total Phosphorus",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1308,9 +1583,11 @@
   },
   {
     "specifier": "pp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Particulate Phosphorus",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1319,10 +1596,12 @@
   },
   {
     "specifier": "tpd",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Total Dissolved Phosphorus",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Some models may also output data for soluble reactive phosphorus (SRP).",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1330,9 +1609,11 @@
   },
   {
     "specifier": "tn",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Total Nitrogen",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1341,9 +1622,11 @@
   },
   {
     "specifier": "pn",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Particulate Nitrogen",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1352,10 +1635,12 @@
   },
   {
     "specifier": "tdn",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Total Dissolved Nitrogen",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo",
+    "comment": "Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1363,9 +1648,11 @@
   },
   {
     "specifier": "do",
-    "title": "",
-    "unit": "",
-    "resolution": "",
+    "title": "Dissolved Oxygen",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo.",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1374,10 +1661,12 @@
   },
   {
     "specifier": "doc",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Dissolved Organic Carbon",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo.",
+    "comment": "Not always available.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1385,10 +1674,12 @@
   },
   {
     "specifier": "si",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Dissolved Silica",
+    "unit": "mole m-3",
+    "resolution": "Representative lake associated with grid cell",
+    "frequency": "daily (monthly)",
+    "depth": "Either full profile, or mean epi and mean hypo.",
+    "comment": "Not always available.",
     "sectors": [
       "lakes_global",
       "lakes_local"
@@ -1399,6 +1690,7 @@
     "title": "",
     "unit": "",
     "resolution": "",
+    "frequency": "",
     "comment": "",
     "sectors": [
       "lakes_global",
@@ -1527,7 +1819,7 @@
   },
   {
     "specifier": "b",
-    "usage": "b-<class>-<group>",
+    "extension": "b-<class>-<group>",
     "title": "Biomass density (by functional group / size class) ",
     "unit": "g C m-2",
     "resolution": "0.5°x0.5°",
@@ -1576,7 +1868,7 @@
   },
   {
     "specifier": "c",
-    "usage": "c-<class>-<group>",
+    "extension": "-<class>-<group>",
     "title": "Catch (by functional group / size class) ",
     "unit": "g m-2",
     "resolution": "0.5°x0.5°",
@@ -1782,9 +2074,10 @@
   {
     "specifier": "reservoirstor",
     "title": "Reservoir storage",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "unit": "kg m-2",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Mean monthly water storage in reservoirs.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1792,10 +2085,11 @@
   },
   {
     "specifier": "riverstor",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Reservoir storage",
+    "unit": "kg m-2",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Mean monthly water storage in rivers.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1803,10 +2097,11 @@
   },
   {
     "specifier": "triver",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "River temperature",
+    "unit": "kg m-2",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1814,10 +2109,11 @@
   },
   {
     "specifier": "rainf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Rainfall",
+    "unit": " kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Required for test purposes only. If you need to reduce output data volumes, please provide these variables only once, with the first (test) data set you submit, e.g. for the first decade of each experiment. NOTE: rainf + snowf = total precipitation",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1825,10 +2121,11 @@
   },
   {
     "specifier": "snowf",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Snowfall",
+    "unit": " kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Required for test purposes only. If you need to reduce output data volumes, please provide these variables only once, with the first (test) data set you submit, e.g. for the first decade of each experiment. NOTE: rainf + snowf = total precipitation",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1836,10 +2133,11 @@
   },
   {
     "specifier": "airrww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual irrigation water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1847,10 +2145,11 @@
   },
   {
     "specifier": "pirruse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Potential irrigation water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1858,10 +2157,11 @@
   },
   {
     "specifier": "airruse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual irrigation water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1869,10 +2169,11 @@
   },
   {
     "specifier": "airrusegreen",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual green water consumption on irrigated cropland",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1880,10 +2181,11 @@
   },
   {
     "specifier": "pirrusegreen",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Potential green water consumption on irrigated cropland",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1891,10 +2193,11 @@
   },
   {
     "specifier": "arainfusegreen",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual green water consumption on rainfed cropland",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1902,10 +2205,11 @@
   },
   {
     "specifier": "adomww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual domestic water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1913,10 +2217,11 @@
   },
   {
     "specifier": "adomuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual domestic water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1924,10 +2229,11 @@
   },
   {
     "specifier": "amanww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual manufacturing water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1935,10 +2241,11 @@
   },
   {
     "specifier": "amanuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual manufacturing water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1946,10 +2253,11 @@
   },
   {
     "specifier": "aelecww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual electricity water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1957,10 +2265,11 @@
   },
   {
     "specifier": "aelecuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual electricity water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1968,10 +2277,11 @@
   },
   {
     "specifier": "aliveww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual livestock water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -1979,21 +2289,11 @@
   },
   {
     "specifier": "aliveuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
-    "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "atotuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Actual livestock water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -2001,10 +2301,23 @@
   },
   {
     "specifier": "atotww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Total (all sectors) actual water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global",
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "atotuse",
+    "title": "Total (all sectors) actual water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Sum of actual water consumption from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -2012,10 +2325,11 @@
   },
   {
     "specifier": "ptotww",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Total (all sectors) potential water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -2023,10 +2337,11 @@
   },
   {
     "specifier": "ptotuse",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Total (all sectors) potential water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
+    "comment": "Sum of potential (i.e. assuming unlimited water supply) water consumption from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -2034,10 +2349,11 @@
   },
   {
     "specifier": "soil",
-    "title": "",
+    "title": "Soil types",
     "unit": "",
-    "resolution": "",
-    "comment": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "constant",
+    "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
     "sectors": [
       "water_global",
       "water_regional"
@@ -2047,7 +2363,8 @@
     "specifier": "admeluse",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2058,7 +2375,8 @@
     "specifier": "pidmelww",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2069,7 +2387,8 @@
     "specifier": "pidmeluse",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2080,7 +2399,8 @@
     "specifier": "transp",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2091,7 +2411,8 @@
     "specifier": "ainduse",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2102,7 +2423,8 @@
     "specifier": "aindww",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2113,7 +2435,8 @@
     "specifier": "qbaseflow",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2124,7 +2447,8 @@
     "specifier": "pr",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2135,7 +2459,8 @@
     "specifier": "gwrecharge",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2146,7 +2471,8 @@
     "specifier": "qrecharge",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5°x0.5°",
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "water_global",
@@ -2155,7 +2481,7 @@
   },
   {
     "specifier": "ancold",
-    "usage": "ancold-<r>",
+    "extension": "-<r>",
     "title": "Number of deaths attributable to cold",
     "unit": "1",
     "frequency": "daily",
@@ -2166,7 +2492,7 @@
   },
   {
     "specifier": "anheat",
-    "usage": "anheat-<r>",
+    "extension": "-<r>",
     "title": "Number of deaths attributable to heat",
     "unit": "1",
     "frequency": "daily",

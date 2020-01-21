@@ -77,7 +77,14 @@ class Table(object):
                         # loop over rows, add row to group and remove it from rows
                         for row in rows:
                             if specifier == row['specifier']:
-                                table[group].append(row)
+                                table_row = {}
+                                for key, value in row.items():
+                                    if isinstance(value, dict):
+                                        table_row[key] = value.get(sector, '')
+                                    else:
+                                        table_row[key] = value
+
+                                table[group].append(table_row)
                                 rows.remove(row)
                                 break
                 else:
