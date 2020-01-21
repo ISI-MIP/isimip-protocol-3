@@ -32,4 +32,21 @@ Output data
     ]
 }) }}
 
+#### Crops
+
+{{ table('crop', sector, {
+    'Major crops': [
+        'whe', 'mai', 'soy', 'ric'
+    ],
+    'Other crops': None
+}) }}
+
+#### Irrigation
+
+{{ table('irrigation', sector) }}
+
+#### Harmonization
+
+{{ table('harmonization', sector) }}
+
 {% include 'includes/04.file_conventions.md' %}

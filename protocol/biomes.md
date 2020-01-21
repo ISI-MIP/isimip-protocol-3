@@ -10,36 +10,52 @@ Output data
 ### Output variables
 
 {{ table('variable', sector, {
-    'Essential output': [
-        'tsl',
+    'Pools': [
         'cveg',
         'cvegag',
         'cvegbg',
         'clitter',
-        'csoil',
+        'csoil'
+    ],
+    'Fluxes': [
         'gpp',
         'ra',
         'npp',
+        'npplandleaf',
+        'npplandroot',
+        'nppabovegroundwood',
+        'nppbelowgroundwood',
         'rh',
         'fireint',
         'firefrac',
         'ecoatmflux',
+        'rr'
+    ],
+    'Structure': [
         'fapar',
         'lai',
-        'pft',
-        'soilmost',
-        'soilmostfroz',
+        'pft'
+    ],
+    'Hydrological variables': [
+        'evap',
+        'intercep',
+        'esoil',
+        'trans',
+        'qtot',
+        'qs',
+        'soilmoist',
+        'soilmoistfroz',
         'snd',
-        'thawdepth',
         'swe',
-        'qtot'
+        'thawdepth'
     ],
     'Optional output': [
         'cleaf',
         'cwood',
-        'croot',
-        'clitter',
-        'csoil',
+        'croot'
+    ],
+    'Other variables': [
+        'tsl',
         'burntarea'
     ]
 }) }}

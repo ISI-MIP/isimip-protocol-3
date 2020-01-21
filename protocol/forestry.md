@@ -61,4 +61,12 @@ Output data
     ]
 }) }}
 
+#### Species
+
+{{ table('species', sector) }}
+
+#### Stands
+
+{{ table('stand', sector) }}
+
 {% include 'includes/04.file_conventions.md' %}

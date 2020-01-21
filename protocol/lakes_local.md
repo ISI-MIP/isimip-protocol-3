@@ -50,4 +50,8 @@ Output data
     ]
 }) }}
 
+### Lake sites
+
+{{ table('lake', sector) }}
+
 {% include 'includes/04.file_conventions.md' %}

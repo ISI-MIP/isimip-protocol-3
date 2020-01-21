@@ -11,20 +11,26 @@ Output data
 ### Output variables
 
 {{ table('variable', sector, {
-    'Key variables': [
+    'Key variable': [
         'tsl'
+    ],
+    'Pools (as in Biomes sector)': [
         'cveg',
         'cvegag',
         'cvegbg',
         'clitter',
         'csoil'
+    ],
+    'Fluxes (as in Biomes sector)': [
         'gpp',
         'ra',
         'npp',
         'rh',
         'fireint',
         'firefrac',
-        'ecoatmfluxc'
+        'ecoatmflux'
+    ],
+    'Structure (as in Biomes sector)': [
         'fapar',
         'lai',
         'pft',
@@ -39,8 +45,6 @@ Output data
         'cleaf',
         'cwood',
         'croot',
-        'clitter',
-        'csoil',
         'burntarea'
     ]
 }) }}

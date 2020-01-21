@@ -34,4 +34,8 @@ Output data
     ]
 }) }}
 
+#### Ocean regions
+
+{{ table('ocean', sector) }}
+
 {% include 'includes/04.file_conventions.md' %}

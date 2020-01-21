@@ -22,9 +22,9 @@ Output data
         'mindis',
         'evap',
         'potevap',
-        'soilmost',
-        'rootmost',
-        'soilmostfroz',
+        'soilmoist',
+        'rootmoist',
+        'soilmoistfroz',
         'tsl',
         'snd',
         'swe',
@@ -64,5 +64,9 @@ Output data
     ],
     'Other variables': None
 }) }}
+
+### Additional information for regional hydrological models
+
+{{ table('basin', sector) }}
 
 {% include 'includes/04.file_conventions.md' %}
