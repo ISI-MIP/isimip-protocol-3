@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 from collections import OrderedDict
+from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
@@ -15,6 +16,8 @@ def main():
 
     commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
     commit_url = URL + '/commit/' + commit_hash
+    commit_date = subprocess.check_output(['git', 'show', '-s', '--format=%ci', 'HEAD']).decode().strip()
+    commit_date = datetime.strptime(commit_date, '%Y-%m-%d %H:%M:%S %z').strftime('%d %B %Y')
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
@@ -40,8 +43,8 @@ def main():
             with open(layout_path) as f:
                 template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
             with open(output_path, 'w') as f:
-                f.write(template.render(simulation_round=simulation_round, sector=sector,
-                                        content=html, commit_url=commit_url, commit_hash=commit_hash))
+                f.write(template.render(simulation_round=simulation_round, sector=sector, content=html,
+                                        commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
 
 
 class Table(object):

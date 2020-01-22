@@ -1,5 +1,3 @@
-# {{ simulation_round.title }} simulation protocol - {{ sector.title }}
-
 {% include 'includes/00.introduction.md' %}
 
 {% include 'includes/01.scenario.md' %}
