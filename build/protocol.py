@@ -34,7 +34,8 @@ def main():
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
             template = enviroment.from_string(template_string)
-            md = template.render(simulation_round=simulation_round, sector=sector, table=Table(simulation_round, sector))
+            md = template.render(simulation_round=simulation_round, sector=sector,
+                                 table=Table(simulation_round, sector), counter=Counter())
 
             # step 3: convert markdown to html
             html = markdown(md)
@@ -121,6 +122,11 @@ class Table(object):
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
         return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector)
+
+
+class Counter(object):
+
+    pass
 
 
 if __name__ == "__main__":

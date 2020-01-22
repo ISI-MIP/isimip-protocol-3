@@ -62,10 +62,10 @@ Output data
 
 #### Species
 
-{{ table('species', sector) }}
+{{ table('species') }}
 
 #### Stands
 
-{{ table('stand', sector) }}
+{{ table('stand') }}
 
 {% include 'includes/04.file_conventions.md' %}
