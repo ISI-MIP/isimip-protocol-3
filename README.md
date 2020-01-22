@@ -57,7 +57,7 @@ it will create a table with group headers. If the second argument is a list (`[ 
 
 ```
 {{ table('variable', [
-	'yield',
+    'yield',
     'pirrww'
 ] }}
 ```
