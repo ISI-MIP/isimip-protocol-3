@@ -5,7 +5,14 @@ This project builds sector-specific ISIMIP protocols from a common data source.
 Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
 
 The rendered protocols are found at isimip.github.io. For example,
-the [agriculture protocol](https://isi-mip.github.io/isimip-protocol-3b/protocol/agriculture.html).
+the [agriculture protocol](https://isi-mip.github.io/isimip-protocol-3/protocol/ISIMIP3b/agriculture.html).
+
+You can clone this repository and work and render the files locally as documented below.
+You can also edit the markdown files at github directly. With a delay of minutes,
+your updates will be visible at `https://isi-mip.github.io/isimip-protocol-3/protocol/<simulation_round>/<sector>.html`.
+
+As a rule, the sector-specific text should be kept to a minimum and cover
+as much structure as possible by machine-readable code under [definitions](definitions/).
 
 
 Setup
@@ -15,22 +22,51 @@ Setup
 pip install -r requirements.txt
 ```
 
-Usage
------
+Editing
+-------
 
-Edit the markdown files for each sector under [protocol](protocol).
-Edit [file_conventions.md](protocol/includes/file_conventions.md) to
-add common text to all sectors. Edit definitions under [definitions](definitions/).
+Edit the markdown files for each sector under [protocol](protocol). Common included files are located under [protocol/include](protocol/include).
 
-You can clone this repository and work and render the files locally.
-You can also edit the markdown files at github directly. With a delay of minutes,
-your updates will be visible at `https://isi-mip.github.io/isimip-protocol-3b/protocol/<sector>.html`.
+Tables are rendered using the table macro `{{ table(name, order) }}`. This macro combines a json file in `definitions/<name>.json` and a template in `templates/<name>.html`. If the second argument to table is a dict (`{ ... }`), e.g.:
 
-As a rule, we should keep sector-specific text to a minimum and cover
-as much structure as possible by machine-readable code under [definitions](definitions/).
+```
+{{ table('variable', {
+    'Key model output': [
+        'yield',
+        'pirrww'
+    ],
+    'Key diagnostic variables': [
+        'aet',
+        'initr',
+        'plantday',
+        'anthday',
+        'matyday'
+    ],
+    'Additional output variables (optional)': [
+        'biom',
+        'sco2',
+        'sn2o',
+        'tnup',
+        'tnin',
+        'tnloss'
+    ]
+}) }}
+```
+
+it will create a table with group headers. If the second argument is a list (`[ ... ]`), e.g.:
+
+```
+{{ table('variable', [
+	'yield',
+    'pirrww'
+] }}
+```
+
+it will use the given order of specifiers to create the table. If no second argument is provided, it will use the order from the json file.
+
 
 Render
------
+------
 
 You can use the `Makefile`:
 
@@ -45,8 +81,19 @@ python3 build/protocol.py  # creates the html protocol for each sector
 python3 build/schema.py    # creates the json schema for each sector
 ```
 
+Test
+----
+
+Some tests ensure that edits do not destroy the format and the schema of the json files. They can be manually executed using
+
+```
+pytest
+```
+
 Deploy on GitHub pages
 ----------------------
+
+The automatic deployment with travis-ci is configured using the [.travis-ci.yml](.travis-ci.yml) file. In order for travis to push back into the repository the following setup is already deployed and is documented here only for emergencies.
 
 ```
 # install the travis gem
