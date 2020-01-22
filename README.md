@@ -67,6 +67,7 @@ it will use the given order of specifiers to create the table. If no second argu
 The definition json files themselves are lists of json objects. Every json object should have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_correction.json](definitions/bias_correction.json):
 
 ```
+[
   {
     "specifier": "nobc",
     "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
@@ -86,6 +87,7 @@ The definition json files themselves are lists of json objects. Every json objec
     "specifier": "ewembi-isimip3basd",
     "description": "Refers to EWEMBI data used for the bias-correction globally on a 0.5°, using improved bias-correction methods (Lange 2018, doi: 10.5194/esd-9-627-2018), and with statistical downscaling (instead of interpolation) of GCM data to the 0.5° grid prior to bias-correction."
   }
+]
 ```
 
 Here `localbc` only applies to the `forestry` sector, while the other objects are used in every sector. The longest and most complicated definition is [definitions/variable.json](definitions/variable.json):
