@@ -35,7 +35,7 @@ def main():
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
             template = enviroment.from_string(template_string)
             md = template.render(simulation_round=simulation_round, sector=sector,
-                                 table=Table(simulation_round, sector), counter=Counter())
+                                 table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
             html = markdown(md)
@@ -50,9 +50,10 @@ def main():
 
 class Table(object):
 
-    def __init__(self, simulation_round, sector):
+    def __init__(self, simulation_round, sector, counter):
         self.simulation_round = simulation_round
         self.sector = sector
+        self.counter = counter
 
     def __call__(self, template, order=None):
         definition_path = os.path.join('definitions', '{}.json'.format(template))
@@ -121,12 +122,17 @@ class Table(object):
         with open(template_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
-        return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector)
+        return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector, counter=self.counter)
 
 
 class Counter(object):
 
-    pass
+    def __init__(self):
+        self.counter = 0
+
+    def __call__(self):
+        self.counter += 1
+        return self.counter
 
 
 if __name__ == "__main__":
