@@ -37,7 +37,7 @@ def main():
             # step 2: open and read pattern
             with open(pattern_path) as f:
                 pattern_json = json.loads(f.read())
-                pattern = '_'.join(pattern_json['file']) + '.nc'
+                pattern = '_'.join(pattern_json) + '.nc'
 
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))

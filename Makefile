@@ -1,5 +1,8 @@
 all: protocol schema
 
+pattern:
+	python3 build/pattern.py
+
 protocol:
 	python3 build/protocol.py
 
@@ -12,4 +15,4 @@ gh-pages: all
 clean:
 	rm -r output
 
-.PHONY: protocol schema gh-pages clean
+.PHONY: pattern protocol schema gh-pages clean
