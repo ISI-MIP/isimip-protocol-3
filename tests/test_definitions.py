@@ -1,30 +1,30 @@
 import json
 import os
 
+import jsonschema
+
 
 def test_definitions():
+    with open(os.path.join(os.path.dirname(__file__), 'meta.json')) as f:
+        schema = json.loads(f.read())
+
     path = 'definitions'
-    for file_name in os.listdir(path):
+    for file_name in os.listdir('definitions'):
         file_path = os.path.join(path, file_name)
 
         with open(file_path) as f:
-            rows = json.loads(f.read())
+            instance = json.loads(f.read())
 
-            assert isinstance(rows, list), file_name
+            # validate json with meta json
+            jsonschema.validate(schema=schema, instance=instance)
 
-            specifiers = []
-            for row in rows:
-                assert isinstance(row, dict), file_name
-
-                if 'specifier' in row:
-                    specifiers.append(row['specifier'])
-
+            # check for double specifiers
             seen = set()
             doubles = []
-            for specifier in specifiers:
-                if specifier in seen:
-                    doubles.append(specifier)
+            for row in instance:
+                if row['specifier'] in seen:
+                    doubles.append(row['specifier'])
                 else:
-                    seen.add(specifier)
+                    seen.add(row['specifier'])
 
             assert not doubles, '{} {}'.format(file_name, doubles)
