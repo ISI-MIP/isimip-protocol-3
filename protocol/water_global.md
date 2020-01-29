@@ -75,9 +75,9 @@ Output data
     ]
 }) }}
 
-#### Comments related to the optional agricultural outputs
+#### Crop priority and naming
 
-The reporting of the crop yield-related outputs differs from the reporting of other variables in the water sector, as it is not done according to calendar years but according to growing seasons to resolve potential multiple harvests. See the agriculture sector for details.
+The reporting of the crop yield-related outputs differs from the reporting of other variables in the water sector, as it is not done according to calendar years but according to growing seasons to resolve potential multiple harvests. See the [agriculture](agriculture.html) sector for details.
 
 Simulations should be provided for the four major crops (wheat, maize, soy, and rice) but output for other crops and also bioenergy crops is highly welcome, too.
 
@@ -88,9 +88,10 @@ Simulations should be provided for the four major crops (wheat, maize, soy, and 
     'Other crops': None
 }) }}
 
-Yields simulations provided in the water sector should account for irrigation water constraints. For each crop, yields should be reported separately for irrigated land (cirr for “constrained irrigation”) and rainfed land (noirr). This complements the full irrigation (firr) pure crop runs requested in the agriculture part of the protocol.
-Those models that cannot simulate time varying management/human impacts/fertilizer input should keep these fixed at year 2000 levels throughout the simulations.
+Yields simulations provided in the water sector should account for irrigation water constraints. For each crop, yields should be reported separately for irrigated land (`cirr` for *constrained irrigation*) and rainfed land (`noirr`). This complements the full irrigation (`firr`) pure crop runs requested in the agriculture part of the protocol.
 
 {{ table('irrigation') }}
+
+Those models that cannot simulate time varying management/human impacts/fertilizer input should keep these fixed at year 2000 levels throughout the simulations.
 
 {% include 'includes/04.file_conventions.md' %}
