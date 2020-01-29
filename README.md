@@ -149,7 +149,7 @@ pytest
 Deploy on GitHub pages
 ----------------------
 
-The automatic deployment with travis-ci is configured using the [.travis-ci.yml](.travis-ci.yml) file. In order for travis to push back into the repository the following setup is already deployed and is documented here only for emergencies.
+The automatic deployment with travis-ci is configured using the [.travis-ci.yml](.travis-ci.yml) file. In order for travis to push back into the repository a deploy key has to be configured and added to the repository (encrypted). The following setup is already deployed and is documented here only for emergencies.
 
 ```
 # install the travis gem
