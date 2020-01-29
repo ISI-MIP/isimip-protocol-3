@@ -25,23 +25,30 @@ def main():
 
             input_path = os.path.join('protocol', '00.base.md')
             output_path = os.path.join('output/protocol', simulation_round['specifier'], '{}.html'.format(sector['specifier']))
+            pattern_path = os.path.join('patterns', '{}.json'.format(sector['specifier']))
             layout_path = os.path.join('templates', 'layout.html')
 
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-            # step 1: open protocol and render using jinja2
+            # step 1: open and read protocol
             with open(input_path) as f:
                 template_string = f.read()
+
+            # step 2: open and read pattern
+            with open(pattern_path) as f:
+                pattern_json = json.loads(f.read())
+                pattern = '_'.join(pattern_json['file']) + '.nc'
 
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
             template = enviroment.from_string(template_string)
             md = template.render(simulation_round=simulation_round, sector=sector,
                                  commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
+                                 pattern=pattern,
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
-            html = markdown(md)
+            html = markdown(md, extensions=['fenced_code'])
 
             # step 4: render content into layout template
             with open(layout_path) as f:
