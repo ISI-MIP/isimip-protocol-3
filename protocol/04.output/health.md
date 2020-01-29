@@ -1,12 +1,3 @@
-{% include 'includes/00.introduction.md' %}
-
-{% include 'includes/01.scenario.md' %}
-
-{% include 'includes/02.forcing.md' %}
-
-Output data
------------
-
 ### Output variables
 
 {{ table('variable', {
@@ -34,5 +25,3 @@ Additional instructions:
     <https://www.isimip.org/protocol/preparing-simulation-files/>. The `<region>` specifier in the
     file name should be set to `local`. For gridded data, the `<region>` specifier in the file name 
     should be `global` or indicate a region or country.
-
-{% include 'includes/04.file_conventions.md' %}

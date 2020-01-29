@@ -21,7 +21,9 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            input_path = os.path.join('protocol', '{}.md'.format(sector['specifier']))
+            # input_path = os.path.join('protocol', '{}.md'.format(sector['specifier']))
+
+            input_path = os.path.join('protocol', '00.base.md')
             output_path = os.path.join('output/protocol', simulation_round['specifier'], '{}.html'.format(sector['specifier']))
             layout_path = os.path.join('templates', 'layout.html')
 
@@ -35,6 +37,7 @@ def main():
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
             template = enviroment.from_string(template_string)
             md = template.render(simulation_round=simulation_round, sector=sector,
+                                 commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
@@ -44,8 +47,7 @@ def main():
             with open(layout_path) as f:
                 template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
             with open(output_path, 'w') as f:
-                f.write(template.render(simulation_round=simulation_round, sector=sector, content=html,
-                                        commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
+                f.write(template.render(simulation_round=simulation_round, sector=sector, content=html))
 
 
 class Table(object):

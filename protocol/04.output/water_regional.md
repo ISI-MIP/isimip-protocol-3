@@ -1,12 +1,3 @@
-{% include 'includes/00.introduction.md' %}
-
-{% include 'includes/01.scenario.md' %}
-
-{% include 'includes/02.forcing.md' %}
-
-Output data
------------
-
 ### Output variables
 
 {{ table('variable', {
@@ -61,19 +52,12 @@ Output data
         'ptotww',
         'ptotuse'
     ],
-    'Agricultural variables': [
-        'yield',
-        'plantday',
-        'plantyear',
-        'anthday',
-        'anthyear',
-        'matyyear',
-        'initr',
-        'biom',
-        'sco2',
-        'sn2o'
-    ]
+    'Other variables': None
 }) }}
+
+### Catchment gauging stations
+
+{{ table('basin') }}
 
 #### Crop priority and naming
 
@@ -93,5 +77,3 @@ Yields simulations provided in the water sector should account for irrigation wa
 {{ table('irrigation') }}
 
 Those models that cannot simulate time varying management/human impacts/fertilizer input should keep these fixed at year 2000 levels throughout the simulations.
-
-{% include 'includes/04.file_conventions.md' %}

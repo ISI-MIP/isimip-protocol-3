@@ -12,7 +12,7 @@
                     box-shadow: 0 0 10px #666;
                     width: 60rem;
                     margin: 0 auto;
-                    padding: 2rem 2rem 6rem 2rem;
+                    padding: 2rem 2rem 2rem 2rem;
                 }
             }
             @media print {
@@ -28,12 +28,18 @@
                 }
             }
             body {
-                font-family: DroidSans, Helvetica, Arial, sans;
+                font-family: Helvetica, Arial, sans;
                 font-size: 12pt;
-                line-height: 1.4rem;
+                line-height: 1.25rem;
+            }
+            h1 {
+                font-size: 3rem;
+                line-height: 3rem;
+                margin: 3rem 0;
             }
             h2 {
-                margin: 2rem 0;
+                margin-top: 4rem;
+                margin-bottom: 2rem;
             }
             h3 {
                 margin: 1rem 0;
@@ -50,7 +56,7 @@
                 width: 100%;
             }
             table, th, td {
-                border: 1px solid silver;
+                border: 1px solid #4A4A4A;
             }
             th, td {
                 padding: 0.8rem;
@@ -62,7 +68,7 @@
                 font-size: small;
             }
             thead {
-                background-color: black;
+                background-color: #4A4A4A;
                 color: white;
             }
             table .red {
@@ -92,36 +98,12 @@
             header a, header a:hover, header a:visited, header a:focus {
                 color: silver;
             }
+            footer {
+                padding-top: 2rem;
+            }
         </style>
     </head>
     <body>
-        <header>
-            <p class="logo">
-                <a href="https://www.isimip.org">
-                    <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
-                </a>
-            </p>
-            <p class="commit">
-                <a href="{{ commit_url }}">
-                    {{ commit_hash }}
-                </a>
-            </p>
-        </header>
-
-        <p>
-            The Inter-Sectoral Impact Model Intercomparison Project
-        </p>
-
-        <h1>
-            {{ simulation_round.title }} simulation protocol &ndash; {{ sector.title }}
-        </h1>
-
-        <p>
-            <strong>
-                Last updated: {{ commit_date }}
-            </strong>
-        </p>
-
         {{ content|safe }}
     </body>
 </html>
