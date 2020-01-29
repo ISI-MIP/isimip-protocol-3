@@ -1,4 +1,4 @@
-all: protocol schema
+all: pattern protocol schema
 
 pattern:
 	python3 build/pattern.py
