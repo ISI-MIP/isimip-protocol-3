@@ -1,6 +1,8 @@
 ISIMIP3b protocol
 =================
 
+[![Build Status](https://travis-ci.org/ISI-MIP/isimip-protocol-3.svg?branch=master)](https://travis-ci.org/ISI-MIP/isimip-protocol-3)
+
 This project builds sector-specific ISIMIP protocols from a common data source.
 Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
 
