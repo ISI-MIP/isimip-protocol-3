@@ -3,28 +3,40 @@
       Table {{ counter() }}: Climate and climate-related forcing data.
     </caption>
     <thead>
-        <th style="width: 10%;">Specifier</th>
-        <th style="width: 10%;">Title</th>
+        <th style="width: 15%;">Specifier</th>
+        <th style="width: 15%;">Title</th>
+        {% if simulation_round.specifier.endswith('a') %}
         <th style="width: 5%;">Reanalysis</th>
         <th style="width: 5%;">Years</th>
-        <th style="width: 5%;">Resolution</th>
-        <th style="width: 5%;">Coverage</th>
-        <th style="width: 5%;">Bias target</th>
+        <th style="width: 15%;">Resolution</th>
+        <th style="width: 10%;">Bias target</th>
         <th style="width: 5%;">Priority</th>
         <th style="width: 30%;">Comments</th>
+        {% else %}
+        <th style="width: 10%;">Years</th>
+        <th style="width: 15%;">Resolution</th>
+        <th style="width: 5%;">Bias target</th>
+        <th style="width: 40%;">Comments</th>
+        {% endif %}
     </thead>
     <tbody>
         {% for row in table %}
         <tr>
             <td><strong>{{ row.specifier }}</strong></td>
             <td>{{ row.title }}</td>
+            {% if simulation_round.specifier.endswith('a') %}
             <td>{{ row.reanalysis }}</td>
             <td>{{ row.years }}</td>
             <td>{{ row.resolution }}</td>
-            <td>{{ row.coverage }}</td>
             <td>{{ row.bias_target }}</td>
             <td>{{ row.priority }}</td>
             <td>{{ row.comments }}</td>
+            {% else %}
+            <td>{{ row.years }}</td>
+            <td>{{ row.resolution }}</td>
+            <td>{{ row.bias_target }}</td>
+            <td>{{ row.comments }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

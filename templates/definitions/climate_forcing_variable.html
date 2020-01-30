@@ -19,12 +19,12 @@
         {% for row in rows %}
         <tr>
             <td>
-                <strong>{{ row.usage if row.usage else row.specifier }}</strong>
+                <strong>{{ row.specifier }}</strong>
             </td>
             <td>{{ row.title }}</td>
             <td>{{ row.unit }}</td>
             <td>{{ row.resolution }}</td>
-            <td>{{ row.frequency }}</td>
+            <td>{{ row.frequency|join(', ') }}</td>
         </tr>
         {% endfor %}
         {% endfor %}
