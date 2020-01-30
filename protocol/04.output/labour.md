@@ -1,0 +1,3 @@
+### Output variables
+
+{{ table('variable', {}) }}

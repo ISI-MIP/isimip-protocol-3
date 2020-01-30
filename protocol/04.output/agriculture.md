@@ -1,12 +1,3 @@
-{% include 'includes/00.introduction.md' %}
-
-{% include 'includes/01.scenario.md' %}
-
-{% include 'includes/02.forcing.md' %}
-
-Output data
------------
-
 ### Output variables
 
 {{ table('variable', {
@@ -53,5 +44,3 @@ Output data
 To resolve potential double harvests within one year, crop yields should be reported per growing season and not per calendar year. Thus, in the NetCDF output files, do not use a time dimension but instead a unitless coordinate variable with integer values; more information on how to construct these files is given below and on the ISIMIP website (<https://www.isimip.org/protocol/preparing-simulation-files/>).
 
 Cumulative growing season variables such as, e.g., actual evapotranspiration or precipitation are to be accumulated over the growing season. The first season in the file (level=0) is then the first complete growing season of the time period provided by the input data without any assumed spin-up data, which equates to the growing season with the first planting after this date. To ensure that data can be matched to individual years in post-processing, it is essential to also provide the actual planting dates (as day of the year), actual planting years (year), anthesis dates (as day of the year), year of anthesis (year), maturity dates (day of the year), and year of maturity (year). This procedure is identical to the GGCMI convention (Elliott, et al., 2015).
-
-{% include 'includes/04.file_conventions.md' %}
