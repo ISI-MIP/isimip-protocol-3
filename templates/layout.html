@@ -1,6 +1,8 @@
 <html>
     <head>
+        {% block title %}
         <title>{{ simulation_round.title }} &ndash; {{ sector.title }}</title>
+        {% endblock %}
 
         <style>
             @media screen {
@@ -125,6 +127,27 @@
         </style>
     </head>
     <body>
-        {{ content|safe }}
+        <header>
+            <p class="logo">
+                <a href="https://www.isimip.org">
+                    <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
+                </a>
+            </p>
+            <p class="commit">
+                <a href="{{ commit_url }}">
+                    {{ commit_hash }}
+                </a>
+            </p>
+        </header>
+
+        <main>
+            {% block content %}
+            {{ content|safe }}
+            {% endblock %}
+        </main>
+
+        <footer>
+
+        </footer>
     </body>
 </html>

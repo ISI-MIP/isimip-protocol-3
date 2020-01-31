@@ -42,9 +42,8 @@ def main():
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
             template = enviroment.from_string(template_string)
-            md = template.render(simulation_round=simulation_round, sector=sector,
+            md = template.render(simulation_round=simulation_round, sector=sector, pattern=pattern,
                                  commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
-                                 pattern=pattern,
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
@@ -54,7 +53,8 @@ def main():
             with open(layout_path) as f:
                 template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
             with open(output_path, 'w') as f:
-                f.write(template.render(simulation_round=simulation_round, sector=sector, content=html))
+                f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
+                                        commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
 
 
 class Table(object):

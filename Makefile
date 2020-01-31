@@ -1,13 +1,7 @@
-all: pattern protocol schema
+all: index.py pattern.py protocol.py schema.py
 
-pattern:
-	python3 build/pattern.py
-
-protocol:
-	python3 build/protocol.py
-
-schema:
-	python3 build/schema.py
+%.py:
+	python3 build/$@
 
 gh-pages: all
 	ghp-import --no-jekyll --push --force output

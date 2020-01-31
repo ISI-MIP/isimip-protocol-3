@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>ISIMIP3 simulation protocol</title>
+{% endblock %}
+
+{% block content %}
+    <p>
+        The Inter-Sectoral Impact Model Intercomparison Project
+    </p>
+    <h1>
+        ISIMIP3 simulation protocol
+    </h1>
+
+    <p>
+        <strong>Last updated: {{ commit_date }}</strong>
+    </p>
+
+    <h2>Protocol</h2>
+
+    {% for simulation_round in pages %}
+    <h3>{{ simulation_round.title }}</h3>
+
+    <ul>
+    {% for sector in simulation_round.sectors %}
+    <li>
+        <a href="protocol/{{ simulation_round.specifier }}/{{ sector.specifier }}.html">
+            {{ sector.title }} sector
+        </a>
+    </li>
+    {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h2>JSON schema</h2>
+
+    {% for simulation_round in pages %}
+    <h3>{{ simulation_round.title }}</h3>
+
+    {% for product in simulation_round.products %}
+    <h4>{{ product.title }}</h4>
+
+    <ul>
+    {% for sector in product.sectors %}
+    <li>
+        <a href="schema/{{ simulation_round.specifier }}/{{ product.specifier }}/{{ sector.specifier }}.json">
+            {{ sector.title }} sector
+        </a>
+    </li>
+    {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endfor %}
+
+    <h2>File system patterns</h2>
+
+    {% for simulation_round in pages %}
+    <h3>{{ simulation_round.title }}</h3>
+
+    {% for product in simulation_round.products %}
+    <h4>{{ product.title }}</h4>
+
+    <ul>
+    {% for sector in product.sectors %}
+    <li>
+        <a href="pattern/{{ simulation_round.specifier }}/{{ product.specifier }}/{{ sector.specifier }}.json">
+            {{ sector.title }} sector
+        </a>
+    </li>
+    {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endfor %}
+
+{% endblock %}
