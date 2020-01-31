@@ -10,13 +10,7 @@
         <th style="width: 12%;">Temporal Resolution</th>
     </thead>
     <tbody>
-        {% for group, rows in table.items() %}
-        <tr>
-            <td colspan="6" class="gray">
-                <strong>{{ group }}</strong>
-            </td>
-        </tr>
-        {% for row in rows %}
+        {% for row in table %}
         <tr>
             <td>
                 <strong>{{ row.specifier }}</strong>
@@ -26,7 +20,6 @@
             <td>{{ row.resolution }}</td>
             <td>{{ row.frequency|join(', ') }}</td>
         </tr>
-        {% endfor %}
         {% endfor %}
     </tbody>
 </table>
