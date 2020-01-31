@@ -6,8 +6,7 @@ ISIMIP3b protocol
 This project builds sector-specific ISIMIP protocols from a common data source.
 Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
 
-The rendered protocols are found at isimip.github.io. For example,
-the [agriculture protocol](https://isi-mip.github.io/isimip-protocol-3/protocol/ISIMIP3b/agriculture.html).
+The rendered protocols are found at https://isi-mip.github.io/isimip-protocol-3.
 
 You can clone this repository and work and render the files locally as documented below.
 You can also edit the markdown files at github directly. With a delay of minutes,
