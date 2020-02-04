@@ -14,7 +14,7 @@
                     box-shadow: 0 0 10px #666;
                     width: 60rem;
                     margin: 0 auto;
-                    padding: 2rem 2rem 2rem 2rem;
+                    padding: 2rem;
                 }
             }
             @media print {
@@ -35,12 +35,12 @@
                 line-height: 1.25rem;
             }
             h1 {
-                font-size: 3rem;
-                line-height: 3rem;
-                margin: 3rem 0;
+                font-size: 2rem;
+                line-height: 2rem;
+                margin: 2rem 0;
             }
             h2 {
-                margin-top: 4rem;
+                margin-top: 2rem;
                 margin-bottom: 2rem;
             }
             h3 {
@@ -99,19 +99,25 @@
             header {
                 font-size: small;
                 height: 4rem;
+                padding-bottom: 20px;
+                border-bottom: 1px solid silver;
             }
-            p.logo img {
-                height: 2rem;
-                float: left;
+            header img.logo {
+                display: block;
+                height: 4rem;
+                margin-bottom: 1rem;
             }
-            p.commit {
-                float: right;
-            }
-            header a, header a:hover, header a:visited, header a:focus {
+            header, header a, header a:hover, header a:visited, header a:focus {
                 color: silver;
             }
+            header .right {
+                float: right;
+                text-align: right;
+            }
             footer {
-                padding-top: 2rem;
+                text-align: center;
+                padding-top: 1rem;
+                border-top: 1px solid silver;
             }
             pre {
                 background-color: #e5e5e5;
@@ -128,16 +134,19 @@
     </head>
     <body>
         <header>
-            <p class="logo">
+            <div class="right">
+                <p>
+                    Last updated: {{ commit_date }}
+                </p>
+                <p>
+                    Commit hash: <a href="{{ commit_url }}">{{ commit_hash }}</a>
+                </p>
+            </div>
+            <div>
                 <a href="https://www.isimip.org">
-                    <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
+                    <img class="logo" src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
                 </a>
-            </p>
-            <p class="commit">
-                <a href="{{ commit_url }}">
-                    {{ commit_hash }}
-                </a>
-            </p>
+            </div>
         </header>
 
         <main>
@@ -147,7 +156,7 @@
         </main>
 
         <footer>
-
+            For questions or clarifications, please contact <a href="mailto:info@isimip.org">info@isimip.org</a>.
         </footer>
     </body>
 </html>
