@@ -1,17 +1,24 @@
 import json
 import os
 import subprocess
-from collections import OrderedDict
 
 
 def main():
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
 
-    terms = {}
+    # create glossary
+    glossary = {
+        'commit': commit,
+        'terms': {}
+    }
+
     directory = 'definitions'
     for file_name in os.listdir(directory):
         file_path = os.path.join(directory, file_name)
         identifier = os.path.splitext(file_name)[0]
+
+        if identifier not in glossary['terms']:
+            glossary['terms'][identifier] = {}
 
         with open(file_path) as f:
             rows = json.loads(f.read())
@@ -19,19 +26,7 @@ def main():
             for row in rows:
                 specifier = row.pop('specifier')
                 if row:
-                    row['identifier'] = identifier
-
-                    if specifier not in terms:
-                        terms[specifier] = []
-
-                    terms[specifier].append(row)
-
-    sorted_terms = OrderedDict(sorted([(key, terms[key]) for key in sorted(terms.keys())]))
-
-    # create glossary
-    glossary = OrderedDict()
-    glossary['commit'] = commit
-    glossary['terms'] = sorted_terms
+                    glossary['terms'][identifier][specifier] = row
 
     glossary_path = os.path.join('output', 'glossary.json')
     os.makedirs(os.path.dirname(glossary_path), exist_ok=True)
