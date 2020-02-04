@@ -11,6 +11,7 @@ def main():
     directory = 'definitions'
     for file_name in os.listdir(directory):
         file_path = os.path.join(directory, file_name)
+        identifier = os.path.splitext(file_name)[0]
 
         with open(file_path) as f:
             rows = json.loads(f.read())
@@ -18,6 +19,8 @@ def main():
             for row in rows:
                 specifier = row.pop('specifier')
                 if row:
+                    row['identifier'] = identifier
+
                     if specifier not in terms:
                         terms[specifier] = []
 
