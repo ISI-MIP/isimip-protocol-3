@@ -1,11 +1,14 @@
 import json
 import os
+import subprocess
 
 
 def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
     products = json.loads(open('definitions/product.json').read())
     sectors = json.loads(open('definitions/sector.json').read())
+
+    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
 
     for simulation_round in simulation_rounds:
         for product in products:
@@ -16,16 +19,17 @@ def main():
 
                 # create a pattern json from scratch
                 pattern_json = {
-                  'path': [
-                    '(?P<simulation_round>[A-Za-z0-9]+)',
-                    '(?P<product>[A-Za-z]+)',
-                    '(?P<sector>[a-z0-9-_]+)',
-                    '(?P<model>[A-Za-z0-9-+.]+)',
-                    '(?P<climate_forcing>[a-z0-9-]+)',
-                    '(?P<period>[a-z0-9-_]+)'
-                  ],
-                  'dataset': [],
-                  'file': [],
+                    'commit': commit,
+                    'path': [
+                        '(?P<simulation_round>[A-Za-z0-9]+)',
+                        '(?P<product>[A-Za-z]+)',
+                        '(?P<sector>[a-z0-9-_]+)',
+                        '(?P<model>[A-Za-z0-9-+.]+)',
+                        '(?P<climate_forcing>[a-z0-9-]+)',
+                        '(?P<period>[a-z0-9-_]+)'
+                    ],
+                    'dataset': [],
+                    'file': [],
                 }
 
                 # step 2: open and read pattern
