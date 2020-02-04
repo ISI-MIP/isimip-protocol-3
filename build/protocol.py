@@ -21,8 +21,6 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            # input_path = os.path.join('protocol', '{}.md'.format(sector['specifier']))
-
             input_path = os.path.join('protocol', '00.base.md')
             output_path = os.path.join('output/protocol', simulation_round['specifier'], '{}.html'.format(sector['specifier']))
             pattern_path = os.path.join('patterns', '{}.json'.format(sector['specifier']))
