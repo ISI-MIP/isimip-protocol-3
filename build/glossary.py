@@ -25,8 +25,7 @@ def main():
 
             for row in rows:
                 specifier = row.pop('specifier')
-                if row:
-                    glossary['terms'][identifier][specifier] = row
+                glossary['terms'][identifier][specifier] = row
 
     glossary_path = os.path.join('output', 'glossary.json')
     os.makedirs(os.path.dirname(glossary_path), exist_ok=True)
