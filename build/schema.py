@@ -3,18 +3,22 @@ import os
 import subprocess
 
 IDENTIFIERS = [
+    'acidification_type',
     'basin',
     'bias_correction',
     'climate_forcing',
     'climate_scenario',
     'co2sens_scenario',
     'crop',
+    'diazotroph_scenario',
+    'fishing_type',
     'harmonization',
     'irrigation',
     'lake',
     'ocean',
     'product',
     'sector',
+    'sens_scenario',
     'simulation_round',
     'soc_scenario',
     'species',
