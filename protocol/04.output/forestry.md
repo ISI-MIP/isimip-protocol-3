@@ -57,4 +57,4 @@
 
 #### Stands
 
-{{ table('stand') }}
+{{ table('forest_stand') }}

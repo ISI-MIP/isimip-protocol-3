@@ -13,7 +13,8 @@ def main():
     for simulation_round in simulation_rounds:
         for product in products:
             for sector in sectors:
-                pattern_path = os.path.join('patterns', '{}.json'.format(sector['specifier']))
+                pattern_path = os.path.join('pattern', simulation_round['specifier'],
+                                            product['specifier'], '{}.json'.format(sector['specifier']))
                 output_path = os.path.join('output', 'pattern', simulation_round['specifier'],
                                            product['specifier'], '{}.json'.format(sector['specifier']))
 

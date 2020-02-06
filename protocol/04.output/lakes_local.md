@@ -42,4 +42,4 @@
 
 ### Lake sites
 
-{{ table('lake') }}
+{{ table('lake_site') }}

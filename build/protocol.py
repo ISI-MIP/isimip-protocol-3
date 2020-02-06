@@ -7,7 +7,7 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
 
-URL = 'https://github.com/ISI-MIP/isimip-protocol-3b'
+URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
 
 def main():
@@ -21,15 +21,17 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            input_path = os.path.join('protocol', '00.base.md')
-            output_path = os.path.join('output/protocol', simulation_round['specifier'], '{}.html'.format(sector['specifier']))
-            pattern_path = os.path.join('patterns', '{}.json'.format(sector['specifier']))
+            protocol_path = os.path.join('protocol', '00.base.md')
+            pattern_path = os.path.join('pattern', simulation_round['specifier'], 'OutputData',
+                                        '{}.json'.format(sector['specifier']))
+            output_path = os.path.join('output/protocol', simulation_round['specifier'],
+                                       '{}.html'.format(sector['specifier']))
             layout_path = os.path.join('templates', 'layout.html')
 
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
             # step 1: open and read protocol
-            with open(input_path) as f:
+            with open(protocol_path) as f:
                 template_string = f.read()
 
             # step 2: open and read pattern

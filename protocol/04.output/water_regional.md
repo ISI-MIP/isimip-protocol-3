@@ -57,7 +57,7 @@
 
 ### Catchment gauging stations
 
-{{ table('basin') }}
+{{ table('river_basin') }}
 
 #### Crop priority and naming
 

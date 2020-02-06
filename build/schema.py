@@ -2,30 +2,7 @@ import json
 import os
 import subprocess
 
-IDENTIFIERS = [
-    'acidification_type',
-    'basin',
-    'bias_correction',
-    'climate_forcing',
-    'climate_scenario',
-    'co2sens_scenario',
-    'crop',
-    'diazotroph_scenario',
-    'fishing_type',
-    'harmonization',
-    'irrigation',
-    'lake',
-    'ocean',
-    'product',
-    'sector',
-    'sens_scenario',
-    'simulation_round',
-    'soc_scenario',
-    'species',
-    'stand',
-    'timestep',
-    'variable'
-]
+URL = 'https://isi-mip.github.io/isimip-protocol-3/schema/'
 
 
 def main():
@@ -38,50 +15,41 @@ def main():
     for simulation_round in simulation_rounds:
         for product in products:
             for sector in sectors:
-                # create a json schema from scratch
-                schema = {
-                    '$schema': 'http://json-schema.org/draft-07/schema#',
-                    '$id': 'http://schema.isimip.org/schema/{}/{}/{}.json'.format(
-                        simulation_round['specifier'],
-                        product['specifier'],
-                        sector['specifier']
-                    ),
-                    'commit': commit,
-                    'type': 'object',
-                    'properties': {
-                        'identifiers': {
-                            'properties': {}
-                        }
-                    }
-                }
+                schema_path = os.path.join('schema', simulation_round['specifier'],
+                                           product['specifier'], '{}.json'.format(sector['specifier']))
+                output_path = os.path.join('output', 'schema', simulation_round['specifier'],
+                                           product['specifier'], '{}.json'.format(sector['specifier']))
+
+                # step 1: read schema template
+                with open(schema_path) as f:
+                    schema = json.loads(f.read())
+                    schema['commit'] = commit
 
                 # step 2: loop over properties/identifiers/properties and add enums from definition files
-                for identifier in IDENTIFIERS:
+                for identifier, properties in schema['properties']['identifiers']['properties'].items():
                     definition_path = os.path.join('definitions', '{}.json'.format(identifier))
 
-                    try:
+                    if os.path.exists(definition_path):
                         with open(definition_path) as f:
+                            definition = json.loads(f.read())
+
+                        if properties['type'] == 'string':
                             enum = []
-                            for row in json.loads(f.read()):
+                            for row in definition:
                                 if 'simulation_rounds' not in row or simulation_round['specifier'] in row['simulation_rounds']:
+
                                     if 'sectors' not in row or sector['specifier'] in row['sectors']:
                                         enum.append(row['specifier'])
 
-                            schema['properties']['identifiers']['properties'][identifier] = {
-                                'type': 'string',
-                                'enum': enum
-                            }
+                            properties['enum'] = enum
 
-                    except IOError:
-                        pass
+                        elif properties['type'] == 'number':
+                            for key, value in definition.items():
+                                properties[key] = value
 
                 # step 3: write json schema
-                schema_path = os.path.join('output', 'schema', simulation_round['specifier'],
-                                           product['specifier'], '{}.json'.format(sector['specifier']))
-
-                os.makedirs(os.path.dirname(schema_path), exist_ok=True)
-
-                with open(schema_path, 'w') as f:
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                with open(output_path, 'w') as f:
                     f.write(json.dumps(schema, indent=2))
 
 

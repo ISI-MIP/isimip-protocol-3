@@ -26,7 +26,7 @@
 
 #### Ocean regions
 
-{{ table('ocean') }}
+{{ table('ocean_region') }}
 
 ### Acidification type
 
