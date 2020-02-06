@@ -21,12 +21,11 @@ def main():
             glossary['terms'][identifier] = {}
 
         with open(file_path) as f:
-            definition = json.loads(f.read())
+            rows = json.loads(f.read())
 
-            if isinstance(definition, list):
-                for row in definition:
-                    specifier = row.pop('specifier')
-                    glossary['terms'][identifier][specifier] = row
+        for row in rows:
+            specifier = row.pop('specifier')
+            glossary['terms'][identifier][specifier] = row
 
     glossary_path = os.path.join('output', 'glossary.json')
     os.makedirs(os.path.dirname(glossary_path), exist_ok=True)

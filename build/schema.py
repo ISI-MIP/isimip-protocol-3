@@ -4,6 +4,9 @@ import subprocess
 
 URL = 'https://isi-mip.github.io/isimip-protocol-3/schema/'
 
+MIN_YEAR = 1600
+MAX_YEAR = 2100
+
 
 def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
@@ -29,13 +32,13 @@ def main():
                 for identifier, properties in schema['properties']['identifiers']['properties'].items():
                     definition_path = os.path.join('definitions', '{}.json'.format(identifier))
 
-                    if os.path.exists(definition_path):
-                        with open(definition_path) as f:
-                            definition = json.loads(f.read())
+                    if properties['type'] == 'string':
+                        if os.path.exists(definition_path):
+                            with open(definition_path) as f:
+                                rows = json.loads(f.read())
 
-                        if properties['type'] == 'string':
                             enum = []
-                            for row in definition:
+                            for row in rows:
                                 if 'simulation_rounds' not in row or simulation_round['specifier'] in row['simulation_rounds']:
 
                                     if 'sectors' not in row or sector['specifier'] in row['sectors']:
@@ -43,9 +46,9 @@ def main():
 
                             properties['enum'] = enum
 
-                        elif properties['type'] == 'number':
-                            for key, value in definition.items():
-                                properties[key] = value
+                    elif properties['type'] == 'number':
+                        properties['minimum'] = MIN_YEAR
+                        properties['maximum'] = MAX_YEAR
 
                 # step 3: write json schema
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
