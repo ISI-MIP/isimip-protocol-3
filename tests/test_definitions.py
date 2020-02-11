@@ -3,6 +3,10 @@ import os
 
 import jsonschema
 
+DOUBLES_WHITELIST = [
+    'landuse_variable.json'
+]
+
 
 def test_definitions():
     with open(os.path.join(os.path.dirname(__file__), 'meta.json')) as f:
@@ -19,12 +23,13 @@ def test_definitions():
             jsonschema.validate(schema=schema, instance=instance)
 
             # check for double specifiers
-            seen = set()
-            doubles = []
-            for row in instance:
-                if row['specifier'] in seen:
-                    doubles.append(row['specifier'])
-                else:
-                    seen.add(row['specifier'])
+            if file_name not in DOUBLES_WHITELIST:
+                seen = set()
+                doubles = []
+                for row in instance:
+                    if row['specifier'] in seen:
+                        doubles.append(row['specifier'])
+                    else:
+                        seen.add(row['specifier'])
 
-            assert not doubles, '{} {}'.format(file_name, doubles)
+                assert not doubles, '{} {}'.format(file_name, doubles)
