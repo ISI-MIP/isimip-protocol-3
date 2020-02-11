@@ -1,0 +1,34 @@
+<table>
+    <caption>
+        Table {{ counter() }}: Output variables for the {{ sector.title|lower }} sector.
+    </caption>
+    <thead>
+        <th style="width: 20%;">Long name</th>
+        <th style="width: 20%;">Specifier</th>
+        <th style="width: 10%;">Unit (NetCDF format)</th>
+        <th style="width: 10%;">Spatial Resolution</th>
+        <th style="width: 10%;">Temporal Resolution</th>
+        <th style="width: 30%;">Comments</th>
+    </thead>
+    <tbody>
+        {% for group, rows in table.items() %}
+        <tr>
+            <td colspan="7" class="gray">
+                <strong>{{ group }}</strong>
+            </td>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.title }}</td>
+            <td>
+                <strong>{{ row.specifier }}</strong>
+            </td>
+            <td>{{ row.unit }}</td>
+            <td>{{ row.resolution }}</td>
+            <td>{{ row.frequency }}</td>
+            <td>{{ row.comment }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
