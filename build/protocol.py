@@ -6,6 +6,7 @@ from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
+from markdown.extensions.toc import TocExtension
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -47,7 +48,7 @@ def main():
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
-            html = markdown(md, extensions=['fenced_code'])
+            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-4')])
 
             # step 4: render content into layout template
             with open(layout_path) as f:
