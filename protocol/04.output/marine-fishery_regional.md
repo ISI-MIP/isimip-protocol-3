@@ -24,7 +24,7 @@
     ]
 }) }}
 
-#### Ocean regions
+### Ocean regions
 
 {{ table('ocean_region') }}
 

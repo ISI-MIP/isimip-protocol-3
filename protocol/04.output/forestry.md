@@ -51,10 +51,10 @@
     ]
 }) }}
 
-#### Species
+### Species
 
 {{ table('species') }}
 
-#### Stands
+### Forest stands
 
 {{ table('forest_stand') }}

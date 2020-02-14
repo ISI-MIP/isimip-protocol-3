@@ -22,7 +22,7 @@
     ]
 }) }}
 
-#### Crop priority and naming
+### Crop priority and naming
 
 {{ table('crop', {
     'Major crops': [
@@ -31,11 +31,11 @@
     'Other crops': None
 }) }}
 
-#### Irrigation
+### Irrigation
 
 {{ table('irrigation') }}
 
-#### Harmonization
+### Harmonization
 
 {{ table('harmonization') }}
 

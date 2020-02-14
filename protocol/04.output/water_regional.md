@@ -52,14 +52,25 @@
         'ptotww',
         'ptotuse'
     ],
-    'Other variables': None
+    'Agricultural variables': [
+        'yield',
+        'plantday',
+        'plantyear',
+        'anthday',
+        'anthyear',
+        'matyyear',
+        'initr',
+        'biom',
+        'sco2',
+        'sn2o'
+    ]
 }) }}
 
 ### Catchment gauging stations
 
 {{ table('river_basin') }}
 
-#### Crop priority and naming
+### Crop priority and naming
 
 The reporting of the crop yield-related outputs differs from the reporting of other variables in the water sector, as it is not done according to calendar years but according to growing seasons to resolve potential multiple harvests. See the [agriculture](agriculture.html) sector for details.
 
