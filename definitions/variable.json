@@ -48,22 +48,14 @@
     "specifier": "qr",
     "title": "Groundwater recharge",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "at gaulge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
     "sectors": [
       "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "qr",
-    "title": "Groundwater recharge",
-    "unit": "kg m-2 s-1",
-    "resolution": "at gaulge location (average over basin)",
-    "frequency": "monthly",
-    "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
-    "sectors": [
       "water_regional"
     ]
   },
@@ -154,7 +146,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-       "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
     "frequency": "monthly",
     "comment": "As Evap, but with all resistances set to zero, except the aerodynamic resistance.",
@@ -167,7 +159,13 @@
     "specifier": "soilmoist",
     "title": "Soil moisture for each layer",
     "unit": "kg m-2",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "biomes": "0.5° grid",
+      "forestry": "0.5° grid",
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)",
+      "permafrost": "0.5° grid"
+    },
     "frequency": {
       "biomes": "daily",
       "forestry": "daily",
@@ -180,7 +178,7 @@
       "biomes",
       "forestry",
       "water_global",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional",
       "permafrost"
     ]
   },
