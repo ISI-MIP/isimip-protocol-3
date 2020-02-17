@@ -1,25 +1,45 @@
 <table id="tbl:climate_variables" class="tablenos">
     <caption>
-      Table {{ counter() }}: Climate forcing variables.
+      Table {{ counter() }}: Climate forcing for {{ simulation_round.specifier }} simulations.
     </caption>
     <thead>
-        <th style="width: 12%;">Specifier</th>
-        <th style="width: 12%;">Long name</th>
-        <th style="width: 12%;">Unit (NetCDF format)</th>
-        <th style="width: 12%;">Spatial Resolution</th>
-        <th style="width: 12%;">Temporal Resolution</th>
+        <th style="width: 20%;">Long name</th>
+        <th style="width: 20%;">Specifier</th>
+        <th style="width: 10%;">Unit</th>
+        <th style="width: 10%;">Spatial Resolution</th>
+        <th style="width: 10%;">Temporal Resolution</th>
+
+        {% if simulation_round.specifier.endswith('a') %}
+        <th style="width: 15%;">Datasets</th>
+        {% else %}
+        <th style="width: 15%;">Models</th>
+        {% endif %}
     </thead>
     <tbody>
-        {% for row in table %}
+        {% for group, rows in table.items() %}
         <tr>
+            <td colspan="7" class="gray">
+                <strong>{{ group }}</strong>
+            </td>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.title }}</td>
             <td>
                 <strong>{{ row.specifier }}</strong>
             </td>
-            <td>{{ row.title }}</td>
             <td>{{ row.unit }}</td>
             <td>{{ row.resolution }}</td>
-            <td>{{ row.frequency|join(', ') }}</td>
+            <td>{{ row.frequency }}</td>
+            <td>
+                <ul>
+                {% for model in row.climate_forcing %}
+                    <li>{{ model }}</li>
+                {% endfor %}
+                </ul>
+            </td>
         </tr>
+        {% endfor %}
         {% endfor %}
     </tbody>
 </table>

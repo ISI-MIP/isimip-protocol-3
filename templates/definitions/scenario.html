@@ -9,14 +9,28 @@
             <th style="width: 10%;">Input</th>
 
             {% if simulation_round.specifier == 'ISIMIP3a' %}
-            <th style="width: 15%;">Spin up</th>
-            <th style="width: 15%;">Historical</th>
+            <th style="width: 15%;">
+                <p>Spin up (XXXX-1900)</p>
+                <p>(only if spin-up is needed)</p>
+            </th>
+            <th style="width: 15%;">
+                <p>Historical (1901-2018)</p>
+            </th>
             {% endif %}
 
             {% if simulation_round.specifier == 'ISIMIP3b' %}
-            <th style="width: 10%;">Pre-industrial</th>
-            <th style="width: 10%;">Historical</th>
-            <th style="width: 10%;">Future</th>
+            <th style="width: 10%;">
+                <p>Pre-industrial</p>
+                <p>1601-1849</p>
+            </th>
+            <th style="width: 10%;">
+                <p>Historical</p>
+                <p>1850-2014</p>
+            </th>
+            <th style="width: 10%;">
+                <p>Future</p>
+                <p>2015-2100</p>
+            </th>
             {% endif %}
         </tr>
     </thead>
@@ -38,7 +52,12 @@
 
                 {% if row.spin_up.climate %}
                 <td class="green">
-                    <strong>{{ row.spin_up.climate }}</strong>
+                    <p>
+                        <strong>{{ row.spin_up.climate }}</strong>
+                    </p>
+                    <p>
+                        <strong>{{ row.spin_up.climate_comment }}</strong>
+                    </p>
                 </td>
                 {% else %}
                 <td rowspan="2">

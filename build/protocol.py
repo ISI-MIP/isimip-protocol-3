@@ -92,24 +92,17 @@ class Table(object):
                         # loop over rows, add row to group and remove it from rows
                         for row in rows:
                             if specifier == row['specifier']:
-                                table_row = {}
-                                for key, value in row.items():
-                                    if isinstance(value, dict):
-                                        table_row[key] = value.get(self.sector['specifier'], '')
-                                    else:
-                                        table_row[key] = value
-
-                                table[group].append(table_row)
+                                table[group].append(self.get_row(row))
                                 rows.remove(row)
                                 break
                 else:
                     # if specifiers is None or [], add everything
-                    table[group] = rows
+                    table[group] = [self.get_row(row) for row in rows]
                     rows = []
 
             # append everything which was not appended yet in a special group 'Other'
             if rows:
-                table['Other'] = rows
+                table['Other'] = [self.get_row(row) for row in rows]
 
         elif isinstance(order, list):
             # if order is a list, it determines the order of rows
@@ -118,12 +111,12 @@ class Table(object):
                 # loop over rows, add row to table and remove it from rows
                 for row in rows:
                     if specifier == row['specifier']:
-                        table.append(row)
+                        table.append(self.get_row(row))
                         rows.remove(row)
                         break
 
                 # append everything which was not appended yet at the end
-                table += rows
+                table += [self.get_row(row) for row in rows]
 
         else:
             # if order is not given, just use the rows in the order of the file
@@ -133,6 +126,17 @@ class Table(object):
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
         return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector, counter=self.counter)
+
+    def get_row(self, row):
+        values = {}
+        for key, value in row.items():
+            if isinstance(value, dict):
+                values[key] = value.get(self.simulation_round['specifier']) or \
+                                 value.get(self.sector['specifier']) or ''
+            else:
+                values[key] = value
+
+        return values
 
 
 class Counter(object):
