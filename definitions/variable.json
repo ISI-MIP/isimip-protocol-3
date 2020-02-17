@@ -57,6 +57,17 @@
     ]
   },
   {
+    "specifier": "qr",
+    "title": "Groundwater recharge",
+    "unit": "kg m-2 s-1",
+    "resolution": "at gaulge location (average over basin)",
+    "frequency": "monthly",
+    "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
+    "sectors": [
+      "water_regional"
+    ]
+  },
+  {
     "specifier": "qg",
     "title": "Groundwater runoff",
     "unit": "kg m-2 s-1",
@@ -74,7 +85,7 @@
     "unit": "m3 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "at gauge locations"
+      "water_regional": "at gauge location"
     },
     "frequency": "daily",
     "comment": "",
@@ -121,7 +132,7 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
-      "water_regional": "average for basin until gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
     "frequency": {
       "biomes": "daily, monthly",
@@ -143,7 +154,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "average for basin until gauge location"
+       "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
     "frequency": "monthly",
     "comment": "As Evap, but with all resistances set to zero, except the aerodynamic resistance.",
@@ -169,7 +180,7 @@
       "biomes",
       "forestry",
       "water_global",
-      "water_regional",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
       "permafrost"
     ]
   },
