@@ -1,15 +1,13 @@
-<table id="tbl:climate_variables" class="tablenos">
+<table id="tbl:co2sens_scenario" class="tablenos">
     <caption>
-      Table {{ counter() }}: Climate forcing for {{ simulation_round.specifier }} simulations.
+      Table {{ counter() }}: CO₂ forcing for {{ simulation_round.title }}.
     </caption>
     <thead>
-        <th style="width: 30%;">Long name</th>
+        <th style="width: 30%;">Dataset</th>
         <th style="width: 20%;">Specifier</th>
         <th style="width: 10%;">Unit</th>
         <th style="width: 10%;">Resolution</th>
-        <th style="width: 30%;">
-            {% if simulation_round.specifier.endswith('a') %}Datasets{% else %}Models{% endif %}
-        </th>
+        <th style="width: 30%;">Datasets</th>
     </thead>
     <tbody>
         {% for group, rows in table.items() %}
@@ -29,13 +27,7 @@
                 <p>{{ row.resolution }}</p>
                 <p>{{ row.frequency }}</p>
             </td>
-            <td>
-                <ul>
-                {% for model in row.climate_forcing %}
-                    <li>{{ model }}</li>
-                {% endfor %}
-                </ul>
-            </td>
+            <td>{{ row.comment }}</td>
         </tr>
         {% endfor %}
         {% endfor %}
