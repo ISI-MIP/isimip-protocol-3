@@ -58,11 +58,16 @@
         'plantyear',
         'anthday',
         'anthyear',
+        'matyday',
         'matyyear',
         'initr',
         'biom',
         'sco2',
         'sn2o'
+    ],
+    'Static output': [
+        'soil',
+        'lai'
     ]
 }) }}
 

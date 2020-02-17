@@ -58,6 +58,7 @@
         'plantyear',
         'anthday',
         'anthyear',
+        'matyday',
         'matyyear',
         'initr',
         'biom',
