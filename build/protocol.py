@@ -41,7 +41,7 @@ def main():
                 pattern = '_'.join(pattern_json) + '.nc'
 
             # step 2: render the template using jinja2
-            enviroment = Environment(loader=FileSystemLoader(['protocol', 'templates']))
+            enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
             template = enviroment.from_string(template_string)
             md = template.render(simulation_round=simulation_round, sector=sector, pattern=pattern,
                                  commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
