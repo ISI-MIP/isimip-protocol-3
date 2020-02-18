@@ -15,7 +15,7 @@ def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
     sectors = json.loads(open('definitions/sector.json').read())
     sectors.append({
-        'title': 'all sectors combined',
+        'title': 'All sectors combined',
         'specifier': 'index'
     })
 
