@@ -38,8 +38,9 @@
         {% for row in table %}
         <tr>
             <td rowspan="2">
-                <strong>{{ row.title }}</strong>
-                {% if row.subtitle %}<br />{{ row.subtitle }}{% endif%}
+                <h4>{{ row.title }}</h4>
+                {% if row.subtitle %}<p>{{ row.subtitle }}</p>{% endif%}
+                {% if row.priority %}<p><strong>{{ row.priority }}</strong></p>{% endif%}
             </td>
             <td>
                 <strong>CF:</strong> {{ row.description.climate }}
