@@ -27,15 +27,3 @@
 ### Ocean regions
 
 {{ table('ocean_region') }}
-
-### Acidification type
-
-{{ table('acidification_type') }}
-
-### Diazotroph scenario
-
-{{ table('diazotroph_scenario') }}
-
-### Fishing type
-
-{{ table('fishing_type') }}

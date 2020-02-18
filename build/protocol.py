@@ -14,6 +14,10 @@ URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
     sectors = json.loads(open('definitions/sector.json').read())
+    sectors.append({
+        'title': 'all sectors combined',
+        'specifier': 'index'
+    })
 
     commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
     commit_url = URL + '/commit/' + commit_hash
@@ -23,8 +27,6 @@ def main():
     for simulation_round in simulation_rounds:
         for sector in sectors:
             protocol_path = os.path.join('protocol', '00.base.md')
-            pattern_path = os.path.join('pattern', simulation_round['specifier'], 'OutputData',
-                                        '{}.json'.format(sector['specifier']))
             output_path = os.path.join('output/protocol', simulation_round['specifier'],
                                        '{}.html'.format(sector['specifier']))
             layout_path = os.path.join('templates', 'layout.html')
@@ -35,15 +37,10 @@ def main():
             with open(protocol_path) as f:
                 template_string = f.read()
 
-            # step 2: open and read pattern
-            with open(pattern_path) as f:
-                pattern_json = json.loads(f.read())
-                pattern = '_'.join(pattern_json) + '.nc'
-
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
             template = enviroment.from_string(template_string)
-            md = template.render(simulation_round=simulation_round, sector=sector, pattern=pattern,
+            md = template.render(simulation_round=simulation_round, sector=sector,
                                  commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
                                  table=Table(simulation_round, sector, Counter()))
 
@@ -77,7 +74,7 @@ class Table(object):
         rows = []
         for row in definitions:
             if 'simulation_rounds' not in row or self.simulation_round['specifier'] in row['simulation_rounds']:
-                if 'sectors' not in row or self.sector['specifier'] in row['sectors']:
+                if 'sectors' not in row or self.sector['specifier'] in row['sectors'] or self.sector['specifier'] == 'index':
                     rows.append(row)
 
         # apply order argument
