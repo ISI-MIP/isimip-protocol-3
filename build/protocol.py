@@ -142,7 +142,7 @@ class Table(object):
 
         else:
             # if order is not given, just use the rows in the order of the file
-            table = rows
+            table = [self.get_row(row) for row in rows]
 
         with open(template_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
@@ -155,7 +155,7 @@ class Table(object):
         for key, value in row.items():
             if isinstance(value, dict):
                 values[key] = value.get(self.simulation_round['specifier']) or \
-                                 value.get(self.sector['specifier']) or ''
+                                 value.get(self.sector['specifier']) or value
             else:
                 values[key] = value
 
