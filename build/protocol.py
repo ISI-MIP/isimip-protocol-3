@@ -122,7 +122,8 @@ class Table(object):
         with open(template_path) as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
-        return template.render(table=table, simulation_round=self.simulation_round, sector=self.sector, counter=self.counter)
+        return template.render(table=table, counter=self.counter, markdown=markdown,
+                               simulation_round=self.simulation_round, sector=self.sector)
 
     def get_row(self, row):
         values = {}
