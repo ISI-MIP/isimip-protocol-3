@@ -3,8 +3,8 @@
         Table {{ counter() }}: Geographic data and information for the {{ sector.title|lower }} sector.
     </caption>
     <thead>
-        <th style="width: 25%;">Dataset</th>
-        <th style="width: 25%;">Included variables (specifier)</th>
+        <th style="width: 20%;">Dataset</th>
+        <th style="width: 30%;">Included variables (specifier)</th>
         <th style="width: 10%;">Resolution</th>
         <th style="width: 40%;">Reference/Source and Comments</th>
     </thead>
@@ -21,14 +21,14 @@
                 <p>
                     <strong>{{ row.specifier }}</strong>
                 </p>
-                <p>{{ row.title }}</p>
             </td>
             <td colspan="4">
                 {% if row.file_path %}
-                File path: <code>{{ row.file_path }}</code>
-                {% endif %}
-                {% if row.url %}
-                URL: <a href="{{ row.url }}">{{ row.url }}</a>
+                <code>{{ row.file_path }}</code>
+                {% elif row.url %}
+                <a href="{{ row.url }}">{{ row.url }}</a>
+                {% elif row.file_note %}
+                <span>{{ row.file_note }}</span>
                 {% endif %}
             </td>
         </tr>
@@ -40,14 +40,8 @@
                 {% endfor %}
                 </ul>
             </td>
-            <td>{{ row.time_period }}</td>
-            <td>
-                <ul>
-                    <li>{{ row.resolution }}</li>
-                    <li>{{ row.frequency }}</li>
-                </ul>
-            </td>
-            <td>{{ row.comment }}</td>
+            <td>{{ row.resolution }}</td>
+            <td>{{ markdown(row.comment)|safe }}</td>
         </tr>
         {% endfor %}
         {% endfor %}
