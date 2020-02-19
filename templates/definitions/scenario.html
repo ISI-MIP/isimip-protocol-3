@@ -4,11 +4,11 @@
     </caption>
     <thead>
         <tr>
-            <th style="width: 10%;">Experiment</th>
-            <th style="width: 25%;">Short description</th>
-            <th style="width: 10%;">Input</th>
+            <th style="width: 20%;">Experiment</th>
 
-            {% if simulation_round.specifier == 'ISIMIP3a' %}
+            {% if simulation_round.specifier.endswith('a') %}
+
+            <th style="width: 45%;">Short description</th>
             <th style="width: 15%;">
                 <p>Spin up (XXXX-1900)</p>
                 <p>(only if spin-up is needed)</p>
@@ -16,21 +16,23 @@
             <th style="width: 15%;">
                 <p>Historical (1901-2018)</p>
             </th>
-            {% endif %}
 
-            {% if simulation_round.specifier == 'ISIMIP3b' %}
-            <th style="width: 10%;">
+            {% else %}
+
+            <th style="width: 30%;">Short description</th>
+            <th style="width: 15%;">
                 <p>Pre-industrial</p>
                 <p>1601-1849</p>
             </th>
-            <th style="width: 10%;">
+            <th style="width: 15%;">
                 <p>Historical</p>
                 <p>1850-2014</p>
             </th>
-            <th style="width: 10%;">
+            <th style="width: 15%;">
                 <p>Future</p>
                 <p>2015-2100</p>
             </th>
+
             {% endif %}
         </tr>
     </thead>
@@ -45,9 +47,6 @@
             <td>
                 <strong>CF:</strong> {{ row.description.climate }}
             </td>
-            <td>
-                {{ row.input.climate }}
-            </td>
 
             {% if simulation_round.specifier.endswith('a') %}
 
@@ -58,7 +57,7 @@
                     </p>
                 </td>
                 {% else %}
-                <td rowspan="2">
+                <td rowspan="2" class="border-bottom">
                     {{ row.spin_up }}
                 </td>
                 {% endif %}
@@ -68,7 +67,7 @@
                     <strong>{{ row.historical.climate }}</strong>
                 </td>
                 {% else %}
-                <td rowspan="2">
+                <td rowspan="2" class="border-bottom">
                     {{ row.historical }}
                 </td>
                 {% endif %}
@@ -110,9 +109,6 @@
         <tr>
             <td class="border-bottom">
                 <strong>DHF:</strong> {{ row.description.soc }}
-            </td>
-            <td class="border-bottom">
-                {{ row.input.soc }}
             </td>
 
             {% if simulation_round.specifier.endswith('a') %}
