@@ -3,11 +3,11 @@
         Table {{ counter() }}: Socioeconomic datasets for the {{ sector.title|lower }} sector.
     </caption>
     <thead>
-        <th style="width: 15%;">Dataset</th>
-        <th style="width: 30%;">Included variables (specifier)</th>
+        <th style="width: 25%;">Dataset</th>
+        <th style="width: 25%;">Included variables (specifier)</th>
         <th style="width: 15%;">Covered time period</th>
         <th style="width: 10%;">Resolution</th>
-        <th style="width: 30%;">Reference/Source and Comments</th>
+        <th style="width: 25%;">Reference/Source and Comments</th>
     </thead>
     <tbody>
         {% for group, rows in table.items() %}
@@ -18,12 +18,22 @@
         </tr>
         {% for row in rows %}
         <tr>
-            <td>
+            <td rowspan="2">
                 <p>
                     <strong>{{ row.specifier }}</strong>
                 </p>
                 <p>{{ row.title }}</p>
             </td>
+            <td colspan="4">
+                {% if row.file_path %}
+                File path: <code>{{ row.file_path }}</code>
+                {% endif %}
+                {% if row.url %}
+                URL: <a href="{{ row.url }}">{{ row.url }}</a>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
             <td>
                 <ul>
                 {% for variable in row.variables %}

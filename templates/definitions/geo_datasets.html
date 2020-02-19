@@ -16,13 +16,23 @@
             </td>
         </tr>
         {% for row in rows %}
-        <tr>
-            <td>
+               <tr>
+            <td rowspan="2">
                 <p>
                     <strong>{{ row.specifier }}</strong>
                 </p>
                 <p>{{ row.title }}</p>
             </td>
+            <td colspan="4">
+                {% if row.file_path %}
+                File path: <code>{{ row.file_path }}</code>
+                {% endif %}
+                {% if row.url %}
+                URL: <a href="{{ row.url }}">{{ row.url }}</a>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
             <td>
                 <ul>
                 {% for variable in row.variables %}
@@ -30,6 +40,7 @@
                 {% endfor %}
                 </ul>
             </td>
+            <td>{{ row.time_period }}</td>
             <td>
                 <ul>
                     <li>{{ row.resolution }}</li>
