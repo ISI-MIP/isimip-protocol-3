@@ -114,7 +114,7 @@
     "specifier": "evap",
     "extension": {
       "biomes": "<pft/total>",
-      "forestry": "",
+      "forestry": "<species/total>",
       "water_global": "",
       "water_regional": ""
     },
@@ -161,7 +161,7 @@
     "unit": "kg m-2",
     "resolution": {
       "biomes": "0.5° grid",
-      "forestry": "0.5° grid",
+      "forestry": "stand",
       "water_global": "0.5° grid",
       "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)",
       "permafrost": "0.5° grid"
@@ -665,7 +665,8 @@
     "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
     "sectors": [
       "water_global",
-      "water_regional"
+      "water_regional",
+      "biomes"
     ]
   },
   {
@@ -678,6 +679,7 @@
     "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -704,6 +706,7 @@
     "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -718,6 +721,7 @@
     "comment": "",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -732,6 +736,7 @@
     "comment": "",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -746,6 +751,7 @@
     "comment": "",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -772,6 +778,7 @@
     "comment": "The whole plant biomass above ground.",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -786,6 +793,7 @@
     "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -800,6 +808,7 @@
     "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
     "sectors": [
       "agriculture",
+      "biomes",
       "water_global",
       "water_regional"
     ]
@@ -1076,9 +1085,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total is essential. Per PFT information is desirable.",
+      "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon*m-2",
-      "permafrost": "Grid cell total is essential. Per PFT information is desirable."
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1102,9 +1111,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total is essential. Per PFT information is desirable.",
+      "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon*m-2",
-      "permafrost": "Grid cell total is essential. Per PFT information is desirable."
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1128,9 +1137,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total is essential. Per PFT information is desirable.",
+      "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon*m-2",
-      "permafrost": "Grid cell total is essential. Per PFT information is desirable."
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1154,9 +1163,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total is essential. Per PFT information is desirable. Info for each individual pool.",
+      "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon*m-2, Info for each individual pool.",
-      "permafrost": "Grid cell total is essential. Per PFT information is desirable. Info for each individual pool."
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1180,14 +1189,50 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total is essential. Per PFT information is desirable. Info for each individual pool.",
+      "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon*m-2, Info for each individual soil layer.",
-      "permafrost": "Grid cell total is essential. Per PFT information is desirable. Info for each individual pool."
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
       "forestry",
       "permafrost"
+    ]
+  },
+  {
+    "specifier": "cproduct",
+    "extension": {
+      "biomes": "<pft/total>",
+    },
+    "title": "Carbon in Products of Land Use Change",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "0.5° grid",
+    },
+    "frequency": "annual",
+    "comment": {
+      "biomes": "Refers to Carbon not going into soil. Grid cell total and PFT information is essential.",
+    },
+    "sectors": [
+      "biomes",
+    ]
+  },
+    {
+    "specifier": "charv",
+    "extension": {
+      "biomes": "<pft/total>",
+    },
+    "title": "Carbon in biomass harvested from natural vegetation",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "0.5° grid",
+    },
+    "frequency": "annual",
+    "comment": {
+      "biomes": "Refers to Carbon not going into soil. Grid cell total and PFT information is essential.",
+    },
+    "sectors": [
+      "biomes",
     ]
   },
   {
@@ -1290,9 +1335,9 @@
     ]
   },
   {
-    "specifier": "nppabovegroundwood",
+    "specifier": "nppagwood",
     "extension": "<pft/total>",
-    "title": "Net Primary Production on Land allocated to above ground wood biomass",
+    "title": "Net Primary Production on Land allocated to above ground woody biomass",
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "daily, monthly",
@@ -1302,7 +1347,7 @@
     ]
   },
   {
-    "specifier": "nppbelowgroundwood",
+    "specifier": "nppbgwood",
     "extension": "<pft/total>",
     "title": "Net Primary Production on Land allocated to below ground wood biomass",
     "unit": "kg m-2 s-1",
@@ -1352,13 +1397,13 @@
     ]
   },
   {
-    "specifier": "firefrac",
+    "specifier": "burntarea",
     "extension": "<pft/total>",
-    "title": "Fraction of cell burnt by fire",
-    "unit": "Fractional",
+    "title": "Burnt Area Fraction",
+    "unit": "%",
     "resolution": "0.5° grid",
     "frequency": "daily, monthly",
-    "comment": "Burnt area fraction: single value for each scenario corresponding to year 2100",
+    "comment": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
     "sectors": [
       "biomes",
       "permafrost"
@@ -1399,6 +1444,27 @@
       "forestry"
     ]
   },
+   {
+    "specifier": "grazing",
+    "extension": {
+      "biomes": "<pft/total>",
+      "permafrost": "<pft/total>"
+    },
+    "title": "Carbon Mass Flux into atmosphere due to Grazing on land",
+    "unit": "kg m-2 s-1",
+    "resolution": {
+      "biomes": "0.5° grid",
+      "permafrost": "0.5° grid"
+    },
+    "frequency": "monthly",
+    "comment": {
+      "biomes": "",
+    },
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  },
   {
     "specifier": "fapar",
     "extension": {
@@ -1434,14 +1500,14 @@
     "unit": "1",
     "resolution": {
       "biomes": "0.5° grid",
-      "forestry": "stand and 0.5° grid average",
+      "forestry": "stand",
       "permafrost": "0.5° grid",
       "water_global": "0.5° grid",
       "water_regional": "0.5° grid"
     },
     "frequency": {
       "biomes": "daily, monthly",
-      "forestry": "monthly",
+      "forestry": "daily, monthly",
       "permafrost": "daily, monthly",
       "water_global": "constant or monthly",
       "water_regional": "constant or monthly"
@@ -1599,18 +1665,6 @@
     ]
   },
   {
-    "specifier": "burntarea",
-    "title": "Burnt Area Fraction",
-    "unit": "%",
-    "resolution": "0.5° grid",
-    "frequency": "daily, monthly",
-    "comment": "Fraction of entire grid cell that is covered by burnt vegetation.",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  },
-  {
     "specifier": "dbh",
     "extension": "<species/total>",
     "title": "Mean DBH",
@@ -1699,7 +1753,7 @@
     "unit": "m3 ha-1",
     "resolution": "stand",
     "frequency": "annual",
-    "comment": "DBH class resolution: Either DBH classes or total",
+    "comment": "DBH class resolution: Either DBH classes or total per species",
     "sectors": [
       "forestry"
     ]
@@ -1711,7 +1765,7 @@
     "unit": "ha-1",
     "resolution": "stand",
     "frequency": "annual",
-    "comment": "DBH class resolution: Either DBH classes or total",
+    "comment": "DBH class resolution: Either DBH classes or total per species",
     "sectors": [
       "forestry"
     ]
@@ -1735,13 +1789,14 @@
     "unit": "yr",
     "resolution": "stand",
     "frequency": "annual",
-    "comment": "DBH class resolution: Either DBH classes or total",
+    "comment": "DBH class resolution: Either DBH classes or total per species",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "nee",
+    "extension": "<species/total>",
     "title": "Net Ecosystem Exchange",
     "unit": "kg m-2 s-1",
     "resolution": "stand",
@@ -1778,11 +1833,11 @@
   {
     "specifier": "mortstemno",
     "extension": "<species/total>",
-    "title": "Removed stem numbers by size class by natural mortality",
+    "title": "Removed stem numbers by DBH class by natural mortality",
     "unit": "ha-1",
     "resolution": "stand",
     "frequency": "annual",
-    "comment": "As trees per hectare.",
+    "comment": "As trees per hectare. DBH class resolution: Either DBH classes or total per species",
     "sectors": [
       "forestry"
     ]
@@ -1790,18 +1845,18 @@
   {
     "specifier": "harvstemno",
     "extension": "<species/total>",
-    "title": "Removed stem numbers by size class by management",
+    "title": "Removed stem numbers by DBH class by management",
     "unit": "ha-1",
     "resolution": "stand",
     "frequency": "annual",
-    "comment": "As trees per hectare.",
+    "comment": "As trees per hectare. DBH class resolution: Either DBH classes or total per species",
     "sectors": [
       "forestry"
     ]
   },
   {
     "specifier": "dist",
-    "extension": "<dist-name>",
+    "extension": "<dist-name>-<species/total>",
     "title": "Volume of disturbance damage",
     "unit": "m3 ha-1",
     "resolution": "stand",
