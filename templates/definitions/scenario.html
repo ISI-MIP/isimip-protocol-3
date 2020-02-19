@@ -37,7 +37,7 @@
     <tbody>
         {% for row in table %}
         <tr>
-            <td rowspan="2">
+            <td rowspan="2" class="border-bottom">
                 <h4>{{ row.title }}</h4>
                 {% if row.subtitle %}<p>{{ row.subtitle }}</p>{% endif%}
                 {% if row.priority %}<p><strong>{{ row.priority }}</strong></p>{% endif%}
@@ -49,7 +49,7 @@
                 {{ row.input.climate }}
             </td>
 
-            {% if simulation_round.specifier == 'ISIMIP3a' %}
+            {% if simulation_round.specifier.endswith('a') %}
 
                 {% if row.spin_up.climate %}
                 <td class="green">
@@ -73,16 +73,14 @@
                 </td>
                 {% endif %}
 
-            {% endif %}
-
-            {% if simulation_round.specifier == 'ISIMIP3b' %}
+            {% else %}
 
                 {% if row.pre_industrial.climate %}
                 <td class="gray">
                     <strong>{{ row.pre_industrial.climate }}</strong>
                 </td>
                 {% else %}
-                <td rowspan="2">
+                <td rowspan="2" class="border-bottom">
                     {{ row.pre_industrial }}
                 </td>
                 {% endif %}
@@ -92,7 +90,7 @@
                     <strong>{{ row.historical.climate }}</strong>
                 </td>
                 {% else %}
-                <td rowspan="2">
+                <td rowspan="2" class="border-bottom">
                     {{ row.historical }}
                 </td>
                 {% endif %}
@@ -102,7 +100,7 @@
                     <strong>{{ row.future.climate }}</strong>
                 </td>
                 {% else %}
-                <td rowspan="2">
+                <td rowspan="2" class="border-bottom">
                     {{ row.future }}
                 </td>
                 {% endif %}
@@ -110,45 +108,43 @@
             {% endif %}
         </tr>
         <tr>
-            <td>
+            <td class="border-bottom">
                 <strong>DHF:</strong> {{ row.description.soc }}
             </td>
-            <td>
+            <td class="border-bottom">
                 {{ row.input.soc }}
             </td>
 
-            {% if simulation_round.specifier == 'ISIMIP3a' %}
+            {% if simulation_round.specifier.endswith('a') %}
 
                 {% if row.spin_up.soc %}
-                <td class="green">
+                <td class="green border-bottom" >
                     <strong>{{ row.spin_up.soc }}</strong>
                 </td>
                 {% endif %}
 
                 {% if row.historical.soc %}
-                <td class="gray">
+                <td class="gray border-bottom">
                     <strong>{{ row.historical.soc }}</strong>
                 </td>
                 {% endif %}
 
-            {% endif %}
-
-            {% if simulation_round.specifier == 'ISIMIP3b' %}
+            {% else %}
 
                 {% if row.pre_industrial.soc %}
-                <td class="gray">
+                <td class="gray border-bottom">
                     <strong>{{ row.pre_industrial.soc }}</strong>
                 </td>
                 {% endif %}
 
                 {% if row.historical.soc %}
-                <td class="gray">
+                <td class="gray border-bottom">
                     <strong>{{ row.historical.soc }}</strong>
                 </td>
                 {% endif %}
 
                 {% if row.future.soc %}
-                <td class="red">
+                <td class="red border-bottom">
                     <strong>{{ row.future.soc }}</strong>
                 </td>
                 {% endif %}
