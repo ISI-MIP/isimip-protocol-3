@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import subprocess
 from collections import OrderedDict
 from datetime import datetime
@@ -15,7 +16,7 @@ def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
     sectors = json.loads(open('definitions/sector.json').read())
     sectors.append({
-        'title': 'All sectors combined',
+        'title': 'all sectors combined',
         'specifier': 'index'
     })
 
@@ -27,6 +28,8 @@ def main():
     for simulation_round in simulation_rounds:
         for sector in sectors:
             protocol_path = os.path.join('protocol', '00.base.md')
+            pattern_path = os.path.join('pattern', simulation_round['specifier'],
+                                        'OutputData', '{}.json'.format(sector['specifier']))
             output_path = os.path.join('output/protocol', simulation_round['specifier'],
                                        '{}.html'.format(sector['specifier']))
             layout_path = os.path.join('templates', 'layout.html')
@@ -37,10 +40,17 @@ def main():
             with open(protocol_path) as f:
                 template_string = f.read()
 
+            # step 1: open and read protocol
+            with open(pattern_path) as f:
+                pattern_list = json.loads(f.read())
+                pattern = '_'.join(pattern_list) + '.nc'
+                pattern_simple = get_pattern_simple(pattern_list)
+
             # step 2: render the template using jinja2
             enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
             template = enviroment.from_string(template_string)
             md = template.render(simulation_round=simulation_round, sector=sector,
+                                 pattern=pattern, pattern_simple=pattern_simple,
                                  commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
                                  table=Table(simulation_round, sector, Counter()))
 
@@ -53,6 +63,21 @@ def main():
             with open(output_path, 'w') as f:
                 f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
                                         commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
+
+
+def get_pattern_simple(pattern_list):
+    # sorry fo this ...
+    pattern_simple_list = []
+    for p in pattern_list:
+        p = re.sub(r'\[.*?\]\+', '', p)
+        p = re.sub(r'\([a-z\|]*?\)', '', p)
+        p = p.replace('\d{4}', '')
+        p = p.replace('P', '').replace('?', '')
+        p = p.replace('(<', '<').replace('>)', '>')
+
+        pattern_simple_list.append(p)
+
+    return '_'.join(pattern_simple_list) + '.nc'
 
 
 class Table(object):

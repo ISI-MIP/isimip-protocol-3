@@ -43,3 +43,5 @@
 ### Lake sites
 
 {{ table('lake_site') }}
+
+A document with additional information is maintained by the sector coordinators and provided at <https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854>.
