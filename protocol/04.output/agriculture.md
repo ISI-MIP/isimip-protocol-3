@@ -18,7 +18,11 @@
         'sn2o',
         'tnup',
         'tnin',
-        'tnloss'
+        'tnloss',
+        'sumt',
+        'gsrsds',
+        'gsprcp',
+        'leach'
     ]
 }) }}
 

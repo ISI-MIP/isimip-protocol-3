@@ -155,7 +155,10 @@ class Table(object):
         for key, value in row.items():
             if isinstance(value, dict):
                 values[key] = value.get(self.simulation_round['specifier']) or \
-                                 value.get(self.sector['specifier']) or value
+                                 value.get(self.sector['specifier'])
+
+                if values[key] is None:
+                    values[key] = value
             else:
                 values[key] = value
 
