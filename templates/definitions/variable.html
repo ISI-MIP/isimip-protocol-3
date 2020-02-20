@@ -31,7 +31,11 @@
                     <li>{{ row.frequency }}</li>
                 </ul>
             </td>
+            {% if row.comment is mapping %}
             <td>{{ row.comment }}</td>
+            {% else %}
+            <td>{{ markdown(row.comment)|safe }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
         {% endfor %}
