@@ -55,7 +55,7 @@ def main():
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
-            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-4')])
+            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-3')])
 
             # step 4: render content into layout template
             with open(layout_path) as f:
