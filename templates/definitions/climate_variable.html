@@ -4,12 +4,17 @@
     </caption>
     <thead>
         <th style="width: 30%;">Variable</th>
+        {% if simulation_round.specifier.endswith('a') %}
+        <th style="width: 10%;">Variable specifier</th>
+        <th style="width: 10%;">Unit</th>
+        <th style="width: 10%;">Resolution</th>
+        <th style="width: 40%;">Datasets</th>
+        {% else %}
         <th style="width: 20%;">Variable specifier</th>
         <th style="width: 10%;">Unit</th>
         <th style="width: 10%;">Resolution</th>
-        <th style="width: 30%;">
-            {% if simulation_round.specifier.endswith('a') %}Datasets{% else %}Models{% endif %}
-        </th>
+        <th style="width: 30%;">Models</th>
+        {% endif %}
     </thead>
     <tbody>
         {% for group, rows in table.items() %}
