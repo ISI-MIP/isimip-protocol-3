@@ -200,7 +200,7 @@
     "unit": "kg m-2",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Please provide soil moisture for all depth levels and indicate depth in m. Please provide for purposes of permafrost sector.",
+    "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
     "sectors": [
       "biomes",
       "water_global",
@@ -663,19 +663,6 @@
     "resolution": "0.5° grid",
     "frequency": "constant",
     "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
-    "sectors": [
-      "water_global",
-      "water_regional",
-      "biomes"
-    ]
-  },
-    {
-    "specifier": "soildepth",
-    "title": "Depth of each soil layer",
-    "unit": "m",
-    "resolution": "0.5° grid",
-    "frequency": "constant",
-    "comment": "Depth of each of the soil layers used in your model reported as 3D-field. The total of all layers should equal the toal soil depth",
     "sectors": [
       "water_global",
       "water_regional",
@@ -1202,7 +1189,7 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total and PFT information is essential.",
+      "biomes": "Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "forestry": "As kg carbon*m-2, Info for each individual soil layer.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
@@ -1224,7 +1211,7 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Refers to Carbon not going into soil. Grid cell total and PFT information is essential.",
+      "biomes": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Grid cell total and PFT information is essential.",
     },
     "sectors": [
       "biomes",
@@ -1416,7 +1403,7 @@
     "unit": "%",
     "resolution": "0.5° grid",
     "frequency": "daily, monthly",
-    "comment": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
+    "comment": "Fire should be only allowed to burn natural vegetation, rangelands and managed pastures but not croplands. Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
     "sectors": [
       "biomes",
       "permafrost"
@@ -1455,27 +1442,6 @@
     "sectors": [
       "biomes",
       "forestry"
-    ]
-  },
-   {
-    "specifier": "grazing",
-    "extension": {
-      "biomes": "<pft/total>",
-      "permafrost": "<pft/total>"
-    },
-    "title": "Carbon Mass Flux into atmosphere due to Grazing on land",
-    "unit": "kg m-2 s-1",
-    "resolution": {
-      "biomes": "0.5° grid",
-      "permafrost": "0.5° grid"
-    },
-    "frequency": "monthly",
-    "comment": {
-      "biomes": "",
-    },
-    "sectors": [
-      "biomes",
-      "permafrost"
     ]
   },
   {
