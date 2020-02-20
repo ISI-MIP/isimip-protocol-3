@@ -149,26 +149,38 @@
   {
     "specifier": "reservoirs_dams",
     "title": "Reservoirs & dams",
-    "file_path": "socioeconomic/reservoir_dams/reservoirs_dams_1901_2025.xls",
+    "file_path": {
+      "ISIMIP3a": "socioeconomic/reservoir_dams/reservoirs_dams_1901_2025.xls",
+      "ISIMIP3b": "socioeconomic/reservoir_dams/"
+    },
     "variables": [
-      "name",
-      "original location",
-      "location adjusted to the DDM30 routing network",
-      "upstream area in DDM30 and in GRanD",
-      "maximum storage capacity",
-      "year of construction/commissioning year",
-      "flag of correction (if relocation was applied=1)",
-      "river name",
-      "height of dam",
-      "maximum inundation area and length of reservoir",
-      "purpose and source of information"
+      "Unique ID representing a dam and its associated reservoir corresponding to GRanD/KSU IDs (ID)",
+      "name (DAM_NAME)",
+      "original location (LON_ORIG, LAT_ORIG)",
+      "location adjusted to the DDM30 routing network (LON_DDM30, LAT_DDM30)",
+      "upstream area in DDM30 (CATCH_SKM_DDM30)",
+      "upstream area in GRanD (CATCH_SKM_GRanD)",
+      "maximum storage capacity of reservoir (CAP_MCM)",
+      "year of construction/commissioning (YEAR)",
+      "alternative year may indicate a multi-year construction or secondary dam (ALT_YEAR)",
+      "flag of correction if relocation was applied (FLAG_CORR)",
+      "river name which the dam impounds (RIVER)",
+      "height of dam (D_Hght_m)",
+      "maximum inundation area of reservoir (R_Area_km2)",
+      "length of reservoir (R_Lgth_km)",
+      "main purpose(s) of dam (PURPOSE)",
+      "source of information (SOURCE)",
+      "other notes (COMMENTS)"
     ],
-    "time_periods": [
-      "1860-1900",
-      "1901-2025"
-    ],
+    "time_periods": {
+      "ISIMIP3a": [
+        "1901-2025"
+      ],
+      "ISIMIP3b": [
+        "1850-2014"
+      ]
+    },
     "resolution": "0.5° grid and original coordinates (degree)",
-    "frequency": "annual",
     "comment": "Lehner et al. (2011a, <https://doi.org/10.7927/H4N877QK>), Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>)"
   },
   {
