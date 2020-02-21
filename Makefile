@@ -9,9 +9,6 @@ bibliography/bibliography.html: bibliography/bibliography.bib bibliography/bibli
 %.py: bibliography/bibliography.html
 	python3 build/$@
 
-gh-pages: all
-	ghp-import --no-jekyll --push --force output
-
 clean:
 	rm -r output; rm bibliography/bibliography.html
 

@@ -25,7 +25,10 @@ before_install:
 
 install:
 - pip install -r requirements.txt
+- pip install ghp-import
 
 script:
 - pytest
-- make gh-pages
+- make
+- echo "protocol.isimip.org" > output/CNAME
+- ghp-import --no-jekyll --push --force output
