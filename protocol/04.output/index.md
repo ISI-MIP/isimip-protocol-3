@@ -1,7 +1,7 @@
 ### Output variables
 
 {{ table('variable', {
-    'Variables from all sectors': None
+    'Full ISIMIP variable list': None
 }) }}
 
 ### Crops
