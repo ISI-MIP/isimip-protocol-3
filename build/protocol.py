@@ -55,7 +55,7 @@ def main():
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
-            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-4')])
+            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-3')])
 
             # step 4: render content into layout template
             with open(layout_path) as f:
@@ -155,7 +155,10 @@ class Table(object):
         for key, value in row.items():
             if isinstance(value, dict):
                 values[key] = value.get(self.simulation_round['specifier']) or \
-                                 value.get(self.sector['specifier']) or value
+                                 value.get(self.sector['specifier'])
+
+                if values[key] is None:
+                    values[key] = value
             else:
                 values[key] = value
 

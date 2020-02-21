@@ -1,6 +1,6 @@
 <table>
     <caption>
-        Table {{ counter() }}: Geographic data and information for the {{ sector.title|lower }} sector.
+        Table {{ counter() }}: Geographic data and information for {{ simulation_round.title }}.
     </caption>
     <thead>
         <th style="width: 20%;">Dataset</th>
@@ -16,8 +16,8 @@
             </td>
         </tr>
         {% for row in rows %}
-               <tr>
-            <td rowspan="2">
+        <tr>
+            <td class="no-border-bottom">
                 <p>
                     <strong>{{ row.specifier }}</strong>
                 </p>
@@ -33,6 +33,7 @@
             </td>
         </tr>
         <tr>
+            <td></td>
             <td>
                 <ul>
                 {% for variable in row.variables %}

@@ -7,13 +7,11 @@
     "frequency": {
       "biomes": "monthly",
       "permafrost": "monthly",
-      "water_global": "daily",
-      "water_regional": "daily"
+      "water_global": "daily & montly"
     },
-    "comment": "Total runoff leaving the land portion of the grid cell",
+    "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
     "sectors": [
       "water_global",
-      "water_regional",
       "biomes",
       "permafrost"
     ]
@@ -24,11 +22,10 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "The total surface runoff leaving the land portion of the grid cell.",
+    "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
     "sectors": [
       "biomes",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -40,8 +37,7 @@
     "frequency": "monthly",
     "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -50,7 +46,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
     "frequency": "monthly",
     "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
@@ -67,8 +63,7 @@
     "frequency": "monthly",
     "comment": "Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -77,34 +72,10 @@
     "unit": "m3 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
-    "frequency": "daily",
-    "comment": "",
-    "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "maxdis",
-    "title": "Monthly maximum of daily discharge ",
-    "unit": "m3 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Optional variable – please report if daily discharge data is not reported.",
-    "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "mindis",
-    "title": "Monthly minimum of daily discharge ",
-    "unit": "m3 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Optional variable – please report if daily discharge data is not reported.",
+    "frequency": "daily & monthly",
+    "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -149,7 +120,7 @@
       "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
     },
     "frequency": "monthly",
-    "comment": "As Evap, but with all resistances set to zero, except the aerodynamic resistance.",
+    "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -173,7 +144,7 @@
       "water_global": "monthly",
       "water_regional": "monthly"
     },
-    "comment": "If possible, please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil moisture of entire column.",
+    "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
       "biomes",
       "forestry",
@@ -188,7 +159,7 @@
     "unit": "kg m-2",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Total simulated soil moisture available for evapotranspiration. If simulated by the model. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space",
+    "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
       "water_global",
       "water_regional"
@@ -204,7 +175,6 @@
     "sectors": [
       "biomes",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -216,7 +186,6 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid",
       "permafrost": "0.5° grid"
     },
     "frequency": {
@@ -226,12 +195,11 @@
       "water_regional": "daily, monthly",
       "permafrost": "daily, monthly"
     },
-    "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\".",
+    "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
       "biomes",
       "forestry",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -241,11 +209,10 @@
     "unit": "m",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Grid cell mean depth of snowpack.",
+    "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
     "sectors": [
       "biomes",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -255,11 +222,10 @@
     "unit": "kg m-2",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell.",
+    "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
     "sectors": [
       "biomes",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -271,8 +237,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -283,8 +248,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in the canopy.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -295,8 +259,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in glaciers.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -307,8 +270,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in groundwater layer.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -319,8 +281,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in lakes (except reservoirs).",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -331,20 +292,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water storage in wetlands.",
     "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "reservoirstor",
-    "title": "Reservoir storage",
-    "unit": "kg m-2",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Mean monthly water storage in reservoirs.",
-    "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -353,10 +301,9 @@
     "unit": "kg m-2",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Mean monthly water storage in rivers.",
+    "comment": "Mean monthly water storage in reservoirs.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -367,14 +314,12 @@
     "frequency": {
       "biomes": "annual",
       "permafrost": "annual",
-      "water_global": "monthly",
-      "water_regional": "monthly"
+      "water_global": "monthly"
     },
     "comment": "Calculated from daily thaw depths.",
     "sectors": [
       "biomes",
       "water_global",
-      "water_regional",
       "permafrost"
     ]
   },
@@ -386,32 +331,7 @@
     "frequency": "monthly",
     "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
     "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "rainf",
-    "title": "Rainfall",
-    "unit": " kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Required for test purposes only. If you need to reduce output data volumes, please provide these variables only once, with the first (test) data set you submit, e.g. for the first decade of each experiment. NOTE: rainf + snowf = total precipitation",
-    "sectors": [
-      "water_global",
-      "water_regional"
-    ]
-  },
-  {
-    "specifier": "snowf",
-    "title": "Snowfall",
-    "unit": " kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Required for test purposes only. If you need to reduce output data volumes, please provide these variables only once, with the first (test) data set you submit, e.g. for the first decade of each experiment. NOTE: rainf + snowf = total precipitation",
-    "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -421,13 +341,16 @@
       "water_global": "",
       "water_regional": ""
     },
-    "title": "Irrigation water withdrawal (assuming unlimited water supply)",
+    "title": "Potential irrigation water withdrawal (assuming unlimited water supply)",
     "unit": {
       "agriculture": "mm per growing season",
       "water_global": "kg m-2 s-1",
       "water_regional": "kg m-2 s-1"
     },
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": {
       "agriculture": "seasonal",
       "water_global": "monthly",
@@ -444,7 +367,10 @@
     "specifier": "airrww",
     "title": "Actual irrigation water withdrawal",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
     "sectors": [
@@ -456,7 +382,10 @@
     "specifier": "pirruse",
     "title": "Potential irrigation water consumption",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
     "sectors": [
@@ -468,7 +397,10 @@
     "specifier": "airruse",
     "title": "Actual irrigation water consumption",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
     "sectors": [
@@ -480,7 +412,10 @@
     "specifier": "airrusegreen",
     "title": "Actual green water consumption on irrigated cropland",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
     "sectors": [
@@ -492,7 +427,10 @@
     "specifier": "pirrusegreen",
     "title": "Potential green water consumption on irrigated cropland",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
     "sectors": [
@@ -504,7 +442,10 @@
     "specifier": "arainfusegreen",
     "title": "Actual green water consumption on rainfed cropland",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+    },
     "frequency": "monthly",
     "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
     "sectors": [
@@ -520,8 +461,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -532,8 +472,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -544,8 +483,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -556,8 +494,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -568,8 +505,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -580,8 +516,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -592,8 +527,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -604,8 +538,95 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pdomww",
+    "title": "Potential domestic water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pdomuse",
+    "title": "Potential domestic water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pmanww",
+    "title": "Potential manufacturing water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pmanuse",
+    "title": "Potential manufacturing water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pelecww",
+    "title": "Potential electricity water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pelecuse",
+    "title": "Potential electricity water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pliveww",
+    "title": "Potential livestock water withdrawal",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
+    ]
+  },
+  {
+    "specifier": "pliveuse",
+    "title": "Potential livestock water consumption",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "If computed.",
+    "sectors": [
+      "water_global"
     ]
   },
   {
@@ -616,8 +637,7 @@
     "frequency": "monthly",
     "comment": "If computed.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -628,8 +648,7 @@
     "frequency": "monthly",
     "comment": "Sum of actual water consumption from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -640,8 +659,7 @@
     "frequency": "monthly",
     "comment": "Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -652,8 +670,7 @@
     "frequency": "monthly",
     "comment": "Sum of potential (i.e. assuming unlimited water supply) water consumption from all sectors. Please indicate in metadata which sectors are included.",
     "sectors": [
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {
@@ -665,7 +682,6 @@
     "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
     "sectors": [
       "water_global",
-      "water_regional",
       "biomes"
     ]
   },
@@ -679,9 +695,8 @@
     "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
@@ -706,66 +721,86 @@
     "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
     "specifier": "plantday",
     "extension": "<crop>-<irrigation>",
     "title": "Actual planting dates",
-    "unit": "Day of year",
+    "unit": "day of year",
     "resolution": "0.5° grid",
     "frequency": "seasonal",
-    "comment": "",
+    "comment": "Julian dates.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
+    ]
+  },
+  {
+    "specifier": "plantyear",
+    "extension": "<crop>-<irrigation>",
+    "title": "Actual planting year",
+    "unit": "year of planting",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
+    "comment": "This allows for clear identification of planting that is also easy to follow for potential users from outside the project",
+    "sectors": [
+      "water_global"
     ]
   },
   {
     "specifier": "anthday",
     "extension": "<crop>-<irrigation>",
     "title": "Anthesis dates",
-    "unit": "Days from planting date",
+    "unit": "day of year of anthesis",
     "resolution": "0.5° grid",
     "frequency": "seasonal",
-    "comment": "",
+    "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
+    ]
+  },
+  {
+    "specifier": "anthyear",
+    "extension": "<crop>-<irrigation>",
+    "title": "Year of anthesis",
+    "unit": "year of anthesis",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
+    "comment": "It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+    "sectors": [
+      "water_global"
     ]
   },
   {
     "specifier": "matyday",
     "extension": "<crop>-<irrigation>",
     "title": "Maturity dates",
-    "unit": "Days from planting date",
+    "unit": "day of year of maturity",
     "resolution": "0.5° grid",
     "frequency": "seasonal",
-    "comment": "",
+    "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
-    "specifier": "harvday",
+    "specifier": "matyyear",
     "extension": "<crop>-<irrigation>",
-    "title": "",
-    "unit": "",
+    "title": "Year of maturity",
+    "unit": "year of maturity",
     "resolution": "0.5° grid",
     "frequency": "seasonal",
-    "comment": "",
+    "comment": "It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
     "sectors": [
-      "agriculture"
+      "water_global"
     ]
   },
   {
@@ -778,9 +813,8 @@
     "comment": "The whole plant biomass above ground.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
@@ -793,9 +827,8 @@
     "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
@@ -808,9 +841,8 @@
     "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
     "sectors": [
       "agriculture",
-      "biomes",
       "water_global",
-      "water_regional"
+      "biomes"
     ]
   },
   {
@@ -853,7 +885,8 @@
     "specifier": "leach",
     "title": "",
     "unit": "",
-    "resolution": "",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
     "comment": "",
     "sectors": [
       "agriculture"
@@ -861,30 +894,36 @@
   },
   {
     "specifier": "gsprcp",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Growing season precipitation",
+    "extension": "<crop>-<irrigation>",
+    "unit": "mm ha-1 yr-1",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
+    "comment": "Total growing season precipitation per crop",
     "sectors": [
       "agriculture"
     ]
   },
   {
     "specifier": "gsrsds",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Growing season radiation",
+    "extension": "<crop>-<irrigation>",
+    "unit": "w m-2 yr-1",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
+    "comment": "Average growing season shortwave solar radiation",
     "sectors": [
       "agriculture"
     ]
   },
   {
     "specifier": "sumt",
-    "title": "",
-    "unit": "",
-    "resolution": "",
-    "comment": "",
+    "title": "Growing season temperature sum",
+    "extension": "<crop>-<irrigation>",
+    "unit": "deg c-days yr-1",
+    "resolution": "0.5° grid",
+    "frequency": "seasonal",
+    "comment": "Sum of daily mean temperature over growing season",
     "sectors": [
       "agriculture"
     ]
@@ -1481,29 +1520,25 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "permafrost": "0.5° grid",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid"
+      "water_global": "0.5° grid"
     },
     "frequency": {
       "biomes": "daily, monthly",
       "forestry": "daily, monthly",
       "permafrost": "daily, monthly",
-      "water_global": "constant or monthly",
-      "water_regional": "constant or monthly"
+      "water_global": "constant or monthly"
     },
     "comment": {
       "biomes": "",
       "forestry": "",
       "permafrost": "",
-      "water_global": "If used by, or computed by the model.",
-      "water_regional": "If used by, or computed by the model."
+      "water_global": "If used by, or computed by the model."
     },
     "sectors": [
       "biomes",
       "forestry",
       "permafrost",
-      "water_global",
-      "water_regional"
+      "water_global"
     ]
   },
   {

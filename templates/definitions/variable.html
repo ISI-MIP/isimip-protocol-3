@@ -1,6 +1,6 @@
 <table>
     <caption>
-        Table {{ counter() }}: Output variables for the {{ sector.title|lower }} sector.
+        Table {{ counter() }}: Output variables for {{ sector.title }}.
     </caption>
     <thead>
         <th style="width: 20%;">Variable</th>
@@ -21,17 +21,56 @@
         <tr>
             <td>{{ row.title }}</td>
             <td>
-                <strong>{{ row.specifier }}{{ '-' if row.extension }}{{ row.extension }}</strong>
+                {% if row.extension is mapping %}
+                {% for sector, extension in row.extension.items() %}
+                <p>
+                    {{ sector }}: <strong>{{ row.specifier }}{{ '-' if extension }}{{ extension }}</strong>
+                </p>
+                {% endfor %}
+                {% else %}
+                <strong>
+                    {{ row.specifier }}{{ '-' if row.extension }}{{ row.extension }}
+                </strong>
+                {% endif %}
             </td>
-            <td>{{ row.unit }}</td>
+            <td>
+                {% if row.unit is mapping %}
+                {% for sector, unit in row.unit.items() %}
+                <p>{{ sector }}: {{ unit }}</p>
+                {% endfor %}
+                {% else %}
+                {{ row.unit }}
+                {% endif %}
+            </td>
             <td>{{ row.dimensions }}</td>
             <td>
                 <ul>
+                    {% if row.resolution is mapping %}
+                    {% for sector, resolution in row.resolution.items() %}
+                    <li>{{ sector }}: {{ resolution }}</li>
+                    {% endfor %}
+                    {% else %}
                     <li>{{ row.resolution }}</li>
+                    {% endif %}
+
+                    {% if row.frequency is mapping %}
+                    {% for sector, frequency in row.frequency.items() %}
+                    <li>{{ sector }}: {{ frequency }}</li>
+                    {% endfor %}
+                    {% else %}
                     <li>{{ row.frequency }}</li>
+                    {% endif %}
                 </ul>
             </td>
-            <td>{{ row.comment }}</td>
+            <td>
+                {% if row.comment is mapping %}
+                {% for sector, comment in row.comment.items() %}
+                <p>{{ sector }}: {{ comment }}</p>
+                {% endfor %}
+                {% else %}
+                {{ markdown(row.comment)|safe }}
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
         {% endfor %}

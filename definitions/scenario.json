@@ -5,8 +5,8 @@
     "subtitle": "histsoc",
     "priority": "1st priority",
     "description": {
-      "climate": "no climate change before 1860, observed forcing afterwards; 1860 levels of CO₂ until 1860 and based on observations afterwards",
-      "soc": "1860 levels of direct human influences until 1860, varying direct human influences according to observations afterwards"
+      "climate": "No climate change before 1860, observed forcing afterwards; constant 1860 levels of CO₂ before 1860 and based on observations afterwards",
+      "soc": "Fixed 1860 levels of direct human forcing before 1860, varying direct human influences according to observations afterwards"
     },
     "spin_up": {
       "climate": "spinclim",
@@ -20,19 +20,19 @@
       "ISIMIP3a"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "labour",
-      "diarrhea",
       "permafrost",
-      "biodiversity"
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -41,8 +41,8 @@
     "subtitle": "2015soc",
     "priority": "1st priority",
     "description": {
-      "climate": "no climate change before 1860, observed forcing afterwards; 1860 levels of CO₂ until 1860 and based on observations afterward",
-      "soc": "fixed 2015 levels of direct human influences for the entire time period"
+      "climate": "No climate change before 1901, observed forcing afterwards; constant 1860 levels of CO2 before 1860 and based on observations afterwards",
+      "soc": "Fixed 2015 levels of direct human forcing for the entire time period"
     },
     "spin_up": {
       "climate": "spinclim",
@@ -56,54 +56,54 @@
       "ISIMIP3a"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "coastal",
+      "diarrhea",
+      "forestry",
+      "health",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "health",
-      "diarrhea",
-      "labour",
-      "coastal",
       "marine-fishery_global",
-      "marine-fishery_regional"
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "model-evaluation-nosoc",
+    "specifier": "model-evaluation-nat",
     "title": "model evaluation",
-    "subtitle": "nosoc",
+    "subtitle": "nat",
     "priority": "2nd priority",
     "description": {
-      "climate": "de-trended observational climate forcing (counterfactual “no climate change” situation)",
-      "soc": "1860 levels of direct human influences until 1860, varying direct human influences according to observations afterwards"
+      "climate": "No climate change before 1901, observed forcing afterwards; 1860 levels of CO₂ before 1860 and based on observations afterwards",
+      "soc": "No direct human influences"
     },
     "spin_up": {
       "climate": "spinclim",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "historical": {
       "climate": "obsclim",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "simulation_rounds": [
       "ISIMIP3a"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
-      "lakes_global",
-      "lakes_local",
+      "biodiversity",
       "biomes",
       "forestry",
-      "agriculture",
-      "diarrhea",
-      "labour",
+      "lakes_global",
+      "lakes_local",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "biodiversity"
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -112,10 +112,10 @@
     "subtitle": "histsoc",
     "priority": "1st priority",
     "description": {
-      "climate": "de-trended observational climate forcing (counterfactual “no climate change” situation)",
-      "soc": "1860 levels of direct human influences until 1860, varying direct human influences according to observations afterwards"
+      "climate": "de-trended observational climate forcing (counterfactual \"no climate change\" situation) + fixed CO₂ concentration at 1901 level",
+      "soc": "1860 levels of direct human forcing before 1860, varying direct human influences according to observations afterwards"
     },
-    "spin_up": "\"histsoc\" version of spin-up of model evaluation runs",
+    "spin_up": "\"histsoc\" version of the transition period of the model evaluation run",
     "historical": {
       "climate": "counterclim",
       "soc": "histsoc"
@@ -124,17 +124,19 @@
       "ISIMIP3a"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "labour",
-      "diarrhea"
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -143,10 +145,10 @@
     "subtitle": "2015soc",
     "priority": "1st priority",
     "description": {
-      "climate": "de-trended observational climate forcing (counterfactual “no climate change” situation)",
+      "climate": "de-trended observational climate forcing (counterfactual \"no climate change\" situation)",
       "soc": "fixed 2015 levels of direct human influences for the entire time period"
     },
-    "spin_up": "\"2015soc\" version of spin-up of model evaluation runs",
+    "spin_up": "\"2015soc\" version of the transition period of the model evaluation run",
     "historical": {
       "climate": "counterclim",
       "soc": "2015soc"
@@ -155,51 +157,167 @@
       "ISIMIP3a"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "coastal",
+      "diarrhea",
+      "forestry",
+      "health",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "health",
-      "diarrhea",
-      "labour",
-      "coastal",
       "marine-fishery_global",
-      "marine-fishery_regional"
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "counterfactual-nosoc",
+    "specifier": "counterfactual-nat",
     "title": "counterfactual climate",
-    "subtitle": "nosoc",
+    "subtitle": "nat",
     "priority": "2nd priority",
     "description": {
-      "climate": "de-trended observational climate forcing (counterfactual “no climate change” situation)",
-      "soc": "no direct human influences except for varying land use according to observations"
+      "climate": "de-trended observational climate forcing (counterfactual \"no climate change\" situation) + fixed CO₂ concentration at 1901 level",
+      "soc": "No direct human influences"
     },
-    "spin_up": "\"nosoc\" version of spin-up of model evaluation runs",
+    "spin_up": "\"nat\" version of the transition period of the model evaluation run",
     "historical": {
       "climate": "counterclim",
-      "soc": "nosoc"
+      "soc": "nat"
+    },
+    "simulation_rounds": [
+      "ISIMIP3a"
+    ],
+    "sectors": [
+      "biodiversity",
+      "biomes",
+      "forestry",
+      "lakes_global",
+      "lakes_local",
+      "marine-fishery_global",
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "co2sensitivity-histsoc",
+    "title": "CO₂ sensitivity",
+    "subtitle": "histsoc",
+    "priority": "2nd priority",
+    "description": {
+      "climate": "no climate change before 1901, observed forcing afterwards + fixed CO₂ concentration at 1901 level",
+      "soc": "1860 levels of direct human forcing before 1860, varying direct human influences according to observations afterwards"
+    },
+    "spin_up": "\"histsoc\" version of the transition period of the model evaluation run",
+    "historical": {
+      "climate": "obsclim",
+      "climate_sens": "1901co2",
+      "soc": "histsoc"
+    },
+    "simulation_rounds": [
+      "ISIMIP3a"
+    ],
+    "sectors": [
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "marine-fishery_global",
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "co2sensitivity-2015soc",
+    "title": "CO₂ sensitivity",
+    "subtitle": "2015soc",
+    "priority": "2nd priority",
+    "description": {
+      "climate": "no climate change before 1901, observed forcing afterwards + fixed CO₂ concentration at 1901 level",
+      "soc": "fixed 2015 levels of direct human influences for the entire time period"
+    },
+    "spin_up": "\"2015soc\" version of the transition period of the model evaluation run",
+    "historical": {
+      "climate": "obsclim",
+      "climate_sens": "1901co2",
+      "soc": "2015soc"
+    },
+    "simulation_rounds": [
+      "ISIMIP3a"
+    ],
+    "sectors": [
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "coastal",
+      "diarrhea",
+      "forestry",
+      "health",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "marine-fishery_global",
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "nowatermgt-histsoc",
+    "title": "Water management sensitivity",
+    "subtitle": "histsoc",
+    "priority": "2nd priority",
+    "description": {
+      "climate": "no climate change before 1901, observed forcing afterwards + fixed CO₂ concentration at 1901 level",
+      "soc": "no accounting for water management but representation of other direct human influences such as land use changes according to \"histsoc\""
+    },
+    "spin_up": "\"histsoc\" version of the transition period of the model evaluation run",
+    "historical": {
+      "climate": "obsclim",
+      "soc": "histsoc",
+      "soc_sens": "nowatermgt"
     },
     "simulation_rounds": [
       "ISIMIP3a"
     ],
     "sectors": [
       "water_global",
-      "water_regional",
-      "lakes_global",
-      "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "diarrhea",
-      "labour",
-      "marine-fishery_global",
-      "marine-fishery_regional",
-      "biodiversity"
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "nowatermgt-2015soc",
+    "title": "Water management sensitivity",
+    "subtitle": "2015soc",
+    "priority": "2nd priority",
+    "description": {
+      "climate": "no climate change before 1901, observed forcing afterwards + fixed CO₂ concentration at 1901 level",
+      "soc": "no accounting for water management but representation of other direct human influences such as land use patterns according to \"2015soc\""
+    },
+    "spin_up": "\"2015soc\" version of the transition period of the model evaluation run",
+    "historical": {
+      "climate": "obsclim",
+      "soc": "2015soc",
+      "soc_sens": "nowatermgt"
+    },
+    "simulation_rounds": [
+      "ISIMIP3a"
+    ],
+    "sectors": [
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -208,12 +326,12 @@
     "subtitle": "histsoc",
     "priority": "1st priority",
     "description": {
-      "climate": "no climate change, pre-industrial CO₂",
-      "soc": "varying management until 2015, then fixed at 2015 levels thereafter"
+      "climate": "no climate change, pre-industrial CO₂ fixed at 1850 levels",
+      "soc": "varying management before 2015, then fixed at 2015 levels thereafter"
     },
     "pre_industrial": {
       "climate": "picontrol",
-      "soc": "1860soc"
+      "soc": "1850soc"
     },
     "historical": {
       "climate": "picontrol",
@@ -227,19 +345,19 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "labour",
-      "diarrhea",
       "permafrost",
-      "biodiversity"
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -248,7 +366,7 @@
     "subtitle": "2015soc",
     "priority": "1st priority",
     "description": {
-      "climate": "no climate change, pre-industrial CO₂",
+      "climate": "no climate change, pre-industrial CO₂ fixed at 1850 levels",
       "soc": "fixed at 2015 levels for all periods"
     },
     "pre_industrial": {
@@ -267,58 +385,58 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "health",
+      "coastal",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "health",
-      "diarrhea",
-      "labour",
-      "coastal",
       "marine-fishery_global",
       "marine-fishery_regional",
       "permafrost",
-      "biodiversity"
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "picontrol-nosoc",
+    "specifier": "picontrol-nat",
     "title": "pre-industrial control",
-    "subtitle": "nosoc",
+    "subtitle": "nat",
     "priority": "2nd priority",
     "description": {
-      "climate": "no climate change, pre-industrial CO₂",
-      "soc": "no direct human influences except for varying land use changes up to 2015"
+      "climate": "no climate change, pre-industrial CO₂ fixed at 1850 levels",
+      "soc": "No direct human influences"
     },
     "pre_industrial": {
       "climate": "picontrol",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "historical": {
       "climate": "picontrol",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "future": {
       "climate": "picontrol",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "simulation_rounds": [
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
-      "lakes_global",
-      "lakes_local",
+      "biodiversity",
       "biomes",
       "forestry",
-      "permafrost",
+      "lakes_global",
+      "lakes_local",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "biodiversity"
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -327,10 +445,10 @@
     "subtitle": "histsoc",
     "priority": "1st priority",
     "description": {
-      "climate": "SSP1-RCP2.6 climate & CO₂",
-      "soc": "varying management until 2015, then fixed at 2015 levels thereafter"
+      "climate": "Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate & CO₂",
+      "soc": "varying management before 2015, then fixed at 2015 levels thereafter"
     },
-    "pre_industrial": "\"histsoc\" version of pre-industrial of pre-industrial control experiment runs",
+    "pre_industrial": "\"histsoc\" version of the pre-industrial period of the pre-industrial control experiment",
     "historical": {
       "climate": "historical",
       "soc": "histsoc"
@@ -343,19 +461,19 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "labour",
-      "diarrhea",
       "permafrost",
-      "biodiversity"
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -364,10 +482,10 @@
     "subtitle": "2015soc",
     "priority": "1st priority",
     "description": {
-      "climate": "SSP1-RCP2.6 climate & CO₂",
+      "climate": "Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate & CO₂",
       "soc": "fixed at 2015 levels for all periods"
     },
-    "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
+    "pre_industrial": "\"2015soc\" version of the pre-industrial period of the pre-industrial control experiment",
     "historical": {
       "climate": "historical",
       "soc": "2015soc"
@@ -380,69 +498,71 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "coastal",
+      "diarrhea",
+      "forestry",
+      "health",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "health",
-      "diarrhea",
-      "labour",
-      "coastal",
       "marine-fishery_global",
       "marine-fishery_regional",
       "permafrost",
-      "biodiversity"
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "rcp26-nosoc",
+    "specifier": "rcp26-nat",
     "title": "RCP2.6",
-    "subtitle": "nosoc",
+    "subtitle": "nat",
     "priority": "2nd priority",
     "description": {
-      "climate": "SSP1-RCP2.6 climate & CO₂",
-      "soc": "no direct human influences except for varying land use changes up to 2015"
+      "climate": "Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate & CO₂",
+      "soc": "No direct human influences"
     },
-    "pre_industrial": "\"nosoc\" version of pre-industrial of pre-industrial control experiment runs",
+    "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
     "historical": {
       "climate": "historical",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "future": {
       "climate": "ssp126",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "simulation_rounds": [
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "biodiversity",
+      "biomes",
+      "forestry",
       "lakes_global",
       "lakes_local",
-      "forestry",
-      "permafrost",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "biodiversity"
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "rcp26-histsoc-2015co2",
-    "title": "RCP2.6",
-    "subtitle": "histsoc but fixed CO₂",
-    "priority": "1st priority",
+    "specifier": "co2sensitivity-rcp26-histsoc",
+    "title": "CO₂ sensitivity RCP2.6",
+    "subtitle": "histsoc",
+    "priority": "2nd priority",
     "description": {
-      "climate": "SSP1-RCP2.6 climate, CO2 after 2015 fixed at 2015 levels",
-      "soc": "varying management until 2015, then fixed at 2015 levels thereafter"
+      "climate": "RCP2.6 climate, CO2 after 2015 fixed at 2015 levels",
+      "soc": "varying management before 2015, then fixed at 2015 levels thereafter"
     },
-    "pre_industrial": "\"histsoc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": "\"histsoc\" version of RCP2.6 experiment runs",
+    "pre_industrial": "\"histsoc\" version of the pre-industrial period of the pre-industrial control experiment",
+    "historical": "\"histsoc\" version of the historical period of the RCP2.6 experiment, as described above",
     "future": {
-      "climate": "ssp126 2015co2",
+      "climate": "ssp126",
+      "climate_sens": "2015co2",
       "soc": "2015soc"
     },
     "simulation_rounds": [
@@ -450,30 +570,8 @@
     ],
     "sectors": [
       "biomes",
-      "forestry"
-    ]
-  },
-  {
-    "specifier": "rcp26-2015soc-2015co2",
-    "title": "RCP2.6",
-    "subtitle": "2015soc but fixed CO₂",
-    "priority": "1st priority",
-    "description": {
-      "climate": "SSP1-RCP2.6 climate, CO2 after 2015 fixed at 2015 levels",
-      "soc": "fixed at 2015 levels for all periods"
-    },
-    "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": "\"2015soc\" version of RCP2.6 experiment runs",
-    "future": {
-      "climate": "ssp126 2015co2",
-      "soc": "2015soc"
-    },
-    "simulation_rounds": [
-      "ISIMIP3b"
-    ],
-    "sectors": [
-      "biomes",
-      "forestry"
+      "forestry",
+      "permafrost"
     ]
   },
   {
@@ -483,13 +581,10 @@
     "priority": "1st priority",
     "description": {
       "climate": "SSP5-RCP8.5 climate & CO₂",
-      "soc": "varying management until 2015, then fixed at 2015 levels thereafter"
+      "soc": "varying management before 2015, then fixed at 2015 levels thereafter"
     },
     "pre_industrial": "\"histsoc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": {
-      "climate": "historical",
-      "soc": "histsoc"
-    },
+    "historical": "\"histsoc\" version of the historical period of the RCP2.6 experiment",
     "future": {
       "climate": "ssp585",
       "soc": "2015soc"
@@ -498,17 +593,17 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biomes",
+      "diarrhea",
+      "forestry",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "labour",
-      "diarrhea"
+      "water_global",
+      "water_regional"
     ]
   },
   {
@@ -521,10 +616,7 @@
       "soc": "fixed at 2015 levels for all periods"
     },
     "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": {
-      "climate": "historical",
-      "soc": "2015soc"
-    },
+    "historical": "\"2015soc\" version of the historical period of the RCP2.6 experiment",
     "future": {
       "climate": "ssp585",
       "soc": "2015soc"
@@ -533,108 +625,142 @@
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "coastal",
+      "diarrhea",
+      "forestry",
+      "health",
+      "labour",
       "lakes_global",
       "lakes_local",
-      "biomes",
-      "forestry",
-      "agriculture",
-      "health",
-      "diarrhea",
-      "labour",
-      "coastal",
       "marine-fishery_global",
-      "marine-fishery_regional"
+      "marine-fishery_regional",
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "rcp85-nosoc",
+    "specifier": "rcp85-nat",
     "title": "RCP8.5",
-    "subtitle": "nosoc",
+    "subtitle": "nat",
     "priority": "2nd priority",
     "description": {
       "climate": "SSP5-RCP8.5 climate & CO₂",
-      "soc": "no direct human influences except for varying land use changes up to 2015"
+      "soc": "No direct human influences"
     },
-    "pre_industrial": "\"nosoc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": {
-      "climate": "historical",
-      "soc": "nosoc"
-    },
+    "pre_industrial": "\"nat\" version of pre-industrial of pre-industrial control experiment runs",
+    "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
     "future": {
       "climate": "ssp585",
-      "soc": "nosoc"
+      "soc": "nat"
     },
     "simulation_rounds": [
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
+      "biodiversity",
+      "biomes",
+      "forestry",
       "lakes_global",
       "lakes_local",
-      "forestry",
-      "permafrost",
       "marine-fishery_global",
       "marine-fishery_regional",
-      "biodiversity"
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "rcp85-histsoc-2015co2",
-    "title": "RCP8.5",
-    "subtitle": "histsoc but fixed CO₂",
+    "specifier": "co2sensitivity-rcp85-histsoc",
+    "title": "CO₂ sensitivity RCP8.5",
+    "subtitle": "histsoc",
     "priority": "1st priority",
     "description": {
-      "climate": "SSP5-RCP8.5 climate, CO₂ after 2015 fixed at 2015 levels",
-      "soc": "varying management until 2015, then fixed at 2015 levels thereafter"
+      "climate": "Historical climate and CO₂ forcing up to 2015, fixed 2015 CO₂ afterwards",
+      "soc": "varying management before 2015, then fixed at 2015 levels thereafter"
     },
-    "pre_industrial": "\"histsoc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": "\"histsoc\" version of RCP8.5 experiment runs",
+    "pre_industrial": "\"histsoc\" version of the pre-industrial period of the pre-industrial control experiment",
+    "historical": "\"histsoc\" version of the historical period of the RCP2.6 experiment",
     "future": {
-      "climate": "ssp585 2015co2",
+      "climate": "ssp585",
+      "climate_sens": "2015co2",
       "soc": "2015soc"
     },
     "simulation_rounds": [
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
-      "lakes_global",
-      "lakes_local",
+      "agriculture",
       "biomes",
       "forestry",
-      "agriculture"
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   },
   {
-    "specifier": "rcp85-2015soc-2015co2",
-    "title": "RCP8.5",
-    "subtitle": "2015soc but fixed CO₂",
+    "specifier": "co2sensitivity-rcp85-2015soc",
+    "title": "CO₂ sensitivity RCP8.5",
+    "subtitle": "2015soc",
     "priority": "1st priority",
     "description": {
-      "climate": "SSP5-RCP8.5 climate, CO₂ after 2015 fixed at 2015 levels",
-      "soc": "fixed at 2015 levels for all periods"
+      "climate": "Historical climate and CO₂ forcing up to 2015, fixed 2015 CO₂ afterwards",
+      "soc": "fixed direct human forcing at 2015 levels for the entire simulation period"
     },
-    "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
-    "historical": "\"2015soc\" version of RCP8.5 experiment runs",
+    "pre_industrial": "\"2015soc\" version of the pre-industrial period of the pre-industrial control experiment",
+    "historical": "\"2015soc\" version of the historical period of the RCP2.6 experiment",
     "future": {
-      "climate": "ssp585 2015co2",
+      "climate": "ssp585",
+      "climate_sens": "2015co2",
       "soc": "2015soc"
     },
     "simulation_rounds": [
       "ISIMIP3b"
     ],
     "sectors": [
-      "water_global",
-      "water_regional",
-      "lakes_global",
-      "lakes_local",
+      "agriculture",
       "biomes",
       "forestry",
-      "agriculture"
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
+  },
+  {
+    "specifier": "co2sensitivity-rcp85-nat",
+    "title": "CO₂ sensitivity RCP8.5",
+    "subtitle": "nat",
+    "priority": "1st priority",
+    "description": {
+      "climate": "Historical climate and CO₂ forcing up to 2015, fixed 2015 CO₂ afterwards",
+      "soc": "No direct human influences"
+    },
+    "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
+    "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
+    "future": {
+      "climate": "ssp585",
+      "climate_sens": "2015co2",
+      "soc": "nat"
+    },
+    "simulation_rounds": [
+      "ISIMIP3b"
+    ],
+    "sectors": [
+      "agriculture",
+      "biomes",
+      "forestry",
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
     ]
   }
 ]

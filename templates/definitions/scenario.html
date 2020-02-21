@@ -4,17 +4,18 @@
     </caption>
     <thead>
         <tr>
-            <th style="width: 20%;">Experiment</th>
+            <th style="width: 25%;">Experiment</th>
 
             {% if simulation_round.specifier.endswith('a') %}
 
-            <th style="width: 45%;">Short description</th>
-            <th style="width: 15%;">
-                <p>Spin up (XXXX-1900)</p>
-                <p>(only if spin-up is needed)</p>
+            <th style="width: 25%;">Short description</th>
+            <th style="width: 25%;">
+                <p>Transition from Spin-up to experiment</p>
+                <p>1860-1900, only if spin-up is needed</p>
             </th>
-            <th style="width: 15%;">
-                <p>Historical (1901-2018)</p>
+            <th style="width: 25%;">
+                <p>Historical</p>
+                <p>1901-2018</p>
             </th>
 
             {% else %}
@@ -39,7 +40,7 @@
     <tbody>
         {% for row in table %}
         <tr>
-            <td rowspan="2" class="border-bottom">
+            <td rowspan="2" class="extra-border-bottom">
                 <h4>{{ row.title }}</h4>
                 {% if row.subtitle %}<p>{{ row.subtitle }}</p>{% endif%}
                 {% if row.priority %}<p><strong>{{ row.priority }}</strong></p>{% endif%}
@@ -57,17 +58,24 @@
                     </p>
                 </td>
                 {% else %}
-                <td rowspan="2" class="border-bottom">
+                <td rowspan="2" class="extra-border-bottom">
                     {{ row.spin_up }}
                 </td>
                 {% endif %}
 
                 {% if row.historical.climate %}
                 <td class="gray">
-                    <strong>{{ row.historical.climate }}</strong>
+                    <p>
+                        <strong>{{ row.historical.climate }}</strong>
+                    </p>
+                    {% if row.historical.climate_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.historical.climate_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% else %}
-                <td rowspan="2" class="border-bottom">
+                <td rowspan="2" class="extra-border-bottom">
                     {{ row.historical }}
                 </td>
                 {% endif %}
@@ -76,30 +84,51 @@
 
                 {% if row.pre_industrial.climate %}
                 <td class="gray">
-                    <strong>{{ row.pre_industrial.climate }}</strong>
+                    <p>
+                        <strong>{{ row.pre_industrial.climate }}</strong>
+                    </p>
+                    {% if row.pre_industrial.climate_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.pre_industrial.climate_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% else %}
-                <td rowspan="2" class="border-bottom">
+                <td rowspan="2" class="extra-border-bottom">
                     {{ row.pre_industrial }}
                 </td>
                 {% endif %}
 
                 {% if row.historical.climate %}
                 <td class="gray">
-                    <strong>{{ row.historical.climate }}</strong>
+                    <p>
+                        <strong>{{ row.historical.climate }}</strong>
+                    </p>
+                    {% if row.historical.climate_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.historical.climate_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% else %}
-                <td rowspan="2" class="border-bottom">
+                <td rowspan="2" class="extra-border-bottom">
                     {{ row.historical }}
                 </td>
                 {% endif %}
 
                 {% if row.future.climate %}
                 <td class="red">
-                    <strong>{{ row.future.climate }}</strong>
+                    <p>
+                        <strong>{{ row.future.climate }}</strong>
+                    </p>
+                    {% if row.future.climate_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.future.climate_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% else %}
-                <td rowspan="2" class="border-bottom">
+                <td rowspan="2" class="extra-border-bottom">
                     {{ row.future }}
                 </td>
                 {% endif %}
@@ -107,41 +136,76 @@
             {% endif %}
         </tr>
         <tr>
-            <td class="border-bottom">
+            <td class="extra-border-bottom">
                 <strong>DHF:</strong> {{ row.description.soc }}
             </td>
 
             {% if simulation_round.specifier.endswith('a') %}
 
                 {% if row.spin_up.soc %}
-                <td class="green border-bottom" >
-                    <strong>{{ row.spin_up.soc }}</strong>
+                <td class="green extra-border-bottom" >
+                    <p>
+                        <strong>{{ row.spin_up.soc }}</strong>
+                    </p>
+                    {% if row.spin_up.soc_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.spin_up.soc_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% endif %}
 
                 {% if row.historical.soc %}
-                <td class="gray border-bottom">
-                    <strong>{{ row.historical.soc }}</strong>
+                <td class="gray extra-border-bottom">
+                    <p>
+                        <strong>{{ row.historical.soc }}</strong>
+                    </p>
+                    {% if row.historical.soc_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.historical.soc_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% endif %}
 
             {% else %}
 
                 {% if row.pre_industrial.soc %}
-                <td class="gray border-bottom">
-                    <strong>{{ row.pre_industrial.soc }}</strong>
+                <td class="gray extra-border-bottom">
+                    <p>
+                        <strong>{{ row.pre_industrial.soc }}</strong>
+                    </p>
+                    {% if row.pre_industrial.soc_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.pre_industrial.soc_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% endif %}
 
                 {% if row.historical.soc %}
-                <td class="gray border-bottom">
-                    <strong>{{ row.historical.soc }}</strong>
+                <td class="gray extra-border-bottom">
+                    <p>
+                        <strong>{{ row.historical.soc }}</strong>
+                    </p>
+                    {% if row.historical.soc_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.historical.soc_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% endif %}
 
                 {% if row.future.soc %}
-                <td class="red border-bottom">
-                    <strong>{{ row.future.soc }}</strong>
+                <td class="red extra-border-bottom">
+                    <p>
+                        <strong>{{ row.future.soc }}</strong>
+                    </p>
+                    {% if row.future.soc_sens %}
+                    <p>
+                        <strong>Sensitivity scenario: {{ row.future.soc_sens }}</strong>
+                    </p>
+                    {% endif %}
                 </td>
                 {% endif %}
 
