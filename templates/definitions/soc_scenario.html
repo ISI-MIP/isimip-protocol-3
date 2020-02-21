@@ -10,7 +10,14 @@
         {% for row in table %}
         <tr>
             <td><strong>{{ row.specifier }}</strong></td>
-            <td>{{ row.description }}</td>
+            <td>
+                <p>
+                    {{ row.description }}
+                </p>
+                <p>
+                    {{ markdown(row.description_note)|safe }}
+                </p>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
