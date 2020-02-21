@@ -2,12 +2,16 @@
 
 {{ table('variable', {
     'Hydrological variables': [
+        'qtot',
+        'qs',
         'qr',
+        'qg',
         'dis',
         'evap',
         'potevap',
         'soilmoist',
-        'rootmoist'
+        'rootmoist',
+        'swe'
     ],
     'Water management variables (for models that consider water management/human impacts)': [
         'pirrww',

@@ -8,8 +8,6 @@
         'qr',
         'qg',
         'dis',
-        'maxdis',
-        'mindis',
         'evap',
         'potevap',
         'soilmoist',

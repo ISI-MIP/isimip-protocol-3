@@ -3,15 +3,22 @@
     "specifier": "qtot",
     "title": "Runoff",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "biomes": "0.5° grid",
+      "permafrost": "0.5° grid"
+    },
     "frequency": {
       "biomes": "monthly",
       "permafrost": "monthly",
-      "water_global": "daily & montly"
+      "water_global": "daily & monthly",
+      "water_regional": "daily & monthly"
     },
     "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
     "sectors": [
       "water_global",
+      "water_regional",
       "biomes",
       "permafrost"
     ]
@@ -20,12 +27,18 @@
     "specifier": "qs",
     "title": "Surface runoff",
     "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "biomes": "0.5° grid",
+      "permafrost": "0.5° grid"
+    },
     "frequency": "monthly",
     "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
     "sectors": [
       "biomes",
       "water_global",
+      "water_regional",
       "permafrost"
     ]
   },
@@ -46,7 +59,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
@@ -72,7 +85,7 @@
     "unit": "m3 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "daily & monthly",
     "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
@@ -95,7 +108,7 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": {
       "biomes": "daily, monthly",
@@ -117,7 +130,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
@@ -134,7 +147,7 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
       "permafrost": "0.5° grid"
     },
     "frequency": {
@@ -157,7 +170,12 @@
     "specifier": "rootmoist",
     "title": "Soil moisture, root zone",
     "unit": "kg m-2",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "biomes": "0.5° grid",
+      "permafrost": "0.5° grid"
+    },
     "frequency": "monthly",
     "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
@@ -220,12 +238,18 @@
     "specifier": "swe",
     "title": "Snow water equivalent",
     "unit": "kg m-2",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "biomes": "0.5° grid",
+      "permafrost": "0.5° grid"
+    },
     "frequency": "monthly",
     "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
     "sectors": [
       "biomes",
       "water_global",
+      "water_regional",
       "permafrost"
     ]
   },
@@ -349,7 +373,7 @@
     },
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": {
       "agriculture": "seasonal",
@@ -369,7 +393,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
@@ -384,7 +408,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
@@ -399,7 +423,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
@@ -414,7 +438,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
@@ -429,7 +453,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
@@ -444,7 +468,7 @@
     "unit": "kg m-2 s-1",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location (average over basin)"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
