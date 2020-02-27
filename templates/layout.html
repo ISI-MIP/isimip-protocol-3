@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
 
@@ -55,13 +56,8 @@
                 margin-bottom: 2rem;
                 font-size: small;
             }
-            tr, th, td {
+            .table thead th {
                 vertical-align: top;
-            }
-            .table-bordered tr,
-            .table-bordered th,
-            .table-bordered td {
-                border-color: #454d55;
             }
             td :last-child {
                 margin-bottom: 0;
@@ -73,7 +69,7 @@
                 margin-bottom: 0.5rem;
             }
             td.extra-border-bottom {
-                border-bottom-width: 2px;
+                border-bottom-width: 3px;
             }
             td.no-border-bottom {
                 border-bottom-color: transparent;
@@ -108,8 +104,19 @@
                 body {
                     /* fix colors in printing */
                     -webkit-print-color-adjust: exact;
-
-                    margin-bottom: 40mm;
+                    color-adjust: exact;
+                }
+                h2, h3 {
+                    page-break-inside: avoid;
+                }
+                h2::after, h3::after  {
+                    content: "";
+                    display: block;
+                    height: 100px;
+                    margin-bottom: -100px;
+                }
+                @page {
+                    margin: 1in;
                 }
             }
         </style>
