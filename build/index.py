@@ -4,6 +4,7 @@ import subprocess
 from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
+from markdown import markdown
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -30,7 +31,13 @@ def main():
 
         pages.append(simulation_round)
 
-    # step 2: render content into layout template
+    # step 2: open and read intro
+    markdown_path = os.path.join('protocol', '10.index.md')
+    with open(markdown_path) as f:
+        md = f.read()
+        html = markdown(md)
+
+    # step 3: render content into layout template
     template_path = os.path.join('templates', 'index.html')
     output_path = os.path.join('output', 'index.html')
     enviroment = Environment(loader=FileSystemLoader(['templates']))
@@ -38,8 +45,7 @@ def main():
     with open(template_path) as f:
         template = enviroment.from_string(f.read())
     with open(output_path, 'w') as f:
-        f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
-                                pages=pages))
+        f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date, pages=pages, html=html))
 
 
 if __name__ == "__main__":

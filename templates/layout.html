@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
 
@@ -6,44 +7,12 @@
         <title>{{ simulation_round.title }} &ndash; {{ sector.title }}</title>
         {% endblock %}
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
         <style>
-            @media screen {
-                html {
-                    background-color: silver;
-                }
-                body {
-                    background-color: white;
-                    box-shadow: 0 0 10px #666;
-                    width: 60rem;
-                    margin: 0 auto;
-                    padding: 2rem;
-                }
-                td.no-border-bottom {
-                    border-bottom-color: transparent;
-                }
-            }
-            @media print {
-                body {
-                    margin: 20mm;
-
-                    /* fixex colors in printing */
-                    -webkit-print-color-adjust: exact;
-                }
-                h2 {
-                    break-before: always;
-                }
-            }
-            body {
-                font-family: Helvetica, Arial, sans;
-                font-size: 12pt;
-                line-height: 1.25rem;
-            }
             h1 {
-                margin-top: 3rem;
+                margin-top: 0;
                 margin-bottom: 3rem;
-
-                font-size: 2rem;
-                line-height: 2rem;
             }
             h2 {
                 margin-top: 3rem;
@@ -53,160 +22,138 @@
                 margin-top: 2rem;
                 margin-bottom: 1rem;
             }
-            h5 {
-                margin: 0;
-                font-size: 1rem;
+            h4 {
+                font-weight: bold;
+                font-size: 1.2rem;
             }
-            a, a:hover, a:visited, a:focus {
-                color: #0681be;
-                text-decoration: none;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-            table {
-                border-collapse: collapse;
-
-                margin-top: 1rem;
-                margin-bottom: 2rem;
-                width: 100%;
-            }
-            table, th, td {
-                border: 1px solid #4A4A4A;
-            }
-            th, td {
-                padding: 0.8rem;
-                font-size: 0.7em;
-                vertical-align: top;
-                line-height: 1.2em;
-            }
-            td ul {
-                margin: 0;
-                padding-left: 0.8rem;
-            }
-            td ul li {
-                margin-bottom: 0.2rem;
-            }
-            td ul li:last-child {
-                margin-bottom: 0;
-            }
-            td h4 {
-                font-size: 1rem;
-                line-height: 1.1rem;
-                margin-top: 0;
-                margin-bottom: 0.7rem;
-            }
-            td.extra-border-bottom {
-                border-bottom-width: 2px;
-            }
-            table a {
-                word-break: break-all;
-            }
-            table code {
-                font-size: small;
-            }
-            caption {
-                text-align: left;
-                margin-bottom: 0.5em;
-                font-size: small;
-            }
-            thead {
-                background-color: #4A4A4A;
-                color: white;
-            }
-            table .red {
-                background-color: #E5B8B7;
-            }
-            table .gray {
-                background-color: #e5e5e5;
-            }
-            table .green {
-                background-color: #D9EAD3;
-            }
-            code {
-                font-size: 0.8rem;
-                color: #333;
-                background-color: #e5e5e5;
-                border-radius: 3px;
-                padding: 0 3px;
-
-                word-break: break-all;
+            h1, h2, h3 {
+                color: rgb(74, 74, 74);
             }
             header {
                 font-size: small;
-                height: 4rem;
-                padding-bottom: 2rem;
-                border-bottom: 1px solid silver;
+                border-bottom: 1px solid rgb(164, 164, 164);
             }
             header img.logo {
                 display: block;
-                height: 4rem;
+                height: 3.4rem;
             }
             header .right {
                 float: right;
                 text-align: right;
             }
+            header p {
+                margin: 1rem 0;
+            }
+            main {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
             footer {
-                text-align: center;
-                margin-top: 2rem;
-                padding-top: 1rem;
-                border-top: 1px solid silver;
+                border-top: 1px solid rgb(164, 164, 164);
+                padding: 1rem 0;
+            }
+            table.table {
+                margin-bottom: 2rem;
+                font-size: small;
+            }
+            .table thead th {
+                vertical-align: top;
+            }
+            td :last-child {
+                margin-bottom: 0;
+            }
+            td ul {
+                padding-left: 1.2rem;
+            }
+            td li {
+                margin-bottom: 0.5rem;
+            }
+            td.extra-border-bottom {
+                border-bottom-width: 3px;
+            }
+            td.no-border-bottom {
+                border-bottom-color: transparent;
+            }
+            caption {
+                caption-side: top;
             }
             pre {
                 background-color: #efefef;
                 padding: 0.5rem 1rem;
                 white-space: pre-wrap;
-                font-size: smaller;
             }
             pre code {
                 font-size: smaller;
                 background-color: transparent;
                 padding: 0;
             }
-            .toc {
-                width: 50%;
-                border: 1px solid silver;
+            code {
+                word-break: break-all;
             }
-            .toc ul {
-                margin-top: 0.25rem;
-                padding-left: 2rem;
+            .toc {
+                width: 33%;
+                border: 1px solid rgb(164, 164, 164);
             }
             .toc > ul {
                 margin-top: 1rem;
-                margin-bottom: 1rem;
-                padding-left: 1rem;
             }
             .toc li {
-                margin-bottom: 0.25rem;
                 list-style: none;
+            }
+            @media print {
+                body {
+                    /* fix colors in printing */
+                    -webkit-print-color-adjust: exact;
+                    color-adjust: exact;
+                }
+                h2, h3 {
+                    page-break-inside: avoid;
+                }
+                h2::after, h3::after  {
+                    content: "";
+                    display: block;
+                    height: 100px;
+                    margin-bottom: -100px;
+                }
+                @page {
+                    margin: 1in;
+                }
             }
         </style>
     </head>
     <body>
         <header>
-            <div class="right">
-                <p>
-                    Last updated: {{ commit_date }}
-                </p>
-                <p>
-                    Commit hash: <a href="{{ commit_url }}">{{ commit_hash }}</a>
-                </p>
-            </div>
-            <div>
-                <a href="/">
-                    <img class="logo" src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
-                </a>
+            <div class="container">
+                <div class="float-left">
+                    <a href="/">
+                        <img class="logo" src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
+                    </a>
+                </div>
+                <div class="text-right">
+                    <p>
+                        Last updated: {{ commit_date }}
+                    </p>
+                    <p>
+                        Commit hash: <a href="{{ commit_url }}">{{ commit_hash }}</a>
+                    </p>
+                </div>
             </div>
         </header>
 
         <main>
-            {% block content %}
-            {{ content|safe }}
-            {% endblock %}
+            <div class="container">
+                {% block content %}
+                {{ content|safe }}
+                {% endblock %}
+            </div>
         </main>
 
         <footer>
-            For questions or clarifications, please contact <a href="mailto:info@isimip.org">info@isimip.org</a>.
+            <div class="container">
+                <div class="text-center">
+                    For questions or clarifications, please contact <a href="mailto:info@isimip.org">info@isimip.org</a>.
+                </div>
+            </div>
         </footer>
     </body>
 </html>
