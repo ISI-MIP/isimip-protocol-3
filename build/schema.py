@@ -28,8 +28,8 @@ def main():
                     schema = json.loads(f.read())
                     schema['commit'] = commit
 
-                # step 2: loop over properties/identifiers/properties and add enums from definition files
-                for identifier, properties in schema['properties']['identifiers']['properties'].items():
+                # step 2: loop over properties and add enums from definition files
+                for identifier, properties in schema['properties'].items():
                     definition_path = os.path.join('definitions', '{}.json'.format(identifier))
 
                     if properties['type'] == 'string':
