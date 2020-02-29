@@ -21,23 +21,21 @@ def main():
                 # create a pattern json from scratch
                 pattern_json = {
                     'commit': commit,
-                    'path': [
+                    'path': os.path.sep.join([
                         '(?P<simulation_round>[A-Za-z0-9]+)',
                         '(?P<product>[A-Za-z]+)',
                         '(?P<sector>[a-z0-9-_]+)',
                         '(?P<model>[A-Za-z0-9-+.]+)',
                         '(?P<climate_forcing>[a-z0-9-]+)',
                         '(?P<period>[a-z0-9-_]+)'
-                    ],
-                    'dataset': [],
-                    'file': [],
+                    ]) + '$'
                 }
 
                 # step 2: open and read pattern
                 with open(pattern_path) as f:
                     pattern = json.loads(f.read())
-                    pattern_json['dataset'] = pattern[:-2]
-                    pattern_json['file'] = pattern
+                    pattern_json['dataset'] = '^' + '_'.join(pattern[:-2])
+                    pattern_json['file'] = '^' + '_'.join(pattern) + '.nc$'
 
                 # step 3: write json file
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
