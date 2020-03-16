@@ -1,20 +1,19 @@
 <table id="tbl:climate_forcing" class="tablenos table table-bordered w-100">
     <caption>
-      Table {{ counter() }}: Climate forcing datasets for {{ simulation_round.specifier }} simulations.
+      Table {{ counter() }}: Climate and climate-related forcing data.
     </caption>
     <thead class="thead-dark">
-        <th style="width: 15%;">Specifier</th>
         <th style="width: 15%;">Title</th>
+        <th style="width: 15%;">Specifier</th>
         {% if simulation_round.specifier.endswith('a') %}
-        <th style="width: 5%;">Reanalysis</th>
-        <th style="width: 5%;">Years</th>
-        <th style="width: 10%;">Bias target</th>
-        <th style="width: 5%;">Priority</th>
-        <th style="width: 30%;">Comments</th>
+        <th style="width: 10%;">Time period</th>
+        <th style="width: 10%;">Reanalysis</th>
+        <th style="width: 15%;">Bias adjustment target</th>
+        <th style="width: 35%;">Comments</th>
         {% else %}
-        <th style="width: 10%;">Years</th>
-        <th style="width: 5%;">Bias target</th>
-        <th style="width: 40%;">Comments</th>
+        <th style="width: 50%;">Institution</th>
+        <th style="width: 10%;">Original resolution</th>
+        <th style="width: 10%;">Ensemble member</th>
         {% endif %}
     </thead>
     <tbody>
@@ -23,15 +22,14 @@
             <td>{{ row.title }}</td>
             <td><strong>{{ row.specifier }}</strong></td>
             {% if simulation_round.specifier.endswith('a') %}
+            <td>{{ row.time_period }}</td>
             <td>{{ row.reanalysis }}</td>
-            <td>{{ row.years }}</td>
-            <td>{{ row.bias_target }}</td>
-            <td>{{ row.priority }}</td>
+            <td>{{ row.bias_adjustment_target }}</td>
             <td>{{ row.comments }}</td>
             {% else %}
-            <td>{{ row.years }}</td>
-            <td>{{ row.bias_target }}</td>
-            <td>{{ row.comments }}</td>
+            <td>{{ row.institution }}</td>
+            <td>{{ row.original_resolution }}</td>
+            <td>{{ row.ensemble_member }}</td>
             {% endif %}
         </tr>
         {% endfor %}
