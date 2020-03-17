@@ -3,7 +3,8 @@
 {{ table('variable', {
     'Key model output': [
         'yield',
-        'pirrww'
+        'pirrww',
+        'soilmoist'
     ],
     'Key diagnostic variables': [
         'aet',
