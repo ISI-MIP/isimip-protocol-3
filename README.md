@@ -119,8 +119,35 @@ Here `localbc` only applies to the `forestry` sector, while the other objects ar
 ]
 ```
 
-Some attributes (e.g. `frequency`) can have objects as value, which the are evaluated for the particular sector.
+Some attributes (e.g. `frequency`) can have objects as value, which the are evaluated for the particular sector. For reference, the full list for `simulation_rounds` and `sectors` are:
 
+```
+"simulation_rounds": [
+  "ISIMIP3a",
+  "ISIMIP3b"
+],
+```
+
+```
+"sectors": [
+  "agriculture",
+  "biodiversity",
+  "biomes",
+  "coastal",
+  "diarrhea",
+  "energy",
+  "forestry",
+  "health",
+  "labour",
+  "lakes_global",
+  "lakes_local",
+  "marine-fishery_global",
+  "marine-fishery_regional",
+  "permafrost",
+  "water_global",
+  "water_regional"
+]
+```
 
 Render
 ------

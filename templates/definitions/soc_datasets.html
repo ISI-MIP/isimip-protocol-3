@@ -11,6 +11,7 @@
     </thead>
     <tbody>
         {% for group, rows in table.items() %}
+        {% if rows %}
         <tr>
             <td colspan="7" class="table-secondary">
                 <strong>{{ group }}</strong>
@@ -56,6 +57,7 @@
             <td>{{ markdown(row.comment)|safe }}</td>
         </tr>
         {% endfor %}
+        {% endif %}
         {% endfor %}
     </tbody>
 </table>
