@@ -74,7 +74,7 @@ def get_pattern_simple(pattern_list):
         p = p.replace('\d{4}', '')
         p = p.replace('P', '').replace('?', '')
         p = p.replace('(<', '<').replace('>)', '>')
-
+        p = p.replace('_', '-')
         pattern_simple_list.append(p)
 
     return '_'.join(pattern_simple_list) + '.nc'
