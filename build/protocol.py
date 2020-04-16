@@ -42,7 +42,7 @@ def main():
 
             # step 1: open and read protocol
             with open(pattern_path) as f:
-                pattern_list = json.loads(f.read())
+                pattern_list = json.loads(f.read())['file']
                 pattern = '_'.join(pattern_list) + '.nc'
                 pattern_simple = get_pattern_simple(pattern_list)
 
