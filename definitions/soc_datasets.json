@@ -244,9 +244,9 @@
     ]
   },
   {
-    "specifier": "ndep_nhx",
+    "specifier": "ndep-nhx",
     "title": "Reduced nitrogen deposition",
-    "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep_nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
+    "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
     "variables": [
       "NHx deposition"
     ],
@@ -280,9 +280,9 @@
     ]
   },
   {
-    "specifier": "ndep_noy",
+    "specifier": "ndep-noy",
     "title": "Oxidized nitrogen deposition",
-    "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep_noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
+    "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
     "variables": [
       "NOy deposition"
     ],
@@ -316,11 +316,11 @@
     ]
   },
   {
-    "specifier": "reservoirs_dams",
+    "specifier": "reservoirs-dams",
     "title": "Reservoirs & dams",
     "file_path": {
-      "ISIMIP3a": "socioeconomic/reservoir_dams/reservoirs_dams_1860_2025.xls",
-      "ISIMIP3b": "socioeconomic/reservoir_dams/reservoirs_dams_1850_2014.xls"
+      "ISIMIP3a": "socioeconomic/reservoir_dams/reservoirs-dams_1860_2025.xls",
+      "ISIMIP3b": "socioeconomic/reservoir_dams/reservoirs-dams_1850_2014.xls"
     },
     "variables": [
       "Unique ID representing a dam and its associated reservoir corresponding to GRanD/KSU IDs (ID)",
@@ -343,10 +343,10 @@
     ],
     "time_periods": {
       "ISIMIP3a": [
-        "1908-2025"
+        "1860-2025"
       ],
       "ISIMIP3b": [
-        "1908-2014"
+        "1850-2014"
       ]
     },
     "resolution": "0.5° grid and original coordinates (degree)",
@@ -479,6 +479,25 @@
     ]
   },
   {
+    "specifier": "pctlake",
+    "title": "",
+    "file_path": "socioeconomic/lakes/pctlake_<soc_scenario>_<start_year>_<end_year>.nc",
+    "variables": [
+      "percentage of lakes in grid cell (pct_lake)"
+    ],
+    "resolution": "0.5° grid",
+    "format": "NetCDF",
+    "comment": "HydroLAKES polygons dataset v1.0 June 2019 and GRanD v1.3, rasterized using the polygon_to_cellareafraction tool (https://github.com/VUB-HYDR/polygon_to_cellareafraction). Reference: Messager et al. (2016, <https://dx.doi.org/10.1038/ncomms13603>, Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>).",
+    "sectors": [
+      "agriculture",
+      "diarrhea",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "water_global"
+    ]
+  },
+  {
     "specifier": "population_5arcmin",
     "title": "Population 5' grid",
     "file_path": "socioeconomic/population/<soc_scenario>/<soc_scenario>_population_5arcmin_annual_<start-year>_<end-year>.nc",
@@ -541,7 +560,7 @@
     },
     "resolution": "national",
     "frequency": "annual",
-    "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). Decadal data prior to year 1950 have been linearly interpolated in time."
+    "comment": "HYDE v3.2.1 (based on WPP 2017 revision, following the methodology of Klein Goldewijk et al., 2017). Decadal data prior to year 1950 have been linearly interpolated in time."
   },
   {
     "specifier": "gdp",
