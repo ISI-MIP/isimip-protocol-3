@@ -55,9 +55,12 @@ def main():
                                  table=Table(simulation_round, sector, Counter()))
 
             # step 3: convert markdown to html
-            html = markdown(md, extensions=['fenced_code', TocExtension(toc_depth='2-3')])
+            html = markdown(md, extensions=['fenced_code', 'attr_list', TocExtension(toc_depth='2-3')])
 
-            # step 4: render content into layout template
+            # step 4: replace shortcodes
+            html = html.replace('[mandatory]', '<span class="badge badge-success">mandatory</span>')
+
+            # step 5: render content into layout template
             with open(layout_path) as f:
                 template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
             with open(output_path, 'w') as f:

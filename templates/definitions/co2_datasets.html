@@ -10,7 +10,14 @@
         <th style="width: 30%;">Datasets</th>
     </thead>
     <tbody>
-        {% for row in table %}
+        {% for group, rows in table.items() %}
+        {% if rows %}
+        <tr>
+            <td colspan="7" class="table-secondary">
+                <strong>{{ group }}</strong>
+            </td>
+        </tr>
+        {% for row in rows %}
         <tr>
             <td rowspan="2">
                 <p>{{ row.title }}</p>
@@ -38,6 +45,8 @@
             </td>
             <td>{{ markdown(row.comment)|safe }}</td>
         </tr>
+        {% endfor %}
+        {% endif %}
         {% endfor %}
     </tbody>
 </table>
