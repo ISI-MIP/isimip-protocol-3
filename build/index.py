@@ -4,6 +4,7 @@ import subprocess
 from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
+
 from markdown import markdown
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
@@ -11,7 +12,6 @@ URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
 def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
-    products = json.loads(open('definitions/product.json').read())
     sectors = json.loads(open('definitions/sector.json').read())
 
     commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
@@ -23,12 +23,6 @@ def main():
     pages = []
     for simulation_round in simulation_rounds:
         simulation_round['sectors'] = sectors
-        simulation_round['products'] = []
-
-        for product in products:
-            product['sectors'] = sectors
-            simulation_round['products'].append(product)
-
         pages.append(simulation_round)
 
     # step 2: open and read intro

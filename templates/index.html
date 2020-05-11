@@ -35,19 +35,15 @@
         <div class="col-md">
             <h3>{{ simulation_round.title }} JSON schema</h3>
 
-            {% for product in simulation_round.products %}
-            <h4>{{ product.title }}</h4>
-
             <ul>
-                {% for sector in product.sectors %}
+                {% for sector in simulation_round.sectors %}
                 <li>
-                    <a href="schema/{{ simulation_round.specifier }}/{{ product.specifier }}/{{ sector.specifier }}.json">
+                    <a href="schema/{{ simulation_round.specifier }}/OutputData/{{ sector.specifier }}.json">
                         {{ sector.title }} sector
                     </a>
                 </li>
                 {% endfor %}
             </ul>
-            {% endfor %}
         </div>
         {% endfor %}
     </div>
@@ -57,19 +53,15 @@
         <div class="col-md">
             <h3>{{ simulation_round.title }} file system patterns</h3>
 
-            {% for product in simulation_round.products %}
-            <h4>{{ product.title }}</h4>
-
             <ul>
-                {% for sector in product.sectors %}
+                {% for sector in simulation_round.sectors %}
                 <li>
-                    <a href="pattern/{{ simulation_round.specifier }}/{{ product.specifier }}/{{ sector.specifier }}.json">
+                    <a href="pattern/{{ simulation_round.specifier }}/OutputData/{{ sector.specifier }}.json">
                         {{ sector.title }} sector
                     </a>
                 </li>
                 {% endfor %}
             </ul>
-            {% endfor %}
         </div>
         {% endfor %}
     </div>
