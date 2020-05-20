@@ -11,8 +11,8 @@
         <th style="width: 15%;">Bias adjustment target</th>
         <th style="width: 35%;">Comments</th>
         {% else %}
-        <th style="width: 50%;">Institution</th>
-        <th style="width: 10%;">Original resolution</th>
+        <th style="width: 42%;">Institution</th>
+        <th style="width: 18%;">Original resolution</th>
         <th style="width: 10%;">Ensemble member</th>
         {% endif %}
     </thead>
@@ -28,7 +28,13 @@
             <td>{{ row.comments }}</td>
             {% else %}
             <td>{{ row.institution }}</td>
-            <td>{{ row.original_resolution }}</td>
+            <td>
+                <ul>
+                    {% for item in row.original_resolution %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
             <td>{{ row.ensemble_member }}</td>
             {% endif %}
         </tr>
