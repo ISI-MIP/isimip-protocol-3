@@ -28,19 +28,29 @@
         <tr>
             <td>{{ row.title }}</td>
             <td>
-                <strong>{{ row.specifier }}</strong>
+                <strong>{{ row.specifier }}{% if row.extension %}-{{ row.extension }}{% endif %}</strong>
             </td>
             <td>{{ row.unit }}</td>
             <td>
                 <ul>
+                    {% if row.resolution is string %}
                     <li>{{ row.resolution }}</li>
+                    {% else %}
+                    {% for resolution in row.resolution %}
+                    <li>{{ resolution }}</li>
+                    {% endfor %}
+                    {% endif %}
                     <li>{{ row.frequency }}</li>
                 </ul>
             </td>
             <td>
                 <ul>
                 {% for model in row.climate_forcing %}
+                    {% if row.climate_forcing is mapping %}
+                    <li>{{ model }}: <strong>{{ row.climate_forcing[model]|join(', ') }}</strong></li>
+                    {% else %}
                     <li>{{ model }}</li>
+                    {% endif %}
                 {% endfor %}
                 </ul>
             </td>
