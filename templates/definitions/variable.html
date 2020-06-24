@@ -1,3 +1,4 @@
+{% if table %}
 <table id="tbl:variable" class="tablenos table table-bordered w-100">
     <caption>
         Table {{ counter() }}: Output variables for {{ sector.title }} (<code>variable</code>).
@@ -76,3 +77,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+No output variables have been defined for {{ sector.title }}, yet.
+{% endif %}
