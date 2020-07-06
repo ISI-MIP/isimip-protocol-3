@@ -20,7 +20,11 @@
         {% for row in rows %}
         <tr>
             <td class="no-border-bottom">
-                <p>{{ row.title }}</p>
+                <p>{{ row.title }}
+                {% if row.mandatory %}
+                <span class="badge badge-success">mandatory</span>
+                {% endif %}
+                </p>
             </td>
             <td colspan="4">
                 {% if row.file_path %}
