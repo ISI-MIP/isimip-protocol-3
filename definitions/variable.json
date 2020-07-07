@@ -111,8 +111,8 @@
       "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": {
-      "biomes": "daily, monthly",
-      "forestry": "daily, monthly",
+      "biomes": "monthly",
+      "forestry": "daily",
       "water_global": "monthly",
       "water_regional": "monthly"
     },
@@ -738,12 +738,17 @@
     "specifier": "soil",
     "title": "Soil types",
     "unit": "",
-    "resolution": "0.5° grid",
+    "resolution": {
+    "water_global": "0.5° grid",
+    "biomes": "0.5° grid",
+    "forestry": "stand",
+    }
     "frequency": "constant",
     "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
     "sectors": [
       "water_global",
-      "biomes"
+      "biomes",
+      "forestry"
     ]
   },
   {
@@ -1248,13 +1253,13 @@
     ]
   },
   {
-    "specifier": "clitter",
+    "specifier": "clitterag",
     "extension": {
       "biomes": "<pft/total>",
       "forestry": "<species/total>",
       "permafrost": "<pft/total>"
     },
-    "title": "Carbon Mass in Litter Pool",
+    "title": "Carbon Mass in Above Ground Litter Pool",
     "unit": "kg m-2",
     "resolution": {
       "biomes": "0.5° grid",
@@ -1264,8 +1269,34 @@
     "frequency": "annual",
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
-      "forestry": "As kg carbon*m-2, Info for each individual pool.",
+      "forestry": "Species information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
+    },
+    "sectors": [
+      "biomes",
+      "forestry",
+      "permafrost"
+    ]
+  },
+    {
+    "specifier": "clitterbg",
+    "extension": {
+      "biomes": "<pft/total>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft/total>"
+    },
+    "title": "Carbon Mass in Below Ground Litter Pool",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "0.5° grid",
+      "forestry": "stand",
+      "permafrost": "0.5° grid"
+    },
+    "frequency": "annual",
+    "comment": {
+      "biomes": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential.",
+      "forestry": "Only if models seperates below-ground litter and soil carbon. Species information is essential.",
+      "permafrost": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1289,9 +1320,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "forestry": "As kg carbon*m-2, Info for each individual soil layer.",
-      "permafrost": "Grid cell total and PFT information is essential."
+      "biomes": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "forestry": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "permafrost": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth."
     },
     "sectors": [
       "biomes",
@@ -1302,37 +1333,23 @@
   {
     "specifier": "cproduct",
     "extension": {
-      "biomes": "<pft/total>"
+      "biomes": "<productclass/total>",
+      "forestry": "<productclass/total>"
     },
     "title": "Carbon in Products of Land Use Change",
     "unit": "kg m-2",
     "resolution": {
-      "biomes": "0.5° grid"
+      "biomes": "0.5° grid",
+      "forestry": "stand"
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Grid cell total and PFT information is essential."
+      "biomes": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
+      "forestry": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage."
     },
     "sectors": [
-      "biomes"
-    ]
-  },
-  {
-    "specifier": "charv",
-    "extension": {
-      "biomes": "<pft/total>"
-    },
-    "title": "Carbon in biomass harvested from natural vegetation",
-    "unit": "kg m-2",
-    "resolution": {
-      "biomes": "0.5° grid"
-    },
-    "frequency": "annual",
-    "comment": {
-      "biomes": "Refers to Carbon not going into soil. Grid cell total and PFT information is essential."
-    },
-    "sectors": [
-      "biomes"
+      "biomes",
+      "forestry"
     ]
   },
   {
@@ -1349,7 +1366,11 @@
       "forestry": "stand",
       "permafrost": "0.5° grid"
     },
-    "frequency": "daily, monthly",
+    "frequency": {
+      "biomes": "monthly",
+      "forestry": "daily",
+      "permafrost": "monthly"
+    },  
     "comment": {
       "biomes": "",
       "forestry": "As kg carbon*m-2*s-1"
@@ -1374,7 +1395,11 @@
       "forestry": "stand",
       "permafrost": "0.5° grid"
     },
-    "frequency": "daily, monthly",
+        "frequency": {
+      "biomes": "monthly",
+      "forestry": "daily",
+      "permafrost": "monthly"
+    }, 
     "comment": {
       "biomes": "",
       "forestry": "As kg carbon*m-2*s-1"
@@ -1399,7 +1424,11 @@
       "forestry": "stand",
       "permafrost": "0.5° grid"
     },
-    "frequency": "daily, monthly",
+      "frequency": {
+      "biomes": "monthly",
+      "forestry": "daily",
+      "permafrost": "monthly"
+    }, 
     "comment": {
       "biomes": "",
       "forestry": "As kg carbon*m-2*s-1"
@@ -1408,76 +1437,6 @@
       "biomes",
       "forestry",
       "permafrost"
-    ]
-  },
-  {
-    "specifier": "nppleaf",
-    "extension": {
-      "biomes": "<pft/total>",
-      "forestry": "<species/total>"
-    },
-    "title": "Net Primary Production on Land allocated to leaf biomass",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "daily, monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "forestry"
-    ]
-  },
-  {
-    "specifier": "npproot",
-    "extension": {
-      "biomes": "<pft/total>",
-      "forestry": "<species/total>"
-    },
-    "title": "Net Primary Production on Land allocated to fine root biomass",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "daily, monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "forestry"
-    ]
-  },
-  {
-    "specifier": "nppagwood",
-    "extension": {
-      "biomes": "<pft/total>",
-      "forestry": "<species/total>"
-    },
-    "title": "Net Primary Production on Land allocated to above ground woody biomass",
-    "unit": "kg m-2 s-1",
-    "resolution": {
-      "biomes": "0.5° grid",
-      "forestry": "stand"
-    },
-    "frequency": "daily, monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "forestry"
-    ]
-  },
-  {
-    "specifier": "nppbgwood",
-    "extension": {
-      "biomes": "<pft/total>",
-      "forestry": "<species/total>"
-    },
-    "title": "Net Primary Production on Land allocated to below ground wood biomass",
-    "unit": "kg m-2 s-1",
-    "resolution": {
-      "biomes": "0.5° grid",
-      "forestry": "stand"
-    },
-    "frequency": "daily, monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "forestry"
     ]
   },
   {
@@ -1494,7 +1453,11 @@
       "forestry": "stand",
       "permafrost": "0.5° grid"
     },
-    "frequency": "daily, monthly",
+         "frequency": {
+      "biomes": "monthly",
+      "forestry": "daily",
+      "permafrost": "monthly"
+    }, 
     "comment": {
       "biomes": "",
       "forestry": "As kg carbon*m-2*s-1"
@@ -1532,12 +1495,12 @@
     ]
   },
   {
-    "specifier": "ecoatmflux",
+    "specifier": "nbp",
     "extension": "<pft/total>",
     "title": "Carbon Mass Flux out of Atmosphere due to Net Biospheric Production on Land",
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
-    "frequency": "daily, monthly",
+    "frequency": "monthly",
     "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land.",
     "sectors": [
       "biomes",
@@ -1554,7 +1517,7 @@
       "forestry": "stand"
     },
     "frequency": {
-      "biomes": "daily, monthly",
+      "biomes": "monthly",
       "forestry": "daily"
     },
     "comment": {
@@ -1566,6 +1529,84 @@
       "forestry"
     ]
   },
+    {
+    "specifier": "fluc",
+    "extension": "<pft/total>",
+    "title": "CO2 Flux to Atmosphere from Land Use Change",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "For wood products only. Sum of CO2 fluxes to wood production and wood storage turnover emsissions from previous years",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  },
+      {
+    "specifier": "fgrazing",
+    "extension": "<pft/total>",
+    "title": "CO2 Flux to Atmosphere from Grazing",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  },
+        {
+    "specifier": "fcropharvest",
+    "extension": "<pft/total>",
+    "title": "CO2 Flux to Atmosphere from Crop Harvesting",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  },
+      {
+    "specifier": "flitter",
+    "extension": "<pft/total>",
+    "title": "Total Carbon Flux from Vegetation to Litter",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  },  
+     {
+    "specifier": "flittersoil",
+    "extension": "<pft/total>",
+    "title": "Total Carbon Flux from Litter to Soil",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  }, 
+     {
+    "specifier": "fvegsoil",
+    "extension": "<pft/total>",
+    "title": "Total Carbon Flux from Vegetation Directly to Soil",
+    "unit": "kg m-2 s-1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate)",
+    "sectors": [
+      "biomes",
+      "permafrost"
+    ]
+  }, 
   {
     "specifier": "fapar",
     "extension": {
@@ -1747,6 +1788,28 @@
       "permafrost": "<pft/total>"
     },
     "title": "Carbon Mass in Roots",
+    "unit": "kg m-2",
+    "resolution": {
+      "biomes": "0.5° grid",
+      "forestry": "stand",
+      "permafrost": "0.5° grid"
+    },
+    "frequency": "annual",
+    "comment": "Including fine and coarse roots.",
+    "sectors": [
+      "biomes",
+      "forestry",
+      "permafrost"
+    ]
+  },
+    {
+    "specifier": "ccwd",
+    "extension": {
+      "biomes": "<pft/total>",
+      "forestry": "<species/total>",
+      "permafrost": "<pft/total>"
+    },
+    "title": "Carbon Mass in Coarse Woody Debros",
     "unit": "kg m-2",
     "resolution": {
       "biomes": "0.5° grid",
@@ -2202,15 +2265,27 @@
     ]
   },
   {
-    "specifier": "albedo",
-    "title": "Surface albedo",
+    "specifier": "lake-albedo",
+    "title": "Surface albedo of lake",
     "unit": "1",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
-    "comment": "Albedo of the surface interacting with the atmosphere (water, ice or snow).",
+    "comment": "Albedo of the lake surface interacting with the atmosphere (water, ice or snow).",
     "sectors": [
       "lakes_global",
       "lakes_local"
+    ]
+  },
+    {
+    "specifier": "land-albedo",
+    "title": "Surface albedo of land",
+    "unit": "1",
+    "resolution": "0.5° grid",
+    "frequency": "monthly",
+    "comment": "Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.",
+    "sectors": [
+      "biomes",
+      "permafrost"
     ]
   },
   {
