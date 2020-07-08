@@ -14,6 +14,7 @@ def main():
     for root, dirs, files in os.walk('schema'):
         for file_name in files:
             schema_path = os.path.join(root, file_name)
+            schema_path_components = schema_path.split(os.sep)
             output_path = schema_path.replace('schema', os.path.join('output', 'schema'))
 
             # step 1: read schema template
@@ -21,33 +22,37 @@ def main():
                 schema = json.loads(f.read())
                 schema['commit'] = commit
 
-            if 'InputData' in schema_path:
-                pass
+            # step 2: loop over properties and add enums from definition files
+            for identifier, properties in schema['properties'].items():
+                definition_path = os.path.join('definitions', '{}.json'.format(identifier))
 
-            elif 'OutputData' in schema_path:
-                simulation_round, product, sector = schema_path.split(os.sep)[1:4]
+                if properties['type'] == 'string':
+                    if os.path.exists(definition_path):
+                        with open(definition_path) as f:
+                            rows = json.loads(f.read())
 
-                # step 2: loop over properties and add enums from definition files
-                for identifier, properties in schema['properties'].items():
-                    definition_path = os.path.join('definitions', '{}.json'.format(identifier))
+                        enum = []
+                        for row in rows:
+                            identifier = None
+                            simulation_round = schema_path_components[1]
+                            if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
+                                product = schema_path_components[2]
+                                if 'products' not in row or product in row['products']:
+                                    if product.startswith('OutputData'):
+                                        sector = schema_path_components[3]
+                                        if 'sectors' not in row or sector in row['sectors']:
+                                            identifier = row.get('identifier') or row.get('specifier')
+                                    else:
+                                        identifier = row.get('identifier') or row.get('specifier')
 
-                    if properties['type'] == 'string':
-                        if os.path.exists(definition_path):
-                            with open(definition_path) as f:
-                                rows = json.loads(f.read())
+                            if identifier and identifier not in enum:
+                                enum.append(identifier)
 
-                            enum = []
-                            for row in rows:
-                                if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
+                        properties['enum'] = enum
 
-                                    if 'sectors' not in row or sector in row['sectors']:
-                                        enum.append(row['specifier'])
-
-                            properties['enum'] = enum
-
-                    elif properties['type'] == 'number':
-                        properties['minimum'] = MIN_YEAR
-                        properties['maximum'] = MAX_YEAR
+                elif properties['type'] == 'number':
+                    properties['minimum'] = MIN_YEAR
+                    properties['maximum'] = MAX_YEAR
 
             # step 3: write json schema
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
