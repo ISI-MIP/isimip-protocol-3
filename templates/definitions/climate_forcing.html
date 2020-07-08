@@ -29,7 +29,17 @@
             <td>{{ row.comments }}</td>
             {% else %}
             <td>{{ row.institution }}</td>
-            <td>{{ row.original_resolution }}</td>
+            <td>
+                {% if row.original_resolution is mapping %}
+                <ul>
+                {% for sector, original_resolution in row.original_resolution.items() %}
+                <li>{{ sector }}: {{ original_resolution }}</li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                {{ row.original_resolution }}
+                {% endif %}
+            </td>
             <td>{{ row.ensemble_member }}</td>
             {% endif %}
         </tr>
