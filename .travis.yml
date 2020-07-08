@@ -2,10 +2,6 @@ language: python
 python: '3.7'
 sudo: false
 
-branches:
-  only:
-  - master
-
 addons:
   apt_packages:
     - pandoc
@@ -30,4 +26,6 @@ install:
 script:
 - pytest
 - make
-- ghp-import --no-jekyll --cname=protocol.isimip.org --push --force output
+
+after_success:
+- test $TRAVIS_BRANCH = "master" && ghp-import --no-jekyll --cname=protocol.isimip.org --push --force output
