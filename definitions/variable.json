@@ -192,9 +192,7 @@
     "unit": "kg m-2",
     "resolution": {
       "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location",
-      "biomes": "0.5° grid",
-      "permafrost": "0.5° grid"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": "monthly",
     "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
@@ -230,7 +228,6 @@
       "biomes": "daily, monthly",
       "forestry": "daily, monthly",
       "water_global": "daily, monthly",
-      "water_regional": "daily, monthly",
       "permafrost": "daily, monthly"
     },
     "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
@@ -264,20 +261,19 @@
   {
     "specifier": "swe",
     "extension": {
-      "water_global": "",
-      "water_regional": "",
       "biomes": "",
       "fire": "<pft/total>",
-      "forestry": "",
+      "water_global": "",
+      "water_regional": "",
       "permafrost": ""
     },
     "title": "Snow water equivalent",
     "unit": "kg m-2",
     "resolution": {
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location",
       "biomes": "0.5° grid",
       "fire": "0.5° grid",
+      "water_global": "0.5° grid",
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
       "permafrost": "0.5° grid"
     },
     "frequency": "monthly",
@@ -1309,6 +1305,7 @@
     "frequency": "annual",
     "comment": {
       "biomes": "Above ground",
+      "fire": "",
       "forestry": "Species information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
@@ -1370,6 +1367,7 @@
     },
     "sectors": [
       "biomes",
+      "fire",
       "forestry",
       "permafrost"
     ]
@@ -1378,6 +1376,7 @@
     "specifier": "cproduct",
     "extension": {
       "biomes": "<productclass/total>",
+      "fire": "",
       "forestry": "<productclass/total>"
     },
     "title": "Carbon in Products of Land Use Change",
@@ -1424,7 +1423,8 @@
     "comment": {
       "biomes": "",
       "fire": "",
-      "forestry": "As kg carbon*m-2*s-1"
+      "forestry": "As kg carbon*m-2*s-1",
+      "permafrost": ""
     },
     "sectors": [
       "biomes",
@@ -1458,7 +1458,8 @@
     "comment": {
       "biomes": "",
       "fire": "",
-      "forestry": "As kg carbon*m-2*s-1"
+      "forestry": "As kg carbon*m-2*s-1",
+      "permafrost": ""
     },
     "sectors": [
       "biomes",
@@ -1492,7 +1493,8 @@
     "comment": {
       "biomes": "",
       "fire": "",
-      "forestry": "As kg carbon*m-2*s-1"
+      "forestry": "As kg carbon*m-2*s-1",
+      "permafrost": ""
     },
     "sectors": [
       "biomes",
@@ -1526,7 +1528,8 @@
     "comment": {
       "biomes": "",
       "fire": "",
-      "forestry": "As kg carbon*m-2*s-1"
+      "forestry": "As kg carbon*m-2*s-1",
+      "permafrost": ""
     },
     "sectors": [
       "biomes",
@@ -1574,6 +1577,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "forestry",
       "permafrost"
     ]
   },
@@ -1720,36 +1724,37 @@
       "forestry": "<species/total>",
       "permafrost": "<pft/total>",
       "fire": "<pft/total>",
-      "water_global": "",
-      "water_regional": ""
+      "water_global": ""
     },
     "title": "Leaf Area Index",
     "unit": "1",
     "resolution": {
       "biomes": "0.5° grid",
+      "fire": "",
       "forestry": "stand",
       "permafrost": "0.5° grid",
       "water_global": "0.5° grid"
     },
     "frequency": {
       "biomes": "daily, monthly",
+      "fire": "monthly",
       "forestry": "daily, monthly",
       "permafrost": "daily, monthly",
-      "water_global": "constant or monthly",
-      "fire": "monthly"
+      "water_global": "constant or monthly"
     },
     "comment": {
       "biomes": "",
+      "fire": "",
       "forestry": "",
       "permafrost": "",
       "water_global": "If used by, or computed by the model."
     },
     "sectors": [
       "biomes",
+      "fire",
       "forestry",
       "permafrost",
-      "water_global",
-      "fire"
+      "water_global"
     ]
   },
   {
