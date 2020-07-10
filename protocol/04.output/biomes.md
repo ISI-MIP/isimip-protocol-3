@@ -1,31 +1,37 @@
 ### Output variables
 
 {{ table('variable', {
-    'Pools': [
+    'Carbon Pools': [
         'cveg',
         'cvegag',
         'cvegbg',
+        'csoil',
         'clitter',
-        'csoil'
+        'clitterag',
+        'clitterbg',
+        'cproduct'
     ],
-    'Fluxes': [
+    'Carbon Fluxes': [
         'gpp',
-        'ra',
         'npp',
-        'npplandleaf',
-        'npplandroot',
-        'nppabovegroundwood',
-        'nppbelowgroundwood',
+        'nbp',
+        'ra',
         'rh',
-        'fireint',
-        'firefrac',
-        'ecoatmflux',
-        'rr'
+        'rr',
+        'ffire',
+        'fluc',
+        'fgrazing',
+        'fcropharvest',
+        'flitter',
+        'flittersoil',
+        'fvegsoil'
     ],
-    'Structure': [
+    'Vegetation Cover & Structure': [
         'fapar',
         'lai',
-        'pft'
+        'pft',
+        'tsl',
+        'burntarea'
     ],
     'Hydrological variables': [
         'evap',
@@ -43,10 +49,7 @@
     'Optional output': [
         'cleaf',
         'cwood',
-        'croot'
+        'croot',
+        'ccwd'
     ],
-    'Other variables': [
-        'tsl',
-        'burntarea'
-    ]
 }) }}
