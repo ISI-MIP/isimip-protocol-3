@@ -22,6 +22,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -56,6 +57,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -101,6 +103,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -132,6 +135,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -163,6 +167,7 @@
       "coastal",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -197,6 +202,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -227,6 +233,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -257,6 +264,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "forestry",
       "health",
       "labour",
@@ -310,6 +318,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "health",
       "labour",
       "lakes_global",
@@ -345,6 +354,7 @@
       "biomes",
       "diarrhea",
       "energy",
+      "fire",
       "health",
       "labour",
       "lakes_global",
@@ -368,10 +378,6 @@
     "frequency": "annual",
     "comment": "Sea Around Us Project (SAUP; <http://www.seaaroundus.org>). Data can currently not be hosted on ISIMIP servers; for access please contact the sectoral coordinators of the marine ecosystems and fisheries sector.",
     "sectors": [
-      "agriculture",
-      "diarrhea",
-      "health",
-      "labour",
       "marine-fishery_global",
       "marine-fishery_regional"
     ]
@@ -390,10 +396,6 @@
     "frequency": "annual",
     "comment": "Regional Fisheries Management Organizations (RFMOs; <https://ec.europa.eu/fisheries/cfp/international/rfmo_en>) and/or local fisheries agencies. Data can currently not be hosted on ISIMIP servers; for access please contact the sectoral coordinators of the marine ecosystems and fisheries sector.",
     "sectors": [
-      "agriculture",
-      "diarrhea",
-      "health",
-      "labour",
       "marine-fishery_global",
       "marine-fishery_regional"
     ]
@@ -421,12 +423,39 @@
     "frequency": "annual",
     "comment": "Reyer et al. 2019a, b management prescribes stem numbers remaining after harvest, management data is annual but not every year has data.",
     "sectors": [
-      "agriculture",
       "biomes",
-      "diarrhea",
-      "energy",
-      "health",
-      "labour",
+      "fire",
+      "forestry",
+      "permafrost"
+    ],
+    "mandatory": true
+  },
+  {
+    "specifier": "wood_harvesting",
+    "title": "Wood harvesting",
+    "file_path": "socioeconomic/wood_harvesting/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc",
+    "variables": [
+      "wood harvest area from primary forest land (primf-harv)",
+      "wood harvest area from primary non forest land (primn-harv)",
+      "wood harvest area from secondary mature forest land (secmf-harv)",
+      "wood harvest area from secondary young forest land (secyf-harv)",
+      "wood harvest area from secondary non forest land (secnf-harv)",
+      "wood harvest biomass carbon from primary forest land (primf-bioh)",
+      "wood harvest biomass carbon from primary non forest land (primn-bioh)",
+      "wood harvest biomass carbon from secondary mature forest land (secmf-bioh)",
+      "wood harvest biomass carbon from secondary young forest land (secyf-bioh)",
+      "wood harvest biomass carbon from secondary non forest land (secnf-bioh)"
+    ],
+    "time_periods": [
+      "1850-2017"
+    ],
+    "resolution": "national",
+    "frequency": "annual",
+    "comment": "Historic annual country-level wood harvesting data. Based on the LUH2 v2h Harmonization Data Set (see Hurtt, Chini et al. 2011; see also <https://luh.umd.edu>). Interpolated to a 0.5° grid using first-order conservative remapping and calculated over a fractional country mask (<https://gitlab.pik-potsdam.de/isipedia/countrymasks/-/blob/master/>) derived from ASAP-GAUL (<https://data.europa.eu/euodp/data/dataset/jrc-10112-10004>).",
+    "sectors": [
+      "biomes",
+      "fire",
+      "forestry",
       "permafrost"
     ]
   },
@@ -441,9 +470,6 @@
     "format": "NetCDF",
     "comment": "HydroLAKES polygons dataset v1.0 June 2019 and GRanD v1.3, rasterized using the polygon_to_cellareafraction tool (https://github.com/VUB-HYDR/polygon_to_cellareafraction). Reference: Messager et al. (2016, <https://dx.doi.org/10.1038/ncomms13603>, Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>).",
     "sectors": [
-      "agriculture",
-      "diarrhea",
-      "labour",
       "lakes_global",
       "lakes_local",
       "water_global"
@@ -452,6 +478,7 @@
   {
     "specifier": "population_5arcmin",
     "title": "Population 5' grid",
+    "identifier": "population",
     "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
     "variables": [
       "total number of people (popc)",
@@ -475,6 +502,7 @@
   {
     "specifier": "population_30arcmin",
     "title": "Population 0.5° grid",
+    "identifier": "population",
     "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
     "variables": [
       "total number of people (popc)",
@@ -497,6 +525,7 @@
   {
     "specifier": "population_national",
     "title": "Population national",
+    "identifier": "population",
     "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
     "variables": [
       "total number of people per country"
@@ -517,6 +546,7 @@
   {
     "specifier": "gdp",
     "title": "GDP",
+    "identifier": "gdp-countrylevel",
     "file_path": "socioeconomic/gdp/<soc_scenario>/<soc_scenario>_gdp_annual_<start-year>_<end-year>.nc",
     "variables": [
       "GDP PPP 2005 USD (gdp)"
