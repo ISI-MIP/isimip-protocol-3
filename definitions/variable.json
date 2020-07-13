@@ -1,13 +1,6 @@
 [
   {
     "specifier": "qtot",
-    "extension": {
-      "water_global": "",
-      "water_regional": "",
-      "biomes": "",
-      "fire": "<total>",
-      "permafrost": "<total>"
-    },
     "title": "Runoff",
     "unit": "kg m-2 s-1",
     "resolution": {
@@ -18,9 +11,9 @@
       "permafrost": "0.5° grid"
     },
     "frequency": {
-      "biomes": "monthly",
-      "fire": "monthly",
-      "permafrost": "monthly",
+      "biomes": "daily & monthly",
+      "fire": "daily & monthly",
+      "permafrost": "daily & monthly",
       "water_global": "daily & monthly",
       "water_regional": "daily & monthly"
     },
@@ -110,8 +103,8 @@
       "biomes": "<pft/total>",
       "fire": "<pft/total>",
       "forestry": "<species/total>",
-      "water_global": "",
-      "water_regional": ""
+      "water_global": "-total",
+      "water_regional": "-total"
     },
     "title": "Evapotranspiration",
     "unit": "kg m-2 s-1",
@@ -157,6 +150,7 @@
     "specifier": "soilmoist",
     "title": "Soil moisture for each layer",
     "unit": "kg m-2",
+    "dimensions": "(time, depth, lat, lon)",
     "resolution": {
       "agriculture": "0.5° grid",
       "biomes": "0.5° grid",
@@ -172,8 +166,8 @@
       "fire": "daily",
       "forestry": "daily",
       "permafrost": "daily",
-      "water_global": "monthly",
-      "water_regional": "monthly"
+      "water_global": "daily if possible, else monthly",
+      "water_regional": "daily if possible, else monthly"
     },
     "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
@@ -205,6 +199,7 @@
     "specifier": "soilmoistfroz",
     "title": "Frozen soil moisture for each layer",
     "unit": "kg m-2",
+    "dimensions": "(time, depth, lat, lon)",
     "resolution": "0.5° grid",
     "frequency": "monthly",
     "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
@@ -218,18 +213,14 @@
     "specifier": "tsl",
     "title": "Temperature of Soil",
     "unit": "K",
+    "dimensions": "(time, depth, lat, lon)",
     "resolution": {
       "biomes": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
       "permafrost": "0.5° grid"
     },
-    "frequency": {
-      "biomes": "daily, monthly",
-      "forestry": "daily, monthly",
-      "water_global": "daily, monthly",
-      "permafrost": "daily, monthly"
-    },
+    "frequency": "daily if possible, else monthly",
     "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
       "biomes",
@@ -240,14 +231,9 @@
   },
   {
     "specifier": "snd",
-    "extension": {
-      "biomes": "",
-      "fire": "<pft/total>",
-      "water_global": "",
-      "permafrost": ""
-    },
     "title": "Snow depth",
     "unit": "m",
+    "dimensions": "(time, lat, lon)",
     "resolution": "0.5° grid",
     "frequency": "monthly",
     "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
@@ -260,13 +246,6 @@
   },
   {
     "specifier": "swe",
-    "extension": {
-      "biomes": "",
-      "fire": "<pft/total>",
-      "water_global": "",
-      "water_regional": "",
-      "permafrost": ""
-    },
     "title": "Snow water equivalent",
     "unit": "kg m-2",
     "resolution": {
@@ -380,8 +359,8 @@
     "unit": "m",
     "resolution": "0.5° grid",
     "frequency": {
-      "biomes": "annual",
-      "permafrost": "annual",
+      "biomes": "monthly, else annual",
+      "permafrost": "monthly, else annual",
       "water_global": "monthly"
     },
     "comment": "Calculated from daily thaw depths.",
@@ -1224,7 +1203,7 @@
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
       "fire": "Grid cell total and PFT information is essential.",
-      "forestry": "As kg carbon*m-2",
+      "forestry": "As kg carbon m⁻². Stand total and PFT information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
@@ -1251,7 +1230,7 @@
     "frequency": "annual",
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
-      "forestry": "As kg carbon*m-2",
+      "forestry": "As kg carbon m⁻²Stand total and PFT information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
@@ -1277,7 +1256,7 @@
     "frequency": "annual",
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
-      "forestry": "As kg carbon*m-2",
+      "forestry": "As kg carbon m⁻². Stand total and PFT information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
@@ -1304,9 +1283,9 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Above ground",
-      "fire": "",
-      "forestry": "Species information is essential.",
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "Species information is essential. Stand total and PFT information is essential.",
       "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
@@ -1321,6 +1300,7 @@
     "extension": {
       "biomes": "<pft/total>",
       "forestry": "<species/total>",
+      "fire": "<pft/total>",
       "permafrost": "<pft/total>"
     },
     "title": "Carbon Mass in Below Ground Litter Pool",
@@ -1328,13 +1308,15 @@
     "resolution": {
       "biomes": "0.5° grid",
       "forestry": "stand",
+      "fire": "0.5° grid",
       "permafrost": "0.5° grid"
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential.",
-      "forestry": "Only if models seperates below-ground litter and soil carbon. Species information is essential.",
-      "permafrost": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential."
+      "biomes": "Only if models separates below-ground litter and soil carbon. If not, only report csoil document this in the model documentation. Grid cell total and PFT information is essential.",
+      "forestry": "Only if models separates below-ground litter and soil carbon. Species information is essential.",
+      "fire": "Only if models separates below-ground litter and soil carbon. If not, only report csoil document this in the model documentation. Grid cell total and PFT information is essential.",
+      "permafrost": "Only if models separates below-ground litter and soil carbon. If not, only report csoil document this in the model documentation. Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1360,10 +1342,10 @@
     },
     "frequency": "annual",
     "comment": {
-      "biomes": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "fire": "Including below-ground litter",
-      "forestry": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "permafrost": "Only if models seperates below-ground litter and soil carbon. If not, only report csoil. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth."
+      "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.  If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "permafrost": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth."
     },
     "sectors": [
       "biomes",
@@ -1376,7 +1358,7 @@
     "specifier": "cproduct",
     "extension": {
       "biomes": "<productclass/total>",
-      "fire": "",
+      "fire": "<productclass/total>",
       "forestry": "<productclass/total>"
     },
     "title": "Carbon in Products of Land Use Change",
@@ -1416,15 +1398,15 @@
     },
     "frequency": {
       "biomes": "monthly",
-      "fire": "daily, monthly",
+      "fire": "monthly",
       "forestry": "daily",
       "permafrost": "monthly"
     },
     "comment": {
-      "biomes": "",
-      "fire": "",
-      "forestry": "As kg carbon*m-2*s-1",
-      "permafrost": ""
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "As kg carbon m⁻² s⁻¹. Stand total and Species information is essential.",
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1456,10 +1438,10 @@
       "permafrost": "monthly"
     },
     "comment": {
-      "biomes": "",
-      "fire": "",
-      "forestry": "As kg carbon*m-2*s-1",
-      "permafrost": ""
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "As kg carbon m⁻² s⁻¹. Stand total and species information is essential.",
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1491,10 +1473,10 @@
       "permafrost": "monthly"
     },
     "comment": {
-      "biomes": "",
-      "fire": "",
-      "forestry": "As kg carbon*m-2*s-1",
-      "permafrost": ""
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "As kg carbon m⁻² s⁻¹. Stand total and species information is essential.",
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1526,10 +1508,10 @@
       "permafrost": "monthly"
     },
     "comment": {
-      "biomes": "",
-      "fire": "",
-      "forestry": "As kg carbon*m-2*s-1",
-      "permafrost": ""
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "As kg carbon m⁻² s⁻¹. Stand total and Species information is essential.",
+      "permafrost": "Grid cell total and PFT information is essential."
     },
     "sectors": [
       "biomes",
@@ -1544,11 +1526,7 @@
     "title": "Carbon Mass Flux into Atmosphere due to CO₂ Emission from Fire",
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
-    "frequency": {
-      "biomes": "daily, monthly",
-      "fire": "monthly",
-      "permafrost": "daily, monthly"
-    },
+    "frequency": "monthly",
     "comment": "",
     "sectors": [
       "biomes",
@@ -1563,21 +1541,18 @@
     "unit": "%",
     "resolution": "0.5° grid",
     "frequency": {
-      "biomes": "daily, monthly",
+      "biomes": "daily (total), monthly (pft/total)",
       "fire": "daily (total), monthly (pft/total)",
-      "forestry": "daily, monthly",
-      "permafrost": "daily, monthly"
+      "permafrost": "daily (total), monthly (pft/total)"
     },
     "comment": {
-      "biomes": "Fire should be only allowed to burn natural vegetation, rangelands and managed pastures but not croplands. Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
+      "biomes": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
       "fire": "Report <total> daily, <pft/total> monthly",
-      "forestry": "Fire should be only allowed to burn natural vegetation, rangelands and managed pastures but not croplands. Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
-      "permafrost": "Fire should be only allowed to burn natural vegetation, rangelands and managed pastures but not croplands. Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)"
+      "permafrost": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)"
     },
     "sectors": [
       "biomes",
       "fire",
-      "forestry",
       "permafrost"
     ]
   },
@@ -1588,7 +1563,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land.",
+    "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land. ",
     "sectors": [
       "biomes",
       "fire",
@@ -1638,7 +1613,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "",
+    "comment": "Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "fire",
@@ -1652,7 +1627,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "",
+    "comment": "Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "fire",
@@ -1666,7 +1641,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "",
+    "comment": "Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "fire",
@@ -1680,7 +1655,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "",
+    "comment": "Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "permafrost"
@@ -1693,7 +1668,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate)",
+    "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "permafrost"
@@ -1791,8 +1766,8 @@
       "forestry": "stand",
       "permafrost": "0.5° grid"
     },
-    "frequency": "daily, monthly",
-    "comment": "Value between 0 and 100.",
+    "frequency": "daily else monthly",
+    "comment": "Value between 0 and 100. Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "forestry",
@@ -1806,7 +1781,7 @@
       "forestry": "<species/total>",
       "permafrost": "<pft/total>",
       "fire": "<pft/total>",
-      "water_global": ""
+      "water_global": "-total"
     },
     "title": "Leaf Area Index",
     "unit": "1",
@@ -1818,18 +1793,17 @@
       "water_global": "0.5° grid"
     },
     "frequency": {
-      "biomes": "daily, monthly",
-      "fire": "monthly",
-      "forestry": "daily, monthly",
-      "permafrost": "daily, monthly",
-      "water_global": "constant or monthly",
-      "fire": "monthly"
+      "biomes": "daily else monthly",
+      "fire": "daily else monthly",
+      "forestry": "daily else monthly",
+      "permafrost": "daily else monthly",
+      "water_global": "daily else monthly or constant"
     },
     "comment": {
-      "biomes": "",
-      "fire": "",
-      "forestry": "",
-      "permafrost": "",
+      "biomes": "Grid cell total and PFT information is essential.",
+      "fire": "Grid cell total and PFT information is essential.",
+      "forestry": "Stand total and species information is essential.",
+      "permafrost": "Grid cell total and PFT information is essential.",
       "water_global": "If used by, or computed by the model."
     },
     "sectors": [
@@ -1848,41 +1822,13 @@
     "unit": "%",
     "resolution": "0.5° grid",
     "frequency": "annual (or constant if static)",
-    "comment": "The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land.",
+    "comment": "The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land. For models that have grid cells partially covered by land and ocean, please document this in the model documentation and provide your land-sea mask along the data uploads.",
     "sectors": [
       "biomes",
       "fire",
       "permafrost"
     ]
   },
-  {
-    "specifier": "oceancoverfrac",
-    "extension": "",
-    "title": "Fractional Ocean Cover",
-    "unit": "%",
-    "resolution": "0.5° grid",
-    "frequency": "once",
-    "comment": "For models that have ocean fractions not equal to zero ",
-    "sectors": [
-      "biomes",
-      "fire",
-      "permafrost"
-    ]
-  },
-   {
-    "specifier": "oceancoverfrac",
-    "extension": "",
-    "title": "Fractional Ocean Cover",
-    "unit": "%",
-    "resolution": "0.5° grid",
-    "frequency": "once",
-    "comment": "For models that have ocean fractions not equal to zero ",
-    "sectors": [
-      "biomes",
-      "fire",
-      "permafrost"
-    ]
-  }, 
   {
     "specifier": "intercep",
     "extension": {
@@ -1898,9 +1844,9 @@
       "forestry": "stand"
     },
     "frequency": {
-      "biomes": "daily, monthly",
+      "biomes": "monthly",
       "fire": "monthly",
-      "forestry": "daily, monthly"
+      "forestry": "daily else monthly"
     },
     "comment": "The canopy evaporation+sublimation (if present in model).",
     "sectors": [
@@ -1924,9 +1870,9 @@
       "forestry": "stand"
     },
     "frequency": {
-      "biomes": "daily, monthly",
+      "biomes": "monthly",
       "fire": "monthly",
-      "forestry": "daily, monthly"
+      "forestry": "daily else monthly"
     },
     "comment": "Includes sublimation.",
     "sectors": [
@@ -1950,9 +1896,9 @@
       "forestry": "stand"
     },
     "frequency": {
-      "biomes": "daily, monthly",
+      "biomes": "monthly",
       "fire": "monthly",
-      "forestry": "daily"
+      "forestry": "daily else monthly"
     },
     "comment": "",
     "sectors": [
@@ -2208,7 +2154,7 @@
     "unit": "kg m-2 s-1",
     "resolution": "stand",
     "frequency": "daily, monthly",
-    "comment": "As kg carbon*m-2*s-1",
+    "comment": "As kg carbon m⁻² s⁻¹",
     "sectors": [
       "forestry"
     ]
@@ -2590,7 +2536,7 @@
   {
     "specifier": "chl",
     "title": "Chlorophyll Concentration",
-    "unit": "g-3 m-3",
+    "unit": "g-3 m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Total water chlorophyll concentration – indicator of phytoplankton.",
@@ -2602,7 +2548,7 @@
   {
     "specifier": "phytobio",
     "title": "Phytoplankton Functional group biomass",
-    "unit": "mole m-3 as carbon",
+    "unit": "mole m⁻³ as carbon",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Different models will have different numbers of functional groups so that the reporting of these will vary by model.",
@@ -2614,7 +2560,7 @@
   {
     "specifier": "zoobio",
     "title": "Phytoplankton Functional group biomass",
-    "unit": "mole m-3 as carbon",
+    "unit": "mole m⁻³ as carbon",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Total simulated Zooplankton biomass.",
@@ -2626,7 +2572,7 @@
   {
     "specifier": "tp",
     "title": "Total Phosphorus",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
@@ -2638,7 +2584,7 @@
   {
     "specifier": "pp",
     "title": "Particulate Phosphorus",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
@@ -2650,7 +2596,7 @@
   {
     "specifier": "tpd",
     "title": "Total Dissolved Phosphorus",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for soluble reactive phosphorus (SRP).",
@@ -2662,7 +2608,7 @@
   {
     "specifier": "tn",
     "title": "Total Nitrogen",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
@@ -2674,7 +2620,7 @@
   {
     "specifier": "pn",
     "title": "Particulate Nitrogen",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
@@ -2686,7 +2632,7 @@
   {
     "specifier": "tdn",
     "title": "Total Dissolved Nitrogen",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
@@ -2698,7 +2644,7 @@
   {
     "specifier": "do",
     "title": "Dissolved Oxygen",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
@@ -2710,7 +2656,7 @@
   {
     "specifier": "doc",
     "title": "Dissolved Organic Carbon",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
@@ -2722,7 +2668,7 @@
   {
     "specifier": "si",
     "title": "Dissolved Silica",
-    "unit": "mole m-3",
+    "unit": "mole m⁻³",
     "resolution": "Representative lake associated with grid cell",
     "frequency": "daily, monthly",
     "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
@@ -3034,7 +2980,7 @@
     "unit": "kW m-1",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "if calculated¶, weighted by burned area.",
+    "comment": "If calculated, weighted by burned area. Grid cell total and PFT information is essential.",
     "sectors": [
       "fire"
     ]
