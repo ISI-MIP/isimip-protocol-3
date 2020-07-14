@@ -1321,7 +1321,8 @@
     "sectors": [
       "biomes",
       "forestry",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
@@ -1585,7 +1586,6 @@
     },
     "comment": {
       "biomes": "",
-      "fire": "",
       "forestry": "As kg carbon*m-2*s-1"
     },
     "sectors": [
@@ -1598,12 +1598,14 @@
     "extension": "<pft/total>",
     "title": "CO2 Flux to Atmosphere from Land Use Change",
     "unit": "kg m-2 s-1",
+    "dimensions": "(time,lat,lon)",
     "resolution": "0.5° grid",
     "frequency": "monthly",
-    "comment": "For wood products only. Sum of CO2 fluxes to wood production and wood storage turnover emsissions from previous years",
+    "comment": "For wood products only. Sum of CO2 fluxes to wood production and wood storage turnover emsissions from previous years.",
     "sectors": [
       "biomes",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
@@ -1674,84 +1676,6 @@
       "permafrost"
     ]
   },
-    {
-    "specifier": "fluc",
-    "extension": "<pft/total>",
-    "title": "CO2 Flux to Atmosphere from Land Use Change",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "For wood products only. Sum of CO2 fluxes to wood production and wood storage turnover emsissions from previous years",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  },
-      {
-    "specifier": "fgrazing",
-    "extension": "<pft/total>",
-    "title": "CO2 Flux to Atmosphere from Grazing",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  },
-        {
-    "specifier": "fcropharvest",
-    "extension": "<pft/total>",
-    "title": "CO2 Flux to Atmosphere from Crop Harvesting",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  },
-      {
-    "specifier": "flitter",
-    "extension": "<pft/total>",
-    "title": "Total Carbon Flux from Vegetation to Litter",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  },  
-     {
-    "specifier": "flittersoil",
-    "extension": "<pft/total>",
-    "title": "Total Carbon Flux from Litter to Soil",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  }, 
-     {
-    "specifier": "fvegsoil",
-    "extension": "<pft/total>",
-    "title": "Total Carbon Flux from Vegetation Directly to Soil",
-    "unit": "kg m-2 s-1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate)",
-    "sectors": [
-      "biomes",
-      "permafrost"
-    ]
-  }, 
   {
     "specifier": "fapar",
     "extension": {
@@ -1959,28 +1883,6 @@
       "permafrost": "<pft/total>"
     },
     "title": "Carbon Mass in Roots",
-    "unit": "kg m-2",
-    "resolution": {
-      "biomes": "0.5° grid",
-      "forestry": "stand",
-      "permafrost": "0.5° grid"
-    },
-    "frequency": "annual",
-    "comment": "Including fine and coarse roots.",
-    "sectors": [
-      "biomes",
-      "forestry",
-      "permafrost"
-    ]
-  },
-    {
-    "specifier": "ccwd",
-    "extension": {
-      "biomes": "<pft/total>",
-      "forestry": "<species/total>",
-      "permafrost": "<pft/total>"
-    },
-    "title": "Carbon Mass in Coarse Woody Debros",
     "unit": "kg m-2",
     "resolution": {
       "biomes": "0.5° grid",
@@ -2481,19 +2383,6 @@
     "sectors": [
       "lakes_global",
       "lakes_local"
-    ]
-  },
-    {
-    "specifier": "landalbedo",
-    "title": "Surface albedo of land",
-    "unit": "1",
-    "resolution": "0.5° grid",
-    "frequency": "monthly",
-    "comment": "Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.",
-    "sectors": [
-      "biomes",
-      "fire",
-      "permafrost"
     ]
   },
   {
@@ -3155,19 +3044,6 @@
     ]
   },
   {
-    "specifier": "canopyheight",
-    "extension": "<total>",
-    "dimensions": "(time,lat,lon)",
-    "title": "Mean canopy height",
-    "unit": "m",
-    "resolution": "0.5° grid",
-    "frequency": "annual",
-    "comment": "mean height of canopy formed by trees over 5m.  Vegetation of less than 5m should be excluded from the canopy height calculation (i.e. not contributing with zero)",
-    "sectors": [
-      "fire"
-    ]
-  },
-  {
     "specifier": "lowcover",
     "extension": "<total>",
     "dimensions": "(time,lat,lon)",
@@ -3189,19 +3065,6 @@
     "resolution": "0.5° grid",
     "frequency": "annual",
     "comment": "fraction of grid cell covered with vegetation more than 5 m tall",
-    "sectors": [
-      "fire"
-    ]
-  },
-  {
-    "specifier": "fluc",
-    "extension": "<total>",
-    "dimensions": "(time,lat,lon)",
-    "title": "CO2 Flux to Atmosphere from Land Use Change",
-    "unit": "1",
-    "resolution": "0.5° grid",
-    "frequency": "annual",
-    "comment": "",
     "sectors": [
       "fire"
     ]
