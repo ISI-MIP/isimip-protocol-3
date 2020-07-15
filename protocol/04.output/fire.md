@@ -1,7 +1,71 @@
 ### Output variables
 
-{{ table('variable', {
-    'Other variables': []
+{{ table('variable', { 
+    'Key variables': [ 
+      'burntarea', 
+      'ffire' 
+    ], 
+    'Other fire variables': [
+      'burntarealuc',
+      'ffirepeat',
+      'ffireluc',
+      'fireints',
+      'cfuel',
+      'ccfuel',
+      'mfuel',
+      'firenr',
+      'firenrperc95',
+      'firemortality',
+      'firesize',
+      'firesizeperc95',
+      'fireduration',
+      'fireros',
+      'ignhuman',
+      'ignlight'
+    ],
+    'Pools (as in Biomes sector)': [ 
+      'cveg', 
+      'clitterag',
+      'clitterbg', 
+      'csoil' 
+    ], 
+    'Fluxes': [ 
+        'gpp',
+        'npp',
+        'nbp',
+        'ra',
+        'rh',
+        'fluc',
+        'fgrazing',
+        'fcropharvest',
+        'flitter',
+        'flittersoil',
+        'fvegsoil',
+        'sensheatf'
+    ], 
+    'Vegetation Cover & Structure & land surface': [
+        'fapar',
+        'lai',
+        'pft',
+        'tsl',
+        'landalbedo',
+        'canopyheight',
+        'lowcover',
+        'highcover'
+    ],
+    'Hydrological variables (as in biomes sector)': [
+        'evap',
+        'intercep',
+        'esoil',
+        'trans',
+        'qtot',
+        'qs',
+        'soilmoist',
+        'soilmoistfroz',
+        'snd',
+        'swe',
+        'thawdepth'
+    ]
 }) }}
 
 ### Information about PFT-specific outputs
