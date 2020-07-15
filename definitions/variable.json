@@ -34,7 +34,8 @@
       "water_global": "0.5° grid",
       "water_regional": "0.5° grid if possible, otherwise at gauge location",
       "biomes": "0.5° grid",
-      "permafrost": "0.5° grid"
+      "permafrost": "0.5° grid",
+      "fire": "0.5° grid"
     },
     "frequency": "monthly",
     "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
@@ -42,7 +43,8 @@
       "biomes",
       "water_global",
       "water_regional",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
@@ -206,7 +208,8 @@
     "sectors": [
       "biomes",
       "water_global",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
@@ -216,6 +219,7 @@
     "dimensions": "(time, depth, lat, lon)",
     "resolution": {
       "biomes": "0.5° grid",
+      "fire": "0.5° grid",
       "forestry": "stand",
       "water_global": "0.5° grid",
       "permafrost": "0.5° grid"
@@ -224,6 +228,7 @@
     "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
     "sectors": [
       "biomes",
+      "fire",
       "forestry",
       "water_global",
       "permafrost"
@@ -361,14 +366,16 @@
     "frequency": {
       "biomes": "monthly, else annual",
       "permafrost": "monthly, else annual",
-      "water_global": "monthly"
+      "water_global": "monthly",
+      "fire": "monthly, else annual"
     },
     "comment": "Calculated from daily thaw depths.",
     "sectors": [
       "biomes",
       "water_global",
-      "permafrost"
-    ]
+      "permafrost",
+      "fire"
+      ]
   },
   {
     "specifier": "triver",
@@ -1673,7 +1680,8 @@
     "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
@@ -1682,6 +1690,7 @@
       "biomes": "<pft/total>",
       "forestry": "<species/total>",
       "permafrost": "<pft/total>"
+      "fire": "<pft/total>"
     },
     "title": "Fraction of absorbed photosynthetically active radiation",
     "unit": "%",
@@ -1689,13 +1698,15 @@
       "biomes": "0.5° grid",
       "forestry": "stand",
       "permafrost": "0.5° grid"
+      "fire": "0.5° grid"
     },
     "frequency": "daily else monthly",
     "comment": "Value between 0 and 100. Grid cell total and PFT information is essential.",
     "sectors": [
       "biomes",
       "forestry",
-      "permafrost"
+      "permafrost",
+      "fire"
     ]
   },
   {
