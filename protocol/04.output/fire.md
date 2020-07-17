@@ -1,10 +1,10 @@
 ### Output variables
 
-{{ table('variable', { 
-    'Key variables': [ 
-      'burntarea', 
-      'ffire' 
-    ], 
+{{ table('variable', {
+    'Key variables': [
+      'burntarea',
+      'ffire'
+    ],
     'Other fire variables': [
       'burntarealuc',
       'ffirepeat',
@@ -23,13 +23,13 @@
       'ignhuman',
       'ignlight'
     ],
-    'Pools (as in Biomes sector)': [ 
-      'cveg', 
+    'Pools (as in Biomes sector)': [
+      'cveg',
       'clitterag',
-      'clitterbg', 
-      'csoil' 
-    ], 
-    'Fluxes': [ 
+      'clitterbg',
+      'csoil'
+    ],
+    'Fluxes': [
         'gpp',
         'npp',
         'nbp',
@@ -42,7 +42,7 @@
         'flittersoil',
         'fvegsoil',
         'sensheatf'
-    ], 
+    ],
     'Vegetation Cover & Structure & land surface': [
         'fapar',
         'lai',
