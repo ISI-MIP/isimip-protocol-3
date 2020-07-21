@@ -375,29 +375,24 @@
   {
     "specifier": "pirrww",
     "extension": {
-      "agriculture": "<crop>-<irrigation>",
       "water_global": "",
       "water_regional": ""
     },
     "title": "Potential irrigation water withdrawal (assuming unlimited water supply)",
     "unit": {
-      "agriculture": "mm per growing season",
       "water_global": "kg m-2 s-1",
       "water_regional": "kg m-2 s-1"
     },
     "resolution": {
-      "agriculture": "0.5° grid",
       "water_global": "0.5° grid",
       "water_regional": "0.5° grid if possible, otherwise at gauge location"
     },
     "frequency": {
-      "agriculture": "seasonal",
       "water_global": "monthly",
       "water_regional": "monthly"
     },
-    "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall), assuming no losses in conveyance and application.",
+    "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
     "sectors": [
-      "agriculture",
       "water_global",
       "water_regional"
     ]
@@ -430,6 +425,26 @@
     "sectors": [
       "water_global",
       "water_regional"
+    ]
+  },
+    {
+    "specifier": "pirnreq",
+    "extension": {
+      "agriculture": "<crop>-<irrigation>"
+    },
+    "title": "Potential net irrigation water requirement",
+    "unit": {
+      "agriculture": "mm per growing season"
+    },
+    "resolution": {
+      "agriculture": "0.5° grid"
+    },
+    "frequency": {
+      "agriculture": "seasonal"
+    },
+    "comment": "Soil water demand required to avoid water stress, excluding any water losses associate with application or transport.",
+    "sectors": [
+      "agriculture"
     ]
   },
   {

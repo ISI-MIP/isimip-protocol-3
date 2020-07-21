@@ -3,7 +3,7 @@
 {{ table('variable', {
     'Key model output': [
         'yield',
-        'pirrww',
+        'pirnreq',
         'soilmoist'
     ],
     'Key diagnostic variables': [
