@@ -1,41 +1,70 @@
 ### Output variables
 
 {{ table('variable', {
-    'Key variable': [
-        'tsl'
+    'Key variables': [
+      'burntarea',
+      'ffire'
+    ],
+    'Other fire variables': [
+      'burntarealuc',
+      'ffirepeat',
+      'ffireluc',
+      'fireints',
+      'cfuel',
+      'ccfuel',
+      'mfuel',
+      'firenr',
+      'firenrperc95',
+      'firemortality',
+      'firesize',
+      'firesizeperc95',
+      'fireduration',
+      'fireros',
+      'ignhuman',
+      'ignlight'
     ],
     'Pools (as in Biomes sector)': [
-        'cveg',
-        'cvegag',
-        'cvegbg',
-        'clitter',
-        'csoil'
+      'cveg',
+      'clitterag',
+      'clitterbg',
+      'csoil'
     ],
-    'Fluxes (as in Biomes sector)': [
+    'Fluxes': [
         'gpp',
-        'ra',
         'npp',
+        'nbp',
+        'ra',
         'rh',
-        'fireint',
-        'firefrac',
-        'ecoatmflux'
+        'fluc',
+        'fgrazing',
+        'fcropharvest',
+        'flitter',
+        'flittersoil',
+        'fvegsoil',
+        'sensheatf'
     ],
-    'Structure (as in Biomes sector)': [
+    'Vegetation Cover & Structure & land surface': [
         'fapar',
         'lai',
         'pft',
+        'tsl',
+        'landalbedo',
+        'canopyheight',
+        'lowcover',
+        'highcover'
+    ],
+    'Hydrological variables (as in biomes sector)': [
+        'evap',
+        'intercep',
+        'esoil',
+        'trans',
+        'qtot',
+        'qs',
         'soilmoist',
         'soilmoistfroz',
         'snd',
-        'thawdepth',
         'swe',
-        'qtot'
-    ],
-    'Optional outputs': [
-        'cleaf',
-        'cwood',
-        'croot',
-        'burntarea'
+        'thawdepth'
     ]
 }) }}
 

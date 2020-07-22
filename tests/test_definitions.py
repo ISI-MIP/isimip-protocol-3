@@ -46,5 +46,10 @@ def test_variable():
             if sectors:
                 for key, value in row.items():
                     if isinstance(value, dict):
+                        field = '{}.{}'.format(row.get('specifier'), key)
+
                         for sector in value:
-                            assert sector in sectors, row.get('specifier')
+                            assert sector in sectors, field
+
+                        for sector in sectors:
+                            assert sector in list(value), field
