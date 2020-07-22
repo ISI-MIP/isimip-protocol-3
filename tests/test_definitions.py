@@ -20,21 +20,22 @@ def test_definitions():
 
 def test_double_specifiers():
     for file_name in os.listdir('definitions'):
-        file_path = os.path.join('definitions', file_name)
+        if file_name not in ['subcategory.json']:
+            file_path = os.path.join('definitions', file_name)
 
-        with open(file_path) as f:
-            instance = json.loads(f.read())
+            with open(file_path) as f:
+                instance = json.loads(f.read())
 
-            # check for double specifiers
-            seen = set()
-            doubles = []
-            for row in instance:
-                if row['specifier'] in seen:
-                    doubles.append(row['specifier'])
-                else:
-                    seen.add(row['specifier'])
+                # check for double specifiers
+                seen = set()
+                doubles = []
+                for row in instance:
+                    if row['specifier'] in seen:
+                        doubles.append(row['specifier'])
+                    else:
+                        seen.add(row['specifier'])
 
-            assert not doubles, '{} {}'.format(file_name, doubles)
+                assert not doubles, '{} {}'.format(file_name, doubles)
 
 
 def test_variable():
