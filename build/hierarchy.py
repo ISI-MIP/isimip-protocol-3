@@ -94,7 +94,7 @@ def main():
 
 
 def item(definition):
-    return {key: definition.get(key) for key in ['title', 'specifier', 'identifier', 'items']}
+    return {key: definition.get(key) for key in ['title', 'description', 'specifier', 'identifier', 'items']}
 
 
 def filter(row, filter_row, filter_field):
