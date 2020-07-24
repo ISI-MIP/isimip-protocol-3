@@ -48,7 +48,17 @@
         'atotuse',
         'atotww',
         'ptotww',
-        'ptotuse'
+        'ptotuse',
+        'pdomww',
+        'pdomuse',
+        'pmanww',
+        'pmanuse',
+        'pelecww',
+        'pelecuse',
+        'pliveww',
+        'pliveuse',
+        'ainduse',
+        'aindww'
     ],
     'Agricultural variables': [
         'yield',
