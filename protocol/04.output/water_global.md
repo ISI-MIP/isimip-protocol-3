@@ -75,7 +75,9 @@
     ],
     'Static output': [
         'soil',
-        'lai'
+        'lai',
+        'cellarea',
+        'contfrac'
     ]
 }) }}
 
