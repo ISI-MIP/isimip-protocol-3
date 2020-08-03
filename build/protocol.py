@@ -27,45 +27,46 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            protocol_path = os.path.join('protocol', '00.base.md')
-            pattern_path = os.path.join('pattern', simulation_round['specifier'],
-                                        'OutputData', '{}.json'.format(sector['specifier']))
-            output_path = os.path.join('output/protocol', simulation_round['specifier'],
-                                       '{}.html'.format(sector['specifier']))
-            layout_path = os.path.join('templates', 'layout.html')
+            if 'simulation_rounds' not in sector or simulation_round['specifier'] in sector['simulation_rounds']:
+                protocol_path = os.path.join('protocol', '00.base.md')
+                pattern_path = os.path.join('pattern', simulation_round['specifier'],
+                                            'OutputData', '{}.json'.format(sector['specifier']))
+                output_path = os.path.join('output/protocol', simulation_round['specifier'],
+                                           '{}.html'.format(sector['specifier']))
+                layout_path = os.path.join('templates', 'layout.html')
 
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-            # step 1: open and read protocol
-            with open(protocol_path) as f:
-                template_string = f.read()
+                # step 1: open and read protocol
+                with open(protocol_path) as f:
+                    template_string = f.read()
 
-            # step 1: open and read protocol
-            with open(pattern_path) as f:
-                pattern_list = json.loads(f.read())['file']
-                pattern = '_'.join(pattern_list) + '.nc'
-                pattern_simple = get_pattern_simple(pattern_list)
+                # step 1: open and read protocol
+                with open(pattern_path) as f:
+                    pattern_list = json.loads(f.read())['file']
+                    pattern = '_'.join(pattern_list) + '.nc'
+                    pattern_simple = get_pattern_simple(pattern_list)
 
-            # step 2: render the template using jinja2
-            enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
-            template = enviroment.from_string(template_string)
-            md = template.render(simulation_round=simulation_round, sector=sector,
-                                 pattern=pattern, pattern_simple=pattern_simple,
-                                 commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
-                                 table=Table(simulation_round, sector, Counter()))
+                # step 2: render the template using jinja2
+                enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
+                template = enviroment.from_string(template_string)
+                md = template.render(simulation_round=simulation_round, sector=sector,
+                                     pattern=pattern, pattern_simple=pattern_simple,
+                                     commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
+                                     table=Table(simulation_round, sector, Counter()))
 
-            # step 3: convert markdown to html
-            html = markdown(md, extensions=['fenced_code', 'attr_list', TocExtension(toc_depth='2-3')])
+                # step 3: convert markdown to html
+                html = markdown(md, extensions=['fenced_code', 'attr_list', TocExtension(toc_depth='2-3')])
 
-            # step 4: replace shortcodes
-            html = html.replace('[mandatory]', '<span class="badge badge-success">mandatory</span>')
+                # step 4: replace shortcodes
+                html = html.replace('[mandatory]', '<span class="badge badge-success">mandatory</span>')
 
-            # step 5: render content into layout template
-            with open(layout_path) as f:
-                template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
-            with open(output_path, 'w') as f:
-                f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
-                                        commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
+                # step 5: render content into layout template
+                with open(layout_path) as f:
+                    template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
+                with open(output_path, 'w') as f:
+                    f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
+                                            commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
 
 
 def get_pattern_simple(pattern_list):

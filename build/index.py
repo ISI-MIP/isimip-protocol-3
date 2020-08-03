@@ -4,7 +4,6 @@ import subprocess
 from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
-
 from markdown import markdown
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
@@ -22,7 +21,12 @@ def main():
     # step 1: create hierarchy of simulation_rounds, products, and sectors
     pages = []
     for simulation_round in simulation_rounds:
-        simulation_round['sectors'] = sectors
+        simulation_round['sectors'] = []
+
+        for sector in sectors:
+            if 'simulation_rounds' not in sector or simulation_round['specifier'] in sector['simulation_rounds']:
+                simulation_round['sectors'].append(sector)
+
         pages.append(simulation_round)
 
     # step 2: open and read intro
