@@ -25,10 +25,21 @@
             </td>
         </tr>
         {% for row in rows %}
+        {% if not row.products or 'InputData' in row.products %}
         <tr>
             <td>{{ row.title }}</td>
             <td>
-                <strong>{{ row.specifier }}{% if row.extension %}-{{ row.extension }}{% endif %}</strong>
+                {% if not row.extension %}
+                <strong>{{ row.specifier }}</strong>
+                {% elif row.extension is string %}
+                <strong>{{ row.specifier }}-{{ row.extension }}</strong>
+                {% else %}
+                <ul class="list-unstyled">
+                {% for e in row.extension %}
+                <li><strong>{{ row.specifier }}{{ '-' + e if e else '' }}</strong></li>
+                {% endfor %}
+                </ul>
+                {% endif %}
             </td>
             <td>{{ row.unit }}</td>
             <td>
@@ -55,6 +66,7 @@
                 </ul>
             </td>
         </tr>
+        {% endif %}
         {% endfor %}
         {% endif %}
         {% endfor %}
