@@ -34,11 +34,11 @@
                 {% elif row.extension is string %}
                 <strong>{{ row.specifier }}-{{ row.extension }}</strong>
                 {% else %}
-                <ul class="list-unstyled">
+                <strong>
                 {% for e in row.extension %}
-                <li><strong>{{ row.specifier }}{{ '-' + e if e else '' }}</strong></li>
+                {{ row.specifier }}{{ '-' + e if e else '' }}{{ ', ' if not loop.last }}
                 {% endfor %}
-                </ul>
+                </strong>
                 {% endif %}
             </td>
             <td>{{ row.unit }}</td>
