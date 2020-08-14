@@ -88,6 +88,9 @@ class Table(object):
 
     def __init__(self, simulation_round, sector, counter):
         self.simulation_round = simulation_round
+        self.product = {
+            'specifier': 'OutputData'
+        }
         self.sector = sector
         self.counter = counter
 
@@ -99,12 +102,13 @@ class Table(object):
         with open(definition_path) as f:
             definitions = json.loads(f.read())
 
-        # filter rows by simulation_round and/or sector
+        # filter rows by simulation_round, product, and/or sector
         rows = []
         for row in definitions:
             if 'simulation_rounds' not in row or self.simulation_round['specifier'] in row['simulation_rounds']:
-                if 'sectors' not in row or self.sector['specifier'] in row['sectors'] or self.sector['specifier'] == 'index':
-                    rows.append(row)
+                if 'products' not in row or self.product['specifier'] in row['products']:
+                    if 'sectors' not in row or self.sector['specifier'] in row['sectors'] or self.sector['specifier'] == 'index':
+                        rows.append(row)
 
         # apply order argument
         if isinstance(order, dict):
