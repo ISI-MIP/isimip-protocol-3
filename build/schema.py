@@ -141,19 +141,23 @@ def main():
                         properties['enum'] = list(set(enum))
 
                 elif properties['type'] == 'number':
-                    properties['minimum'] = CONSTANTS[simulation_round]['min_year']
-                    properties['maximum'] = CONSTANTS[simulation_round]['max_year']
+                    if product in ['OutputData', 'SecondaryOutputData']:
+                        properties['minimum'] = CONSTANTS[simulation_round]['min_year']
+                        properties['maximum'] = CONSTANTS[simulation_round]['max_year']
 
             # step 5: write json schema
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(json.dumps(schema, indent=2))
 
 
-def filter(rows, simulation_round, product, sector):
+def filter(rows, simulation_round, product, sector=None):
     for row in rows:
         if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
             if 'products' not in row or product in row['products']:
-                if 'sectors' not in row or sector in row['sectors']:
+                if sector is not None:
+                    if 'sectors' not in row or sector in row['sectors']:
+                        yield row
+                else:
                     yield row
 
 
