@@ -21,16 +21,32 @@
         <tr>
             <td>{{ row.title }}</td>
             <td>
-                {% if row.extension is mapping %}
-                {% for sector, extension in row.extension.items() %}
-                <p>
-                    {{ sector }}: <strong>{{ row.specifier }}{{ '-' if extension }}{{ extension }}</strong>
-                </p>
-                {% endfor %}
-                {% else %}
-                <strong>
-                    {{ row.specifier }}{{ '-' if row.extension }}{{ row.extension }}
-                </strong>
+                {% if not row.extension %}
+                    <strong>{{ row.specifier }}</strong>
+                {% elif row.extension is mapping %}
+                    <ul class="list-unstyled">
+                    {% for sector, extension in row.extension.items() %}
+                        <li>{{ sector }}:
+                            {% if extension is string %}
+                                <strong>{{ row.specifier }}-{{ extension }}</strong>
+                            {% else %}{# extension is an array #}
+                                <strong>
+                                {% for ext in extension %}
+                                {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
+                                {% endfor %}
+                                </strong>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% elif row.extension is string %}
+                    <strong>{{ row.specifier }}-{{ row.extension }}</strong>
+                {% else %}{# extension is an array #}
+                    <strong>
+                    {% for ext in row.extension %}
+                    {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
+                    {% endfor %}
+                    </strong>
                 {% endif %}
             </td>
             <td>
