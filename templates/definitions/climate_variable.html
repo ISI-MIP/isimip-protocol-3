@@ -50,7 +50,13 @@
                     <li>{{ resolution }}</li>
                     {% endfor %}
                     {% endif %}
+                    {% if row.frequency is string %}
                     <li>{{ row.frequency }}</li>
+                    {% else %}
+                    {% for frequency in row.frequency %}
+                    <li>{{ frequency }}</li>
+                    {% endfor %}
+                    {% endif %}
                     {% if row.vertical_resolution %}
                     <li>{{ row.vertical_resolution }}</li>
                     {% endif %}
