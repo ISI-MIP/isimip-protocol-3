@@ -1,4 +1,4 @@
-all: glossary.py index.py pattern.py protocol.py schema.py
+all: definitions.py glossary.py index.py pattern.py protocol.py schema.py
 
 bibliography/bibliography.html: bibliography/bibliography.bib bibliography/bibliography.md
 	pandoc --natbib --filter pandoc-citeproc bibliography/bibliography.md \
@@ -10,6 +10,6 @@ bibliography/bibliography.html: bibliography/bibliography.bib bibliography/bibli
 	python3 build/$@
 
 clean:
-	rm -r output; rm bibliography/bibliography.html
+	rm -fr output; rm -f bibliography/bibliography.html
 
-.PHONY: pattern protocol schema gh-pages clean
+.PHONY: clean
