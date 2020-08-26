@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryInputData/climate.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "climate_forcing",
+        "climate_scenario",
+        "climate_variable",
+        "region",
+        "timestep"
+      ],
+      "properties": {
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "cnrm-esm2-1",
+            "cesm2",
+            "miroc6",
+            "mpi-esm1-2-hr",
+            "canesm5",
+            "cnrm-cm6-1",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "mri-esm2-0",
+            "ec-earth3"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "ssp585",
+            "picontrol",
+            "ssp370",
+            "historical",
+            "ssp126"
+          ]
+        },
+        "climate_variable": {
+          "type": "string",
+          "enum": [
+            "hus",
+            "tas",
+            "chl",
+            "expc",
+            "intpoc",
+            "siconc",
+            "rsntds",
+            "thetao",
+            "o2",
+            "uo",
+            "tasmax",
+            "intppdiat",
+            "phymisc",
+            "ph",
+            "so",
+            "phydiat",
+            "tasmin",
+            "prsn",
+            "rsds",
+            "tob",
+            "zooc",
+            "phyc",
+            "phydiaz",
+            "prw",
+            "vo",
+            "psl",
+            "ps",
+            "ts",
+            "deptho",
+            "hurs",
+            "zmeso",
+            "wo",
+            "ua",
+            "pr",
+            "intppmisc",
+            "phypico",
+            "rlds",
+            "zmicro",
+            "mlotstmax",
+            "intppdiaz",
+            "sfcwind",
+            "hur",
+            "thkcello",
+            "va",
+            "intpppico",
+            "ta",
+            "huss",
+            "tos",
+            "intpp",
+            "pp"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1601,
+          "maximum": 2100
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1601,
+          "maximum": 2100
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/water_global.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "detrending",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "region",
+        "timestep"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "gswp3-w5e5",
+            "gswp3"
+          ]
+        },
+        "detrending": {
+          "type": "string",
+          "enum": [
+            "detrended",
+            "observed"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "spinclim",
+            "counterclim",
+            "obsclim"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "2015soc",
+            "histsoc",
+            "nat"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "1901co2",
+            "nowatermgt"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "airrusegreen",
+            "tws",
+            "canopystor",
+            "wetlandstor",
+            "pindww",
+            "adomww",
+            "ptotuse",
+            "pliveuse",
+            "matyyear",
+            "pmanuse",
+            "reservoirstor",
+            "soilmoist",
+            "qg",
+            "pinduse",
+            "yield",
+            "matyday",
+            "contfrac",
+            "anthyear",
+            "swe",
+            "biom",
+            "airruse",
+            "thawdepth",
+            "pliveww",
+            "triver",
+            "airrww",
+            "sco2",
+            "aliveuse",
+            "rootmoist",
+            "groundwstor",
+            "adomuse",
+            "glacierstor",
+            "pirrww",
+            "qs",
+            "pirruse",
+            "qsb",
+            "amanww",
+            "aelecuse",
+            "plantyear",
+            "lai",
+            "arainfusegreen",
+            "atotuse",
+            "aelecww",
+            "initr",
+            "cellarea",
+            "soilmoistfroz",
+            "sn2o",
+            "pelecww",
+            "atotww",
+            "ptotww",
+            "pirrusegreen",
+            "potevap",
+            "pdomuse",
+            "anthday",
+            "aliveww",
+            "aindww",
+            "qtot",
+            "soil",
+            "pelecuse",
+            "lakestor",
+            "snd",
+            "qr",
+            "dis",
+            "riverstor",
+            "amanuse",
+            "plantday",
+            "evap",
+            "ainduse",
+            "pdomww",
+            "tsl",
+            "pmanww"
+          ]
+        },
+        "crop": {
+          "type": "string",
+          "enum": [
+            "bar",
+            "nut",
+            "whe",
+            "pop",
+            "soy",
+            "pot",
+            "mis",
+            "mgr",
+            "pea",
+            "cas",
+            "rap",
+            "mil",
+            "euc",
+            "ric",
+            "ben",
+            "rye",
+            "sgb",
+            "sun",
+            "mai",
+            "cot",
+            "sor",
+            "sug"
+          ]
+        },
+        "irrigation": {
+          "type": "string",
+          "enum": [
+            "noirr",
+            "cirr"
+          ]
+        },
+        "pft": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        }
+      }
+    }
+  }
+}

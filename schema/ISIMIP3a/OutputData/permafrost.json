@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/permafrost.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "detrending",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "region",
+        "timestep"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "gswp3-w5e5",
+            "gswp3"
+          ]
+        },
+        "detrending": {
+          "type": "string",
+          "enum": [
+            "detrended",
+            "observed"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "spinclim",
+            "counterclim",
+            "obsclim"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "2015soc",
+            "histsoc",
+            "nat"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "1901co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "cwood",
+            "nbp",
+            "fcropharvest",
+            "clitterag",
+            "gpp",
+            "soilmoist",
+            "swe",
+            "cvegbg",
+            "thawdepth",
+            "ffire",
+            "fluc",
+            "flittersoil",
+            "flitter",
+            "csoil",
+            "qs",
+            "lai",
+            "pft",
+            "cvegag",
+            "npp",
+            "ra",
+            "fgrazing",
+            "ccwd",
+            "soilmoistfroz",
+            "fapar",
+            "qtot",
+            "landalbedo",
+            "croot",
+            "snd",
+            "cveg",
+            "clitterbg",
+            "cleaf",
+            "burntarea",
+            "rh",
+            "fvegsoil",
+            "tsl"
+          ]
+        },
+        "crop": {
+          "type": "string",
+          "enum": [
+            "bar",
+            "nut",
+            "whe",
+            "pop",
+            "soy",
+            "pot",
+            "mis",
+            "mgr",
+            "pea",
+            "cas",
+            "rap",
+            "mil",
+            "euc",
+            "ric",
+            "ben",
+            "rye",
+            "sgb",
+            "sun",
+            "mai",
+            "cot",
+            "sor",
+            "sug"
+          ]
+        },
+        "irrigation": {
+          "type": "string",
+          "enum": [
+            "noirr"
+          ]
+        },
+        "pft": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        }
+      }
+    }
+  }
+}

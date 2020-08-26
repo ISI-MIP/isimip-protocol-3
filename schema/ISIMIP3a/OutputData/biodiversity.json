@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/biodiversity.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "detrending",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "region",
+        "timestep"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "gswp3-w5e5",
+            "gswp3"
+          ]
+        },
+        "detrending": {
+          "type": "string",
+          "enum": [
+            "detrended",
+            "observed"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "spinclim",
+            "counterclim",
+            "obsclim"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "2015soc",
+            "histsoc",
+            "nat"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "1901co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "birdprob",
+            "thrbirdsumprob",
+            "mammalprob",
+            "birdsumprob",
+            "birdsr",
+            "mammalsr",
+            "mammalsumprob",
+            "endbirdsumprob",
+            "endamphibiansumprob",
+            "thrmammalsumprob",
+            "amphibiansr",
+            "thramphibiansumprob",
+            "endmammalsumprob",
+            "amphibiansumprob",
+            "amphibianprob"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        }
+      }
+    }
+  }
+}

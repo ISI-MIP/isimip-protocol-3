@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryInputData/climate.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "climate_forcing",
+        "climate_scenario",
+        "climate_variable",
+        "region",
+        "timestep"
+      ],
+      "properties": {
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "cnrm-esm2-1",
+            "cesm2",
+            "miroc6",
+            "gswp3-w5e5",
+            "canesm5",
+            "cnrm-cm6-1",
+            "gswp3",
+            "ec-earth3"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "spinclim",
+            "counterclim",
+            "obsclim"
+          ]
+        },
+        "climate_variable": {
+          "type": "string",
+          "enum": [
+            "hurs",
+            "hus",
+            "tas",
+            "sfcwind",
+            "ua",
+            "hur",
+            "tasmin",
+            "pr",
+            "rsds",
+            "psl",
+            "va",
+            "ta",
+            "rlds",
+            "prw",
+            "huss",
+            "ps",
+            "ts",
+            "tasmax"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1901,
+          "maximum": 2018
+        }
+      }
+    }
+  }
+}

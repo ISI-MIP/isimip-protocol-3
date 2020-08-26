@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/forestry.json",
+  "commit": "218cdb204be9d620adbb7064a1061f67da537bb8",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "bias_adjustment",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "forest_stand",
+        "timestep"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "mpi-esm1-2-hr",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "mri-esm2-0"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "w5e5",
+            "localbc",
+            "nobasd"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "ssp585",
+            "picontrol",
+            "ssp370",
+            "historical",
+            "ssp126"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "2015soc",
+            "histsoc",
+            "1850soc",
+            "nat"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "2015co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "trans",
+            "harvstemno",
+            "stemno",
+            "intercep",
+            "cwood",
+            "density",
+            "esoil",
+            "clitterag",
+            "gpp",
+            "soilmoist",
+            "rr",
+            "dist",
+            "cvegbg",
+            "mort",
+            "dbhdomhei",
+            "csoil",
+            "nee",
+            "lai",
+            "cvegag",
+            "npp",
+            "species",
+            "ra",
+            "dbh",
+            "cproduct",
+            "ccwd",
+            "nsoil",
+            "fapar",
+            "domhei",
+            "mortstemno",
+            "vol",
+            "soil",
+            "croot",
+            "harv",
+            "cveg",
+            "clitterbg",
+            "cleaf",
+            "hei",
+            "evap",
+            "rh",
+            "mai",
+            "nlit",
+            "age",
+            "tsl",
+            "ba"
+          ]
+        },
+        "species": {
+          "type": "string",
+          "enum": [
+            "piab",
+            "bepe",
+            "eugl",
+            "poni",
+            "pisy",
+            "pipi",
+            "fi",
+            "bepu",
+            "qupe",
+            "quro",
+            "frex",
+            "lade",
+            "acpl",
+            "ins",
+            "c3gr",
+            "hawo",
+            "wi",
+            "fasy",
+            "rops",
+            "soau"
+          ]
+        },
+        "forest_stand": {
+          "type": "string",
+          "enum": [
+            "solling-spruce",
+            "le-bray",
+            "kroof",
+            "peitz",
+            "solling-beech",
+            "soro",
+            "collelongo",
+            "bily-kriz",
+            "hyytiala"
+          ]
+        },
+        "timestep": {
+          "type": "string"
+        },
+        "start_year": {
+          "type": "number",
+          "minimum": 1601,
+          "maximum": 2100
+        },
+        "end_year": {
+          "type": "number",
+          "minimum": 1601,
+          "maximum": 2100
+        }
+      }
+    }
+  }
+}
