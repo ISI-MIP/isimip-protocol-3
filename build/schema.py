@@ -1,92 +1,10 @@
 import json
 import os
 import subprocess
+from collections import OrderedDict
 from pathlib import Path
 
-URL = 'https://isi-mip.github.io/isimip-protocol-3/schema/'
-
-CONSTANTS = {
-    'ISIMIP3a': {
-        'reference_dates': [
-            "%s since 1901-01-01",
-            "%s since 1901-01-01 00:00:00",
-            "%s since 1901-1-1",
-            "%s since 1901-1-1 00:00:00"
-        ],
-        'min_year': 1901,
-        'max_year': 2018
-    },
-    'ISIMIP3b': {
-        'reference_dates': [
-            "%s since 1661-01-01",
-            "%s since 1661-01-01 00:00:00",
-            "%s since 1661-1-1",
-            "%s since 1661-1-1 00:00:00"
-        ],
-        'min_year': 1601,
-        'max_year': 2100
-    }
-}
-
-DIMENSIONS = {
-  "type": "object",
-  "required": [
-    "lat",
-    "lon",
-    "time"
-  ],
-  "properties": {
-    "lat": {
-      "const": 360
-    },
-    "lon": {
-      "const": 720
-    }
-  }
-}
-
-VARIABLES = {
-    "type": "object",
-    "required": ["lat", "lon", "time"],
-    "properties": {
-        "lat": {
-            "type": "object",
-            "required": ["axis", "long_name", "units"],
-            "properties": {
-                "axis": {
-                    "const": "Y"
-                },
-                "units": {
-                    "const": "degrees_north"
-                }
-            }
-        },
-        "lon": {
-            "type": "object",
-            "required": ["axis", "long_name", "units"],
-            "properties": {
-                "axis": {
-                    "const": "X"
-                },
-                "units": {
-                    "const": "degrees_east"
-                }
-            }
-        },
-        "time": {
-            "type": "object",
-            "required": ["long_name", "units"],
-            "properties": {
-                "axis": {
-                    "const": "T"
-                },
-                "units": {
-                    "enum": []
-                }
-            }
-        }
-    }
-}
+URL = 'https://protocol.isimip.org/schema/'
 
 
 def main():
@@ -97,7 +15,8 @@ def main():
     for file_name in os.listdir('definitions'):
         file_path = Path('definitions') / file_name
         identifier = file_path.stem
-        definitions[identifier] = json.loads(open(file_path).read())
+        definition_json = json.loads(open(file_path).read())
+        definitions[identifier] = OrderedDict([(row['specifier'], row) for row in definition_json])
 
     for root, dirs, files in os.walk('schema'):
         for file_name in files:
@@ -107,58 +26,47 @@ def main():
 
             simulation_round = schema_path_components[1]
             product = schema_path_components[2]
-            if product in ['OutputData', 'SecondaryOutputData']:
-                sector = schema_path_components[3]
-            else:
+            if product.endswith('InputData'):
+                category = schema_path_components[3]
                 sector = None
+            else:
+                category = None
+                sector = schema_path_components[3]
 
             # step 1: read schema template
             with open(schema_path) as f:
-                schema = json.loads(f.read())
-                schema['commit'] = commit
-
-            # step 2: add dimensions to schema
-            schema['properties']['dimensions'] = DIMENSIONS
-
-            # step 3: add variables to schema
-            schema['properties']['variables'] = VARIABLES
-
-            # step 3b: update time/properties/unit/enum
-            reference_dates = []
-            for increment in [row.get('increment') for row in filter(definitions['timestep'], simulation_round, product, sector)]:
-                for reference_date_pattern in CONSTANTS[simulation_round]['reference_dates']:
-                    reference_dates.append(reference_date_pattern % increment)
-            schema['properties']['variables']['properties']['time']['properties']['units']['enum'] = reference_dates
+                schema = {
+                    '$schema': 'http://json-schema.org/draft-07/schema#',
+                    '$id': URL + schema_path.as_posix(),
+                    'commit': commit
+                }
+                schema.update(json.loads(f.read()))
 
             # step 4: loop over properties/specifiers/properties and add enums from definition files
             for identifier, properties in schema['properties']['specifiers']['properties'].items():
-                if properties['type'] == 'string':
+                if identifier in ['start_year', 'end_year']:
+                    properties['minimum'] = definitions['time_span']['minimum']['value'][simulation_round]
+                    properties['maximum'] = definitions['time_span']['maximum']['value'][simulation_round]
+                else:
                     if identifier in definitions:
                         enum = []
-                        for row in filter(definitions[identifier], simulation_round, product, sector):
-                            enum.append(row.get('specifier_file') or row.get('specifier'))
+                        for row in definitions[identifier].values():
+                            if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
+                                if 'products' not in row or product in row['products']:
+                                    if product.endswith('InputData'):
+
+                                        if 'categories' not in row or category in row['categories']:
+                                            enum.append(row.get('specifier_file') or row.get('specifier'))
+                                    else:
+                                        sector = schema_path_components[3]
+                                        if 'sectors' not in row or sector in row['sectors']:
+                                            enum.append(row.get('specifier_file') or row.get('specifier'))
 
                         properties['enum'] = list(set(enum))
-
-                elif properties['type'] == 'number':
-                    if product in ['OutputData', 'SecondaryOutputData']:
-                        properties['minimum'] = CONSTANTS[simulation_round]['min_year']
-                        properties['maximum'] = CONSTANTS[simulation_round]['max_year']
 
             # step 5: write json schema
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(json.dumps(schema, indent=2))
-
-
-def filter(rows, simulation_round, product, sector=None):
-    for row in rows:
-        if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-            if 'products' not in row or product in row['products']:
-                if sector is not None:
-                    if 'sectors' not in row or sector in row['sectors']:
-                        yield row
-                else:
-                    yield row
 
 
 if __name__ == "__main__":

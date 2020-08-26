@@ -14,5 +14,3 @@ def test_patterns():
                     schema = json.loads(f.read())
 
                 assert Draft7Validator.check_schema(schema) is None
-                assert '$id' in schema
-                assert schema['$id'].endswith(file_path)
