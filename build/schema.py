@@ -44,25 +44,21 @@ def main():
 
             # step 4: loop over properties/specifiers/properties and add enums from definition files
             for identifier, properties in schema['properties']['specifiers']['properties'].items():
-                if identifier in ['start_year', 'end_year']:
-                    properties['minimum'] = definitions['time_span']['minimum']['value'][simulation_round]
-                    properties['maximum'] = definitions['time_span']['maximum']['value'][simulation_round]
-                else:
-                    if identifier in definitions:
-                        enum = []
-                        for row in definitions[identifier].values():
-                            if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-                                if 'products' not in row or product in row['products']:
-                                    if product.endswith('InputData'):
+                if identifier in definitions:
+                    enum = []
+                    for row in definitions[identifier].values():
+                        if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
+                            if 'products' not in row or product in row['products']:
+                                if product.endswith('InputData'):
 
-                                        if 'categories' not in row or category in row['categories']:
-                                            enum.append(row.get('specifier_file') or row.get('specifier'))
-                                    else:
-                                        sector = schema_path_components[3]
-                                        if 'sectors' not in row or sector in row['sectors']:
-                                            enum.append(row.get('specifier_file') or row.get('specifier'))
+                                    if 'categories' not in row or category in row['categories']:
+                                        enum.append(row.get('specifier_file') or row.get('specifier'))
+                                else:
+                                    sector = schema_path_components[3]
+                                    if 'sectors' not in row or sector in row['sectors']:
+                                        enum.append(row.get('specifier_file') or row.get('specifier'))
 
-                        properties['enum'] = list(set(enum))
+                    properties['enum'] = list(set(enum))
 
             # step 5: write json schema
             output_path.parent.mkdir(parents=True, exist_ok=True)
