@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/socioeconomic.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -13,55 +13,56 @@
         "soc_dataset": {
           "type": "string",
           "enum": [
-            "landuse-totals",
-            "n-fertilizer-5crops",
+            "water_abstraction",
+            "effort",
+            "ndep-nhx",
+            "ndep-noy",
+            "population",
             "gdp-countrylevel",
-            "wood_harvesting",
-            "reservoirs-dams",
+            "n-fertilizer-5crops",
+            "pctlake",
+            "forest_management",
             "catch",
+            "reservoirs-dams",
+            "wood_harvesting",
+            "landuse-totals",
             "landuse-pastures",
             "landuse-5crops",
             "landuse-15crops",
-            "ndep-nhx",
-            "ndep-noy",
-            "effort",
-            "forest_management",
-            "pctlake",
-            "water_abstraction",
-            "landuse-urbanareas",
-            "population"
+            "landuse-urbanareas"
           ]
         },
         "soc_variable": {
           "type": "string",
           "enum": [
-            "indww",
+            "indwc",
             "domwc",
             "domww",
-            "indwc"
+            "indww"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
-            "1850soc",
             "2015soc",
-            "histsoc"
+            "histsoc",
+            "1850soc",
+            "nat"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1601,
-          "maximum": 2100
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1601,
-          "maximum": 2100
+          "type": "number"
         }
       }
     }

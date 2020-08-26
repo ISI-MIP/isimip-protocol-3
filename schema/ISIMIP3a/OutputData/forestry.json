@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/forestry.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -17,7 +17,7 @@
         "sens_scenario",
         "variable",
         "forest_stand",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "model": {
@@ -40,17 +40,17 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "spinclim",
             "counterclim",
+            "spinclim",
             "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
+            "histsoc",
             "2015soc",
-            "histsoc"
+            "nat"
           ]
         },
         "sens_scenario": {
@@ -63,103 +63,105 @@
         "variable": {
           "type": "string",
           "enum": [
-            "fapar",
-            "cveg",
-            "npp",
-            "lai",
-            "evap",
-            "cwood",
-            "dist",
-            "soil",
-            "cvegag",
-            "mort",
-            "dbh",
-            "stemno",
-            "cvegbg",
-            "nee",
-            "mortstemno",
-            "harv",
-            "tsl",
             "density",
-            "age",
-            "nsoil",
-            "intercep",
+            "lai",
+            "esoil",
+            "dbh",
             "croot",
-            "trans",
-            "ra",
+            "vol",
+            "nsoil",
+            "nee",
+            "ba",
+            "clitterbg",
+            "cproduct",
+            "dist",
+            "soilmoist",
+            "cleaf",
             "rh",
+            "hei",
+            "domhei",
+            "cveg",
             "gpp",
             "harvstemno",
-            "domhei",
-            "rr",
-            "vol",
-            "clitterbg",
-            "esoil",
-            "cleaf",
-            "ba",
-            "csoil",
-            "species",
-            "ccwd",
-            "mai",
-            "soilmoist",
-            "clitterag",
-            "cproduct",
-            "dbhdomhei",
+            "intercep",
+            "cvegag",
             "nlit",
-            "hei"
+            "clitterag",
+            "trans",
+            "cwood",
+            "npp",
+            "dbhdomhei",
+            "tsl",
+            "mai",
+            "mortstemno",
+            "ccwd",
+            "csoil",
+            "stemno",
+            "species",
+            "harv",
+            "soil",
+            "fapar",
+            "ra",
+            "mort",
+            "age",
+            "cvegbg",
+            "rr",
+            "evap"
           ]
         },
         "species": {
           "type": "string",
           "enum": [
-            "wi",
-            "c3gr",
-            "rops",
-            "lade",
             "pisy",
-            "eugl",
-            "ins",
+            "rops",
             "bepu",
-            "piab",
-            "frex",
-            "hawo",
-            "fi",
-            "fasy",
-            "qupe",
             "quro",
-            "soau",
-            "pipi",
+            "piab",
+            "qupe",
+            "ins",
+            "fi",
             "acpl",
+            "fasy",
+            "pipi",
             "bepe",
-            "poni"
+            "soau",
+            "poni",
+            "c3gr",
+            "eugl",
+            "lade",
+            "frex",
+            "wi",
+            "hawo"
           ]
         },
         "forest_stand": {
           "type": "string",
           "enum": [
             "collelongo",
-            "le-bray",
-            "soro",
-            "bily-kriz",
             "kroof",
+            "le-bray",
             "solling-spruce",
+            "bily-kriz",
             "solling-beech",
+            "hyytiala",
             "peitz",
-            "hyytiala"
+            "soro"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "3hr",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         }
       }
     }

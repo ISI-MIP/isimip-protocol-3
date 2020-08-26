@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/lakes_local.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -17,7 +17,7 @@
         "sens_scenario",
         "variable",
         "lake_site",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "model": {
@@ -26,37 +26,37 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "mri-esm2-0",
-            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "ukesm1-0-ll",
+            "gfdl-esm4",
+            "mpi-esm1-2-hr",
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "w5e5",
-            "nobasd"
+            "nobasd",
+            "w5e5"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
-            "picontrol",
+            "ssp370",
             "historical",
             "ssp585",
-            "ssp370"
+            "picontrol",
+            "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
-            "1850soc",
             "2015soc",
-            "histsoc"
+            "histsoc",
+            "1850soc",
+            "nat"
           ]
         },
         "sens_scenario": {
@@ -68,123 +68,125 @@
         "variable": {
           "type": "string",
           "enum": [
-            "tdn",
+            "momf",
+            "pp",
             "watertemp",
-            "snowthick",
-            "tn",
-            "lakeicefrac",
-            "sedheatf",
-            "zoobio",
-            "ice",
+            "turbdiffheat",
             "si",
+            "surftemp",
+            "ice",
+            "do",
+            "doc",
+            "pn",
+            "thermodepth",
+            "swup",
+            "snowtemp",
+            "icetemp",
             "strat",
+            "icethick",
+            "tn",
+            "chl",
+            "snowthick",
             "tpd",
             "lwup",
-            "pp",
-            "thermodepth",
-            "lakealbedo",
-            "momf",
-            "icethick",
-            "bottemp",
-            "pn",
+            "sedheatf",
             "tp",
-            "phytobio",
-            "surftemp",
-            "snowtemp",
-            "sensheatf",
-            "doc",
-            "lakeheatf",
-            "chl",
+            "lakeicefrac",
             "latentheatf",
-            "swup",
-            "turbdiffheat",
+            "tdn",
+            "lakealbedo",
+            "lakeheatf",
+            "bottemp",
+            "phytobio",
             "extcoeff",
-            "do",
-            "icetemp"
+            "sensheatf",
+            "zoobio"
           ]
         },
         "lake_site": {
           "type": "string",
           "enum": [
-            "harp",
-            "alqueva",
-            "bourget",
-            "big-muskellunge",
-            "kilpisjarvi",
-            "feeagh",
-            "black-oak",
-            "tahoe",
-            "vendyurskoe",
-            "trout-lake",
-            "erken",
-            "rimov",
-            "mueggelsee",
-            "rotorua",
-            "two-sisters",
-            "mt-bold",
-            "washington",
-            "nohipalo-valgejaerv",
-            "windermere",
-            "vortsjaerv",
-            "monona",
-            "trout-bog",
-            "falling-creek",
-            "green",
-            "zlutice",
-            "sunapee",
-            "esthwaite-water",
-            "ekoln ",
-            "paajarvi",
-            "tarawera",
-            "lower-zurich",
-            "sau",
-            "crystal-lake",
-            "dickie",
-            "crystal-bog",
-            "kinneret",
-            "langtjern",
-            "nohipalo-mustjaerv",
-            "annie",
-            "geneva",
-            "klicava",
-            "mendota",
-            "okauchee",
-            "rappbode",
-            "ngoring ",
-            "argyle",
-            "delavan",
-            "burley-griffin",
             "eagle ",
-            "kivu",
-            "great",
-            "laramie",
-            "kuivajarvi",
-            "toolik",
-            "stechlin",
+            "rotorua",
             "sparkling",
-            "neuchatel",
-            "fish",
-            "annecy",
-            "biel",
+            "dickie",
+            "burley-griffin",
             "wingra",
-            "waahi",
-            "mozhaysk",
+            "harp",
+            "paajarvi",
+            "klicava",
+            "kivu",
+            "nohipalo-valgejaerv",
+            "mt-bold",
             "sammamish",
-            "taupo"
+            "waahi",
+            "mueggelsee",
+            "ngoring ",
+            "okauchee",
+            "crystal-lake",
+            "rimov",
+            "alqueva",
+            "biel",
+            "mendota",
+            "vendyurskoe",
+            "toolik",
+            "erken",
+            "falling-creek",
+            "delavan",
+            "feeagh",
+            "argyle",
+            "black-oak",
+            "great",
+            "esthwaite-water",
+            "washington",
+            "stechlin",
+            "mozhaysk",
+            "windermere",
+            "sunapee",
+            "kinneret",
+            "bourget",
+            "crystal-bog",
+            "kuivajarvi",
+            "tarawera",
+            "vortsjaerv",
+            "langtjern",
+            "annecy",
+            "green",
+            "trout-lake",
+            "sau",
+            "laramie",
+            "tahoe",
+            "trout-bog",
+            "kilpisjarvi",
+            "lower-zurich",
+            "ekoln ",
+            "rappbode",
+            "taupo",
+            "annie",
+            "two-sisters",
+            "fish",
+            "zlutice",
+            "big-muskellunge",
+            "monona",
+            "nohipalo-mustjaerv",
+            "geneva",
+            "neuchatel"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "3hr",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1601,
-          "maximum": 2100
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1601,
-          "maximum": 2100
+          "type": "number"
         }
       }
     }

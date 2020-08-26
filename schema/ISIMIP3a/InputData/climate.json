@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -14,7 +14,7 @@
         "climate_scenario",
         "climate_variable",
         "region",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "climate_forcing": {
@@ -27,24 +27,24 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "spinclim",
             "counterclim",
+            "spinclim",
             "obsclim"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
-            "rsds",
-            "ps",
-            "sfcwind",
+            "tasmax",
+            "rlds",
             "tas",
             "huss",
-            "hurs",
             "pr",
-            "tasmax",
+            "ps",
+            "sfcwind",
             "tasmin",
-            "rlds"
+            "rsds",
+            "hurs"
           ]
         },
         "region": {
@@ -53,18 +53,19 @@
             "global"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         }
       }
     }

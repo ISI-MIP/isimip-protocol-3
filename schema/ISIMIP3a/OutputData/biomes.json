@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/biomes.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -17,7 +17,7 @@
         "sens_scenario",
         "variable",
         "region",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "model": {
@@ -40,17 +40,17 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "spinclim",
             "counterclim",
+            "spinclim",
             "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
+            "histsoc",
             "2015soc",
-            "histsoc"
+            "nat"
           ]
         },
         "sens_scenario": {
@@ -63,56 +63,56 @@
         "variable": {
           "type": "string",
           "enum": [
-            "fapar",
-            "cveg",
-            "npp",
-            "sn2o",
-            "flitter",
-            "lai",
             "snd",
-            "evap",
-            "cwood",
-            "soil",
-            "biom",
-            "cvegag",
-            "landalbedo",
-            "cvegbg",
-            "qtot",
-            "fgrazing",
-            "anthday",
-            "tsl",
-            "swe",
-            "qs",
-            "intercep",
-            "croot",
-            "trans",
-            "flittersoil",
-            "ra",
-            "rh",
-            "fcropharvest",
-            "sco2",
-            "thawdepth",
-            "gpp",
-            "rr",
-            "initr",
-            "yield",
-            "plantday",
-            "clitterbg",
             "soilmoistfroz",
-            "nbp",
+            "lai",
             "esoil",
-            "cleaf",
-            "matyday",
-            "csoil",
-            "ccwd",
-            "soilmoist",
-            "clitterag",
-            "fvegsoil",
+            "croot",
+            "fgrazing",
+            "swe",
+            "flittersoil",
+            "clitterbg",
             "cproduct",
-            "fluc",
+            "soilmoist",
+            "landalbedo",
+            "plantday",
+            "thawdepth",
+            "yield",
+            "anthday",
+            "cleaf",
+            "rh",
+            "qs",
+            "flitter",
             "pft",
+            "cveg",
+            "gpp",
+            "fluc",
+            "cvegag",
+            "intercep",
+            "fvegsoil",
+            "clitterag",
+            "trans",
+            "cwood",
+            "biom",
+            "npp",
+            "matyday",
+            "tsl",
             "ffire",
-            "burntarea"
+            "sco2",
+            "initr",
+            "burntarea",
+            "ccwd",
+            "csoil",
+            "fcropharvest",
+            "soil",
+            "qtot",
+            "sn2o",
+            "fapar",
+            "ra",
+            "cvegbg",
+            "rr",
+            "nbp",
+            "evap"
           ]
         },
         "pft": {
@@ -124,18 +124,20 @@
             "global"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "3hr",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/composition_atmosphere.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -12,7 +12,7 @@
       "required": [
         "co2_dataset",
         "climate_scenario",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "co2_dataset": {
@@ -24,23 +24,24 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "spinclim",
             "counterclim",
+            "spinclim",
             "obsclim"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         }
       }
     }

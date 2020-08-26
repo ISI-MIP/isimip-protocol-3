@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/permafrost.json",
-  "commit": "347089f2bbb5f3ded049c5eb15ebd8279d580ef2",
+  "commit": "7d89c64e9c148046b78962685f401b37b1baed8a",
   "type": "object",
   "required": [
     "specifiers"
@@ -17,7 +17,7 @@
         "sens_scenario",
         "variable",
         "region",
-        "timestep"
+        "time_step"
       ],
       "properties": {
         "model": {
@@ -40,17 +40,17 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "spinclim",
             "counterclim",
+            "spinclim",
             "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
+            "histsoc",
             "2015soc",
-            "histsoc"
+            "nat"
           ]
         },
         "sens_scenario": {
@@ -63,68 +63,68 @@
         "variable": {
           "type": "string",
           "enum": [
-            "fapar",
-            "cveg",
-            "npp",
-            "flitter",
-            "lai",
             "snd",
-            "cwood",
-            "cvegag",
-            "landalbedo",
-            "cvegbg",
-            "qtot",
-            "fgrazing",
-            "tsl",
-            "swe",
-            "qs",
-            "croot",
-            "flittersoil",
-            "ra",
-            "rh",
-            "fcropharvest",
-            "gpp",
-            "thawdepth",
-            "clitterbg",
-            "cleaf",
             "soilmoistfroz",
-            "nbp",
-            "csoil",
-            "ccwd",
+            "lai",
+            "croot",
+            "fgrazing",
+            "swe",
+            "flittersoil",
+            "clitterbg",
             "soilmoist",
-            "clitterag",
-            "fvegsoil",
-            "fluc",
+            "landalbedo",
+            "thawdepth",
+            "cleaf",
+            "rh",
+            "qs",
+            "flitter",
             "pft",
+            "cveg",
+            "gpp",
+            "fluc",
+            "cvegag",
+            "fvegsoil",
+            "clitterag",
+            "cwood",
+            "npp",
+            "tsl",
             "ffire",
-            "burntarea"
+            "burntarea",
+            "ccwd",
+            "csoil",
+            "fcropharvest",
+            "qtot",
+            "fapar",
+            "ra",
+            "cvegbg",
+            "nbp"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "pea",
-            "pop",
-            "soy",
-            "rye",
-            "mil",
-            "ric",
-            "sor",
-            "whe",
-            "bar",
-            "mis",
-            "mgr",
-            "cot",
-            "nut",
-            "sun",
-            "rap",
-            "pot",
             "sgb",
-            "mai",
-            "euc",
-            "sug",
+            "bar",
             "ben",
-            "cas"
+            "mil",
+            "rap",
+            "soy",
+            "pea",
+            "whe",
+            "cas",
+            "cot",
+            "mai",
+            "sor",
+            "pop",
+            "mgr",
+            "pot",
+            "sug",
+            "ric",
+            "mis",
+            "euc",
+            "nut",
+            "rye",
+            "sun"
           ]
         },
         "irrigation": {
@@ -142,18 +142,20 @@
             "global"
           ]
         },
-        "timestep": {
-          "type": "string"
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "monthly",
+            "3hr",
+            "daily"
+          ]
         },
         "start_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         },
         "end_year": {
-          "type": "number",
-          "minimum": 1901,
-          "maximum": 2018
+          "type": "number"
         }
       }
     }
