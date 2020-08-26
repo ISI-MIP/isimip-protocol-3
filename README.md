@@ -173,30 +173,3 @@ Some tests ensure that edits do not destroy the format and the schema of the jso
 ```
 pytest
 ```
-
-Deploy on GitHub pages
-----------------------
-
-The automatic deployment with travis-ci is configured using the [.travis-ci.yml](.travis-ci.yml) file. In order for travis to push back into the repository a deploy key has to be configured and added to the repository (encrypted). The following setup is already deployed and is documented here only for emergencies.
-
-```
-# install the travis gem
-sudo gem install travis
-
-# create a new ssh-keypair
-ssh-keygen -q -t rsa -b 4096 -C '' -N '' -f .id_rsa
-
-# add public key as a deploy key in github
-
-# encrypt the private key
-travis login --org
-travis encrypt-file .id_rsa
-
-# clean up
-rm .id_rsa
-
-# add the keys to the repo and push
-git add .id_rsa.enc .id_rsa.pub
-git commit -m 'Add ssh keys'
-git push
-```
