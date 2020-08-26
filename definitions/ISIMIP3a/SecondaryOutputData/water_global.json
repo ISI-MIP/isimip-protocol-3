@@ -2410,7 +2410,7 @@
     {
       "specifier": "qtot",
       "title": "Runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
@@ -2437,7 +2437,7 @@
     {
       "specifier": "qs",
       "title": "Surface runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
@@ -2458,7 +2458,7 @@
     {
       "specifier": "qsb",
       "title": "Subsurface runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
@@ -2469,7 +2469,7 @@
     {
       "specifier": "qr",
       "title": "Groundwater recharge",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2484,7 +2484,7 @@
     {
       "specifier": "qg",
       "title": "Groundwater runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
@@ -2495,7 +2495,7 @@
     {
       "specifier": "dis",
       "title": "Discharge",
-      "unit": "m3 s-1",
+      "units": "m3 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2526,7 +2526,7 @@
         "water_regional": "total"
       },
       "title": "Evapotranspiration",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2553,7 +2553,7 @@
     {
       "specifier": "potevap",
       "title": "Potential Evapotranspiration",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2568,8 +2568,13 @@
     {
       "specifier": "soilmoist",
       "title": "Soil moisture for each layer",
-      "unit": "kg m-2",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": {
         "agriculture": "0.5\u00b0 grid",
         "biomes": "0.5\u00b0 grid",
@@ -2602,8 +2607,13 @@
     {
       "specifier": "rootmoist",
       "title": "Soil moisture, root zone",
-      "dimensions": "(time, depth, lat, lon)",
-      "unit": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "units": "kg m-2",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2618,8 +2628,13 @@
     {
       "specifier": "soilmoistfroz",
       "title": "Frozen soil moisture for each layer",
-      "unit": "kg m-2",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
@@ -2633,8 +2648,13 @@
     {
       "specifier": "tsl",
       "title": "Temperature of Soil",
-      "unit": "K",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "K",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2655,7 +2675,7 @@
     {
       "specifier": "snd",
       "title": "Snow depth",
-      "unit": "m",
+      "units": "m",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
@@ -2669,7 +2689,7 @@
     {
       "specifier": "swe",
       "title": "Snow water equivalent",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2690,7 +2710,7 @@
     {
       "specifier": "tws",
       "title": "Total water storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
@@ -2701,7 +2721,7 @@
     {
       "specifier": "canopystor",
       "title": "Canopy water storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in the canopy.",
@@ -2712,7 +2732,7 @@
     {
       "specifier": "glacierstor",
       "title": "Glacier storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in glaciers.",
@@ -2723,7 +2743,7 @@
     {
       "specifier": "groundwstor",
       "title": "Groundwater storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in groundwater layer.",
@@ -2734,7 +2754,7 @@
     {
       "specifier": "lakestor",
       "title": "Lake storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in lakes (except reservoirs).",
@@ -2745,7 +2765,7 @@
     {
       "specifier": "wetlandstor",
       "title": "Wetland storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in wetlands.",
@@ -2756,7 +2776,7 @@
     {
       "specifier": "riverstor",
       "title": "River storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in rivers.",
@@ -2767,7 +2787,7 @@
     {
       "specifier": "reservoirstor",
       "title": "Reservoir storage",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water storage in reservoirs.",
@@ -2778,7 +2798,7 @@
     {
       "specifier": "thawdepth",
       "title": "Annual maximum thaw depth",
-      "unit": "m",
+      "units": "m",
       "resolution": "0.5\u00b0 grid",
       "frequency": {
         "biomes": "monthly, else annual",
@@ -2797,7 +2817,7 @@
     {
       "specifier": "triver",
       "title": "River temperature",
-      "unit": "K",
+      "units": "K",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
@@ -2808,7 +2828,7 @@
     {
       "specifier": "pirrww",
       "title": "Potential irrigation water withdrawal (assuming unlimited water supply)",
-      "unit": {
+      "units": {
         "water_global": "kg m-2 s-1",
         "water_regional": "kg m-2 s-1"
       },
@@ -2829,7 +2849,7 @@
     {
       "specifier": "airrww",
       "title": "Actual irrigation water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2844,7 +2864,7 @@
     {
       "specifier": "pirruse",
       "title": "Potential irrigation water consumptive use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2859,7 +2879,7 @@
     {
       "specifier": "airruse",
       "title": "Actual irrigation water consumptive use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2874,7 +2894,7 @@
     {
       "specifier": "airrusegreen",
       "title": "Actual consumptive green water use on irrigated cropland",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2889,7 +2909,7 @@
     {
       "specifier": "pirrusegreen",
       "title": "Potential consumptive green water use on irrigated cropland",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2904,7 +2924,7 @@
     {
       "specifier": "arainfusegreen",
       "title": "Actual consumptive green water use on rainfed cropland",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
@@ -2919,7 +2939,7 @@
     {
       "specifier": "adomww",
       "title": "Actual domestic water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2930,7 +2950,7 @@
     {
       "specifier": "adomuse",
       "title": "Actual domestic consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2941,7 +2961,7 @@
     {
       "specifier": "amanww",
       "title": "Actual manufacturing water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2952,7 +2972,7 @@
     {
       "specifier": "amanuse",
       "title": "Actual manufacturing consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2963,7 +2983,7 @@
     {
       "specifier": "aelecww",
       "title": "Actual electricity water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2974,7 +2994,7 @@
     {
       "specifier": "aelecuse",
       "title": "Actual electricity consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2985,7 +3005,7 @@
     {
       "specifier": "aliveww",
       "title": "Actual livestock water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -2996,7 +3016,7 @@
     {
       "specifier": "aliveuse",
       "title": "Actual livestock consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3007,7 +3027,7 @@
     {
       "specifier": "pdomww",
       "title": "Potential domestic water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3018,7 +3038,7 @@
     {
       "specifier": "pdomuse",
       "title": "Potential domestic consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3029,7 +3049,7 @@
     {
       "specifier": "pmanww",
       "title": "Potential manufacturing water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3040,7 +3060,7 @@
     {
       "specifier": "pmanuse",
       "title": "Potential manufacturing consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3051,7 +3071,7 @@
     {
       "specifier": "pelecww",
       "title": "Potential electricity water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3062,7 +3082,7 @@
     {
       "specifier": "pelecuse",
       "title": "Potential electricity consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3073,7 +3093,7 @@
     {
       "specifier": "pliveww",
       "title": "Potential livestock water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3084,7 +3104,7 @@
     {
       "specifier": "pliveuse",
       "title": "Potential livestock consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3095,7 +3115,7 @@
     {
       "specifier": "atotww",
       "title": "Total (all sectors) actual water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed.",
@@ -3106,7 +3126,7 @@
     {
       "specifier": "atotuse",
       "title": "Total (all sectors) actual consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Sum of actual consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
@@ -3117,7 +3137,7 @@
     {
       "specifier": "ptotww",
       "title": "Total (all sectors) potential water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.",
@@ -3128,7 +3148,7 @@
     {
       "specifier": "ptotuse",
       "title": "Total (all sectors) potential consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Sum of potential (i.e. assuming unlimited water supply) consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
@@ -3139,7 +3159,7 @@
     {
       "specifier": "ainduse",
       "title": "Actual industrial consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed. There is no need to submit ainduse if its components are being submitted separately (ainduse = amanuse + aelecuse). ",
@@ -3150,7 +3170,7 @@
     {
       "specifier": "aindww",
       "title": "Actual industrial water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed. There is no need to submit aindww if its components are being submitted separately (aindww = amanww + aelecww). ",
@@ -3161,7 +3181,7 @@
     {
       "specifier": "pinduse",
       "title": "Potential industrial consumptive water use",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed. There is no need to submit pinduse if its components are being submitted separately (pinduse = pmanuse + pelecuse). ",
@@ -3172,7 +3192,7 @@
     {
       "specifier": "pindww",
       "title": "Potential industrial water withdrawal",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "If computed. There is no need to submit pindww if its components are being submitted separately (pindww = pmanww + pelecww). ",
@@ -3183,7 +3203,7 @@
     {
       "specifier": "soil",
       "title": "Soil types",
-      "unit": "",
+      "units": "",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "biomes": "0.5\u00b0 grid",
@@ -3201,7 +3221,7 @@
       "specifier": "yield",
       "extension": "<crop>-<irrigation>",
       "title": "Crop yields",
-      "unit": "dry matter (t ha-1 per growing season)",
+      "units": "dry matter (t ha-1 per growing season)",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
@@ -3215,7 +3235,7 @@
       "specifier": "initr",
       "extension": "<crop>-<irrigation>",
       "title": "Nitrogen application rate",
-      "unit": "kg ha-1 per growing season",
+      "units": "kg ha-1 per growing season",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
@@ -3229,7 +3249,7 @@
       "specifier": "plantday",
       "extension": "<crop>-<irrigation>",
       "title": "Actual planting dates",
-      "unit": "day of year",
+      "units": "day of year",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Julian dates.",
@@ -3243,7 +3263,7 @@
       "specifier": "plantyear",
       "extension": "<crop>-<irrigation>",
       "title": "Actual planting year",
-      "unit": "year of planting",
+      "units": "year of planting",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "This allows for clear identification of planting that is also easy to follow for potential users from outside the project",
@@ -3255,7 +3275,7 @@
       "specifier": "anthday",
       "extension": "<crop>-<irrigation>",
       "title": "Anthesis dates",
-      "unit": "day of year of anthesis",
+      "units": "day of year of anthesis",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
@@ -3269,7 +3289,7 @@
       "specifier": "anthyear",
       "extension": "<crop>-<irrigation>",
       "title": "Year of anthesis",
-      "unit": "year of anthesis",
+      "units": "year of anthesis",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
@@ -3281,7 +3301,7 @@
       "specifier": "matyday",
       "extension": "<crop>-<irrigation>",
       "title": "Maturity dates",
-      "unit": "day of year of maturity",
+      "units": "day of year of maturity",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
@@ -3295,7 +3315,7 @@
       "specifier": "matyyear",
       "extension": "<crop>-<irrigation>",
       "title": "Year of maturity",
-      "unit": "year of maturity",
+      "units": "year of maturity",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
@@ -3307,7 +3327,7 @@
       "specifier": "biom",
       "extension": "<crop>-<irrigation>",
       "title": "Above ground biomass (dry matter)",
-      "unit": "t ha-1 per growing season",
+      "units": "t ha-1 per growing season",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "The whole plant biomass above ground.",
@@ -3321,7 +3341,7 @@
       "specifier": "sco2",
       "extension": "<crop>-<irrigation>",
       "title": "Soil carbon emissions ",
-      "unit": "kg C ha-1",
+      "units": "kg C ha-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
@@ -3335,7 +3355,7 @@
       "specifier": "sn2o",
       "extension": "<crop>-<irrigation>",
       "title": "Nitrous oxide emissions",
-      "unit": "kg N2O-N ha-1",
+      "units": "kg N2O-N ha-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
@@ -3367,7 +3387,7 @@
         "water_global": "-total"
       },
       "title": "Leaf Area Index",
-      "unit": "1",
+      "units": "1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "",
@@ -3401,7 +3421,7 @@
     {
       "specifier": "cellarea",
       "title": "Grid cell area",
-      "unit": "km**2",
+      "units": "km**2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "constant",
       "comment": "The total area associated with each grid cell in the model.",
@@ -3412,7 +3432,7 @@
     {
       "specifier": "contfrac",
       "title": "Continental fraction of grid cell",
-      "unit": "1",
+      "units": "1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "constant",
       "comment": "The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",

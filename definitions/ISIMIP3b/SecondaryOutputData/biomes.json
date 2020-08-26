@@ -2697,7 +2697,7 @@
     {
       "specifier": "qtot",
       "title": "Runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
@@ -2724,7 +2724,7 @@
     {
       "specifier": "qs",
       "title": "Surface runoff",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
@@ -2761,7 +2761,7 @@
         "water_regional": "total"
       },
       "title": "Evapotranspiration",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2788,8 +2788,13 @@
     {
       "specifier": "soilmoist",
       "title": "Soil moisture for each layer",
-      "unit": "kg m-2",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": {
         "agriculture": "0.5\u00b0 grid",
         "biomes": "0.5\u00b0 grid",
@@ -2822,8 +2827,13 @@
     {
       "specifier": "soilmoistfroz",
       "title": "Frozen soil moisture for each layer",
-      "unit": "kg m-2",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
@@ -2837,8 +2847,13 @@
     {
       "specifier": "tsl",
       "title": "Temperature of Soil",
-      "unit": "K",
-      "dimensions": "(time, depth, lat, lon)",
+      "units": "K",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2859,7 +2874,7 @@
     {
       "specifier": "snd",
       "title": "Snow depth",
-      "unit": "m",
+      "units": "m",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
@@ -2873,7 +2888,7 @@
     {
       "specifier": "swe",
       "title": "Snow water equivalent",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -2894,7 +2909,7 @@
     {
       "specifier": "thawdepth",
       "title": "Annual maximum thaw depth",
-      "unit": "m",
+      "units": "m",
       "resolution": "0.5\u00b0 grid",
       "frequency": {
         "biomes": "monthly, else annual",
@@ -2913,7 +2928,7 @@
     {
       "specifier": "soil",
       "title": "Soil types",
-      "unit": "",
+      "units": "",
       "resolution": {
         "water_global": "0.5\u00b0 grid",
         "biomes": "0.5\u00b0 grid",
@@ -2931,7 +2946,7 @@
       "specifier": "yield",
       "extension": "<crop>-<irrigation>",
       "title": "Crop yields",
-      "unit": "dry matter (t ha-1 per growing season)",
+      "units": "dry matter (t ha-1 per growing season)",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
@@ -2945,7 +2960,7 @@
       "specifier": "initr",
       "extension": "<crop>-<irrigation>",
       "title": "Nitrogen application rate",
-      "unit": "kg ha-1 per growing season",
+      "units": "kg ha-1 per growing season",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
@@ -2959,7 +2974,7 @@
       "specifier": "plantday",
       "extension": "<crop>-<irrigation>",
       "title": "Actual planting dates",
-      "unit": "day of year",
+      "units": "day of year",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Julian dates.",
@@ -2973,7 +2988,7 @@
       "specifier": "anthday",
       "extension": "<crop>-<irrigation>",
       "title": "Anthesis dates",
-      "unit": "day of year of anthesis",
+      "units": "day of year of anthesis",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
@@ -2987,7 +3002,7 @@
       "specifier": "matyday",
       "extension": "<crop>-<irrigation>",
       "title": "Maturity dates",
-      "unit": "day of year of maturity",
+      "units": "day of year of maturity",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
@@ -3001,7 +3016,7 @@
       "specifier": "biom",
       "extension": "<crop>-<irrigation>",
       "title": "Above ground biomass (dry matter)",
-      "unit": "t ha-1 per growing season",
+      "units": "t ha-1 per growing season",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "The whole plant biomass above ground.",
@@ -3015,7 +3030,7 @@
       "specifier": "sco2",
       "extension": "<crop>-<irrigation>",
       "title": "Soil carbon emissions ",
-      "unit": "kg C ha-1",
+      "units": "kg C ha-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
@@ -3029,7 +3044,7 @@
       "specifier": "sn2o",
       "extension": "<crop>-<irrigation>",
       "title": "Nitrous oxide emissions",
-      "unit": "kg N2O-N ha-1",
+      "units": "kg N2O-N ha-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "seasonal",
       "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
@@ -3060,7 +3075,7 @@
         ]
       },
       "title": "Carbon Mass in Vegetation",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3098,7 +3113,7 @@
         ]
       },
       "title": "Carbon Mass in aboveground vegetation biomass",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3133,7 +3148,7 @@
         ]
       },
       "title": "Carbon Mass in belowground vegetation biomass",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3172,7 +3187,7 @@
         ]
       },
       "title": "Carbon Mass in Above Ground Litter Pool",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3214,7 +3229,7 @@
         ]
       },
       "title": "Carbon Mass in Below Ground Litter Pool",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3256,8 +3271,13 @@
         ]
       },
       "title": "Carbon Mass in Soil Pool",
-      "dimensions": "(time, depth, lat, lon)",
-      "unit": "kg m-2",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3295,7 +3315,7 @@
         ]
       },
       "title": "Carbon in Products of Land Use Change",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5 grid",
@@ -3334,7 +3354,7 @@
         ]
       },
       "title": "Carbon Mass Flux out of Atmosphere due to Gross Primary Production on Land",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3381,7 +3401,7 @@
         ]
       },
       "title": "Carbon Mass Flux into Atmosphere due to Autotrophic (Plant) Respiration on Land",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3428,7 +3448,7 @@
         ]
       },
       "title": "Carbon Mass Flux out of Atmosphere due to Net Primary Production on Land",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3475,7 +3495,7 @@
         ]
       },
       "title": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3508,7 +3528,7 @@
         "<pft>"
       ],
       "title": "Carbon Mass Flux into Atmosphere due to CO\u2082 Emission from Fire",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "",
@@ -3525,7 +3545,7 @@
         "<pft>"
       ],
       "title": "Burnt Area Fraction",
-      "unit": "%",
+      "units": "%",
       "resolution": "0.5\u00b0 grid",
       "frequency": {
         "biomes": "daily (total), monthly (pft/total)",
@@ -3550,7 +3570,7 @@
         "<pft>"
       ],
       "title": "Carbon Mass Flux out of Atmosphere due to Net Biospheric Production on Land",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land. ",
@@ -3567,7 +3587,7 @@
         "<pft>"
       ],
       "title": "Root autotrophic respiration",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand"
@@ -3592,7 +3612,7 @@
         "<pft>"
       ],
       "title": "CO2 Flux to Atmosphere from Land Use Change",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "For wood products only. Sum of CO2 fluxes to wood production and wood storage turnover emsissions from previous years.",
@@ -3609,7 +3629,7 @@
         "<pft>"
       ],
       "title": "CO2 Flux to Atmosphere from Grazing",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell total and PFT information is essential.",
@@ -3626,7 +3646,7 @@
         "<pft>"
       ],
       "title": "CO2 Flux to Atmosphere from Crop Harvesting",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell total and PFT information is essential.",
@@ -3643,7 +3663,7 @@
         "<pft>"
       ],
       "title": "Total Carbon Flux from Vegetation to Litter",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell total and PFT information is essential.",
@@ -3660,7 +3680,7 @@
         "<pft>"
       ],
       "title": "Total Carbon Flux from Litter to Soil",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Grid cell total and PFT information is essential.",
@@ -3676,7 +3696,7 @@
         "<pft>"
       ],
       "title": "Total Carbon Flux from Vegetation Directly to Soil",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.",
@@ -3707,7 +3727,7 @@
         ]
       },
       "title": "Fraction of absorbed photosynthetically active radiation",
-      "unit": "%",
+      "units": "%",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3745,7 +3765,7 @@
         "water_global": "-total"
       },
       "title": "Leaf Area Index",
-      "unit": "1",
+      "units": "1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "",
@@ -3783,7 +3803,7 @@
         "<pft>"
       ],
       "title": "Plant Functional Type Grid Fraction",
-      "unit": "%",
+      "units": "%",
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual (or constant if static)",
       "comment": "The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land. For models that have grid cells partially covered by land and ocean, please document this in the model documentation and provide your land-sea mask along the data uploads.",
@@ -3810,7 +3830,7 @@
         ]
       },
       "title": "Evaporation from Canopy (interception)",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3839,7 +3859,7 @@
         "forestry": ""
       },
       "title": "Water Evaporation from Soil",
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3874,7 +3894,7 @@
           "<species>"
         ]
       },
-      "unit": "kg m-2 s-1",
+      "units": "kg m-2 s-1",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "fire": "0.5\u00b0 grid",
@@ -3909,7 +3929,7 @@
         ]
       },
       "title": "Carbon Mass in Leaves",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3940,7 +3960,7 @@
         ]
       },
       "title": "Carbon Mass in Wood",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -3971,7 +3991,7 @@
         ]
       },
       "title": "Carbon Mass in Roots",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -4002,7 +4022,7 @@
         ]
       },
       "title": "Carbon Mass in Coarse Woody Debris",
-      "unit": "kg m-2",
+      "units": "kg m-2",
       "resolution": {
         "biomes": "0.5\u00b0 grid",
         "forestry": "stand",
@@ -4019,7 +4039,7 @@
     {
       "specifier": "landalbedo",
       "title": "Surface albedo of land",
-      "unit": "1",
+      "units": "1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
       "comment": "Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.",
