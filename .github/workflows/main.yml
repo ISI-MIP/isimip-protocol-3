@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, test ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, test ]
 
 jobs:
   build:
@@ -17,10 +17,12 @@ jobs:
         persist-credentials: false
 
     - name: Install pandoc
-      run: apt-get install pandoc pandoc-citeproc
+      run: sudo apt-get install pandoc pandoc-citeproc
 
     - name: Install requirements
-      run: pip install -r requirements.txt
+      run: |
+        pip3 install --upgrade pip
+        pip3 install -r requirements.txt
 
     - name: Run make
       run: make
