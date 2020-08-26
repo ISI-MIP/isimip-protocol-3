@@ -50,12 +50,12 @@
                 {% endif %}
             </td>
             <td>
-                {% if row.unit is mapping %}
-                {% for sector, unit in row.unit.items() %}
-                <p>{{ sector }}: {{ unit }}</p>
+                {% if row.units is mapping %}
+                {% for sector, units in row.units.items() %}
+                <p>{{ sector }}: {{ units }}</p>
                 {% endfor %}
                 {% else %}
-                {{ row.unit }}
+                {{ row.units }}
                 {% endif %}
             </td>
             <td>
@@ -79,7 +79,7 @@
             </td>
             <td>
                 {% if row.dimensions %}
-                <p><b>Level dimensions:</b> {{ row.dimensions }}.</p>
+                <p><b>Level dimensions:</b> ({{ row.dimensions|join(', ') }}).</p>
                 {% endif %}
                 {% if row.comment is mapping %}
                 {% for sector, comment in row.comment.items() %}
