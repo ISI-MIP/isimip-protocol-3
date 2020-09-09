@@ -1,4 +1,9 @@
 #!/bin/sh
+pandoc --natbib --filter pandoc-citeproc bibliography/bibliography.md \
+       --bibliography=bibliography/bibliography.bib \
+       --csl=bibliography/copernicus-publications.csl \
+       -o bibliography/bibliography.html
+
 python3 build/definitions.py
 python3 build/glossary.py
 python3 build/index.py
