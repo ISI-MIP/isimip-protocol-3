@@ -1428,19 +1428,23 @@
   "product": [
     {
       "specifier": "InputData",
-      "title": "Input Data"
+      "title": "Input Data",
+      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
     },
     {
       "specifier": "SecondaryInputData",
-      "title": "Secondary Input Data"
+      "title": "Secondary Input Data",
+      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
     },
     {
       "specifier": "OutputData",
-      "title": "Output Data"
+      "title": "Output Data",
+      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
     },
     {
       "specifier": "SecondaryOutputData",
-      "title": "Secondary Output Data"
+      "title": "Secondary Output Data",
+      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
     }
   ],
   "climate_variable": [
@@ -2103,6 +2107,9 @@
     {
       "specifier": "annual",
       "increment": "years"
+    },
+    {
+      "specifier": "fixed"
     }
   ],
   "subcategory": [
@@ -3569,7 +3576,7 @@
         "fire": "daily else monthly",
         "forestry": "daily else monthly",
         "permafrost": "daily else monthly",
-        "water_global": "daily else monthly or constant"
+        "water_global": "daily else monthly or fixed"
       },
       "comment": {
         "biomes": "Grid cell total and PFT information is essential.",
@@ -3592,7 +3599,7 @@
       "title": "Grid cell area",
       "units": "km**2",
       "resolution": "0.5\u00b0 grid",
-      "frequency": "constant",
+      "frequency": "fixed",
       "comment": "The total area associated with each grid cell in the model.",
       "sectors": [
         "water_global"
@@ -3603,7 +3610,7 @@
       "title": "Continental fraction of grid cell",
       "units": "1",
       "resolution": "0.5\u00b0 grid",
-      "frequency": "constant",
+      "frequency": "fixed",
       "comment": "The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
       "sectors": [
         "water_global"

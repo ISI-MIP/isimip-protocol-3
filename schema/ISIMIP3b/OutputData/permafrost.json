@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/permafrost.json",
-  "commit": "0d2b5bc6b3f1b513317d29951154cc6546858aa1",
+  "commit": "b8a81c4d233f006b8b18bee722666f6691065460",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
             "ukesm1-0-ll",
-            "mri-esm2-0",
+            "gfdl-esm4",
             "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "mpi-esm1-2-hr",
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
@@ -43,10 +43,10 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
-            "historical",
-            "ssp126",
             "picontrol",
+            "historical",
+            "ssp370",
+            "ssp126",
             "ssp585"
           ]
         },
@@ -54,82 +54,82 @@
           "type": "string",
           "enum": [
             "1850soc",
+            "nat",
             "histsoc",
-            "2015soc",
-            "nat"
+            "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "fcropharvest",
-            "flittersoil",
-            "cleaf",
-            "landalbedo",
-            "swe",
-            "lai",
-            "tsl",
-            "thawdepth",
-            "clitterag",
+            "gpp",
+            "cvegag",
+            "ccwd",
+            "soilmoist",
+            "cveg",
             "npp",
-            "fgrazing",
+            "cvegbg",
+            "fvegsoil",
+            "lai",
+            "rh",
+            "pft",
             "snd",
             "croot",
-            "soilmoistfroz",
-            "flitter",
-            "fvegsoil",
-            "ra",
-            "csoil",
-            "cveg",
-            "soilmoist",
-            "gpp",
-            "nbp",
-            "clitterbg",
             "fluc",
-            "fapar",
-            "qs",
+            "fgrazing",
+            "fcropharvest",
+            "csoil",
+            "nbp",
+            "cleaf",
+            "flitter",
+            "clitterbg",
+            "swe",
+            "ra",
+            "flittersoil",
+            "soilmoistfroz",
             "qtot",
-            "cvegag",
-            "rh",
-            "cvegbg",
-            "burntarea",
+            "clitterag",
+            "tsl",
+            "cwood",
+            "qs",
             "ffire",
-            "pft",
-            "ccwd",
-            "cwood"
+            "landalbedo",
+            "fapar",
+            "thawdepth",
+            "burntarea"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "cot",
+            "euc",
+            "rye",
+            "mis",
+            "sug",
             "pop",
             "mai",
-            "soy",
-            "rye",
-            "mgr",
-            "sun",
-            "pea",
-            "nut",
-            "euc",
             "cas",
-            "mil",
-            "whe",
-            "sug",
-            "sgb",
-            "pot",
-            "ben",
-            "mis",
+            "mgr",
             "sor",
             "ric",
+            "mil",
+            "pot",
+            "pea",
+            "sgb",
             "rap",
+            "nut",
+            "soy",
+            "ben",
+            "whe",
+            "sun",
+            "cot",
             "bar"
           ]
         },
@@ -152,9 +152,10 @@
           "type": "string",
           "enum": [
             "3hr",
-            "annual",
             "daily",
-            "monthly"
+            "monthly",
+            "annual",
+            "fixed"
           ]
         },
         "start_year": {
