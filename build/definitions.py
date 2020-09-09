@@ -9,7 +9,7 @@ def main():
     for file_name in os.listdir(directory):
         file_path = directory / file_name
 
-        with open(file_path) as f:
+        with open(file_path, encoding='utf-8') as f:
             definitions[file_path.stem] = json.loads(f.read())
 
     simulation_rounds = [definition['specifier'] for definition in definitions['simulation_round']]
@@ -35,7 +35,7 @@ def main():
                                         output_definitions[definition_name].append(row)
 
                     output_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(output_path, 'w') as f:
+                    with open(output_path, 'w', encoding='utf-8') as f:
                         f.write(json.dumps(output_definitions, indent=2))
 
             else:
@@ -54,7 +54,7 @@ def main():
                                         output_definitions[definition_name].append(row)
 
                     output_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(output_path, 'w') as f:
+                    with open(output_path, 'w', encoding='utf-8') as f:
                         f.write(json.dumps(output_definitions, indent=2))
 
 

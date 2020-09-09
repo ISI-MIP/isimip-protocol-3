@@ -17,7 +17,7 @@ def main():
             }
 
             # step 2: open and read pattern
-            with open(pattern_path) as f:
+            with open(pattern_path, encoding='utf-8') as f:
                 pattern = json.loads(f.read())
 
                 path = pattern.get('path') or [
@@ -39,7 +39,7 @@ def main():
 
             # step 3: write json file
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            with open(output_path, 'w') as f:
+            with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(json.dumps(pattern_json, indent=2))
 
 

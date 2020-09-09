@@ -10,8 +10,8 @@ URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
 
 def main():
-    simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
-    sectors = json.loads(open('definitions/sector.json').read())
+    simulation_rounds = json.loads(open('definitions/simulation_round.json', encoding='utf-8').read())
+    sectors = json.loads(open('definitions/sector.json', encoding='utf-8').read())
 
     commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
     commit_url = URL + '/commit/' + commit_hash
@@ -31,7 +31,7 @@ def main():
 
     # step 2: open and read intro
     markdown_path = os.path.join('protocol', '10.index.md')
-    with open(markdown_path) as f:
+    with open(markdown_path, encoding='utf-8') as f:
         md = f.read()
         html = markdown(md)
 
@@ -40,9 +40,9 @@ def main():
     output_path = os.path.join('output', 'index.html')
     enviroment = Environment(loader=FileSystemLoader(['templates']))
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(template_path) as f:
+    with open(template_path, encoding='utf-8') as f:
         template = enviroment.from_string(f.read())
-    with open(output_path, 'w') as f:
+    with open(output_path, 'w', encoding='utf-8') as f:
         f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date, pages=pages, html=html))
 
 

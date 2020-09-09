@@ -13,8 +13,8 @@ URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
 
 def main():
-    simulation_rounds = json.loads(open('definitions/simulation_round.json').read())
-    sectors = json.loads(open('definitions/sector.json').read())
+    simulation_rounds = json.loads(open('definitions/simulation_round.json', encoding='utf-8').read())
+    sectors = json.loads(open('definitions/sector.json', encoding='utf-8').read())
     sectors.append({
         'title': 'all sectors combined',
         'specifier': 'index'
@@ -38,11 +38,11 @@ def main():
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
                 # step 1: open and read protocol
-                with open(protocol_path) as f:
+                with open(protocol_path, encoding='utf-8') as f:
                     template_string = f.read()
 
                 # step 1: open and read protocol
-                with open(pattern_path) as f:
+                with open(pattern_path, encoding='utf-8') as f:
                     pattern_list = json.loads(f.read())['file']
                     pattern = '_'.join(pattern_list) + '.nc'
                     pattern_simple = get_pattern_simple(pattern_list)
@@ -62,9 +62,9 @@ def main():
                 html = html.replace('[mandatory]', '<span class="badge badge-success">mandatory</span>')
 
                 # step 5: render content into layout template
-                with open(layout_path) as f:
+                with open(layout_path, encoding='utf-8') as f:
                     template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
-                with open(output_path, 'w') as f:
+                with open(output_path, 'w', encoding='utf-8') as f:
                     f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
                                             commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
 
@@ -99,7 +99,7 @@ class Table(object):
         template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
         # open the definition file and read in every row from the sector
-        with open(definition_path) as f:
+        with open(definition_path, encoding='utf-8') as f:
             definitions = json.loads(f.read())
 
         # filter rows by simulation_round, product, and/or sector
@@ -152,7 +152,7 @@ class Table(object):
             # if order is not given, just use the rows in the order of the file
             table = [self.get_row(row) for row in rows]
 
-        with open(template_path) as f:
+        with open(template_path, encoding='utf-8') as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
         return template.render(table=table, counter=self.counter, markdown=markdown,

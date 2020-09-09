@@ -20,7 +20,7 @@ def main():
         if identifier not in glossary['terms']:
             glossary['terms'][identifier] = {}
 
-        with open(file_path) as f:
+        with open(file_path, encoding='utf-8') as f:
             rows = json.loads(f.read())
 
         for row in rows:
@@ -30,7 +30,7 @@ def main():
     glossary_path = os.path.join('output', 'glossary.json')
     os.makedirs(os.path.dirname(glossary_path), exist_ok=True)
 
-    with open(glossary_path, 'w') as f:
+    with open(glossary_path, 'w', encoding='utf-8') as f:
         f.write(json.dumps(glossary, indent=2))
 
 

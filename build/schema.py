@@ -15,7 +15,7 @@ def main():
     for file_name in os.listdir('definitions'):
         file_path = Path('definitions') / file_name
         identifier = file_path.stem
-        definition_json = json.loads(open(file_path).read())
+        definition_json = json.loads(open(file_path, encoding='utf-8').read())
         definitions[identifier] = OrderedDict([(row['specifier'], row) for row in definition_json])
 
     for root, dirs, files in os.walk('schema'):
@@ -34,7 +34,7 @@ def main():
                 sector = schema_path_components[3]
 
             # step 1: read schema template
-            with open(schema_path) as f:
+            with open(schema_path, encoding='utf-8') as f:
                 schema = {
                     '$schema': 'http://json-schema.org/draft-07/schema#',
                     '$id': URL + schema_path.as_posix(),
