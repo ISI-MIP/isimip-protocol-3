@@ -71,6 +71,20 @@ As an alternative for advanced users, you can use the Windows Subsystem for Linu
 Setup
 -----
 
+Optionally, if you work with multiple, different Python applications, create a virtual enviroment.
+
+```bash
+# setup venv on Linux/macOS/Windows WSL
+python3 -m venv env
+source env/bin/activate
+
+# setup venv on Windows cmd
+python -m venv env
+call env\Scripts\activate.bat
+```
+
+Install the Python requirements:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -211,7 +225,7 @@ sh build.sh     # Linux/macOS/WSL
 call build.cmd  # Windows cmd
 ```
 
-On Windows, a double click on `build.cmd` should also build the protocol.
+On Windows, a double click on `build.cmd` should also build the protocol (unless you use a virtual environment).
 
 The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
 
