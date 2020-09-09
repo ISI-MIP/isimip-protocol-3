@@ -1,19 +1,71 @@
 ISIMIP3b protocol
 =================
 
-[![Build Status](https://travis-ci.org/ISI-MIP/isimip-protocol-3.svg?branch=master)](https://travis-ci.org/ISI-MIP/isimip-protocol-3)
-
 This project builds sector-specific ISIMIP protocols from a common data source.
 Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
 
 The rendered protocols are found at https://protocol.isimip.org.
 
 You can clone this repository and work and render the files locally as documented below.
+
 You can also edit the markdown files at github directly. With a delay of minutes,
-your updates will be visible at `https://isi-mip.github.io/isimip-protocol-3/protocol/<simulation_round>/<sector>.html`.
+your updates will be visible at `https://protocol.isimip.org/<simulation_round>/<sector>.html`.
 
 As a rule, the sector-specific text should be kept to a minimum and cover
 as much structure as possible by machine-readable code under [definitions](definitions/).
+
+
+Prerequisites
+-------------
+
+The installation of Python (and its developing packages), however differs from operating system to operating system. In addition Git and Pandoc is need is needed.
+
+### Linux
+
+On Linux, Python3 is probably already installed, but the development packages are usually not. You should be able to install them using:
+
+```
+# Ubuntu/Debian
+sudo apt-get install python3 python3-dev python3-venv git pandoc pandoc-citeproc
+
+# CentOS/RHEL
+sudo yum install python3 python3-devel  git pandoc pandoc-citeproc
+
+# openSUSE/SLES
+zypper install python3 python3-devel  git pandoc pandoc-citeproc
+```
+
+### macOS
+
+While we reccoment using [Homebrew](https://brew.sh) to install Python3 on a Mac, other means of obtaining Python like [Anaconda](https://www.anaconda.com/products/individual), [MacPorts](https://www.macports.org/), or [Fink](https://www.finkproject.org/) should work just as fine:
+
+```
+brew install python git pandoc pandoc-citeproc
+```
+
+### Windows
+
+#### Regular installation
+
+The software prerequisites need to be downloaded and installed from their particular web sites.
+
+For python:
+* download from <https://www.python.org/downloads/windows/>
+* use the 64bit version if your system is not very old
+* **don't forget to check 'Add Python to PATH' during setup**
+
+For git:
+* download from <https://git-for-windows.github.io/>
+* use the 64bit version if your system is not very old
+
+For pandoc:
+* download from <https://github.com/jgm/pandoc/releases/>
+
+All further steps need to be performed using the windows shell `cmd.exe`. You can open it from the Start-Menu.
+
+#### Using the Windows Subsystem for Linux (WSL)
+
+As an alternative for advanced users, you can use the Windows Subsystem for Linux (WSL) to install a Linux distribution whithin Windows 10. The installation is explained in the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10). When using WSL, please install Python3 as explained in the Linux section.
 
 
 Setup
@@ -23,8 +75,8 @@ Setup
 pip install -r requirements.txt
 ```
 
-Editing
--------
+Edit
+----
 
 Edit the markdown files for each sector under [protocol](protocol). Common included files are located under [protocol/include](protocol/include).
 
@@ -149,21 +201,20 @@ Some attributes (e.g. `frequency`) can have objects as value, which the are eval
 ]
 ```
 
-Render
-------
-
-You can use the `Makefile`:
+Build
+-----
 
 ```bash
-make
+make            # should work on Linux/macOS
+
+sh build.sh     # Linux/macOS/WSL
+call build.cmd  # Windows cmd
 ```
 
-or the Python scripts directly:
+On Windows, a double click on `build.cmd` should also build the protocol.
 
-```bash
-python3 build/protocol.py  # creates the html protocol for each sector
-python3 build/schema.py    # creates the json schema for each sector
-```
+The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
+
 
 Test
 ----
