@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_regional.json",
-  "commit": "7373c80ba537e308ace50cf4af176966cf189f31",
+  "commit": "14cb9b870a56be4bd92bd79382e4877f786e4251",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ipsl-cm6a-lr",
             "mpi-esm1-2-hr",
-            "ukesm1-0-ll"
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -42,20 +42,20 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp370",
             "historical",
-            "ssp126",
-            "picontrol",
             "ssp585",
-            "ssp370"
+            "ssp126",
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "1850soc",
+            "2015soc",
             "nat",
-            "2015soc"
+            "1850soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -67,37 +67,37 @@
         "variable": {
           "type": "string",
           "enum": [
-            "bsmall",
-            "clarge",
-            "c",
-            "blarge",
-            "csmall",
-            "tc",
-            "bcom",
-            "tsb",
-            "bmed",
             "tcb",
-            "b",
             "tc10cm",
             "tc30cm",
-            "b10cm",
             "cmed",
+            "bcom",
             "tla",
-            "b30cm"
+            "b",
+            "clarge",
+            "csmall",
+            "bmed",
+            "blarge",
+            "bsmall",
+            "c",
+            "tsb",
+            "b30cm",
+            "tc",
+            "b10cm"
           ]
         },
         "ocean_region": {
           "type": "string",
           "enum": [
-            "humboldt-n",
+            "north-sea",
             "se-australia",
             "baltic-sea",
-            "east-bass-strait",
-            "adriatic-sea",
-            "north-sea",
-            "nw-med-sea",
             "cook-strait",
-            "med-glob"
+            "adriatic-sea",
+            "med-glob",
+            "humboldt-n",
+            "east-bass-strait",
+            "nw-med-sea"
           ]
         },
         "time_step": {
@@ -106,8 +106,8 @@
             "fixed",
             "daily",
             "monthly",
-            "3hr",
-            "annual"
+            "annual",
+            "3hr"
           ]
         },
         "start_year": {
