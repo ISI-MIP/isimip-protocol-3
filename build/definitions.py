@@ -29,7 +29,7 @@ def main():
                                                 .with_suffix('.json')
 
                     output_definitions = {
-                        'commit': commit,
+                        'commit': commit
                     }
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
@@ -49,7 +49,9 @@ def main():
                                                 .joinpath(simulation_round).joinpath(product).joinpath(sector) \
                                                 .with_suffix('.json')
 
-                    output_definitions = {}
+                    output_definitions = {
+                        'commit': commit
+                    }
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
                         for row in rows:
