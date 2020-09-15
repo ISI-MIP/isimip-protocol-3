@@ -1,5 +1,5 @@
-ISIMIP3b protocol
-=================
+ISIMIP3 protocol
+================
 
 This project builds sector-specific ISIMIP protocols from a common data source.
 Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
