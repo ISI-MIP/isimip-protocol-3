@@ -150,10 +150,10 @@
                     </div>
                     <div class="col text-right">
                         <p>
-                            Last updated: 23 September 2020
+                            Last updated: 28 September 2020
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/f1a72a2afa1f36e77f8776eafdb7f298e0151cab">f1a72a2afa1f36e77f8776eafdb7f298e0151cab</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/5327a0115834c5f83ee177cfdecec45bbb71b181">5327a0115834c5f83ee177cfdecec45bbb71b181</a>
                         </p>
                     </div>
                 </div>
@@ -6146,31 +6146,12 @@
             </td>
         </tr>
         <tr>
-            <td>Total System Biomass Density </td>
-            <td>
-                    <strong>tsb</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>all primary producers and consumers</p>
-            </td>
-        </tr>
-        <tr>
             <td>Total Consumer Biomass Density </td>
             <td>
                     <strong>tcb</strong>
             </td>
             <td>
-                g C m-2
+                g m-2
             </td>
             <td>
                 <ul>
@@ -6180,16 +6161,16 @@
                 </ul>
             </td>
             <td>
-                <p>all consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                <p>All consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
             </td>
         </tr>
         <tr>
-            <td>Biomass Density of Consumers &gt;10cm </td>
+            <td>Total Consumer Biomass Density in log10 Weight Bins</td>
             <td>
-                    <strong>b10cm</strong>
+                    <strong>tcblog10</strong>
             </td>
             <td>
-                g C m-2
+                g m-2
             </td>
             <td>
                 <ul>
@@ -6199,16 +6180,16 @@
                 </ul>
             </td>
             <td>
-                <p>if L infinity is &gt;10 cm, include in &gt;10 cm class</p>
+                <p>If the model is size-structured, please provide biomass in equal log10 g C weight bins (1g, 10g, 100g, 1kg, 10kg, 100kg)</p>
             </td>
         </tr>
         <tr>
-            <td>Biomass Density of Consumers &gt;30cm</td>
+            <td>Total Pelagic Biomass Density</td>
             <td>
-                    <strong>b30cm</strong>
+                    <strong>tpb</strong>
             </td>
             <td>
-                g C m-2
+                g m-2
             </td>
             <td>
                 <ul>
@@ -6218,7 +6199,140 @@
                 </ul>
             </td>
             <td>
-                <p>if L infinity is &gt;30 cm, include in &gt;30 cm class</p>
+                <p>All pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Small Pelagics &lt;30cm</td>
+            <td>
+                    <strong>bp30cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a pelagic species and L infinity is &lt;30 cm, include in this variable</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
+            <td>
+                    <strong>bp30to90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a pelagic species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Large Pelagics &gt;=90cm</td>
+            <td>
+                    <strong>bp90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a pelagic species and L infinity is &gt;=90cm, include in this variable</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Total Demersal Biomass Density</td>
+            <td>
+                    <strong>tdb</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>All demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Small Demersals &lt;30cm</td>
+            <td>
+                    <strong>bd30cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a demersal species and L infinity is &lt;30 cm, include in this variable</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
+            <td>
+                    <strong>bd30to90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a demersal species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Biomass Density of Large Demersals &gt;=90cm</td>
+            <td>
+                    <strong>bd90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>If a demersal species and L infinity is &gt;=90cm, include in this variable</p>
             </td>
         </tr>
         <tr>
@@ -6237,13 +6351,13 @@
                 </ul>
             </td>
             <td>
-                <p>catch at sea (commercial landings plus discards, fish and invertebrates)</p>
+                <p>Catch at sea (commercial landings plus discards, fish and invertebrates)</p>
             </td>
         </tr>
         <tr>
-            <td>Total Landings (all commercial functional groups / size classes)</td>
+            <td>Total Catch in log10 Weight Bins</td>
             <td>
-                    <strong>tla</strong>
+                    <strong>tclog10</strong>
             </td>
             <td>
                 g m-2
@@ -6256,108 +6370,13 @@
                 </ul>
             </td>
             <td>
-                <p>commercial landings (catch without discards, fish and invertebrates)</p>
+                <p>If the model is size-structured, please provide catch in equal log10 g C weight bins (1g, 10g, 100g, 1kg, 10kg, 100kg)</p>
             </td>
         </tr>
         <tr>
-            <td>Biomass Density of Commercial Species </td>
+            <td>Total Pelagic Catch</td>
             <td>
-                    <strong>bcom</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Discarded species not included (Fish and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Large Consumers &gt;90cm and &lt;100kg</td>
-            <td>
-                    <strong>blarge</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Medium Consumers &gt;30cm and &lt;90cm</td>
-            <td>
-                    <strong>bmed</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Small Consumers &lt;30cm</td>
-            <td>
-                    <strong>bsmall</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density (by functional group / size class) </td>
-            <td>
-                    <strong>b-&lt;class&gt;-&lt;group&gt;</strong>
-            </td>
-            <td>
-                g C m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Provide name of each size class (<class>) and functional group (<group>) used, and provide a definition of each class/group.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch of Large Consumers &gt;90cm and &lt;100kg</td>
-            <td>
-                    <strong>clarge</strong>
+                    <strong>tpc</strong>
             </td>
             <td>
                 g m-2
@@ -6370,13 +6389,13 @@
                 </ul>
             </td>
             <td>
-
+                <p>Catch at sea of all pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
             </td>
         </tr>
         <tr>
-            <td>Catch of Medium Consumers &gt;30cm and &lt;90cm</td>
+            <td>Catch Density of Small Pelagics &lt;30cm</td>
             <td>
-                    <strong>cmed</strong>
+                    <strong>cp30cm</strong>
             </td>
             <td>
                 g m-2
@@ -6389,13 +6408,13 @@
                 </ul>
             </td>
             <td>
-
+                <p>Catch at sea of pelagic species with L infinity &lt;30 cm</p>
             </td>
         </tr>
         <tr>
-            <td>Catch of Small Consumers &lt;30cm</td>
+            <td>Catch Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
             <td>
-                    <strong>csmall</strong>
+                    <strong>cp30to90cm</strong>
             </td>
             <td>
                 g m-2
@@ -6408,13 +6427,13 @@
                 </ul>
             </td>
             <td>
-
+                <p>Catch at sea of pelagic species with L infinity &gt;=30 cm and &lt;90 cm</p>
             </td>
         </tr>
         <tr>
-            <td>Catch (by functional group / size class) </td>
+            <td>Catch Density of Large Pelagics &gt;=90cm</td>
             <td>
-                    <strong>c-&lt;class&gt;-&lt;group&gt;</strong>
+                    <strong>cp90cm</strong>
             </td>
             <td>
                 g m-2
@@ -6427,13 +6446,13 @@
                 </ul>
             </td>
             <td>
-                <p>Provide name of each size class (<class>) and functional group (<group>) used, and provide a definition of each class/group.</p>
+                <p>Catch at sea of pelagic species with L infinity &gt;=90 cm</p>
             </td>
         </tr>
         <tr>
-            <td>Total Catch of Consumers &gt;10cm</td>
+            <td>Total Demersal Catch</td>
             <td>
-                    <strong>tc10cm</strong>
+                    <strong>tdc</strong>
             </td>
             <td>
                 g m-2
@@ -6446,13 +6465,13 @@
                 </ul>
             </td>
             <td>
-
+                <p>Catch at sea of all demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
             </td>
         </tr>
         <tr>
-            <td>Total Catch of Consumers &gt;30cm</td>
+            <td>Catch Density of Small Demersals &lt;30cm</td>
             <td>
-                    <strong>tc30cm</strong>
+                    <strong>cd30cm</strong>
             </td>
             <td>
                 g m-2
@@ -6465,7 +6484,45 @@
                 </ul>
             </td>
             <td>
+                <p>Catch at sea of demersal species with L infinity &lt;30 cm</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Catch Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
+            <td>
+                    <strong>cd30to90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
 
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>Catch at sea of demersal species with L infinity &gt;=30 cm and &lt;90 cm</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Catch Density of Large Demersals &gt;=90cm</td>
+            <td>
+                    <strong>cd90cm</strong>
+            </td>
+            <td>
+                g m-2
+            </td>
+            <td>
+                <ul>
+                    <li>0.5° grid</li>
+
+                    <li>monthly</li>
+                </ul>
+            </td>
+            <td>
+                <p>Catch at sea of demersal species with L infinity &gt;=90 cm</p>
             </td>
         </tr>
         <tr>

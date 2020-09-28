@@ -1,5 +1,5 @@
 {
-  "commit": "f1a72a2afa1f36e77f8776eafdb7f298e0151cab",
+  "commit": "5327a0115834c5f83ee177cfdecec45bbb71b181",
   "river_basin": [
     {
       "specifier": "sao-paulo-de-olivenca",
@@ -5443,48 +5443,120 @@
       ]
     },
     {
-      "specifier": "tsb",
-      "long_name": "Total System Biomass Density ",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "all primary producers and consumers",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
       "specifier": "tcb",
       "long_name": "Total Consumer Biomass Density ",
-      "units": "g C m-2",
+      "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "all consumers (trophic level >1, vertebrates and invertebrates)",
+      "comment": "All consumers (trophic level >1, vertebrates and invertebrates)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "b10cm",
-      "long_name": "Biomass Density of Consumers >10cm ",
-      "units": "g C m-2",
+      "specifier": "tcblog10",
+      "long_name": "Total Consumer Biomass Density in log10 Weight Bins",
+      "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "if L infinity is >10 cm, include in >10 cm class",
+      "comment": "If the model is size-structured, please provide biomass in equal log10 g C weight bins (1g, 10g, 100g, 1kg, 10kg, 100kg)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "b30cm",
-      "long_name": "Biomass Density of Consumers >30cm",
-      "units": "g C m-2",
+      "specifier": "tpb",
+      "long_name": "Total Pelagic Biomass Density",
+      "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "if L infinity is >30 cm, include in >30 cm class",
+      "comment": "All pelagic consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp30cm",
+      "long_name": "Biomass Density of Small Pelagics <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is <30 cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp30to90cm",
+      "long_name": "Biomass Density of Medium Pelagics >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is >=30 cm and <90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp90cm",
+      "long_name": "Biomass Density of Large Pelagics >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is >=90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tdb",
+      "long_name": "Total Demersal Biomass Density",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "All demersal consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd30cm",
+      "long_name": "Biomass Density of Small Demersals <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is <30 cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd30to90cm",
+      "long_name": "Biomass Density of Medium Demersals >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is >=30 cm and <90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd90cm",
+      "long_name": "Biomass Density of Large Demersals >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is >=90cm, include in this variable",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -5496,153 +5568,115 @@
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "catch at sea (commercial landings plus discards, fish and invertebrates)",
+      "comment": "Catch at sea (commercial landings plus discards, fish and invertebrates)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "tla",
-      "long_name": "Total Landings (all commercial functional groups / size classes)",
+      "specifier": "tclog10",
+      "long_name": "Total Catch in log10 Weight Bins",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "commercial landings (catch without discards, fish and invertebrates)",
+      "comment": "If the model is size-structured, please provide catch in equal log10 g C weight bins (1g, 10g, 100g, 1kg, 10kg, 100kg)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "bcom",
-      "long_name": "Biomass Density of Commercial Species ",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Discarded species not included (Fish and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "blarge",
-      "long_name": "Biomass Density of Large Consumers >90cm and <100kg",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bmed",
-      "long_name": "Biomass Density of Medium Consumers >30cm and <90cm",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bsmall",
-      "long_name": "Biomass Density of Small Consumers <30cm",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "b",
-      "extension": "<class>-<group>",
-      "long_name": "Biomass Density (by functional group / size class) ",
-      "units": "g C m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Provide name of each size class (<class>) and functional group (<group>) used, and provide a definition of each class/group.",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "clarge",
-      "long_name": "Catch of Large Consumers >90cm and <100kg",
+      "specifier": "tpc",
+      "long_name": "Total Pelagic Catch",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "",
+      "comment": "Catch at sea of all pelagic consumers (trophic level >1, vertebrates and invertebrates)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "cmed",
-      "long_name": "Catch of Medium Consumers >30cm and <90cm",
+      "specifier": "cp30cm",
+      "long_name": "Catch Density of Small Pelagics <30cm",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "",
+      "comment": "Catch at sea of pelagic species with L infinity <30 cm",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "csmall",
-      "long_name": "Catch of Small Consumers <30cm",
+      "specifier": "cp30to90cm",
+      "long_name": "Catch Density of Medium Pelagics >=30cm and <90cm",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "",
+      "comment": "Catch at sea of pelagic species with L infinity >=30 cm and <90 cm",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "c",
-      "extension": "<class>-<group>",
-      "long_name": "Catch (by functional group / size class) ",
+      "specifier": "cp90cm",
+      "long_name": "Catch Density of Large Pelagics >=90cm",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "Provide name of each size class (<class>) and functional group (<group>) used, and provide a definition of each class/group.",
+      "comment": "Catch at sea of pelagic species with L infinity >=90 cm",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "tc10cm",
-      "long_name": "Total Catch of Consumers >10cm",
+      "specifier": "tdc",
+      "long_name": "Total Demersal Catch",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "",
+      "comment": "Catch at sea of all demersal consumers (trophic level >1, vertebrates and invertebrates)",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
     },
     {
-      "specifier": "tc30cm",
-      "long_name": "Total Catch of Consumers >30cm",
+      "specifier": "cd30cm",
+      "long_name": "Catch Density of Small Demersals <30cm",
       "units": "g m-2",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "",
+      "comment": "Catch at sea of demersal species with L infinity <30 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cd30to90cm",
+      "long_name": "Catch Density of Medium Demersals >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of demersal species with L infinity >=30 cm and <90 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cd90cm",
+      "long_name": "Catch Density of Large Demersals >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of demersal species with L infinity >=90 cm",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
