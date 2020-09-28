@@ -1,25 +1,28 @@
 ### Output variables
 
 {{ table('variable', {
-    'Mandatory output from global and regional models (provide as many as possible)': [
-        'tsb',
+    'Mandatory output from global and regional models (provide as many as possible). All biomasses are in wet weight, not g C.': [
         'tcb',
-        'b10cm',
-        'b30cm',
+        'tcblog10',
+        'tpb',
+        'tbd',
         'tc',
-        'tla'
+        'tclog10',
+        'tpc',
+        'tdc'
     ],
-    'Optional output from global and regional models': [
-        'bcom',
-        'blarge',
-        'bmed',
-        'bsmall',
-        'b',
-        'clarge',
-        'cmed',
-        'csmall',
-        'c',
-        'tc10cm',
-        'tc30cm'
+    'Optional output from global and regional models. All biomasses are in wet weight, not g C.': [
+        'bp30cm',
+        'bp30to90cm',
+        'bp90cm',
+        'bd30cm',
+        'bd30to90cm',
+        'bd90cm',
+        'cp30cm',
+        'cp30to90cm',
+        'cp90cm',
+        'cd30cm',
+        'cd30to90cm',
+        'cd90cm'
     ]
 }) }}
