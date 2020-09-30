@@ -162,12 +162,16 @@ class Table(object):
         values = {}
         for key, value in row.items():
             if isinstance(value, dict):
-                if self.sector['specifier'] == 'index':
-                    values[key] = value.get(self.simulation_round['specifier']) or value
-                else:
-                    values[key] = value.get(self.simulation_round['specifier']) or \
-                                  value.get(self.sector['specifier']) or \
-                                  value.get('other', '')
+                values[key] = value.get(self.simulation_round['specifier']) or \
+                              value.get(self.sector['specifier'])
+
+                if values[key] is None:
+                    if self.sector['specifier'] == 'index':
+                        # always use the full dict
+                        values[key] = value
+                    else:
+                        # try the other key or take the full dict
+                        values[key] = value.get('other') or value
 
             else:
                 values[key] = value
