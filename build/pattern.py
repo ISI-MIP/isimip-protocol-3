@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 
 from utils import get_commit_hash, write_json
 
@@ -7,8 +8,8 @@ from utils import get_commit_hash, write_json
 def main():
     for root, dirs, files in os.walk('pattern'):
         for file_name in files:
-            pattern_path = os.path.join(root, file_name)
-            output_path = pattern_path.replace('pattern', os.path.join('output', 'pattern'))
+            pattern_path = Path(root) / file_name
+            output_path = Path('output') / pattern_path
 
             # create a pattern json from scratch
             pattern_json = {
@@ -31,7 +32,7 @@ def main():
                 file = pattern['file']
                 suffix = pattern.get('suffix') or ['.nc']
 
-                pattern_json['path'] = os.path.sep.join(path) + '$'
+                pattern_json['path'] = '/'.join(path) + '$'
                 pattern_json['dataset'] = '^' + '_'.join(dataset)
                 pattern_json['file'] = '^' + '_'.join(file) + '({})'.format('|'.join(suffix))
                 pattern_json['suffix'] = suffix

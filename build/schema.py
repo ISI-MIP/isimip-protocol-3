@@ -1,21 +1,14 @@
 import json
 import os
-from collections import OrderedDict
 from pathlib import Path
 
-from utils import filter_rows, get_commit_hash, write_json
+from utils import filter_rows, get_commit_hash, read_definitions, write_json
 
 URL = 'https://protocol.isimip.org/schema/'
 
 
 def main():
-    # step 0: read all definitions
-    definitions = {}
-    for file_name in os.listdir('definitions'):
-        file_path = Path('definitions') / file_name
-        identifier = file_path.stem
-        definition_json = json.loads(open(file_path, encoding='utf-8').read())
-        definitions[identifier] = OrderedDict([(row['specifier'], row) for row in definition_json])
+    definitions = read_definitions()
 
     for root, dirs, files in os.walk('schema'):
         for file_name in files:
@@ -41,10 +34,10 @@ def main():
                 }
                 schema.update(json.loads(f.read()))
 
-            # step 4: loop over properties/specifiers/properties and add enums from definition files
+            # step 2: loop over properties/specifiers/properties and add enums from definition files
             for identifier, properties in schema['properties']['specifiers']['properties'].items():
                 if identifier in definitions:
-                    rows = definitions[identifier].values()
+                    rows = definitions[identifier]
                     enum = []
                     if product.endswith('InputData'):
                         for row in filter_rows(rows, simulation_round, product, category=category):
@@ -55,7 +48,7 @@ def main():
 
                     properties['enum'] = list(set(enum))
 
-            # step 5: write json schema
+            # step 3: write json schema
             write_json(output_path, schema)
 
 
