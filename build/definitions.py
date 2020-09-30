@@ -1,19 +1,11 @@
-import json
-import os
-import subprocess
 from pathlib import Path
+
+from utils import (filter_row, filter_rows, get_commit_hash, read_definitions,
+                   write_json)
 
 
 def main():
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
-
-    directory = Path('definitions')
-    definitions = {}
-    for file_name in os.listdir(directory):
-        file_path = directory / file_name
-
-        with open(file_path, encoding='utf-8') as f:
-            definitions[file_path.stem] = json.loads(f.read())
+    definitions = read_definitions()
 
     simulation_rounds = [definition['specifier'] for definition in definitions['simulation_round']]
     products = [definition['specifier'] for definition in definitions['product']]
@@ -29,19 +21,14 @@ def main():
                                                 .with_suffix('.json')
 
                     output_definitions = {
-                        'commit': commit
+                        'commit': get_commit_hash()
                     }
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
-                        for row in rows:
-                            if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-                                if 'products' not in row or product in row['products']:
-                                    if 'categories' not in row or category in row['categories']:
-                                        output_definitions[definition_name].append(row)
+                        for row in filter_rows(rows, simulation_round, product, category=category):
+                            output_definitions[definition_name].append(filter_row(row, simulation_round, product, category=category))
 
-                    output_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        f.write(json.dumps(output_definitions, indent=2))
+                    write_json(output_path, output_definitions)
 
             else:
                 for sector in sectors:
@@ -50,19 +37,14 @@ def main():
                                                 .with_suffix('.json')
 
                     output_definitions = {
-                        'commit': commit
+                        'commit': get_commit_hash()
                     }
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
-                        for row in rows:
-                            if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-                                if 'products' not in row or product in row['products']:
-                                    if 'sectors' not in row or sector in row['sectors']:
-                                        output_definitions[definition_name].append(row)
+                        for row in filter_rows(rows, simulation_round, product, sector=sector):
+                            output_definitions[definition_name].append(filter_row(row, simulation_round, product, sector=sector))
 
-                    output_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        f.write(json.dumps(output_definitions, indent=2))
+                    write_json(output_path, output_definitions)
 
 
 if __name__ == "__main__":

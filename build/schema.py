@@ -1,15 +1,14 @@
 import json
 import os
-import subprocess
 from collections import OrderedDict
 from pathlib import Path
+
+from utils import filter_rows, get_commit_hash, write_json
 
 URL = 'https://protocol.isimip.org/schema/'
 
 
 def main():
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
-
     # step 0: read all definitions
     definitions = {}
     for file_name in os.listdir('definitions'):
@@ -38,31 +37,26 @@ def main():
                 schema = {
                     '$schema': 'http://json-schema.org/draft-07/schema#',
                     '$id': URL + schema_path.as_posix(),
-                    'commit': commit
+                    'commit': get_commit_hash()
                 }
                 schema.update(json.loads(f.read()))
 
             # step 4: loop over properties/specifiers/properties and add enums from definition files
             for identifier, properties in schema['properties']['specifiers']['properties'].items():
                 if identifier in definitions:
+                    rows = definitions[identifier].values()
                     enum = []
-                    for row in definitions[identifier].values():
-                        if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-                            if 'products' not in row or product in row['products']:
-                                if product.endswith('InputData'):
-
-                                    if 'categories' not in row or category in row['categories']:
-                                        enum.append(row.get('specifier_file') or row.get('specifier'))
-                                else:
-                                    sector = schema_path_components[3]
-                                    if 'sectors' not in row or sector in row['sectors']:
-                                        enum.append(row.get('specifier_file') or row.get('specifier'))
+                    if product.endswith('InputData'):
+                        for row in filter_rows(rows, simulation_round, product, category=category):
+                            enum.append(row.get('specifier_file') or row.get('specifier'))
+                    else:
+                        for row in filter_rows(rows, simulation_round, product, sector=sector):
+                            enum.append(row.get('specifier_file') or row.get('specifier'))
 
                     properties['enum'] = list(set(enum))
 
             # step 5: write json schema
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(json.dumps(schema, indent=2))
+            write_json(output_path, schema)
 
 
 if __name__ == "__main__":

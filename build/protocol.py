@@ -1,13 +1,12 @@
 import json
 import os
 import re
-import subprocess
 from collections import OrderedDict
-from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
 from markdown.extensions.toc import TocExtension
+from utils import filter_row, filter_rows, get_commit_date, get_commit_hash
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -20,10 +19,9 @@ def main():
         'specifier': 'index'
     })
 
-    commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    commit_hash = get_commit_hash()
+    commit_date = get_commit_date()
     commit_url = URL + '/commit/' + commit_hash
-    commit_date = subprocess.check_output(['git', 'show', '-s', '--format=%ci', 'HEAD']).decode().strip()
-    commit_date = datetime.strptime(commit_date, '%Y-%m-%d %H:%M:%S %z').strftime('%d %B %Y')
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
@@ -98,17 +96,16 @@ class Table(object):
         definition_path = os.path.join('definitions', '{}.json'.format(template))
         template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
+        simulation_round = self.simulation_round['specifier']
+        product = self.product['specifier']
+        sector = self.sector['specifier']
+
         # open the definition file and read in every row from the sector
         with open(definition_path, encoding='utf-8') as f:
             definitions = json.loads(f.read())
 
         # filter rows by simulation_round, product, and/or sector
-        rows = []
-        for row in definitions:
-            if 'simulation_rounds' not in row or self.simulation_round['specifier'] in row['simulation_rounds']:
-                if 'products' not in row or self.product['specifier'] in row['products']:
-                    if 'sectors' not in row or self.sector['specifier'] in row['sectors'] or self.sector['specifier'] == 'index':
-                        rows.append(row)
+        rows = list(filter_rows(definitions, simulation_round, product, sector=sector))
 
         # apply order argument
         if isinstance(order, dict):
@@ -122,17 +119,17 @@ class Table(object):
                         # loop over rows, add row to group and remove it from rows
                         for row in rows:
                             if specifier == row['specifier']:
-                                table[group].append(self.get_row(row))
+                                table[group].append(filter_row(row, simulation_round, product, sector=sector))
                                 rows.remove(row)
                                 break
                 else:
                     # if specifiers is None or [], add everything
-                    table[group] = [self.get_row(row) for row in rows]
+                    table[group] = [filter_row(row, simulation_round, product, sector=sector) for row in rows]
                     rows = []
 
             # append everything which was not appended yet in a special group 'Other'
             if rows:
-                table['Other'] = [self.get_row(row) for row in rows]
+                table['Other'] = [filter_row(row, simulation_round, product, sector=sector) for row in rows]
 
         elif isinstance(order, list):
             # if order is a list, it determines the order of rows
@@ -141,42 +138,22 @@ class Table(object):
                 # loop over rows, add row to table and remove it from rows
                 for row in rows:
                     if specifier == row['specifier']:
-                        table.append(self.get_row(row))
+                        table.append(filter_row(row, simulation_round, product, sector=sector))
                         rows.remove(row)
                         break
 
                 # append everything which was not appended yet at the end
-                table += [self.get_row(row) for row in rows]
+                table += [filter_row(row, simulation_round, product, sector=sector) for row in rows]
 
         else:
             # if order is not given, just use the rows in the order of the file
-            table = [self.get_row(row) for row in rows]
+            table = [filter_row(row, simulation_round, product, sector=sector) for row in rows]
 
         with open(template_path, encoding='utf-8') as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
         return template.render(table=table, counter=self.counter, markdown=markdown,
                                simulation_round=self.simulation_round, sector=self.sector)
-
-    def get_row(self, row):
-        values = {}
-        for key, value in row.items():
-            if isinstance(value, dict):
-                values[key] = value.get(self.simulation_round['specifier']) or \
-                              value.get(self.sector['specifier'])
-
-                if values[key] is None:
-                    if self.sector['specifier'] == 'index':
-                        # always use the full dict
-                        values[key] = value
-                    else:
-                        # try the other key or take the full dict
-                        values[key] = value.get('other') or value
-
-            else:
-                values[key] = value
-
-        return values
 
 
 class Counter(object):

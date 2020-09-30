@@ -1,37 +1,24 @@
-import json
-import os
-import subprocess
+from pathlib import Path
+
+from utils import get_commit_hash, read_definitions, write_json
 
 
 def main():
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
-
-    # create glossary
     glossary = {
-        'commit': commit,
+        'commit': get_commit_hash(),
         'terms': {}
     }
 
-    directory = 'definitions'
-    for file_name in os.listdir(directory):
-        file_path = os.path.join(directory, file_name)
-        identifier = os.path.splitext(file_name)[0]
-
+    for identifier, rows in read_definitions().items():
         if identifier not in glossary['terms']:
             glossary['terms'][identifier] = {}
-
-        with open(file_path, encoding='utf-8') as f:
-            rows = json.loads(f.read())
 
         for row in rows:
             specifier = row.pop('specifier')
             glossary['terms'][identifier][specifier] = row
 
-    glossary_path = os.path.join('output', 'glossary.json')
-    os.makedirs(os.path.dirname(glossary_path), exist_ok=True)
-
-    with open(glossary_path, 'w', encoding='utf-8') as f:
-        f.write(json.dumps(glossary, indent=2))
+    glossary_path = Path('output') / 'glossary.json'
+    write_json(glossary_path, glossary)
 
 
 if __name__ == "__main__":
