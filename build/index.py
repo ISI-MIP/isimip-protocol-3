@@ -1,10 +1,9 @@
 import json
 import os
-import subprocess
-from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
+from utils import get_commit_date, get_commit_hash
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -13,10 +12,9 @@ def main():
     simulation_rounds = json.loads(open('definitions/simulation_round.json', encoding='utf-8').read())
     sectors = json.loads(open('definitions/sector.json', encoding='utf-8').read())
 
-    commit_hash = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    commit_hash = get_commit_hash()
+    commit_date = get_commit_date()
     commit_url = URL + '/commit/' + commit_hash
-    commit_date = subprocess.check_output(['git', 'show', '-s', '--format=%ci', 'HEAD']).decode().strip()
-    commit_date = datetime.strptime(commit_date, '%Y-%m-%d %H:%M:%S %z').strftime('%d %B %Y')
 
     # step 1: create hierarchy of simulation_rounds, products, and sectors
     pages = []

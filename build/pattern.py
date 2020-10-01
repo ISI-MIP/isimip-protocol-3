@@ -1,19 +1,19 @@
 import json
 import os
-import subprocess
+from pathlib import Path
+
+from utils import get_commit_hash, write_json
 
 
 def main():
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
-
     for root, dirs, files in os.walk('pattern'):
         for file_name in files:
-            pattern_path = os.path.join(root, file_name)
-            output_path = pattern_path.replace('pattern', os.path.join('output', 'pattern'))
+            pattern_path = Path(root) / file_name
+            output_path = Path('output') / pattern_path
 
             # create a pattern json from scratch
             pattern_json = {
-                'commit': commit
+                'commit': get_commit_hash()
             }
 
             # step 2: open and read pattern
@@ -32,15 +32,13 @@ def main():
                 file = pattern['file']
                 suffix = pattern.get('suffix') or ['.nc']
 
-                pattern_json['path'] = os.path.sep.join(path) + '$'
+                pattern_json['path'] = '/'.join(path) + '$'
                 pattern_json['dataset'] = '^' + '_'.join(dataset)
                 pattern_json['file'] = '^' + '_'.join(file) + '({})'.format('|'.join(suffix))
                 pattern_json['suffix'] = suffix
 
             # step 3: write json file
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(json.dumps(pattern_json, indent=2))
+            write_json(output_path, pattern_json)
 
 
 if __name__ == "__main__":
