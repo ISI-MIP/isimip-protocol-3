@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere.json",
+  "commit": "c76e70cb958372f8bbf6dffc7b8b2041b388eaef",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "climate_forcing",
+        "ensemble_member",
+        "climate_scenario",
+        "climate_variable",
+        "region",
+        "time_step"
+      ],
+      "properties": {
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
+          ]
+        },
+        "ensemble_member": {
+          "type": "string",
+          "enum": [
+            "r1i1p1f1",
+            "r4i1p1f1",
+            "r1i1p1f2"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "nobasd",
+            "w5e5"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "ssp370",
+            "picontrol",
+            "ssp126",
+            "historical",
+            "ssp585"
+          ]
+        },
+        "climate_variable": {
+          "type": "string",
+          "enum": [
+            "thetao",
+            "intpp",
+            "o2",
+            "intpoc",
+            "intppdiaz",
+            "ph",
+            "siconc",
+            "tasmin",
+            "hurs",
+            "pr",
+            "sfcwind",
+            "tos",
+            "expc",
+            "rsds",
+            "tas",
+            "intppdiat",
+            "wo",
+            "zmicro",
+            "vo",
+            "chl",
+            "tob",
+            "huss",
+            "rlds",
+            "deptho",
+            "phydiaz",
+            "prsn",
+            "thkcello",
+            "rsntds",
+            "zooc",
+            "phydiat",
+            "ps",
+            "zmeso",
+            "pp",
+            "mlotstmax",
+            "so",
+            "uo",
+            "tasmax",
+            "phyc"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "monthly",
+            "annual",
+            "daily",
+            "fixed"
+          ]
+        },
+        "start_year": {
+          "type": "number"
+        },
+        "end_year": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

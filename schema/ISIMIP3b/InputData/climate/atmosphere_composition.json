@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere_composition.json",
+  "commit": "c76e70cb958372f8bbf6dffc7b8b2041b388eaef",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "type": "object",
+      "required": [
+        "climate_dataset",
+        "climate_scenario",
+        "time_step"
+      ],
+      "properties": {
+        "climate_dataset": {
+          "type": "string",
+          "enum": [
+            "lightning_fixed",
+            "co2"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "ssp370",
+            "picontrol",
+            "ssp126",
+            "historical",
+            "ssp585"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "monthly",
+            "annual",
+            "daily",
+            "fixed"
+          ]
+        },
+        "start_year": {
+          "type": "number"
+        },
+        "end_year": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
