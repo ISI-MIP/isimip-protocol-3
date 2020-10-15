@@ -1,5 +1,461 @@
 {
-  "commit": "f63d76036c4cbced3678a9ca6ff115afef8d2cde",
+  "commit": "302839fbcfdfe5c68c8c2b39319e7482431ba959",
+  "variable": [
+    {
+      "specifier": "tcb",
+      "long_name": "Total Consumer Biomass Density ",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "All consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tcblog10",
+      "long_name": "Total Consumer Biomass Density in log10 Weight Bins",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, >100kg)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "dimensions": [
+        "time",
+        "bins",
+        "lat",
+        "lon"
+      ]
+    },
+    {
+      "specifier": "tpb",
+      "long_name": "Total Pelagic Biomass Density",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "All pelagic consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp30cm",
+      "long_name": "Biomass Density of Small Pelagics <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is <30 cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp30to90cm",
+      "long_name": "Biomass Density of Medium Pelagics >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is >=30 cm and <90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bp90cm",
+      "long_name": "Biomass Density of Large Pelagics >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a pelagic species and L infinity is >=90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tdb",
+      "long_name": "Total Demersal Biomass Density",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "All demersal consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd30cm",
+      "long_name": "Biomass Density of Small Demersals <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is <30 cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd30to90cm",
+      "long_name": "Biomass Density of Medium Demersals >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is >=30 cm and <90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "bd90cm",
+      "long_name": "Biomass Density of Large Demersals >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If a demersal species and L infinity is >=90cm, include in this variable",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tc",
+      "long_name": "Total Catch (all commercial functional groups / size classes)",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea (commercial landings plus discards, fish and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tclog10",
+      "long_name": "Total Catch in log10 Weight Bins",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, >100kg)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "dimensions": [
+        "time",
+        "bins",
+        "lat",
+        "lon"
+      ]
+    },
+    {
+      "specifier": "tpc",
+      "long_name": "Total Pelagic Catch",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of all pelagic consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cp30cm",
+      "long_name": "Catch Density of Small Pelagics <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of pelagic species with L infinity <30 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cp30to90cm",
+      "long_name": "Catch Density of Medium Pelagics >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of pelagic species with L infinity >=30 cm and <90 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cp90cm",
+      "long_name": "Catch Density of Large Pelagics >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of pelagic species with L infinity >=90 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "tdc",
+      "long_name": "Total Demersal Catch",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of all demersal consumers (trophic level >1, vertebrates and invertebrates)",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cd30cm",
+      "long_name": "Catch Density of Small Demersals <30cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of demersal species with L infinity <30 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cd30to90cm",
+      "long_name": "Catch Density of Medium Demersals >=30cm and <90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of demersal species with L infinity >=30 cm and <90 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "cd90cm",
+      "long_name": "Catch Density of Large Demersals >=90cm",
+      "units": "g m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Catch at sea of demersal species with L infinity >=90 cm",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    }
+  ],
+  "climate_scenario": [
+    {
+      "specifier": "obsclim",
+      "description": "Observed climate and CO\u2082 forcing used for model evaluation and the detection and attribution task.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "spinclim",
+      "description": "Detrended version of the observed climate forcing used to spin-up the simulations based on a stable 1900 climate (see explanation below for details regarding the design of the spin-up)",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "counterclim",
+      "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations in the context of the detection and attributions task.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    }
+  ],
+  "sens_scenario": [
+    {
+      "specifier": "default",
+      "description": "For all experiments other than the sensitivity experiments."
+    }
+  ],
+  "ocean_region": [
+    {
+      "specifier": "north-sea",
+      "title": "North Sea",
+      "north": 62.5,
+      "west": -4.5,
+      "south": 50.5,
+      "east": 9.5
+    },
+    {
+      "specifier": "baltic-sea",
+      "title": "Baltic Sea",
+      "north": 64.5,
+      "west": 15.5,
+      "south": 55.5,
+      "east": 23.5
+    },
+    {
+      "specifier": "nw-med-sea",
+      "title": "North-west Meditteranean",
+      "north": 43.5,
+      "west": -1.5,
+      "south": 36.5,
+      "east": 6.5
+    },
+    {
+      "specifier": "adriatic-sea",
+      "title": "Adriatic Sea",
+      "north": 45.5,
+      "west": 11.5,
+      "south": 39.5,
+      "east": 20.5
+    },
+    {
+      "specifier": "med-glob",
+      "title": "Mediterranean Sea",
+      "north": 45.5,
+      "west": -6.5,
+      "south": 29.5,
+      "east": 35.5
+    },
+    {
+      "specifier": "se-australia",
+      "title": "South-East Australia",
+      "north": -23.5,
+      "west": 120.5,
+      "south": -47.5,
+      "east": 170.5
+    },
+    {
+      "specifier": "east-bass-strait",
+      "title": "Eastern Bass Strait",
+      "north": -37.5,
+      "west": 145.5,
+      "south": -41.5,
+      "east": 151.5
+    },
+    {
+      "specifier": "cook-strait",
+      "title": "Cook Strait",
+      "north": -40.5,
+      "west": 174.5,
+      "south": -46.5,
+      "east": 179.5
+    },
+    {
+      "specifier": "humboldt-n",
+      "title": "North Humboldt Sea",
+      "north": 6.5,
+      "west": -93.5,
+      "south": -20.5,
+      "east": -69.5
+    }
+  ],
+  "climate_forcing": [
+    {
+      "specifier": "gswp3-w5e5",
+      "priority": 1,
+      "title": "GSWP3-W5E5",
+      "time_period": "1901-2016",
+      "reanalysis": "ERA5",
+      "bias_adjustment_target": "GPCC, CRU",
+      "comments": "Combination of W5E5 (Lange, 2019a; Cucchi et al., 2020) for 1979-2016 with GSWP3 (Dirmeyer et al., 2006) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.4.1 bias adjustment method (Lange, 2019b; Lange, 2020).",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData",
+        "SecondaryInputData"
+      ]
+    },
+    {
+      "specifier": "gswp3",
+      "priority": 2,
+      "title": "GSWP3",
+      "time_period": "1901-2010",
+      "reanalysis": "20CR",
+      "bias_adjustment_target": "GPCC, GPCP, CPC-Unified, CRU, SRB",
+      "comments": "Dynamically downscaled and bias-adjusted 20th Century Reanalysis (20CR; Compo et al., 2011) from the Global Soil Wetness Project Phase 3 (GSWP3; Dirmeyer et al., 2006).",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData",
+        "SecondaryInputData"
+      ]
+    }
+  ],
+  "harmonization": [
+    {
+      "specifier": "default",
+      "title": "Default",
+      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+    },
+    {
+      "specifier": "fullharm",
+      "title": "Fully harmonized",
+      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
+    },
+    {
+      "specifier": "harmnon",
+      "title": "Harmonized seasons with no N constraints",
+      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+    }
+  ],
+  "soc_scenario": [
+    {
+      "specifier": "histsoc",
+      "description": "Varying direct human influences in the historical period (1850-2014) (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "2015soc",
+      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    }
+  ],
   "river_basin": [
     {
       "specifier": "sao-paulo-de-olivenca",
@@ -266,14 +722,15 @@
       "area_upstream": 121000
     }
   ],
-  "acidification_type": [
+  "detrending": [
     {
-      "specifier": "oa"
+      "specifier": "observed"
     },
     {
-      "specifier": "no-oa"
+      "specifier": "detrended"
     }
   ],
+  "climate_variable": [],
   "category": [
     {
       "specifier": "climate",
@@ -290,6 +747,17 @@
     {
       "specifier": "socioeconomic",
       "title": "Socioeconomic forcing"
+    }
+  ],
+  "climate_dataset": [
+    {
+      "specifier": "co2",
+      "title": "Atmospheric CO2 concentration",
+      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "unit": "ppm",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Meinshausen et al. (2011) for 1850-2005 and Dlugokencky & Tans (2019) from 2006-2018."
     }
   ],
   "experiments": [
@@ -575,165 +1043,268 @@
       ]
     }
   ],
-  "time_step": [
+  "soc_variable": [
     {
-      "specifier": "3hr",
-      "increment": "hours",
-      "products": [
-        "OutputData",
-        "SecondaryOutputData"
+      "specifier": "domww",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "domwc",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "indww",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "indwc",
+      "soc_dataset": "water_abstraction"
+    }
+  ],
+  "product": [
+    {
+      "specifier": "InputData",
+      "title": "Input Data",
+      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
+    },
+    {
+      "specifier": "SecondaryInputData",
+      "title": "Secondary Input Data",
+      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
+    },
+    {
+      "specifier": "OutputData",
+      "title": "Output Data",
+      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
+    },
+    {
+      "specifier": "SecondaryOutputData",
+      "title": "Secondary Output Data",
+      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
+    }
+  ],
+  "region": [
+    {
+      "specifier": "global",
+      "title": "Global simulation"
+    }
+  ],
+  "subcategory": [
+    {
+      "specifier": "atmosphere",
+      "title": "Atmosphere",
+      "categories": [
+        "climate"
       ]
     },
     {
-      "specifier": "daily",
-      "increment": "days"
+      "specifier": "atmosphere_composition",
+      "title": "Atmospheric composition",
+      "categories": [
+        "climate"
+      ]
     },
     {
-      "specifier": "monthly",
-      "increment": "months"
+      "specifier": "lightning",
+      "title": "Lightning",
+      "categories": [
+        "climate"
+      ]
     },
     {
-      "specifier": "annual",
-      "increment": "years"
+      "specifier": "ocean",
+      "title": "Ocean",
+      "categories": [
+        "climate"
+      ]
     },
     {
-      "specifier": "fixed"
+      "specifier": "fishing",
+      "title": "Fishing",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "gdp",
+      "title": "GDP",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "landuse",
+      "title": "Land use",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-deposition",
+      "title": "N-deposition",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-fertilizer",
+      "title": "N-fertilizer",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "pop",
+      "title": "Population",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "reservoirs_dams",
+      "title": "Reservoirs & dams",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "water_abstraction",
+      "title": "Water abstraction",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "wood_harvesting",
+      "title": "Wood harvesting",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "landseamask",
+      "title": "Land/Sea masks",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "orography",
+      "title": "Orography",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "river_routing",
+      "title": "River routing",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "soil",
+      "title": "Soil",
+      "categories": [
+        "geo_conditions"
+      ]
     }
   ],
-  "forest_stand": [
+  "diazotroph_scenario": [
     {
-      "specifier": "hyytiala",
-      "title": "Hyyti\u00e4l\u00e4",
-      "lat": 61.8475,
-      "lon": 24.295,
-      "country": "FI",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy",
-        "piab"
-      ],
-      "thinning": "below",
-      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
+      "specifier": "w-diaz"
     },
     {
-      "specifier": "peitz",
-      "title": "Peitz",
-      "lat": 51.9166,
-      "lon": 14.35,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy"
-      ],
-      "thinning": "below",
-      "comment": "Managed using a weak thinning from below."
-    },
-    {
-      "specifier": "solling-beech",
-      "title": "Solling (beech)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "solling-spruce",
-      "title": "Solling (spruce)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab "
-      ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "soro",
-      "title": "Sor\u00f8",
-      "lat": 55.485844,
-      "lon": 11.644616,
-      "country": "DK",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "kroof",
-      "title": "Kranzberg Roof Project",
-      "lat": 48.25,
-      "lon": 11.4,
-      "country": "DE",
-      "type": "Mixed deciduous and conifers",
-      "species": [
-        "fasy",
-        "piab",
-        "acpl",
-        "lade",
-        "pisy",
-        "quro"
-      ],
-      "thinning": "below",
-      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
-    },
-    {
-      "specifier": "le-bray",
-      "title": "Le Bray",
-      "lat": 44.71711,
-      "lon": -0.7693,
-      "country": "FR",
-      "type": "Even-aged conifer",
-      "species": [
-        "pipi"
-      ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "collelongo",
-      "title": "Collelongo",
-      "lat": 41.8494,
-      "lon": 13.5881,
-      "country": "IT",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "bily-kriz",
-      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
-      "lat": 49.3,
-      "lon": 18.32,
-      "country": "CZ",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab"
-      ],
-      "thinning": "below",
-      "comment": ""
+      "specifier": "wo-diaz"
     }
   ],
-  "detrending": [
+  "sector": [
     {
-      "specifier": "observed"
+      "specifier": "agriculture",
+      "title": "Agriculture"
     },
     {
-      "specifier": "detrended"
+      "specifier": "biodiversity",
+      "title": "Terrestrial biodiversity"
+    },
+    {
+      "specifier": "biomes",
+      "title": "Biomes"
+    },
+    {
+      "specifier": "coastal",
+      "title": "Coastal systems"
+    },
+    {
+      "specifier": "energy",
+      "title": "Energy"
+    },
+    {
+      "specifier": "fire",
+      "title": "Fire"
+    },
+    {
+      "specifier": "forestry",
+      "title": "Regional forests"
+    },
+    {
+      "specifier": "health",
+      "title": "Temperature-related mortality"
+    },
+    {
+      "specifier": "lakes_global",
+      "title": "Lakes (global)"
+    },
+    {
+      "specifier": "lakes_local",
+      "title": "Lakes (local)"
+    },
+    {
+      "specifier": "permafrost",
+      "title": "Permafrost"
+    },
+    {
+      "specifier": "water_global",
+      "title": "Water (global)"
+    },
+    {
+      "specifier": "water_regional",
+      "title": "Water (regional)"
+    },
+    {
+      "specifier": "labour",
+      "title": "Labour productivity"
+    },
+    {
+      "specifier": "diarrhea",
+      "title": "Diarrhoeal diseases"
     }
   ],
-  "climate_variable": [],
+  "r": [
+    {
+      "specifier": "lower"
+    },
+    {
+      "specifier": "central"
+    },
+    {
+      "specifier": "upper"
+    }
+  ],
   "identifier": [
     {
       "specifier": "acidification_type",
@@ -876,982 +1447,14 @@
       "title": "Vertical resolution"
     }
   ],
-  "ensemble_member": [
+  "time_span": [
     {
-      "specifier": "r1i1p1f1"
+      "specifier": "minimum",
+      "value": 1901
     },
     {
-      "specifier": "r1i1p1f2"
-    },
-    {
-      "specifier": "r4i1p1f1"
-    }
-  ],
-  "soc_scenario": [
-    {
-      "specifier": "histsoc",
-      "description": "Varying direct human influences in the historical period (1850-2014) (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
-    },
-    {
-      "specifier": "2015soc",
-      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
-    },
-    {
-      "specifier": "nat",
-      "description": "No direct human influences (naturalized run).",
-      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    }
-  ],
-  "variable": [
-    {
-      "specifier": "tcb",
-      "long_name": "Total Consumer Biomass Density ",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "All consumers (trophic level >1, vertebrates and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "tcblog10",
-      "long_name": "Total Consumer Biomass Density in log10 Weight Bins",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, >100kg)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ],
-      "dimensions": [
-        "time",
-        "bins",
-        "lat",
-        "lon"
-      ]
-    },
-    {
-      "specifier": "tpb",
-      "long_name": "Total Pelagic Biomass Density",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "All pelagic consumers (trophic level >1, vertebrates and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bp30cm",
-      "long_name": "Biomass Density of Small Pelagics <30cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a pelagic species and L infinity is <30 cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bp30to90cm",
-      "long_name": "Biomass Density of Medium Pelagics >=30cm and <90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a pelagic species and L infinity is >=30 cm and <90cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bp90cm",
-      "long_name": "Biomass Density of Large Pelagics >=90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a pelagic species and L infinity is >=90cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "tdb",
-      "long_name": "Total Demersal Biomass Density",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "All demersal consumers (trophic level >1, vertebrates and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bd30cm",
-      "long_name": "Biomass Density of Small Demersals <30cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a demersal species and L infinity is <30 cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bd30to90cm",
-      "long_name": "Biomass Density of Medium Demersals >=30cm and <90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a demersal species and L infinity is >=30 cm and <90cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "bd90cm",
-      "long_name": "Biomass Density of Large Demersals >=90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If a demersal species and L infinity is >=90cm, include in this variable",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "tc",
-      "long_name": "Total Catch (all commercial functional groups / size classes)",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea (commercial landings plus discards, fish and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "tclog10",
-      "long_name": "Total Catch in log10 Weight Bins",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, >100kg)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ],
-      "dimensions": [
-        "time",
-        "bins",
-        "lat",
-        "lon"
-      ]
-    },
-    {
-      "specifier": "tpc",
-      "long_name": "Total Pelagic Catch",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of all pelagic consumers (trophic level >1, vertebrates and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cp30cm",
-      "long_name": "Catch Density of Small Pelagics <30cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of pelagic species with L infinity <30 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cp30to90cm",
-      "long_name": "Catch Density of Medium Pelagics >=30cm and <90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of pelagic species with L infinity >=30 cm and <90 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cp90cm",
-      "long_name": "Catch Density of Large Pelagics >=90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of pelagic species with L infinity >=90 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "tdc",
-      "long_name": "Total Demersal Catch",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of all demersal consumers (trophic level >1, vertebrates and invertebrates)",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cd30cm",
-      "long_name": "Catch Density of Small Demersals <30cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of demersal species with L infinity <30 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cd30to90cm",
-      "long_name": "Catch Density of Medium Demersals >=30cm and <90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of demersal species with L infinity >=30 cm and <90 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "cd90cm",
-      "long_name": "Catch Density of Large Demersals >=90cm",
-      "units": "g m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Catch at sea of demersal species with L infinity >=90 cm",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    }
-  ],
-  "sens_scenario": [
-    {
-      "specifier": "default",
-      "description": "For all experiments other than the sensitivity experiments."
-    }
-  ],
-  "soc_dataset": [
-    {
-      "specifier": "fishing_effort",
-      "specifier_file": "effort",
-      "title": "Fishing effort",
-      "file_path": "socioeconomic/fishing/effort_historical_1950_2014.csv",
-      "variables": [
-        "fishing effort"
-      ],
-      "time_periods": [
-        "1950-2014"
-      ],
-      "resolution": "Marine ecosystems or exclusive economic zones",
-      "frequency": "annual",
-      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: Rousseau et al., 2019, PNAS 116 (25) 12238-12243.",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "fishing_catch",
-      "specifier_file": "catch",
-      "title": "Fish catch",
-      "file_path": "socioeconomic/fishing/catch_historical_1950_2014.csv",
-      "variables": [
-        "fish catch"
-      ],
-      "time_periods": [
-        "1950-2014"
-      ],
-      "resolution": "Marine ecosystems or exclusive economic zones",
-      "frequency": "annual",
-      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: Watson and Tidd, 2018, Marine Policy, 93: 171-177.",
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ]
-    },
-    {
-      "specifier": "population_5arcmin",
-      "specifier_file": "population",
-      "title": "Population 5' grid",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        "total number of people (popc)",
-        "rural number of people (rurc)",
-        "urban number of people (urbc)"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "5' grid",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). Decadal data prior to year 2000 have been linearly interpolated in time."
-    },
-    {
-      "specifier": "population_30arcmin",
-      "specifier_file": "population",
-      "title": "Population 0.5\u00b0 grid",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        "total number of people (popc)",
-        "rural number of people (rurc)",
-        "urban number of people (urbc)"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5\u00b0 spatial resolution"
-    },
-    {
-      "specifier": "population_national",
-      "specifier_file": "population",
-      "title": "Population national",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
-      "variables": [
-        "total number of people per country"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "national",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (based on WPP 2017 revision, following the methodology of Klein Goldewijk et al., 2017). Decadal data prior to year 1950 have been linearly interpolated in time."
-    },
-    {
-      "specifier": "population-density_5arcmin",
-      "specifier_file": "population-density",
-      "title": "Population density 5' grid",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        "total number of people per square kilometer (popc)",
-        "rural number of people per square kilometer (rurc)",
-        "urban number of people per square kilometer (urbc)"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "5' grid",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). Decadal data prior to year 2000 have been linearly interpolated in time."
-    },
-    {
-      "specifier": "population-density_30arcmin",
-      "specifier_file": "population-density",
-      "title": "Population density 0.5\u00b0 grid",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        "total number of people per square kilometer (popc)",
-        "rural number of people per square kilometer (rurc)",
-        "urban number of people per square kilometer (urbc)"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5\u00b0 spatial resolution"
-    },
-    {
-      "specifier": "population-density_national",
-      "specifier_file": "population-density",
-      "title": "Population density national",
-      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
-      "variables": [
-        "total number of people per square kilometer"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "national",
-      "frequency": "annual",
-      "comment": "HYDE v3.2.1 (based on WPP 2017 revision, following the methodology of Klein Goldewijk et al., 2017). Decadal data prior to year 1950 have been linearly interpolated in time."
-    },
-    {
-      "specifier": "gdp",
-      "title": "GDP",
-      "specifier_file": "gdp-countrylevel",
-      "file_path": "socioeconomic/gdp/<soc_scenario>/<soc_scenario>_gdp_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        "GDP PPP 2005 USD (gdp)"
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2016"
-      ],
-      "resolution": "country-level",
-      "frequency": "annual",
-      "comment": "Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021."
-    }
-  ],
-  "r": [
-    {
-      "specifier": "lower"
-    },
-    {
-      "specifier": "central"
-    },
-    {
-      "specifier": "upper"
-    }
-  ],
-  "sector": [
-    {
-      "specifier": "agriculture",
-      "title": "Agriculture"
-    },
-    {
-      "specifier": "biodiversity",
-      "title": "Terrestrial biodiversity"
-    },
-    {
-      "specifier": "biomes",
-      "title": "Biomes"
-    },
-    {
-      "specifier": "coastal",
-      "title": "Coastal systems"
-    },
-    {
-      "specifier": "energy",
-      "title": "Energy"
-    },
-    {
-      "specifier": "fire",
-      "title": "Fire"
-    },
-    {
-      "specifier": "forestry",
-      "title": "Regional forests"
-    },
-    {
-      "specifier": "health",
-      "title": "Temperature-related mortality"
-    },
-    {
-      "specifier": "lakes_global",
-      "title": "Lakes (global)"
-    },
-    {
-      "specifier": "lakes_local",
-      "title": "Lakes (local)"
-    },
-    {
-      "specifier": "permafrost",
-      "title": "Permafrost"
-    },
-    {
-      "specifier": "water_global",
-      "title": "Water (global)"
-    },
-    {
-      "specifier": "water_regional",
-      "title": "Water (regional)"
-    },
-    {
-      "specifier": "labour",
-      "title": "Labour productivity"
-    },
-    {
-      "specifier": "diarrhea",
-      "title": "Diarrhoeal diseases"
-    }
-  ],
-  "fishing_type": [
-    {
-      "specifier": "fishing"
-    },
-    {
-      "specifier": "no-fishing"
-    }
-  ],
-  "irrigation": [
-    {
-      "specifier": "noirr",
-      "title": "No irrigation (rainfed land)"
-    }
-  ],
-  "region": [
-    {
-      "specifier": "global",
-      "title": "Global simulation"
-    }
-  ],
-  "product": [
-    {
-      "specifier": "InputData",
-      "title": "Input Data",
-      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryInputData",
-      "title": "Secondary Input Data",
-      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
-    },
-    {
-      "specifier": "OutputData",
-      "title": "Output Data",
-      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryOutputData",
-      "title": "Secondary Output Data",
-      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
-    }
-  ],
-  "bias_adjustment": [
-    {
-      "specifier": "nobasd",
-      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
-    },
-    {
-      "specifier": "w5e5",
-      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
-    }
-  ],
-  "diazotroph_scenario": [
-    {
-      "specifier": "w-diaz"
-    },
-    {
-      "specifier": "wo-diaz"
-    }
-  ],
-  "geo_dataset": [
-    {
-      "specifier": "landseamask",
-      "file_path": "geo_conditions/landseamask/landseamask.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land."
-    },
-    {
-      "specifier": "landseamask_no-ant",
-      "file_path": "geo_conditions/landseamask/landseamask_no-ant.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "Same as **landseamask** but without Antarctica."
-    },
-    {
-      "specifier": "landseamask_water-global",
-      "file_path": "geo_conditions/landseamask/landseamask_water-global.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea."
-    }
-  ],
-  "soc_variable": [
-    {
-      "specifier": "domww",
-      "soc_dataset": "water_abstraction"
-    },
-    {
-      "specifier": "domwc",
-      "soc_dataset": "water_abstraction"
-    },
-    {
-      "specifier": "indww",
-      "soc_dataset": "water_abstraction"
-    },
-    {
-      "specifier": "indwc",
-      "soc_dataset": "water_abstraction"
-    }
-  ],
-  "climate_forcing": [
-    {
-      "specifier": "gswp3-w5e5",
-      "priority": 1,
-      "title": "GSWP3-W5E5",
-      "time_period": "1901-2016",
-      "reanalysis": "ERA5",
-      "bias_adjustment_target": "GPCC, CRU",
-      "comments": "Combination of W5E5 (Lange, 2019a; Cucchi et al., 2020) for 1979-2016 with GSWP3 (Dirmeyer et al., 2006) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.4.1 bias adjustment method (Lange, 2019b; Lange, 2020).",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData",
-        "SecondaryInputData"
-      ]
-    },
-    {
-      "specifier": "gswp3",
-      "priority": 2,
-      "title": "GSWP3",
-      "time_period": "1901-2010",
-      "reanalysis": "20CR",
-      "bias_adjustment_target": "GPCC, GPCP, CPC-Unified, CRU, SRB",
-      "comments": "Dynamically downscaled and bias-adjusted 20th Century Reanalysis (20CR; Compo et al., 2011) from the Global Soil Wetness Project Phase 3 (GSWP3; Dirmeyer et al., 2006).",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData",
-        "SecondaryInputData"
-      ]
-    }
-  ],
-  "crop": [
-    {
-      "specifier": "whe",
-      "title": "Wheat"
-    },
-    {
-      "specifier": "mai",
-      "title": "Maize"
-    },
-    {
-      "specifier": "soy",
-      "title": "Soy"
-    },
-    {
-      "specifier": "ric",
-      "title": "Rice"
-    },
-    {
-      "specifier": "bar",
-      "title": "Barley"
-    },
-    {
-      "specifier": "ben",
-      "title": "Bean"
-    },
-    {
-      "specifier": "cas",
-      "title": "Cassava"
-    },
-    {
-      "specifier": "cot",
-      "title": "Cotton"
-    },
-    {
-      "specifier": "euc",
-      "title": "Eucalyptus"
-    },
-    {
-      "specifier": "mgr",
-      "title": "Managed grass"
-    },
-    {
-      "specifier": "mil",
-      "title": "Millet"
-    },
-    {
-      "specifier": "mis",
-      "title": "Miscanthus"
-    },
-    {
-      "specifier": "nut",
-      "title": "Groundnuts"
-    },
-    {
-      "specifier": "pea",
-      "title": "Field peas"
-    },
-    {
-      "specifier": "pop",
-      "title": "Poplar"
-    },
-    {
-      "specifier": "pot",
-      "title": "Potato"
-    },
-    {
-      "specifier": "rap",
-      "title": "Rapeseed"
-    },
-    {
-      "specifier": "rye",
-      "title": "Rye"
-    },
-    {
-      "specifier": "sgb",
-      "title": "Sugar beet"
-    },
-    {
-      "specifier": "sor",
-      "title": "Sorghum"
-    },
-    {
-      "specifier": "sug",
-      "title": "Sugarcane"
-    },
-    {
-      "specifier": "sun",
-      "title": "Sunflower"
-    }
-  ],
-  "dimensions": [
-    {
-      "specifier": "lon",
-      "axis": "X",
-      "units": "degrees_east",
-      "size": 720,
-      "minimum": -179.75,
-      "maximum": 179.75,
-      "standard_name": "longitude",
-      "long_names": [
-        "Longitude",
-        "longitude"
-      ]
-    },
-    {
-      "specifier": "lat",
-      "axis": "Y",
-      "units": "degrees_north",
-      "size": 360,
-      "minimum": -89.75,
-      "maximum": 89.75,
-      "standard_name": "latitude",
-      "long_names": [
-        "Latitude",
-        "latitude"
-      ]
-    },
-    {
-      "specifier": "time",
-      "axis": "T",
-      "standard_name": "time",
-      "long_names": [
-        "time",
-        "time axis",
-        "Time",
-        "Time axis"
-      ],
-      "calenders_daily": [
-        "standard",
-        "proleptic_gregorian",
-        "366_day",
-        "365_day",
-        "360_day"
-      ],
-      "calenders_other": [
-        "360_day"
-      ]
-    },
-    {
-      "specifier": "depth",
-      "axis": "Z",
-      "standard_name": "depth_below_land",
-      "long_name": "Depth of vertical layer center below land",
-      "positive": "down",
-      "units": "m"
-    },
-    {
-      "specifier": "bins",
-      "standard_name": "log10_weight_bins",
-      "long_name": "log10 Weight Bins",
-      "units": "g"
-    }
-  ],
-  "river": [
-    {
-      "specifier": "amazon"
-    },
-    {
-      "specifier": "blue-nile"
-    },
-    {
-      "specifier": "danube"
-    },
-    {
-      "specifier": "darling"
-    },
-    {
-      "specifier": "ganges"
-    },
-    {
-      "specifier": "godavari"
-    },
-    {
-      "specifier": "indus"
-    },
-    {
-      "specifier": "lena"
-    },
-    {
-      "specifier": "mackenzie"
-    },
-    {
-      "specifier": "mississippi"
-    },
-    {
-      "specifier": "niger"
-    },
-    {
-      "specifier": "pajeu"
-    },
-    {
-      "specifier": "rhine"
-    },
-    {
-      "specifier": "tagus"
-    },
-    {
-      "specifier": "yangtze"
-    },
-    {
-      "specifier": "yellow"
-    }
-  ],
-  "ocean_region": [
-    {
-      "specifier": "north-sea",
-      "title": "North Sea",
-      "north": 62.5,
-      "west": -4.5,
-      "south": 50.5,
-      "east": 9.5
-    },
-    {
-      "specifier": "baltic-sea",
-      "title": "Baltic Sea",
-      "north": 64.5,
-      "west": 15.5,
-      "south": 55.5,
-      "east": 23.5
-    },
-    {
-      "specifier": "nw-med-sea",
-      "title": "North-west Meditteranean",
-      "north": 43.5,
-      "west": -1.5,
-      "south": 36.5,
-      "east": 6.5
-    },
-    {
-      "specifier": "adriatic-sea",
-      "title": "Adriatic Sea",
-      "north": 45.5,
-      "west": 11.5,
-      "south": 39.5,
-      "east": 20.5
-    },
-    {
-      "specifier": "med-glob",
-      "title": "Mediterranean Sea",
-      "north": 45.5,
-      "west": -6.5,
-      "south": 29.5,
-      "east": 35.5
-    },
-    {
-      "specifier": "se-australia",
-      "title": "South-East Australia",
-      "north": -23.5,
-      "west": 120.5,
-      "south": -47.5,
-      "east": 170.5
-    },
-    {
-      "specifier": "east-bass-strait",
-      "title": "Eastern Bass Strait",
-      "north": -37.5,
-      "west": 145.5,
-      "south": -41.5,
-      "east": 151.5
-    },
-    {
-      "specifier": "cook-strait",
-      "title": "Cook Strait",
-      "north": -40.5,
-      "west": 174.5,
-      "south": -46.5,
-      "east": 179.5
-    },
-    {
-      "specifier": "humboldt-n",
-      "title": "North Humboldt Sea",
-      "north": 6.5,
-      "west": -93.5,
-      "south": -20.5,
-      "east": -69.5
-    }
-  ],
-  "vert": [
-    {
-      "specifier": "vint"
+      "specifier": "maximum",
+      "value": 2018
     }
   ],
   "lake_site": [
@@ -2376,38 +1979,15 @@
       "type": "reservoir"
     }
   ],
-  "climate_dataset": [
+  "ensemble_member": [
     {
-      "specifier": "co2",
-      "title": "Atmospheric CO2 concentration",
-      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
-      "unit": "ppm",
-      "resolution": "global",
-      "frequency": "annual",
-      "comment": "Meinshausen et al. (2011) for 1850-2005 and Dlugokencky & Tans (2019) from 2006-2018."
-    }
-  ],
-  "climate_scenario": [
-    {
-      "specifier": "obsclim",
-      "description": "Observed climate and CO\u2082 forcing used for model evaluation and the detection and attribution task.",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "r1i1p1f1"
     },
     {
-      "specifier": "spinclim",
-      "description": "Detrended version of the observed climate forcing used to spin-up the simulations based on a stable 1900 climate (see explanation below for details regarding the design of the spin-up)",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "r1i1p1f2"
     },
     {
-      "specifier": "counterclim",
-      "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations in the context of the detection and attributions task.",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "r4i1p1f1"
     }
   ],
   "species": [
@@ -2492,6 +2072,157 @@
       "specifier": "ins"
     }
   ],
+  "acidification_type": [
+    {
+      "specifier": "oa"
+    },
+    {
+      "specifier": "no-oa"
+    }
+  ],
+  "forest_stand": [
+    {
+      "specifier": "hyytiala",
+      "title": "Hyyti\u00e4l\u00e4",
+      "lat": 61.8475,
+      "lon": 24.295,
+      "country": "FI",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy",
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
+    },
+    {
+      "specifier": "peitz",
+      "title": "Peitz",
+      "lat": 51.9166,
+      "lon": 14.35,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy"
+      ],
+      "thinning": "below",
+      "comment": "Managed using a weak thinning from below."
+    },
+    {
+      "specifier": "solling-beech",
+      "title": "Solling (beech)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "solling-spruce",
+      "title": "Solling (spruce)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab "
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "soro",
+      "title": "Sor\u00f8",
+      "lat": 55.485844,
+      "lon": 11.644616,
+      "country": "DK",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "kroof",
+      "title": "Kranzberg Roof Project",
+      "lat": 48.25,
+      "lon": 11.4,
+      "country": "DE",
+      "type": "Mixed deciduous and conifers",
+      "species": [
+        "fasy",
+        "piab",
+        "acpl",
+        "lade",
+        "pisy",
+        "quro"
+      ],
+      "thinning": "below",
+      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
+    },
+    {
+      "specifier": "le-bray",
+      "title": "Le Bray",
+      "lat": 44.71711,
+      "lon": -0.7693,
+      "country": "FR",
+      "type": "Even-aged conifer",
+      "species": [
+        "pipi"
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "collelongo",
+      "title": "Collelongo",
+      "lat": 41.8494,
+      "lon": 13.5881,
+      "country": "IT",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "bily-kriz",
+      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
+      "lat": 49.3,
+      "lon": 18.32,
+      "country": "CZ",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": ""
+    }
+  ],
+  "fishing_type": [
+    {
+      "specifier": "fishing"
+    },
+    {
+      "specifier": "no-fishing"
+    }
+  ],
+  "bias_adjustment": [
+    {
+      "specifier": "nobasd",
+      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+    },
+    {
+      "specifier": "w5e5",
+      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
+    }
+  ],
   "simulation_round": [
     {
       "specifier": "ISIMIP3a",
@@ -2504,166 +2235,435 @@
       "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
     }
   ],
-  "subcategory": [
+  "river": [
     {
-      "specifier": "atmosphere",
-      "title": "Atmosphere",
-      "categories": [
-        "climate"
+      "specifier": "amazon"
+    },
+    {
+      "specifier": "blue-nile"
+    },
+    {
+      "specifier": "danube"
+    },
+    {
+      "specifier": "darling"
+    },
+    {
+      "specifier": "ganges"
+    },
+    {
+      "specifier": "godavari"
+    },
+    {
+      "specifier": "indus"
+    },
+    {
+      "specifier": "lena"
+    },
+    {
+      "specifier": "mackenzie"
+    },
+    {
+      "specifier": "mississippi"
+    },
+    {
+      "specifier": "niger"
+    },
+    {
+      "specifier": "pajeu"
+    },
+    {
+      "specifier": "rhine"
+    },
+    {
+      "specifier": "tagus"
+    },
+    {
+      "specifier": "yangtze"
+    },
+    {
+      "specifier": "yellow"
+    }
+  ],
+  "geo_dataset": [
+    {
+      "specifier": "landseamask",
+      "file_path": "geo_conditions/landseamask/landseamask.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land."
+    },
+    {
+      "specifier": "landseamask_no-ant",
+      "file_path": "geo_conditions/landseamask/landseamask_no-ant.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "Same as **landseamask** but without Antarctica."
+    },
+    {
+      "specifier": "landseamask_water-global",
+      "file_path": "geo_conditions/landseamask/landseamask_water-global.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea."
+    }
+  ],
+  "time_step": [
+    {
+      "specifier": "3hr",
+      "increment": "hours",
+      "products": [
+        "OutputData",
+        "SecondaryOutputData"
       ]
     },
     {
-      "specifier": "atmosphere_composition",
-      "title": "Atmospheric composition",
-      "categories": [
-        "climate"
+      "specifier": "daily",
+      "increment": "days"
+    },
+    {
+      "specifier": "monthly",
+      "increment": "months"
+    },
+    {
+      "specifier": "annual",
+      "increment": "years"
+    },
+    {
+      "specifier": "fixed"
+    }
+  ],
+  "dimensions": [
+    {
+      "specifier": "lon",
+      "axis": "X",
+      "units": "degrees_east",
+      "size": 720,
+      "minimum": -179.75,
+      "maximum": 179.75,
+      "standard_name": "longitude",
+      "long_names": [
+        "Longitude",
+        "longitude"
       ]
     },
     {
-      "specifier": "lightning",
-      "title": "Lightning",
-      "categories": [
-        "climate"
+      "specifier": "lat",
+      "axis": "Y",
+      "units": "degrees_north",
+      "size": 360,
+      "minimum": -89.75,
+      "maximum": 89.75,
+      "standard_name": "latitude",
+      "long_names": [
+        "Latitude",
+        "latitude"
       ]
     },
     {
-      "specifier": "ocean",
-      "title": "Ocean",
-      "categories": [
-        "climate"
+      "specifier": "time",
+      "axis": "T",
+      "standard_name": "time",
+      "long_names": [
+        "time",
+        "time axis",
+        "Time",
+        "Time axis"
+      ],
+      "calenders_daily": [
+        "standard",
+        "proleptic_gregorian",
+        "366_day",
+        "365_day",
+        "360_day"
+      ],
+      "calenders_other": [
+        "360_day"
       ]
     },
     {
-      "specifier": "fishing",
-      "title": "Fishing",
-      "categories": [
-        "socioeconomic"
+      "specifier": "depth",
+      "axis": "Z",
+      "standard_name": "depth_below_land",
+      "long_name": "Depth of vertical layer center below land",
+      "positive": "down",
+      "units": "m"
+    },
+    {
+      "specifier": "bins",
+      "standard_name": "log10_weight_bins",
+      "long_name": "log10 Weight Bins",
+      "units": "g"
+    }
+  ],
+  "soc_dataset": [
+    {
+      "specifier": "fishing_effort",
+      "specifier_file": "effort",
+      "title": "Fishing effort",
+      "file_path": "socioeconomic/fishing/effort_historical_1950_2014.csv",
+      "variables": [
+        "fishing effort"
+      ],
+      "time_periods": [
+        "1950-2014"
+      ],
+      "resolution": "Marine ecosystems or exclusive economic zones",
+      "frequency": "annual",
+      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: Rousseau et al., 2019, PNAS 116 (25) 12238-12243.",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
+    },
+    {
+      "specifier": "fishing_catch",
+      "specifier_file": "catch",
+      "title": "Fish catch",
+      "file_path": "socioeconomic/fishing/catch_historical_1950_2014.csv",
+      "variables": [
+        "fish catch"
+      ],
+      "time_periods": [
+        "1950-2014"
+      ],
+      "resolution": "Marine ecosystems or exclusive economic zones",
+      "frequency": "annual",
+      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: Watson and Tidd, 2018, Marine Policy, 93: 171-177.",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "population_5arcmin",
+      "specifier_file": "population",
+      "title": "Population 5' grid",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        "total number of people (popc)",
+        "rural number of people (rurc)",
+        "urban number of people (urbc)"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "5' grid",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time."
+    },
+    {
+      "specifier": "population_30arcmin",
+      "specifier_file": "population",
+      "title": "Population 0.5\u00b0 grid",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        "total number of people (popc)",
+        "rural number of people (rurc)",
+        "urban number of people (urbc)"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5\u00b0 spatial resolution"
+    },
+    {
+      "specifier": "population_national",
+      "specifier_file": "population",
+      "title": "Population national",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
+      "variables": [
+        "total number of people per country"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "national",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (based on WPP 2017 revision, following the methodology of Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time."
+    },
+    {
+      "specifier": "population-density_5arcmin",
+      "specifier_file": "population-density",
+      "title": "Population density 5' grid",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        "total number of people per square kilometer (popc)",
+        "rural number of people per square kilometer (rurc)",
+        "urban number of people per square kilometer (urbc)"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "5' grid",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time."
+    },
+    {
+      "specifier": "population-density_30arcmin",
+      "specifier_file": "population-density",
+      "title": "Population density 0.5\u00b0 grid",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        "total number of people per square kilometer (popc)",
+        "rural number of people per square kilometer (rurc)",
+        "urban number of people per square kilometer (urbc)"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5\u00b0 spatial resolution"
+    },
+    {
+      "specifier": "population-density_national",
+      "specifier_file": "population-density",
+      "title": "Population density national",
+      "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
+      "variables": [
+        "total number of people per square kilometer"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "national",
+      "frequency": "annual",
+      "comment": "HYDE v3.2.1 (based on WPP 2017 revision, following the methodology of Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time."
     },
     {
       "specifier": "gdp",
       "title": "GDP",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier_file": "gdp-countrylevel",
+      "file_path": "socioeconomic/gdp/<soc_scenario>/<soc_scenario>_gdp_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        "GDP PPP 2005 USD (gdp)"
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2016"
+      ],
+      "resolution": "country-level",
+      "frequency": "annual",
+      "comment": "Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021."
+    }
+  ],
+  "crop": [
+    {
+      "specifier": "whe",
+      "title": "Wheat"
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "mai",
+      "title": "Maize"
     },
     {
-      "specifier": "landuse",
-      "title": "Land use",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "soy",
+      "title": "Soy"
     },
     {
-      "specifier": "n-deposition",
-      "title": "N-deposition",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "ric",
+      "title": "Rice"
     },
     {
-      "specifier": "n-fertilizer",
-      "title": "N-fertilizer",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "bar",
+      "title": "Barley"
+    },
+    {
+      "specifier": "ben",
+      "title": "Bean"
+    },
+    {
+      "specifier": "cas",
+      "title": "Cassava"
+    },
+    {
+      "specifier": "cot",
+      "title": "Cotton"
+    },
+    {
+      "specifier": "euc",
+      "title": "Eucalyptus"
+    },
+    {
+      "specifier": "mgr",
+      "title": "Managed grass"
+    },
+    {
+      "specifier": "mil",
+      "title": "Millet"
+    },
+    {
+      "specifier": "mis",
+      "title": "Miscanthus"
+    },
+    {
+      "specifier": "nut",
+      "title": "Groundnuts"
+    },
+    {
+      "specifier": "pea",
+      "title": "Field peas"
     },
     {
       "specifier": "pop",
-      "title": "Population",
-      "categories": [
-        "socioeconomic"
-      ]
+      "title": "Poplar"
     },
     {
-      "specifier": "reservoirs_dams",
-      "title": "Reservoirs & dams",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "pot",
+      "title": "Potato"
     },
     {
-      "specifier": "water_abstraction",
-      "title": "Water abstraction",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "rap",
+      "title": "Rapeseed"
     },
     {
-      "specifier": "wood_harvesting",
-      "title": "Wood harvesting",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "rye",
+      "title": "Rye"
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "sgb",
+      "title": "Sugar beet"
     },
     {
-      "specifier": "landseamask",
-      "title": "Land/Sea masks",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "sor",
+      "title": "Sorghum"
     },
     {
-      "specifier": "orography",
-      "title": "Orography",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "sug",
+      "title": "Sugarcane"
     },
     {
-      "specifier": "river_routing",
-      "title": "River routing",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "soil",
-      "title": "Soil",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "sun",
+      "title": "Sunflower"
     }
   ],
-  "time_span": [
+  "irrigation": [
     {
-      "specifier": "minimum",
-      "value": 1901
-    },
-    {
-      "specifier": "maximum",
-      "value": 2018
+      "specifier": "noirr",
+      "title": "No irrigation (rainfed land)"
     }
   ],
-  "harmonization": [
+  "vert": [
     {
-      "specifier": "default",
-      "title": "Default",
-      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
-    },
-    {
-      "specifier": "fullharm",
-      "title": "Fully harmonized",
-      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
-    },
-    {
-      "specifier": "harmnon",
-      "title": "Harmonized seasons with no N constraints",
-      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+      "specifier": "vint"
     }
   ]
 }
