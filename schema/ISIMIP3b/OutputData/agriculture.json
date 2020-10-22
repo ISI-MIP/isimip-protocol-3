@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/agriculture.json",
-  "commit": "fb52328ad6bdf1c9e072d6a175bd72df4dfcf4dc",
+  "commit": "4e49bb9f252f9b5398811b93eb1a21a132df1123",
   "type": "object",
   "required": [
     "specifiers"
@@ -28,11 +28,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
             "mri-esm2-0",
-            "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
+            "gfdl-esm4",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -46,75 +46,75 @@
           "type": "string",
           "enum": [
             "ssp126",
-            "ssp370",
+            "picontrol",
             "historical",
-            "ssp585",
-            "picontrol"
+            "ssp370",
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
             "histsoc",
-            "1850soc"
+            "1850soc",
+            "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "pirnreq",
+            "yield",
+            "biom",
+            "plantday",
+            "sco2",
             "soilmoist",
-            "tnin",
-            "gsprcp",
+            "anthday",
+            "pirnreq",
+            "tnloss",
+            "tnup",
+            "leach",
             "sn2o",
             "sumt",
-            "tnup",
-            "biom",
-            "anthday",
-            "gsrsds",
             "matyday",
-            "leach",
-            "tnloss",
-            "plantday",
+            "tnin",
+            "gsrsds",
+            "gsprcp",
             "initr",
-            "yield",
-            "sco2",
             "aet"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "nut",
-            "cot",
-            "mai",
             "pea",
             "soy",
-            "cas",
-            "sgb",
-            "mis",
-            "pot",
-            "bar",
-            "euc",
             "sun",
-            "rap",
-            "rye",
-            "ben",
-            "ric",
-            "sug",
             "mil",
             "whe",
-            "sor",
+            "mai",
+            "cot",
+            "sug",
+            "bar",
+            "ben",
             "pop",
-            "mgr"
+            "cas",
+            "euc",
+            "mgr",
+            "sor",
+            "rap",
+            "mis",
+            "sgb",
+            "ric",
+            "pot",
+            "rye",
+            "nut"
           ]
         },
         "irrigation": {
@@ -133,11 +133,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
             "fixed",
             "monthly",
-            "daily",
             "seasonal",
+            "3hr",
+            "daily",
             "annual"
           ]
         },
