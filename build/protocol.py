@@ -6,7 +6,8 @@ from collections import OrderedDict
 from jinja2 import Environment, FileSystemLoader, Template
 from markdown import markdown
 from markdown.extensions.toc import TocExtension
-from utils import filter_row, filter_rows, get_commit_date, get_commit_hash
+from utils import (filter_row, filter_rows, get_commit_date, get_commit_hash,
+                   read_definitions)
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -22,6 +23,8 @@ def main():
     commit_hash = get_commit_hash()
     commit_date = get_commit_date()
     commit_url = URL + '/commit/' + commit_hash
+
+    definitions = read_definitions()
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
@@ -48,7 +51,7 @@ def main():
                 # step 2: render the template using jinja2
                 enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
                 template = enviroment.from_string(template_string)
-                md = template.render(simulation_round=simulation_round, sector=sector,
+                md = template.render(simulation_round=simulation_round, sector=sector, definitions=definitions,
                                      pattern=pattern, pattern_simple=pattern_simple,
                                      commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
                                      table=Table(simulation_round, sector, Counter()))
