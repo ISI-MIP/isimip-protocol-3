@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryInputData/climate.json",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/ocean.json",
   "commit": "102af0d3ba388239ffbd85a3244d52566c9a9eb0",
   "type": "object",
   "required": [
@@ -8,28 +8,30 @@
   ],
   "properties": {
     "specifiers": {
+      "type": "object",
       "required": [
         "climate_forcing",
+        "ensemble_member",
         "climate_scenario",
         "climate_variable",
+        "resolution",
         "region",
         "time_step"
       ],
       "properties": {
-        "climate_forcing": {
+        "climate_dataset": {
           "type": "string",
           "enum": [
-            "ec-earth3",
-            "ipsl-cm6a-lr",
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
-            "gfdl-esm4",
-            "canesm5",
-            "cesm2",
-            "miroc6",
-            "cnrm-cm6-1",
-            "ukesm1-0-ll",
-            "cnrm-esm2-1"
+            "lightning",
+            "co2"
+          ]
+        },
+        "ensemble_member": {
+          "type": "string",
+          "enum": [
+            "r1i1p1f1",
+            "r1i1p1f2",
+            "r4i1p1f1"
           ]
         },
         "climate_scenario": {
@@ -48,54 +50,45 @@
             "zooc",
             "intpp",
             "huss",
-            "hus",
             "rsntds",
             "phyc",
             "vo",
-            "phymisc",
             "thetao",
-            "hur",
             "rsds",
             "tob",
             "siconc",
-            "intppmisc",
-            "phypico",
             "wo",
             "hurs",
             "chl",
             "mlotstmax",
-            "uo",
             "prsn",
             "tasmin",
             "zmicro",
             "intpoc",
             "zmeso",
-            "prw",
             "pp",
-            "ua",
-            "ps",
-            "rlds",
             "deptho",
-            "ta",
+            "rlds",
+            "ps",
             "pr",
             "phydiaz",
             "thkcello",
             "tos",
-            "psl",
             "sfcwind",
             "expc",
             "tasmax",
             "so",
-            "va",
-            "tas",
             "intppdiat",
+            "tas",
             "intppdiaz",
             "ph",
-            "intpppico",
             "phydiat",
             "o2",
-            "ts"
+            "uo"
           ]
+        },
+        "resolution": {
+          "type": "string"
         },
         "region": {
           "type": "string",
@@ -111,12 +104,6 @@
             "annual",
             "monthly"
           ]
-        },
-        "start_year": {
-          "type": "number"
-        },
-        "end_year": {
-          "type": "number"
         }
       }
     }
