@@ -5,7 +5,7 @@
         'tcb',
         'tcblog10',
         'tpb',
-        'tbd',
+        'tdb',
         'tc',
         'tclog10',
         'tpc',
