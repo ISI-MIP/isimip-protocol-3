@@ -24,7 +24,7 @@ def main():
                     "(?P<simulation_round>[A-Za-z0-9]+)",
                     "(?P<product>[A-Za-z]+)",
                     "(?P<sector>[a-z0-9-_]+)",
-                    "(?P<model>[A-Za-z0-9-+.]+)",
+                    "(?P<model>[A-Za-z0-9-+._]+)",
                     "(?P<climate_forcing>[a-z0-9-]+)",
                     "(?P<period>[a-z0-9-_]+)"
                 ]
