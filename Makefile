@@ -1,4 +1,4 @@
-all: definitions.py glossary.py index.py pattern.py protocol.py schema.py
+all: definitions.py glossary.py index.py pattern.py protocol.py schema.py tree.py
 
 bibliography/bibliography.html: bibliography/bibliography.bib bibliography/bibliography.md
 	pandoc --natbib --filter pandoc-citeproc bibliography/bibliography.md \

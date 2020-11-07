@@ -10,3 +10,4 @@ python3 build/index.py
 python3 build/pattern.py
 python3 build/protocol.py
 python3 build/schema.py
+python3 build/tree.py
