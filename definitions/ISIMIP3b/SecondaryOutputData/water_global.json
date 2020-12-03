@@ -1,5 +1,167 @@
 {
-  "commit": "81f7c65bdee77ae541eeba77f8fc29b5ab0bf499",
+  "commit": "512ce4d38536222d4e38ba1c599fafd417ef518a",
+  "r": [
+    {
+      "specifier": "lower"
+    },
+    {
+      "specifier": "central"
+    },
+    {
+      "specifier": "upper"
+    }
+  ],
+  "vert": [
+    {
+      "specifier": "vint"
+    }
+  ],
+  "fishing_type": [
+    {
+      "specifier": "fishing"
+    },
+    {
+      "specifier": "no-fishing"
+    }
+  ],
+  "sens_scenario": [
+    {
+      "specifier": "default",
+      "description": "For all experiments other than the sensitivity experiments."
+    },
+    {
+      "specifier": "2015co2",
+      "description": "CO\u2082 concentration fixed at 2015 levels.",
+      "sectors": [
+        "water_global",
+        "water_regional",
+        "forestry",
+        "agriculture",
+        "marine-fisheries_global",
+        "marine-fisheries_regional",
+        "permafrost",
+        "biodiversity"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ]
+    }
+  ],
+  "time_span": [
+    {
+      "specifier": "minimum",
+      "value": 1601
+    },
+    {
+      "specifier": "maximum",
+      "value": 2100
+    }
+  ],
+  "time_step": [
+    {
+      "specifier": "3hr",
+      "increment": "hours",
+      "products": [
+        "OutputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "daily",
+      "increment": "days"
+    },
+    {
+      "specifier": "monthly",
+      "increment": "months"
+    },
+    {
+      "specifier": "annual",
+      "increment": "years"
+    },
+    {
+      "specifier": "fixed"
+    }
+  ],
+  "ensemble_member": [
+    {
+      "specifier": "r1i1p1f1"
+    },
+    {
+      "specifier": "r1i1p1f2"
+    },
+    {
+      "specifier": "r4i1p1f1"
+    }
+  ],
+  "climate_dataset": [
+    {
+      "specifier": "co2",
+      "title": "Atmospheric CO2 concentration",
+      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "unit": "ppm",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Meinshausen, Raper, & Wigley (2011) for 1850-2005 and 2016-2100 and Dlugokencky & Tans (2019) from 2006-2015"
+    }
+  ],
+  "detrending": [
+    {
+      "specifier": "observed"
+    },
+    {
+      "specifier": "detrended"
+    }
+  ],
+  "river": [
+    {
+      "specifier": "amazon"
+    },
+    {
+      "specifier": "blue-nile"
+    },
+    {
+      "specifier": "danube"
+    },
+    {
+      "specifier": "darling"
+    },
+    {
+      "specifier": "ganges"
+    },
+    {
+      "specifier": "godavari"
+    },
+    {
+      "specifier": "indus"
+    },
+    {
+      "specifier": "lena"
+    },
+    {
+      "specifier": "mackenzie"
+    },
+    {
+      "specifier": "mississippi"
+    },
+    {
+      "specifier": "niger"
+    },
+    {
+      "specifier": "pajeu"
+    },
+    {
+      "specifier": "rhine"
+    },
+    {
+      "specifier": "tagus"
+    },
+    {
+      "specifier": "yangtze"
+    },
+    {
+      "specifier": "yellow"
+    }
+  ],
   "sector": [
     {
       "specifier": "agriculture",
@@ -76,29 +238,166 @@
       "title": "Diarrhoeal diseases"
     }
   ],
-  "harmonization": [
+  "soc_scenario": [
     {
-      "specifier": "default",
-      "title": "Default",
-      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+      "specifier": "1850soc",
+      "description": "Fixed year-1850 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your simulations `1850soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-1850 levels of direct human forcing for at least some direct human forcings.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ]
     },
     {
-      "specifier": "fullharm",
-      "title": "Fully harmonized",
-      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
+      "specifier": "histsoc",
+      "description": "Varying direct human influences in the historical period (1850-2014) (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
     },
     {
-      "specifier": "harmnon",
-      "title": "Harmonized seasons with no N constraints",
-      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+      "specifier": "2015soc",
+      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
     }
   ],
-  "acidification_type": [
+  "crop": [
     {
-      "specifier": "oa"
+      "specifier": "whe",
+      "title": "Wheat"
     },
     {
-      "specifier": "no-oa"
+      "specifier": "mai",
+      "title": "Maize"
+    },
+    {
+      "specifier": "soy",
+      "title": "Soy"
+    },
+    {
+      "specifier": "ric",
+      "title": "Rice"
+    },
+    {
+      "specifier": "bar",
+      "title": "Barley"
+    },
+    {
+      "specifier": "ben",
+      "title": "Bean"
+    },
+    {
+      "specifier": "cas",
+      "title": "Cassava"
+    },
+    {
+      "specifier": "cot",
+      "title": "Cotton"
+    },
+    {
+      "specifier": "euc",
+      "title": "Eucalyptus"
+    },
+    {
+      "specifier": "mgr",
+      "title": "Managed grass"
+    },
+    {
+      "specifier": "mil",
+      "title": "Millet"
+    },
+    {
+      "specifier": "mis",
+      "title": "Miscanthus"
+    },
+    {
+      "specifier": "nut",
+      "title": "Groundnuts"
+    },
+    {
+      "specifier": "pea",
+      "title": "Field peas"
+    },
+    {
+      "specifier": "pop",
+      "title": "Poplar"
+    },
+    {
+      "specifier": "pot",
+      "title": "Potato"
+    },
+    {
+      "specifier": "rap",
+      "title": "Rapeseed"
+    },
+    {
+      "specifier": "rye",
+      "title": "Rye"
+    },
+    {
+      "specifier": "sgb",
+      "title": "Sugar beet"
+    },
+    {
+      "specifier": "sor",
+      "title": "Sorghum"
+    },
+    {
+      "specifier": "sug",
+      "title": "Sugarcane"
+    },
+    {
+      "specifier": "sun",
+      "title": "Sunflower"
+    }
+  ],
+  "simulation_round": [
+    {
+      "specifier": "ISIMIP3a",
+      "title": "ISIMIP3a simulation round",
+      "description": "Historical model evaluation and attribution runs"
+    },
+    {
+      "specifier": "ISIMIP3b",
+      "title": "ISIMIP3b simulation round",
+      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
+    }
+  ],
+  "region": [
+    {
+      "specifier": "global",
+      "title": "Global simulation"
     }
   ],
   "dimensions": [
@@ -163,31 +462,6 @@
       "standard_name": "log10_weight_bins",
       "long_name": "log10 Weight Bins",
       "units": "g"
-    }
-  ],
-  "time_step": [
-    {
-      "specifier": "3hr",
-      "increment": "hours",
-      "products": [
-        "OutputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "daily",
-      "increment": "days"
-    },
-    {
-      "specifier": "monthly",
-      "increment": "months"
-    },
-    {
-      "specifier": "annual",
-      "increment": "years"
-    },
-    {
-      "specifier": "fixed"
     }
   ],
   "identifier": [
@@ -336,314 +610,1088 @@
       "title": "Vertical resolution"
     }
   ],
-  "category": [
+  "variable": [
     {
-      "specifier": "climate",
-      "title": "Climate forcing"
+      "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
+      "frequency": "daily & monthly",
+      "long_name": "Total Runoff",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional",
+        "biomes",
+        "fire",
+        "permafrost"
+      ],
+      "specifier": "qtot",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
     },
     {
-      "specifier": "composition_atmosphere",
-      "title": "Greenhouse gas forcing"
+      "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
+      "frequency": "monthly",
+      "long_name": "Surface Runoff",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "water_global",
+        "water_regional",
+        "permafrost",
+        "fire"
+      ],
+      "specifier": "qs",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
     },
     {
-      "specifier": "geo_conditions",
-      "title": "Geographic data and information"
+      "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
+      "frequency": "monthly",
+      "long_name": "Subsurface Runoff",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "qsb",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "socioeconomic",
-      "title": "Socioeconomic forcing"
-    }
-  ],
-  "ensemble_member": [
-    {
-      "specifier": "r1i1p1f1"
+      "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
+      "frequency": "monthly",
+      "long_name": "Groundwater Recharge",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "qr",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "r1i1p1f2"
+      "comment": "Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
+      "frequency": "monthly",
+      "long_name": "Groundwater Runoff",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "qg",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "r4i1p1f1"
-    }
-  ],
-  "region": [
-    {
-      "specifier": "global",
-      "title": "Global simulation"
-    }
-  ],
-  "soc_variable": [
-    {
-      "specifier": "domww",
-      "soc_dataset": "water_abstraction"
+      "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
+      "frequency": "daily & monthly",
+      "long_name": "Discharge",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "dis",
+      "units": "m3 s-1",
+      "valid_max": 700000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "domwc",
-      "soc_dataset": "water_abstraction"
+      "comment": "Sum of transpiration, evaporation, interception and sublimation.",
+      "extension": "total",
+      "frequency": "monthly",
+      "long_name": "Evapotranspiration",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "evap",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
     },
     {
-      "specifier": "indww",
-      "soc_dataset": "water_abstraction"
+      "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
+      "frequency": "monthly",
+      "long_name": "Potential Evapotranspiration",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "potevap",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
     },
     {
-      "specifier": "indwc",
-      "soc_dataset": "water_abstraction"
+      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "daily if possible, else monthly",
+      "long_name": "Total Soil Moisture Content",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "water_regional",
+        "permafrost"
+      ],
+      "specifier": "soilmoist",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "secmf-harv",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "monthly",
+      "long_name": "Soil Moisture Content at Root Zone",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "rootmoist",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "secmf-bioh",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "monthly",
+      "long_name": "Frozen Soil Moisture Content",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "water_global",
+        "permafrost",
+        "fire"
+      ],
+      "specifier": "soilmoistfroz",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "secnf-harv",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "daily if possible, else monthly",
+      "long_name": "Temperature of Soil",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "permafrost"
+      ],
+      "specifier": "tsl",
+      "units": "K",
+      "valid_max": 320.0,
+      "valid_min": 250.0
     },
     {
-      "specifier": "secnf-bioh",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
+      "frequency": "monthly",
+      "long_name": "Snow depth",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "water_global",
+        "permafrost"
+      ],
+      "specifier": "snd",
+      "units": "m",
+      "valid_max": 1000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "primf-harv",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
+      "frequency": "monthly",
+      "long_name": "Snow Water Equivalent",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "water_global",
+        "water_regional",
+        "permafrost"
+      ],
+      "specifier": "swe",
+      "units": "kg m-2",
+      "valid_max": 200000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "primf-bioh",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
+      "frequency": "monthly",
+      "long_name": "Total Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "tws",
+      "units": "kg m-2",
+      "valid_max": 200000.0,
+      "valid_min": -200000.0
     },
     {
-      "specifier": "primn-harv",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Mean monthly water storage in the canopy.",
+      "frequency": "monthly",
+      "long_name": "Canopy Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "canopystor",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "primn-bioh",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Mean monthly water storage in glaciers.",
+      "frequency": "monthly",
+      "long_name": "Glacier Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "glacierstor",
+      "units": "kg m-2",
+      "valid_max": 100000.0,
+      "valid_min": 0.0
     },
     {
-      "specifier": "secyf-harv",
-      "soc_dataset": "wood_harvesting"
+      "comment": "Mean monthly water storage in groundwater layer.",
+      "frequency": "monthly",
+      "long_name": "Groundwater Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "groundwstor",
+      "units": "kg m-2",
+      "valid_max": 20000.0,
+      "valid_min": -200000.0
     },
     {
-      "specifier": "secyf-bioh",
-      "soc_dataset": "wood_harvesting"
-    }
-  ],
-  "species": [
-    {
-      "title": "Fagus sylvatica",
-      "specifier": "fasy"
+      "comment": "Mean monthly water storage in lakes (except reservoirs).",
+      "frequency": "monthly",
+      "long_name": "Lake Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "lakestor",
+      "units": "kg m-2",
+      "valid_max": 200000.0,
+      "valid_min": -200000.0
     },
     {
-      "title": "Quercus robur",
-      "specifier": "quro"
+      "comment": "Mean monthly water storage in wetlands.",
+      "frequency": "monthly",
+      "long_name": "Wetland Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "wetlandstor",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": -10000.0
     },
     {
-      "title": "Quercus petraea",
-      "specifier": "qupe"
+      "comment": "Mean monthly water storage in rivers.",
+      "frequency": "monthly",
+      "long_name": "River Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "riverstor",
+      "units": "kg m-2",
+      "valid_max": 50000.0,
+      "valid_min": 0.0
     },
     {
-      "title": "Pinus sylvestris",
-      "specifier": "pisy"
+      "comment": "Mean monthly water storage in reservoirs.",
+      "frequency": "monthly",
+      "long_name": "Reservoir Water Storage",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "reservoirstor",
+      "units": "kg m-2",
+      "valid_max": 150000.0,
+      "valid_min": 0.0
     },
     {
-      "title": "Picea abies",
-      "specifier": "piab"
+      "comment": "Calculated from daily thaw depths.",
+      "frequency": "monthly",
+      "long_name": "Annual Maximum Thaw Depth",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "water_global",
+        "permafrost",
+        "fire"
+      ],
+      "specifier": "thawdepth",
+      "units": "m",
+      "valid_max": 100.0,
+      "valid_min": 0.0
     },
     {
-      "title": "Pinus pinaster",
-      "specifier": "pipi"
+      "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
+      "frequency": "monthly",
+      "long_name": "River Water Temperature",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "triver",
+      "units": "K",
+      "valid_max": 340.0,
+      "valid_min": 263.0
     },
     {
-      "title": "Larix decidua",
-      "specifier": "lade"
+      "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Water Withdrawal (assuming unlimited water supply)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirrww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Acer platanoides",
-      "specifier": "acpl"
+      "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airrww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Eucalyptus globulus",
-      "specifier": "eugl"
+      "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirruse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Betula pendula",
-      "specifier": "bepe"
+      "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airruse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Betula pubescens",
-      "specifier": "bepu"
+      "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Green Water Consumption on Irrigated Cropland",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airrusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Robinia pseudoacacia",
-      "specifier": "rops"
+      "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Green Water Consumption on Irrigated Cropland",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirrusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Fraxinus excelsior",
-      "specifier": "frex"
+      "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Green Water Consumption on Rainfed Cropland",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "arainfusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Populus nigra",
-      "specifier": "poni"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Domestic Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "adomww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Sorbus aucuparia",
-      "specifier": "soau"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Domestic Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "adomuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "C3 grass",
-      "specifier": "c3gr"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Manufacturing Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "amanww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "hard woods",
-      "specifier": "hawo"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Manufacturing Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "amanuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "fire",
-      "specifier": "fi"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Electricity Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "aelecww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "wind",
-      "specifier": "wi"
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Electricity Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "aelecuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "title": "Insects",
-      "specifier": "ins"
-    }
-  ],
-  "subcategory": [
-    {
-      "specifier": "atmosphere",
-      "title": "Atmosphere",
-      "categories": [
-        "climate"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Livestock Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "aliveww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "atmosphere_composition",
-      "title": "Atmospheric composition",
-      "categories": [
-        "climate"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Actual livestock Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "aliveuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "lightning",
-      "title": "Lightning",
-      "categories": [
-        "climate"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential Domestic Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pdomww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "ocean",
-      "title": "Ocean",
-      "categories": [
-        "climate"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential Domestic Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pdomuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "fishing",
-      "title": "Fishing",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential Manufacturing Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pmanww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "gdp",
-      "title": "GDP",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential manufacturing Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pmanuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential electricity Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pelecww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "landuse",
-      "title": "Land use",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential electricity Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pelecuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "n-deposition",
-      "title": "N-deposition",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential livestock Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pliveww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "n-fertilizer",
-      "title": "N-fertilizer",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Potential livestock Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pliveuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "pop",
-      "title": "Population",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "If computed.",
+      "frequency": "monthly",
+      "long_name": "Total Actual Water Withdrawal (all sectors)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "atotww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "reservoirs_dams",
-      "title": "Reservoirs & dams",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "Sum of actual consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
+      "frequency": "monthly",
+      "long_name": "Total Actual Water Consumption (all sectors)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "atotuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "water_abstraction",
-      "title": "Water abstraction",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.",
+      "frequency": "monthly",
+      "long_name": "Total Potential Water Withdrawal (all sectors)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "ptotww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "wood_harvesting",
-      "title": "Wood harvesting",
-      "categories": [
-        "socioeconomic"
-      ]
+      "comment": "Sum of potential (i.e. assuming unlimited water supply) consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
+      "frequency": "monthly",
+      "long_name": "Total Potential Water Consumption (all sectors)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "ptotuse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "geo_conditions"
-      ]
+      "comment": "If computed. There is no need to submit ainduse if its components are being submitted separately (ainduse = amanuse + aelecuse).",
+      "frequency": "monthly",
+      "long_name": "Actual Industrial Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "ainduse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "landseamask",
-      "title": "Land/Sea masks",
-      "categories": [
-        "geo_conditions"
-      ]
+      "comment": "If computed. There is no need to submit aindww if its components are being submitted separately (aindww = amanww + aelecww).",
+      "frequency": "monthly",
+      "long_name": "Actual Industrial Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "aindww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "orography",
-      "title": "Orography",
-      "categories": [
-        "geo_conditions"
-      ]
+      "comment": "If computed. There is no need to submit pinduse if its components are being submitted separately (pinduse = pmanuse + pelecuse).",
+      "frequency": "monthly",
+      "long_name": "Potential Industrial Water Consumption",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pinduse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
-      "specifier": "river_routing",
-      "title": "River routing",
-      "categories": [
-        "geo_conditions"
-      ]
+      "comment": "If computed. There is no need to submit pindww if its components are being submitted separately (pindww = pmanww + pelecww).",
+      "frequency": "monthly",
+      "long_name": "Potential Industrial Water Withdrawal",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "pindww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     },
     {
+      "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
+      "frequency": "constant",
+      "long_name": "Soil Types",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "biomes",
+        "forestry"
+      ],
       "specifier": "soil",
-      "title": "Soil",
-      "categories": [
-        "geo_conditions"
-      ]
+      "units": "-"
+    },
+    {
+      "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Crop Yields",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "yield",
+      "units": "dry matter (t ha-1 per growing season)"
+    },
+    {
+      "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Nitrogen Application Rate",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "initr",
+      "units": "kg ha-1 per growing season"
+    },
+    {
+      "comment": "Julian dates.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Actual Planting Date",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "plantday",
+      "units": "day of year"
+    },
+    {
+      "comment": "This allows for clear identification of planting that is also easy to follow for potential users from outside the project",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Actual Planting Year",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "plantyear",
+      "units": "year of planting"
+    },
+    {
+      "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Anthesis Date",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "anthday",
+      "units": "day of year of anthesis"
+    },
+    {
+      "comment": "It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Year of Anthesis",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "anthyear",
+      "units": "year of anthesis"
+    },
+    {
+      "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Maturity Date",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "matyday",
+      "units": "day of year of maturity"
+    },
+    {
+      "comment": "It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Year of Maturity",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "matyyear",
+      "units": "year of maturity"
+    },
+    {
+      "comment": "The whole plant biomass above ground.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Total Above Ground Biomass Dry Matter Yields",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "biom",
+      "units": "t ha-1 per growing season"
+    },
+    {
+      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Soil Carbon Emissions",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "sco2",
+      "units": "kg C ha-1"
+    },
+    {
+      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "seasonal",
+      "long_name": "Nitrous Oxide Emissions",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "sn2o",
+      "units": "kg N2O-N ha-1"
+    },
+    {
+      "comment": "If used by, or computed by the model.",
+      "extension": "-total",
+      "frequency": "daily else monthly or fixed",
+      "long_name": "Leaf Area Index",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "permafrost",
+        "water_global",
+        "fire"
+      ],
+      "specifier": "lai",
+      "units": "1",
+      "valid_max": 10.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "The total area associated with each grid cell in the model.",
+      "frequency": "fixed",
+      "long_name": "Grid Cell Area",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "cellarea",
+      "units": "km**2",
+      "valid_max": 3250.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
+      "frequency": "fixed",
+      "long_name": "Continental Fraction of Grid Cell",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global"
+      ],
+      "specifier": "contfrac",
+      "units": "1",
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    }
+  ],
+  "ocean_region": [
+    {
+      "specifier": "north-sea",
+      "title": "North Sea",
+      "north": 62.5,
+      "west": -4.5,
+      "south": 50.5,
+      "east": 9.5
+    },
+    {
+      "specifier": "baltic-sea",
+      "title": "Baltic Sea",
+      "north": 64.5,
+      "west": 15.5,
+      "south": 55.5,
+      "east": 23.5
+    },
+    {
+      "specifier": "nw-med-sea",
+      "title": "North-west Meditteranean",
+      "north": 43.5,
+      "west": -1.5,
+      "south": 36.5,
+      "east": 6.5
+    },
+    {
+      "specifier": "adriatic-sea",
+      "title": "Adriatic Sea",
+      "north": 45.5,
+      "west": 11.5,
+      "south": 39.5,
+      "east": 20.5
+    },
+    {
+      "specifier": "med-glob",
+      "title": "Mediterranean Sea",
+      "north": 45.5,
+      "west": -6.5,
+      "south": 29.5,
+      "east": 35.5
+    },
+    {
+      "specifier": "se-australia",
+      "title": "South-East Australia",
+      "north": -23.5,
+      "west": 120.5,
+      "south": -47.5,
+      "east": 170.5
+    },
+    {
+      "specifier": "east-bass-strait",
+      "title": "Eastern Bass Strait",
+      "north": -37.5,
+      "west": 145.5,
+      "south": -41.5,
+      "east": 151.5
+    },
+    {
+      "specifier": "cook-strait",
+      "title": "Cook Strait",
+      "north": -40.5,
+      "west": 174.5,
+      "south": -46.5,
+      "east": 179.5
+    },
+    {
+      "specifier": "humboldt-n",
+      "title": "North Humboldt Sea",
+      "north": 6.5,
+      "west": -93.5,
+      "south": -20.5,
+      "east": -69.5
+    },
+    {
+      "specifier": "hawaii",
+      "title": "Hawaii",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
+    },
+    {
+      "specifier": "benguela",
+      "title": "Benguela Current",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
     }
   ],
   "climate_variable": [
@@ -1048,71 +2096,6 @@
       ]
     }
   ],
-  "climate_forcing": [
-    {
-      "specifier": "canesm5",
-      "title": "CanESM5",
-      "products": [
-        "SecondaryInputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "cnrm-cm6-1",
-      "title": "CNRM-CM6-1",
-      "products": [
-        "SecondaryInputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "cnrm-esm2-1",
-      "title": "CNRM-ESM2-1",
-      "products": [
-        "SecondaryInputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "ec-earth3",
-      "title": "EC-Earth3",
-      "products": [
-        "SecondaryInputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "miroc6",
-      "title": "MIROC6",
-      "products": [
-        "SecondaryInputData",
-        "SecondaryOutputData"
-      ]
-    }
-  ],
-  "sens_scenario": [
-    {
-      "specifier": "default",
-      "description": "For all experiments other than the sensitivity experiments."
-    },
-    {
-      "specifier": "2015co2",
-      "description": "CO\u2082 concentration fixed at 2015 levels.",
-      "sectors": [
-        "water_global",
-        "water_regional",
-        "forestry",
-        "agriculture",
-        "marine-fisheries_global",
-        "marine-fisheries_regional",
-        "permafrost",
-        "biodiversity"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ]
-    }
-  ],
   "geo_dataset": [
     {
       "specifier": "landseamask",
@@ -1361,531 +2344,482 @@
       ]
     }
   ],
-  "vert": [
+  "climate_forcing": [
     {
-      "specifier": "vint"
+      "specifier": "canesm5",
+      "title": "CanESM5",
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "cnrm-cm6-1",
+      "title": "CNRM-CM6-1",
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "cnrm-esm2-1",
+      "title": "CNRM-ESM2-1",
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "ec-earth3",
+      "title": "EC-Earth3",
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "miroc6",
+      "title": "MIROC6",
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ]
     }
   ],
-  "lake_site": [
-    {
-      "specifier": "alqueva",
-      "title": "Alqueva Reservoir",
-      "country": "Portugal",
-      "lon": -7.49,
-      "lat": 38.2,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "annecy",
-      "title": "Lake Annecy",
-      "country": "France",
-      "lon": 6.17,
-      "lat": 45.87,
-      "type": "lake"
-    },
-    {
-      "specifier": "annie",
-      "title": "Lake Annie",
-      "country": "USA",
-      "lon": -81.35,
-      "lat": 27.21,
-      "type": "lake"
-    },
-    {
-      "specifier": "argyle",
-      "title": "Lake Argyle",
-      "country": "Australia",
-      "lon": 128.68,
-      "lat": -16.31,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "biel",
-      "title": "Lake Biel",
-      "country": "Switzerland",
-      "lon": 7.16,
-      "lat": 47.08,
-      "type": "lake"
-    },
-    {
-      "specifier": "big-muskellunge",
-      "title": "Big Muskellunge Lake",
-      "country": "USA",
-      "lon": -89.61,
-      "lat": 46.02,
-      "type": "lake"
-    },
-    {
-      "specifier": "black-oak",
-      "title": "Black Oak Lake",
-      "country": "USA",
-      "lon": -89.32,
-      "lat": 46.16,
-      "type": "lake"
-    },
-    {
-      "specifier": "bourget",
-      "title": "Lake Bourget",
-      "country": "France",
-      "lon": 5.86,
-      "lat": 45.76,
-      "type": "lake"
-    },
-    {
-      "specifier": "burley-griffin",
-      "title": "Lake Burley Griffin",
-      "country": "Australia",
-      "lon": 149.07,
-      "lat": -35.3,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "crystal-lake",
-      "title": "Crystal Lake",
-      "country": "USA",
-      "lon": -89.61,
-      "lat": 46.0,
-      "type": "lake"
-    },
-    {
-      "specifier": "crystal-bog",
-      "title": "Crystal Bog",
-      "country": "USA",
-      "lon": -89.61,
-      "lat": 46.01,
-      "type": "lake"
-    },
-    {
-      "specifier": "delavan",
-      "title": "Delavan Lake",
-      "country": "USA",
-      "lon": -88.6,
-      "lat": 42.61,
-      "type": "lake"
-    },
-    {
-      "specifier": "dickie",
-      "title": "Dickie Lake",
-      "country": "Canada",
-      "lon": -79.09,
-      "lat": 45.15,
-      "type": "lake"
-    },
-    {
-      "specifier": "eagle ",
-      "title": "Eagle Lake",
-      "country": "Canada",
-      "lon": -76.7,
-      "lat": 44.68,
-      "type": "lake"
-    },
-    {
-      "specifier": "ekoln ",
-      "title": "Ekoln basin of M\u00e4laren",
-      "country": "Sweden",
-      "lon": 17.62,
-      "lat": 59.75,
-      "type": "lake"
-    },
-    {
-      "specifier": "erken",
-      "title": "Lake Erken",
-      "country": "Sweden",
-      "lon": 18.63,
-      "lat": 59.84,
-      "type": "lake"
-    },
-    {
-      "specifier": "esthwaite-water",
-      "title": "Esthwaite Water",
-      "country": "United Kingdom",
-      "lon": -2.99,
-      "lat": 54.37,
-      "type": "lake"
-    },
-    {
-      "specifier": "falling-creek",
-      "title": "Falling Creek Reservoir",
-      "country": "USA",
-      "lon": -79.84,
-      "lat": 37.31,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "feeagh",
-      "title": "Lake Feeagh",
-      "country": "Ireland",
-      "lon": -9.5,
-      "lat": 53.9,
-      "type": "lake"
-    },
-    {
-      "specifier": "fish",
-      "title": "Fish Lake",
-      "country": "USA",
-      "lon": -89.65,
-      "lat": 43.29,
-      "type": "lake"
-    },
-    {
-      "specifier": "geneva",
-      "title": "Lake Geneva",
-      "country": "France/Switzerland",
-      "lon": 6.59,
-      "lat": 46.45,
-      "type": "lake"
-    },
-    {
-      "specifier": "great",
-      "title": "Great Pond",
-      "country": "USA",
-      "lon": -69.89,
-      "lat": 44.53,
-      "type": "lake"
-    },
-    {
-      "specifier": "green",
-      "title": "Green Lake",
-      "country": "USA",
-      "lon": -89.0,
-      "lat": 43.81,
-      "type": "lake"
-    },
-    {
-      "specifier": "harp",
-      "title": "Harp Lake",
-      "country": "Canada",
-      "lon": -79.13,
-      "lat": 45.38,
-      "type": "lake"
-    },
-    {
-      "specifier": "kilpisjarvi",
-      "title": "Kilpisj\u00e4rvi",
-      "country": "Finland",
-      "lon": 20.77,
-      "lat": 69.03,
-      "type": "lake"
-    },
-    {
-      "specifier": "kinneret",
-      "title": "Lake Kinneret",
-      "country": "Israel",
-      "lon": 35.35,
-      "lat": 32.49,
-      "type": "lake"
-    },
-    {
-      "specifier": "kivu",
-      "title": "Lake Kivu",
-      "country": "Rwanda/DR Congo",
-      "lon": 29.24,
-      "lat": -1.73,
-      "type": "lake"
-    },
-    {
-      "specifier": "klicava",
-      "title": "Klicava Reservoir",
-      "country": "Czechia",
-      "lon": 13.93,
-      "lat": 50.07,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "kuivajarvi",
-      "title": "Lake Kuivajarvi",
-      "country": "Finland",
-      "lon": 23.51,
-      "lat": 60.47,
-      "type": "lake"
-    },
-    {
-      "specifier": "langtjern",
-      "title": "Lake Langtjern",
-      "country": "Norway",
-      "lon": 9.73,
-      "lat": 60.37,
-      "type": "lake"
-    },
-    {
-      "specifier": "laramie",
-      "title": "Laramie Lake",
-      "country": "USA",
-      "lon": -105.84,
-      "lat": 40.62,
-      "type": "lake"
-    },
-    {
-      "specifier": "lower-zurich",
-      "title": "Lower Lake Zurich",
-      "country": "Switzerland",
-      "lon": 8.58,
-      "lat": 47.28,
-      "type": "lake"
-    },
-    {
-      "specifier": "mendota",
-      "title": "Lake Mendota",
-      "country": "USA",
-      "lon": -89.41,
-      "lat": 43.1,
-      "type": "lake"
-    },
-    {
-      "specifier": "monona",
-      "title": "Lake Monona",
-      "country": "USA",
-      "lon": -89.36,
-      "lat": 43.06,
-      "type": "lake"
-    },
-    {
-      "specifier": "mozhaysk",
-      "title": "Mozhaysk reservoir",
-      "country": "Russia",
-      "lon": 35.82,
-      "lat": 55.59,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "mt-bold",
-      "title": "Mt Bold",
-      "country": "Australia",
-      "lon": 138.71,
-      "lat": -35.12,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "mueggelsee",
-      "title": "Lake M\u00fcggelsee",
-      "country": "Germany",
-      "lon": 13.65,
-      "lat": 52.43,
-      "type": "lake"
-    },
-    {
-      "specifier": "neuchatel",
-      "title": "Lake Neuch\u00e2tel",
-      "country": "Switzerland",
-      "lon": 6.52,
-      "lat": 46.54,
-      "type": "lake"
-    },
-    {
-      "specifier": "ngoring ",
-      "title": "Ngoring ",
-      "country": "China",
-      "lon": 97.7,
-      "lat": 34.9,
-      "type": "lake"
-    },
-    {
-      "specifier": "nohipalo-mustjaerv",
-      "title": "Lake Nohipalo Mustj\u00e4rv",
-      "country": "Estonia",
-      "lon": 27.34,
-      "lat": 57.93,
-      "type": "lake"
-    },
-    {
-      "specifier": "nohipalo-valgejaerv",
-      "title": "Lake Nohipalo Valgej\u00e4rv",
-      "country": "Estonia",
-      "lon": 27.35,
-      "lat": 57.94,
-      "type": "lake"
-    },
-    {
-      "specifier": "okauchee",
-      "title": "Okauchee Lake",
-      "country": "USA",
-      "lon": -88.43,
-      "lat": 43.13,
-      "type": "lake"
-    },
-    {
-      "specifier": "paajarvi",
-      "title": "Lake P\u00e4\u00e4j\u00e4rvi",
-      "country": "Finland",
-      "lon": 25.13,
-      "lat": 61.07,
-      "type": "lake"
-    },
-    {
-      "specifier": "rappbode",
-      "title": "Rappbode Reservoir",
-      "country": "Germany",
-      "lon": 10.89,
-      "lat": 51.74,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "rimov",
-      "title": "Rimov Reservoir",
-      "country": "Czechia",
-      "lon": 14.49,
-      "lat": 48.85,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "rotorua",
-      "title": "Lake Rotorua",
-      "country": "New Zealand",
-      "lon": 176.28,
-      "lat": -38.08,
-      "type": "lake"
-    },
-    {
-      "specifier": "sammamish",
-      "title": "Lake Sammamish",
-      "country": "USA",
-      "lon": -122.1,
-      "lat": 47.59,
-      "type": "lake"
-    },
-    {
-      "specifier": "sau",
-      "title": "Sau Reservoir",
-      "country": "Spain",
-      "lon": 2.4,
-      "lat": 41.97,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "sparkling",
-      "title": "Sparkling Lake",
-      "country": "USA",
-      "lon": -89.7,
-      "lat": 46.01,
-      "type": "lake"
-    },
-    {
-      "specifier": "stechlin",
-      "title": "Lake Stechlin",
-      "country": "Germany",
-      "lon": 13.03,
-      "lat": 53.17,
-      "type": "lake"
-    },
-    {
-      "specifier": "sunapee",
-      "title": "Lake Sunapee",
-      "country": "USA",
-      "lon": -72.5,
-      "lat": 43.23,
-      "type": "lake"
-    },
-    {
-      "specifier": "tahoe",
-      "title": "Lake Tahoe",
-      "country": "USA",
-      "lon": -120.03,
-      "lat": 39.09,
-      "type": "reservoir"
-    },
-    {
-      "specifier": "tarawera",
-      "title": "Lake Tarawera",
-      "country": "New Zealand",
-      "lon": 176.43,
-      "lat": -38.21,
-      "type": "lake"
-    },
-    {
-      "specifier": "taupo",
-      "title": "Lake Taupo",
-      "country": "New Zealand",
-      "lon": 175.89,
-      "lat": -38.8,
-      "type": "lake"
-    },
-    {
-      "specifier": "toolik",
-      "title": "Toolik Lake",
-      "country": "USA",
-      "lon": -149.6,
-      "lat": 68.63,
-      "type": "lake"
-    },
-    {
-      "specifier": "trout-lake",
-      "title": "Trout Lake",
-      "country": "USA",
-      "lon": -89.67,
-      "lat": 46.03,
-      "type": "lake"
-    },
-    {
-      "specifier": "trout-bog",
-      "title": "Trout Bog",
-      "country": "USA",
-      "lon": -89.69,
-      "lat": 46.04,
-      "type": "lake"
-    },
-    {
-      "specifier": "two-sisters",
-      "title": "Two Sisters Lake",
-      "country": "USA",
-      "lon": -89.53,
-      "lat": 45.77,
-      "type": "lake"
-    },
-    {
-      "specifier": "vendyurskoe",
-      "title": "Lake Vendyurskoe",
-      "country": "Russia",
-      "lon": 33.1,
-      "lat": 62.1,
-      "type": "lake"
-    },
-    {
-      "specifier": "vortsjaerv",
-      "title": "lake V\u00f5rtsj\u00e4rv",
-      "country": "Estonia",
-      "lon": 26.01,
-      "lat": 58.31,
-      "type": "lake"
-    },
-    {
-      "specifier": "waahi",
-      "title": "Lake Waahi",
-      "country": "New Zealand",
-      "lon": 175.07,
-      "lat": 37.33,
-      "type": "lake"
-    },
-    {
-      "specifier": "washington",
-      "title": "Lake Washington",
-      "country": "USA",
-      "lon": -122.27,
-      "lat": 47.64,
-      "type": "lake"
-    },
-    {
-      "specifier": "windermere",
-      "title": "Windermere",
-      "country": "United Kingdom",
-      "lon": -2.95,
-      "lat": 54.31,
-      "type": "lake"
-    },
-    {
-      "specifier": "wingra",
-      "title": "Lake Wingra",
-      "country": "USA",
-      "lon": -89.43,
-      "lat": 43.05,
-      "type": "lake"
-    },
-    {
-      "specifier": "zlutice",
-      "title": "Zlutice Reservoir",
-      "country": "Czechia",
-      "lon": 13.11,
-      "lat": 50.09,
-      "type": "reservoir"
+  "harmonization": [
+    {
+      "specifier": "default",
+      "title": "Default",
+      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+    },
+    {
+      "specifier": "fullharm",
+      "title": "Fully harmonized",
+      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
+    },
+    {
+      "specifier": "harmnon",
+      "title": "Harmonized seasons with no N constraints",
+      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+    }
+  ],
+  "diazotroph_scenario": [
+    {
+      "specifier": "w-diaz"
+    },
+    {
+      "specifier": "wo-diaz"
+    }
+  ],
+  "river_basin": [
+    {
+      "specifier": "sao-paulo-de-olivenca",
+      "title": "S\u00e3o Paulo de Olivenca",
+      "river": "Amazon",
+      "river_specifier": "amazon",
+      "lat": -3.45,
+      "lon": -68.75,
+      "grdc": 3623100,
+      "availability_monthly": "1979-1993",
+      "availability_daily": "1973-2010",
+      "area_upstream": 990781
+    },
+    {
+      "specifier": "el-diem",
+      "title": "El-Deim, Sudan Border",
+      "river": "Blue Nile",
+      "river_specifier": "blue-nile",
+      "lat": 11,
+      "lon": 35,
+      "grdc": "",
+      "availability_monthly": "1961-2002",
+      "availability_daily": "1900-1982",
+      "area_upstream": 160000
+    },
+    {
+      "specifier": "khartoum",
+      "title": "Khartoum",
+      "river": "Blue Nile",
+      "river_specifier": "blue-nile",
+      "lat": 15.62,
+      "lon": 32.55,
+      "grdc": 1663100,
+      "availability_monthly": "",
+      "availability_daily": "1900-1982",
+      "area_upstream": 325000
+    },
+    {
+      "specifier": "wien-nussdorf",
+      "title": "Wien-Nu\u00dfdorf",
+      "river": "Danube",
+      "river_specifier": "danube",
+      "lat": 48.25,
+      "lon": 16.3,
+      "grdc": 6242500,
+      "availability_monthly": "1828-1899",
+      "availability_daily": "1900-to date",
+      "area_upstream": 101700
+    },
+    {
+      "specifier": "farakka",
+      "title": "Farakka",
+      "river": "Ganges",
+      "river_specifier": "ganges",
+      "lat": 25,
+      "lon": 87.92,
+      "grdc": 2846800,
+      "availability_monthly": "1949-1973",
+      "availability_daily": "",
+      "area_upstream": 835000
+    },
+    {
+      "specifier": "tekra",
+      "title": "Tekra",
+      "river": "Godavari",
+      "river_specifier": "godavari",
+      "lat": 19,
+      "lon": 80,
+      "grdc": "",
+      "availability_monthly": "1964-2017",
+      "availability_daily": "1964-2017",
+      "area_upstream": 119781
+    },
+    {
+      "specifier": "tarbela",
+      "title": "Tarbela Reservoir",
+      "river": "Indus",
+      "river_specifier": "indus",
+      "lat": 72.86,
+      "lon": 34.33,
+      "grdc": "",
+      "availability_monthly": "2000-2016",
+      "availability_daily": "2000-2016",
+      "area_upstream": 173345
+    },
+    {
+      "specifier": "krestovski",
+      "title": "Krestovski",
+      "river": "Lena",
+      "river_specifier": "lena",
+      "lat": 59.73,
+      "lon": 113.17,
+      "grdc": 2903427,
+      "availability_monthly": "1936-2002",
+      "availability_daily": "1936-1999",
+      "area_upstream": 440000
+    },
+    {
+      "specifier": "stolb",
+      "title": "Stolb",
+      "river": "Lena",
+      "river_specifier": "lena",
+      "lat": 72.37,
+      "lon": 126.8,
+      "grdc": 2903430,
+      "availability_monthly": "1978-1994",
+      "availability_daily": "1951-2002",
+      "area_upstream": 2460000
+    },
+    {
+      "specifier": "arctic-red-river",
+      "title": "Arctic Red River",
+      "river": "Mackenzie",
+      "river_specifier": "mackenzie",
+      "lat": 67.4583,
+      "lon": -133.745,
+      "grdc": 4208025,
+      "availability_monthly": "1972-1996",
+      "availability_daily": "1972-2015",
+      "area_upstream": 1660000
+    },
+    {
+      "specifier": "alton",
+      "title": "Alton",
+      "river": "Mississippi",
+      "river_specifier": "mississippi",
+      "lat": 38.885,
+      "lon": -90.1809,
+      "grdc": 4119800,
+      "availability_monthly": "1928-1984",
+      "availability_daily": "1933-1987",
+      "area_upstream": 444185
+    },
+    {
+      "specifier": "louth",
+      "title": "Louth",
+      "river": "Darling",
+      "river_specifier": "darling",
+      "lat": -30.5318,
+      "lon": 145.1144,
+      "grdc": 5204250,
+      "availability_monthly": "1954-2000",
+      "availability_daily": "1954-2008",
+      "area_upstream": 489300
+    },
+    {
+      "specifier": "dire",
+      "title": "Dire",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 16.2667,
+      "lon": -3.3833,
+      "grdc": 1134700,
+      "availability_monthly": "1924-2012",
+      "availability_daily": "1924-2003",
+      "area_upstream": 340000
+    },
+    {
+      "specifier": "koulikoro",
+      "title": "Koulikoro",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": -30.5318,
+      "lon": -7.55,
+      "grdc": 1134100,
+      "availability_monthly": "1907-2012",
+      "availability_daily": "1907-2006",
+      "area_upstream": 120000
+    },
+    {
+      "specifier": "lokoja",
+      "title": "Lokoja",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 7.8,
+      "lon": 6.7667,
+      "grdc": 1834101,
+      "availability_monthly": "2007-2012",
+      "availability_daily": "1970-2006",
+      "area_upstream": 2074171
+    },
+    {
+      "specifier": "tossaye",
+      "title": "Tossaye",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 16.9416,
+      "lon": -0.579166,
+      "grdc": 1134850,
+      "availability_monthly": "1954-1992",
+      "availability_daily": "1954-1992",
+      "area_upstream": 348000
+    },
+    {
+      "specifier": "floresta",
+      "title": "Floresta",
+      "river": "Pajeu",
+      "river_specifier": "pajeu",
+      "lat": -8.6089,
+      "lon": -38.5767,
+      "grdc": "",
+      "availability_monthly": "",
+      "availability_daily": "",
+      "area_upstream": 12266
+    },
+    {
+      "specifier": "lobith",
+      "title": "Lobith",
+      "river": "Rhine",
+      "river_specifier": "rhine",
+      "lat": 51.84,
+      "lon": 6.11,
+      "grdc": 6435060,
+      "availability_monthly": "1901-1996",
+      "availability_daily": "1901-2010",
+      "area_upstream": 160800
+    },
+    {
+      "specifier": "almourol",
+      "title": "Almourol",
+      "river": "Tagus",
+      "river_specifier": "tagus",
+      "lat": 39.47,
+      "lon": -8.37,
+      "grdc": 6113050,
+      "availability_monthly": "1973-1990",
+      "availability_daily": "1982-1990",
+      "area_upstream": 61490
+    },
+    {
+      "specifier": "trillo",
+      "title": "Trillo",
+      "river": "Tagus",
+      "river_specifier": "tagus",
+      "lat": 40.7,
+      "lon": -2.58,
+      "grdc": 6213800,
+      "availability_monthly": "1977-1984",
+      "availability_daily": "1977-1984",
+      "area_upstream": 3253
+    },
+    {
+      "specifier": "cuntan",
+      "title": "Cuntan",
+      "river": "Yangtze",
+      "river_specifier": "yangtze",
+      "lat": 29.616667,
+      "lon": 106.6,
+      "grdc": "",
+      "availability_monthly": "1987-2006",
+      "availability_daily": "1987-2006",
+      "area_upstream": 804859
+    },
+    {
+      "specifier": "tangnaihai",
+      "title": "Tangnaihai",
+      "river": "Yellow, Huang He",
+      "river_specifier": "yellow",
+      "lat": 35.5,
+      "lon": 100.15,
+      "grdc": "",
+      "availability_monthly": "1971-2002",
+      "availability_daily": "1971-2002",
+      "area_upstream": 121000
+    }
+  ],
+  "subcategory": [
+    {
+      "specifier": "atmosphere",
+      "title": "Atmosphere",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "atmosphere_composition",
+      "title": "Atmospheric composition",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "lightning",
+      "title": "Lightning",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "ocean",
+      "title": "Ocean",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "fishing",
+      "title": "Fishing",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "gdp",
+      "title": "GDP",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "landuse",
+      "title": "Land use",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-deposition",
+      "title": "N-deposition",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-fertilizer",
+      "title": "N-fertilizer",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "pop",
+      "title": "Population",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "reservoirs_dams",
+      "title": "Reservoirs & dams",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "water_abstraction",
+      "title": "Water abstraction",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "wood_harvesting",
+      "title": "Wood harvesting",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "landseamask",
+      "title": "Land/Sea masks",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "orography",
+      "title": "Orography",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "river_routing",
+      "title": "River routing",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "soil",
+      "title": "Soil",
+      "categories": [
+        "geo_conditions"
+      ]
+    }
+  ],
+  "bias_adjustment": [
+    {
+      "specifier": "nobasd",
+      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+    },
+    {
+      "specifier": "w5e5",
+      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
     }
   ],
   "soc_dataset": [
@@ -2368,600 +3302,6 @@
       "resolution": "country-level",
       "frequency": "annual",
       "comment": "Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021."
-    }
-  ],
-  "ocean_region": [
-    {
-      "specifier": "north-sea",
-      "title": "North Sea",
-      "north": 62.5,
-      "west": -4.5,
-      "south": 50.5,
-      "east": 9.5
-    },
-    {
-      "specifier": "baltic-sea",
-      "title": "Baltic Sea",
-      "north": 64.5,
-      "west": 15.5,
-      "south": 55.5,
-      "east": 23.5
-    },
-    {
-      "specifier": "nw-med-sea",
-      "title": "North-west Meditteranean",
-      "north": 43.5,
-      "west": -1.5,
-      "south": 36.5,
-      "east": 6.5
-    },
-    {
-      "specifier": "adriatic-sea",
-      "title": "Adriatic Sea",
-      "north": 45.5,
-      "west": 11.5,
-      "south": 39.5,
-      "east": 20.5
-    },
-    {
-      "specifier": "med-glob",
-      "title": "Mediterranean Sea",
-      "north": 45.5,
-      "west": -6.5,
-      "south": 29.5,
-      "east": 35.5
-    },
-    {
-      "specifier": "se-australia",
-      "title": "South-East Australia",
-      "north": -23.5,
-      "west": 120.5,
-      "south": -47.5,
-      "east": 170.5
-    },
-    {
-      "specifier": "east-bass-strait",
-      "title": "Eastern Bass Strait",
-      "north": -37.5,
-      "west": 145.5,
-      "south": -41.5,
-      "east": 151.5
-    },
-    {
-      "specifier": "cook-strait",
-      "title": "Cook Strait",
-      "north": -40.5,
-      "west": 174.5,
-      "south": -46.5,
-      "east": 179.5
-    },
-    {
-      "specifier": "humboldt-n",
-      "title": "North Humboldt Sea",
-      "north": 6.5,
-      "west": -93.5,
-      "south": -20.5,
-      "east": -69.5
-    },
-    {
-      "specifier": "hawaii",
-      "title": "Hawaii",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    },
-    {
-      "specifier": "benguela",
-      "title": "Benguela Current",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    }
-  ],
-  "climate_dataset": [
-    {
-      "specifier": "co2",
-      "title": "Atmospheric CO2 concentration",
-      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
-      "unit": "ppm",
-      "resolution": "global",
-      "frequency": "annual",
-      "comment": "Meinshausen, Raper, & Wigley (2011) for 1850-2005 and 2016-2100 and Dlugokencky & Tans (2019) from 2006-2015"
-    }
-  ],
-  "river_basin": [
-    {
-      "specifier": "sao-paulo-de-olivenca",
-      "title": "S\u00e3o Paulo de Olivenca",
-      "river": "Amazon",
-      "river_specifier": "amazon",
-      "lat": -3.45,
-      "lon": -68.75,
-      "grdc": 3623100,
-      "availability_monthly": "1979-1993",
-      "availability_daily": "1973-2010",
-      "area_upstream": 990781
-    },
-    {
-      "specifier": "el-diem",
-      "title": "El-Deim, Sudan Border",
-      "river": "Blue Nile",
-      "river_specifier": "blue-nile",
-      "lat": 11,
-      "lon": 35,
-      "grdc": "",
-      "availability_monthly": "1961-2002",
-      "availability_daily": "1900-1982",
-      "area_upstream": 160000
-    },
-    {
-      "specifier": "khartoum",
-      "title": "Khartoum",
-      "river": "Blue Nile",
-      "river_specifier": "blue-nile",
-      "lat": 15.62,
-      "lon": 32.55,
-      "grdc": 1663100,
-      "availability_monthly": "",
-      "availability_daily": "1900-1982",
-      "area_upstream": 325000
-    },
-    {
-      "specifier": "wien-nussdorf",
-      "title": "Wien-Nu\u00dfdorf",
-      "river": "Danube",
-      "river_specifier": "danube",
-      "lat": 48.25,
-      "lon": 16.3,
-      "grdc": 6242500,
-      "availability_monthly": "1828-1899",
-      "availability_daily": "1900-to date",
-      "area_upstream": 101700
-    },
-    {
-      "specifier": "farakka",
-      "title": "Farakka",
-      "river": "Ganges",
-      "river_specifier": "ganges",
-      "lat": 25,
-      "lon": 87.92,
-      "grdc": 2846800,
-      "availability_monthly": "1949-1973",
-      "availability_daily": "",
-      "area_upstream": 835000
-    },
-    {
-      "specifier": "tekra",
-      "title": "Tekra",
-      "river": "Godavari",
-      "river_specifier": "godavari",
-      "lat": 19,
-      "lon": 80,
-      "grdc": "",
-      "availability_monthly": "1964-2017",
-      "availability_daily": "1964-2017",
-      "area_upstream": 119781
-    },
-    {
-      "specifier": "tarbela",
-      "title": "Tarbela Reservoir",
-      "river": "Indus",
-      "river_specifier": "indus",
-      "lat": 72.86,
-      "lon": 34.33,
-      "grdc": "",
-      "availability_monthly": "2000-2016",
-      "availability_daily": "2000-2016",
-      "area_upstream": 173345
-    },
-    {
-      "specifier": "krestovski",
-      "title": "Krestovski",
-      "river": "Lena",
-      "river_specifier": "lena",
-      "lat": 59.73,
-      "lon": 113.17,
-      "grdc": 2903427,
-      "availability_monthly": "1936-2002",
-      "availability_daily": "1936-1999",
-      "area_upstream": 440000
-    },
-    {
-      "specifier": "stolb",
-      "title": "Stolb",
-      "river": "Lena",
-      "river_specifier": "lena",
-      "lat": 72.37,
-      "lon": 126.8,
-      "grdc": 2903430,
-      "availability_monthly": "1978-1994",
-      "availability_daily": "1951-2002",
-      "area_upstream": 2460000
-    },
-    {
-      "specifier": "arctic-red-river",
-      "title": "Arctic Red River",
-      "river": "Mackenzie",
-      "river_specifier": "mackenzie",
-      "lat": 67.4583,
-      "lon": -133.745,
-      "grdc": 4208025,
-      "availability_monthly": "1972-1996",
-      "availability_daily": "1972-2015",
-      "area_upstream": 1660000
-    },
-    {
-      "specifier": "alton",
-      "title": "Alton",
-      "river": "Mississippi",
-      "river_specifier": "mississippi",
-      "lat": 38.885,
-      "lon": -90.1809,
-      "grdc": 4119800,
-      "availability_monthly": "1928-1984",
-      "availability_daily": "1933-1987",
-      "area_upstream": 444185
-    },
-    {
-      "specifier": "louth",
-      "title": "Louth",
-      "river": "Darling",
-      "river_specifier": "darling",
-      "lat": -30.5318,
-      "lon": 145.1144,
-      "grdc": 5204250,
-      "availability_monthly": "1954-2000",
-      "availability_daily": "1954-2008",
-      "area_upstream": 489300
-    },
-    {
-      "specifier": "dire",
-      "title": "Dire",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 16.2667,
-      "lon": -3.3833,
-      "grdc": 1134700,
-      "availability_monthly": "1924-2012",
-      "availability_daily": "1924-2003",
-      "area_upstream": 340000
-    },
-    {
-      "specifier": "koulikoro",
-      "title": "Koulikoro",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": -30.5318,
-      "lon": -7.55,
-      "grdc": 1134100,
-      "availability_monthly": "1907-2012",
-      "availability_daily": "1907-2006",
-      "area_upstream": 120000
-    },
-    {
-      "specifier": "lokoja",
-      "title": "Lokoja",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 7.8,
-      "lon": 6.7667,
-      "grdc": 1834101,
-      "availability_monthly": "2007-2012",
-      "availability_daily": "1970-2006",
-      "area_upstream": 2074171
-    },
-    {
-      "specifier": "tossaye",
-      "title": "Tossaye",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 16.9416,
-      "lon": -0.579166,
-      "grdc": 1134850,
-      "availability_monthly": "1954-1992",
-      "availability_daily": "1954-1992",
-      "area_upstream": 348000
-    },
-    {
-      "specifier": "floresta",
-      "title": "Floresta",
-      "river": "Pajeu",
-      "river_specifier": "pajeu",
-      "lat": -8.6089,
-      "lon": -38.5767,
-      "grdc": "",
-      "availability_monthly": "",
-      "availability_daily": "",
-      "area_upstream": 12266
-    },
-    {
-      "specifier": "lobith",
-      "title": "Lobith",
-      "river": "Rhine",
-      "river_specifier": "rhine",
-      "lat": 51.84,
-      "lon": 6.11,
-      "grdc": 6435060,
-      "availability_monthly": "1901-1996",
-      "availability_daily": "1901-2010",
-      "area_upstream": 160800
-    },
-    {
-      "specifier": "almourol",
-      "title": "Almourol",
-      "river": "Tagus",
-      "river_specifier": "tagus",
-      "lat": 39.47,
-      "lon": -8.37,
-      "grdc": 6113050,
-      "availability_monthly": "1973-1990",
-      "availability_daily": "1982-1990",
-      "area_upstream": 61490
-    },
-    {
-      "specifier": "trillo",
-      "title": "Trillo",
-      "river": "Tagus",
-      "river_specifier": "tagus",
-      "lat": 40.7,
-      "lon": -2.58,
-      "grdc": 6213800,
-      "availability_monthly": "1977-1984",
-      "availability_daily": "1977-1984",
-      "area_upstream": 3253
-    },
-    {
-      "specifier": "cuntan",
-      "title": "Cuntan",
-      "river": "Yangtze",
-      "river_specifier": "yangtze",
-      "lat": 29.616667,
-      "lon": 106.6,
-      "grdc": "",
-      "availability_monthly": "1987-2006",
-      "availability_daily": "1987-2006",
-      "area_upstream": 804859
-    },
-    {
-      "specifier": "tangnaihai",
-      "title": "Tangnaihai",
-      "river": "Yellow, Huang He",
-      "river_specifier": "yellow",
-      "lat": 35.5,
-      "lon": 100.15,
-      "grdc": "",
-      "availability_monthly": "1971-2002",
-      "availability_daily": "1971-2002",
-      "area_upstream": 121000
-    }
-  ],
-  "crop": [
-    {
-      "specifier": "whe",
-      "title": "Wheat"
-    },
-    {
-      "specifier": "mai",
-      "title": "Maize"
-    },
-    {
-      "specifier": "soy",
-      "title": "Soy"
-    },
-    {
-      "specifier": "ric",
-      "title": "Rice"
-    },
-    {
-      "specifier": "bar",
-      "title": "Barley"
-    },
-    {
-      "specifier": "ben",
-      "title": "Bean"
-    },
-    {
-      "specifier": "cas",
-      "title": "Cassava"
-    },
-    {
-      "specifier": "cot",
-      "title": "Cotton"
-    },
-    {
-      "specifier": "euc",
-      "title": "Eucalyptus"
-    },
-    {
-      "specifier": "mgr",
-      "title": "Managed grass"
-    },
-    {
-      "specifier": "mil",
-      "title": "Millet"
-    },
-    {
-      "specifier": "mis",
-      "title": "Miscanthus"
-    },
-    {
-      "specifier": "nut",
-      "title": "Groundnuts"
-    },
-    {
-      "specifier": "pea",
-      "title": "Field peas"
-    },
-    {
-      "specifier": "pop",
-      "title": "Poplar"
-    },
-    {
-      "specifier": "pot",
-      "title": "Potato"
-    },
-    {
-      "specifier": "rap",
-      "title": "Rapeseed"
-    },
-    {
-      "specifier": "rye",
-      "title": "Rye"
-    },
-    {
-      "specifier": "sgb",
-      "title": "Sugar beet"
-    },
-    {
-      "specifier": "sor",
-      "title": "Sorghum"
-    },
-    {
-      "specifier": "sug",
-      "title": "Sugarcane"
-    },
-    {
-      "specifier": "sun",
-      "title": "Sunflower"
-    }
-  ],
-  "forest_stand": [
-    {
-      "specifier": "hyytiala",
-      "title": "Hyyti\u00e4l\u00e4",
-      "lat": 61.8475,
-      "lon": 24.295,
-      "country": "FI",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy",
-        "piab"
-      ],
-      "thinning": "below",
-      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
-    },
-    {
-      "specifier": "peitz",
-      "title": "Peitz",
-      "lat": 51.9166,
-      "lon": 14.35,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy"
-      ],
-      "thinning": "below",
-      "comment": "Managed using a weak thinning from below."
-    },
-    {
-      "specifier": "solling-beech",
-      "title": "Solling (beech)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "solling-spruce",
-      "title": "Solling (spruce)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab "
-      ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "soro",
-      "title": "Sor\u00f8",
-      "lat": 55.485844,
-      "lon": 11.644616,
-      "country": "DK",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "kroof",
-      "title": "Kranzberg Roof Project",
-      "lat": 48.25,
-      "lon": 11.4,
-      "country": "DE",
-      "type": "Mixed deciduous and conifers",
-      "species": [
-        "fasy",
-        "piab",
-        "acpl",
-        "lade",
-        "pisy",
-        "quro"
-      ],
-      "thinning": "below",
-      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
-    },
-    {
-      "specifier": "le-bray",
-      "title": "Le Bray",
-      "lat": 44.71711,
-      "lon": -0.7693,
-      "country": "FR",
-      "type": "Even-aged conifer",
-      "species": [
-        "pipi"
-      ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "collelongo",
-      "title": "Collelongo",
-      "lat": 41.8494,
-      "lon": 13.5881,
-      "country": "IT",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "bily-kriz",
-      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
-      "lat": 49.3,
-      "lon": 18.32,
-      "country": "CZ",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab"
-      ],
-      "thinning": "below",
-      "comment": ""
-    }
-  ],
-  "simulation_round": [
-    {
-      "specifier": "ISIMIP3a",
-      "title": "ISIMIP3a simulation round",
-      "description": "Historical model evaluation and attribution runs"
-    },
-    {
-      "specifier": "ISIMIP3b",
-      "title": "ISIMIP3b simulation round",
-      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
     }
   ],
   "experiments": [
@@ -3488,1033 +3828,6 @@
       ]
     }
   ],
-  "r": [
-    {
-      "specifier": "lower"
-    },
-    {
-      "specifier": "central"
-    },
-    {
-      "specifier": "upper"
-    }
-  ],
-  "irrigation": [
-    {
-      "specifier": "cirr",
-      "title": "Constrained irrigation",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "noirr",
-      "title": "No irrigation (rainfed land)"
-    }
-  ],
-  "river": [
-    {
-      "specifier": "amazon"
-    },
-    {
-      "specifier": "blue-nile"
-    },
-    {
-      "specifier": "danube"
-    },
-    {
-      "specifier": "darling"
-    },
-    {
-      "specifier": "ganges"
-    },
-    {
-      "specifier": "godavari"
-    },
-    {
-      "specifier": "indus"
-    },
-    {
-      "specifier": "lena"
-    },
-    {
-      "specifier": "mackenzie"
-    },
-    {
-      "specifier": "mississippi"
-    },
-    {
-      "specifier": "niger"
-    },
-    {
-      "specifier": "pajeu"
-    },
-    {
-      "specifier": "rhine"
-    },
-    {
-      "specifier": "tagus"
-    },
-    {
-      "specifier": "yangtze"
-    },
-    {
-      "specifier": "yellow"
-    }
-  ],
-  "time_span": [
-    {
-      "specifier": "minimum",
-      "value": 1601
-    },
-    {
-      "specifier": "maximum",
-      "value": 2100
-    }
-  ],
-  "variable": [
-    {
-      "specifier": "qtot",
-      "long_name": "Total Runoff",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily & monthly",
-      "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
-      "sectors": [
-        "water_global",
-        "water_regional",
-        "biomes",
-        "fire",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "qs",
-      "long_name": "Surface Runoff",
-      "units": "kg m-2 s-1",
-      "valid_min": 0.0,
-      "valid_max": 0.004,
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
-      "sectors": [
-        "biomes",
-        "water_global",
-        "water_regional",
-        "permafrost",
-        "fire"
-      ]
-    },
-    {
-      "specifier": "qsb",
-      "long_name": "Subsurface Runoff",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "qr",
-      "long_name": "Groundwater Recharge",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "qg",
-      "long_name": "Groundwater Runoff",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "dis",
-      "long_name": "Discharge",
-      "units": "m3 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily & monthly",
-      "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "evap",
-      "extension": "total",
-      "long_name": "Evapotranspiration",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Sum of transpiration, evaporation, interception and sublimation.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "forestry",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "potevap",
-      "long_name": "Potential Evapotranspiration",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "soilmoist",
-      "long_name": "Total Soil Moisture Content",
-      "units": "kg m-2",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily if possible, else monthly",
-      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "sectors": [
-        "agriculture",
-        "biomes",
-        "fire",
-        "forestry",
-        "water_global",
-        "water_regional",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "rootmoist",
-      "long_name": "Soil Moisture Content at Root Zone",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "soilmoistfroz",
-      "long_name": "Frozen Soil Moisture Content",
-      "units": "kg m-2",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Please provide soil moisture for all depth levels and indicate depth in m.",
-      "sectors": [
-        "biomes",
-        "water_global",
-        "permafrost",
-        "fire"
-      ]
-    },
-    {
-      "specifier": "tsl",
-      "long_name": "Temperature of Soil",
-      "units": "K",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily if possible, else monthly",
-      "comment": "Temperature of each soil layer. Reported as \"missing\" for grid cells occupied entirely by \"sea\". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "forestry",
-        "water_global",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "snd",
-      "long_name": "Snow depth",
-      "units": "m",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "water_global",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "swe",
-      "long_name": "Snow Water Equivalent",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "water_global",
-        "water_regional",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "tws",
-      "long_name": "Total Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "canopystor",
-      "long_name": "Canopy Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in the canopy.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "glacierstor",
-      "long_name": "Glacier Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in glaciers.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "groundwstor",
-      "long_name": "Groundwater Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in groundwater layer.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "lakestor",
-      "long_name": "Lake Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in lakes (except reservoirs).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "wetlandstor",
-      "long_name": "Wetland Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in wetlands.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "riverstor",
-      "long_name": "River Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in rivers.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "reservoirstor",
-      "long_name": "Reservoir Water Storage",
-      "units": "kg m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water storage in reservoirs.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "thawdepth",
-      "long_name": "Annual Maximum Thaw Depth",
-      "units": "m",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Calculated from daily thaw depths.",
-      "sectors": [
-        "biomes",
-        "water_global",
-        "permafrost",
-        "fire"
-      ]
-    },
-    {
-      "specifier": "triver",
-      "long_name": "River Water Temperature",
-      "units": "K",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pirrww",
-      "long_name": "Potential Irrigation Water Withdrawal (assuming unlimited water supply)",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "airrww",
-      "long_name": "Actual Irrigation Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "pirruse",
-      "long_name": "Potential Irrigation Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "airruse",
-      "long_name": "Actual Irrigation Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "airrusegreen",
-      "long_name": "Actual Irrigation Green Water Consumption on Irrigated Cropland",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "pirrusegreen",
-      "long_name": "Potential Irrigation Green Water Consumption on Irrigated Cropland",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "arainfusegreen",
-      "long_name": "Actual Green Water Consumption on Rainfed Cropland",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "adomww",
-      "long_name": "Actual Domestic Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "adomuse",
-      "long_name": "Actual Domestic Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "amanww",
-      "long_name": "Actual Manufacturing Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "amanuse",
-      "long_name": "Actual Manufacturing Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "aelecww",
-      "long_name": "Actual Electricity Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "aelecuse",
-      "long_name": "Actual Electricity Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "aliveww",
-      "long_name": "Actual Livestock Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "aliveuse",
-      "long_name": "Actual livestock Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pdomww",
-      "long_name": "Potential Domestic Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pdomuse",
-      "long_name": "Potential Domestic Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pmanww",
-      "long_name": "Potential Manufacturing Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pmanuse",
-      "long_name": "Potential manufacturing Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pelecww",
-      "long_name": "Potential electricity Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pelecuse",
-      "long_name": "Potential electricity Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pliveww",
-      "long_name": "Potential livestock Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pliveuse",
-      "long_name": "Potential livestock Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "atotww",
-      "long_name": "Total Actual Water Withdrawal (all sectors)",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "atotuse",
-      "long_name": "Total Actual Water Consumption (all sectors)",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Sum of actual consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "ptotww",
-      "long_name": "Total Potential Water Withdrawal (all sectors)",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "ptotuse",
-      "long_name": "Total Potential Water Consumption (all sectors)",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "Sum of potential (i.e. assuming unlimited water supply) consumptive water use from all sectors. Please indicate in metadata which sectors are included.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "ainduse",
-      "long_name": "Actual Industrial Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed. There is no need to submit ainduse if its components are being submitted separately (ainduse = amanuse + aelecuse).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "aindww",
-      "long_name": "Actual Industrial Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed. There is no need to submit aindww if its components are being submitted separately (aindww = amanww + aelecww).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pinduse",
-      "long_name": "Potential Industrial Water Consumption",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed. There is no need to submit pinduse if its components are being submitted separately (pinduse = pmanuse + pelecuse).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "pindww",
-      "long_name": "Potential Industrial Water Withdrawal",
-      "units": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "comment": "If computed. There is no need to submit pindww if its components are being submitted separately (pindww = pmanww + pelecww).",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "soil",
-      "long_name": "Soil Types",
-      "units": "-",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "constant",
-      "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
-      "sectors": [
-        "water_global",
-        "biomes",
-        "forestry"
-      ]
-    },
-    {
-      "specifier": "yield",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Crop Yields",
-      "units": "dry matter (t ha-1 per growing season)",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "initr",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Nitrogen Application Rate",
-      "units": "kg ha-1 per growing season",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "plantday",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Actual Planting Date",
-      "units": "day of year",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Julian dates.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "plantyear",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Actual Planting Year",
-      "units": "year of planting",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "This allows for clear identification of planting that is also easy to follow for potential users from outside the project",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "anthday",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Anthesis Date",
-      "units": "day of year of anthesis",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "anthyear",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Year of Anthesis",
-      "units": "year of anthesis",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "matyday",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Maturity Date",
-      "units": "day of year of maturity",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "matyyear",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Year of Maturity",
-      "units": "year of maturity",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "biom",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Total Above Ground Biomass Dry Matter Yields",
-      "units": "t ha-1 per growing season",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "The whole plant biomass above ground.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "sco2",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Soil Carbon Emissions",
-      "units": "kg C ha-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "sn2o",
-      "extension": "<crop>-<irrigation>",
-      "long_name": "Nitrous Oxide Emissions",
-      "units": "kg N2O-N ha-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "seasonal",
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study.",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ]
-    },
-    {
-      "specifier": "lai",
-      "extension": "-total",
-      "long_name": "Leaf Area Index",
-      "units": "1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily else monthly or fixed",
-      "comment": "If used by, or computed by the model.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "forestry",
-        "permafrost",
-        "water_global",
-        "fire"
-      ]
-    },
-    {
-      "specifier": "cellarea",
-      "long_name": "Grid Cell Area",
-      "units": "km**2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "fixed",
-      "comment": "The total area associated with each grid cell in the model.",
-      "sectors": [
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "contfrac",
-      "long_name": "Continental Fraction of Grid Cell",
-      "units": "1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "fixed",
-      "comment": "The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
-      "sectors": [
-        "water_global"
-      ]
-    }
-  ],
-  "soc_scenario": [
-    {
-      "specifier": "1850soc",
-      "description": "Fixed year-1850 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your simulations `1850soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-1850 levels of direct human forcing for at least some direct human forcings.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ]
-    },
-    {
-      "specifier": "histsoc",
-      "description": "Varying direct human influences in the historical period (1850-2014) (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
-    },
-    {
-      "specifier": "2015soc",
-      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
-    },
-    {
-      "specifier": "nat",
-      "description": "No direct human influences (naturalized run).",
-      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    }
-  ],
-  "fishing_type": [
-    {
-      "specifier": "fishing"
-    },
-    {
-      "specifier": "no-fishing"
-    }
-  ],
   "product": [
     {
       "specifier": "InputData",
@@ -4537,30 +3850,86 @@
       "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
     }
   ],
-  "detrending": [
+  "species": [
     {
-      "specifier": "observed"
+      "title": "Fagus sylvatica",
+      "specifier": "fasy"
     },
     {
-      "specifier": "detrended"
-    }
-  ],
-  "bias_adjustment": [
-    {
-      "specifier": "nobasd",
-      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+      "title": "Quercus robur",
+      "specifier": "quro"
     },
     {
-      "specifier": "w5e5",
-      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
-    }
-  ],
-  "diazotroph_scenario": [
-    {
-      "specifier": "w-diaz"
+      "title": "Quercus petraea",
+      "specifier": "qupe"
     },
     {
-      "specifier": "wo-diaz"
+      "title": "Pinus sylvestris",
+      "specifier": "pisy"
+    },
+    {
+      "title": "Picea abies",
+      "specifier": "piab"
+    },
+    {
+      "title": "Pinus pinaster",
+      "specifier": "pipi"
+    },
+    {
+      "title": "Larix decidua",
+      "specifier": "lade"
+    },
+    {
+      "title": "Acer platanoides",
+      "specifier": "acpl"
+    },
+    {
+      "title": "Eucalyptus globulus",
+      "specifier": "eugl"
+    },
+    {
+      "title": "Betula pendula",
+      "specifier": "bepe"
+    },
+    {
+      "title": "Betula pubescens",
+      "specifier": "bepu"
+    },
+    {
+      "title": "Robinia pseudoacacia",
+      "specifier": "rops"
+    },
+    {
+      "title": "Fraxinus excelsior",
+      "specifier": "frex"
+    },
+    {
+      "title": "Populus nigra",
+      "specifier": "poni"
+    },
+    {
+      "title": "Sorbus aucuparia",
+      "specifier": "soau"
+    },
+    {
+      "title": "C3 grass",
+      "specifier": "c3gr"
+    },
+    {
+      "title": "hard woods",
+      "specifier": "hawo"
+    },
+    {
+      "title": "fire",
+      "specifier": "fi"
+    },
+    {
+      "title": "wind",
+      "specifier": "wi"
+    },
+    {
+      "title": "Insects",
+      "specifier": "ins"
     }
   ],
   "climate_scenario": [
@@ -4598,6 +3967,751 @@
       "simulation_rounds": [
         "ISIMIP3b"
       ]
+    }
+  ],
+  "soc_variable": [
+    {
+      "specifier": "domww",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "domwc",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "indww",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "indwc",
+      "soc_dataset": "water_abstraction"
+    },
+    {
+      "specifier": "secmf-harv",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "secmf-bioh",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "secnf-harv",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "secnf-bioh",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "primf-harv",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "primf-bioh",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "primn-harv",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "primn-bioh",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "secyf-harv",
+      "soc_dataset": "wood_harvesting"
+    },
+    {
+      "specifier": "secyf-bioh",
+      "soc_dataset": "wood_harvesting"
+    }
+  ],
+  "lake_site": [
+    {
+      "specifier": "alqueva",
+      "title": "Alqueva Reservoir",
+      "country": "Portugal",
+      "lon": -7.49,
+      "lat": 38.2,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "annecy",
+      "title": "Lake Annecy",
+      "country": "France",
+      "lon": 6.17,
+      "lat": 45.87,
+      "type": "lake"
+    },
+    {
+      "specifier": "annie",
+      "title": "Lake Annie",
+      "country": "USA",
+      "lon": -81.35,
+      "lat": 27.21,
+      "type": "lake"
+    },
+    {
+      "specifier": "argyle",
+      "title": "Lake Argyle",
+      "country": "Australia",
+      "lon": 128.68,
+      "lat": -16.31,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "biel",
+      "title": "Lake Biel",
+      "country": "Switzerland",
+      "lon": 7.16,
+      "lat": 47.08,
+      "type": "lake"
+    },
+    {
+      "specifier": "big-muskellunge",
+      "title": "Big Muskellunge Lake",
+      "country": "USA",
+      "lon": -89.61,
+      "lat": 46.02,
+      "type": "lake"
+    },
+    {
+      "specifier": "black-oak",
+      "title": "Black Oak Lake",
+      "country": "USA",
+      "lon": -89.32,
+      "lat": 46.16,
+      "type": "lake"
+    },
+    {
+      "specifier": "bourget",
+      "title": "Lake Bourget",
+      "country": "France",
+      "lon": 5.86,
+      "lat": 45.76,
+      "type": "lake"
+    },
+    {
+      "specifier": "burley-griffin",
+      "title": "Lake Burley Griffin",
+      "country": "Australia",
+      "lon": 149.07,
+      "lat": -35.3,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "crystal-lake",
+      "title": "Crystal Lake",
+      "country": "USA",
+      "lon": -89.61,
+      "lat": 46.0,
+      "type": "lake"
+    },
+    {
+      "specifier": "crystal-bog",
+      "title": "Crystal Bog",
+      "country": "USA",
+      "lon": -89.61,
+      "lat": 46.01,
+      "type": "lake"
+    },
+    {
+      "specifier": "delavan",
+      "title": "Delavan Lake",
+      "country": "USA",
+      "lon": -88.6,
+      "lat": 42.61,
+      "type": "lake"
+    },
+    {
+      "specifier": "dickie",
+      "title": "Dickie Lake",
+      "country": "Canada",
+      "lon": -79.09,
+      "lat": 45.15,
+      "type": "lake"
+    },
+    {
+      "specifier": "eagle ",
+      "title": "Eagle Lake",
+      "country": "Canada",
+      "lon": -76.7,
+      "lat": 44.68,
+      "type": "lake"
+    },
+    {
+      "specifier": "ekoln ",
+      "title": "Ekoln basin of M\u00e4laren",
+      "country": "Sweden",
+      "lon": 17.62,
+      "lat": 59.75,
+      "type": "lake"
+    },
+    {
+      "specifier": "erken",
+      "title": "Lake Erken",
+      "country": "Sweden",
+      "lon": 18.63,
+      "lat": 59.84,
+      "type": "lake"
+    },
+    {
+      "specifier": "esthwaite-water",
+      "title": "Esthwaite Water",
+      "country": "United Kingdom",
+      "lon": -2.99,
+      "lat": 54.37,
+      "type": "lake"
+    },
+    {
+      "specifier": "falling-creek",
+      "title": "Falling Creek Reservoir",
+      "country": "USA",
+      "lon": -79.84,
+      "lat": 37.31,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "feeagh",
+      "title": "Lake Feeagh",
+      "country": "Ireland",
+      "lon": -9.5,
+      "lat": 53.9,
+      "type": "lake"
+    },
+    {
+      "specifier": "fish",
+      "title": "Fish Lake",
+      "country": "USA",
+      "lon": -89.65,
+      "lat": 43.29,
+      "type": "lake"
+    },
+    {
+      "specifier": "geneva",
+      "title": "Lake Geneva",
+      "country": "France/Switzerland",
+      "lon": 6.59,
+      "lat": 46.45,
+      "type": "lake"
+    },
+    {
+      "specifier": "great",
+      "title": "Great Pond",
+      "country": "USA",
+      "lon": -69.89,
+      "lat": 44.53,
+      "type": "lake"
+    },
+    {
+      "specifier": "green",
+      "title": "Green Lake",
+      "country": "USA",
+      "lon": -89.0,
+      "lat": 43.81,
+      "type": "lake"
+    },
+    {
+      "specifier": "harp",
+      "title": "Harp Lake",
+      "country": "Canada",
+      "lon": -79.13,
+      "lat": 45.38,
+      "type": "lake"
+    },
+    {
+      "specifier": "kilpisjarvi",
+      "title": "Kilpisj\u00e4rvi",
+      "country": "Finland",
+      "lon": 20.77,
+      "lat": 69.03,
+      "type": "lake"
+    },
+    {
+      "specifier": "kinneret",
+      "title": "Lake Kinneret",
+      "country": "Israel",
+      "lon": 35.35,
+      "lat": 32.49,
+      "type": "lake"
+    },
+    {
+      "specifier": "kivu",
+      "title": "Lake Kivu",
+      "country": "Rwanda/DR Congo",
+      "lon": 29.24,
+      "lat": -1.73,
+      "type": "lake"
+    },
+    {
+      "specifier": "klicava",
+      "title": "Klicava Reservoir",
+      "country": "Czechia",
+      "lon": 13.93,
+      "lat": 50.07,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "kuivajarvi",
+      "title": "Lake Kuivajarvi",
+      "country": "Finland",
+      "lon": 23.51,
+      "lat": 60.47,
+      "type": "lake"
+    },
+    {
+      "specifier": "langtjern",
+      "title": "Lake Langtjern",
+      "country": "Norway",
+      "lon": 9.73,
+      "lat": 60.37,
+      "type": "lake"
+    },
+    {
+      "specifier": "laramie",
+      "title": "Laramie Lake",
+      "country": "USA",
+      "lon": -105.84,
+      "lat": 40.62,
+      "type": "lake"
+    },
+    {
+      "specifier": "lower-zurich",
+      "title": "Lower Lake Zurich",
+      "country": "Switzerland",
+      "lon": 8.58,
+      "lat": 47.28,
+      "type": "lake"
+    },
+    {
+      "specifier": "mendota",
+      "title": "Lake Mendota",
+      "country": "USA",
+      "lon": -89.41,
+      "lat": 43.1,
+      "type": "lake"
+    },
+    {
+      "specifier": "monona",
+      "title": "Lake Monona",
+      "country": "USA",
+      "lon": -89.36,
+      "lat": 43.06,
+      "type": "lake"
+    },
+    {
+      "specifier": "mozhaysk",
+      "title": "Mozhaysk reservoir",
+      "country": "Russia",
+      "lon": 35.82,
+      "lat": 55.59,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "mt-bold",
+      "title": "Mt Bold",
+      "country": "Australia",
+      "lon": 138.71,
+      "lat": -35.12,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "mueggelsee",
+      "title": "Lake M\u00fcggelsee",
+      "country": "Germany",
+      "lon": 13.65,
+      "lat": 52.43,
+      "type": "lake"
+    },
+    {
+      "specifier": "neuchatel",
+      "title": "Lake Neuch\u00e2tel",
+      "country": "Switzerland",
+      "lon": 6.52,
+      "lat": 46.54,
+      "type": "lake"
+    },
+    {
+      "specifier": "ngoring ",
+      "title": "Ngoring ",
+      "country": "China",
+      "lon": 97.7,
+      "lat": 34.9,
+      "type": "lake"
+    },
+    {
+      "specifier": "nohipalo-mustjaerv",
+      "title": "Lake Nohipalo Mustj\u00e4rv",
+      "country": "Estonia",
+      "lon": 27.34,
+      "lat": 57.93,
+      "type": "lake"
+    },
+    {
+      "specifier": "nohipalo-valgejaerv",
+      "title": "Lake Nohipalo Valgej\u00e4rv",
+      "country": "Estonia",
+      "lon": 27.35,
+      "lat": 57.94,
+      "type": "lake"
+    },
+    {
+      "specifier": "okauchee",
+      "title": "Okauchee Lake",
+      "country": "USA",
+      "lon": -88.43,
+      "lat": 43.13,
+      "type": "lake"
+    },
+    {
+      "specifier": "paajarvi",
+      "title": "Lake P\u00e4\u00e4j\u00e4rvi",
+      "country": "Finland",
+      "lon": 25.13,
+      "lat": 61.07,
+      "type": "lake"
+    },
+    {
+      "specifier": "rappbode",
+      "title": "Rappbode Reservoir",
+      "country": "Germany",
+      "lon": 10.89,
+      "lat": 51.74,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "rimov",
+      "title": "Rimov Reservoir",
+      "country": "Czechia",
+      "lon": 14.49,
+      "lat": 48.85,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "rotorua",
+      "title": "Lake Rotorua",
+      "country": "New Zealand",
+      "lon": 176.28,
+      "lat": -38.08,
+      "type": "lake"
+    },
+    {
+      "specifier": "sammamish",
+      "title": "Lake Sammamish",
+      "country": "USA",
+      "lon": -122.1,
+      "lat": 47.59,
+      "type": "lake"
+    },
+    {
+      "specifier": "sau",
+      "title": "Sau Reservoir",
+      "country": "Spain",
+      "lon": 2.4,
+      "lat": 41.97,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "sparkling",
+      "title": "Sparkling Lake",
+      "country": "USA",
+      "lon": -89.7,
+      "lat": 46.01,
+      "type": "lake"
+    },
+    {
+      "specifier": "stechlin",
+      "title": "Lake Stechlin",
+      "country": "Germany",
+      "lon": 13.03,
+      "lat": 53.17,
+      "type": "lake"
+    },
+    {
+      "specifier": "sunapee",
+      "title": "Lake Sunapee",
+      "country": "USA",
+      "lon": -72.5,
+      "lat": 43.23,
+      "type": "lake"
+    },
+    {
+      "specifier": "tahoe",
+      "title": "Lake Tahoe",
+      "country": "USA",
+      "lon": -120.03,
+      "lat": 39.09,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "tarawera",
+      "title": "Lake Tarawera",
+      "country": "New Zealand",
+      "lon": 176.43,
+      "lat": -38.21,
+      "type": "lake"
+    },
+    {
+      "specifier": "taupo",
+      "title": "Lake Taupo",
+      "country": "New Zealand",
+      "lon": 175.89,
+      "lat": -38.8,
+      "type": "lake"
+    },
+    {
+      "specifier": "toolik",
+      "title": "Toolik Lake",
+      "country": "USA",
+      "lon": -149.6,
+      "lat": 68.63,
+      "type": "lake"
+    },
+    {
+      "specifier": "trout-lake",
+      "title": "Trout Lake",
+      "country": "USA",
+      "lon": -89.67,
+      "lat": 46.03,
+      "type": "lake"
+    },
+    {
+      "specifier": "trout-bog",
+      "title": "Trout Bog",
+      "country": "USA",
+      "lon": -89.69,
+      "lat": 46.04,
+      "type": "lake"
+    },
+    {
+      "specifier": "two-sisters",
+      "title": "Two Sisters Lake",
+      "country": "USA",
+      "lon": -89.53,
+      "lat": 45.77,
+      "type": "lake"
+    },
+    {
+      "specifier": "vendyurskoe",
+      "title": "Lake Vendyurskoe",
+      "country": "Russia",
+      "lon": 33.1,
+      "lat": 62.1,
+      "type": "lake"
+    },
+    {
+      "specifier": "vortsjaerv",
+      "title": "lake V\u00f5rtsj\u00e4rv",
+      "country": "Estonia",
+      "lon": 26.01,
+      "lat": 58.31,
+      "type": "lake"
+    },
+    {
+      "specifier": "waahi",
+      "title": "Lake Waahi",
+      "country": "New Zealand",
+      "lon": 175.07,
+      "lat": 37.33,
+      "type": "lake"
+    },
+    {
+      "specifier": "washington",
+      "title": "Lake Washington",
+      "country": "USA",
+      "lon": -122.27,
+      "lat": 47.64,
+      "type": "lake"
+    },
+    {
+      "specifier": "windermere",
+      "title": "Windermere",
+      "country": "United Kingdom",
+      "lon": -2.95,
+      "lat": 54.31,
+      "type": "lake"
+    },
+    {
+      "specifier": "wingra",
+      "title": "Lake Wingra",
+      "country": "USA",
+      "lon": -89.43,
+      "lat": 43.05,
+      "type": "lake"
+    },
+    {
+      "specifier": "zlutice",
+      "title": "Zlutice Reservoir",
+      "country": "Czechia",
+      "lon": 13.11,
+      "lat": 50.09,
+      "type": "reservoir"
+    }
+  ],
+  "irrigation": [
+    {
+      "specifier": "cirr",
+      "title": "Constrained irrigation",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "noirr",
+      "title": "No irrigation (rainfed land)"
+    }
+  ],
+  "forest_stand": [
+    {
+      "specifier": "hyytiala",
+      "title": "Hyyti\u00e4l\u00e4",
+      "lat": 61.8475,
+      "lon": 24.295,
+      "country": "FI",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy",
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
+    },
+    {
+      "specifier": "peitz",
+      "title": "Peitz",
+      "lat": 51.9166,
+      "lon": 14.35,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy"
+      ],
+      "thinning": "below",
+      "comment": "Managed using a weak thinning from below."
+    },
+    {
+      "specifier": "solling-beech",
+      "title": "Solling (beech)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "solling-spruce",
+      "title": "Solling (spruce)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab "
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "soro",
+      "title": "Sor\u00f8",
+      "lat": 55.485844,
+      "lon": 11.644616,
+      "country": "DK",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "kroof",
+      "title": "Kranzberg Roof Project",
+      "lat": 48.25,
+      "lon": 11.4,
+      "country": "DE",
+      "type": "Mixed deciduous and conifers",
+      "species": [
+        "fasy",
+        "piab",
+        "acpl",
+        "lade",
+        "pisy",
+        "quro"
+      ],
+      "thinning": "below",
+      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
+    },
+    {
+      "specifier": "le-bray",
+      "title": "Le Bray",
+      "lat": 44.71711,
+      "lon": -0.7693,
+      "country": "FR",
+      "type": "Even-aged conifer",
+      "species": [
+        "pipi"
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "collelongo",
+      "title": "Collelongo",
+      "lat": 41.8494,
+      "lon": 13.5881,
+      "country": "IT",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "bily-kriz",
+      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
+      "lat": 49.3,
+      "lon": 18.32,
+      "country": "CZ",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": ""
+    }
+  ],
+  "acidification_type": [
+    {
+      "specifier": "oa"
+    },
+    {
+      "specifier": "no-oa"
+    }
+  ],
+  "category": [
+    {
+      "specifier": "climate",
+      "title": "Climate forcing"
+    },
+    {
+      "specifier": "composition_atmosphere",
+      "title": "Greenhouse gas forcing"
+    },
+    {
+      "specifier": "geo_conditions",
+      "title": "Geographic data and information"
+    },
+    {
+      "specifier": "socioeconomic",
+      "title": "Socioeconomic forcing"
     }
   ]
 }
