@@ -12,7 +12,7 @@
         <th style="width: 25%;">Comments</th>
         {% else %}
         <th style="width: 45%;">Institution</th>
-        <th style="width: 10%;">Original resolution</th>
+        <th style="width: 10%;">Native resolution</th>
         <th style="width: 10%;">Ensemble member</th>
         {% endif %}
         <th style="width: 5%;">Priority</th>
@@ -30,12 +30,12 @@
             {% else %}
             <td>{{ row.institution }}</td>
             <td>
-                {% if row.original_resolution is mapping %}
-                <ul>
-                {% for sector, original_resolution in row.original_resolution.items() %}
-                <li>{{ sector }}: {{ original_resolution }}</li>
-                {% endfor %}
-                </ul>
+                {% if sector.specifier == 'index' %}
+                <p>Atmosphere: {{ row.original_resolution['other'] or row.original_resolution }}</p>
+
+                {% if 'marine-fishery_global' in row.original_resolution %}
+                <p>Ocean: {{ row.original_resolution['marine-fishery_global'] }}</p>
+                {% endif %}
                 {% else %}
                 {{ row.original_resolution }}
                 {% endif %}
