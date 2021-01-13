@@ -1,99 +1,101 @@
 {% if table %}
-<table id="tbl:variable" class="tablenos table table-bordered w-100">
-    <caption>
-        Table {{ counter() }}: Output variables for {{ sector.title }} (<code>variable</code>).
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Variable long name</th>
-        <th style="width: 20%;">Variable specifier</th>
-        <th style="width: 10%;">Unit</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Comments</th>
-    </thead>
-    <tbody>
-        {% for group, rows in table.items() %}
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>{{ group }}</strong>
-            </td>
-        </tr>
-        {% for row in rows %}
-        <tr>
-            <td>{{ row.long_name }}</td>
-            <td>
-                {% if not row.extension %}
-                    <strong>{{ row.specifier }}</strong>
-                {% elif row.extension is mapping %}
-                    <ul class="list-unstyled">
-                    {% for sector, extension in row.extension.items() %}
-                        <li>{{ sector }}:
-                            {% if extension is string %}
-                                <strong>{{ row.specifier }}-{{ extension }}</strong>
-                            {% else %}{# extension is an array #}
-                                <strong>
-                                {% for ext in extension %}
-                                {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
-                                {% endfor %}
-                                </strong>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                    </ul>
-                {% elif row.extension is string %}
-                    <strong>{{ row.specifier }}-{{ row.extension }}</strong>
-                {% else %}{# extension is an array #}
-                    <strong>
-                    {% for ext in row.extension %}
-                    {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
-                    {% endfor %}
-                    </strong>
-                {% endif %}
-            </td>
-            <td>
-                {% if row.units is mapping %}
-                {% for sector, units in row.units.items() %}
-                <p>{{ sector }}: {{ units }}</p>
-                {% endfor %}
-                {% else %}
-                {{ row.units }}
-                {% endif %}
-            </td>
-            <td>
-                <ul>
-                    {% if row.resolution is mapping %}
-                    {% for sector, resolution in row.resolution.items() %}
-                    <li>{{ sector }}: {{ resolution }}</li>
+<div class="table-wrapper">
+    <table id="tbl:variable" class="tablenos table table-bordered table-w-100">
+        <caption>
+            Table {{ counter() }}: Output variables for {{ sector.title }} (<code>variable</code>).
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Variable long name</th>
+            <th style="width: 20%;">Variable specifier</th>
+            <th style="width: 10%;">Unit</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Comments</th>
+        </thead>
+        <tbody>
+            {% for group, rows in table.items() %}
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>{{ group }}</strong>
+                </td>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.long_name }}</td>
+                <td>
+                    {% if not row.extension %}
+                        <strong>{{ row.specifier }}</strong>
+                    {% elif row.extension is mapping %}
+                        <ul class="list-unstyled">
+                        {% for sector, extension in row.extension.items() %}
+                            <li>{{ sector }}:
+                                {% if extension is string %}
+                                    <strong>{{ row.specifier }}-{{ extension }}</strong>
+                                {% else %}{# extension is an array #}
+                                    <strong>
+                                    {% for ext in extension %}
+                                    {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
+                                    {% endfor %}
+                                    </strong>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% elif row.extension is string %}
+                        <strong>{{ row.specifier }}-{{ row.extension }}</strong>
+                    {% else %}{# extension is an array #}
+                        <strong>
+                        {% for ext in row.extension %}
+                        {{ row.specifier }}{{ '-' + ext if ext else '' }}{{ ', ' if not loop.last }}
+                        {% endfor %}
+                        </strong>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if row.units is mapping %}
+                    {% for sector, units in row.units.items() %}
+                    <p>{{ sector }}: {{ units }}</p>
                     {% endfor %}
                     {% else %}
-                    <li>{{ row.resolution }}</li>
+                    {{ row.units }}
                     {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        {% if row.resolution is mapping %}
+                        {% for sector, resolution in row.resolution.items() %}
+                        <li>{{ sector }}: {{ resolution }}</li>
+                        {% endfor %}
+                        {% else %}
+                        <li>{{ row.resolution }}</li>
+                        {% endif %}
 
-                    {% if row.frequency is mapping %}
-                    {% for sector, frequency in row.frequency.items() %}
-                    <li>{{ sector }}: {{ frequency }}</li>
+                        {% if row.frequency is mapping %}
+                        {% for sector, frequency in row.frequency.items() %}
+                        <li>{{ sector }}: {{ frequency }}</li>
+                        {% endfor %}
+                        {% else %}
+                        <li>{{ row.frequency }}</li>
+                        {% endif %}
+                    </ul>
+                </td>
+                <td>
+                    {% if row.dimensions %}
+                    <p><b>Level dimensions:</b> ({{ row.dimensions|join(', ') }}).</p>
+                    {% endif %}
+                    {% if row.comment is mapping %}
+                    {% for sector, comment in row.comment.items() %}
+                    <p>{{ sector }}: {{ comment }}</p>
                     {% endfor %}
                     {% else %}
-                    <li>{{ row.frequency }}</li>
+                    {{ markdown(row.comment)|safe }}
                     {% endif %}
-                </ul>
-            </td>
-            <td>
-                {% if row.dimensions %}
-                <p><b>Level dimensions:</b> ({{ row.dimensions|join(', ') }}).</p>
-                {% endif %}
-                {% if row.comment is mapping %}
-                {% for sector, comment in row.comment.items() %}
-                <p>{{ sector }}: {{ comment }}</p>
-                {% endfor %}
-                {% else %}
-                {{ markdown(row.comment)|safe }}
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-        {% endfor %}
-    </tbody>
-</table>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% else %}
 No output variables have been defined for {{ sector.title }}, yet.
 {% endif %}

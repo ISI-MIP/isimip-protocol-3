@@ -68,8 +68,34 @@
                 margin-bottom: 2rem;
                 font-size: small;
             }
-            .table thead th {
+            table.table thead th {
                 vertical-align: top;
+            }
+            div.table-wrapper table.table {
+                margin-bottom: 0;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed tbody {
+                opacity: 0.5;
+            }
+            button.toggle-table {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0.5rem;
+                background-color: white;
+                border: 1px solid rgb(164, 164, 164);
+                font-size: smaller;
+            }
+            button.toggle-table:focus {
+                outline: 0;
             }
             td :last-child {
                 margin-bottom: 0;
@@ -178,5 +204,33 @@
                 </div>
             </div>
         </footer>
+
+        <script defer>
+            document.querySelectorAll('div.table-wrapper').forEach(function(wrapper) {
+                var button = document.createElement('button')
+
+                button.className = 'toggle-table';
+                button.addEventListener('click', function (event) {
+                    if (wrapper.classList.contains('closed')) {
+                        wrapper.classList.remove('closed');
+                        button.innerHTML = 'Hide table';
+                        localStorage.setItem(wrapper.querySelector('table').id, 1)
+                    } else {
+                        wrapper.classList.add('closed');
+                        wrapper.scrollIntoView();
+                        button.innerHTML = 'Show full table';
+                        localStorage.setItem(wrapper.querySelector('table').id, 0)
+                    }
+                });
+
+                if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
+                    button.innerHTML = 'Hide table';
+                } else {
+                    button.innerHTML = 'Show full table';
+                    wrapper.classList.add('closed');
+                }
+                wrapper.after(button)
+            });
+        </script>
     </body>
 </html>
