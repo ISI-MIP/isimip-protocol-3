@@ -85,6 +85,10 @@
             div.table-wrapper.closed tbody {
                 opacity: 0.5;
             }
+            a.toggle-table {
+                display: block;
+                float: right;
+            }
             button.toggle-table {
                 display: block;
                 margin-left: auto;
@@ -206,31 +210,57 @@
         </footer>
 
         <script defer>
-            document.querySelectorAll('div.table-wrapper').forEach(function(wrapper) {
-                var button = document.createElement('button')
+            (function() {
+                var showMsg = 'Show full table',
+                    hideMsg = 'Hide table';
 
-                button.className = 'toggle-table';
-                button.addEventListener('click', function (event) {
+                function toggleTable(wrapper, button, a) {
                     if (wrapper.classList.contains('closed')) {
                         wrapper.classList.remove('closed');
-                        button.innerHTML = 'Hide table';
+
+                        button.innerHTML = hideMsg;
+                        a.innerHTML = hideMsg;
+
                         localStorage.setItem(wrapper.querySelector('table').id, 1)
                     } else {
                         wrapper.classList.add('closed');
-                        wrapper.scrollIntoView();
-                        button.innerHTML = 'Show full table';
+
+                        button.innerHTML = showMsg;
+                        a.innerHTML = showMsg;
+
                         localStorage.setItem(wrapper.querySelector('table').id, 0)
                     }
-                });
-
-                if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
-                    button.innerHTML = 'Hide table';
-                } else {
-                    button.innerHTML = 'Show full table';
-                    wrapper.classList.add('closed');
                 }
-                wrapper.after(button)
-            });
+
+                document.querySelectorAll('.table-wrapper').forEach(function(wrapper) {
+                    wrapper.classList.add('closed');
+
+                    var a = document.createElement('a');
+                    a.innerHTML = showMsg;
+                    a.className = 'toggle-table';
+                    a.href = '#';
+
+                    var button = document.createElement('button');
+                    button.innerHTML = showMsg;
+                    button.className = 'toggle-table';
+
+                    wrapper.querySelector('caption').append(a);
+                    wrapper.after(button);
+
+                    a.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        toggleTable(wrapper, button, a);
+                    });
+                    button.addEventListener('click', function (event) {
+                        toggleTable(wrapper, button, a);
+                        wrapper.scrollIntoView();
+                    });
+
+                    if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
+                        toggleTable(wrapper, button, a);
+                    }
+                });
+            })();
         </script>
     </body>
 </html>
