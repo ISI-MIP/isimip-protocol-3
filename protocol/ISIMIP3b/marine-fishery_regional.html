@@ -66,8 +66,38 @@
                 margin-bottom: 2rem;
                 font-size: small;
             }
-            .table thead th {
+            table.table thead th {
                 vertical-align: top;
+            }
+            div.table-wrapper table.table {
+                margin-bottom: 0;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed tbody {
+                opacity: 0.5;
+            }
+            a.toggle-table {
+                display: block;
+                float: right;
+            }
+            button.toggle-table {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0.5rem;
+                background-color: white;
+                border: 1px solid rgb(164, 164, 164);
+                font-size: smaller;
+            }
+            button.toggle-table:focus {
+                outline: 0;
             }
             td :last-child {
                 margin-bottom: 0;
@@ -150,10 +180,10 @@
                     </div>
                     <div class="col text-right">
                         <p>
-                            Last updated: 11 January 2021
+                            Last updated: 22 January 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2f2776541fc362b3d2199030076385f0c64dc942">2f2776541fc362b3d2199030076385f0c64dc942</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/0fadb0eced63c550249c22593270fe9ac446c3a2">0fadb0eced63c550249c22593270fe9ac446c3a2</a>
                         </p>
                     </div>
                 </div>
@@ -318,551 +348,553 @@
 <p>The sensitivity experiments are meant to be "artificial" deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as <code>default</code> in the sensitivity specifier of the file name even if the run would be identical to the <code>1850co2</code> sensitivity setting.</p>
 <p>The particular sensitivity scenario for an experiment is given in the experiments table below. For most experiments no sensitivity scenario is given, so the <code>default</code> label applies.</p>
 <h3 id="experiments">Experiments</h3>
-<table id="tbl:scenario" class="tablenos table table-bordered w-100">
-    <caption>
-      Table 4: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
-    </caption>
-    <thead class="thead-dark">
-        <tr>
-            <th style="width: 25%;">Experiment</th>
+<div class="table-wrapper">
+    <table id="tbl:scenario" class="tablenos table table-bordered w-100">
+        <caption>
+          Table 4: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
+        </caption>
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 25%;">Experiment</th>
 
 
-            <th style="width: 30%;">Short description</th>
-            <th style="width: 15%;">
-                <p>Pre-industrial</p>
-                <p>1601-1849</p>
-            </th>
-            <th style="width: 15%;">
-                <p>Historical</p>
-                <p>1850-2014</p>
-            </th>
-            <th style="width: 15%;">
-                <p>Future</p>
-                <p>2015-2100</p>
-            </th>
+                <th style="width: 30%;">Short description</th>
+                <th style="width: 15%;">
+                    <p>Pre-industrial</p>
+                    <p>1601-1849</p>
+                </th>
+                <th style="width: 15%;">
+                    <p>Historical</p>
+                    <p>1850-2014</p>
+                </th>
+                <th style="width: 15%;">
+                    <p>Future</p>
+                    <p>2015-2100</p>
+                </th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>pre-industrial control</h4>
-<p>histsoc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
-            </td>
-
-
-                <td class="table-secondary">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
-                </td>
-
-                <td class="table-secondary">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
-                </td>
-
-                <td class="table-danger">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
-            </td>
-
-
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>1850soc</strong>
-                    </p>
-                </td>
-
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>histsoc</strong>
-                    </p>
-                </td>
-
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>pre-industrial control</h4>
-<p>2015soc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
-            </td>
-
-
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    does not have to be simulated as the following year already provide a large sample of years with stable climate and constant (2015soc) / no (nat) DHF for period
+                    <h4>pre-industrial control</h4>
+<p>histsoc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
                 </td>
 
-                <td class="table-secondary">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
-                </td>
 
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> fixed at 2015 levels for all periods
-            </td>
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>1850soc</strong>
+                        </p>
+                    </td>
 
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>histsoc</strong>
+                        </p>
+                    </td>
 
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>pre-industrial control</h4>
-<p>nat</p><p><strong>2nd priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    does not have to be simulated as the following year already provide a large sample of years with stable climate and constant (2015soc) / no (nat) DHF for period
+                    <h4>pre-industrial control</h4>
+<p>2015soc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
                 </td>
 
-                <td class="table-secondary">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        does not have to be simulated as the following year already provide a large sample of years with stable climate and constant (2015soc) / no (nat) DHF for period
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> fixed at 2015 levels for all periods
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>picontrol</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> No direct human influences
-            </td>
 
 
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP2.6</h4>
-<p>histsoc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;histsoc&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    <h4>pre-industrial control</h4>
+<p>nat</p><p><strong>2nd priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> no climate change, pre-industrial CO₂ fixed at 1850 levels
                 </td>
 
-                <td class="table-secondary">
-                    <p>
-                        <strong>historical</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        does not have to be simulated as the following year already provide a large sample of years with stable climate and constant (2015soc) / no (nat) DHF for period
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>picontrol</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> No direct human influences
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp126</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
-            </td>
 
 
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
 
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>histsoc</strong>
-                    </p>
-                </td>
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP2.6</h4>
-<p>2015soc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;2015soc&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    <h4>RCP2.6</h4>
+<p>histsoc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
                 </td>
 
-                <td class="table-secondary">
-                    <p>
-                        <strong>historical</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;histsoc&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>historical</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp126</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp126</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> fixed at 2015 levels for all periods
-            </td>
 
 
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>histsoc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP2.6</h4>
-<p>nat</p><p><strong>2nd priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;nat&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    <h4>RCP2.6</h4>
+<p>2015soc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
                 </td>
 
-                <td class="table-secondary">
-                    <p>
-                        <strong>historical</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;2015soc&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>historical</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp126</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> fixed at 2015 levels for all periods
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp126</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> No direct human influences
-            </td>
 
 
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-secondary extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP7</h4>
-<p>histsoc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;histsoc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    <h4>RCP2.6</h4>
+<p>nat</p><p><strong>2nd priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> Simulated historical climate and CO₂ in historical period, then SSP1-RCP2.6 climate &amp; CO₂
                 </td>
 
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;nat&#34; version of the pre-industrial period of the pre-industrial control experiment
+                    </td>
+
+                    <td class="table-secondary">
+                        <p>
+                            <strong>historical</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp126</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> No direct human influences
+                </td>
+
+
+
+                    <td class="table-secondary extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
+
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;histsoc&#34; version of the historical period of the RCP2.6 experiment
+                    <h4>RCP7</h4>
+<p>histsoc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp370</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;histsoc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;histsoc&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp370</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
                 </td>
 
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
-            </td>
 
 
 
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP7</h4>
-<p>2015soc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;2015soc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    <h4>RCP7</h4>
+<p>2015soc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
                 </td>
 
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;2015soc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;2015soc&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp370</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> fixed at 2015 levels for all periods
+                </td>
+
+
+
+
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;2015soc&#34; version of the historical period of the RCP2.6 experiment
+                    <h4>RCP7</h4>
+<p>nat</p><p><strong>2nd priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp370</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;nat&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;nat&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp370</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> No direct human influences
                 </td>
 
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> fixed at 2015 levels for all periods
-            </td>
 
 
 
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP7</h4>
-<p>nat</p><p><strong>2nd priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP3-RCP7 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;nat&#34; version of pre-industrial of pre-industrial control experiment runs
+                    <h4>RCP8.5</h4>
+<p>histsoc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
                 </td>
 
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;histsoc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;histsoc&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp585</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
+                </td>
+
+
+
+
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;nat&#34; version of the historical period of the RCP2.6 experiment
+                    <h4>RCP8.5</h4>
+<p>2015soc</p><p><strong>1st priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp370</strong>
-                    </p>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;2015soc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;2015soc&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp585</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> fixed at 2015 levels for all periods
                 </td>
 
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> No direct human influences
-            </td>
 
 
 
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>2015soc</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP8.5</h4>
-<p>histsoc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
-            </td>
-
-
+            </tr>
+            <tr>
                 <td rowspan="2" class="extra-border-bottom">
-                    &#34;histsoc&#34; version of pre-industrial of pre-industrial control experiment runs
+                    <h4>RCP8.5</h4>
+<p>nat</p><p><strong>2nd priority</strong></p>                </td>
+                <td>
+                    <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
                 </td>
 
-                <td rowspan="2" class="extra-border-bottom">
-                    &#34;histsoc&#34; version of the historical period of the RCP2.6 experiment
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;nat&#34; version of pre-industrial of pre-industrial control experiment runs
+                    </td>
+
+                    <td rowspan="2" class="extra-border-bottom">
+                        &#34;nat&#34; version of the historical period of the RCP2.6 experiment
+                    </td>
+
+                    <td class="table-danger">
+                        <p>
+                            <strong>ssp585</strong>
+                        </p>
+                    </td>
+
+            </tr>
+            <tr>
+                <td class="extra-border-bottom">
+                    <strong>DHF:</strong> No direct human influences
                 </td>
 
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp585</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> varying management before 2015, then fixed at 2015 levels thereafter
-            </td>
 
 
 
+                    <td class="table-danger extra-border-bottom">
+                        <p>
+                            <strong>nat</strong>
+                        </p>
+                    </td>
 
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP8.5</h4>
-<p>2015soc</p><p><strong>1st priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
-            </td>
-
-
-                <td rowspan="2" class="extra-border-bottom">
-                    &#34;2015soc&#34; version of pre-industrial of pre-industrial control experiment runs
-                </td>
-
-                <td rowspan="2" class="extra-border-bottom">
-                    &#34;2015soc&#34; version of the historical period of the RCP2.6 experiment
-                </td>
-
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp585</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> fixed at 2015 levels for all periods
-            </td>
-
-
-
-
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>2015soc</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td rowspan="2" class="extra-border-bottom">
-                <h4>RCP8.5</h4>
-<p>nat</p><p><strong>2nd priority</strong></p>            </td>
-            <td>
-                <strong>CF:</strong> SSP5-RCP8.5 climate &amp; CO₂
-            </td>
-
-
-                <td rowspan="2" class="extra-border-bottom">
-                    &#34;nat&#34; version of pre-industrial of pre-industrial control experiment runs
-                </td>
-
-                <td rowspan="2" class="extra-border-bottom">
-                    &#34;nat&#34; version of the historical period of the RCP2.6 experiment
-                </td>
-
-                <td class="table-danger">
-                    <p>
-                        <strong>ssp585</strong>
-                    </p>
-                </td>
-
-        </tr>
-        <tr>
-            <td class="extra-border-bottom">
-                <strong>DHF:</strong> No direct human influences
-            </td>
-
-
-
-
-                <td class="table-danger extra-border-bottom">
-                    <p>
-                        <strong>nat</strong>
-                    </p>
-                </td>
-
-        </tr>
-    </tbody>
-</table>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h4>Note regarding models requiring spin-up</h4>
 <p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed. Please note that the "pre-industrial control run" from 1601-1849 is part of the regular experiments that should be reported and hence the spin-up has to be finished before that.</p>
@@ -941,633 +973,635 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 
 <h4>Note on climate forcing priority</h4>
 <p>The priority for the different climate forcing datasets is from top to bottom. If you cannot use all climate forcing datasets, please concentrate on those at the top of the table.</p>
-<table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
-    <caption>
-      Table 6: Climate forcing variables for ISIMIP3b simulations (<code>climate-variable</code>).
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 30%;">Variable</th>
-        <th style="width: 20%;">Variable specifier</th>
-        <th style="width: 15%;">Unit</th>
-        <th style="width: 15%;">Resolution</th>
-        <th style="width: 20%;">Models</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Ocean variables <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td>Mass Concentration of Total Phytoplankton Expressed as Chlorophyll</td>
-            <td>
-                <strong>chl</strong>
-            </td>
-            <td>kg m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Floor Depth</td>
-            <td>
-                <strong>deptho</strong>
-            </td>
-            <td>m</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>fixed</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Downward Flux of Particulate Organic Carbon</td>
-            <td>
-                <strong>
-                expc-bot
-                </strong>
-            </td>
-            <td>mol m-2 s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Particulate Organic Carbon Content</td>
-            <td>
-                <strong>intpoc</strong>
-            </td>
-            <td>kg m-2</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GFDL-ESM4</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Primary Organic Carbon Production by All Types of Phytoplankton</td>
-            <td>
-                <strong>intpp</strong>
-            </td>
-            <td>mol m-2 s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Net Primary Organic Carbon Production by Diatoms</td>
-            <td>
-                <strong>intppdiat</strong>
-            </td>
-            <td>mol m-2 s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Net Primary Mole Productivity of Carbon by Diazotrophs</td>
-            <td>
-                <strong>intppdiaz</strong>
-            </td>
-            <td>mol m-2 s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>MPI-ESM1-2-HR</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Maximum Ocean Mixed Layer Thickness Defined by Sigma T</td>
-            <td>
-                <strong>mlotstmax</strong>
-            </td>
-            <td>m</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Dissolved Oxygen Concentration</td>
-            <td>
-                <strong>
-                o2, 
-                o2-bot, 
-                o2-surf
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>pH</td>
-            <td>
-                <strong>
-                ph, 
-                ph-bot, 
-                ph-surf
-                </strong>
-            </td>
-            <td>1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Phytoplankton Carbon Concentration</td>
-            <td>
-                <strong>
-                phyc, 
-                phyc-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Mole Concentration of Diatoms expressed as Carbon in sea water</td>
-            <td>
-                <strong>
-                phydiat, 
-                phydiat-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Mole Concentration of Diazotrophs Expressed as Carbon in Sea Water</td>
-            <td>
-                <strong>
-                phydiaz, 
-                phydiaz-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>MPI-ESM1-2-HR</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Primary Carbon Production by Total Phytoplankton</td>
-            <td>
-                <strong>pp</strong>
-            </td>
-            <td>mol m-3 s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water Salinity</td>
-            <td>
-                <strong>
-                so, 
-                so-bot, 
-                so-surf
-                </strong>
-            </td>
-            <td>0.001</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Net Downward Shortwave Radiation at Sea Water Surface</td>
-            <td>
-                <strong>rsntds</strong>
-            </td>
-            <td>W m-2</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Ice Area Fraction</td>
-            <td>
-                <strong>siconc</strong>
-            </td>
-            <td>%</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water Potential Temperature</td>
-            <td>
-                <strong>thetao</strong>
-            </td>
-            <td>°C</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>2° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Ocean Model Cell Thickness</td>
-            <td>
-                <strong>thkcello</strong>
-            </td>
-            <td>m</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water Potential Temperature at Sea Floor</td>
-            <td>
-                <strong>tob</strong>
-            </td>
-            <td>°C</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Surface Temperature</td>
-            <td>
-                <strong>tos</strong>
-            </td>
-            <td>°C</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>2° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water X Velocity</td>
-            <td>
-                <strong>uo</strong>
-            </td>
-            <td>m s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water Y Velocity</td>
-            <td>
-                <strong>vo</strong>
-            </td>
-            <td>m s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Sea Water Z Velocity</td>
-            <td>
-                <strong>wo</strong>
-            </td>
-            <td>m s-1</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>2° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Mole Concentration of Mesozooplankton expressed as Carbon in sea water</td>
-            <td>
-                <strong>
-                zmeso, 
-                zmeso-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Mole Concentration of Microzooplankton expressed as Carbon in sea water</td>
-            <td>
-                <strong>
-                zmicro, 
-                zmicro-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Zooplankton Carbon Concentration</td>
-            <td>
-                <strong>
-                zooc, 
-                zooc-vint
-                </strong>
-            </td>
-            <td>mol m-3</td>
-            <td>
-                <ul>
-                    <li>1° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>CESM2</li>
-                    <li>GFDL-ESM4</li>
-                    <li>IPSL-CM6A-LR</li>
-                    <li>MPI-ESM1-2-HR</li>
-                    <li>UKESM1-0-LL</li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
+        <caption>
+          Table 6: Climate forcing variables for ISIMIP3b simulations (<code>climate-variable</code>).
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 30%;">Variable</th>
+            <th style="width: 20%;">Variable specifier</th>
+            <th style="width: 15%;">Unit</th>
+            <th style="width: 15%;">Resolution</th>
+            <th style="width: 20%;">Models</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Ocean variables <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Mass Concentration of Total Phytoplankton Expressed as Chlorophyll</td>
+                <td>
+                    <strong>chl</strong>
+                </td>
+                <td>kg m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Floor Depth</td>
+                <td>
+                    <strong>deptho</strong>
+                </td>
+                <td>m</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>fixed</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Downward Flux of Particulate Organic Carbon</td>
+                <td>
+                    <strong>
+                    expc-bot
+                    </strong>
+                </td>
+                <td>mol m-2 s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Particulate Organic Carbon Content</td>
+                <td>
+                    <strong>intpoc</strong>
+                </td>
+                <td>kg m-2</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GFDL-ESM4</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Primary Organic Carbon Production by All Types of Phytoplankton</td>
+                <td>
+                    <strong>intpp</strong>
+                </td>
+                <td>mol m-2 s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Net Primary Organic Carbon Production by Diatoms</td>
+                <td>
+                    <strong>intppdiat</strong>
+                </td>
+                <td>mol m-2 s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Net Primary Mole Productivity of Carbon by Diazotrophs</td>
+                <td>
+                    <strong>intppdiaz</strong>
+                </td>
+                <td>mol m-2 s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>MPI-ESM1-2-HR</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Maximum Ocean Mixed Layer Thickness Defined by Sigma T</td>
+                <td>
+                    <strong>mlotstmax</strong>
+                </td>
+                <td>m</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dissolved Oxygen Concentration</td>
+                <td>
+                    <strong>
+                    o2, 
+                    o2-bot, 
+                    o2-surf
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>pH</td>
+                <td>
+                    <strong>
+                    ph, 
+                    ph-bot, 
+                    ph-surf
+                    </strong>
+                </td>
+                <td>1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Phytoplankton Carbon Concentration</td>
+                <td>
+                    <strong>
+                    phyc, 
+                    phyc-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Mole Concentration of Diatoms expressed as Carbon in sea water</td>
+                <td>
+                    <strong>
+                    phydiat, 
+                    phydiat-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Mole Concentration of Diazotrophs Expressed as Carbon in Sea Water</td>
+                <td>
+                    <strong>
+                    phydiaz, 
+                    phydiaz-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>MPI-ESM1-2-HR</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Primary Carbon Production by Total Phytoplankton</td>
+                <td>
+                    <strong>pp</strong>
+                </td>
+                <td>mol m-3 s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water Salinity</td>
+                <td>
+                    <strong>
+                    so, 
+                    so-bot, 
+                    so-surf
+                    </strong>
+                </td>
+                <td>0.001</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Net Downward Shortwave Radiation at Sea Water Surface</td>
+                <td>
+                    <strong>rsntds</strong>
+                </td>
+                <td>W m-2</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Ice Area Fraction</td>
+                <td>
+                    <strong>siconc</strong>
+                </td>
+                <td>%</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water Potential Temperature</td>
+                <td>
+                    <strong>thetao</strong>
+                </td>
+                <td>°C</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>2° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Ocean Model Cell Thickness</td>
+                <td>
+                    <strong>thkcello</strong>
+                </td>
+                <td>m</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water Potential Temperature at Sea Floor</td>
+                <td>
+                    <strong>tob</strong>
+                </td>
+                <td>°C</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Surface Temperature</td>
+                <td>
+                    <strong>tos</strong>
+                </td>
+                <td>°C</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>2° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water X Velocity</td>
+                <td>
+                    <strong>uo</strong>
+                </td>
+                <td>m s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water Y Velocity</td>
+                <td>
+                    <strong>vo</strong>
+                </td>
+                <td>m s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Sea Water Z Velocity</td>
+                <td>
+                    <strong>wo</strong>
+                </td>
+                <td>m s-1</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>2° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Mole Concentration of Mesozooplankton expressed as Carbon in sea water</td>
+                <td>
+                    <strong>
+                    zmeso, 
+                    zmeso-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Mole Concentration of Microzooplankton expressed as Carbon in sea water</td>
+                <td>
+                    <strong>
+                    zmicro, 
+                    zmicro-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Zooplankton Carbon Concentration</td>
+                <td>
+                    <strong>
+                    zooc, 
+                    zooc-vint
+                    </strong>
+                </td>
+                <td>mol m-3</td>
+                <td>
+                    <ul>
+                        <li>1° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>CESM2</li>
+                        <li>GFDL-ESM4</li>
+                        <li>IPSL-CM6A-LR</li>
+                        <li>MPI-ESM1-2-HR</li>
+                        <li>UKESM1-0-LL</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h4>Other climate datasets</h4>
 <table id="tbl:co2sens_scenario" class="tablenos table table-bordered w-100">
@@ -1612,797 +1646,803 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 </table>
 
 <h3 id="socioeconomic-forcing">Socioeconomic forcing</h3>
-<table id="tbl:soc_datasets" class="tablenos table table-bordered w-100">
-    <caption>
-        Table 8: Socioeconomic datasets for ISIMIP3b simulation round.
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Dataset</th>
-        <th style="width: 25%;">Included variables (specifier)</th>
-        <th style="width: 20%;">Covered time period</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 25%;">Reference/Source and Comments</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Fishing <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Fishing effort
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/fishing/effort_historical_1950_2014.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>fishing effort</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1950-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>Marine ecosystems or exclusive economic zones</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: Rousseau et al., 2019, PNAS 116 (25) 12238-12243.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Fish catch
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/fishing/catch_historical_1950_2014.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>fish catch</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1950-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>Marine ecosystems or exclusive economic zones</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: Watson and Tidd, 2018, Marine Policy, 93: 171-177.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Population <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population 5&#39; grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people (popc)</li>
-                    <li>rural number of people (rurc)</li>
-                    <li>urban number of people (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>5&#39; grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population 0.5° grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people (popc)</li>
-                    <li>rural number of people (rurc)</li>
-                    <li>urban number of people (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population national
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per country</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>national</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density 5&#39; grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer (popc)</li>
-                    <li>rural number of people per square kilometer (rurc)</li>
-                    <li>urban number of people per square kilometer (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>5&#39; grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density 0.5° grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer (popc)</li>
-                    <li>rural number of people per square kilometer (rurc)</li>
-                    <li>urban number of people per square kilometer (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density national
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>national</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>GDP <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>GDP
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/gdp/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_gdp_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>GDP PPP 2005 USD (gdp)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2014</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>country-level</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<a href="https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html">https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html</a>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021.</p></td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:soc_datasets" class="tablenos table table-bordered w-100">
+        <caption>
+            Table 8: Socioeconomic datasets for ISIMIP3b simulation round.
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Dataset</th>
+            <th style="width: 25%;">Included variables (specifier)</th>
+            <th style="width: 20%;">Covered time period</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 25%;">Reference/Source and Comments</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Fishing <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Fishing effort
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/fishing/effort_historical_1950_2014.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>fishing effort</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1950-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Marine ecosystems or exclusive economic zones</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: Rousseau et al., 2019, PNAS 116 (25) 12238-12243.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Fish catch
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/fishing/catch_historical_1950_2014.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>fish catch</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1950-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Marine ecosystems or exclusive economic zones</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: Watson and Tidd, 2018, Marine Policy, 93: 171-177.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Population <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population 5&#39; grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people (popc)</li>
+                        <li>rural number of people (rurc)</li>
+                        <li>urban number of people (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>5&#39; grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population 0.5° grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people (popc)</li>
+                        <li>rural number of people (rurc)</li>
+                        <li>urban number of people (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population national
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per country</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>national</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density 5&#39; grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer (popc)</li>
+                        <li>rural number of people per square kilometer (rurc)</li>
+                        <li>urban number of people per square kilometer (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>5&#39; grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density 0.5° grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer (popc)</li>
+                        <li>rural number of people per square kilometer (rurc)</li>
+                        <li>urban number of people per square kilometer (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density national
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>national</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>GDP <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>GDP
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/gdp/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_gdp_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>GDP PPP 2005 USD (gdp)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2014</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>country-level</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<a href="https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html">https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html</a>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021.</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h3 id="geographic-data-and-information">Geographic data and information</h3>
-<table id="tbl:geo_datasets" class="tablenos table table-bordered w-100">
-    <caption>
-        Table 9: Geographic data and information for ISIMIP3b simulation round.
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Dataset</th>
-        <th style="width: 30%;">Included variables (specifier)</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Reference/Source and Comments</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Land/Sea masks</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask_no-ant</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask_no-ant.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>Same as <strong>landseamask</strong> but without Antarctica.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask_water-global</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask_water-global.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than <strong>landseamask</strong>. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea.</p></td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:geo_datasets" class="tablenos table table-bordered w-100">
+        <caption>
+            Table 9: Geographic data and information for ISIMIP3b simulation round.
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Dataset</th>
+            <th style="width: 30%;">Included variables (specifier)</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Reference/Source and Comments</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Land/Sea masks</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask_no-ant</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask_no-ant.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>Same as <strong>landseamask</strong> but without Antarctica.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask_water-global</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask_water-global.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than <strong>landseamask</strong>. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea.</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h2 id="output-data">Output data</h2>
 <p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
 <p>Please note that unless otherwise defined, the variables in ISIMIP should be reported relative to the grid cell land area.</p>
 <h3 id="output-variables">Output variables</h3>
-<table id="tbl:variable" class="tablenos table table-bordered w-100">
-    <caption>
-        Table 10: Output variables for Fisheries and Marine Ecosystems (regional) (<code>variable</code>).
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Variable long name</th>
-        <th style="width: 20%;">Variable specifier</th>
-        <th style="width: 10%;">Unit</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Comments</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Mandatory output from global and regional models (provide as many as possible). All biomasses are in wet weight, not g C.</strong>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Consumer Biomass Density</td>
-            <td>
-                    <strong>tcb</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+<div class="table-wrapper">
+    <table id="tbl:variable" class="tablenos table table-bordered table-w-100">
+        <caption>
+            Table 10: Output variables for Fisheries and Marine Ecosystems (regional) (<code>variable</code>).
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Variable long name</th>
+            <th style="width: 20%;">Variable specifier</th>
+            <th style="width: 10%;">Unit</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Comments</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Mandatory output from global and regional models (provide as many as possible). All biomasses are in wet weight, not g C.</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Consumer Biomass Density</td>
+                <td>
+                        <strong>tcb</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>All consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Consumer Biomass Density in log10 Weight Bins</td>
-            <td>
-                    <strong>tcblog10</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>All consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Consumer Biomass Density in log10 Weight Bins</td>
+                <td>
+                        <strong>tcblog10</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p><b>Level dimensions:</b> (time, bins, lat, lon).</p>
-                <p>If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, &gt;100kg)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Pelagic Biomass Density</td>
-            <td>
-                    <strong>tpb</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, bins, lat, lon).</p>
+                    <p>If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, &gt;100kg)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Pelagic Biomass Density</td>
+                <td>
+                        <strong>tpb</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>All pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Demersal Biomass Density</td>
-            <td>
-                    <strong>tdb</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>All pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Demersal Biomass Density</td>
+                <td>
+                        <strong>tdb</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>All demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Catch (all commercial functional groups / size classes)</td>
-            <td>
-                    <strong>tc</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>All demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Catch (all commercial functional groups / size classes)</td>
+                <td>
+                        <strong>tc</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea (commercial landings plus discards, fish and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Catch in log10 Weight Bins</td>
-            <td>
-                    <strong>tclog10</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea (commercial landings plus discards, fish and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Catch in log10 Weight Bins</td>
+                <td>
+                        <strong>tclog10</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p><b>Level dimensions:</b> (time, bins, lat, lon).</p>
-                <p>If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, &gt;100kg)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Pelagic Catch</td>
-            <td>
-                    <strong>tpc</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, bins, lat, lon).</p>
+                    <p>If the model is size-structured, please provide biomass in equal log 10 g weight bins (1-10g, 10-100g, 100g-1kg, 1-10kg, 10-100kg, &gt;100kg)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Pelagic Catch</td>
+                <td>
+                        <strong>tpc</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of all pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Total Demersal Catch</td>
-            <td>
-                    <strong>tdc</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of all pelagic consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Demersal Catch</td>
+                <td>
+                        <strong>tdc</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of all demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Optional output from global and regional models. All biomasses are in wet weight, not g C.</strong>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Small Pelagics &lt;30cm</td>
-            <td>
-                    <strong>bp30cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of all demersal consumers (trophic level &gt;1, vertebrates and invertebrates)</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Optional output from global and regional models. All biomasses are in wet weight, not g C.</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Small Pelagics &lt;30cm</td>
+                <td>
+                        <strong>bp30cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a pelagic species and L infinity is &lt;30 cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
-            <td>
-                    <strong>bp30to90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a pelagic species and L infinity is &lt;30 cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
+                <td>
+                        <strong>bp30to90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a pelagic species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Large Pelagics &gt;=90cm</td>
-            <td>
-                    <strong>bp90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a pelagic species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Large Pelagics &gt;=90cm</td>
+                <td>
+                        <strong>bp90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a pelagic species and L infinity is &gt;=90cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Small Demersals &lt;30cm</td>
-            <td>
-                    <strong>bd30cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a pelagic species and L infinity is &gt;=90cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Small Demersals &lt;30cm</td>
+                <td>
+                        <strong>bd30cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a demersal species and L infinity is &lt;30 cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
-            <td>
-                    <strong>bd30to90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a demersal species and L infinity is &lt;30 cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
+                <td>
+                        <strong>bd30to90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a demersal species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Biomass Density of Large Demersals &gt;=90cm</td>
-            <td>
-                    <strong>bd90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a demersal species and L infinity is &gt;=30 cm and &lt;90cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Biomass Density of Large Demersals &gt;=90cm</td>
+                <td>
+                        <strong>bd90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>If a demersal species and L infinity is &gt;=90cm, include in this variable</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Small Pelagics &lt;30cm</td>
-            <td>
-                    <strong>cp30cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>If a demersal species and L infinity is &gt;=90cm, include in this variable</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Small Pelagics &lt;30cm</td>
+                <td>
+                        <strong>cp30cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of pelagic species with L infinity &lt;30 cm</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
-            <td>
-                    <strong>cp30to90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of pelagic species with L infinity &lt;30 cm</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Medium Pelagics &gt;=30cm and &lt;90cm</td>
+                <td>
+                        <strong>cp30to90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of pelagic species with L infinity &gt;=30 cm and &lt;90 cm</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Large Pelagics &gt;=90cm</td>
-            <td>
-                    <strong>cp90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of pelagic species with L infinity &gt;=30 cm and &lt;90 cm</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Large Pelagics &gt;=90cm</td>
+                <td>
+                        <strong>cp90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of pelagic species with L infinity &gt;=90 cm</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Small Demersals &lt;30cm</td>
-            <td>
-                    <strong>cd30cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of pelagic species with L infinity &gt;=90 cm</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Small Demersals &lt;30cm</td>
+                <td>
+                        <strong>cd30cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of demersal species with L infinity &lt;30 cm</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
-            <td>
-                    <strong>cd30to90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of demersal species with L infinity &lt;30 cm</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Medium Demersals &gt;=30cm and &lt;90cm</td>
+                <td>
+                        <strong>cd30to90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of demersal species with L infinity &gt;=30 cm and &lt;90 cm</p>
-            </td>
-        </tr>
-        <tr>
-            <td>Catch Density of Large Demersals &gt;=90cm</td>
-            <td>
-                    <strong>cd90cm</strong>
-            </td>
-            <td>
-                g m-2
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of demersal species with L infinity &gt;=30 cm and &lt;90 cm</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Catch Density of Large Demersals &gt;=90cm</td>
+                <td>
+                        <strong>cd90cm</strong>
+                </td>
+                <td>
+                    g m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
 
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td>
-                <p>Catch at sea of demersal species with L infinity &gt;=90 cm</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Catch at sea of demersal species with L infinity &gt;=90 cm</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h3 id="ocean-regions">Ocean regions</h3>
 <table id="tbl:ocean" class="tablenos table table-bordered w-100">
@@ -2574,5 +2614,59 @@ lpjml_ukesm1-0-ll_w5e5_ssp585_2015soc_2015co2_yield-mai-noirr_global_annual_2006
                 </div>
             </div>
         </footer>
+
+        <script defer>
+            (function() {
+                var showMsg = 'Show full table',
+                    hideMsg = 'Hide table';
+
+                function toggleTable(wrapper, button, a) {
+                    if (wrapper.classList.contains('closed')) {
+                        wrapper.classList.remove('closed');
+
+                        button.innerHTML = hideMsg;
+                        a.innerHTML = hideMsg;
+
+                        localStorage.setItem(wrapper.querySelector('table').id, 1)
+                    } else {
+                        wrapper.classList.add('closed');
+
+                        button.innerHTML = showMsg;
+                        a.innerHTML = showMsg;
+
+                        localStorage.setItem(wrapper.querySelector('table').id, 0)
+                    }
+                }
+
+                document.querySelectorAll('.table-wrapper').forEach(function(wrapper) {
+                    wrapper.classList.add('closed');
+
+                    var a = document.createElement('a');
+                    a.innerHTML = showMsg;
+                    a.className = 'toggle-table';
+                    a.href = '#';
+
+                    var button = document.createElement('button');
+                    button.innerHTML = showMsg;
+                    button.className = 'toggle-table';
+
+                    wrapper.querySelector('caption').append(a);
+                    wrapper.after(button);
+
+                    a.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        toggleTable(wrapper, button, a);
+                    });
+                    button.addEventListener('click', function (event) {
+                        toggleTable(wrapper, button, a);
+                        wrapper.scrollIntoView();
+                    });
+
+                    if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
+                        toggleTable(wrapper, button, a);
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>

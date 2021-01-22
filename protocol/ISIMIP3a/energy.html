@@ -66,8 +66,38 @@
                 margin-bottom: 2rem;
                 font-size: small;
             }
-            .table thead th {
+            table.table thead th {
                 vertical-align: top;
+            }
+            div.table-wrapper table.table {
+                margin-bottom: 0;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed {
+                height: 300px;
+                overflow: hidden;
+            }
+            div.table-wrapper.closed tbody {
+                opacity: 0.5;
+            }
+            a.toggle-table {
+                display: block;
+                float: right;
+            }
+            button.toggle-table {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0.5rem;
+                background-color: white;
+                border: 1px solid rgb(164, 164, 164);
+                font-size: smaller;
+            }
+            button.toggle-table:focus {
+                outline: 0;
             }
             td :last-child {
                 margin-bottom: 0;
@@ -150,10 +180,10 @@
                     </div>
                     <div class="col text-right">
                         <p>
-                            Last updated: 11 January 2021
+                            Last updated: 22 January 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2f2776541fc362b3d2199030076385f0c64dc942">2f2776541fc362b3d2199030076385f0c64dc942</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/0fadb0eced63c550249c22593270fe9ac446c3a2">0fadb0eced63c550249c22593270fe9ac446c3a2</a>
                         </p>
                     </div>
                 </div>
@@ -299,30 +329,32 @@
 <p>The sensitivity experiments are meant to be "artificial" deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as “default” in the sensitivity specifier of the file name even if the run would be identical to the <code>1901co2</code> sensitivity setting.</p>
 <p>The particular sensitivity scenario for an experiment is given in the experiments table below. For most experiments no sensitivity scenario is given, so the <code>default</code> label applies.</p>
 <h3 id="experiments">Experiments</h3>
-<table id="tbl:scenario" class="tablenos table table-bordered w-100">
-    <caption>
-      Table 4: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
-    </caption>
-    <thead class="thead-dark">
-        <tr>
-            <th style="width: 25%;">Experiment</th>
+<div class="table-wrapper">
+    <table id="tbl:scenario" class="tablenos table table-bordered w-100">
+        <caption>
+          Table 4: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
+        </caption>
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 25%;">Experiment</th>
 
 
-            <th style="width: 25%;">Short description</th>
-            <th style="width: 25%;">
-                <p>Transition from Spin-up to experiment</p>
-                <p>1850-1900, only if spin-up is needed</p>
-            </th>
-            <th style="width: 25%;">
-                <p>Historical</p>
-                <p>1901-2016</p>
-            </th>
+                <th style="width: 25%;">Short description</th>
+                <th style="width: 25%;">
+                    <p>Transition from Spin-up to experiment</p>
+                    <p>1850-1900, only if spin-up is needed</p>
+                </th>
+                <th style="width: 25%;">
+                    <p>Historical</p>
+                    <p>1901-2016</p>
+                </th>
 
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
 
 <h4>Note regarding models requiring spin-up</h4>
 <p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data (files <code>climate/atmosphere/spinclim/&lt;dataset&gt;/&lt;dataset&gt;_spinclim_&lt;variable&gt;_global_daily_&lt;start-year&gt;_&lt;start-year&gt;.nc</code>). If more than 100 years of spin-up are needed, these data can be repeated as often as needed.</p>
@@ -378,215 +410,217 @@
 
 <h4>Note on climate forcing priority</h4>
 <p>The priority for the different climate forcing datasets is from top to bottom. If you cannot use all climate forcing datasets, please concentrate on those at the top of the table.</p>
-<table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
-    <caption>
-      Table 6: Climate forcing variables for ISIMIP3a simulations (<code>climate-variable</code>).
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 30%;">Variable</th>
-        <th style="width: 10%;">Variable specifier</th>
-        <th style="width: 10%;">Unit</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Datasets</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Atmospheric variables <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td>Near-Surface Relative Humidity</td>
-            <td>
-                <strong>hurs</strong>
-            </td>
-            <td>%</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Near-Surface Specific Humidity</td>
-            <td>
-                <strong>huss</strong>
-            </td>
-            <td>kg kg-1</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Precipitation</td>
-            <td>
-                <strong>pr</strong>
-            </td>
-            <td>kg m-2 s-1</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Surface Air Pressure</td>
-            <td>
-                <strong>ps</strong>
-            </td>
-            <td>Pa</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Surface Downwelling Longwave Radiation</td>
-            <td>
-                <strong>rlds</strong>
-            </td>
-            <td>W m-2</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Surface Downwelling Shortwave Radiation</td>
-            <td>
-                <strong>rsds</strong>
-            </td>
-            <td>W m-2</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Near-Surface Wind Speed</td>
-            <td>
-                <strong>sfcwind</strong>
-            </td>
-            <td>m s-1</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Near-Surface Air Temperature</td>
-            <td>
-                <strong>tas</strong>
-            </td>
-            <td>K</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Daily Maximum Near-Surface Air Temperature</td>
-            <td>
-                <strong>tasmax</strong>
-            </td>
-            <td>K</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Daily Minimum Near-Surface Air Temperature</td>
-            <td>
-                <strong>tasmin</strong>
-            </td>
-            <td>K</td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>daily</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
-                    <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
+        <caption>
+          Table 6: Climate forcing variables for ISIMIP3a simulations (<code>climate-variable</code>).
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 30%;">Variable</th>
+            <th style="width: 10%;">Variable specifier</th>
+            <th style="width: 10%;">Unit</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Datasets</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Atmospheric variables <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Near-Surface Relative Humidity</td>
+                <td>
+                    <strong>hurs</strong>
+                </td>
+                <td>%</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Near-Surface Specific Humidity</td>
+                <td>
+                    <strong>huss</strong>
+                </td>
+                <td>kg kg-1</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Precipitation</td>
+                <td>
+                    <strong>pr</strong>
+                </td>
+                <td>kg m-2 s-1</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Surface Air Pressure</td>
+                <td>
+                    <strong>ps</strong>
+                </td>
+                <td>Pa</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Surface Downwelling Longwave Radiation</td>
+                <td>
+                    <strong>rlds</strong>
+                </td>
+                <td>W m-2</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Surface Downwelling Shortwave Radiation</td>
+                <td>
+                    <strong>rsds</strong>
+                </td>
+                <td>W m-2</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Near-Surface Wind Speed</td>
+                <td>
+                    <strong>sfcwind</strong>
+                </td>
+                <td>m s-1</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Near-Surface Air Temperature</td>
+                <td>
+                    <strong>tas</strong>
+                </td>
+                <td>K</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Daily Maximum Near-Surface Air Temperature</td>
+                <td>
+                    <strong>tasmax</strong>
+                </td>
+                <td>K</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Daily Minimum Near-Surface Air Temperature</td>
+                <td>
+                    <strong>tasmin</strong>
+                </td>
+                <td>K</td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>daily</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>GSWP3 (obsclim and counterclim, 1901-2010)</li>
+                        <li>GSWP3-W5E5 (obsclim and counterclim, 1901-2016)</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h4>Other climate datasets</h4>
 <table id="tbl:co2sens_scenario" class="tablenos table table-bordered w-100">
@@ -631,857 +665,861 @@
 </table>
 
 <h3 id="socioeconomic-forcing">Socioeconomic forcing</h3>
-<table id="tbl:soc_datasets" class="tablenos table table-bordered w-100">
-    <caption>
-        Table 8: Socioeconomic datasets for ISIMIP3a simulation round.
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Dataset</th>
-        <th style="width: 25%;">Included variables (specifier)</th>
-        <th style="width: 20%;">Covered time period</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 25%;">Reference/Source and Comments</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Land use <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Landuse totals
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-totals_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>share of the total cropland (cropland_total)</li>
-                    <li>all of the rainfed cropland (cropland_rainfed)</li>
-                    <li>all of the irrigated cropland (cropland_irrigated)</li>
-                    <li>share of managed pastures or rangeland (pastures)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al, in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Downscaling to 5 crops
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-5crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>share of rainfed/irrigated C4 annual crops (c4ann_rainfed, c4ann_irrigated)</li>
-                    <li>share of rainfed/irrigated C3 perennial crops (c3per_rainfed, c3per_irrigated)</li>
-                    <li>share of rainfed/irrigated C3 N-fixing crops (c3nfx_rainfed, c3nfx_irrigated)</li>
-                    <li>share of rainfed/irrigated C4 annual crops (c4ann_rainfed, c4ann_irrigated)</li>
-                    <li>share of rainfed/irrigated C4 perennial crops (c4per_rainfed, c4per_irrigated)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Downscaling to 15 crops
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-15crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>share of rainfed/irrigated maize (maize_rainfed, maize_irrigated)</li>
-                    <li>share of rainfed/irrigated rice (rice_rainfed, rice_irrigated)</li>
-                    <li>share of rainfed/irrigated oil crops (groundnut) (oil_crops_groundnut_rainfed, oil_crops_groundnut_irrigated)</li>
-                    <li>share of rainfed/irrigated oil crops (rapeseed) (oil_crops_rapeseed_rainfed, oil_crops_rapeseed_irrigated)</li>
-                    <li>share of rainfed/irrigated oil crops (soybean) (oil_crops_soybean_rainfed, oil_crops_soybean_irrigated)</li>
-                    <li>share of rainfed/irrigated oil crops (sunflower) (oil_crops_sunflower_rainfed, oil_crops_sunflower_irrigated)</li>
-                    <li>share of rainfed/irrigated pulses (pulses_rainfed, pulses_irrigated)</li>
-                    <li>share of rainfed/irrigated temperate cereals (temperate_cereals_rainfed, temperate_cereals_irrigated)</li>
-                    <li>share of rainfed/irrigated temperate roots (temperate_roots_rainfed, temperate_roots_irrigated)</li>
-                    <li>share of rainfed/irrigated tropical cereals (tropical_cereals_rainfed, tropical_cereals_irrigated)</li>
-                    <li>share of rainfed/irrigated tropical roots (tropical_roots_rainfed, tropical_roots_irrigated)</li>
-                    <li>share of rainfed/irrigated C3 annual crops not covered by the above (others_c3ann_rainfed, others_c3ann_irrigated)</li>
-                    <li>share of rainfed/irrigated C3 N-fixing crops not covered by the above (others_c3nfx_rainfed, others_c3nfx_irrigated)</li>
-                    <li>share of rainfed/irrigated C3 perennial crops (c3per_rainfed, c3per_irrigated)</li>
-                    <li>share of rainfed/irrigated C4 perennial crops (c4per_rainfed, c4per_irrigated)</li>
-                    <li>share of pastures, both managed and rangeland (pastures)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>The C4 perennial crops are not further downscaled from the "5 crops" data set and currently only include sugarcane.  Similarly, the C3 perennial crops are not downscaled either. The data is derived from the "5 crops" LUH2 data, and the crops have been downscaled to 15 crops according to the ratios given by the Monfreda data set (Monfreda, Ramankutty, &amp; Foley, 2008).</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Managed pastures and rangeland
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-pastures_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>share of managed pastures (managed_pastures)</li>
-                    <li>share of rangeland (rangeland)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al, in review., see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Urban areas
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-urbanareas_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>share of urban areas (urbanareas)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>N-fertilizer <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Nitrogen deposited by fertilizers on croplands
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/n-fertilizer/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_n-fertilizer-5crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>deposition of N through fertilizer on cropland with C3 annual crops (fertl_c3ann)</li>
-                    <li>C3 perennial crops (fertl_c3per)</li>
-                    <li>C3 N-fixing crops (fertl_c3nfx)</li>
-                    <li>C4 annual crops (fertl_c4ann)</li>
-                    <li>C4 perennial crops (fertl_c4per)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual (growing season)</li>
-                </ul>
-            </td>
-            <td><p>Based on the LUH2 v2h data set (see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>N-deposition</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Reduced nitrogen deposition
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/n-deposition/&lt;soc_scenario&gt;/ndep-nhx_&lt;soc_scenario&gt;_monthly_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>NHx deposition</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2016</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>monthly</li>
-                </ul>
-            </td>
-            <td><p>Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014. Nitrogen deposition data was interpolated to 0.5° by 0.5° by the nearest grid. Data in 2015 and 2016 is assumed to be same as that in 2014 (Tian et al. 2018)</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Oxidized nitrogen deposition
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/n-deposition/&lt;soc_scenario&gt;/ndep-noy_&lt;soc_scenario&gt;_monthly_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>NOy deposition</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2016</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014.  Nitrogen deposition data was interpolated to 0.5° by 0.5° by the nearest grid. Data in 2015 and 2016 is assumed to be same as that in 2014 (Tian et al. 2018)</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Reservoirs &amp; dams</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Reservoirs &amp; dams
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/reservoir_dams/reservoirs-dams_1850_2025.xls</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>Unique ID representing a dam and its associated reservoir corresponding to GRanD/KSU IDs (ID)</li>
-                    <li>name (DAM_NAME)</li>
-                    <li>original location (LON_ORIG, LAT_ORIG)</li>
-                    <li>location adjusted to the DDM30 routing network (LON_DDM30, LAT_DDM30)</li>
-                    <li>upstream area in DDM30 (CATCH_SKM_DDM30)</li>
-                    <li>upstream area in GRanD (CATCH_SKM_GRanD)</li>
-                    <li>maximum storage capacity of reservoir (CAP_MCM)</li>
-                    <li>year of construction/commissioning (YEAR)</li>
-                    <li>flag to indicate that the year of dam construction has been artificially set to 1850 if not existing (FLAG_ART=1, otherwise 0)</li>
-                    <li>alternative year may indicate a multi-year construction or secondary dam (ALT_YEAR)</li>
-                    <li>flag of correction if relocation was applied (FLAG_CORR)</li>
-                    <li>river name which the dam impounds (RIVER)</li>
-                    <li>height of dam (D_Hght_m)</li>
-                    <li>maximum inundation area of reservoir (R_Area_km2)</li>
-                    <li>main purpose(s) of dam (PURPOSE)</li>
-                    <li>source of information (SOURCE)</li>
-                    <li>other notes (COMMENTS)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-2025</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid and original coordinates (degree)</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Lehner et al. (2011a, <a href="https://doi.org/10.7927/H4N877QK">https://doi.org/10.7927/H4N877QK</a>), Lehner et al. (2011b, <a href="https://dx.doi.org/10.1890/100125">https://dx.doi.org/10.1890/100125</a>), and Jida Wang et al. (KSU/Kansas State University, personal communication). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications. Please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> in case of questions.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Water abstraction</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Water abstraction for domestic and industrial purposes
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/water_abstraction/[domw|indw][w|c]_&lt;soc_scenario&gt;_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>domestic and industrial water withdrawal and consumption (domww, domwc, indww, indwc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2018</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by WaterGAP, PCR-GLOBWB, and H08. This data is based ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project (Wada et al., 2016, <a href="http://www.geosci-model-dev.net/9/175/2016/">http://www.geosci-model-dev.net/9/175/2016/</a>) for after 2005. Years before 1901 have been filled with the value for year 1901.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Population <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population 5&#39; grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people (popc)</li>
-                    <li>rural number of people (rurc)</li>
-                    <li>urban number of people (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>5&#39; grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population 0.5° grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people (popc)</li>
-                    <li>rural number of people (rurc)</li>
-                    <li>urban number of people (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population national
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per country</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>national</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density 5&#39; grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer (popc)</li>
-                    <li>rural number of people per square kilometer (rurc)</li>
-                    <li>urban number of people per square kilometer (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>5&#39; grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density 0.5° grid
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer (popc)</li>
-                    <li>rural number of people per square kilometer (rurc)</li>
-                    <li>urban number of people per square kilometer (urbc)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>0.5° grid</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>Population density national
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>total number of people per square kilometer</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2020</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>national</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>GDP <span class="badge badge-success">mandatory</span></strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>GDP
-                </p>
-            </td>
-            <td colspan="4">
-                <code>socioeconomic/gdp/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_gdp_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>GDP PPP 2005 USD (gdp)</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>1850-1900</li>
-                    <li>1901-2016</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                    <li>country-level</li>
-                    <li>annual</li>
-                </ul>
-            </td>
-            <td><p>Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<a href="https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html">https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html</a>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021.</p></td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:soc_datasets" class="tablenos table table-bordered w-100">
+        <caption>
+            Table 8: Socioeconomic datasets for ISIMIP3a simulation round.
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Dataset</th>
+            <th style="width: 25%;">Included variables (specifier)</th>
+            <th style="width: 20%;">Covered time period</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 25%;">Reference/Source and Comments</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Land use <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Landuse totals
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-totals_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>share of the total cropland (cropland_total)</li>
+                        <li>all of the rainfed cropland (cropland_rainfed)</li>
+                        <li>all of the irrigated cropland (cropland_irrigated)</li>
+                        <li>share of managed pastures or rangeland (pastures)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al, in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Downscaling to 5 crops
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-5crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>share of rainfed/irrigated C4 annual crops (c4ann_rainfed, c4ann_irrigated)</li>
+                        <li>share of rainfed/irrigated C3 perennial crops (c3per_rainfed, c3per_irrigated)</li>
+                        <li>share of rainfed/irrigated C3 N-fixing crops (c3nfx_rainfed, c3nfx_irrigated)</li>
+                        <li>share of rainfed/irrigated C4 annual crops (c4ann_rainfed, c4ann_irrigated)</li>
+                        <li>share of rainfed/irrigated C4 perennial crops (c4per_rainfed, c4per_irrigated)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Downscaling to 15 crops
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-15crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>share of rainfed/irrigated maize (maize_rainfed, maize_irrigated)</li>
+                        <li>share of rainfed/irrigated rice (rice_rainfed, rice_irrigated)</li>
+                        <li>share of rainfed/irrigated oil crops (groundnut) (oil_crops_groundnut_rainfed, oil_crops_groundnut_irrigated)</li>
+                        <li>share of rainfed/irrigated oil crops (rapeseed) (oil_crops_rapeseed_rainfed, oil_crops_rapeseed_irrigated)</li>
+                        <li>share of rainfed/irrigated oil crops (soybean) (oil_crops_soybean_rainfed, oil_crops_soybean_irrigated)</li>
+                        <li>share of rainfed/irrigated oil crops (sunflower) (oil_crops_sunflower_rainfed, oil_crops_sunflower_irrigated)</li>
+                        <li>share of rainfed/irrigated pulses (pulses_rainfed, pulses_irrigated)</li>
+                        <li>share of rainfed/irrigated temperate cereals (temperate_cereals_rainfed, temperate_cereals_irrigated)</li>
+                        <li>share of rainfed/irrigated temperate roots (temperate_roots_rainfed, temperate_roots_irrigated)</li>
+                        <li>share of rainfed/irrigated tropical cereals (tropical_cereals_rainfed, tropical_cereals_irrigated)</li>
+                        <li>share of rainfed/irrigated tropical roots (tropical_roots_rainfed, tropical_roots_irrigated)</li>
+                        <li>share of rainfed/irrigated C3 annual crops not covered by the above (others_c3ann_rainfed, others_c3ann_irrigated)</li>
+                        <li>share of rainfed/irrigated C3 N-fixing crops not covered by the above (others_c3nfx_rainfed, others_c3nfx_irrigated)</li>
+                        <li>share of rainfed/irrigated C3 perennial crops (c3per_rainfed, c3per_irrigated)</li>
+                        <li>share of rainfed/irrigated C4 perennial crops (c4per_rainfed, c4per_irrigated)</li>
+                        <li>share of pastures, both managed and rangeland (pastures)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>The C4 perennial crops are not further downscaled from the "5 crops" data set and currently only include sugarcane.  Similarly, the C3 perennial crops are not downscaled either. The data is derived from the "5 crops" LUH2 data, and the crops have been downscaled to 15 crops according to the ratios given by the Monfreda data set (Monfreda, Ramankutty, &amp; Foley, 2008).</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Managed pastures and rangeland
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-pastures_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>share of managed pastures (managed_pastures)</li>
+                        <li>share of rangeland (rangeland)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al, in review., see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Urban areas
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/landuse/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_landuse-urbanareas_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>share of urban areas (urbanareas)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Based on the HYDE 3.2 data set (Klein Goldewijk, 2016), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>N-fertilizer <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Nitrogen deposited by fertilizers on croplands
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/n-fertilizer/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_n-fertilizer-5crops_annual_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>deposition of N through fertilizer on cropland with C3 annual crops (fertl_c3ann)</li>
+                        <li>C3 perennial crops (fertl_c3per)</li>
+                        <li>C3 N-fixing crops (fertl_c3nfx)</li>
+                        <li>C4 annual crops (fertl_c4ann)</li>
+                        <li>C4 perennial crops (fertl_c4per)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual (growing season)</li>
+                    </ul>
+                </td>
+                <td><p>Based on the LUH2 v2h data set (see Hurtt, Chini, Sahajpal, Frolking, &amp; et al., in in review, see also <a href="https://luh.umd.edu">https://luh.umd.edu</a>).</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>N-deposition</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Reduced nitrogen deposition
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/n-deposition/&lt;soc_scenario&gt;/ndep-nhx_&lt;soc_scenario&gt;_monthly_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>NHx deposition</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2016</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td><p>Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014. Nitrogen deposition data was interpolated to 0.5° by 0.5° by the nearest grid. Data in 2015 and 2016 is assumed to be same as that in 2014 (Tian et al. 2018)</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Oxidized nitrogen deposition
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/n-deposition/&lt;soc_scenario&gt;/ndep-noy_&lt;soc_scenario&gt;_monthly_&lt;start_year&gt;_&lt;end_year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>NOy deposition</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2016</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014.  Nitrogen deposition data was interpolated to 0.5° by 0.5° by the nearest grid. Data in 2015 and 2016 is assumed to be same as that in 2014 (Tian et al. 2018)</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Reservoirs &amp; dams</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Reservoirs &amp; dams
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/reservoir_dams/reservoirs-dams_1850_2025.xls</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>Unique ID representing a dam and its associated reservoir corresponding to GRanD/KSU IDs (ID)</li>
+                        <li>name (DAM_NAME)</li>
+                        <li>original location (LON_ORIG, LAT_ORIG)</li>
+                        <li>location adjusted to the DDM30 routing network (LON_DDM30, LAT_DDM30)</li>
+                        <li>upstream area in DDM30 (CATCH_SKM_DDM30)</li>
+                        <li>upstream area in GRanD (CATCH_SKM_GRanD)</li>
+                        <li>maximum storage capacity of reservoir (CAP_MCM)</li>
+                        <li>year of construction/commissioning (YEAR)</li>
+                        <li>flag to indicate that the year of dam construction has been artificially set to 1850 if not existing (FLAG_ART=1, otherwise 0)</li>
+                        <li>alternative year may indicate a multi-year construction or secondary dam (ALT_YEAR)</li>
+                        <li>flag of correction if relocation was applied (FLAG_CORR)</li>
+                        <li>river name which the dam impounds (RIVER)</li>
+                        <li>height of dam (D_Hght_m)</li>
+                        <li>maximum inundation area of reservoir (R_Area_km2)</li>
+                        <li>main purpose(s) of dam (PURPOSE)</li>
+                        <li>source of information (SOURCE)</li>
+                        <li>other notes (COMMENTS)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-2025</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid and original coordinates (degree)</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Lehner et al. (2011a, <a href="https://doi.org/10.7927/H4N877QK">https://doi.org/10.7927/H4N877QK</a>), Lehner et al. (2011b, <a href="https://dx.doi.org/10.1890/100125">https://dx.doi.org/10.1890/100125</a>), and Jida Wang et al. (KSU/Kansas State University, personal communication). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications. Please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> in case of questions.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Water abstraction</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Water abstraction for domestic and industrial purposes
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/water_abstraction/[domw|indw][w|c]_&lt;soc_scenario&gt;_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>domestic and industrial water withdrawal and consumption (domww, domwc, indww, indwc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2018</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by WaterGAP, PCR-GLOBWB, and H08. This data is based ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project (Wada et al., 2016, <a href="http://www.geosci-model-dev.net/9/175/2016/">http://www.geosci-model-dev.net/9/175/2016/</a>) for after 2005. Years before 1901 have been filled with the value for year 1901.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Population <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population 5&#39; grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people (popc)</li>
+                        <li>rural number of people (rurc)</li>
+                        <li>urban number of people (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>5&#39; grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population 0.5° grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people (popc)</li>
+                        <li>rural number of people (rurc)</li>
+                        <li>urban number of people (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population national
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per country</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>national</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density 5&#39; grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_5arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer (popc)</li>
+                        <li>rural number of people per square kilometer (rurc)</li>
+                        <li>urban number of people per square kilometer (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>5&#39; grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density 0.5° grid
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_30arcmin_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer (popc)</li>
+                        <li>rural number of people per square kilometer (rurc)</li>
+                        <li>urban number of people per square kilometer (urbc)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>Population density national
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/pop/&lt;soc_scenario&gt;/population-density_&lt;soc_scenario&gt;_national_annual_&lt;start-year&gt;_&lt;end-year&gt;.csv</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>total number of people per square kilometer</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2020</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>national</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>GDP <span class="badge badge-success">mandatory</span></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>GDP
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>socioeconomic/gdp/&lt;soc_scenario&gt;/&lt;soc_scenario&gt;_gdp_annual_&lt;start-year&gt;_&lt;end-year&gt;.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>GDP PPP 2005 USD (gdp)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>1850-1900</li>
+                        <li>1901-2016</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>country-level</li>
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td><p>Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<a href="https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html">https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html</a>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021.</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h3 id="geographic-data-and-information">Geographic data and information</h3>
-<table id="tbl:geo_datasets" class="tablenos table table-bordered w-100">
-    <caption>
-        Table 9: Geographic data and information for ISIMIP3a simulation round.
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 20%;">Dataset</th>
-        <th style="width: 30%;">Included variables (specifier)</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Reference/Source and Comments</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Land/Sea masks</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask_no-ant</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask_no-ant.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>Same as <strong>landseamask</strong> but without Antarctica.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>landseamask_water-global</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/landseamask/landseamask_water-global.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>land-sea mask (mask)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than <strong>landseamask</strong>. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea.</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>Soil</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>gswp3_hwsd</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/soil/gswp3_hwsd.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>soiltexture</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>One fixed pattern to be used for all simulation periods. Upscaled Soil texture map (30 arc sec. to 0.5°x0.5° grid) based on Harmonized World Soil Database v1.1 (HWSD) using the GSWP3 upscaling method A (<a href="http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html">http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html</a>)</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>hwsd_soil_data_all_land</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/soil/hwsd_soil_data_all_land.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>USDA soil texture class dominant HWSD on cropland (texture_class)</li>
-                    <li>domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)</li>
-                    <li>Topsoil pH(H2O) (soil_ph)</li>
-                    <li>Topsoil Calcium Carbonate (soil_caco3)</li>
-                    <li>Topsoil Bulk Density (bulk_density)</li>
-                    <li>Topsoil Cation Exchange Capacity (soil) (cec_soil)</li>
-                    <li>Topsoil Organic Carbon (oc)</li>
-                    <li>depth of Obstacles to Roots (ESDB) (root_obstacles)</li>
-                    <li>depth of Impermeable Layer (ESDB) (impermeable_layer)</li>
-                    <li>Available Water Content (awc)</li>
-                    <li>Topsoil Sand Fraction (sand)</li>
-                    <li>Topsoil Silt Fraction (silt)</li>
-                    <li>Topsoil Clay Fraction (clay)</li>
-                    <li>Topsoil Gravel Content (gravel)</li>
-                    <li>Topsoil Salinity (ece)</li>
-                    <li>Topsoil Base Saturation (bs_soil)</li>
-                    <li>flag for valid soils (issoil)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on all land.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>hwsd_soil_data_on_cropland</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/soil/hwsd_soil_data_on_cropland.nc</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>USDA soil texture class dominant HWSD on cropland (texture_class)</li>
-                    <li>domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)</li>
-                    <li>Topsoil pH(H2O) (soil_ph)</li>
-                    <li>Topsoil Calcium Carbonate (soil_caco3)</li>
-                    <li>Topsoil Bulk Density (bulk_density)</li>
-                    <li>Topsoil Cation Exchange Capacity (soil) (cec_soil)</li>
-                    <li>Topsoil Organic Carbon (oc)</li>
-                    <li>depth of Obstacles to Roots (ESDB) (root_obstacles)</li>
-                    <li>depth of Impermeable Layer (ESDB) (impermeable_layer)</li>
-                    <li>Available Water Content (awc)</li>
-                    <li>Topsoil Sand Fraction (sand)</li>
-                    <li>Topsoil Silt Fraction (silt)</li>
-                    <li>Topsoil Clay Fraction (clay)</li>
-                    <li>Topsoil Gravel Content (gravel)</li>
-                    <li>Topsoil Salinity (ece)</li>
-                    <li>Topsoil Base Saturation (bs_soil)</li>
-                    <li>flag for valid soils (issoil)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland (MIRCA2000 at 5 arc-minutes).</p></td>
-        </tr>
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>River routing</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>basins</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>basin number (basinnumber)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>flowdir</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>flow direction (flowdirection)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
-        </tr>
-        <tr>
-            <td class="no-border-bottom">
-                <p>
-                    <strong>slopes</strong>
-                </p>
-            </td>
-            <td colspan="4">
-                <code>geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]</code>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul>
-                    <li>slope (slope)</li>
-                </ul>
-            </td>
-            <td>0.5° grid</td>
-            <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper">
+    <table id="tbl:geo_datasets" class="tablenos table table-bordered w-100">
+        <caption>
+            Table 9: Geographic data and information for ISIMIP3a simulation round.
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 20%;">Dataset</th>
+            <th style="width: 30%;">Included variables (specifier)</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Reference/Source and Comments</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Land/Sea masks</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask_no-ant</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask_no-ant.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>Same as <strong>landseamask</strong> but without Antarctica.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>landseamask_water-global</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/landseamask/landseamask_water-global.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>land-sea mask (mask)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than <strong>landseamask</strong>. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea.</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>Soil</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>gswp3_hwsd</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/soil/gswp3_hwsd.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>soiltexture</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>One fixed pattern to be used for all simulation periods. Upscaled Soil texture map (30 arc sec. to 0.5°x0.5° grid) based on Harmonized World Soil Database v1.1 (HWSD) using the GSWP3 upscaling method A (<a href="http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html">http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html</a>)</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>hwsd_soil_data_all_land</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/soil/hwsd_soil_data_all_land.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>USDA soil texture class dominant HWSD on cropland (texture_class)</li>
+                        <li>domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)</li>
+                        <li>Topsoil pH(H2O) (soil_ph)</li>
+                        <li>Topsoil Calcium Carbonate (soil_caco3)</li>
+                        <li>Topsoil Bulk Density (bulk_density)</li>
+                        <li>Topsoil Cation Exchange Capacity (soil) (cec_soil)</li>
+                        <li>Topsoil Organic Carbon (oc)</li>
+                        <li>depth of Obstacles to Roots (ESDB) (root_obstacles)</li>
+                        <li>depth of Impermeable Layer (ESDB) (impermeable_layer)</li>
+                        <li>Available Water Content (awc)</li>
+                        <li>Topsoil Sand Fraction (sand)</li>
+                        <li>Topsoil Silt Fraction (silt)</li>
+                        <li>Topsoil Clay Fraction (clay)</li>
+                        <li>Topsoil Gravel Content (gravel)</li>
+                        <li>Topsoil Salinity (ece)</li>
+                        <li>Topsoil Base Saturation (bs_soil)</li>
+                        <li>flag for valid soils (issoil)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on all land.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>hwsd_soil_data_on_cropland</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/soil/hwsd_soil_data_on_cropland.nc</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>USDA soil texture class dominant HWSD on cropland (texture_class)</li>
+                        <li>domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)</li>
+                        <li>Topsoil pH(H2O) (soil_ph)</li>
+                        <li>Topsoil Calcium Carbonate (soil_caco3)</li>
+                        <li>Topsoil Bulk Density (bulk_density)</li>
+                        <li>Topsoil Cation Exchange Capacity (soil) (cec_soil)</li>
+                        <li>Topsoil Organic Carbon (oc)</li>
+                        <li>depth of Obstacles to Roots (ESDB) (root_obstacles)</li>
+                        <li>depth of Impermeable Layer (ESDB) (impermeable_layer)</li>
+                        <li>Available Water Content (awc)</li>
+                        <li>Topsoil Sand Fraction (sand)</li>
+                        <li>Topsoil Silt Fraction (silt)</li>
+                        <li>Topsoil Clay Fraction (clay)</li>
+                        <li>Topsoil Gravel Content (gravel)</li>
+                        <li>Topsoil Salinity (ece)</li>
+                        <li>Topsoil Base Saturation (bs_soil)</li>
+                        <li>flag for valid soils (issoil)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland (MIRCA2000 at 5 arc-minutes).</p></td>
+            </tr>
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>River routing</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>basins</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>basin number (basinnumber)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>flowdir</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>flow direction (flowdirection)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
+            </tr>
+            <tr>
+                <td class="no-border-bottom">
+                    <p>
+                        <strong>slopes</strong>
+                    </p>
+                </td>
+                <td colspan="4">
+                    <code>geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]</code>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <ul>
+                        <li>slope (slope)</li>
+                    </ul>
+                </td>
+                <td>0.5° grid</td>
+                <td><p>DDM30 (Döll &amp; Lehner, 2002). Documentation (pdf) is provided alongside data files.</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h2 id="output-data">Output data</h2>
 <p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
@@ -1589,5 +1627,59 @@ lpjml_gwsp3_counterclim_2015soc_1901co2_yield-mai-noirr_global_annual_2006_2010.
                 </div>
             </div>
         </footer>
+
+        <script defer>
+            (function() {
+                var showMsg = 'Show full table',
+                    hideMsg = 'Hide table';
+
+                function toggleTable(wrapper, button, a) {
+                    if (wrapper.classList.contains('closed')) {
+                        wrapper.classList.remove('closed');
+
+                        button.innerHTML = hideMsg;
+                        a.innerHTML = hideMsg;
+
+                        localStorage.setItem(wrapper.querySelector('table').id, 1)
+                    } else {
+                        wrapper.classList.add('closed');
+
+                        button.innerHTML = showMsg;
+                        a.innerHTML = showMsg;
+
+                        localStorage.setItem(wrapper.querySelector('table').id, 0)
+                    }
+                }
+
+                document.querySelectorAll('.table-wrapper').forEach(function(wrapper) {
+                    wrapper.classList.add('closed');
+
+                    var a = document.createElement('a');
+                    a.innerHTML = showMsg;
+                    a.className = 'toggle-table';
+                    a.href = '#';
+
+                    var button = document.createElement('button');
+                    button.innerHTML = showMsg;
+                    button.className = 'toggle-table';
+
+                    wrapper.querySelector('caption').append(a);
+                    wrapper.after(button);
+
+                    a.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        toggleTable(wrapper, button, a);
+                    });
+                    button.addEventListener('click', function (event) {
+                        toggleTable(wrapper, button, a);
+                        wrapper.scrollIntoView();
+                    });
+
+                    if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
+                        toggleTable(wrapper, button, a);
+                    }
+                });
+            })();
+        </script>
     </body>
 </html>
