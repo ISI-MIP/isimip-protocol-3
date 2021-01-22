@@ -1,72 +1,74 @@
-<table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
-    <caption>
-      Table {{ counter() }}: Climate forcing variables for {{ simulation_round.specifier }} simulations (<code>climate-variable</code>).
-    </caption>
-    <thead class="thead-dark">
-        <th style="width: 30%;">Variable</th>
-        {% if simulation_round.specifier.endswith('a') %}
-        <th style="width: 10%;">Variable specifier</th>
-        <th style="width: 10%;">Unit</th>
-        <th style="width: 10%;">Resolution</th>
-        <th style="width: 40%;">Datasets</th>
-        {% else %}
-        <th style="width: 20%;">Variable specifier</th>
-        <th style="width: 15%;">Unit</th>
-        <th style="width: 15%;">Resolution</th>
-        <th style="width: 20%;">Models</th>
-        {% endif %}
-    </thead>
-    <tbody>
-        {% for group, rows in table.items() %}
-        {% if rows %}
-        <tr>
-            <td colspan="7" class="table-secondary">
-                <strong>{{ group }}</strong>
-            </td>
-        </tr>
-        {% for row in rows %}
-        <tr>
-            <td>{{ row.long_name }}</td>
-            <td>
-                {% if not row.extension %}
-                <strong>{{ row.specifier }}</strong>
-                {% elif row.extension is string %}
-                <strong>{{ row.specifier }}-{{ row.extension }}</strong>
-                {% else %}
-                <strong>
-                {% for e in row.extension %}
-                {{ row.specifier }}{{ '-' + e if e else '' }}{{ ', ' if not loop.last }}
-                {% endfor %}
-                </strong>
-                {% endif %}
-            </td>
-            <td>{{ row.unit }}</td>
-            <td>
-                <ul>
-                    {% if row.resolution is string %}
-                    <li>{{ row.resolution }}</li>
+<div class="table-wrapper">
+    <table id="tbl:climate_variables" class="tablenos table table-bordered w-100">
+        <caption>
+          Table {{ counter() }}: Climate forcing variables for {{ simulation_round.specifier }} simulations (<code>climate-variable</code>).
+        </caption>
+        <thead class="thead-dark">
+            <th style="width: 30%;">Variable</th>
+            {% if simulation_round.specifier.endswith('a') %}
+            <th style="width: 10%;">Variable specifier</th>
+            <th style="width: 10%;">Unit</th>
+            <th style="width: 10%;">Resolution</th>
+            <th style="width: 40%;">Datasets</th>
+            {% else %}
+            <th style="width: 20%;">Variable specifier</th>
+            <th style="width: 15%;">Unit</th>
+            <th style="width: 15%;">Resolution</th>
+            <th style="width: 20%;">Models</th>
+            {% endif %}
+        </thead>
+        <tbody>
+            {% for group, rows in table.items() %}
+            {% if rows %}
+            <tr>
+                <td colspan="7" class="table-secondary">
+                    <strong>{{ group }}</strong>
+                </td>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.long_name }}</td>
+                <td>
+                    {% if not row.extension %}
+                    <strong>{{ row.specifier }}</strong>
+                    {% elif row.extension is string %}
+                    <strong>{{ row.specifier }}-{{ row.extension }}</strong>
                     {% else %}
-                    {% for resolution in row.resolution %}
-                    <li>{{ resolution }}</li>
+                    <strong>
+                    {% for e in row.extension %}
+                    {{ row.specifier }}{{ '-' + e if e else '' }}{{ ', ' if not loop.last }}
                     {% endfor %}
+                    </strong>
                     {% endif %}
-                    <li>{{ row.frequency }}</li>
-                </ul>
-            </td>
-            <td>
-                <ul>
-                {% for model in row.climate_forcing %}
-                    {% if row.climate_forcing is mapping %}
-                    <li>{{ model }}: <strong>{{ row.climate_forcing[model]|join(', ') }}</strong></li>
-                    {% else %}
-                    <li>{{ model }}</li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-            </td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
-    </tbody>
-</table>
+                </td>
+                <td>{{ row.unit }}</td>
+                <td>
+                    <ul>
+                        {% if row.resolution is string %}
+                        <li>{{ row.resolution }}</li>
+                        {% else %}
+                        {% for resolution in row.resolution %}
+                        <li>{{ resolution }}</li>
+                        {% endfor %}
+                        {% endif %}
+                        <li>{{ row.frequency }}</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                    {% for model in row.climate_forcing %}
+                        {% if row.climate_forcing is mapping %}
+                        <li>{{ model }}: <strong>{{ row.climate_forcing[model]|join(', ') }}</strong></li>
+                        {% else %}
+                        <li>{{ model }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
