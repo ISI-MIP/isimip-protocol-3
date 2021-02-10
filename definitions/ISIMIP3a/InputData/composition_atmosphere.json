@@ -1,5 +1,5 @@
 {
-  "commit": "e43a260fd6c37603ee7d88b4973055c842df681e",
+  "commit": "bdab01cd8f56adedf1a26c42bd2ce6377e3c6e97",
   "harmonization": [
     {
       "specifier": "default",
@@ -52,7 +52,7 @@
       "specifier": "gswp3_hwsd",
       "file_path": "geo_conditions/soil/gswp3_hwsd.nc",
       "variables": [
-        "soiltexture"
+        "Soil texture (soiltexture)"
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
@@ -257,7 +257,7 @@
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "For these variables, new forcing files will be provided soon: histsoc, accounting for reservoir expansion; and 2015soc.",
+      "comment": "",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -6824,7 +6824,7 @@
       "title": "Reduced nitrogen deposition",
       "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
       "variables": [
-        "NHx deposition"
+        "NHx deposition (nhx)"
       ],
       "time_periods": [
         "1850-1900",
@@ -6855,7 +6855,7 @@
       "title": "Oxidized nitrogen deposition",
       "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
       "variables": [
-        "NOy deposition"
+        "NOy deposition (noy)"
       ],
       "time_periods": [
         "1850-1900",
@@ -6958,9 +6958,21 @@
       "specifier": "fishing_effort",
       "specifier_file": "effort",
       "title": "Fishing effort",
-      "file_path": "socioeconomic/fishing/effort_historical_1950_2014.csv",
+      "file_path": "socioeconomic/fishing/effort_histsoc_1950_2014.csv",
       "variables": [
-        "fishing effort"
+        "FAO",
+        "EEZ",
+        "LME",
+        "FGroup",
+        "NomEffReported",
+        "NomEffIUU",
+        "Year",
+        "AreaSqKm2",
+        "NbrCells",
+        "Fcountry",
+        "Sector",
+        "LMEnbr",
+        "FAOnbr"
       ],
       "time_periods": [
         "1950-2014"
@@ -6977,9 +6989,21 @@
       "specifier": "fishing_catch",
       "specifier_file": "catch",
       "title": "Fish catch",
-      "file_path": "socioeconomic/fishing/catch_historical_1950_2014.csv",
+      "file_path": "socioeconomic/fishing/catch_histsoc_1950_2014.csv",
       "variables": [
-        "fish catch"
+        "FAO",
+        "EEZ",
+        "LME",
+        "FGroup",
+        "NomEffReported",
+        "NomEffIUU",
+        "Year",
+        "AreaSqKm2",
+        "NbrCells",
+        "Fcountry",
+        "Sector",
+        "LMEnbr",
+        "FAOnbr"
       ],
       "time_periods": [
         "1950-2014"
@@ -7050,12 +7074,17 @@
     },
     {
       "specifier": "pctlake",
-      "title": "",
+      "title": "Lake area fraction",
       "file_path": "socioeconomic/lakes/pctlake_<soc_scenario>_<start_year>_<end_year>.nc",
       "variables": [
         "percentage of lakes in grid cell (pct_lake)"
       ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2016"
+      ],
       "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
       "format": "NetCDF",
       "comment": "HydroLAKES polygons dataset v1.0 June 2019 and GRanD v1.3, rasterized using the polygon_to_cellareafraction tool (https://github.com/VUB-HYDR/polygon_to_cellareafraction). Reference: Messager et al. (2016, <https://dx.doi.org/10.1038/ncomms13603>, Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>).",
       "sectors": [
@@ -7246,7 +7275,7 @@
     },
     {
       "specifier": "geo_conditions",
-      "title": "Geographic data and information"
+      "title": "Static geographic information"
     },
     {
       "specifier": "socioeconomic",
