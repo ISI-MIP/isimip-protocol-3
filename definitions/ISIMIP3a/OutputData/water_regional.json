@@ -1,237 +1,25 @@
 {
-  "commit": "a8942035168301c472a6f972eea21e9c3a21c2ae",
-  "harmonization": [
+  "commit": "3b1cd8d443aeba789e523047d20886584f50775e",
+  "time_span": [
     {
-      "specifier": "default",
-      "title": "Default",
-      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+      "specifier": "minimum",
+      "value": 1901
     },
     {
-      "specifier": "fullharm",
-      "title": "Fully harmonized",
-      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
-    },
-    {
-      "specifier": "harmnon",
-      "title": "Harmonized seasons with no N constraints",
-      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+      "specifier": "maximum",
+      "value": 2018
     }
   ],
-  "geo_dataset": [
+  "simulation_round": [
     {
-      "specifier": "landseamask",
-      "file_path": "geo_conditions/landseamask/landseamask.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land."
+      "specifier": "ISIMIP3a",
+      "title": "ISIMIP3a simulation round",
+      "description": "Historical model evaluation and attribution runs"
     },
     {
-      "specifier": "landseamask_no-ant",
-      "file_path": "geo_conditions/landseamask/landseamask_no-ant.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "Same as **landseamask** but without Antarctica."
-    },
-    {
-      "specifier": "landseamask_water-global",
-      "file_path": "geo_conditions/landseamask/landseamask_water-global.nc",
-      "variables": [
-        "land-sea mask (mask)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "binary",
-      "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea."
-    },
-    {
-      "specifier": "gswp3_hwsd",
-      "file_path": "geo_conditions/soil/gswp3_hwsd.nc",
-      "variables": [
-        "Soil texture (soiltexture)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF",
-      "comment": "One fixed pattern to be used for all simulation periods. Upscaled Soil texture map (30 arc sec. to 0.5\u00b0x0.5\u00b0 grid) based on Harmonized World Soil Database v1.1 (HWSD) using the GSWP3 upscaling method A (<http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html>)",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "hwsd_soil_data_all_land",
-      "file_path": "geo_conditions/soil/hwsd_soil_data_all_land.nc",
-      "variables": [
-        "USDA soil texture class dominant HWSD on cropland (texture_class)",
-        "domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)",
-        "Topsoil pH(H2O) (soil_ph)",
-        "Topsoil Calcium Carbonate (soil_caco3)",
-        "Topsoil Bulk Density (bulk_density)",
-        "Topsoil Cation Exchange Capacity (soil) (cec_soil)",
-        "Topsoil Organic Carbon (oc)",
-        "depth of Obstacles to Roots (ESDB) (root_obstacles)",
-        "depth of Impermeable Layer (ESDB) (impermeable_layer)",
-        "Available Water Content (awc)",
-        "Topsoil Sand Fraction (sand)",
-        "Topsoil Silt Fraction (silt)",
-        "Topsoil Clay Fraction (clay)",
-        "Topsoil Gravel Content (gravel)",
-        "Topsoil Salinity (ece)",
-        "Topsoil Base Saturation (bs_soil)",
-        "flag for valid soils (issoil)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF",
-      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on all land.",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "hwsd_soil_data_on_cropland",
-      "file_path": "geo_conditions/soil/hwsd_soil_data_on_cropland.nc",
-      "variables": [
-        "USDA soil texture class dominant HWSD on cropland (texture_class)",
-        "domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)",
-        "Topsoil pH(H2O) (soil_ph)",
-        "Topsoil Calcium Carbonate (soil_caco3)",
-        "Topsoil Bulk Density (bulk_density)",
-        "Topsoil Cation Exchange Capacity (soil) (cec_soil)",
-        "Topsoil Organic Carbon (oc)",
-        "depth of Obstacles to Roots (ESDB) (root_obstacles)",
-        "depth of Impermeable Layer (ESDB) (impermeable_layer)",
-        "Available Water Content (awc)",
-        "Topsoil Sand Fraction (sand)",
-        "Topsoil Silt Fraction (silt)",
-        "Topsoil Clay Fraction (clay)",
-        "Topsoil Gravel Content (gravel)",
-        "Topsoil Salinity (ece)",
-        "Topsoil Base Saturation (bs_soil)",
-        "flag for valid soils (issoil)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF",
-      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland (MIRCA2000 at 5 arc-minutes).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "ddm30_basins_cru_neva",
-      "title": "basins",
-      "file_path": "geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]",
-      "variables": [
-        "basin number (basinnumber)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
-      "sectors": [
-        "agriculture",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "ddm30_flowdir_cru_neva",
-      "title": "flowdir",
-      "file_path": "geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]",
-      "variables": [
-        "flow direction (flowdirection)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
-      "sectors": [
-        "agriculture",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "ddm30_slopes_cru_neva",
-      "title": "slopes",
-      "file_path": "geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]",
-      "variables": [
-        "slope (slope)"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
-      "sectors": [
-        "agriculture",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
+      "specifier": "ISIMIP3b",
+      "title": "ISIMIP3b simulation round",
+      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
     }
   ],
   "soc_variable": [
@@ -292,551 +80,30 @@
       "soc_dataset": "wood_harvesting"
     }
   ],
-  "time_step": [
+  "detrending": [
     {
-      "specifier": "3hr",
-      "increment": "hours",
-      "products": [
-        "OutputData",
-        "SecondaryOutputData"
-      ]
+      "specifier": "observed"
     },
     {
-      "specifier": "daily",
-      "increment": "days"
-    },
-    {
-      "specifier": "monthly",
-      "increment": "months"
-    },
-    {
-      "specifier": "annual",
-      "increment": "years"
-    },
-    {
-      "specifier": "fixed"
+      "specifier": "detrended"
     }
   ],
-  "variable": [
+  "category": [
     {
-      "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
-      "frequency": "daily & monthly",
-      "long_name": "Total Runoff",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional",
-        "biomes",
-        "fire",
-        "permafrost"
-      ],
-      "specifier": "qtot",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.004,
-      "valid_min": 0.0
+      "specifier": "climate",
+      "title": "Climate forcing"
     },
     {
-      "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
-      "frequency": "monthly",
-      "long_name": "Surface Runoff",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "biomes",
-        "water_global",
-        "water_regional",
-        "permafrost",
-        "fire"
-      ],
-      "specifier": "qs",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.004,
-      "valid_min": 0.0
+      "specifier": "composition_atmosphere",
+      "title": "Greenhouse gas forcing"
     },
     {
-      "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
-      "frequency": "monthly",
-      "long_name": "Groundwater Recharge",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "qr",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
+      "specifier": "geo_conditions",
+      "title": "Static geographic information"
     },
     {
-      "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
-      "frequency": "daily & monthly",
-      "long_name": "Discharge",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "dis",
-      "units": "m3 s-1",
-      "valid_max": 700000.0,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Sum of transpiration, evaporation, interception and sublimation.",
-      "extension": "total",
-      "frequency": "monthly",
-      "long_name": "Evapotranspiration",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "biomes",
-        "fire",
-        "forestry",
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "evap",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.004,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
-      "frequency": "monthly",
-      "long_name": "Potential Evapotranspiration",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "potevap",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.004,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "frequency": "daily if possible, else monthly",
-      "long_name": "Total Soil Moisture Content",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "agriculture",
-        "biomes",
-        "fire",
-        "forestry",
-        "water_global",
-        "water_regional",
-        "permafrost"
-      ],
-      "specifier": "soilmoist",
-      "units": "kg m-2",
-      "valid_max": 10000.0,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
-      "frequency": "monthly",
-      "long_name": "Soil Moisture Content at Root Zone",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "rootmoist",
-      "units": "kg m-2",
-      "valid_max": 10000.0,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
-      "frequency": "monthly",
-      "long_name": "Snow Water Equivalent",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "biomes",
-        "fire",
-        "water_global",
-        "water_regional",
-        "permafrost"
-      ],
-      "specifier": "swe",
-      "units": "kg m-2",
-      "valid_max": 200000.0,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
-      "frequency": "monthly",
-      "long_name": "Potential Irrigation Water Withdrawal (assuming unlimited water supply)",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "pirrww",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
-      "frequency": "monthly",
-      "long_name": "Actual Irrigation Water Withdrawal",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "airrww",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
-      "frequency": "monthly",
-      "long_name": "Potential Irrigation Water Consumption",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "pirruse",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
-      "frequency": "monthly",
-      "long_name": "Actual Irrigation Water Consumption",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "airruse",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
-      "frequency": "monthly",
-      "long_name": "Actual Irrigation Green Water Consumption on Irrigated Cropland",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "airrusegreen",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
-      "frequency": "monthly",
-      "long_name": "Potential Irrigation Green Water Consumption on Irrigated Cropland",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "pirrusegreen",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    },
-    {
-      "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
-      "frequency": "monthly",
-      "long_name": "Actual Green Water Consumption on Rainfed Cropland",
-      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
-      "sectors": [
-        "water_global",
-        "water_regional"
-      ],
-      "specifier": "arainfusegreen",
-      "units": "kg m-2 s-1",
-      "valid_max": 0.002,
-      "valid_min": 0.0
-    }
-  ],
-  "river_basin": [
-    {
-      "specifier": "sao-paulo-de-olivenca",
-      "title": "S\u00e3o Paulo de Olivenca",
-      "river": "Amazon",
-      "river_specifier": "amazon",
-      "lat": -3.45,
-      "lon": -68.75,
-      "grdc": 3623100,
-      "availability_monthly": "1979-1993",
-      "availability_daily": "1973-2010",
-      "area_upstream": 990781
-    },
-    {
-      "specifier": "el-diem",
-      "title": "El-Deim, Sudan Border",
-      "river": "Blue Nile",
-      "river_specifier": "blue-nile",
-      "lat": 11,
-      "lon": 35,
-      "grdc": "",
-      "availability_monthly": "1961-2002",
-      "availability_daily": "1900-1982",
-      "area_upstream": 160000
-    },
-    {
-      "specifier": "khartoum",
-      "title": "Khartoum",
-      "river": "Blue Nile",
-      "river_specifier": "blue-nile",
-      "lat": 15.62,
-      "lon": 32.55,
-      "grdc": 1663100,
-      "availability_monthly": "",
-      "availability_daily": "1900-1982",
-      "area_upstream": 325000
-    },
-    {
-      "specifier": "wien-nussdorf",
-      "title": "Wien-Nu\u00dfdorf",
-      "river": "Danube",
-      "river_specifier": "danube",
-      "lat": 48.25,
-      "lon": 16.3,
-      "grdc": 6242500,
-      "availability_monthly": "1828-1899",
-      "availability_daily": "1900-to date",
-      "area_upstream": 101700
-    },
-    {
-      "specifier": "farakka",
-      "title": "Farakka",
-      "river": "Ganges",
-      "river_specifier": "ganges",
-      "lat": 25,
-      "lon": 87.92,
-      "grdc": 2846800,
-      "availability_monthly": "1949-1973",
-      "availability_daily": "",
-      "area_upstream": 835000
-    },
-    {
-      "specifier": "tekra",
-      "title": "Tekra",
-      "river": "Godavari",
-      "river_specifier": "godavari",
-      "lat": 19.068,
-      "lon": 79.9,
-      "grdc": "",
-      "availability_monthly": "1964-2017",
-      "availability_daily": "1964-2017",
-      "area_upstream": 119781
-    },
-    {
-      "specifier": "tarbela",
-      "title": "Tarbela Reservoir",
-      "river": "Indus",
-      "river_specifier": "indus",
-      "lat": 72.86,
-      "lon": 34.33,
-      "grdc": "",
-      "availability_monthly": "2000-2016",
-      "availability_daily": "2000-2016",
-      "area_upstream": 173345
-    },
-    {
-      "specifier": "krestovski",
-      "title": "Krestovski",
-      "river": "Lena",
-      "river_specifier": "lena",
-      "lat": 59.73,
-      "lon": 113.17,
-      "grdc": 2903427,
-      "availability_monthly": "1936-2002",
-      "availability_daily": "1936-1999",
-      "area_upstream": 440000
-    },
-    {
-      "specifier": "stolb",
-      "title": "Stolb",
-      "river": "Lena",
-      "river_specifier": "lena",
-      "lat": 72.37,
-      "lon": 126.8,
-      "grdc": 2903430,
-      "availability_monthly": "1978-1994",
-      "availability_daily": "1951-2002",
-      "area_upstream": 2460000
-    },
-    {
-      "specifier": "arctic-red-river",
-      "title": "Arctic Red River",
-      "river": "Mackenzie",
-      "river_specifier": "mackenzie",
-      "lat": 67.4583,
-      "lon": -133.745,
-      "grdc": 4208025,
-      "availability_monthly": "1972-1996",
-      "availability_daily": "1972-2015",
-      "area_upstream": 1660000
-    },
-    {
-      "specifier": "alton",
-      "title": "Alton",
-      "river": "Mississippi",
-      "river_specifier": "mississippi",
-      "lat": 38.885,
-      "lon": -90.1809,
-      "grdc": 4119800,
-      "availability_monthly": "1928-1984",
-      "availability_daily": "1933-1987",
-      "area_upstream": 444185
-    },
-    {
-      "specifier": "louth",
-      "title": "Louth",
-      "river": "Darling",
-      "river_specifier": "darling",
-      "lat": -30.5318,
-      "lon": 145.1144,
-      "grdc": 5204250,
-      "availability_monthly": "1954-2000",
-      "availability_daily": "1954-2008",
-      "area_upstream": 489300
-    },
-    {
-      "specifier": "dire",
-      "title": "Dire",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 16.2667,
-      "lon": -3.3833,
-      "grdc": 1134700,
-      "availability_monthly": "1924-2012",
-      "availability_daily": "1924-2003",
-      "area_upstream": 340000
-    },
-    {
-      "specifier": "koulikoro",
-      "title": "Koulikoro",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": -30.5318,
-      "lon": -7.55,
-      "grdc": 1134100,
-      "availability_monthly": "1907-2012",
-      "availability_daily": "1907-2006",
-      "area_upstream": 120000
-    },
-    {
-      "specifier": "lokoja",
-      "title": "Lokoja",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 7.8,
-      "lon": 6.7667,
-      "grdc": 1834101,
-      "availability_monthly": "2007-2012",
-      "availability_daily": "1970-2006",
-      "area_upstream": 2074171
-    },
-    {
-      "specifier": "tossaye",
-      "title": "Tossaye",
-      "river": "Niger",
-      "river_specifier": "niger",
-      "lat": 16.9416,
-      "lon": -0.579166,
-      "grdc": 1134850,
-      "availability_monthly": "1954-1992",
-      "availability_daily": "1954-1992",
-      "area_upstream": 348000
-    },
-    {
-      "specifier": "floresta",
-      "title": "Floresta",
-      "river": "Pajeu",
-      "river_specifier": "pajeu",
-      "lat": -8.6089,
-      "lon": -38.5767,
-      "grdc": "",
-      "availability_monthly": "",
-      "availability_daily": "",
-      "area_upstream": 12266
-    },
-    {
-      "specifier": "lobith",
-      "title": "Lobith",
-      "river": "Rhine",
-      "river_specifier": "rhine",
-      "lat": 51.84,
-      "lon": 6.11,
-      "grdc": 6435060,
-      "availability_monthly": "1901-1996",
-      "availability_daily": "1901-2010",
-      "area_upstream": 160800
-    },
-    {
-      "specifier": "almourol",
-      "title": "Almourol",
-      "river": "Tagus",
-      "river_specifier": "tagus",
-      "lat": 39.47,
-      "lon": -8.37,
-      "grdc": 6113050,
-      "availability_monthly": "1973-1990",
-      "availability_daily": "1982-1990",
-      "area_upstream": 61490
-    },
-    {
-      "specifier": "trillo",
-      "title": "Trillo",
-      "river": "Tagus",
-      "river_specifier": "tagus",
-      "lat": 40.7,
-      "lon": -2.58,
-      "grdc": 6213800,
-      "availability_monthly": "1977-1984",
-      "availability_daily": "1977-1984",
-      "area_upstream": 3253
-    },
-    {
-      "specifier": "cuntan",
-      "title": "Cuntan",
-      "river": "Yangtze",
-      "river_specifier": "yangtze",
-      "lat": 29.616667,
-      "lon": 106.6,
-      "grdc": "",
-      "availability_monthly": "1987-2006",
-      "availability_daily": "1987-2006",
-      "area_upstream": 804859
-    },
-    {
-      "specifier": "tangnaihai",
-      "title": "Tangnaihai",
-      "river": "Yellow, Huang He",
-      "river_specifier": "yellow",
-      "lat": 35.5,
-      "lon": 100.15,
-      "grdc": "",
-      "availability_monthly": "1971-2002",
-      "availability_daily": "1971-2002",
-      "area_upstream": 121000
+      "specifier": "socioeconomic",
+      "title": "Socioeconomic forcing"
     }
   ],
   "lake_site": [
@@ -1361,263 +628,231 @@
       "type": "reservoir"
     }
   ],
-  "sector": [
+  "ocean_region": [
     {
-      "specifier": "agriculture",
-      "title": "Agriculture"
+      "specifier": "north-sea",
+      "title": "North Sea",
+      "north": 62.5,
+      "west": -4.5,
+      "south": 50.5,
+      "east": 9.5
     },
     {
-      "specifier": "biodiversity",
-      "title": "Terrestrial biodiversity"
+      "specifier": "baltic-sea",
+      "title": "Baltic Sea",
+      "north": 64.5,
+      "west": 15.5,
+      "south": 55.5,
+      "east": 23.5
     },
     {
-      "specifier": "biomes",
-      "title": "Biomes"
+      "specifier": "nw-med-sea",
+      "title": "North-west Meditteranean",
+      "north": 43.5,
+      "west": -1.5,
+      "south": 36.5,
+      "east": 6.5
     },
     {
-      "specifier": "coastal",
-      "title": "Coastal systems"
+      "specifier": "adriatic-sea",
+      "title": "Adriatic Sea",
+      "north": 45.5,
+      "west": 11.5,
+      "south": 39.5,
+      "east": 20.5
     },
     {
-      "specifier": "energy",
-      "title": "Energy"
+      "specifier": "med-glob",
+      "title": "Mediterranean Sea",
+      "north": 45.5,
+      "west": -6.5,
+      "south": 29.5,
+      "east": 35.5
     },
     {
-      "specifier": "fire",
-      "title": "Fire"
+      "specifier": "se-australia",
+      "title": "South-East Australia",
+      "north": -23.5,
+      "west": 120.5,
+      "south": -47.5,
+      "east": 170.5
     },
     {
-      "specifier": "forestry",
-      "title": "Regional forests"
+      "specifier": "east-bass-strait",
+      "title": "Eastern Bass Strait",
+      "north": -37.5,
+      "west": 145.5,
+      "south": -41.5,
+      "east": 151.5
     },
     {
-      "specifier": "health",
-      "title": "Temperature-related mortality"
+      "specifier": "cook-strait",
+      "title": "Cook Strait",
+      "north": -40.5,
+      "west": 174.5,
+      "south": -46.5,
+      "east": 179.5
     },
     {
-      "specifier": "lakes_global",
-      "title": "Lakes (global)"
+      "specifier": "humboldt-n",
+      "title": "North Humboldt Sea",
+      "north": 6.5,
+      "west": -93.5,
+      "south": -20.5,
+      "east": -69.5
     },
     {
-      "specifier": "lakes_local",
-      "title": "Lakes (local)"
+      "specifier": "hawaii",
+      "title": "Hawaii",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
     },
     {
-      "specifier": "permafrost",
-      "title": "Permafrost"
-    },
-    {
-      "specifier": "water_global",
-      "title": "Water (global)"
-    },
-    {
-      "specifier": "water_regional",
-      "title": "Water (regional)"
-    },
-    {
-      "specifier": "labour",
-      "title": "Labour productivity"
-    },
-    {
-      "specifier": "diarrhea",
-      "title": "Diarrhoeal diseases"
+      "specifier": "benguela",
+      "title": "Benguela Current",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
     }
   ],
-  "climate_dataset": [
+  "crop": [
     {
-      "specifier": "co2",
-      "title": "Atmospheric CO2 concentration",
-      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
-      "unit": "ppm",
-      "resolution": "global",
-      "frequency": "annual",
-      "comment": "Meinshausen et al. (2011) for 1850-2005 and Dlugokencky & Tans (2019) from 2006-2018."
-    }
-  ],
-  "vert": [
-    {
-      "specifier": "vint"
-    }
-  ],
-  "soc_scenario": [
-    {
-      "specifier": "histsoc",
-      "description": "Varying direct human influences in the historical period (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
+      "specifier": "whe",
+      "title": "Wheat"
     },
     {
-      "specifier": "2015soc",
-      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ]
+      "specifier": "mai",
+      "title": "Maize"
     },
     {
-      "specifier": "nat",
-      "description": "No direct human influences (naturalized run).",
-      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    }
-  ],
-  "subcategory": [
-    {
-      "specifier": "atmosphere",
-      "title": "Atmosphere",
-      "categories": [
-        "climate"
-      ]
+      "specifier": "soy",
+      "title": "Soy"
     },
     {
-      "specifier": "atmosphere_composition",
-      "title": "Atmospheric composition",
-      "categories": [
-        "climate"
-      ]
+      "specifier": "ric",
+      "title": "Rice"
     },
     {
-      "specifier": "lightning",
-      "title": "Lightning",
-      "categories": [
-        "climate"
-      ]
+      "specifier": "bar",
+      "title": "Barley"
     },
     {
-      "specifier": "ocean",
-      "title": "Ocean",
-      "categories": [
-        "climate"
-      ]
+      "specifier": "ben",
+      "title": "Bean"
     },
     {
-      "specifier": "fishing",
-      "title": "Fishing",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "cas",
+      "title": "Cassava"
     },
     {
-      "specifier": "gdp",
-      "title": "GDP",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "cot",
+      "title": "Cotton"
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "euc",
+      "title": "Eucalyptus"
     },
     {
-      "specifier": "landuse",
-      "title": "Land use",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "mgr",
+      "title": "Managed grass"
     },
     {
-      "specifier": "n-deposition",
-      "title": "N-deposition",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "mil",
+      "title": "Millet"
     },
     {
-      "specifier": "n-fertilizer",
-      "title": "N-fertilizer",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "mis",
+      "title": "Miscanthus"
+    },
+    {
+      "specifier": "nut",
+      "title": "Groundnuts"
+    },
+    {
+      "specifier": "pea",
+      "title": "Field peas"
     },
     {
       "specifier": "pop",
-      "title": "Population",
-      "categories": [
-        "socioeconomic"
+      "title": "Poplar"
+    },
+    {
+      "specifier": "pot",
+      "title": "Potato"
+    },
+    {
+      "specifier": "rap",
+      "title": "Rapeseed"
+    },
+    {
+      "specifier": "rye",
+      "title": "Rye"
+    },
+    {
+      "specifier": "sgb",
+      "title": "Sugar beet"
+    },
+    {
+      "specifier": "sor",
+      "title": "Sorghum"
+    },
+    {
+      "specifier": "sug",
+      "title": "Sugarcane"
+    },
+    {
+      "specifier": "sun",
+      "title": "Sunflower"
+    }
+  ],
+  "time_step": [
+    {
+      "specifier": "3hr",
+      "increment": "hours",
+      "products": [
+        "OutputData",
+        "SecondaryOutputData"
       ]
     },
     {
-      "specifier": "reservoirs_dams",
-      "title": "Reservoirs & dams",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "daily",
+      "increment": "days"
     },
     {
-      "specifier": "water_abstraction",
-      "title": "Water abstraction",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "monthly",
+      "increment": "months"
     },
     {
-      "specifier": "wood_harvesting",
-      "title": "Wood harvesting",
-      "categories": [
-        "socioeconomic"
-      ]
+      "specifier": "annual",
+      "increment": "years"
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "fixed"
+    }
+  ],
+  "product": [
+    {
+      "specifier": "InputData",
+      "title": "Input Data",
+      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
     },
     {
-      "specifier": "landseamask",
-      "title": "Land/Sea masks",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "SecondaryInputData",
+      "title": "Secondary Input Data",
+      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
     },
     {
-      "specifier": "orography",
-      "title": "Orography",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "OutputData",
+      "title": "Output Data",
+      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
     },
     {
-      "specifier": "river_routing",
-      "title": "River routing",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "soil",
-      "title": "Soil",
-      "categories": [
-        "geo_conditions"
-      ]
+      "specifier": "SecondaryOutputData",
+      "title": "Secondary Output Data",
+      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
     }
   ],
   "forest_stand": [
@@ -1743,6 +978,647 @@
       ],
       "thinning": "below",
       "comment": ""
+    }
+  ],
+  "species": [
+    {
+      "title": "Fagus sylvatica",
+      "specifier": "fasy"
+    },
+    {
+      "title": "Quercus robur",
+      "specifier": "quro"
+    },
+    {
+      "title": "Quercus petraea",
+      "specifier": "qupe"
+    },
+    {
+      "title": "Pinus sylvestris",
+      "specifier": "pisy"
+    },
+    {
+      "title": "Picea abies",
+      "specifier": "piab"
+    },
+    {
+      "title": "Pinus pinaster",
+      "specifier": "pipi"
+    },
+    {
+      "title": "Larix decidua",
+      "specifier": "lade"
+    },
+    {
+      "title": "Acer platanoides",
+      "specifier": "acpl"
+    },
+    {
+      "title": "Eucalyptus globulus",
+      "specifier": "eugl"
+    },
+    {
+      "title": "Betula pendula",
+      "specifier": "bepe"
+    },
+    {
+      "title": "Betula pubescens",
+      "specifier": "bepu"
+    },
+    {
+      "title": "Robinia pseudoacacia",
+      "specifier": "rops"
+    },
+    {
+      "title": "Fraxinus excelsior",
+      "specifier": "frex"
+    },
+    {
+      "title": "Populus nigra",
+      "specifier": "poni"
+    },
+    {
+      "title": "Sorbus aucuparia",
+      "specifier": "soau"
+    },
+    {
+      "title": "C3 grass",
+      "specifier": "c3gr"
+    },
+    {
+      "title": "hard woods",
+      "specifier": "hawo"
+    },
+    {
+      "title": "fire",
+      "specifier": "fi"
+    },
+    {
+      "title": "wind",
+      "specifier": "wi"
+    },
+    {
+      "title": "Insects",
+      "specifier": "ins"
+    }
+  ],
+  "river_basin": [
+    {
+      "specifier": "sao-paulo-de-olivenca",
+      "title": "S\u00e3o Paulo de Olivenca",
+      "river": "Amazon",
+      "river_specifier": "amazon",
+      "lat": -3.45,
+      "lon": -68.75,
+      "grdc": 3623100,
+      "availability_monthly": "1979-1993",
+      "availability_daily": "1973-2010",
+      "area_upstream": 990781
+    },
+    {
+      "specifier": "el-diem",
+      "title": "El-Deim, Sudan Border",
+      "river": "Blue Nile",
+      "river_specifier": "blue-nile",
+      "lat": 11,
+      "lon": 35,
+      "grdc": "",
+      "availability_monthly": "1961-2002",
+      "availability_daily": "1900-1982",
+      "area_upstream": 160000
+    },
+    {
+      "specifier": "khartoum",
+      "title": "Khartoum",
+      "river": "Blue Nile",
+      "river_specifier": "blue-nile",
+      "lat": 15.62,
+      "lon": 32.55,
+      "grdc": 1663100,
+      "availability_monthly": "",
+      "availability_daily": "1900-1982",
+      "area_upstream": 325000
+    },
+    {
+      "specifier": "wien-nussdorf",
+      "title": "Wien-Nu\u00dfdorf",
+      "river": "Danube",
+      "river_specifier": "danube",
+      "lat": 48.25,
+      "lon": 16.3,
+      "grdc": 6242500,
+      "availability_monthly": "1828-1899",
+      "availability_daily": "1900-to date",
+      "area_upstream": 101700
+    },
+    {
+      "specifier": "farakka",
+      "title": "Farakka",
+      "river": "Ganges",
+      "river_specifier": "ganges",
+      "lat": 25,
+      "lon": 87.92,
+      "grdc": 2846800,
+      "availability_monthly": "1949-1973",
+      "availability_daily": "",
+      "area_upstream": 835000
+    },
+    {
+      "specifier": "tekra",
+      "title": "Tekra",
+      "river": "Godavari",
+      "river_specifier": "godavari",
+      "lat": 19.068,
+      "lon": 79.9,
+      "grdc": "",
+      "availability_monthly": "1964-2017",
+      "availability_daily": "1964-2017",
+      "area_upstream": 119781
+    },
+    {
+      "specifier": "tarbela",
+      "title": "Tarbela Reservoir",
+      "river": "Indus",
+      "river_specifier": "indus",
+      "lat": 72.86,
+      "lon": 34.33,
+      "grdc": "",
+      "availability_monthly": "2000-2016",
+      "availability_daily": "2000-2016",
+      "area_upstream": 173345
+    },
+    {
+      "specifier": "krestovski",
+      "title": "Krestovski",
+      "river": "Lena",
+      "river_specifier": "lena",
+      "lat": 59.73,
+      "lon": 113.17,
+      "grdc": 2903427,
+      "availability_monthly": "1936-2002",
+      "availability_daily": "1936-1999",
+      "area_upstream": 440000
+    },
+    {
+      "specifier": "stolb",
+      "title": "Stolb",
+      "river": "Lena",
+      "river_specifier": "lena",
+      "lat": 72.37,
+      "lon": 126.8,
+      "grdc": 2903430,
+      "availability_monthly": "1978-1994",
+      "availability_daily": "1951-2002",
+      "area_upstream": 2460000
+    },
+    {
+      "specifier": "arctic-red-river",
+      "title": "Arctic Red River",
+      "river": "Mackenzie",
+      "river_specifier": "mackenzie",
+      "lat": 67.4583,
+      "lon": -133.745,
+      "grdc": 4208025,
+      "availability_monthly": "1972-1996",
+      "availability_daily": "1972-2015",
+      "area_upstream": 1660000
+    },
+    {
+      "specifier": "alton",
+      "title": "Alton",
+      "river": "Mississippi",
+      "river_specifier": "mississippi",
+      "lat": 38.885,
+      "lon": -90.1809,
+      "grdc": 4119800,
+      "availability_monthly": "1928-1984",
+      "availability_daily": "1933-1987",
+      "area_upstream": 444185
+    },
+    {
+      "specifier": "louth",
+      "title": "Louth",
+      "river": "Darling",
+      "river_specifier": "darling",
+      "lat": -30.5318,
+      "lon": 145.1144,
+      "grdc": 5204250,
+      "availability_monthly": "1954-2000",
+      "availability_daily": "1954-2008",
+      "area_upstream": 489300
+    },
+    {
+      "specifier": "dire",
+      "title": "Dire",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 16.2667,
+      "lon": -3.3833,
+      "grdc": 1134700,
+      "availability_monthly": "1924-2012",
+      "availability_daily": "1924-2003",
+      "area_upstream": 340000
+    },
+    {
+      "specifier": "koulikoro",
+      "title": "Koulikoro",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": -30.5318,
+      "lon": -7.55,
+      "grdc": 1134100,
+      "availability_monthly": "1907-2012",
+      "availability_daily": "1907-2006",
+      "area_upstream": 120000
+    },
+    {
+      "specifier": "lokoja",
+      "title": "Lokoja",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 7.8,
+      "lon": 6.7667,
+      "grdc": 1834101,
+      "availability_monthly": "2007-2012",
+      "availability_daily": "1970-2006",
+      "area_upstream": 2074171
+    },
+    {
+      "specifier": "tossaye",
+      "title": "Tossaye",
+      "river": "Niger",
+      "river_specifier": "niger",
+      "lat": 16.9416,
+      "lon": -0.579166,
+      "grdc": 1134850,
+      "availability_monthly": "1954-1992",
+      "availability_daily": "1954-1992",
+      "area_upstream": 348000
+    },
+    {
+      "specifier": "floresta",
+      "title": "Floresta",
+      "river": "Pajeu",
+      "river_specifier": "pajeu",
+      "lat": -8.6089,
+      "lon": -38.5767,
+      "grdc": "",
+      "availability_monthly": "",
+      "availability_daily": "",
+      "area_upstream": 12266
+    },
+    {
+      "specifier": "lobith",
+      "title": "Lobith",
+      "river": "Rhine",
+      "river_specifier": "rhine",
+      "lat": 51.84,
+      "lon": 6.11,
+      "grdc": 6435060,
+      "availability_monthly": "1901-1996",
+      "availability_daily": "1901-2010",
+      "area_upstream": 160800
+    },
+    {
+      "specifier": "almourol",
+      "title": "Almourol",
+      "river": "Tagus",
+      "river_specifier": "tagus",
+      "lat": 39.47,
+      "lon": -8.37,
+      "grdc": 6113050,
+      "availability_monthly": "1973-1990",
+      "availability_daily": "1982-1990",
+      "area_upstream": 61490
+    },
+    {
+      "specifier": "trillo",
+      "title": "Trillo",
+      "river": "Tagus",
+      "river_specifier": "tagus",
+      "lat": 40.7,
+      "lon": -2.58,
+      "grdc": 6213800,
+      "availability_monthly": "1977-1984",
+      "availability_daily": "1977-1984",
+      "area_upstream": 3253
+    },
+    {
+      "specifier": "cuntan",
+      "title": "Cuntan",
+      "river": "Yangtze",
+      "river_specifier": "yangtze",
+      "lat": 29.616667,
+      "lon": 106.6,
+      "grdc": "",
+      "availability_monthly": "1987-2006",
+      "availability_daily": "1987-2006",
+      "area_upstream": 804859
+    },
+    {
+      "specifier": "tangnaihai",
+      "title": "Tangnaihai",
+      "river": "Yellow, Huang He",
+      "river_specifier": "yellow",
+      "lat": 35.5,
+      "lon": 100.15,
+      "grdc": "",
+      "availability_monthly": "1971-2002",
+      "availability_daily": "1971-2002",
+      "area_upstream": 121000
+    }
+  ],
+  "ensemble_member": [
+    {
+      "specifier": "r1i1p1f1"
+    },
+    {
+      "specifier": "r1i1p1f2"
+    },
+    {
+      "specifier": "r4i1p1f1"
+    }
+  ],
+  "climate_variable": [
+    {
+      "specifier": "hurs",
+      "long_name": "Near-Surface Relative Humidity",
+      "unit": "%",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "huss",
+      "long_name": "Near-Surface Specific Humidity",
+      "unit": "kg kg-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "pr",
+      "long_name": "Precipitation",
+      "unit": "kg m-2 s-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "ps",
+      "long_name": "Surface Air Pressure",
+      "unit": "Pa",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "rlds",
+      "long_name": "Surface Downwelling Longwave Radiation",
+      "unit": "W m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "rsds",
+      "long_name": "Surface Downwelling Shortwave Radiation",
+      "unit": "W m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "sfcwind",
+      "long_name": "Near-Surface Wind Speed",
+      "unit": "m s-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "tas",
+      "long_name": "Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "tasmax",
+      "long_name": "Daily Maximum Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "tasmin",
+      "long_name": "Daily Minimum Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3 (obsclim and counterclim, 1901-2010)",
+        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
     }
   ],
   "experiments": [
@@ -2074,273 +1950,337 @@
       ]
     }
   ],
-  "ensemble_member": [
+  "variable": [
     {
-      "specifier": "r1i1p1f1"
-    },
-    {
-      "specifier": "r1i1p1f2"
-    },
-    {
-      "specifier": "r4i1p1f1"
-    }
-  ],
-  "sens_scenario": [
-    {
-      "specifier": "default",
-      "description": "For all experiments other than the sensitivity experiments."
-    },
-    {
-      "specifier": "1901co2",
-      "description": "CO\u2082 concentration fixed at 1901 levels as a deviation from the \u201cobsclim\u201d climate + CO\u2082 forcing.",
+      "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
+      "frequency": "daily & monthly",
+      "long_name": "Total Runoff",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
       "sectors": [
         "water_global",
         "water_regional",
         "biomes",
-        "forestry",
-        "agriculture",
-        "marine-fisheries_global",
-        "marine-fisheries_regional",
-        "permafrost",
-        "biodiversity"
+        "fire",
+        "permafrost"
       ],
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "qtot",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
     },
     {
-      "specifier": "nowatermgt",
-      "description": "No water management (e.g. no human water abstraction, no reservoirs) while other direct human forcings such as land use changes are considered according to histsoc or 2015soc.",
+      "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
+      "frequency": "monthly",
+      "long_name": "Surface Runoff",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "biomes",
+        "water_global",
+        "water_regional",
+        "permafrost",
+        "fire"
+      ],
+      "specifier": "qs",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
+      "frequency": "monthly",
+      "long_name": "Groundwater Recharge",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
       "sectors": [
         "water_global",
         "water_regional"
       ],
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "qr",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
+      "frequency": "daily & monthly",
+      "long_name": "Discharge",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "dis",
+      "units": "m3 s-1",
+      "valid_max": 700000.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Sum of transpiration, evaporation, interception and sublimation.",
+      "extension": "total",
+      "frequency": "monthly",
+      "long_name": "Evapotranspiration",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "evap",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
+      "frequency": "monthly",
+      "long_name": "Potential Evapotranspiration",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "potevap",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.004,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "daily if possible, else monthly",
+      "long_name": "Total Soil Moisture Content",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "water_regional",
+        "permafrost"
+      ],
+      "specifier": "soilmoist",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "frequency": "monthly",
+      "long_name": "Soil Moisture Content at Root Zone",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "rootmoist",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
+      "frequency": "monthly",
+      "long_name": "Snow Water Equivalent",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "biomes",
+        "fire",
+        "water_global",
+        "water_regional",
+        "permafrost"
+      ],
+      "specifier": "swe",
+      "units": "kg m-2",
+      "valid_max": 200000.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Water Withdrawal (assuming unlimited water supply)",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirrww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Irrigation water withdrawal, taking water availability into account; please provide if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Water Withdrawal",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airrww",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Water Consumption",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirruse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Water Consumption",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airruse",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Actual evapotranspiration from rainwater over irrigated cropland; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Irrigation Green Water Consumption on Irrigated Cropland",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "airrusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.",
+      "frequency": "monthly",
+      "long_name": "Potential Irrigation Green Water Consumption on Irrigated Cropland",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "pirrusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Actual evapotranspiration from rainwater over rainfed cropland; if computed.",
+      "frequency": "monthly",
+      "long_name": "Actual Green Water Consumption on Rainfed Cropland",
+      "resolution": "0.5\u00b0 grid if possible, otherwise at gauge location",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "specifier": "arainfusegreen",
+      "units": "kg m-2 s-1",
+      "valid_max": 0.002,
+      "valid_min": 0.0
     }
   ],
-  "crop": [
+  "river": [
     {
-      "specifier": "whe",
-      "title": "Wheat"
+      "specifier": "amazon"
     },
     {
-      "specifier": "mai",
-      "title": "Maize"
+      "specifier": "blue-nile"
     },
     {
-      "specifier": "soy",
-      "title": "Soy"
+      "specifier": "danube"
     },
     {
-      "specifier": "ric",
-      "title": "Rice"
+      "specifier": "darling"
     },
     {
-      "specifier": "bar",
-      "title": "Barley"
+      "specifier": "ganges"
     },
     {
-      "specifier": "ben",
-      "title": "Bean"
+      "specifier": "godavari"
     },
     {
-      "specifier": "cas",
-      "title": "Cassava"
+      "specifier": "indus"
     },
     {
-      "specifier": "cot",
-      "title": "Cotton"
+      "specifier": "lena"
     },
     {
-      "specifier": "euc",
-      "title": "Eucalyptus"
+      "specifier": "mackenzie"
     },
     {
-      "specifier": "mgr",
-      "title": "Managed grass"
+      "specifier": "mississippi"
     },
     {
-      "specifier": "mil",
-      "title": "Millet"
+      "specifier": "niger"
     },
     {
-      "specifier": "mis",
-      "title": "Miscanthus"
+      "specifier": "pajeu"
     },
     {
-      "specifier": "nut",
-      "title": "Groundnuts"
+      "specifier": "rhine"
     },
     {
-      "specifier": "pea",
-      "title": "Field peas"
+      "specifier": "tagus"
     },
     {
-      "specifier": "pop",
-      "title": "Poplar"
+      "specifier": "yangtze"
     },
     {
-      "specifier": "pot",
-      "title": "Potato"
-    },
-    {
-      "specifier": "rap",
-      "title": "Rapeseed"
-    },
-    {
-      "specifier": "rye",
-      "title": "Rye"
-    },
-    {
-      "specifier": "sgb",
-      "title": "Sugar beet"
-    },
-    {
-      "specifier": "sor",
-      "title": "Sorghum"
-    },
-    {
-      "specifier": "sug",
-      "title": "Sugarcane"
-    },
-    {
-      "specifier": "sun",
-      "title": "Sunflower"
+      "specifier": "yellow"
     }
   ],
-  "bias_adjustment": [
+  "diazotroph_scenario": [
     {
-      "specifier": "nobasd",
-      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+      "specifier": "w-diaz"
     },
     {
-      "specifier": "w5e5",
-      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
+      "specifier": "wo-diaz"
     }
   ],
-  "climate_scenario": [
+  "r": [
     {
-      "specifier": "obsclim",
-      "description": "Observed climate and CO\u2082 forcing used for model evaluation and the detection and attribution task.",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "lower"
     },
     {
-      "specifier": "spinclim",
-      "description": "Detrended version of the observed climate forcing used to spin-up the simulations based on a stable 1900 climate (see explanation below for details regarding the design of the spin-up)",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "central"
     },
     {
-      "specifier": "counterclim",
-      "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations in the context of the detection and attributions task.",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "upper"
     }
   ],
-  "ocean_region": [
+  "acidification_type": [
     {
-      "specifier": "north-sea",
-      "title": "North Sea",
-      "north": 62.5,
-      "west": -4.5,
-      "south": 50.5,
-      "east": 9.5
+      "specifier": "oa"
     },
     {
-      "specifier": "baltic-sea",
-      "title": "Baltic Sea",
-      "north": 64.5,
-      "west": 15.5,
-      "south": 55.5,
-      "east": 23.5
-    },
-    {
-      "specifier": "nw-med-sea",
-      "title": "North-west Meditteranean",
-      "north": 43.5,
-      "west": -1.5,
-      "south": 36.5,
-      "east": 6.5
-    },
-    {
-      "specifier": "adriatic-sea",
-      "title": "Adriatic Sea",
-      "north": 45.5,
-      "west": 11.5,
-      "south": 39.5,
-      "east": 20.5
-    },
-    {
-      "specifier": "med-glob",
-      "title": "Mediterranean Sea",
-      "north": 45.5,
-      "west": -6.5,
-      "south": 29.5,
-      "east": 35.5
-    },
-    {
-      "specifier": "se-australia",
-      "title": "South-East Australia",
-      "north": -23.5,
-      "west": 120.5,
-      "south": -47.5,
-      "east": 170.5
-    },
-    {
-      "specifier": "east-bass-strait",
-      "title": "Eastern Bass Strait",
-      "north": -37.5,
-      "west": 145.5,
-      "south": -41.5,
-      "east": 151.5
-    },
-    {
-      "specifier": "cook-strait",
-      "title": "Cook Strait",
-      "north": -40.5,
-      "west": 174.5,
-      "south": -46.5,
-      "east": 179.5
-    },
-    {
-      "specifier": "humboldt-n",
-      "title": "North Humboldt Sea",
-      "north": 6.5,
-      "west": -93.5,
-      "south": -20.5,
-      "east": -69.5
-    },
-    {
-      "specifier": "hawaii",
-      "title": "Hawaii",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    },
-    {
-      "specifier": "benguela",
-      "title": "Benguela Current",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    }
-  ],
-  "time_span": [
-    {
-      "specifier": "minimum",
-      "value": 1901
-    },
-    {
-      "specifier": "maximum",
-      "value": 2018
+      "specifier": "no-oa"
     }
   ],
   "identifier": [
@@ -2489,75 +2429,380 @@
       "title": "Vertical resolution"
     }
   ],
-  "irrigation": [
+  "sens_scenario": [
     {
-      "specifier": "cirr",
-      "title": "Constrained irrigation",
+      "specifier": "default",
+      "description": "For all experiments other than the sensitivity experiments."
+    },
+    {
+      "specifier": "1901co2",
+      "description": "CO\u2082 concentration fixed at 1901 levels as a deviation from the \u201cobsclim\u201d climate + CO\u2082 forcing.",
       "sectors": [
+        "water_global",
+        "water_regional",
+        "biomes",
+        "forestry",
+        "agriculture",
+        "marine-fisheries_global",
+        "marine-fisheries_regional",
+        "permafrost",
+        "biodiversity"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "nowatermgt",
+      "description": "No water management (e.g. no human water abstraction, no reservoirs) while other direct human forcings such as land use changes are considered according to histsoc or 2015soc.",
+      "sectors": [
+        "water_global",
+        "water_regional"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    }
+  ],
+  "soc_scenario": [
+    {
+      "specifier": "histsoc",
+      "description": "Varying direct human influences in the historical period (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "2015soc",
+      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    }
+  ],
+  "climate_scenario": [
+    {
+      "specifier": "obsclim",
+      "description": "Observed climate and CO\u2082 forcing used for model evaluation and the detection and attribution task.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "spinclim",
+      "description": "Detrended version of the observed climate forcing used to spin-up the simulations based on a stable 1900 climate (see explanation below for details regarding the design of the spin-up)",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "counterclim",
+      "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations in the context of the detection and attributions task.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    }
+  ],
+  "geo_dataset": [
+    {
+      "specifier": "landseamask",
+      "file_path": "geo_conditions/landseamask/landseamask.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "This is the land-sea mask of the W5E5 dataset (Lange, 2019a; Cucchi et al., 2020). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land."
+    },
+    {
+      "specifier": "landseamask_no-ant",
+      "file_path": "geo_conditions/landseamask/landseamask_no-ant.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "Same as **landseamask** but without Antarctica."
+    },
+    {
+      "specifier": "landseamask_water-global",
+      "file_path": "geo_conditions/landseamask/landseamask_water-global.nc",
+      "variables": [
+        "land-sea mask (mask)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "binary",
+      "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea."
+    },
+    {
+      "specifier": "gswp3_hwsd",
+      "file_path": "geo_conditions/soil/gswp3_hwsd.nc",
+      "variables": [
+        "Soil texture (soiltexture)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "One fixed pattern to be used for all simulation periods. Upscaled Soil texture map (30 arc sec. to 0.5\u00b0x0.5\u00b0 grid) based on Harmonized World Soil Database v1.1 (HWSD) using the GSWP3 upscaling method A (<http://hydro.iis.u-tokyo.ac.jp/~sujan/research/gswp3/soil-texture-map.html>)",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
         "water_global",
         "water_regional"
       ]
     },
     {
-      "specifier": "noirr",
-      "title": "No irrigation (rainfed land)"
+      "specifier": "hwsd_soil_data_all_land",
+      "file_path": "geo_conditions/soil/hwsd_soil_data_all_land.nc",
+      "variables": [
+        "USDA soil texture class dominant HWSD on cropland (texture_class)",
+        "domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)",
+        "Topsoil pH(H2O) (soil_ph)",
+        "Topsoil Calcium Carbonate (soil_caco3)",
+        "Topsoil Bulk Density (bulk_density)",
+        "Topsoil Cation Exchange Capacity (soil) (cec_soil)",
+        "Topsoil Organic Carbon (oc)",
+        "depth of Obstacles to Roots (ESDB) (root_obstacles)",
+        "depth of Impermeable Layer (ESDB) (impermeable_layer)",
+        "Available Water Content (awc)",
+        "Topsoil Sand Fraction (sand)",
+        "Topsoil Silt Fraction (silt)",
+        "Topsoil Clay Fraction (clay)",
+        "Topsoil Gravel Content (gravel)",
+        "Topsoil Salinity (ece)",
+        "Topsoil Base Saturation (bs_soil)",
+        "flag for valid soils (issoil)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on all land.",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "hwsd_soil_data_on_cropland",
+      "file_path": "geo_conditions/soil/hwsd_soil_data_on_cropland.nc",
+      "variables": [
+        "USDA soil texture class dominant HWSD on cropland (texture_class)",
+        "domiant HWSD soil mapping unit within dominant USDA soil texture class on cropland (mu_global)",
+        "Topsoil pH(H2O) (soil_ph)",
+        "Topsoil Calcium Carbonate (soil_caco3)",
+        "Topsoil Bulk Density (bulk_density)",
+        "Topsoil Cation Exchange Capacity (soil) (cec_soil)",
+        "Topsoil Organic Carbon (oc)",
+        "depth of Obstacles to Roots (ESDB) (root_obstacles)",
+        "depth of Impermeable Layer (ESDB) (impermeable_layer)",
+        "Available Water Content (awc)",
+        "Topsoil Sand Fraction (sand)",
+        "Topsoil Silt Fraction (silt)",
+        "Topsoil Clay Fraction (clay)",
+        "Topsoil Gravel Content (gravel)",
+        "Topsoil Salinity (ece)",
+        "Topsoil Base Saturation (bs_soil)",
+        "flag for valid soils (issoil)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland (MIRCA2000 at 5 arc-minutes).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "ddm30_basins_cru_neva",
+      "title": "basins",
+      "file_path": "geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]",
+      "variables": [
+        "basin number (basinnumber)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF, ascii",
+      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "ddm30_flowdir_cru_neva",
+      "title": "flowdir",
+      "file_path": "geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]",
+      "variables": [
+        "flow direction (flowdirection)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF, ascii",
+      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "ddm30_slopes_cru_neva",
+      "title": "slopes",
+      "file_path": "geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]",
+      "variables": [
+        "slope (slope)"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF, ascii",
+      "comment": "DDM30 (D\u00f6ll & Lehner, 2002). Documentation (pdf) is provided alongside data files.",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
     }
   ],
-  "detrending": [
+  "region": [
     {
-      "specifier": "observed"
-    },
-    {
-      "specifier": "detrended"
+      "specifier": "global",
+      "title": "Global simulation"
     }
   ],
-  "diazotroph_scenario": [
+  "climate_forcing": [
     {
-      "specifier": "w-diaz"
+      "specifier": "gswp3-w5e5",
+      "priority": 1,
+      "title": "GSWP3-W5E5",
+      "time_period": "1901-2016",
+      "reanalysis": "ERA5",
+      "bias_adjustment_target": "GPCC, CRU",
+      "comments": "Combination of W5E5 (Lange, 2019b; Cucchi et al., 2020) for 1979-2016 with GSWP3 (Dirmeyer et al., 2006) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.4.1 bias adjustment method (Lange, 2019a; Lange, 2020).",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData",
+        "SecondaryInputData"
+      ]
     },
     {
-      "specifier": "wo-diaz"
+      "specifier": "gswp3",
+      "priority": 2,
+      "title": "GSWP3",
+      "time_period": "1901-2010",
+      "reanalysis": "20CR",
+      "bias_adjustment_target": "GPCC, GPCP, CPC-Unified, CRU, SRB",
+      "comments": "Dynamically downscaled and bias-adjusted 20th Century Reanalysis (20CR; Compo et al., 2011) from the Global Soil Wetness Project Phase 3 (GSWP3; Dirmeyer et al., 2006).",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData",
+        "SecondaryInputData"
+      ]
     }
   ],
-  "product": [
+  "vert": [
     {
-      "specifier": "InputData",
-      "title": "Input Data",
-      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryInputData",
-      "title": "Secondary Input Data",
-      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
-    },
-    {
-      "specifier": "OutputData",
-      "title": "Output Data",
-      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryOutputData",
-      "title": "Secondary Output Data",
-      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
+      "specifier": "vint"
     }
   ],
-  "acidification_type": [
+  "fishing_type": [
     {
-      "specifier": "oa"
+      "specifier": "fishing"
     },
     {
-      "specifier": "no-oa"
-    }
-  ],
-  "r": [
-    {
-      "specifier": "lower"
-    },
-    {
-      "specifier": "central"
-    },
-    {
-      "specifier": "upper"
+      "specifier": "no-fishing"
     }
   ],
   "dimensions": [
@@ -2622,388 +2867,6 @@
       "standard_name": "log10_weight_bins",
       "long_name": "log10 Weight Bins",
       "units": "g"
-    }
-  ],
-  "climate_variable": [
-    {
-      "specifier": "hurs",
-      "long_name": "Near-Surface Relative Humidity",
-      "unit": "%",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "huss",
-      "long_name": "Near-Surface Specific Humidity",
-      "unit": "kg kg-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "pr",
-      "long_name": "Precipitation",
-      "unit": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "ps",
-      "long_name": "Surface Air Pressure",
-      "unit": "Pa",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "rlds",
-      "long_name": "Surface Downwelling Longwave Radiation",
-      "unit": "W m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "rsds",
-      "long_name": "Surface Downwelling Shortwave Radiation",
-      "unit": "W m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "sfcwind",
-      "long_name": "Near-Surface Wind Speed",
-      "unit": "m s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "tas",
-      "long_name": "Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "tasmax",
-      "long_name": "Daily Maximum Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "tasmin",
-      "long_name": "Daily Minimum Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3 (obsclim and counterclim, 1901-2010)",
-        "GSWP3-W5E5 (obsclim and counterclim, 1901-2016)"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    }
-  ],
-  "region": [
-    {
-      "specifier": "global",
-      "title": "Global simulation"
-    }
-  ],
-  "simulation_round": [
-    {
-      "specifier": "ISIMIP3a",
-      "title": "ISIMIP3a simulation round",
-      "description": "Historical model evaluation and attribution runs"
-    },
-    {
-      "specifier": "ISIMIP3b",
-      "title": "ISIMIP3b simulation round",
-      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
-    }
-  ],
-  "species": [
-    {
-      "title": "Fagus sylvatica",
-      "specifier": "fasy"
-    },
-    {
-      "title": "Quercus robur",
-      "specifier": "quro"
-    },
-    {
-      "title": "Quercus petraea",
-      "specifier": "qupe"
-    },
-    {
-      "title": "Pinus sylvestris",
-      "specifier": "pisy"
-    },
-    {
-      "title": "Picea abies",
-      "specifier": "piab"
-    },
-    {
-      "title": "Pinus pinaster",
-      "specifier": "pipi"
-    },
-    {
-      "title": "Larix decidua",
-      "specifier": "lade"
-    },
-    {
-      "title": "Acer platanoides",
-      "specifier": "acpl"
-    },
-    {
-      "title": "Eucalyptus globulus",
-      "specifier": "eugl"
-    },
-    {
-      "title": "Betula pendula",
-      "specifier": "bepe"
-    },
-    {
-      "title": "Betula pubescens",
-      "specifier": "bepu"
-    },
-    {
-      "title": "Robinia pseudoacacia",
-      "specifier": "rops"
-    },
-    {
-      "title": "Fraxinus excelsior",
-      "specifier": "frex"
-    },
-    {
-      "title": "Populus nigra",
-      "specifier": "poni"
-    },
-    {
-      "title": "Sorbus aucuparia",
-      "specifier": "soau"
-    },
-    {
-      "title": "C3 grass",
-      "specifier": "c3gr"
-    },
-    {
-      "title": "hard woods",
-      "specifier": "hawo"
-    },
-    {
-      "title": "fire",
-      "specifier": "fi"
-    },
-    {
-      "title": "wind",
-      "specifier": "wi"
-    },
-    {
-      "title": "Insects",
-      "specifier": "ins"
     }
   ],
   "soc_dataset": [
@@ -3477,116 +3340,253 @@
       "comment": "Historic country-level GDP data are an extension of the data provided by Geiger, 2018 (<https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html>), and are derived mainly from the Maddison Project database. Gridded GDP data will be provided by c. 07/2021."
     }
   ],
-  "river": [
+  "irrigation": [
     {
-      "specifier": "amazon"
-    },
-    {
-      "specifier": "blue-nile"
-    },
-    {
-      "specifier": "danube"
-    },
-    {
-      "specifier": "darling"
-    },
-    {
-      "specifier": "ganges"
-    },
-    {
-      "specifier": "godavari"
-    },
-    {
-      "specifier": "indus"
-    },
-    {
-      "specifier": "lena"
-    },
-    {
-      "specifier": "mackenzie"
-    },
-    {
-      "specifier": "mississippi"
-    },
-    {
-      "specifier": "niger"
-    },
-    {
-      "specifier": "pajeu"
-    },
-    {
-      "specifier": "rhine"
-    },
-    {
-      "specifier": "tagus"
-    },
-    {
-      "specifier": "yangtze"
-    },
-    {
-      "specifier": "yellow"
-    }
-  ],
-  "category": [
-    {
-      "specifier": "climate",
-      "title": "Climate forcing"
-    },
-    {
-      "specifier": "composition_atmosphere",
-      "title": "Greenhouse gas forcing"
-    },
-    {
-      "specifier": "geo_conditions",
-      "title": "Static geographic information"
-    },
-    {
-      "specifier": "socioeconomic",
-      "title": "Socioeconomic forcing"
-    }
-  ],
-  "fishing_type": [
-    {
-      "specifier": "fishing"
-    },
-    {
-      "specifier": "no-fishing"
-    }
-  ],
-  "climate_forcing": [
-    {
-      "specifier": "gswp3-w5e5",
-      "priority": 1,
-      "title": "GSWP3-W5E5",
-      "time_period": "1901-2016",
-      "reanalysis": "ERA5",
-      "bias_adjustment_target": "GPCC, CRU",
-      "comments": "Combination of W5E5 (Lange, 2019b; Cucchi et al., 2020) for 1979-2016 with GSWP3 (Dirmeyer et al., 2006) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.4.1 bias adjustment method (Lange, 2019a; Lange, 2020).",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData",
-        "SecondaryInputData"
+      "specifier": "cirr",
+      "title": "Constrained irrigation",
+      "sectors": [
+        "water_global",
+        "water_regional"
       ]
     },
     {
-      "specifier": "gswp3",
-      "priority": 2,
-      "title": "GSWP3",
-      "time_period": "1901-2010",
-      "reanalysis": "20CR",
-      "bias_adjustment_target": "GPCC, GPCP, CPC-Unified, CRU, SRB",
-      "comments": "Dynamically downscaled and bias-adjusted 20th Century Reanalysis (20CR; Compo et al., 2011) from the Global Soil Wetness Project Phase 3 (GSWP3; Dirmeyer et al., 2006).",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData",
-        "SecondaryInputData"
+      "specifier": "noirr",
+      "title": "No irrigation (rainfed land)"
+    }
+  ],
+  "harmonization": [
+    {
+      "specifier": "default",
+      "title": "Default",
+      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+    },
+    {
+      "specifier": "fullharm",
+      "title": "Fully harmonized",
+      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
+    },
+    {
+      "specifier": "harmnon",
+      "title": "Harmonized seasons with no N constraints",
+      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+    }
+  ],
+  "bias_adjustment": [
+    {
+      "specifier": "nobasd",
+      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+    },
+    {
+      "specifier": "w5e5",
+      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
+    }
+  ],
+  "climate_dataset": [
+    {
+      "specifier": "co2",
+      "title": "Atmospheric CO2 concentration",
+      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "unit": "ppm",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Meinshausen et al. (2011) for 1850-2005 and Dlugokencky & Tans (2019) from 2006-2018."
+    }
+  ],
+  "subcategory": [
+    {
+      "specifier": "atmosphere",
+      "title": "Atmosphere",
+      "categories": [
+        "climate"
       ]
+    },
+    {
+      "specifier": "atmosphere_composition",
+      "title": "Atmospheric composition",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "lightning",
+      "title": "Lightning",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "ocean",
+      "title": "Ocean",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "fishing",
+      "title": "Fishing",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "gdp",
+      "title": "GDP",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "landuse",
+      "title": "Land use",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-deposition",
+      "title": "N-deposition",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-fertilizer",
+      "title": "N-fertilizer",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "pop",
+      "title": "Population",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "reservoirs_dams",
+      "title": "Reservoirs & dams",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "water_abstraction",
+      "title": "Water abstraction",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "wood_harvesting",
+      "title": "Wood harvesting",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "landseamask",
+      "title": "Land/Sea masks",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "orography",
+      "title": "Orography",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "river_routing",
+      "title": "River routing",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "soil",
+      "title": "Soil",
+      "categories": [
+        "geo_conditions"
+      ]
+    }
+  ],
+  "sector": [
+    {
+      "specifier": "agriculture",
+      "title": "Agriculture"
+    },
+    {
+      "specifier": "biodiversity",
+      "title": "Terrestrial biodiversity"
+    },
+    {
+      "specifier": "biomes",
+      "title": "Biomes"
+    },
+    {
+      "specifier": "coastal",
+      "title": "Coastal systems"
+    },
+    {
+      "specifier": "energy",
+      "title": "Energy"
+    },
+    {
+      "specifier": "fire",
+      "title": "Fire"
+    },
+    {
+      "specifier": "forestry",
+      "title": "Regional forests"
+    },
+    {
+      "specifier": "health",
+      "title": "Temperature-related mortality"
+    },
+    {
+      "specifier": "lakes_global",
+      "title": "Lakes (global)"
+    },
+    {
+      "specifier": "lakes_local",
+      "title": "Lakes (local)"
+    },
+    {
+      "specifier": "permafrost",
+      "title": "Permafrost"
+    },
+    {
+      "specifier": "water_global",
+      "title": "Water (global)"
+    },
+    {
+      "specifier": "water_regional",
+      "title": "Water (regional)"
+    },
+    {
+      "specifier": "labour",
+      "title": "Labour productivity"
+    },
+    {
+      "specifier": "diarrhea",
+      "title": "Diarrhoeal diseases"
     }
   ]
 }
