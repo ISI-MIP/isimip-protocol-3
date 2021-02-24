@@ -20,7 +20,13 @@
     <tbody>
         {% for row in table %}
         <tr>
-            <td>{{ row.title }}</td>
+            <td>
+                {% if row.url %}
+                <a href="{{ row.url }}" target="blank">{{ row.title }}</a>
+                {% else %}
+                {{ row.title }}
+                {% endif %}
+            </td>
             <td><strong>{{ row.specifier }}</strong></td>
             {% if simulation_round.specifier.endswith('a') %}
             <td>{{ row.time_period }}</td>
