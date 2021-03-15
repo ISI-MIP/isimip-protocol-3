@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/health.json",
-  "commit": "f2d10cb4b4ed6869cf47d27d89efd5531c9bafda",
+  "commit": "b8501d455afc4ae3749059d9b2e6187b41361888",
   "type": "object",
   "required": [
     "specifiers"
@@ -39,17 +39,17 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
+            "counterclim",
             "spinclim",
-            "counterclim"
+            "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "histsoc",
             "2015soc",
-            "nat",
-            "histsoc"
+            "nat"
           ]
         },
         "sens_scenario": {
@@ -61,18 +61,18 @@
         "variable": {
           "type": "string",
           "enum": [
-            "anheat",
             "btm",
+            "pop",
             "ancold",
-            "pop"
+            "anheat"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "lower",
+            "central",
             "upper",
-            "central"
+            "lower"
           ]
         },
         "region": {
@@ -85,10 +85,10 @@
           "type": "string",
           "enum": [
             "annual",
-            "daily",
-            "3hr",
+            "fixed",
             "monthly",
-            "fixed"
+            "daily",
+            "3hr"
           ]
         },
         "start_year": {
