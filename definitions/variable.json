@@ -1,20 +1,11 @@
 [
   {
     "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
-    "frequency": {
-      "biomes": "daily & monthly",
-      "fire": "daily & monthly",
-      "permafrost": "daily & monthly",
-      "water_global": "daily & monthly",
-      "water_regional": "daily & monthly"
-    },
+    "frequency": "daily & monthly",
     "long_name": "Total Runoff",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "water_global",
@@ -33,11 +24,8 @@
     "frequency": "monthly",
     "long_name": "Surface Runoff",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -138,11 +126,9 @@
     },
     "long_name": "Evapotranspiration",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -192,13 +178,9 @@
     },
     "long_name": "Total Soil Moisture Content",
     "resolution": {
-      "agriculture": "0.5° grid",
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "agriculture",
@@ -270,11 +252,9 @@
     "frequency": "daily if possible, else monthly",
     "long_name": "Temperature of Soil",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -290,7 +270,7 @@
   },
   {
     "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
-    "frequency": "monthly",
+    "frequency": "daily if possible, else monthly",
     "long_name": "Snow depth",
     "resolution": "0.5° grid",
     "sectors": [
@@ -309,11 +289,8 @@
     "frequency": "monthly",
     "long_name": "Snow Water Equivalent",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid",
-      "water_regional": "0.5° grid if possible, otherwise at gauge location"
+      "water_regional": "0.5° grid if possible, otherwise at gauge location",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -467,10 +444,7 @@
   },
   {
     "comment": "Irrigation water withdrawn in case of optimal irrigation (in addition to rainfall).",
-    "frequency": {
-      "water_global": "monthly",
-      "water_regional": "monthly"
-    },
+    "frequency": "monthly",
     "long_name": "Potential Irrigation Water Withdrawal (assuming unlimited water supply)",
     "resolution": {
       "water_global": "0.5° grid",
@@ -522,9 +496,7 @@
   {
     "comment": "Soil water demand required to avoid water stress, excluding any water losses associate with application or transport.",
     "extension": "<crop>-<irrigation>",
-    "frequency": {
-      "agriculture": "seasonal"
-    },
+    "frequency": "seasonal",
     "long_name": "Potential Net Irrigation Water Requirement",
     "resolution": {
       "agriculture": "0.5° grid"
@@ -1228,9 +1200,8 @@
     "frequency": "constant",
     "long_name": "Soil Types",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "water_global": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "water_global",
@@ -1676,10 +1647,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Vegetation",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1713,9 +1682,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Above Ground Vegetation Biomass",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1748,9 +1716,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Below Ground Vegetation Biomass",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1788,10 +1755,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Above Ground Litter Pool",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1830,10 +1795,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Below Ground Litter Pool",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1878,10 +1841,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Soil Pool",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1915,9 +1876,8 @@
     "frequency": "annual",
     "long_name": "Carbon in Products of Land Use Change",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5 grid",
-      "forestry": "stand"
+      "forestry": "stand",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -1960,10 +1920,8 @@
     },
     "long_name": "Carbon Mass Flux out of Atmosphere due to Gross Primary Production on Land",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2007,10 +1965,8 @@
     },
     "long_name": "Carbon Mass Flux into Atmosphere due to Autotrophic (plant) Respiration on Land",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2054,10 +2010,8 @@
     },
     "long_name": "Carbon Mass Flux out of Atmosphere due to Net Primary Production on Land",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2101,10 +2055,8 @@
     },
     "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2142,11 +2094,7 @@
       "total",
       "<pft>"
     ],
-    "frequency": {
-      "biomes": "daily (total), monthly (pft/total)",
-      "fire": "daily (total), monthly (pft/total)",
-      "permafrost": "daily (total), monthly (pft/total)"
-    },
+    "frequency": "daily (total), monthly (pft/total)",
     "long_name": "Burnt Area Fraction",
     "resolution": "0.5° grid",
     "sectors": [
@@ -2323,10 +2271,8 @@
     "frequency": "daily else monthly",
     "long_name": "Fraction of Absorbed Photosynthetically Active Radiation",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2373,11 +2319,8 @@
     },
     "long_name": "Leaf Area Index",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "",
       "forestry": "stand",
-      "permafrost": "0.5° grid",
-      "water_global": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2432,9 +2375,8 @@
     },
     "long_name": "Evaporation from Canopy (interception)",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "forestry": "stand"
+      "forestry": "stand",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2461,9 +2403,8 @@
     },
     "long_name": "Water Evaporation from Soil",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "forestry": "stand"
+      "forestry": "stand",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2496,9 +2437,8 @@
     },
     "long_name": "Transpiration",
     "resolution": {
-      "biomes": "0.5° grid",
-      "fire": "0.5° grid",
-      "forestry": "stand"
+      "forestry": "stand",
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2527,9 +2467,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Leaves",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2558,9 +2497,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Wood",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2589,9 +2527,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Roots",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -2620,9 +2557,8 @@
     "frequency": "annual",
     "long_name": "Carbon Mass in Coarse Woody Debris",
     "resolution": {
-      "biomes": "0.5° grid",
       "forestry": "stand",
-      "permafrost": "0.5° grid"
+      "other": "0.5° grid"
     },
     "sectors": [
       "biomes",
@@ -3143,6 +3079,7 @@
   },
   {
     "comment": "At the surface of snow, ice or water depending on the layer in contact with the atmosphere. Positive if upwards. the residual term of the surface energy balance, i.e. the net amount of energy that enters the lake on daily time scale: lakeheatf = swdown - swup + lwdown - lwup - sensheatf - latenheatf (terms defined positive when directed upwards)",
+    "frequency": "daily and monthly",
     "long_name": "Downward Heat Flux at Lake-Atmosphere Interface",
     "resolution": "Representative lake associated with grid cell",
     "sectors": [
