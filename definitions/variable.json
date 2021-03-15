@@ -118,11 +118,8 @@
       "water_regional": "total"
     },
     "frequency": {
-      "biomes": "monthly",
-      "fire": "monthly",
       "forestry": "daily",
-      "water_global": "monthly",
-      "water_regional": "monthly"
+      "other": "monthly"
     },
     "long_name": "Evapotranspiration",
     "resolution": {
@@ -2262,11 +2259,11 @@
   },
   {
     "comment": {
-      "biomes": "Grid cell total and PFT information is essential.",
-      "fire": "Grid cell total and PFT information is essential.",
-      "forestry": "Stand total and species information is essential.",
-      "permafrost": "Grid cell total and PFT information is essential.",
-      "water_global": "If used by, or computed by the model."
+      "biomes": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can used.",
+      "fire": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can used.",
+      "forestry": "Stand total and species information is essential. If lai is static, the timestep specifier \"fixed\" can used.",
+      "permafrost": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can used.",
+      "water_global": "If used by, or computed by the model. If lai is static, the timestep specifier \"fixed\" can used."
     },
     "extension": {
       "biomes": [
@@ -2287,10 +2284,7 @@
       ],
       "water_global": "-total"
     },
-    "frequency": {
-      "water_global": "daily else monthly or fixed",
-      "other": "daily if possible, else monthly"
-    },
+    "frequency": "daily else monthly or fixed",
     "long_name": "Leaf Area Index",
     "resolution": {
       "forestry": "stand",
@@ -2342,7 +2336,10 @@
         "<species>"
       ]
     },
-    "frequency": "monthly",
+    "frequency": {
+      "forestry": "daily",
+      "other": "monthly"
+    },
     "long_name": "Evaporation from Canopy (interception)",
     "resolution": {
       "forestry": "stand",
@@ -2366,7 +2363,10 @@
       ],
       "forestry": ""
     },
-    "frequency": "monthly",
+    "frequency": {
+      "forestry": "daily",
+      "other": "monthly"
+    },
     "long_name": "Water Evaporation from Soil",
     "resolution": {
       "forestry": "stand",
@@ -2396,7 +2396,10 @@
         "<species>"
       ]
     },
-    "frequency": "monthly",
+    "frequency": {
+      "forestry": "daily",
+      "other": "monthly"
+    },
     "long_name": "Transpiration",
     "resolution": {
       "forestry": "stand",
