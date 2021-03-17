@@ -29,10 +29,10 @@ On Linux, Python3 is probably already installed, but the development packages ar
 sudo apt-get install python3 python3-dev python3-venv git pandoc pandoc-citeproc
 
 # CentOS/RHEL
-sudo yum install python3 python3-devel  git pandoc pandoc-citeproc
+sudo yum install python3 python3-devel git pandoc pandoc-citeproc
 
 # openSUSE/SLES
-zypper install python3 python3-devel  git pandoc pandoc-citeproc
+zypper install python3 python3-devel git pandoc pandoc-citeproc
 ```
 
 ### macOS
