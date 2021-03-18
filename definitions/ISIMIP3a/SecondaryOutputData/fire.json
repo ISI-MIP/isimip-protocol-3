@@ -1,5 +1,5 @@
 {
-  "commit": "eb7a5d8fbc98cc40ea7bddbae00bf4d9c5965244",
+  "commit": "5e3cd8e6e8cedaa100260e3f5cbb66242fab2f7d",
   "crop": [
     {
       "specifier": "whe",
@@ -236,7 +236,7 @@
         "lat",
         "lon"
       ],
-      "frequency": "daily",
+      "frequency": "daily if possible, else monthly",
       "long_name": "Total Soil Moisture Content",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -300,7 +300,7 @@
     },
     {
       "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
-      "frequency": "monthly",
+      "frequency": "daily if possible, else monthly",
       "long_name": "Snow depth",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -333,7 +333,7 @@
     },
     {
       "comment": "Calculated from daily thaw depths.",
-      "frequency": "monthly, else annual",
+      "frequency": "annual",
       "long_name": "Annual Maximum Thaw Depth",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -433,7 +433,7 @@
       ],
       "frequency": "annual",
       "long_name": "Carbon in Products of Land Use Change",
-      "resolution": "0.5 grid",
+      "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
         "fire",
@@ -669,14 +669,14 @@
       "units": "%"
     },
     {
-      "comment": "Grid cell total and PFT information is essential.",
+      "comment": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can used.",
       "extension": [
         "total",
         "<pft>"
       ],
-      "frequency": "daily else monthly",
+      "frequency": "daily else monthly (fixed if static)",
       "long_name": "Leaf Area Index",
-      "resolution": "",
+      "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
         "fire",
@@ -764,7 +764,7 @@
         "total",
         "<pft>"
       ],
-      "frequency": "monthly",
+      "frequency": "daily if possible, else monthly",
       "long_name": "Sensible Heat Flux at Lake-Atmosphere Interface",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
