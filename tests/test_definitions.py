@@ -43,7 +43,7 @@ def test_variable():
     with open(file_path) as f:
         instance = json.loads(f.read())
         for row in instance:
-            sectors = row.get('sectors')
+            sectors = row.get('sectors') + ['other']
             if sectors:
                 for key, value in row.items():
                     if isinstance(value, dict):
@@ -51,6 +51,3 @@ def test_variable():
 
                         for sector in value:
                             assert sector in sectors, field
-
-                        for sector in sectors:
-                            assert sector in list(value), field
