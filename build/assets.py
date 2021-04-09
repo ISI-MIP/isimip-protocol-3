@@ -6,7 +6,7 @@ def main():
     src_path = Path('assets')
     dst_path = Path('output') / 'assets'
     dst_path.parent.mkdir(parents=True, exist_ok=True)
-    rmtree(dst_path)
+    rmtree(dst_path, ignore_errors=True)
     copytree(src_path, dst_path)
 
 
