@@ -41,7 +41,8 @@ def main():
     with open(template_path, encoding='utf-8') as f:
         template = enviroment.from_string(f.read())
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date, pages=pages, html=html))
+        f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
+                                pages=pages, html=html, base_path='.'))
 
 
 if __name__ == "__main__":

@@ -66,7 +66,7 @@ def main():
                 with open(layout_path, encoding='utf-8') as f:
                     template = Template(f.read(), trim_blocks=True, lstrip_blocks=True)
                 with open(output_path, 'w', encoding='utf-8') as f:
-                    f.write(template.render(content=html, simulation_round=simulation_round, sector=sector,
+                    f.write(template.render(content=html, simulation_round=simulation_round, sector=sector, base_path='../..',
                                             commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date))
 
 
