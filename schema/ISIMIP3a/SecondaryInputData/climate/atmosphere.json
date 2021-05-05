@@ -1,13 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryInputData/climate.json",
-  "commit": "0c445a15c70094c50113f47fcb0f4427b3209a00",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryInputData/climate/atmosphere.json",
+  "commit": "8b9d72358cb8e3ffe82fe3fd12c43042e13343b1",
   "type": "object",
   "required": [
     "specifiers"
   ],
   "properties": {
     "specifiers": {
+      "type": "object",
       "required": [
         "climate_forcing",
         "climate_scenario",
@@ -19,45 +20,44 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "canesm5",
-            "cnrm-esm2-1",
-            "ec-earth3",
-            "cnrm-cm6-1",
+            "w5e5v1.0",
             "gswp3",
-            "miroc6",
             "gswp3-w5e5",
-            "cesm2"
+            "w5e5v2.0"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
             "spinclim",
-            "obsclim",
-            "counterclim"
+            "counterclim",
+            "obsclim"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
-            "huss",
-            "rlds",
-            "rsds",
-            "tasmax",
-            "sfcwind",
-            "psl",
-            "tas",
-            "ua",
             "pr",
-            "ta",
-            "ts",
-            "hurs",
-            "tasmin",
-            "hur",
-            "hus",
-            "ps",
             "prw",
-            "va"
+            "ua",
+            "prsn",
+            "hus",
+            "tasmax",
+            "hurs",
+            "ps",
+            "rlds",
+            "tas",
+            "huss",
+            "orog",
+            "psl",
+            "mask",
+            "sfcwind",
+            "tasmin",
+            "va",
+            "rsds",
+            "hur",
+            "ta",
+            "ts"
           ]
         },
         "region": {
@@ -69,10 +69,10 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
             "annual",
-            "fixed",
-            "monthly"
+            "daily",
+            "monthly",
+            "fixed"
           ]
         },
         "start_year": {
