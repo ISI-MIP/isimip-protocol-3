@@ -1247,20 +1247,21 @@
     "units": "day of year"
   },
   {
-    "comment": "This allows for clear identification of planting that is also easy to follow for potential users from outside the project",
+    "comment": "",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
     "long_name": "Planting Year",
     "resolution": "0.5° grid",
     "sectors": [
       "agriculture",
-      "water_global"
+      "water_global",
+      "biomes"
     ],
     "specifier": "plantyear",
     "units": "calendar year"
   },
   {
-    "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+    "comment": "Together with the day and year of planting it allows for clear identification of anthesis.",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
     "long_name": "Anthesis Date",
@@ -1274,19 +1275,7 @@
     "units": "days from planting"
   },
   {
-    "comment": "It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
-    "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
-    "long_name": "Year of Anthesis",
-    "resolution": "0.5° grid",
-    "sectors": [
-      "water_global"
-    ],
-    "specifier": "anthyear",
-    "units": "calendar year"
-  },
-  {
-    "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
+    "comment": "Together with the day and year of planting it allows for clear identification of maturity.",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
     "long_name": "Maturity Date",
@@ -1300,25 +1289,15 @@
     "units": "days from planting"
   },
   {
-    "comment": "It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
-    "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
-    "long_name": "Year of Maturity",
-    "resolution": "0.5° grid",
-    "sectors": [
-      "water_global"
-    ],
-    "specifier": "matyyear",
-    "units": "calendar year"
-  },
-  {
-    "comment": "Of largest harvest wave.",
+    "comment": "Usually the year when maturity is reached. Can also be computed from planting and maturuty day.",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
     "long_name": "Harvest Year",
     "resolution": "0.5° grid",
     "sectors": [
-      "agriculture"
+      "agriculture",
+      "water_global",
+      "biomes"
     ],
     "specifier": "harvyear",
     "units": "calendar year"
@@ -1338,10 +1317,10 @@
     "units": "t ha-1"
   },
   {
-    "comment": "Nitrogen balance: uptake",
+    "comment": "Nitrogen balance: Uptake (growing season sum)",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
-    "long_name": "Total N Uptake (growing season sum)",
+    "long_name": "Cummulative Nitrogen Uptake",
     "resolution": "0.5° grid",
     "sectors": [
       "agriculture"
@@ -1350,10 +1329,10 @@
     "units": "kg ha-1"
   },
   {
-    "comment": "Nitrogen balance: inputs",
+    "comment": "Nitrogen balance: Inputs (growing season sum)",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
-    "long_name": "Total N Inputs (growing season sum)",
+    "long_name": "Cummulative Nitrogen Inputs",
     "resolution": "0.5° grid",
     "sectors": [
       "agriculture"
@@ -1362,10 +1341,10 @@
     "units": "kg ha-1"
   },
   {
-    "comment": "Nitrogen balance: losses",
+    "comment": "Nitrogen balance: Losses (growing season sum)",
     "extension": "<crop>-<irrigation>",
     "frequency": "annual",
-    "long_name": "Total N Losses (growing season sum)",
+    "long_name": "Cummulative Nitrogen Losses",
     "resolution": "0.5° grid",
     "sectors": [
       "agriculture"
@@ -1374,9 +1353,9 @@
     "units": "kg ha-1"
   },
   {
-    "comment": "",
+    "comment": "Nitrogen balance: Leaching (growing season sum)",
     "frequency": "annual",
-    "long_name": "Cumulative Growing Seasons Nitrogen Leached",
+    "long_name": "Cumulative Nitrogen Leached",
     "resolution": "0.5° grid",
     "sectors": [
       "agriculture"
