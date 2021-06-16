@@ -97,8 +97,8 @@
         'anthday',
         'anthyear',
         'matyday',
-        'matyyear',
-        'initr',
+        'harvyear',
+        'initrcum',
         'biom',
         'sco2',
         'sn2o'

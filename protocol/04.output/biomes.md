@@ -46,6 +46,19 @@
         'swe',
         'thawdepth'
     ],
+    'Agricultural variables': [
+        'yield',
+        'plantday',
+        'plantyear',
+        'anthday',
+        'anthyear',
+        'matyday',
+        'harvyear',
+        'initrcum',
+        'biom',
+        'sco2',
+        'sn2o'
+    ],
     'Optional output': [
         'cleaf',
         'cwood',

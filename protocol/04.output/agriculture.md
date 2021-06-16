@@ -3,27 +3,24 @@
 {{ table('variable', {
     'Key model output': [
         'yield',
-        'pirnreq',
+        'pirnreqcum',
+        'evapcum',
+        'initrcum',
         'soilmoist'
     ],
     'Key diagnostic variables': [
-        'aet',
-        'initr',
         'plantday',
+        'plantyear',
         'anthday',
-        'matyday'
+        'matyday',
+	'harvyear'
     ],
     'Additional output variables (optional)': [
         'biom',
-        'sco2',
-        'sn2o',
-        'tnup',
-        'tnin',
-        'tnloss',
-        'sumt',
-        'gsrsds',
-        'gsprcp',
-        'leach'
+        'nupcum',
+        'nincum',
+        'nlosscum',
+        'leachcum'
     ]
 }) }}
 
@@ -31,7 +28,7 @@
 
 {{ table('crop', {
     'Major crops': [
-        'whe', 'mai', 'soy', 'ric'
+        'whe', 'mai', 'soy', 'ric1', 'ric2'
     ],
     'Other crops': None
 }) }}
