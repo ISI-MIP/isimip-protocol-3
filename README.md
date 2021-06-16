@@ -100,22 +100,24 @@ Tables are rendered using the table macro `{{ table(name, order) }}`. This macro
 {{ table('variable', {
     'Key model output': [
         'yield',
-        'pirrww'
+        'pirnreqcum',
+        'evapcum',
+        'initrcum',
+        'soilmoist'
     ],
     'Key diagnostic variables': [
-        'aet',
-        'initr',
         'plantday',
+        'plantyear',
         'anthday',
-        'matyday'
+        'matyday',
+  'harvyear'
     ],
     'Additional output variables (optional)': [
         'biom',
-        'sco2',
-        'sn2o',
-        'tnup',
-        'tnin',
-        'tnloss'
+        'nupcum',
+        'nincum',
+        'nlosscum',
+        'leachcum'
     ]
 }) }}
 ```

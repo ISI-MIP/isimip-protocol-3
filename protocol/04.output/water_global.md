@@ -61,7 +61,7 @@
         'atotww',
         'ptotuse',
         'atotuse',
-        'pirwwgw',
+        'pirrwwgw',
         'airwwgw',
         'pirrusegw',
         'airrusegw',
@@ -92,16 +92,19 @@
     ],
     'Agricultural variables': [
         'yield',
+        'pirnreqcum',
+        'initrcum',
+        'evapcum',
         'plantday',
         'plantyear',
         'anthday',
-        'anthyear',
         'matyday',
         'harvyear',
-        'initrcum',
         'biom',
-        'sco2',
-        'sn2o'
+        'nupcum',
+        'nincum',
+        'nlosscum',
+        'leachcum'
     ],
     'Static output': [
         'soil',

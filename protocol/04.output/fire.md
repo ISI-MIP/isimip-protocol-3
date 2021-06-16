@@ -27,7 +27,8 @@
       'cveg',
       'clitterag',
       'clitterbg',
-      'csoil'
+      'csoil',
+      'cproduct'
     ],
     'Fluxes': [
         'gpp',

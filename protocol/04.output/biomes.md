@@ -31,7 +31,8 @@
         'lai',
         'pft',
         'tsl',
-        'burntarea'
+        'burntarea',
+        'landalbedo'
     ],
     'Hydrological variables': [
         'evap',
@@ -48,16 +49,19 @@
     ],
     'Agricultural variables': [
         'yield',
+        'pirnreqcum',
+        'initrcum',
+        'evapcum',
         'plantday',
         'plantyear',
         'anthday',
-        'anthyear',
         'matyday',
         'harvyear',
-        'initrcum',
         'biom',
-        'sco2',
-        'sn2o'
+        'nupcum',
+        'nincum',
+        'nlosscum',
+        'leachcum'
     ],
     'Optional output': [
         'cleaf',
@@ -65,6 +69,9 @@
         'croot',
         'ccwd'
     ],
+    'Static output': [
+        'soil'
+    ]
 }) }}
 
 ### Information about PFT-specific outputs

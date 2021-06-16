@@ -48,6 +48,9 @@
         'cwood',
         'croot',
         'tsl'
+    ],
+    'Static output': [
+        'soil'
     ]
 }) }}
 
