@@ -26,7 +26,7 @@
                             Last updated: 16 June 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2e8d7905202b3558cae1972379b71a598ff905c2">2e8d7905202b3558cae1972379b71a598ff905c2</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/4ad09837b90196e940e317520a71a019111a3051">4ad09837b90196e940e317520a71a019111a3051</a>
                         </p>
                     </div>
                 </div>
@@ -2775,7 +2775,7 @@
                     </ul>
                 </td>
                 <td>
-                    <p><b>Other sectors:</b> fire, fire, forestry, permafrost, water_global.</p>
+                    <p><b>Other sectors:</b> fire, forestry, permafrost, water_global.</p>
                     <p>Grid cell total and PFT information is essential. If lai is static, the timestep specifier "fixed" can used.</p>
                 </td>
             </tr>
@@ -2844,6 +2844,26 @@
                 <td>
                     <p><b>Other sectors:</b> fire, permafrost.</p>
                     <p>Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Surface Albedo of Land</td>
+                <td>
+                        <strong>landalbedo</strong>
+                </td>
+                <td>
+                    1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> fire, permafrost.</p>
+                    <p>Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.</p>
                 </td>
             </tr>
             <tr>
@@ -3108,6 +3128,66 @@
                 </td>
             </tr>
             <tr>
+                <td>Cumulative Potential Net Irrigation Water Requirement</td>
+                <td>
+                        <strong>pirnreqcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for <code>firr</code> simulations.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Application</td>
+                <td>
+                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Evapotranspiration</td>
+                <td>
+                        <strong>evapcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.</p>
+                </td>
+            </tr>
+            <tr>
                 <td>Planting Date</td>
                 <td>
                         <strong>plantday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
@@ -3208,26 +3288,6 @@
                 </td>
             </tr>
             <tr>
-                <td>Cumulative Nitrogen Application</td>
-                <td>
-                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> agriculture, water_global.</p>
-                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
-                </td>
-            </tr>
-            <tr>
                 <td>Total Above Ground Biomass Dry Matter Yields</td>
                 <td>
                         <strong>biom-&lt;crop&gt;-&lt;irrigation&gt;</strong>
@@ -3245,6 +3305,86 @@
                 <td>
                     <p><b>Other sectors:</b> agriculture, water_global.</p>
                     <p>The whole plant biomass above ground.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Uptake</td>
+                <td>
+                        <strong>nupcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Nitrogen balance: Uptake (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Inputs</td>
+                <td>
+                        <strong>nincum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Nitrogen balance: Inputs (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Losses</td>
+                <td>
+                        <strong>nlosscum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Nitrogen balance: Losses (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Leached</td>
+                <td>
+                        <strong>leachcum</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, water_global.</p>
+                    <p>Nitrogen balance: Leaching (growing season sum)</p>
                 </td>
             </tr>
             <tr>
@@ -3346,7 +3486,7 @@
             </tr>
             <tr>
                 <td colspan="7" class="table-secondary">
-                    <strong>Other</strong>
+                    <strong>Static output</strong>
                 </td>
             </tr>
             <tr>
@@ -3367,26 +3507,6 @@
                 <td>
                     <p><b>Other sectors:</b> forestry, water_global.</p>
                     <p>Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Surface Albedo of Land</td>
-                <td>
-                        <strong>landalbedo</strong>
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>monthly</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> fire, permafrost.</p>
-                    <p>Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.</p>
                 </td>
             </tr>
         </tbody>

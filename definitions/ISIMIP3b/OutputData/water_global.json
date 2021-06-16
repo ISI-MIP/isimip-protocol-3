@@ -1,5 +1,5 @@
 {
-  "commit": "2e8d7905202b3558cae1972379b71a598ff905c2",
+  "commit": "4ad09837b90196e940e317520a71a019111a3051",
   "time_span": [
     {
       "specifier": "minimum",
@@ -2734,6 +2734,20 @@
       "valid_min": 0.0
     },
     {
+      "comment": "Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for `firr` simulations.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Cumulative Potential Net Irrigation Water Requirement",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "pirnreqcum",
+      "units": "kg m-2"
+    },
+    {
       "comment": "Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed.",
       "frequency": "monthly",
       "long_name": "Actual Irrigation Water Consumption",
@@ -3437,6 +3451,20 @@
       "units": "dry matter (t ha-1)"
     },
     {
+      "comment": "Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Cumulative Evapotranspiration",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "evapcum",
+      "units": "kg m-2"
+    },
+    {
       "comment": "Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).",
       "extension": "<crop>-<irrigation>",
       "frequency": "annual",
@@ -3535,6 +3563,61 @@
       "units": "t ha-1"
     },
     {
+      "comment": "Nitrogen balance: Uptake (growing season sum)",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Uptake",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "nupcum",
+      "units": "kg ha-1"
+    },
+    {
+      "comment": "Nitrogen balance: Inputs (growing season sum)",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Inputs",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "nincum",
+      "units": "kg ha-1"
+    },
+    {
+      "comment": "Nitrogen balance: Losses (growing season sum)",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Losses",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "nlosscum",
+      "units": "kg ha-1"
+    },
+    {
+      "comment": "Nitrogen balance: Leaching (growing season sum)",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Leached",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "water_global"
+      ],
+      "specifier": "leachcum",
+      "units": "kg ha-1"
+    },
+    {
       "comment": "If used by, or computed by the model. If lai is static, the timestep specifier \"fixed\" can used.",
       "extension": "total",
       "frequency": "daily else monthly (fixed if static)",
@@ -3545,8 +3628,7 @@
         "fire",
         "forestry",
         "permafrost",
-        "water_global",
-        "fire"
+        "water_global"
       ],
       "specifier": "lai",
       "units": "1",

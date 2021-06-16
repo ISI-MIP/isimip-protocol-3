@@ -26,7 +26,7 @@
                             Last updated: 16 June 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2e8d7905202b3558cae1972379b71a598ff905c2">2e8d7905202b3558cae1972379b71a598ff905c2</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/4ad09837b90196e940e317520a71a019111a3051">4ad09837b90196e940e317520a71a019111a3051</a>
                         </p>
                     </div>
                 </div>
@@ -2955,6 +2955,25 @@
                 </td>
             </tr>
             <tr>
+                <td>Potential Irrigation Water Withdrawal (assuming unlimited water supply) from groundwater resources</td>
+                <td>
+                        <strong>pirrwwgw</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Part of pirrww that is extracted from groundwater resources.</p>
+                </td>
+            </tr>
+            <tr>
                 <td>actual irrigation water withdrawal from groundwater resources</td>
                 <td>
                         <strong>airwwgw</strong>
@@ -3493,6 +3512,66 @@
                 </td>
             </tr>
             <tr>
+                <td>Cumulative Potential Net Irrigation Water Requirement</td>
+                <td>
+                        <strong>pirnreqcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for <code>firr</code> simulations.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Application</td>
+                <td>
+                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Evapotranspiration</td>
+                <td>
+                        <strong>evapcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.</p>
+                </td>
+            </tr>
+            <tr>
                 <td>Planting Date</td>
                 <td>
                         <strong>plantday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
@@ -3593,26 +3672,6 @@
                 </td>
             </tr>
             <tr>
-                <td>Cumulative Nitrogen Application</td>
-                <td>
-                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
-                </td>
-            </tr>
-            <tr>
                 <td>Total Above Ground Biomass Dry Matter Yields</td>
                 <td>
                         <strong>biom-&lt;crop&gt;-&lt;irrigation&gt;</strong>
@@ -3630,6 +3689,86 @@
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
                     <p>The whole plant biomass above ground.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Uptake</td>
+                <td>
+                        <strong>nupcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Nitrogen balance: Uptake (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Inputs</td>
+                <td>
+                        <strong>nincum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Nitrogen balance: Inputs (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Losses</td>
+                <td>
+                        <strong>nlosscum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Nitrogen balance: Losses (growing season sum)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Leached</td>
+                <td>
+                        <strong>leachcum</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Nitrogen balance: Leaching (growing season sum)</p>
                 </td>
             </tr>
             <tr>
@@ -3673,7 +3812,7 @@
                     </ul>
                 </td>
                 <td>
-                    <p><b>Other sectors:</b> biomes, fire, fire, forestry, permafrost.</p>
+                    <p><b>Other sectors:</b> biomes, fire, forestry, permafrost.</p>
                     <p>If used by, or computed by the model. If lai is static, the timestep specifier "fixed" can used.</p>
                 </td>
             </tr>
@@ -3713,30 +3852,6 @@
                 </td>
                 <td>
                     <p>The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.</p>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7" class="table-secondary">
-                    <strong>Other</strong>
-                </td>
-            </tr>
-            <tr>
-                <td>Potential Irrigation Water Withdrawal (assuming unlimited water supply) from groundwater resources</td>
-                <td>
-                        <strong>pirrwwgw</strong>
-                </td>
-                <td>
-                    kg m-2 s-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>monthly</li>
-                    </ul>
-                </td>
-                <td>
-                    <p>Part of pirrww that is extracted from groundwater resources.</p>
                 </td>
             </tr>
         </tbody>
