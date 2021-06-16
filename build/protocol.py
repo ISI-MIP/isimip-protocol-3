@@ -54,7 +54,7 @@ def main():
                 md = template.render(simulation_round=simulation_round, sector=sector, definitions=definitions,
                                      pattern=pattern, pattern_simple=pattern_simple,
                                      commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
-                                     table=Table(simulation_round, sector, Counter()))
+                                     table=Table(simulation_round, sector, definitions, Counter()))
 
                 # step 3: convert markdown to html
                 html = markdown(md, extensions=['fenced_code', 'attr_list', TocExtension(toc_depth='2-3')])
@@ -87,28 +87,24 @@ def get_pattern_simple(pattern_list):
 
 class Table(object):
 
-    def __init__(self, simulation_round, sector, counter):
+    def __init__(self, simulation_round, sector, definitions, counter):
         self.simulation_round = simulation_round
         self.product = {
             'specifier': 'OutputData'
         }
         self.sector = sector
+        self.definitions = definitions
         self.counter = counter
 
     def __call__(self, template, order=None):
-        definition_path = os.path.join('definitions', '{}.json'.format(template))
         template_path = os.path.join('templates', 'definitions', '{}.html'.format(template))
 
         simulation_round = self.simulation_round['specifier']
         product = self.product['specifier']
         sector = self.sector['specifier']
 
-        # open the definition file and read in every row from the sector
-        with open(definition_path, encoding='utf-8') as f:
-            definitions = json.loads(f.read())
-
         # filter rows by simulation_round, product, and/or sector
-        rows = list(filter_rows(definitions, simulation_round, product, sector=sector))
+        rows = list(filter_rows(self.definitions[template], simulation_round, product, sector=sector))
 
         # apply order argument
         if isinstance(order, dict):
@@ -155,7 +151,7 @@ class Table(object):
         with open(template_path, encoding='utf-8') as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
-        return template.render(table=table, counter=self.counter, markdown=markdown,
+        return template.render(table=table, counter=self.counter, markdown=markdown, other_sectors=other_sectors,
                                simulation_round=self.simulation_round, sector=self.sector)
 
 
@@ -167,6 +163,10 @@ class Counter(object):
     def __call__(self):
         self.counter += 1
         return self.counter
+
+
+def other_sectors(sectors, sector):
+    return sorted([s for s in sectors if s != sector])
 
 
 if __name__ == "__main__":

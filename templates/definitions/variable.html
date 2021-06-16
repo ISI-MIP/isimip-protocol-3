@@ -79,6 +79,12 @@
                     </ul>
                 </td>
                 <td>
+                    {% with %}
+                    {% set other = other_sectors(row.sectors, sector.specifier) %}
+                    {% if other %}
+                    <p><b>{{ 'Sectors' if sector.specifier == 'index' else 'Other sectors' }}:</b> {{ other|join(', ') }}.</p>
+                    {% endif %}
+                    {% endwith %}
                     {% if row.dimensions %}
                     <p><b>Level dimensions:</b> ({{ row.dimensions|join(', ') }}).</p>
                     {% endif %}
