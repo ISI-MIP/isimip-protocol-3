@@ -26,7 +26,7 @@
                             Last updated: 16 June 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/5c35aeee5acc546a31444b121b7182847e1558f0">5c35aeee5acc546a31444b121b7182847e1558f0</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2e8d7905202b3558cae1972379b71a598ff905c2">2e8d7905202b3558cae1972379b71a598ff905c2</a>
                         </p>
                     </div>
                 </div>
@@ -3721,23 +3721,23 @@
                 </td>
             </tr>
             <tr>
-                <td>Potential Net Irrigation Water Requirement</td>
+                <td>Cumulative Potential Net Irrigation Water Requirement</td>
                 <td>
-                        <strong>pirnreq-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>pirnreqcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    mm per growing season
+                    kg m-2
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture.</p>
-                    <p>Soil water demand required to avoid water stress, excluding any water losses associate with application or transport.</p>
+                    <p>Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for <code>firr</code> simulations.</p>
                 </td>
             </tr>
             <tr>
@@ -4891,62 +4891,62 @@
                         <strong>yield-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    dry matter (t ha-1 per growing season)
+                    dry matter (t ha-1)
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.</p>
+                    <p>Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.</p>
                 </td>
             </tr>
             <tr>
-                <td>Actual Evapotranspiration</td>
+                <td>Cumulative Evapotranspiration</td>
                 <td>
-                        <strong>aet-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>evapcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    mm per growing season
+                    kg m-2
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture.</p>
-                    <p>Portion of all water (including rain) that is evapo-transpired, the water amount should be accumulated over the entire growing period (not the calendar year)</p>
+                    <p>Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.</p>
                 </td>
             </tr>
             <tr>
-                <td>Nitrogen Application Rate</td>
+                <td>Cumulative Nitrogen Application</td>
                 <td>
-                        <strong>initr-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    kg ha-1 per growing season
+                    kg ha-1
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).</p>
+                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
                 </td>
             </tr>
             <tr>
-                <td>Actual Planting Date</td>
+                <td>Planting Date</td>
                 <td>
                         <strong>plantday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
@@ -4957,32 +4957,32 @@
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Julian dates.</p>
+                    <p>As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may diverge from the planting calendar used for harmonization.</p>
                 </td>
             </tr>
             <tr>
-                <td>Actual Planting Year</td>
+                <td>Planting Year</td>
                 <td>
                         <strong>plantyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    year of planting
+                    calendar year
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
-                    <p><b>Sectors:</b> water_global.</p>
-                    <p>This allows for clear identification of planting that is also easy to follow for potential users from outside the project</p>
+                    <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
+
                 </td>
             </tr>
             <tr>
@@ -4991,38 +4991,18 @@
                         <strong>anthday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    day of year of anthesis
+                    days from planting
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Year of Anthesis</td>
-                <td>
-                        <strong>anthyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    year of anthesis
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> water_global.</p>
-                    <p>It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.</p>
+                    <p>Together with the day and year of planting it allows for clear identification of anthesis.</p>
                 </td>
             </tr>
             <tr>
@@ -5031,38 +5011,38 @@
                         <strong>matyday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    day of year of maturity
+                    days from planting
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.</p>
+                    <p>Together with the day and year of planting it allows for clear identification of maturity.</p>
                 </td>
             </tr>
             <tr>
-                <td>Year of Maturity</td>
+                <td>Harvest Year</td>
                 <td>
-                        <strong>matyyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>harvyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    year of maturity
+                    calendar year
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
-                    <p><b>Sectors:</b> water_global.</p>
-                    <p>It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.</p>
+                    <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
+                    <p>Usually the year when maturity is reached. Can also be computed from planting and maturuty day.</p>
                 </td>
             </tr>
             <tr>
@@ -5071,13 +5051,13 @@
                         <strong>biom-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    t ha-1 per growing season
+                    t ha-1
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
@@ -5086,9 +5066,9 @@
                 </td>
             </tr>
             <tr>
-                <td>Soil Carbon Emissions</td>
+                <td>Cumulative Nitrogen Uptake</td>
                 <td>
-                        <strong>sco2-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>nupcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
                     kg ha-1
@@ -5097,18 +5077,18 @@
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
-                    <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of carbon (C) per hectare.</p>
+                    <p><b>Sectors:</b> agriculture.</p>
+                    <p>Nitrogen balance: Uptake (growing season sum)</p>
                 </td>
             </tr>
             <tr>
-                <td>Nitrous Oxide Emissions</td>
+                <td>Cumulative Nitrogen Inputs</td>
                 <td>
-                        <strong>sn2o-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>nincum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
                     kg ha-1
@@ -5117,152 +5097,52 @@
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
-                    <p><b>Sectors:</b> agriculture, biomes, water_global.</p>
-                    <p>Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of nitrous oxide (N2O-N) per hectare</p>
+                    <p><b>Sectors:</b> agriculture.</p>
+                    <p>Nitrogen balance: Inputs (growing season sum)</p>
                 </td>
             </tr>
             <tr>
-                <td>Total N Uptake (total growing season sum)</td>
+                <td>Cumulative Nitrogen Losses</td>
                 <td>
-                        <strong>tnup-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>nlosscum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    kg ha-1 yr-1
+                    kg ha-1
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>monthly</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture.</p>
-                    <p>Nitrogen balance: uptake</p>
+                    <p>Nitrogen balance: Losses (growing season sum)</p>
                 </td>
             </tr>
             <tr>
-                <td>Total N Inputs (total growing season sum)</td>
+                <td>Cumulative Nitrogen Leached</td>
                 <td>
-                        <strong>tnin-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>leachcum</strong>
                 </td>
                 <td>
-                    kg ha-1 yr-1
+                    kg ha-1
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>monthly</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Sectors:</b> agriculture.</p>
-                    <p>Nitrogen balance: inputs</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Total N Losses (total growing season sum)</td>
-                <td>
-                        <strong>tnloss-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1 yr-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>monthly</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> agriculture.</p>
-                    <p>Nitrogen balance: losses</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nitrogen Leached</td>
-                <td>
-                        <strong>leach</strong>
-                </td>
-                <td>
-                    kg ha-1 yr-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> agriculture.</p>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Accumulated Growing Season Precipitation</td>
-                <td>
-                        <strong>gsprcp-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    mm ha-1 yr-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> agriculture.</p>
-                    <p>Total growing season precipitation per crop</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Growing Season Incoming Solar Shortwave Radiation</td>
-                <td>
-                        <strong>gsrsds-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    W m-2 yr-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> agriculture.</p>
-                    <p>Average growing season shortwave solar radiation</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Growing Season Temperature Sum</td>
-                <td>
-                        <strong>sumt-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    deg c-days yr-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Sectors:</b> agriculture.</p>
-                    <p>Sum of daily mean temperature over growing season</p>
+                    <p>Nitrogen balance: Leaching (growing season sum)</p>
                 </td>
             </tr>
             <tr>
@@ -8802,6 +8682,18 @@
         <tr>
             <td colspan="6" class="table-secondary">
                 <strong>Other crops</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Rice (first growing period)</td>
+            <td>
+                <strong>ric1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Rice (second growing period)</td>
+            <td>
+                <strong>ric2</strong>
             </td>
         </tr>
         <tr>

@@ -26,7 +26,7 @@
                             Last updated: 16 June 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/5c35aeee5acc546a31444b121b7182847e1558f0">5c35aeee5acc546a31444b121b7182847e1558f0</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2e8d7905202b3558cae1972379b71a598ff905c2">2e8d7905202b3558cae1972379b71a598ff905c2</a>
                         </p>
                     </div>
                 </div>
@@ -3478,22 +3478,22 @@
                         <strong>yield-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    dry matter (t ha-1 per growing season)
+                    dry matter (t ha-1)
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.</p>
+                    <p>Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.</p>
                 </td>
             </tr>
             <tr>
-                <td>Actual Planting Date</td>
+                <td>Planting Date</td>
                 <td>
                         <strong>plantday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
@@ -3504,31 +3504,32 @@
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Julian dates.</p>
+                    <p>As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may diverge from the planting calendar used for harmonization.</p>
                 </td>
             </tr>
             <tr>
-                <td>Actual Planting Year</td>
+                <td>Planting Year</td>
                 <td>
                         <strong>plantyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    year of planting
+                    calendar year
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
-                    <p>This allows for clear identification of planting that is also easy to follow for potential users from outside the project</p>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+
                 </td>
             </tr>
             <tr>
@@ -3537,37 +3538,18 @@
                         <strong>anthday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    day of year of anthesis
+                    days from planting
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Year of Anthesis</td>
-                <td>
-                        <strong>anthyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    year of anthesis
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p>It allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.</p>
+                    <p>Together with the day and year of planting it allows for clear identification of anthesis.</p>
                 </td>
             </tr>
             <tr>
@@ -3576,57 +3558,58 @@
                         <strong>matyday-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    day of year of maturity
+                    days from planting
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.</p>
+                    <p>Together with the day and year of planting it allows for clear identification of maturity.</p>
                 </td>
             </tr>
             <tr>
-                <td>Year of Maturity</td>
+                <td>Harvest Year</td>
                 <td>
-                        <strong>matyyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                        <strong>harvyear-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    year of maturity
+                    calendar year
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p>It allows for clear identification of maturity that is also easy to follow for potential users from outside the project.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nitrogen Application Rate</td>
-                <td>
-                        <strong>initr-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1 per growing season
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).</p>
+                    <p>Usually the year when maturity is reached. Can also be computed from planting and maturuty day.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Cumulative Nitrogen Application</td>
+                <td>
+                        <strong>initrcum-&lt;crop&gt;-&lt;irrigation&gt;</strong>
+                </td>
+                <td>
+                    kg ha-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> agriculture, biomes.</p>
+                    <p>Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).</p>
                 </td>
             </tr>
             <tr>
@@ -3635,58 +3618,18 @@
                         <strong>biom-&lt;crop&gt;-&lt;irrigation&gt;</strong>
                 </td>
                 <td>
-                    t ha-1 per growing season
+                    t ha-1
                 </td>
                 <td>
                     <ul>
                         <li>0.5° grid</li>
 
-                        <li>seasonal</li>
+                        <li>annual</li>
                     </ul>
                 </td>
                 <td>
                     <p><b>Other sectors:</b> agriculture, biomes.</p>
                     <p>The whole plant biomass above ground.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Soil Carbon Emissions</td>
-                <td>
-                        <strong>sco2-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of carbon (C) per hectare.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Nitrous Oxide Emissions</td>
-                <td>
-                        <strong>sn2o-&lt;crop&gt;-&lt;irrigation&gt;</strong>
-                </td>
-                <td>
-                    kg ha-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>seasonal</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> agriculture, biomes.</p>
-                    <p>Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of nitrous oxide (N2O-N) per hectare</p>
                 </td>
             </tr>
             <tr>
@@ -3845,6 +3788,18 @@
         <tr>
             <td colspan="6" class="table-secondary">
                 <strong>Other crops</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Rice (first growing period)</td>
+            <td>
+                <strong>ric1</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Rice (second growing period)</td>
+            <td>
+                <strong>ric2</strong>
             </td>
         </tr>
         <tr>

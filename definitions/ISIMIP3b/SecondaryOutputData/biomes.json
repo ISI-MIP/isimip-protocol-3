@@ -1,5 +1,5 @@
 {
-  "commit": "5c35aeee5acc546a31444b121b7182847e1558f0",
+  "commit": "2e8d7905202b3558cae1972379b71a598ff905c2",
   "time_span": [
     {
       "specifier": "minimum",
@@ -50,6 +50,14 @@
     {
       "specifier": "ric",
       "title": "Rice"
+    },
+    {
+      "specifier": "ric1",
+      "title": "Rice (first growing period)"
+    },
+    {
+      "specifier": "ric2",
+      "title": "Rice (second growing period)"
     },
     {
       "specifier": "bar",
@@ -2502,9 +2510,9 @@
       "units": "-"
     },
     {
-      "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
+      "comment": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Crop Yields",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2513,27 +2521,27 @@
         "biomes"
       ],
       "specifier": "yield",
-      "units": "dry matter (t ha-1 per growing season)"
+      "units": "dry matter (t ha-1)"
     },
     {
-      "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
+      "comment": "Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Nitrogen Application Rate",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Application",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture",
         "water_global",
         "biomes"
       ],
-      "specifier": "initr",
-      "units": "kg ha-1 per growing season"
+      "specifier": "initrcum",
+      "units": "kg ha-1"
     },
     {
-      "comment": "Julian dates.",
+      "comment": "As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may diverge from the planting calendar used for harmonization.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Actual Planting Date",
+      "frequency": "annual",
+      "long_name": "Planting Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture",
@@ -2544,9 +2552,23 @@
       "units": "day of year"
     },
     {
-      "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+      "comment": "",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
+      "long_name": "Planting Year",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "plantyear",
+      "units": "calendar year"
+    },
+    {
+      "comment": "Together with the day and year of planting it allows for clear identification of anthesis.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
       "long_name": "Anthesis Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2555,12 +2577,12 @@
         "biomes"
       ],
       "specifier": "anthday",
-      "units": "day of year of anthesis"
+      "units": "days from planting"
     },
     {
-      "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
+      "comment": "Together with the day and year of planting it allows for clear identification of maturity.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Maturity Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2569,12 +2591,26 @@
         "biomes"
       ],
       "specifier": "matyday",
-      "units": "day of year of maturity"
+      "units": "days from planting"
+    },
+    {
+      "comment": "Usually the year when maturity is reached. Can also be computed from planting and maturuty day.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Harvest Year",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "harvyear",
+      "units": "calendar year"
     },
     {
       "comment": "The whole plant biomass above ground.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Total Above Ground Biomass Dry Matter Yields",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2583,35 +2619,7 @@
         "biomes"
       ],
       "specifier": "biom",
-      "units": "t ha-1 per growing season"
-    },
-    {
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of carbon (C) per hectare.",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Soil Carbon Emissions",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ],
-      "specifier": "sco2",
-      "units": "kg ha-1"
-    },
-    {
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of nitrous oxide (N2O-N) per hectare",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Nitrous Oxide Emissions",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
-      ],
-      "specifier": "sn2o",
-      "units": "kg ha-1"
+      "units": "t ha-1"
     },
     {
       "comment": "Grid cell total and PFT information is essential.",

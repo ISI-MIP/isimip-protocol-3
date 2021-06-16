@@ -1,5 +1,5 @@
 {
-  "commit": "5c35aeee5acc546a31444b121b7182847e1558f0",
+  "commit": "2e8d7905202b3558cae1972379b71a598ff905c2",
   "time_span": [
     {
       "specifier": "minimum",
@@ -50,6 +50,14 @@
     {
       "specifier": "ric",
       "title": "Rice"
+    },
+    {
+      "specifier": "ric1",
+      "title": "Rice (first growing period)"
+    },
+    {
+      "specifier": "ric2",
+      "title": "Rice (second growing period)"
     },
     {
       "specifier": "bar",
@@ -2292,21 +2300,21 @@
       "valid_min": 0.0
     },
     {
-      "comment": "Soil water demand required to avoid water stress, excluding any water losses associate with application or transport.",
+      "comment": "Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for `firr` simulations.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Potential Net Irrigation Water Requirement",
+      "frequency": "annual",
+      "long_name": "Cumulative Potential Net Irrigation Water Requirement",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture"
       ],
-      "specifier": "pirnreq",
-      "units": "mm per growing season"
+      "specifier": "pirnreqcum",
+      "units": "kg m-2"
     },
     {
-      "comment": "Crop-specific: Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
+      "comment": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Crop Yields",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2315,39 +2323,39 @@
         "biomes"
       ],
       "specifier": "yield",
-      "units": "dry matter (t ha-1 per growing season)"
+      "units": "dry matter (t ha-1)"
     },
     {
-      "comment": "Portion of all water (including rain) that is evapo-transpired, the water amount should be accumulated over the entire growing period (not the calendar year)",
+      "comment": "Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Actual Evapotranspiration",
+      "frequency": "annual",
+      "long_name": "Cumulative Evapotranspiration",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture"
       ],
-      "specifier": "aet",
-      "units": "mm per growing season"
+      "specifier": "evapcum",
+      "units": "kg m-2"
     },
     {
-      "comment": "Total nitrogen application rate. If organic and inorganic amendments are applied, rate should be reported as effective inorganic nitrogen input (ignoring residues).",
+      "comment": "Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Nitrogen Application Rate",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Application",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture",
         "water_global",
         "biomes"
       ],
-      "specifier": "initr",
-      "units": "kg ha-1 per growing season"
+      "specifier": "initrcum",
+      "units": "kg ha-1"
     },
     {
-      "comment": "Julian dates.",
+      "comment": "As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may diverge from the planting calendar used for harmonization.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Actual Planting Date",
+      "frequency": "annual",
+      "long_name": "Planting Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture",
@@ -2358,9 +2366,23 @@
       "units": "day of year"
     },
     {
-      "comment": "Together with the year of anthesis added to the list of outputs (see below) it allows for clear identification of anthesis that is also easy to follow for potential users from outside the project.",
+      "comment": "",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
+      "long_name": "Planting Year",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "plantyear",
+      "units": "calendar year"
+    },
+    {
+      "comment": "Together with the day and year of planting it allows for clear identification of anthesis.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
       "long_name": "Anthesis Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2369,12 +2391,12 @@
         "biomes"
       ],
       "specifier": "anthday",
-      "units": "day of year of anthesis"
+      "units": "days from planting"
     },
     {
-      "comment": "Together with the year of maturity added to the list of outputs (see below) it allows for clear identification of maturity that is also easy to follow for potential users from outside the project.",
+      "comment": "Together with the day and year of planting it allows for clear identification of maturity.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Maturity Date",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2383,12 +2405,26 @@
         "biomes"
       ],
       "specifier": "matyday",
-      "units": "day of year of maturity"
+      "units": "days from planting"
+    },
+    {
+      "comment": "Usually the year when maturity is reached. Can also be computed from planting and maturuty day.",
+      "extension": "<crop>-<irrigation>",
+      "frequency": "annual",
+      "long_name": "Harvest Year",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture",
+        "water_global",
+        "biomes"
+      ],
+      "specifier": "harvyear",
+      "units": "calendar year"
     },
     {
       "comment": "The whole plant biomass above ground.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
+      "frequency": "annual",
       "long_name": "Total Above Ground Biomass Dry Matter Yields",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
@@ -2397,118 +2433,54 @@
         "biomes"
       ],
       "specifier": "biom",
-      "units": "t ha-1 per growing season"
+      "units": "t ha-1"
     },
     {
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of carbon (C) per hectare.",
+      "comment": "Nitrogen balance: Uptake (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Soil Carbon Emissions",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Uptake",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
+        "agriculture"
       ],
-      "specifier": "sco2",
+      "specifier": "nupcum",
       "units": "kg ha-1"
     },
     {
-      "comment": "Ideally should be modeled with realistic land-use history and initial carbon pools. Subject to extra study. Units are kg of nitrous oxide (N2O-N) per hectare",
+      "comment": "Nitrogen balance: Inputs (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Nitrous Oxide Emissions",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Inputs",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "agriculture",
-        "water_global",
-        "biomes"
+        "agriculture"
       ],
-      "specifier": "sn2o",
+      "specifier": "nincum",
       "units": "kg ha-1"
     },
     {
-      "comment": "Nitrogen balance: uptake",
+      "comment": "Nitrogen balance: Losses (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "monthly",
-      "long_name": "Total N Uptake (total growing season sum)",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Losses",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture"
       ],
-      "specifier": "tnup",
-      "units": "kg ha-1 yr-1"
+      "specifier": "nlosscum",
+      "units": "kg ha-1"
     },
     {
-      "comment": "Nitrogen balance: inputs",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "monthly",
-      "long_name": "Total N Inputs (total growing season sum)",
+      "comment": "Nitrogen balance: Leaching (growing season sum)",
+      "frequency": "annual",
+      "long_name": "Cumulative Nitrogen Leached",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "agriculture"
       ],
-      "specifier": "tnin",
-      "units": "kg ha-1 yr-1"
-    },
-    {
-      "comment": "Nitrogen balance: losses",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "monthly",
-      "long_name": "Total N Losses (total growing season sum)",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture"
-      ],
-      "specifier": "tnloss",
-      "units": "kg ha-1 yr-1"
-    },
-    {
-      "comment": "",
-      "frequency": "seasonal",
-      "long_name": "Nitrogen Leached",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture"
-      ],
-      "specifier": "leach",
-      "units": "kg ha-1 yr-1"
-    },
-    {
-      "comment": "Total growing season precipitation per crop",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Accumulated Growing Season Precipitation",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture"
-      ],
-      "specifier": "gsprcp",
-      "units": "mm ha-1 yr-1"
-    },
-    {
-      "comment": "Average growing season shortwave solar radiation",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Growing Season Incoming Solar Shortwave Radiation",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture"
-      ],
-      "specifier": "gsrsds",
-      "units": "W m-2 yr-1"
-    },
-    {
-      "comment": "Sum of daily mean temperature over growing season",
-      "extension": "<crop>-<irrigation>",
-      "frequency": "seasonal",
-      "long_name": "Growing Season Temperature Sum",
-      "resolution": "0.5\u00b0 grid",
-      "sectors": [
-        "agriculture"
-      ],
-      "specifier": "sumt",
-      "units": "deg c-days yr-1"
+      "specifier": "leachcum",
+      "units": "kg ha-1"
     }
   ],
   "time_step": [
