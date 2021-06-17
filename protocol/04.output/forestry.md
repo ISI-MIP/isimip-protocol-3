@@ -33,7 +33,7 @@
         'trans',
         'soilmoist'
     ],
-    'Optional outputs': [
+    'Additional variables': [
         'mortstemno',
         'harvstemno',
         'dist',
@@ -47,7 +47,11 @@
         'cleaf',
         'cwood',
         'croot',
-        'tsl'
+        'tsl',
+        'clitterag',
+        'clitterbg',
+        'cproduct',
+        'ccwd'
     ],
     'Static output': [
         'soil'
