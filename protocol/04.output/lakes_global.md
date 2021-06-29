@@ -10,7 +10,7 @@
         'ice',
         'lakeicefrac',
         'icethick',
-        'snowthick',
+        'snd',
         'icetemp',
         'snowtemp',
         'sensheatf',
