@@ -257,20 +257,38 @@
     "valid_min": 250.0
   },
   {
-    "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.",
-    "frequency": "daily if possible, else monthly",
-    "long_name": "Snow depth",
-    "resolution": "0.5° grid",
+    "comment": "Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector. Previously 'icethick' in lakes sector",
+    "frequency": {
+      "lakes_global":"daily and monthly",
+      "lakes_local":"daily and monthly",
+      "other":"daily if possible, else monthly"
+    },
+    "long_name": "Snow depth / thickness",
+    "resolution": {
+      "lakes_global":"Representative lake associated with grid cell",
+      "lakes_local":"Representative lake associated with grid cell",
+      "other":"0.5° grid"
+    },
     "sectors": [
       "biomes",
       "fire",
       "water_global",
-      "permafrost"
+      "permafrost",
+      "lakes_global",
+      "lakes_local"
     ],
     "specifier": "snd",
     "units": "m",
-    "valid_max": 1000.0,
-    "valid_min": 0.0
+    "valid_max": {
+      "lakes_global":"",
+      "lakes_local":"",
+      "other":1000.0 
+    },
+    "valid_min": {
+      "lakes_global":"",
+      "lakes_local":"",
+      "other":0.0
+    },
   },
   {
     "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.",
@@ -2866,18 +2884,6 @@
       "lakes_local"
     ],
     "specifier": "icethick",
-    "units": "m"
-  },
-  {
-    "comment": "",
-    "frequency": "daily and monthly",
-    "long_name": "Snow Thickness",
-    "resolution": "Representative lake associated with grid cell",
-    "sectors": [
-      "lakes_global",
-      "lakes_local"
-    ],
-    "specifier": "snowthick",
     "units": "m"
   },
   {
