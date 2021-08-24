@@ -1743,7 +1743,7 @@
       "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.  If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "permafrost": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth."
+      "permafrost": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as XX (fast), XX (slow), and XX (passive). Please describe your definition of the turnover times in your model description."
     },
     "dimensions": [
       "time",
@@ -1768,7 +1768,7 @@
         "total",
         "<pft>",
         "<pool>",
-        "<pool><pft>"
+        "<pool>-<pft>"
       ]
     },
     "frequency": "annual",
@@ -1789,11 +1789,16 @@
   {
     "comment": {
       "biomes": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
+      "permafrost": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
       "fire": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
       "forestry": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage."
     },
     "extension": {
       "biomes": [
+        "total",
+        "<productclass>"
+      ],
+      "permafrost": [
         "total",
         "<productclass>"
       ],
@@ -1814,6 +1819,7 @@
     },
     "sectors": [
       "biomes",
+      "permafrost",
       "fire",
       "forestry"
     ],
@@ -2758,30 +2764,70 @@
     "units": "m3 ha-1"
   },
   {
-    "comment": "As g Nitrogen m-2 a-1",
-    "extension": [
-      "total",
-      "<species>"
-    ],
+    "comment": {
+      "forestry": "As kg Nitrogen m-2 a-1",
+      "permafrost": "Grid cell total",
+    },
+    "extension": {
+      "forestry": [
+        "total",
+        "<species>"
+      ]
+    },
     "frequency": "annual",
-    "long_name": "Nitrogen of Annual Litter",
+    "long_name": "Nitrogen Mass in Above Ground Litter Pool",
     "resolution": "stand",
     "sectors": [
-      "forestry"
+      "forestry",
+      "permafrost",
     ],
-    "specifier": "nlit",
-    "units": "g m-2 a-1"
+    "specifier": "nlitterag",
+    "units": "kg m-2 a-1"
   },
   {
-    "comment": "As g Nitrogen m-2 a-1",
+    "comment": {
+      "forestry": "As kg Nitrogen m-2 a-1",
+      "permafrost": "Grid cell total",
+    },
+    "extension": {
+      "forestry": [
+        "total",
+        "<species>"
+      ]
+    },
     "frequency": "annual",
-    "long_name": "Nitrogen in Soil",
+    "long_name": "Nitrogen Mass in Below Ground Litter Pool",
     "resolution": "stand",
     "sectors": [
-      "forestry"
+      "forestry",
+      "permafrost",
+    ],
+    "specifier": "nlitterbg",
+    "units": "kg m-2 a-1"
+  },
+  {
+    "comment": {
+      "forestry": "As kg Nitrogen m-2 a-1",
+      "permafrost": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as XX (fast), XX (slow), and XX (passive). Please describe your definition of the turnover times in your model description.",
+    },
+    "dimensions": {
+      permafrost: [
+      "time",
+      "depth",
+      "lat",
+      "lon"]
+    },
+    "frequency": "annual",
+    "long_name": "Nitrogen Mass in Soil",
+    "resolution": {
+      "forestry": "stand",
+      "permafrost": "0.5° grid"
+    "sectors": [
+      "forestry",
+      "permafrost"
     ],
     "specifier": "nsoil",
-    "units": "g m-2 a-1"
+    "units": "kg m-2 a-1"
   },
   {
     "comment": "1 if lake grid cell is thermally stratified, 0 if lake grid cell is not thermally stratified",
@@ -3790,8 +3836,36 @@
     "units": "1",
     "valid_max": 1.0,
     "valid_min": 0.0
-  }
-    {
+  },
+  {
+    "comment": "Net upward flux of methane from wetlands (areas where water covers the soil, or is present either at or near the surface of the soil all year or for varying periods of time during the year, including during the growing season).",
+    "frequency": "monthly",
+    "long_name": "Grid averaged methane emissions from wetland",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "wetlandfrac",
+    "units": "kg m-2 s-1",
+  },
+  {
+    "comment": "If possible, provide CH4 emissions for all depth layers (i.e. 3D-field), and indicate depth in m. Level dimensions: (time, depth, lat, lon).",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "frequency": "monthly",
+    "long_name": "Total Surface Carbon Mass Flux into CH4 emissions",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "ch4",
+    "units": "kg m-2 s-1",
+  },
+  {
     "comment": "Percentage of grid cell covered by wetland. Report only one year if  fixed percentage is used, or time series if values are determined dynamically.",
     "frequency": "monthly, else annual (or fixed if static)",
     "long_name": "Wetland Fraction",
@@ -3799,9 +3873,152 @@
     "sectors": [
       "permafrost"
     ],
-    "specifier": "wetlandfrac",
+    "specifier": "wetlandch4",
     "units": "%",
     "valid_max": 100.0,
     "valid_min": 0.0
+  },
+  {
+    "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as XX (fast), XX (slow), and XX (passive). Please describe your definition of the turnover times in your model description.",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "extension": [
+      "total",
+      "<pool>"
+    ],
+    "frequency": "monthly, else annual",
+    "long_name": "Carbon Mass Flux into Atmosphere due to Soil Respiration on Land of pools with different turnover time in each layer",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "rsoil",
+    "units": "kg m-2 s-1",
+  },
+  {
+    "comment": "If possible, provide net changes due to vertical fluxes for all depth layers (i.e. 3D-field), and indicate depth in m.",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "extension": [
+      "total",
+      "<pft>"
+    ],
+    "frequency": "monthly, else annual",
+    "long_name": "Vertical Carbon Mass Flux between layers",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "verticalcflux",
+    "units": "kg m-2 s-1",
+  },
+  {
+    "comment": "If possible, provide net changes due to vertical fluxes for all depth layers (i.e. 3D-field), and indicate depth in m.",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "extension": [
+      "total",
+      "<pft>"
+    ],
+    "frequency": "monthly, else annual",
+    "long_name": "Carbon Mass Flux into Atmosphere due to Litter Respiration on Land in each layer",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "rlitter",
+    "units": "kg m-2 s-1",
+  },
+  {
+    "comment": "Grid cell total.",
+    "frequency": "annual",
+    "long_name": "Nitrogen Mass in Vegetation",
+    "resolution": "0.5° grid", 
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "nveg",
+    "units": "kg m-2"
+  },
+  {
+    "comment": "Grid cell total.",
+    "frequency": "annual",
+    "long_name": "Nitrogen Mass in Above Ground Vegetation Biomass",
+    "resolution": "0.5° grid", 
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "nvegag",
+    "units": "kg m-2"
+  },
+  {
+    "comment": "Grid cell total.",
+    "frequency": "annual",
+    "long_name": "Nitrogen Mass in Below Ground Vegetation Biomass",
+    "resolution": "0.5° grid", 
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "nvegbg",
+    "units": "kg m-2"
+  },
+  {
+    "comment": "Can be split into nMineralNH4, mineral ammonium in the soil and nMineralNO3 mineral nitrate in the soil.",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "frequency": "annual",
+    "long_name": "Mineral Nitrogen in the soil",
+    "resolution": "0.5° grid", 
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "nmineral",
+    "units": "kg m-2"
+  },
+    {
+    "comment": "Products generated during Land-use change. Removed nitrogen should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
+    "extension": [
+        "total",
+        "<productclass>"
+      ],
+    "frequency": "annual",
+    "long_name": "Nitrogen in Products of Land Use Change",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "nproduct",
+    "units": "kg m-2"
+  },
+  {
+    "comment": "If possible, provide heterotrophic respiration for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide heterotrophic respiration integrated over the entire soil depth.",
+    "extension": [
+      "total",
+      "<pft>"
+    ],
+    "frequency": "monthly, else annual",
+    "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "rhlayer",
+    "units": "kg m-2 s-1",
   }
 ]
