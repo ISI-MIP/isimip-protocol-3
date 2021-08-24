@@ -276,7 +276,7 @@
       "water_global",
       "permafrost"
     ],
-    "specifier": "snd",
+    "specifier"snd",
     "units": "m",
     "valid_max": 1000.0,
     "valid_min": 0.0
@@ -1594,7 +1594,7 @@
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon m⁻²Stand total and PFT information is essential.",
-      "permafrost": "Grid cell total and PFT information is essential."
+      "permafrost": "Grid cell total, PFT information if possible."
     },
     "extension": {
       "biomes": [
@@ -1628,7 +1628,7 @@
     "comment": {
       "biomes": "Grid cell total and PFT information is essential.",
       "forestry": "As kg carbon m⁻². Stand total and PFT information is essential.",
-      "permafrost": "Grid cell total and PFT information is essential."
+      "permafrost": "Grid cell total, PFT information if possible."
     },
     "extension": {
       "biomes": [
@@ -1663,7 +1663,7 @@
       "biomes": "Grid cell total and PFT information is essential.",
       "fire": "Grid cell total and PFT information is essential.",
       "forestry": "Species information is essential. Stand total and PFT information is essential.",
-      "permafrost": "Grid cell total and PFT information is essential."
+      "permafrost": "Grid cell total, PFT information if possible."
     },
     "extension": {
       "biomes": [
@@ -1766,7 +1766,9 @@
       ],
       "permafrost": [
         "total",
-        "<pft>"
+        "<pft>",
+        "<pool>",
+        "<pool><pft>"
       ]
     },
     "frequency": "annual",
@@ -3787,6 +3789,19 @@
     "specifier": "contfrac",
     "units": "1",
     "valid_max": 1.0,
+    "valid_min": 0.0
+  }
+    {
+    "comment": "Percentage of grid cell covered by wetland. Report only one year if  fixed percentage is used, or time series if values are determined dynamically.",
+    "frequency": "monthly, else annual (or fixed if static)",
+    "long_name": "Wetland Fraction",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "wetlandfrac",
+    "units": "%",
+    "valid_max": 100.0,
     "valid_min": 0.0
   }
 ]
