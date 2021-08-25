@@ -5,6 +5,7 @@ from pathlib import Path
 from utils import filter_rows, get_commit_hash, read_definitions, write_json
 
 URL = 'https://protocol.isimip.org/schema/'
+EXCLUDE = ['model']
 
 
 def main():
@@ -37,16 +38,17 @@ def main():
             # step 2: loop over properties/specifiers/properties and add enums from definition files
             for identifier, properties in schema['properties']['specifiers']['properties'].items():
                 if identifier in definitions:
-                    rows = definitions[identifier]
-                    enum = []
-                    if product.endswith('InputData'):
-                        for row in filter_rows(rows, simulation_round, product, category=category):
-                            enum.append(row.get('specifier_file') or row.get('specifier'))
-                    else:
-                        for row in filter_rows(rows, simulation_round, product, sector=sector):
-                            enum.append(row.get('specifier_file') or row.get('specifier'))
+                    if identifier not in EXCLUDE:
+                        rows = definitions[identifier]
+                        enum = []
+                        if product.endswith('InputData'):
+                            for row in filter_rows(rows, simulation_round, product, category=category):
+                                enum.append(row.get('specifier_file') or row.get('specifier'))
+                        else:
+                            for row in filter_rows(rows, simulation_round, product, sector=sector):
+                                enum.append(row.get('specifier_file') or row.get('specifier'))
 
-                    properties['enum'] = list(set(enum))
+                        properties['enum'] = list(set(enum))
 
             # step 3: write json schema
             write_json(output_path, schema)
