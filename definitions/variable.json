@@ -45,7 +45,8 @@
     "long_name": "Subsurface Runoff",
     "resolution": "0.5° grid",
     "sectors": [
-      "water_global"
+      "water_global",
+      "permafrost"
     ],
     "specifier": "qsb",
     "units": "kg m-2 s-1",
@@ -92,7 +93,8 @@
     },
     "sectors": [
       "water_global",
-      "water_regional"
+      "water_regional",
+      "permafrost"
     ],
     "specifier": "dis",
     "units": "m3 s-1",
@@ -103,6 +105,10 @@
     "comment": "Sum of transpiration, evaporation, interception and sublimation.",
     "extension": {
       "biomes": [
+        "total",
+        "<pft>"
+      ],
+       "permafrost": [
         "total",
         "<pft>"
       ],
@@ -129,6 +135,7 @@
     },
     "sectors": [
       "biomes",
+      "permafrost",
       "fire",
       "forestry",
       "water_global",
@@ -149,7 +156,8 @@
     },
     "sectors": [
       "water_global",
-      "water_regional"
+      "water_regional",
+      "permafrost"
     ],
     "specifier": "potevap",
     "units": "kg m-2 s-1",
@@ -276,7 +284,7 @@
       "water_global",
       "permafrost"
     ],
-    "specifier"snd",
+    "specifier": "snd",
     "units": "m",
     "valid_max": 1000.0,
     "valid_min": 0.0
@@ -307,7 +315,8 @@
     "long_name": "Total Water Storage",
     "resolution": "0.5° grid",
     "sectors": [
-      "water_global"
+      "water_global",
+      "permafrost"
     ],
     "specifier": "tws",
     "units": "kg m-2",
@@ -2283,6 +2292,10 @@
         "total",
         "<pft>"
       ],
+      "permafrost": [
+        "total",
+        "<pft>"
+      ],
       "fire": [
         "total",
         "<pft>"
@@ -2303,6 +2316,7 @@
     },
     "sectors": [
       "biomes",
+      "permafrost",
       "fire",
       "forestry"
     ],
@@ -2314,6 +2328,10 @@
     "extension": {
       "biomes": "",
       "fire": [
+        "total",
+        "<pft>"
+      ],
+      "permafrost": [
         "total",
         "<pft>"
       ],
@@ -2330,6 +2348,7 @@
     },
     "sectors": [
       "biomes",
+      "permafrost",
       "fire",
       "forestry"
     ],
@@ -2340,6 +2359,10 @@
     "comment": "",
     "extension": {
       "biomes": [
+        "total",
+        "<pft>"
+      ],
+      "permafrost": [
         "total",
         "<pft>"
       ],
@@ -2363,6 +2386,7 @@
     },
     "sectors": [
       "biomes",
+      "permafrost",
       "fire",
       "forestry"
     ],
@@ -2822,12 +2846,13 @@
     "resolution": {
       "forestry": "stand",
       "permafrost": "0.5° grid"
+    },
     "sectors": [
       "forestry",
       "permafrost"
     ],
     "specifier": "nsoil",
-    "units": "kg m-2 a-1"
+    "units": "kg m-2"
   },
   {
     "comment": "1 if lake grid cell is thermally stratified, 0 if lake grid cell is not thermally stratified",
@@ -3228,13 +3253,22 @@
     "units": "mole m-3"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
-    "frequency": "daily and monthly",
+    "comment": {
+      "lakes_global": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
+      "lakes_local": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
+      "permafrost": ""
+    },
+    "frequency": {
+      "lakes_global": "daily and monthly",
+      "lakes_local": "daily and monthly",
+      "permafrost": "daily, else monthly"
+    },
     "long_name": "Dissolved Organic Carbon",
     "resolution": "Representative lake associated with grid cell",
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "permafrost"
     ],
     "specifier": "doc",
     "units": "mole m-3"
@@ -3991,7 +4025,7 @@
     "specifier": "nmineral",
     "units": "kg m-2"
   },
-    {
+  {
     "comment": "Products generated during Land-use change. Removed nitrogen should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
     "extension": [
         "total",
@@ -4005,6 +4039,144 @@
     ],
     "specifier": "nproduct",
     "units": "kg m-2"
+  },
+  {
+    "comment": "Flux of Nitrogen from the land into the atmosphere due to fire.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total Nitrogen lost to the atmosphere (including NHx, N2O, N2) from fire",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fngasfire",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Total flux of Nitrogen from the land into the atmosphere.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen lost to the atmosphere (sum of NHx, NOx, N2O, N2)",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fngas",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Deforested or harvested biomass as a result of anthropogenic land-use or change",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnproduct",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Nitrogen mass flux out of land due to any human activity",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnanthdisturb",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen mass flux from vegetation to litter",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnveglitter",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen mass flux from vegetation directly to soil",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnvegsoil",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen mass flux from litter to soil",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnlittersoil",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "The fixation (uptake of nitrogen gas directly from the atmosphere) of nitrogen due to biological processes.",
+    "frequency": "monthly, else annual",
+    "long_name": "Biological nitrogen fixation",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fbnf",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Surface upward flux of ammonia (NH3) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total land NH3 flux",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnh3",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Surface upward flux of nitrous oxide (N2O) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total land N2O flux",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fn2o",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Surface deposition rate of nitrogen.",
+    "frequency": "monthly, else annual",
+    "long_name": "Dry and wet deposition of reactive nitrogen onto land",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fndep",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth.",
+    "dimensions": [
+      "time",
+      "depth",
+      "lat",
+      "lon"
+    ],
+    "frequency": "monthly, else annual",
+    "long_name": "Net nitrogen release from soil and litter as the outcome of nitrogen immobilisation and gross mineralisation",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnnetmin",
+    "units": "kg m-2 s-1"
   },
   {
     "comment": "If possible, provide heterotrophic respiration for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide heterotrophic respiration integrated over the entire soil depth.",
