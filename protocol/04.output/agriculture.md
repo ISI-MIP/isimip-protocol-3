@@ -28,7 +28,7 @@
 
 {{ table('crop', {
     'Major crops': [
-        'whe', 'mai', 'soy', 'ric1', 'ric2'
+        'whe', 'mai', 'soy', 'ri1', 'ri2'
     ],
     'Other crops': None
 }) }}
