@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/permafrost.json",
-  "commit": "940242ff9cce47489ea9a103b5aa538333178887",
+  "commit": "5bfcebd2385ce0dc398662cfe0e6d485c6ee6273",
   "type": "object",
   "required": [
     "specifiers"
@@ -28,25 +28,25 @@
           "enum": [
             "gfdl-esm4",
             "ipsl-cm6a-lr",
-            "ukesm1-0-ll",
             "mpi-esm1-2-hr",
-            "mri-esm2-0"
+            "mri-esm2-0",
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "w5e5",
-            "nobasd"
+            "nobasd",
+            "w5e5"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
             "ssp585",
-            "picontrol",
             "ssp370",
+            "picontrol",
+            "historical",
             "ssp126"
           ]
         },
@@ -54,85 +54,87 @@
           "type": "string",
           "enum": [
             "2015soc",
-            "nat",
             "1850soc",
-            "histsoc"
+            "histsoc",
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "cvegag",
             "croot",
-            "fcropharvest",
-            "snd",
-            "cleaf",
-            "ra",
-            "ffire",
-            "gpp",
-            "qs",
-            "soilmoistfroz",
-            "fapar",
-            "npp",
-            "soilmoist",
-            "csoil",
-            "swe",
-            "lai",
-            "tsl",
             "fluc",
-            "ccwd",
-            "cvegbg",
-            "qtot",
-            "clitterbg",
-            "rh",
-            "flittersoil",
-            "nbp",
-            "cveg",
-            "pft",
-            "cwood",
             "clitterag",
-            "landalbedo",
-            "thawdepth",
-            "burntarea",
-            "flitter",
+            "cwood",
+            "pft",
             "fgrazing",
-            "fvegsoil"
+            "burntarea",
+            "qtot",
+            "ffire",
+            "tsl",
+            "npp",
+            "nbp",
+            "swe",
+            "ra",
+            "fvegsoil",
+            "cveg",
+            "qs",
+            "thawdepth",
+            "soilmoistfroz",
+            "cvegag",
+            "cvegbg",
+            "snd",
+            "flittersoil",
+            "fapar",
+            "gpp",
+            "csoil",
+            "landalbedo",
+            "lai",
+            "ccwd",
+            "fcropharvest",
+            "clitterbg",
+            "soilmoist",
+            "rh",
+            "cleaf",
+            "flitter"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "nut",
-            "ben",
-            "sgb",
-            "sun",
+            "swh",
+            "rap",
+            "soy",
             "mis",
-            "pop",
-            "sug",
-            "sor",
+            "ric1",
             "pea",
+            "ric",
+            "nut",
             "cas",
+            "wwh",
+            "mil",
+            "mgr",
+            "ric2",
+            "cot",
             "mai",
             "whe",
             "euc",
-            "ric",
-            "mgr",
-            "soy",
-            "ric2",
-            "ric1",
-            "cot",
-            "rye",
+            "sug",
             "bar",
-            "mil",
-            "pot",
-            "rap"
+            "pop",
+            "rye",
+            "sor",
+            "ben",
+            "sgb",
+            "sun",
+            "pot"
           ]
         },
         "irrigation": {
@@ -153,11 +155,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
             "annual",
-            "daily",
+            "3hr",
+            "fixed",
             "monthly",
-            "fixed"
+            "daily"
           ]
         },
         "start_year": {
