@@ -104,7 +104,7 @@
         'nupcum',
         'nincum',
         'nlosscum',
-        'leachcum'
+        'nleachcum'
     ],
     'Static output': [
         'soil',

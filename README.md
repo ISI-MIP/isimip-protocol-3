@@ -117,7 +117,7 @@ Tables are rendered using the table macro `{{ table(name, order) }}`. This macro
         'nupcum',
         'nincum',
         'nlosscum',
-        'leachcum'
+        'nleachcum'
     ]
 }) }}
 ```

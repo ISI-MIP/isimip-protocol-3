@@ -20,7 +20,7 @@
         'nupcum',
         'nincum',
         'nlosscum',
-        'leachcum'
+        'nleachcum'
     ]
 }) }}
 

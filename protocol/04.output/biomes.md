@@ -61,7 +61,7 @@
         'nupcum',
         'nincum',
         'nlosscum',
-        'leachcum'
+        'nleachcum'
     ],
     'Optional output': [
         'cleaf',
