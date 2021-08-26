@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere.json",
-  "commit": "5bfcebd2385ce0dc398662cfe0e6d485c6ee6273",
+  "commit": "5c7d1c1f645dfed686c6efc9b4138364e6ec0c59",
   "type": "object",
   "required": [
     "specifiers"
@@ -20,19 +20,19 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ipsl-cm6a-lr",
             "mpi-esm1-2-hr",
             "mri-esm2-0",
-            "ukesm1-0-ll"
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr"
           ]
         },
         "ensemble_member": {
           "type": "string",
           "enum": [
             "r1i1p1f2",
-            "r4i1p1f1",
-            "r1i1p1f1"
+            "r1i1p1f1",
+            "r4i1p1f1"
           ]
         },
         "bias_adjustment": {
@@ -45,53 +45,53 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp585",
-            "ssp370",
-            "picontrol",
             "historical",
-            "ssp126"
+            "ssp126",
+            "picontrol",
+            "ssp585",
+            "ssp370"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
+            "huss",
+            "phydiaz",
+            "pp",
+            "intppdiat",
+            "tos",
+            "mlotstmax",
+            "zmeso",
+            "rsntds",
             "thkcello",
+            "wo",
+            "phyc",
+            "vo",
+            "siconc",
+            "rsds",
+            "intppdiaz",
+            "tasmin",
+            "zmicro",
+            "ph",
+            "intpp",
+            "zooc",
+            "tob",
+            "deptho",
+            "chl",
+            "o2",
+            "so",
             "hurs",
             "prsn",
-            "sfcwind",
-            "ph",
-            "zooc",
-            "tas",
-            "siconc",
-            "deptho",
-            "phydiaz",
-            "intpp",
-            "wo",
-            "huss",
-            "tasmin",
-            "tasmax",
-            "zmeso",
-            "o2",
-            "phyc",
-            "rsntds",
-            "intpoc",
-            "tob",
-            "thetao",
-            "pr",
-            "vo",
-            "chl",
-            "rsds",
-            "uo",
-            "tos",
-            "zmicro",
-            "intppdiat",
-            "rlds",
-            "intppdiaz",
-            "pp",
             "expc",
             "phydiat",
-            "so",
-            "mlotstmax",
+            "thetao",
+            "pr",
+            "tasmax",
+            "uo",
+            "tas",
+            "rlds",
+            "sfcwind",
+            "intpoc",
             "ps"
           ]
         },
@@ -104,10 +104,10 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "annual",
+            "fixed",
             "daily",
-            "fixed"
+            "annual",
+            "monthly"
           ]
         },
         "start_year": {
