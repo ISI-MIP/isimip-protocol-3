@@ -1,41 +1,87 @@
 ### Output variables
 
 {{ table('variable', {
-    'Key variable': [
-        'tsl'
+    'Key permafrost physical variables': [
+        'tsl',
+        'snd',
+        'swe',
+        'soilmoist',
+        'soilmoistfroz',
+        'wetlandfrac',
+        'landalbedo',
+        'qtot'
     ],
-    'Pools (as in Biomes sector)': [
+    'Carbon pools': [
         'cveg',
         'cvegag',
         'cvegbg',
         'clitter',
-        'csoil'
+        'clitterag',
+        'clitterbg',
+        'csoil',
+        'cproduct'
     ],
-    'Fluxes (as in Biomes sector)': [
+    'Nitrogen pools': [
+        'nveg',
+        'nvegag',
+        'cvegbg',
+        'nlitterag',
+        'nlitterbg',
+        'nmineral',
+        'nsoil',
+        'nproduct'
+    ],
+    'Carbon fluxes': [
         'gpp',
-        'ra',
         'npp',
+        'nbp',
+        'ra',
         'rh',
-        'fireint',
-        'firefrac',
-        'ecoatmflux'
+        'rhlayer',
+        'wetlandch4',
+        'ch4',
+        'rsoil',
+        'verticalcflux',
+        'ffire',
+        'fluc',
+        'flitter',
+        'flittersoil',
+        'flittersoillayer',
+        'rlitter',
+        'fvegsoil',
+        'fvegsoillayer'
     ],
-    'Structure (as in Biomes sector)': [
+    'Nitrogen fluxes': [
+        'fngasfire',
+        'fngas',
+        'fnproduct',
+        'fnanthdisturb',
+        'fnveglitter',
+        'fnvegsoil',
+        'fnlittersoil',
+        'fbnf',
+        'fnnetmin',
+        'fndep',
+        'fnh3',
+        'fn2o'
+        ],
+    'Vegetation cover and structure': [
         'fapar',
         'lai',
         'pft',
-        'soilmoist',
-        'soilmoistfroz',
-        'snd',
-        'thawdepth',
-        'swe',
-        'qtot'
-    ],
-    'Optional outputs': [
-        'cleaf',
-        'cwood',
-        'croot',
         'burntarea'
+    ],
+    'Hydrological variables': [
+        'evap',
+        'potevap',
+        'intercep',
+        'esoil',
+        'trans',
+        'qs',
+        'qsb',
+        'dis',
+        'tws',
+        'doc'
     ]
 }) }}
 
