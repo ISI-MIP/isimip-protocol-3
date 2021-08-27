@@ -1752,7 +1752,7 @@
       "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.  If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "permafrost": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as XX (fast), XX (slow), and XX (passive). Please describe your definition of the turnover times in your model description."
+      "permafrost": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate the pools according to Table X and describe your definition of the turnover times in your model description."
     },
     "dimensions": [
       "time",
@@ -2874,7 +2874,7 @@
   {
     "comment": {
       "forestry": "As kg Nitrogen m-2 a-1",
-      "permafrost": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as XX (fast), XX (slow), and XX (passive). Please describe your definition of the turnover times in your model description."
+      "permafrost": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate the pools according to Table X and describe your definition of the turnover times in your model description."
     },
     "dimensions": {
       "permafrost": [
@@ -2884,6 +2884,11 @@
         "lon"
       ]
     },
+    "extension": {
+      "permafrost": [
+        "total",
+        "<pool
+      ],    
     "frequency": "annual",
     "long_name": "Nitrogen Mass in Soil",
     "resolution": {
@@ -4103,6 +4108,39 @@
       "permafrost"
     ],
     "specifier": "fngas",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Leaching means the loss of water soluble chemical species from soil. Runoff is the liquid water which drains from land. If not specified, 'runoff' refers to the sum of surface runoff and subsurface drainage.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen loss due to leaching or runoff (sum of ammonium, nitrite and nitrate)",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnleach",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Total Nitrogen added for cropland fertilisation (artificial and manure). Relative to total land area of a grid cell, not relative to agricultural area.",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen added for cropland fertilisation (artificial and manure)",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnfert",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "",
+    "frequency": "monthly, else annual",
+    "long_name": "Total nitrogen lost (including NHx, NOx, N2O, N2 and leaching)",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "permafrost"
+    ],
+    "specifier": "fnloss",
     "units": "kg m-2 s-1"
   },
   {
