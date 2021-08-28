@@ -40,8 +40,6 @@
     'Carbon fluxes': [
         'gpp',
         'npp',
-        'nbp',
-        'ra',
         'rh',
         'rhlayer',
         'wetlandch4',
