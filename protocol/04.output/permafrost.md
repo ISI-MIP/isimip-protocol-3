@@ -9,7 +9,8 @@
         'soilmoistfroz',
         'wetlandfrac',
         'landalbedo',
-        'qtot'
+        'qtot',
+        'thawdepth'
     ],
     'Carbon pools': [
         'cveg',
@@ -19,7 +20,11 @@
         'clitterag',
         'clitterbg',
         'csoil',
-        'cproduct'
+        'cproduct',
+        'cleaf',
+        'cwood',
+        'croot',
+        'ccwd'
     ],
     'Nitrogen pools': [
         'nveg',
@@ -49,7 +54,9 @@
         'flittersoillayer',
         'rlitter',
         'fvegsoil',
-        'fvegsoillayer'
+        'fvegsoillayer',
+        'fgrazing',
+        'fcropharvest'
     ],
     'Nitrogen fluxes': [
         'fngasfire',
@@ -63,7 +70,10 @@
         'fnnetmin',
         'fndep',
         'fnh3',
-        'fn2o'
+        'fn2o',
+        'nloss',
+        'nleach',
+        'fnfert'
         ],
     'Vegetation cover and structure': [
         'fapar',
