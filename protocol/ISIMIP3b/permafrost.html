@@ -23,10 +23,10 @@
                     </div>
                     <div class="col text-right">
                         <p>
-                            Last updated: 27 August 2021
+                            Last updated: 31 August 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/32639b65b031bb2f5d1fa3fb76fe9f132e9682f4">32639b65b031bb2f5d1fa3fb76fe9f132e9682f4</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/4db3d9c526bfffad9d5d45349991055673273a8b">4db3d9c526bfffad9d5d45349991055673273a8b</a>
                         </p>
                     </div>
                 </div>
@@ -2410,6 +2410,26 @@
                 </td>
             </tr>
             <tr>
+                <td>Annual Maximum Thaw Depth</td>
+                <td>
+                        <strong>thawdepth</strong>
+                </td>
+                <td>
+                    m
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, water_global.</p>
+                    <p>Calculated from daily thaw depths.</p>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="7" class="table-secondary">
                     <strong>Carbon pools</strong>
                 </td>
@@ -2551,6 +2571,98 @@
                     <p><b>Other sectors:</b> biomes, fire, forestry.</p>
                     <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
                     <p>Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass in Leaves</td>
+                <td>
+                        <strong>
+                        cleaf-total, 
+                        cleaf-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass in Wood</td>
+                <td>
+                        <strong>
+                        cwood-total, 
+                        cwood-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+                    <p>Including sapwood and hardwood.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass in Roots</td>
+                <td>
+                        <strong>
+                        croot-total, 
+                        croot-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+                    <p>Including fine and coarse roots.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass in Coarse Woody Debris</td>
+                <td>
+                        <strong>
+                        ccwd-total, 
+                        ccwd-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+
                 </td>
             </tr>
             <tr>
@@ -2794,6 +2906,52 @@
                 </td>
             </tr>
             <tr>
+                <td>CO2 Flux to Atmosphere from Grazing</td>
+                <td>
+                        <strong>
+                        fgrazing-total, 
+                        fgrazing-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire.</p>
+                    <p>Grid cell total and PFT information is essential.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>CO2 Flux to Atmosphere from Crop Harvesting</td>
+                <td>
+                        <strong>
+                        fcropharvest-total, 
+                        fcropharvest-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire.</p>
+                    <p>Grid cell total and PFT information is essential.</p>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="7" class="table-secondary">
                     <strong>Nitrogen fluxes</strong>
                 </td>
@@ -2918,169 +3076,6 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, water_global, water_regional.</p>
                     <p>Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.</p>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7" class="table-secondary">
-                    <strong>Other</strong>
-                </td>
-            </tr>
-            <tr>
-                <td>Annual Maximum Thaw Depth</td>
-                <td>
-                        <strong>thawdepth</strong>
-                </td>
-                <td>
-                    m
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, fire, water_global.</p>
-                    <p>Calculated from daily thaw depths.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>CO2 Flux to Atmosphere from Grazing</td>
-                <td>
-                        <strong>
-                        fgrazing-total, 
-                        fgrazing-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2 s-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>monthly</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, fire.</p>
-                    <p>Grid cell total and PFT information is essential.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>CO2 Flux to Atmosphere from Crop Harvesting</td>
-                <td>
-                        <strong>
-                        fcropharvest-total, 
-                        fcropharvest-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2 s-1
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>monthly</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, fire.</p>
-                    <p>Grid cell total and PFT information is essential.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Carbon Mass in Leaves</td>
-                <td>
-                        <strong>
-                        cleaf-total, 
-                        cleaf-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, forestry.</p>
-
-                </td>
-            </tr>
-            <tr>
-                <td>Carbon Mass in Wood</td>
-                <td>
-                        <strong>
-                        cwood-total, 
-                        cwood-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, forestry.</p>
-                    <p>Including sapwood and hardwood.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Carbon Mass in Roots</td>
-                <td>
-                        <strong>
-                        croot-total, 
-                        croot-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, forestry.</p>
-                    <p>Including fine and coarse roots.</p>
-                </td>
-            </tr>
-            <tr>
-                <td>Carbon Mass in Coarse Woody Debris</td>
-                <td>
-                        <strong>
-                        ccwd-total, 
-                        ccwd-&lt;pft&gt;
-                        </strong>
-                </td>
-                <td>
-                    kg m-2
-                </td>
-                <td>
-                    <ul>
-                        <li>0.5° grid</li>
-
-                        <li>annual</li>
-                    </ul>
-                </td>
-                <td>
-                    <p><b>Other sectors:</b> biomes, forestry.</p>
-
                 </td>
             </tr>
         </tbody>
