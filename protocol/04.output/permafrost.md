@@ -20,6 +20,7 @@
         'clitterag',
         'clitterbg',
         'csoil',
+        'csoillayer',
         'cproduct',
         'cleaf',
         'cwood',
