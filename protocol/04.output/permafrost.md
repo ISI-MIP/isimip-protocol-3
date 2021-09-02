@@ -62,6 +62,7 @@
     'Nitrogen fluxes': [
         'fngasfire',
         'fngas',
+        'fnleach',
         'fnproduct',
         'fnanthdisturb',
         'fnveglitter',
@@ -70,6 +71,7 @@
         'fbnf',
         'fnnetmin',
         'fndep',
+        'fnfert',
         'fnh3',
         'fn2o',
         'nloss',
