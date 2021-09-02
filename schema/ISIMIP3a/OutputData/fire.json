@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/fire.json",
-  "commit": "d203436bef10911c3f05a1b0e3176d433e9eedcc",
+  "commit": "2489830214e0ba918e346ce5b8ab865e73eb3b1a",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,8 +25,8 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3",
-            "gswp3-w5e5"
+            "gswp3-w5e5",
+            "gswp3"
           ]
         },
         "detrending": {
@@ -39,16 +39,16 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
+            "counterclim",
             "spinclim",
-            "counterclim"
+            "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc"
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -60,90 +60,90 @@
         "variable": {
           "type": "string",
           "enum": [
-            "fluc",
-            "soilmoist",
-            "canopyheight",
-            "burntarea",
+            "firenr",
+            "soilmoistfroz",
+            "fireduration",
             "firesizeperc95",
-            "landalbedo",
-            "cfuel",
+            "flitter",
+            "canopyheight",
+            "fcropharvest",
+            "cproduct",
+            "firemortality",
+            "ffireluc",
+            "snd",
+            "fgrazing",
+            "rh",
+            "npp",
+            "clitterag",
+            "ffire",
+            "ignhuman",
+            "intercep",
+            "lowcover",
             "ccfuel",
+            "clitterbg",
+            "qtot",
+            "firenrperc95",
             "mfuel",
             "lai",
-            "ignlight",
-            "sensheatf",
-            "qtot",
-            "fireduration",
-            "tsl",
-            "pft",
-            "lowcover",
-            "burntarealuc",
-            "npp",
-            "firesize",
-            "clitterbg",
-            "clitterag",
-            "intercep",
-            "snd",
+            "fireints",
+            "evap",
+            "fapar",
             "swe",
-            "cveg",
-            "ffirepeat",
-            "ffireluc",
-            "highcover",
-            "ignhuman",
-            "flitter",
-            "fgrazing",
+            "ra",
+            "cfuel",
+            "ignlight",
+            "nbp",
+            "sensheatf",
+            "burntarea",
+            "gpp",
             "fvegsoil",
             "esoil",
-            "ffire",
-            "firenrperc95",
-            "rh",
-            "firemortality",
-            "fcropharvest",
-            "qs",
             "trans",
-            "thawdepth",
-            "ra",
-            "fapar",
-            "gpp",
-            "nbp",
-            "firenr",
+            "firesize",
+            "burntarealuc",
             "fireros",
-            "cproduct",
-            "fireints",
-            "soilmoistfroz",
+            "qs",
+            "fluc",
+            "landalbedo",
+            "thawdepth",
+            "highcover",
+            "pft",
+            "tsl",
+            "ffirepeat",
             "csoil",
-            "evap"
+            "soilmoist",
+            "cveg"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
+            "pop",
+            "mil",
             "bar",
-            "sun",
+            "wwh",
+            "cas",
+            "mis",
+            "euc",
+            "rap",
+            "sug",
+            "ben",
+            "cot",
+            "swh",
+            "pot",
+            "rye",
+            "whe",
+            "sgb",
+            "sor",
             "ri2",
             "mgr",
-            "ric",
-            "sor",
-            "sgb",
-            "mil",
-            "sug",
-            "cot",
-            "soy",
-            "euc",
-            "pea",
-            "rap",
-            "pot",
-            "ri1",
-            "nut",
-            "pop",
-            "mis",
-            "cas",
-            "ben",
             "mai",
-            "wwh",
-            "whe",
-            "rye",
-            "swh"
+            "pea",
+            "ric",
+            "nut",
+            "ri1",
+            "soy",
+            "sun"
           ]
         },
         "irrigation": {
@@ -164,11 +164,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
             "fixed",
+            "annual",
+            "3hr",
             "monthly",
-            "daily",
-            "annual"
+            "daily"
           ]
         },
         "start_year": {
