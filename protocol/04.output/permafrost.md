@@ -30,7 +30,7 @@
     'Nitrogen pools': [
         'nveg',
         'nvegag',
-        'cvegbg',
+        'nvegbg',
         'nlitterag',
         'nlitterbg',
         'nmineral',
