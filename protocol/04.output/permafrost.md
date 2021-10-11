@@ -44,7 +44,7 @@
         'rhlayer',
         'wetlandch4',
         'ch4',
-        'rsoil',
+        'rsoillayer',
         'verticalcflux',
         'ffire',
         'fluc',
