@@ -2924,7 +2924,7 @@
   {
     "comment": {
       "forestry": "As kg Nitrogen m-2 a-1",
-      "permafrost": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+      "permafrost": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
     },
     "dimensions": {
       "permafrost": [
@@ -3985,12 +3985,14 @@
   },
   {
     "comment": "If possible, provide CH4 emissions for all depth layers (i.e. 3D-field), and indicate depth in m. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-    "dimensions": [
-      "time",
-      "depth",
-      "lat",
-      "lon"
-    ],
+    "dimensions": {
+      "permafrost": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ]
+    },
     "frequency": "monthly",
     "long_name": "Total Surface Carbon Mass Flux into CH4 emissions",
     "resolution": "0.5° grid",
@@ -4058,12 +4060,14 @@
   },
   {
     "comment": "If possible, provide net changes due to vertical fluxes for all depth layers (i.e. 3D-field), and indicate depth in m. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-    "dimensions": [
-      "time",
-      "depth",
-      "lat",
-      "lon"
-    ],
+    "dimensions": {
+      "permafrost": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ]
+    },
     "extension": [
       "total",
       "<pft>"
@@ -4116,12 +4120,14 @@
   },
   {
     "comment": "Can be split into nMineralNH4, mineral ammonium in the soil and nMineralNO3 mineral nitrate in the soil. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-    "dimensions": [
-      "time",
-      "depth",
-      "lat",
-      "lon"
-    ],
+    "dimensions": {
+      "permafrost": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ]
+    },
     "frequency": "annual",
     "long_name": "Mineral Nitrogen in the soil",
     "resolution": "0.5° grid",
@@ -4318,12 +4324,14 @@
   },
   {
     "comment": "If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-    "dimensions": [
-      "time",
-      "depth",
-      "lat",
-      "lon"
-    ],
+    "dimensions": {
+      "permafrost": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ]
+    },
     "frequency": "monthly, else annual",
     "long_name": "Net nitrogen release from soil and litter as the outcome of nitrogen immobilisation and gross mineralisation",
     "resolution": "0.5° grid",
