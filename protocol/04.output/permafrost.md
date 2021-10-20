@@ -30,7 +30,7 @@
     'Nitrogen pools': [
         'nveg',
         'nvegag',
-        'cvegbg',
+        'nvegbg',
         'nlitterag',
         'nlitterbg',
         'nmineral',
@@ -46,7 +46,7 @@
         'rhlayer',
         'wetlandch4',
         'ch4',
-        'rsoil',
+        'rsoillayer',
         'verticalcflux',
         'ffire',
         'fluc',
