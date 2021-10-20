@@ -23,10 +23,10 @@
                     </div>
                     <div class="col text-right">
                         <p>
-                            Last updated: 29 September 2021
+                            Last updated: 20 October 2021
                         </p>
                         <p>
-                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/299edb13239e0b2bdd78f5c84acc0d9d7a2a4470">299edb13239e0b2bdd78f5c84acc0d9d7a2a4470</a>
+                            Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/97f2473e9107e20dbaa808bbfe9f6a9d51b30924">97f2473e9107e20dbaa808bbfe9f6a9d51b30924</a>
                         </p>
                     </div>
                 </div>
@@ -2284,7 +2284,7 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, forestry, water_global.</p>
                     <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
-                    <p>Temperature of each soil layer. Reported as "missing" for grid cells occupied entirely by "sea". This is the most important variable for the permafrost sector. If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                    <p>Temperature of each soil layer. Reported as "missing" for grid cells occupied entirely by "sea". If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
                 </td>
             </tr>
             <tr>
@@ -2304,7 +2304,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, water_global.</p>
-                    <p>Grid cell mean depth of snowpack. This variable only for the purposes of the permafrost sector.</p>
+                    <p>Grid cell mean depth of snowpack.</p>
                 </td>
             </tr>
             <tr>
@@ -2324,7 +2324,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, water_global, water_regional.</p>
-                    <p>Total water mass of the snowpack (liquid or frozen) averaged over grid cell. Please also deliver for the permafrost sector.</p>
+                    <p>Total water mass of the snowpack (liquid or frozen) averaged over grid cell.</p>
                 </td>
             </tr>
             <tr>
@@ -2368,7 +2368,26 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, water_global.</p>
                     <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
-                    <p>Please provide soil moisture for all depth levels and indicate depth in m.</p>
+                    <p>Please provide soil moisture for all depth levels and indicate depth in m. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Wetland Fraction</td>
+                <td>
+                        <strong>wetlandfrac</strong>
+                </td>
+                <td>
+                    %
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual (or fixed if static)</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>Percentage of grid cell covered by wetland. Report only one year if  fixed percentage is used, or time series if values are determined dynamically.</p>
                 </td>
             </tr>
             <tr>
@@ -2479,7 +2498,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, forestry.</p>
-                    <p>Grid cell total and PFT information is essential.</p>
+                    <p>Grid cell total, PFT information if possible.</p>
                 </td>
             </tr>
             <tr>
@@ -2502,7 +2521,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, forestry.</p>
-                    <p>Grid cell total and PFT information is essential.</p>
+                    <p>Grid cell total, PFT information if possible.</p>
                 </td>
             </tr>
             <tr>
@@ -2525,7 +2544,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, forestry.</p>
-                    <p>Grid cell total and PFT information is essential.</p>
+                    <p>Grid cell total, PFT information if possible.</p>
                 </td>
             </tr>
             <tr>
@@ -2556,7 +2575,34 @@
                 <td>
                         <strong>
                         csoil-total, 
-                        csoil-&lt;pft&gt;
+                        csoil-&lt;pft&gt;, 
+                        csoil-&lt;pool&gt;, 
+                        csoil-&lt;pool&gt;-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry.</p>
+                    <p>Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass in Soil Pool in each layer</td>
+                <td>
+                        <strong>
+                        csoillayer-total, 
+                        csoillayer-&lt;pft&gt;, 
+                        csoillayer-&lt;pool&gt;, 
+                        csoillayer-&lt;pool&gt;-&lt;pft&gt;
                         </strong>
                 </td>
                 <td>
@@ -2572,7 +2618,30 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, forestry.</p>
                     <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
-                    <p>Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.</p>
+                    <p>Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon in Products of Land Use Change</td>
+                <td>
+                        <strong>
+                        cproduct-total, 
+                        cproduct-&lt;productclass&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry.</p>
+                    <p>Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.</p>
                 </td>
             </tr>
             <tr>
@@ -2670,6 +2739,178 @@
             <tr>
                 <td colspan="7" class="table-secondary">
                     <strong>Nitrogen pools</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Vegetation</td>
+                <td>
+                        <strong>nveg</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Grid cell total.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Above Ground Vegetation Biomass</td>
+                <td>
+                        <strong>nvegag</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Grid cell total.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Below Ground Vegetation Biomass</td>
+                <td>
+                        <strong>nvegbg</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Grid cell total.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Above Ground Litter Pool</td>
+                <td>
+                        <strong>
+                        nlitterag
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>stand</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+                    <p>Grid cell total</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Below Ground Litter Pool</td>
+                <td>
+                        <strong>
+                        nlitterbg
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>stand</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+                    <p>Grid cell total</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Mineral Nitrogen in the soil</td>
+                <td>
+                        <strong>nmineral</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>Can be split into nMineralNH4, mineral ammonium in the soil and nMineralNO3 mineral nitrate in the soil. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen Mass in Soil</td>
+                <td>
+                        <strong>
+                        nsoil-total, 
+                        nsoil-&lt;pool&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, forestry.</p>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen in Products of Land Use Change</td>
+                <td>
+                        <strong>
+                        nproduct-total, 
+                        nproduct-&lt;productclass&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Products generated during Land-use change. Removed nitrogen should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.</p>
                 </td>
             </tr>
             <tr>
@@ -2793,6 +3034,116 @@
                 </td>
             </tr>
             <tr>
+                <td>Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer</td>
+                <td>
+                        <strong>
+                        rhlayer-total, 
+                        rhlayer-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide heterotrophic respiration for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide heterotrophic respiration integrated over the entire soil depth. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Grid averaged methane emissions from wetland</td>
+                <td>
+                        <strong>wetlandch4</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Net upward flux of methane from wetlands (areas where water covers the soil, or is present either at or near the surface of the soil all year or for varying periods of time during the year, including during the growing season).</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Surface Carbon Mass Flux into CH4 emissions</td>
+                <td>
+                        <strong>ch4</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide CH4 emissions for all depth layers (i.e. 3D-field), and indicate depth in m. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass Flux into Atmosphere due to Soil Respiration on Land of pools with different turnover time in each layer</td>
+                <td>
+                        <strong>
+                        rsoillayer-total, 
+                        rsoillayer-&lt;pool&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Vertical Carbon Mass Flux between layers</td>
+                <td>
+                        <strong>
+                        verticalcflux-total, 
+                        verticalcflux-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide net changes due to vertical fluxes for all depth layers (i.e. 3D-field), and indicate depth in m. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
                 <td>Carbon Mass Flux into Atmosphere due to CO₂ Emission from Fire</td>
                 <td>
                         <strong>
@@ -2885,6 +3236,53 @@
                 </td>
             </tr>
             <tr>
+                <td>Total Carbon Flux from Litter to Soil in each layer</td>
+                <td>
+                        <strong>
+                        flittersoillayer-total, 
+                        flittersoillayer-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide carbon fluxes for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, only provide “flittersoil-total. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Carbon Mass Flux into Atmosphere due to Litter Respiration on Land in each layer</td>
+                <td>
+                        <strong>
+                        rlitter-total, 
+                        rlitter-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide net changes due to vertical fluxes for all depth layers (i.e. 3D-field), and indicate depth in m. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
                 <td>Total Carbon Flux from Vegetation Directly to Soil</td>
                 <td>
                         <strong>
@@ -2905,6 +3303,29 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire.</p>
                     <p>Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Carbon Mass Flux from Vegetation Directly to Soil in each layer</td>
+                <td>
+                        <strong>
+                        fvegsoillayer-total, 
+                        fvegsoillayer-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide carbon fluxes for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, only provide “fvegsoil-total. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
                 </td>
             </tr>
             <tr>
@@ -2959,6 +3380,306 @@
                 </td>
             </tr>
             <tr>
+                <td>Total Nitrogen lost to the atmosphere (including NHx, N2O, N2) from fire</td>
+                <td>
+                        <strong>fngasfire</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire.</p>
+                    <p>Flux of Nitrogen from the land into the atmosphere due to fire.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen lost to the atmosphere (sum of NHx, NOx, N2O, N2)</td>
+                <td>
+                        <strong>fngas</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Total flux of Nitrogen from the land into the atmosphere.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen loss due to leaching or runoff (sum of ammonium, nitrite and nitrate)</td>
+                <td>
+                        <strong>fnleach</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Leaching means the loss of water soluble chemical species from soil.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen in deforested or harvested biomass as a result of anthropogenic land-use or change</td>
+                <td>
+                        <strong>fnproduct</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Nitrogen mass flux out of land due to any human activity</td>
+                <td>
+                        <strong>fnanthdisturb</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen mass flux from vegetation to litter</td>
+                <td>
+                        <strong>fnveglitter</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen mass flux from vegetation directly to soil</td>
+                <td>
+                        <strong>fnvegsoil</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen mass flux from litter to soil</td>
+                <td>
+                        <strong>fnlittersoil</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Biological nitrogen fixation</td>
+                <td>
+                        <strong>fbnf</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>The fixation (uptake of nitrogen gas directly from the atmosphere) of nitrogen due to biological processes.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Net nitrogen release from soil and litter as the outcome of nitrogen immobilisation and gross mineralisation</td>
+                <td>
+                        <strong>fnnetmin</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p><b>Level dimensions:</b> (time, depth, lat, lon).</p>
+                    <p>If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. See instructions for depth layers on <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Dry and wet deposition of reactive nitrogen onto land</td>
+                <td>
+                        <strong>fndep</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Surface deposition rate of nitrogen.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen added for cropland fertilisation (artificial and manure)</td>
+                <td>
+                        <strong>fnfert</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Total Nitrogen added for cropland fertilisation (artificial and manure). Relative to total land area of a grid cell, not relative to agricultural area.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total land NH3 flux</td>
+                <td>
+                        <strong>fnh3</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Surface upward flux of ammonia (NH3) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total land N2O flux</td>
+                <td>
+                        <strong>fn2o</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes.</p>
+                    <p>Surface upward flux of nitrous oxide (N2O) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total nitrogen lost (including NHx, NOx, N2O, N2 and leaching)</td>
+                <td>
+                        <strong>nloss</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly, else annual</li>
+                    </ul>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
                 <td colspan="7" class="table-secondary">
                     <strong>Vegetation cover and structure</strong>
                 </td>
@@ -3006,7 +3727,7 @@
                 </td>
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, forestry, water_global.</p>
-                    <p>Grid cell total and PFT information is essential. If lai is static, the timestep specifier "fixed" can used.</p>
+                    <p>Grid cell total and PFT information is essential. If lai is static, the timestep specifier "fixed" can be used.</p>
                 </td>
             </tr>
             <tr>
@@ -3061,6 +3782,119 @@
                 </td>
             </tr>
             <tr>
+                <td>Evapotranspiration</td>
+                <td>
+                        <strong>
+                        evap-total, 
+                        evap-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry, water_global, water_regional.</p>
+                    <p>Sum of transpiration, evaporation, interception and sublimation.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Potential Evapotranspiration</td>
+                <td>
+                        <strong>potevap</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>water_global: 0.5° grid</li>
+                        <li>water_regional: 0.5° grid if possible, otherwise at gauge location</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> water_global, water_regional.</p>
+                    <p>As evap, but with all resistances set to zero, except the aerodynamic resistance.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Evaporation from Canopy (interception)</td>
+                <td>
+                        <strong>
+                        intercep-total, 
+                        intercep-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry.</p>
+                    <p>The canopy evaporation+sublimation (if present in model).</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Water Evaporation from Soil</td>
+                <td>
+                        <strong>
+                        esoil-total, 
+                        esoil-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry.</p>
+                    <p>Includes sublimation.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Transpiration</td>
+                <td>
+                        <strong>
+                        trans-total, 
+                        trans-&lt;pft&gt;
+                        </strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> biomes, fire, forestry.</p>
+
+                </td>
+            </tr>
+            <tr>
                 <td>Surface Runoff</td>
                 <td>
                         <strong>qs</strong>
@@ -3078,6 +3912,87 @@
                 <td>
                     <p><b>Other sectors:</b> biomes, fire, water_global, water_regional.</p>
                     <p>Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Subsurface Runoff</td>
+                <td>
+                        <strong>qsb</strong>
+                </td>
+                <td>
+                    kg m-2 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> water_global.</p>
+                    <p>Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Discharge</td>
+                <td>
+                        <strong>dis</strong>
+                </td>
+                <td>
+                    m3 s-1
+                </td>
+                <td>
+                    <ul>
+                        <li>water_global: 0.5° grid</li>
+                        <li>water_regional: 0.5° grid if possible, otherwise at gauge location</li>
+
+                        <li>daily &amp; monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> water_global, water_regional.</p>
+                    <p>River discharge or streamflow. Please provide both daily and monthly resolution.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Water Storage</td>
+                <td>
+                        <strong>tws</strong>
+                </td>
+                <td>
+                    kg m-2
+                </td>
+                <td>
+                    <ul>
+                        <li>0.5° grid</li>
+
+                        <li>monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> water_global.</p>
+                    <p>Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Dissolved Organic Carbon</td>
+                <td>
+                        <strong>doc</strong>
+                </td>
+                <td>
+                    mole m-3
+                </td>
+                <td>
+                    <ul>
+                        <li>Representative lake associated with grid cell</li>
+
+                        <li>daily, else monthly</li>
+                    </ul>
+                </td>
+                <td>
+                    <p><b>Other sectors:</b> lakes_global, lakes_local.</p>
+
                 </td>
             </tr>
         </tbody>
