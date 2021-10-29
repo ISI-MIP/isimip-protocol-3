@@ -1,6 +1,8 @@
 import json
 import os
 
+from pathlib import Path
+
 import jsonschema
 
 
@@ -51,3 +53,15 @@ def test_variable():
 
                         for sector in value:
                             assert sector in sectors, field
+
+
+def test_variable_groups():
+    groups = json.loads(Path('definitions').joinpath('group.json').read_text())
+    variables = json.loads(Path('definitions').joinpath('variable.json').read_text())
+
+    group_specifiers = [group['specifier'] for group in groups]
+
+    for variable in variables:
+        group = variable.get('group')
+        assert group, variable.get('specifier')
+        assert group in group_specifiers

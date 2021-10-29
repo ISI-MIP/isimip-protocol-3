@@ -1,4 +1,4 @@
-all: assets.py definitions.py glossary.py index.py pattern.py protocol.py schema.py tree.py
+all: assets.py definitions.py glossary.py pattern.py protocol.py schema.py tree.py
 
 %.py:
 	python3 build/$@

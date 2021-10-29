@@ -4,41 +4,58 @@
         <meta charset="utf-8">
 
         {% block title %}
-        <title>{{ simulation_round.title }} &ndash; {{ sector.title }}</title>
+        <title>ISIMIP3 simulation protocol</title>
         {% endblock %}
 
-        <link rel="stylesheet" href="{{ base_path }}/assets/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ base_path }}/assets/style.css">
-        <link rel="shortcut icon" href="{{ base_path }}/assets/favicon-32x32.png" type="image/png"/>
+        <link rel="stylesheet" href="assets/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/style.css">
+        <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/png"/>
     </head>
     <body>
-        <header>
-            <div class="container-lg">
-                <div class="row">
-                    <div class="col">
-                        <a class="logo" href="https://www.isimip.org">
-                            <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo">
-                        </a>
-                        <a class="link" href="{{ base_path }}">
-                            ISIMIP3 simulation protocol
-                        </a>
-                    </div>
-                    <div class="col text-right">
-                        <p>
-                            Last updated: {{ commit_date }}
-                        </p>
-                        <p>
-                            Commit hash: <a href="{{ commit_url }}">{{ commit_hash }}</a>
-                        </p>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="https://www.isimip.org/static/images/logo-white.png" alt="ISIMIP logo" />
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                            <div data-component="title"></div>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="tocDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Table of contents
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right toc-dropdown" aria-labelledby="tocDropdown"
+                                 onclick="event.stopPropagation()">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Simulation Round / Sectors
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="configDropdown"
+                                 onclick="event.stopPropagation()">
+                                <div data-component="config"></div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </nav>
 
         <main>
             <div class="container-lg">
+                <h1>ISIMIP simulation protocol</h1>
+                <div data-component="config"></div>
                 {% block content %}
-                {{ content|safe }}
+                {{ html|safe }}
                 {% endblock %}
             </div>
         </main>
@@ -52,58 +69,16 @@
             </div>
         </footer>
 
-        <script defer>
-            (function() {
-                var showMsg = 'Show full table',
-                    hideMsg = 'Hide table';
+        <div class="cover"></div>
 
-                function toggleTable(wrapper, button, a) {
-                    if (wrapper.classList.contains('closed')) {
-                        wrapper.classList.remove('closed');
-
-                        button.innerHTML = hideMsg;
-                        a.innerHTML = hideMsg;
-
-                        localStorage.setItem(wrapper.querySelector('table').id, 1)
-                    } else {
-                        wrapper.classList.add('closed');
-
-                        button.innerHTML = showMsg;
-                        a.innerHTML = showMsg;
-
-                        localStorage.setItem(wrapper.querySelector('table').id, 0)
-                    }
-                }
-
-                document.querySelectorAll('.table-wrapper').forEach(function(wrapper) {
-                    wrapper.classList.add('closed');
-
-                    var a = document.createElement('a');
-                    a.innerHTML = showMsg;
-                    a.className = 'toggle-table';
-                    a.href = '#';
-
-                    var button = document.createElement('button');
-                    button.innerHTML = showMsg;
-                    button.className = 'toggle-table';
-
-                    wrapper.querySelector('caption').append(a);
-                    wrapper.after(button);
-
-                    a.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        toggleTable(wrapper, button, a);
-                    });
-                    button.addEventListener('click', function (event) {
-                        toggleTable(wrapper, button, a);
-                        wrapper.scrollIntoView();
-                    });
-
-                    if (localStorage.getItem(wrapper.querySelector('table').id) == 1) {
-                        toggleTable(wrapper, button, a);
-                    }
-                });
-            })();
+        <script>
+            window.initialState = {
+                definitions : {{ definitions }},
+                patterns: {{ patterns }},
+                commit_date: '{{ commit_date }}',
+                commit_hash: '{{ commit_hash }}'
+            }
         </script>
+        <script src="assets/app.js"></script>
     </body>
 </html>

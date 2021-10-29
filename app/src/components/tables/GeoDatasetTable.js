@@ -1,0 +1,97 @@
+import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
+import PropTypes from 'prop-types'
+
+import Sectors from '../badges/Sectors'
+import { TableToggleLink, TableToggleButton, filterRows, filterField } from '../../utils'
+
+const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
+  const closed = !config.tables.includes('geo_dataset')
+  const toggle = () => (actions.toggleTable('geo_dataset'))
+  const filteredRows = filterRows(config, rows)
+
+  return (
+    <div className="w-100">
+      <div className={closed ? 'table-wrapper closed' : 'table-wrapper'}>
+        <table className="table table-bordered table-fixed">
+          <caption>
+            Table {number}: Geographic data and information for {config.simulation_round}.
+            <TableToggleLink closed={closed} toggle={toggle} />
+          </caption>
+          <thead className="thead-dark">
+            <tr>
+              <th style={{width: '20%'}}>Dataset</th>
+              <th style={{width: '30%'}}>Included variables (specifier)</th>
+              <th style={{width: '10%'}}>Resolution</th>
+              <th style={{width: '40%'}}>Reference/Source and Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              groups.map(group => {
+                const groupRows = filteredRows.filter(row => row.group == group.specifier)
+
+                if (groupRows.length > 0) {
+                  return [
+                    <tr key="-1">
+                      <td colSpan="4" className="table-secondary">
+                        <strong>{group.title}</strong>
+                        {' '}
+                        {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                      </td>
+                    </tr>
+                  ].concat(
+                    groupRows.map((row, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <tr>
+                            <td className="no-border-bottom">
+                              <p>{row.title || row.specifier }</p>
+                            </td>
+                            <td colSpan="3">
+                              <code>{filterField(config, row.file_path)}</code>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>
+                              <ul>
+                                {row.variables.map((variable, index) => <li key={index}>{variable}</li>)}
+                              </ul>
+                            </td>
+                            <td>
+                              <ul>
+                                  <li>{row.resolution}</li>
+                              </ul>
+                            </td>
+                            <td>
+                              <p>
+                                <Sectors config={config} sectors={row.sectors} />
+                              </p>
+                              <ReactMarkdown children={filterField(config, row.comment)} />
+                            </td>
+                          </tr>
+                        </React.Fragment>
+                      )
+                    })
+                  )
+                }
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+      <TableToggleButton closed={closed} toggle={toggle} />
+    </div>
+  )
+}
+
+GeoDatasetTable.propTypes = {
+  config: PropTypes.object.isRequired,
+  number: PropTypes.string.isRequired,
+  rows: PropTypes.array.isRequired,
+  groups: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+}
+
+export default GeoDatasetTable
