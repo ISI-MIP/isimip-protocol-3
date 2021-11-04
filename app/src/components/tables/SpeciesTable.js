@@ -10,32 +10,30 @@ const SpeciesTable = function({ config, number, rows, actions }) {
 
   return (
     <div className="w-50">
-      <div className={closed ? 'table-wrapper closed' : 'table-wrapper'}>
-        <table className="table table-bordered table-fixed">
-          <caption>
-            Table {number}: Harmonization specifiers (<code>harmonization</code>).
-            <TableToggleLink closed={closed} toggle={toggle} />
-          </caption>
-          <thead className="thead-dark">
-            <tr>
-              <th style={{width: '70%'}}>Species</th>
-              <th style={{width: '30%'}}>Specifier</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              filterRows(config, rows).map((row, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{row.title}</td>
-                    <td><strong>{row.specifier}</strong></td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
-      </div>
+      <table className="table table-bordered table-fixed">
+        <caption>
+          Table {number}: Harmonization specifiers (<code>harmonization</code>).
+          <TableToggleLink closed={closed} toggle={toggle} />
+        </caption>
+        <thead className="thead-dark">
+          <tr>
+            <th style={{width: '70%'}}>Species</th>
+            <th style={{width: '30%'}}>Specifier</th>
+          </tr>
+        </thead>
+        <tbody className={closed ? 'closed' : ''}>
+          {
+            filterRows(config, rows, closed).map((row, index) => {
+              return (
+                <tr key={index}>
+                  <td>{row.title}</td>
+                  <td><strong>{row.specifier}</strong></td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
       <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )

@@ -7,6 +7,9 @@ const actions = {
   },
   toggleTable: function(value) {
     return { type: 'toggleTable', value }
+  },
+  toggleGroup: function(value) {
+    return { type: 'toggleGroup', value }
   }
 }
 
@@ -35,6 +38,16 @@ function reducer(state, action) {
         config.tables.push(action.value)
       } else {
         config.tables.splice(index, 1)
+      }
+      return Object.assign({}, state, { config })
+    }
+    case 'toggleGroup': {
+      const index = state.config.groups.indexOf(action.value)
+      const config = Object.assign({}, state.config)
+      if (index < 0) {
+        config.groups.push(action.value)
+      } else {
+        config.groups.splice(index, 1)
       }
       return Object.assign({}, state, { config })
     }

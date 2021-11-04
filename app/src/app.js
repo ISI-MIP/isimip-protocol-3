@@ -24,7 +24,8 @@ const initialState = {
     simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
     products: ['OutputData'],
     sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
-    tables: ls.get('tables') ? JSON.parse(ls.get('tables')) : []
+    tables: ls.get('tables') ? JSON.parse(ls.get('tables')) : [],
+    groups: ls.get('groups') ? JSON.parse(ls.get('groups')) : []
   }
 }
 
@@ -51,6 +52,7 @@ store.subscribe(() => {
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
   ls.set('tables', JSON.stringify(config.tables))
+  ls.set('groups', JSON.stringify(config.groups))
 })
 
 // insert the toc in the navbar

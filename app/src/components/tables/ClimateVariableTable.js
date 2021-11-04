@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, filterRows, filterField } from '../../utils'
+import { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField } from '../../utils'
 
 const ClimateVariableTable = function({ config, number, rows, groups, actions }) {
   const closed = !config.tables.includes('climate_variable')
@@ -36,47 +36,58 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
 
   return (
     <div className="w-100">
-      <div className={closed ? 'table-wrapper closed' : 'table-wrapper'}>
-        <table className="table table-bordered table-fixed">
-          <caption>
-            Table {number}: Climate forcing variables for {config.simulation_round} simulations (<code>climate-variable</code>).
-            <TableToggleLink closed={closed} toggle={toggle} />
-          </caption>
-          <thead className="thead-dark">
-            <tr>
-              <th style={{width: '30%'}}>Variable</th>
-              {
-                config.simulation_round.endsWith('a') && <React.Fragment>
-                  <th style={{width: '10%'}}>Variable specifier</th>
-                  <th style={{width: '10%'}}>Unit</th>
-                  <th style={{width: '10%'}}>Resolution</th>
-                  <th style={{width: '40%'}}>Datasets</th>
-                </React.Fragment>
-              }
-              {
-                config.simulation_round.endsWith('b') && <React.Fragment>
-                  <th style={{width: '20%'}}>Variable specifier</th>
-                  <th style={{width: '15%'}}>Unit</th>
-                  <th style={{width: '15%'}}>Resolution</th>
-                  <th style={{width: '20%'}}>Models</th>
-                </React.Fragment>
-              }
-            </tr>
-          </thead>
-          <tbody>
+      <table className="table table-bordered table-fixed">
+        <caption>
+          Table {number}: Climate forcing variables for {config.simulation_round} simulations (<code>climate-variable</code>).
+          <TableToggleLink closed={closed} toggle={toggle} />
+        </caption>
+        <thead className="thead-dark">
+          <tr>
+            <th style={{width: '30%'}}>Variable</th>
             {
-              groups.map(group => {
-                const groupRows = filteredRows.filter(row => row.group == group.specifier)
-                if (groupRows.length > 0) {
-                  return [
-                    <tr key="-1">
-                      <td colSpan="5" className="table-secondary">
-                        <strong>{group.title}</strong>
-                        {' '}
-                        {group.mandatory && <span className="badge badge-info">mandatory</span>}
-                      </td>
-                    </tr>
-                  ].concat(
+              config.simulation_round.endsWith('a') && <React.Fragment>
+                <th style={{width: '10%'}}>Variable specifier</th>
+                <th style={{width: '10%'}}>Unit</th>
+                <th style={{width: '10%'}}>Resolution</th>
+                <th style={{width: '40%'}}>Datasets</th>
+              </React.Fragment>
+            }
+            {
+              config.simulation_round.endsWith('b') && <React.Fragment>
+                <th style={{width: '20%'}}>Variable specifier</th>
+                <th style={{width: '15%'}}>Unit</th>
+                <th style={{width: '15%'}}>Resolution</th>
+                <th style={{width: '20%'}}>Models</th>
+              </React.Fragment>
+            }
+          </tr>
+        </thead>
+        <tbody className={closed ? 'closed' : ''}>
+          {
+            groups.map(group => {
+              const groupRows = filteredRows.filter(row => row.group == group.specifier)
+              const groupClosed = !config.groups.includes(group.specifier)
+              const groupToggle = () => {
+                if (closed) actions.toggleTable('climate_variable')
+                actions.toggleGroup(group.specifier)
+              }
+
+              if (groupRows.length > 0) {
+                const groupHeader = [
+                  <tr key="-1">
+                    <td colSpan="5" className="table-secondary">
+                      <GroupToggleLink className="float-right" closed={groupClosed} toggle={groupToggle}/>
+                      <strong>{group.title}</strong>
+                      {' '}
+                      {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                    </td>
+                  </tr>
+                ]
+
+                if (groupClosed) {
+                  return groupHeader
+                } else {
+                  return groupHeader.concat(
                     groupRows.map((row, index) => {
                       return (
                         <tr key={index}>
@@ -102,11 +113,11 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                     })
                   )
                 }
-              })
-            }
-          </tbody>
-        </table>
-      </div>
+              }
+            })
+          }
+        </tbody>
+      </table>
       <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
