@@ -5,38 +5,26 @@
     "(?P<category>[a-z0-9-_]+)",
     "(?P<subcategory>[a-z0-9-_]+)",
     "(?P<climate_scenario>[a-z]+)",
-    "(?P<region>[a-z]+)-1km",
+    "(?P<region>[a-z]+)",
     "(?P<time_step>[a-z]+)",
     "(?P<period>[a-z]+)",
-    "(?P<climate_forcing>[A-Za-z0-9-.]+)"
+    "(?P<climate_forcing>(CHELSA-W5E5v1.0))"
   ],
   "dataset": [
-    "(?P<climate_forcing>[a-z0-9-]+)",
+    "(?P<climate_forcing>(chelsa-w5e5v1.0))",
     "(?P<climate_scenario>[a-z]+)",
     "(?P<climate_variable>[a-z]+)",
     "(?P<resolution>[a-z0-9]+)",
-    "(?P<region>[a-z]+)",
-    "(?P<time_step>[a-z]+)"
+    "(?P<region>[a-z]+)(_(?P<time_step>[a-z]+))?"
   ],
   "file": [
-    "(?P<climate_forcing>[a-z0-9-]+)",
+    "(?P<climate_forcing>(chelsa-w5e5v1.0))",
     "(?P<climate_scenario>[a-z]+)",
     "(?P<climate_variable>[a-z]+)",
     "(?P<resolution>[a-z0-9]+)",
-    "(?P<region>[a-z]+)",
-    "(?P<time_step>[a-z]+)",
-    "(?P<start_year>\\d{4})\\d{2}"
+    "(?P<region>[a-z]+)(_(?P<time_step>[a-z]+))?(_(?P<start_year>\\d{4})\\d{2})?"
   ],
   "suffix": [
     ".nc"
-  ],
-  "specifiers": {
-    "region": "global",
-    "time_step": "daily"
-  },
-  "specifiers_map": {
-    "W5E5v1.0": "w5e5v1.0",
-    "W5E5v2.0": "w5e5v2.0",
-    "sfcWind": "sfcwind"
-  }
+  ]
 }
