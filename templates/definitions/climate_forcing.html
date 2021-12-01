@@ -1,3 +1,6 @@
+{% if is_empty(table) %}
+<div class="alert">No climate forcing datasets have been defined for {{ sector.title }}, yet.</div>
+{% else %}
 <table id="tbl:climate_forcing" class="tablenos table table-bordered w-100">
     <caption>
       Table {{ counter() }}: Climate and climate-related forcing data (<code>climate-forcing</code>).
@@ -53,3 +56,4 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}

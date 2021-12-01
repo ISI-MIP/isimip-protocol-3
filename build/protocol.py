@@ -151,7 +151,8 @@ class Table(object):
         with open(template_path, encoding='utf-8') as f:
             template = Template(f.read(), trim_blocks=True, lstrip_blocks=True, autoescape=True)
 
-        return template.render(table=table, counter=self.counter, markdown=markdown, other_sectors=other_sectors,
+        return template.render(table=table, counter=self.counter, markdown=markdown,
+                               other_sectors=other_sectors, is_empty=is_empty,
                                simulation_round=self.simulation_round, sector=self.sector)
 
 
@@ -167,6 +168,13 @@ class Counter(object):
 
 def other_sectors(sectors, sector):
     return sorted([s for s in sectors if s != sector])
+
+
+def is_empty(table):
+    if isinstance(table, OrderedDict):
+        return not any([rows for rows in table.values()])
+    else:
+        return table == []
 
 
 if __name__ == "__main__":

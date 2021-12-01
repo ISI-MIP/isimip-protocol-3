@@ -1,4 +1,6 @@
-{% if table %}
+{% if is_empty(table) %}
+<div class="alert">No output variables have been defined for {{ sector.title }}, yet.</div>
+{% else %}
 <div class="table-wrapper">
     <table id="tbl:variable" class="tablenos table table-bordered table-w-100">
         <caption>
@@ -102,6 +104,4 @@
         </tbody>
     </table>
 </div>
-{% else %}
-No output variables have been defined for {{ sector.title }}, yet.
 {% endif %}
