@@ -55,6 +55,19 @@ def test_variable():
                             assert sector in sectors, field
 
 
+def test_dataset_groups():
+    for file in ['climate_dataset.json', 'soc_dataset.json', 'geo_dataset.json']:
+        groups = json.loads(Path('definitions').joinpath('group.json').read_text())
+        datasets = json.loads(Path('definitions').joinpath(file).read_text())
+
+        group_specifiers = [group['specifier'] for group in groups]
+
+        for dataset in datasets:
+            group = dataset.get('group')
+            assert group, dataset.get('specifier')
+            assert group in group_specifiers
+
+
 def test_variable_groups():
     groups = json.loads(Path('definitions').joinpath('group.json').read_text())
     variables = json.loads(Path('definitions').joinpath('variable.json').read_text())
