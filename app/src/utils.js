@@ -1,20 +1,5 @@
 import React, { Component} from 'react'
 
-const TableToggleLink = ({ closed, toggle }) => {
-  const onClick = event => {
-    event.preventDefault()
-    toggle()
-  }
-  return (
-    <a className="toggle-table" href="" onClick={onClick}>{closed ? 'Show table' : 'Hide table'}</a>
-  )
-}
-
-const TableToggleButton = ({ closed, toggle }) => {
-  return (
-    <button className="toggle-table" onClick={toggle}>{closed ? 'Show table' : 'Hide table'}</button>
-  )
-}
 
 const GroupToggleLink = ({ closed, toggle }) => {
   const onClick = event => {
@@ -22,7 +7,11 @@ const GroupToggleLink = ({ closed, toggle }) => {
     toggle()
   }
   return (
-    <a className="toggle-group" href="" onClick={onClick}>{closed ? 'Show group' : 'Hide group'}</a>
+    <a className="toggle-group" href="" onClick={onClick}>
+      {closed ? 'Show group' : 'Hide group'}
+      {closed && <span className="toggle-group-down">&#65088;</span>}
+      {!closed && <span className="toggle-group-up">&#65087;</span>}
+    </a>
   )
 }
 
@@ -55,4 +44,4 @@ const filterField = (config, field) => {
     }
 }
 
-export { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField }
+export { GroupToggleLink, filterRows, filterField }

@@ -1,19 +1,15 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, filterRows } from '../../utils'
+import { filterRows } from '../../utils'
 
 
 const LakeSiteTable = function({ config, number, rows, actions }) {
-  const closed = !config.tables.includes('lake_sites')
-  const toggle = () => (actions.toggleTable('lake_sites'))
-
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Lake site specifications for local lake models (<code>lake-site</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -24,7 +20,7 @@ const LakeSiteTable = function({ config, number, rows, actions }) {
             <th style={{width: '20%'}}>Coordinates (Lat, Lon)</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             filterRows(config, rows, closed).map((row, index) => {
               return (
@@ -40,7 +36,6 @@ const LakeSiteTable = function({ config, number, rows, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

@@ -3,12 +3,10 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterRows, filterField } from '../../utils'
 
 
 const VariableTable = function({ config, number, rows, groups, actions }) {
-  const closed = !config.tables.includes('variable')
-  const toggle = () => (actions.toggleTable('variable'))
   const filteredRows = filterRows(config, rows)
 
   const addExtension = (specifier, extension) => {
@@ -90,7 +88,6 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
         <table className="table table-bordered table-fixed">
           <caption>
             Table {number}: Output variables (<code>variable</code>).
-            <TableToggleLink closed={closed} toggle={toggle} />
           </caption>
           <thead className="thead-dark">
             <tr>
@@ -101,7 +98,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
               <th style={{width: '40%'}}>Comments</th>
             </tr>
           </thead>
-          <tbody className={closed ? 'closed' : ''}>
+          <tbody>
             {
               groups.map(group => {
                 const groupRows = filteredRows.filter(row => row.group == group.specifier)
@@ -156,7 +153,6 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
             }
           </tbody>
         </table>
-        <TableToggleButton closed={closed} toggle={toggle} />
       </div>
     )
   } else {

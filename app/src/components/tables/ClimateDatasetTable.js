@@ -3,12 +3,10 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterRows, filterField } from '../../utils'
 
 
 const ClimateDatasetTable = function({ config, number, rows, groups, actions }) {
-  const closed = !config.tables.includes('climate_dataset')
-  const toggle = () => (actions.toggleTable('climate_dataset'))
   const filteredRows = filterRows(config, rows)
 
   return (
@@ -16,7 +14,6 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
       <table className="table table-bordered table-fixed w-100">
         <caption>
           Table {number}: Other climate datesets for {config.simulation_round}.
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -27,7 +24,7 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
             <th style={{width: '50%'}}>Datasets</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             groups.map(group => {
               const groupRows = filteredRows.filter(row => row.group == group.specifier)
@@ -92,7 +89,6 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

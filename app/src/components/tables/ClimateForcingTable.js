@@ -4,18 +4,14 @@ import PropTypes from 'prop-types'
 import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
 
-import { TableToggleLink, TableToggleButton, filterRows } from '../../utils'
+import { filterRows } from '../../utils'
 
 const ClimateForcingTable = function({ config, number, rows, actions }) {
-  const closed = !config.tables.includes('climate_forcing')
-  const toggle = () => (actions.toggleTable('climate_forcing'))
-
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Climate and climate-related forcing data (<code>climate-forcing</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -39,9 +35,9 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
             <th style={{width: '5%'}}>Priority</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
-            filterRows(config, rows, closed).map((row, index) => {
+            filterRows(config, rows).map((row, index) => {
               return (
                 <tr key={index}>
                   <td>
@@ -79,7 +75,6 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

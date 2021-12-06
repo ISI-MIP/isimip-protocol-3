@@ -5,9 +5,6 @@ const actions = {
   changeSector: function(value) {
     return { type: 'changeSector', value }
   },
-  toggleTable: function(value) {
-    return { type: 'toggleTable', value }
-  },
   toggleGroup: function(value) {
     return { type: 'toggleGroup', value }
   }
@@ -28,16 +25,6 @@ function reducer(state, action) {
         config.sectors.push(action.value)
       } else {
         config.sectors.splice(index, 1)
-      }
-      return Object.assign({}, state, { config })
-    }
-    case 'toggleTable': {
-      const index = state.config.tables.indexOf(action.value)
-      const config = Object.assign({}, state.config)
-      if (index < 0) {
-        config.tables.push(action.value)
-      } else {
-        config.tables.splice(index, 1)
       }
       return Object.assign({}, state, { config })
     }

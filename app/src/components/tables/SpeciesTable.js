@@ -1,19 +1,15 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, filterRows } from '../../utils'
+import { filterRows } from '../../utils'
 
 
 const SpeciesTable = function({ config, number, rows, actions }) {
-  const closed = !config.tables.includes('species')
-  const toggle = () => (actions.toggleTable('species'))
-
   return (
     <div className="w-50">
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Harmonization specifiers (<code>harmonization</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -21,7 +17,7 @@ const SpeciesTable = function({ config, number, rows, actions }) {
             <th style={{width: '30%'}}>Specifier</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             filterRows(config, rows, closed).map((row, index) => {
               return (
@@ -34,7 +30,6 @@ const SpeciesTable = function({ config, number, rows, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

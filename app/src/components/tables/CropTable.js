@@ -1,12 +1,10 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterRows, filterField } from '../../utils'
 
 
 const CropTable = function({ config, number, rows, groups, actions }) {
-  const closed = !config.tables.includes('crop')
-  const toggle = () => (actions.toggleTable('crop'))
   const filteredRows = filterRows(config, rows)
 
   return (
@@ -14,7 +12,6 @@ const CropTable = function({ config, number, rows, groups, actions }) {
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Crop naming and priorities (<code>crop</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -22,7 +19,7 @@ const CropTable = function({ config, number, rows, groups, actions }) {
             <th style={{width: '30%'}}>Specifier</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             groups.map(group => {
               const groupRows = filteredRows.filter(row => row.group == group.specifier)
@@ -63,7 +60,6 @@ const CropTable = function({ config, number, rows, groups, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

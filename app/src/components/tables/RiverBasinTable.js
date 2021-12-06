@@ -1,19 +1,15 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, filterRows } from '../../utils'
+import { filterRows } from '../../utils'
 
 
 const RiverBasinTable = function({ config, number, rows, actions }) {
-  const closed = !config.tables.includes('river_basin')
-  const toggle = () => (actions.toggleTable('river_basin'))
-
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Catchment gauging stations for reporting regional hydrological model results (<code>river-basin</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -27,7 +23,7 @@ const RiverBasinTable = function({ config, number, rows, actions }) {
             <th style={{width: '10%'}}>Area upstream of gauge (km2) according to GRDC or GIS</th>
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             filterRows(config, rows, closed).map((row, index) => {
               return (
@@ -46,7 +42,6 @@ const RiverBasinTable = function({ config, number, rows, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

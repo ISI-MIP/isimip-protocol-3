@@ -1,11 +1,9 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { TableToggleLink, TableToggleButton, GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterRows, filterField } from '../../utils'
 
 const ClimateVariableTable = function({ config, number, rows, groups, actions }) {
-  const closed = !config.tables.includes('climate_variable')
-  const toggle = () => (actions.toggleTable('climate_variable'))
   const filteredRows = filterRows(config, rows)
 
   const getSpecifier = (row) => {
@@ -39,7 +37,6 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Climate forcing variables for {config.simulation_round} simulations (<code>climate-variable</code>).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -62,7 +59,7 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
             }
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
             groups.map(group => {
               const groupRows = filteredRows.filter(row => row.group == group.specifier)
@@ -118,7 +115,6 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }

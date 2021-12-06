@@ -4,18 +4,14 @@ import PropTypes from 'prop-types'
 import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
 
-import { TableToggleLink, TableToggleButton, filterRows } from '../../utils'
+import { filterRows } from '../../utils'
 
 const ExperimentsTable = function({ config, number, rows, actions }) {
-  const closed = !config.tables.includes('experiments')
-  const toggle = () => (actions.toggleTable('experiments'))
-
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
-          <TableToggleLink closed={closed} toggle={toggle} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -52,9 +48,9 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
             }
           </tr>
         </thead>
-        <tbody className={closed ? 'closed' : ''}>
+        <tbody>
           {
-            filterRows(config, rows, closed).map((row, index) => {
+            filterRows(config, rows).map((row, index) => {
               return (
                 <React.Fragment key={index}>
                   <tr>
@@ -167,7 +163,6 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
           }
         </tbody>
       </table>
-      <TableToggleButton closed={closed} toggle={toggle} />
     </div>
   )
 }
