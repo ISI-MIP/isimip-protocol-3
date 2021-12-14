@@ -37,8 +37,6 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
                   <td colSpan="5" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
-                    {' '}
-                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
                   </td>
                 </tr>
               ]
@@ -53,6 +51,7 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
                         <tr>
                           <td rowSpan="2">
                             <p>{row.title}</p>
+                            {row.mandatory && <p><span className="badge badge-info">mandatory</span></p>}
                           </td>
                           <td colSpan="4">
                             <code>{filterField(config, row.file_path)}</code>

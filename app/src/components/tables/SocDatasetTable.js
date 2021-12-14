@@ -36,8 +36,6 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                   <td colSpan="4" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
-                    {' '}
-                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
                   </td>
                 </tr>
               ]
@@ -51,7 +49,8 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                       <React.Fragment key={index}>
                         <tr>
                           <td rowSpan="2">
-                            <p>{row.title} {row.mandatory  && <span className="badge badge-info">mandatory</span>}</p>
+                            <p>{row.title}</p>
+                            {row.mandatory && <p><span className="badge badge-info">mandatory</span></p>}
                           </td>
                           <td colSpan="3">
                             {row.file_path && <code>{filterField(config, row.file_path)}</code>}

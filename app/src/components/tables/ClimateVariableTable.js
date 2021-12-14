@@ -75,8 +75,6 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                   <td colSpan="5" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
-                    {' '}
-                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
                   </td>
                 </tr>
               ]
@@ -89,9 +87,8 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                     return (
                       <tr key={index}>
                         <td>
-                          <p>
-                            {row.long_name}
-                          </p>
+                          <p>{row.long_name}</p>
+                          {row.mandatory && <p><span className="badge badge-info">mandatory</span></p>}
                         </td>
                         <td><strong>{getSpecifier(row)}</strong></td>
                         <td>{row.unit}</td>
