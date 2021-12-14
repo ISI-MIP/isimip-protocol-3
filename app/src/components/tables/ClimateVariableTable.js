@@ -88,7 +88,11 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                       <tr key={index}>
                         <td>
                           <p>{row.long_name}</p>
-                          {row.mandatory && <p><span className="badge badge-info">mandatory</span></p>}
+                          {row.mandatory && <p>
+                            <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+                              mandatory
+                            </span>
+                          </p>}
                         </td>
                         <td><strong>{getSpecifier(row)}</strong></td>
                         <td>{row.unit}</td>

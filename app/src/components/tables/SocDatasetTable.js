@@ -50,7 +50,11 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                         <tr>
                           <td rowSpan="2">
                             <p>{row.title}</p>
-                            {row.mandatory && <p><span className="badge badge-info">mandatory</span></p>}
+                            {row.mandatory && <p>
+                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+                                mandatory
+                              </span>
+                            </p>}
                           </td>
                           <td colSpan="3">
                             {row.file_path && <code>{filterField(config, row.file_path)}</code>}

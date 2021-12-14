@@ -35,8 +35,6 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
                   <td colSpan="4" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
-                    {' '}
-                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
                   </td>
                 </tr>
               ]
