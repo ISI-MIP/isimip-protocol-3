@@ -11,6 +11,7 @@ import { reducer } from './store'
 import Config from './components/Config'
 import Hide from './components/Hide'
 import Pattern from './components/Pattern'
+import Link from './components/Link'
 import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
@@ -21,6 +22,7 @@ const initialState = {
   commit_date: window.initialState.commit_date,
   commit_hash: window.initialState.commit_hash,
   config: {
+    baseurl: 'https://protocol.isimip.org',
     simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
     products: ['OutputData'],
     sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
@@ -62,6 +64,14 @@ document.querySelectorAll('[data-component="title"]').forEach(el => {
   ReactDOM.render(
     <Provider store={store}>
       <Title />
+    </Provider>, el
+  )
+})
+
+document.querySelectorAll('[data-component="link"]').forEach(el => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Link />
     </Provider>, el
   )
 })

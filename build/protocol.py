@@ -66,7 +66,7 @@ def main():
     enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
     template = enviroment.from_string(template_string)
 
-    md = template.render()
+    md = template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date)
     html = markdown(md, extensions=[
         'fenced_code',
         'attr_list',
@@ -90,8 +90,7 @@ def main():
         template = enviroment.from_string(f.read())
 
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date,
-                                html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)))
+        f.write(template.render(html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)))
 
 
 if __name__ == "__main__":
