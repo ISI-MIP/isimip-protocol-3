@@ -3,10 +3,12 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
-  const filteredRows = filterRows(config, rows)
+  const filteredGroups = filterGroups(config, rows, groups, actions)
+  const allOpen = filteredGroups.every(group => !group.closed)
+  const allToggle = () => toggleGroups(filteredGroups)
 
   return (
     <div className="w-100">
@@ -19,70 +21,64 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
             <th style={{width: '20%'}}>Dataset</th>
             <th style={{width: '30%'}}>Included variables (specifier)</th>
             <th style={{width: '10%'}}>Resolution</th>
-            <th style={{width: '40%'}}>Reference/Source and Comments</th>
+            <th style={{width: '40%'}}>
+              Reference/Source and Comments
+              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+            </th>
           </tr>
         </thead>
         <tbody>
           {
-            groups.map(group => {
-              const groupRows = filteredRows.filter(row => row.group == group.specifier)
-              const groupClosed = !config.groups.includes(group.specifier)
-              const groupToggle = () => {
-                if (closed) actions.toggleTable('geo_dataset')
-                actions.toggleGroup(group.specifier)
-              }
+            filteredGroups.map(group => {
+              const header = [
+                <tr key="-1">
+                  <td colSpan="4" className="table-secondary">
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <strong>{group.title}</strong>
+                    {' '}
+                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                  </td>
+                </tr>
+              ]
 
-              if (groupRows.length > 0) {
-                const groupHeader = [
-                  <tr key="-1">
-                    <td colSpan="4" className="table-secondary">
-                      <GroupToggleLink className="float-right" closed={groupClosed} toggle={groupToggle}/>
-                      <strong>{group.title}</strong>
-                      {' '}
-                      {group.mandatory && <span className="badge badge-info">mandatory</span>}
-                    </td>
-                  </tr>
-                ]
-
-                if (groupClosed) {
-                  return groupHeader
-                } else {
-                  return groupHeader.concat(
-                    groupRows.map((row, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <tr>
-                            <td className="no-border-bottom">
-                              <p>{row.title || row.specifier }</p>
-                            </td>
-                            <td colSpan="3">
-                              <code>{filterField(config, row.file_path)}</code>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>
-                              <ul>
-                                {row.variables.map((variable, index) => <li key={index}>{variable}</li>)}
-                              </ul>
-                            </td>
-                            <td>
-                              <ul>
-                                  <li>{row.resolution}</li>
-                              </ul>
-                            </td>
-                            <td>
-                              <p>
-                                <Sectors config={config} sectors={row.sectors} />
-                              </p>
-                              <ReactMarkdown children={filterField(config, row.comment)} />
-                            </td>
-                          </tr>
-                        </React.Fragment>
-                      )
-                    })
-                  )
-                }
+              if (group.closed) {
+                return header
+              } else {
+                return header.concat(
+                  group.rows.map((row, index) => {
+                    return (
+                      <React.Fragment key={index}>
+                        <tr>
+                          <td className="no-border-bottom">
+                            <p>{row.title || row.specifier }</p>
+                          </td>
+                          <td colSpan="3">
+                            <code>{filterField(config, row.file_path)}</code>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>
+                            <ul>
+                              {row.variables.map((variable, index) => <li key={index}>{variable}</li>)}
+                            </ul>
+                          </td>
+                          <td>
+                            <ul>
+                                <li>{row.resolution}</li>
+                            </ul>
+                          </td>
+                          <td>
+                            <p>
+                              <Sectors config={config} sectors={row.sectors} />
+                            </p>
+                            <ReactMarkdown children={filterField(config, row.comment)} />
+                          </td>
+                        </tr>
+                      </React.Fragment>
+                    )
+                  })
+                )
               }
             })
           }

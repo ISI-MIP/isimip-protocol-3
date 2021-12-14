@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import SimulationRounds from '../badges/SimulationRounds'
@@ -15,24 +16,24 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '15%'}}>Title</th>
-            <th style={{width: '15%'}}>Specifier</th>
+            <th style={{width: '20%'}}>Title</th>
+            <th style={{width: '12%'}}>Specifier</th>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
                 <th style={{width: '10%'}}>Time period</th>
                 <th style={{width: '10%'}}>Reanalysis</th>
-                <th style={{width: '20%'}}>Bias adjustment target</th>
-                <th style={{width: '25%'}}>Comments</th>
+                <th style={{width: '18%'}}>Bias adjustment target</th>
+                <th style={{width: '30%'}}>Comments</th>
               </React.Fragment>
             }
             {
               config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '45%'}}>Institution</th>
-                <th style={{width: '10%'}}>Native resolution</th>
-                <th style={{width: '10%'}}>Ensemble member</th>
+                <th style={{width: '36%'}}>Institution</th>
+                <th style={{width: '12%'}}>Native resolution</th>
+                <th style={{width: '12%'}}>Ensemble member</th>
               </React.Fragment>
             }
-            <th style={{width: '5%'}}>Priority</th>
+            <th style={{width: '8%'}}>Priority</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +56,7 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
                       <td>{row.time_period}</td>
                       <td>{row.reanalysis}</td>
                       <td>{row.bias_adjustment_target}</td>
-                      <td>{row.comments}</td>
+                      <td><ReactMarkdown children={row.comments} /></td>
                     </React.Fragment>
                   }
                   {

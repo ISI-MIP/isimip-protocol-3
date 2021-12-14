@@ -1,10 +1,12 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 const ClimateVariableTable = function({ config, number, rows, groups, actions }) {
-  const filteredRows = filterRows(config, rows)
+  const filteredGroups = filterGroups(config, rows, groups, actions)
+  const allOpen = filteredGroups.every(group => !group.closed)
+  const allToggle = () => toggleGroups(filteredGroups)
 
   const getSpecifier = (row) => {
       if (row.extension) {
@@ -46,7 +48,10 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                 <th style={{width: '10%'}}>Variable specifier</th>
                 <th style={{width: '10%'}}>Unit</th>
                 <th style={{width: '10%'}}>Resolution</th>
-                <th style={{width: '40%'}}>Datasets</th>
+                <th style={{width: '40%'}}>
+                  Datasets
+                  <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+                </th>
               </React.Fragment>
             }
             {
@@ -54,62 +59,56 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                 <th style={{width: '20%'}}>Variable specifier</th>
                 <th style={{width: '15%'}}>Unit</th>
                 <th style={{width: '15%'}}>Resolution</th>
-                <th style={{width: '20%'}}>Models</th>
+                <th style={{width: '20%'}}>
+                  Models
+                  <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+                </th>
               </React.Fragment>
             }
           </tr>
         </thead>
         <tbody>
           {
-            groups.map(group => {
-              const groupRows = filteredRows.filter(row => row.group == group.specifier)
-              const groupClosed = !config.groups.includes(group.specifier)
-              const groupToggle = () => {
-                if (closed) actions.toggleTable('climate_variable')
-                actions.toggleGroup(group.specifier)
-              }
+            filteredGroups.map(group => {
+              const header = [
+                <tr key="-1">
+                  <td colSpan="5" className="table-secondary">
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <strong>{group.title}</strong>
+                    {' '}
+                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                  </td>
+                </tr>
+              ]
 
-              if (groupRows.length > 0) {
-                const groupHeader = [
-                  <tr key="-1">
-                    <td colSpan="5" className="table-secondary">
-                      <GroupToggleLink className="float-right" closed={groupClosed} toggle={groupToggle}/>
-                      <strong>{group.title}</strong>
-                      {' '}
-                      {group.mandatory && <span className="badge badge-info">mandatory</span>}
-                    </td>
-                  </tr>
-                ]
-
-                if (groupClosed) {
-                  return groupHeader
-                } else {
-                  return groupHeader.concat(
-                    groupRows.map((row, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>
-                            <p>
-                              {row.long_name}
-                            </p>
-                          </td>
-                          <td><strong>{getSpecifier(row)}</strong></td>
-                          <td>{row.unit}</td>
-                          <td>
-                            <ul>
-                              {getResolutions(row)}
-                            </ul>
-                          </td>
-                          <td>
-                            <ul>
-                              {filterField(config, row.climate_forcing).map((value, idx) => <li key={idx}>{value}</li>)}
-                            </ul>
-                          </td>
-                        </tr>
-                      )
-                    })
-                  )
-                }
+              if (group.closed) {
+                return header
+              } else {
+                return header.concat(
+                  group.rows.map((row, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <p>
+                            {row.long_name}
+                          </p>
+                        </td>
+                        <td><strong>{getSpecifier(row)}</strong></td>
+                        <td>{row.unit}</td>
+                        <td>
+                          <ul>
+                            {getResolutions(row)}
+                          </ul>
+                        </td>
+                        <td>
+                          <ul>
+                            {filterField(config, row.climate_forcing).map((value, idx) => <li key={idx}>{value}</li>)}
+                          </ul>
+                        </td>
+                      </tr>
+                    )
+                  })
+                )
               }
             })
           }

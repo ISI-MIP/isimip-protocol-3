@@ -1,11 +1,13 @@
 import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 
-import { GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
 
 
 const CropTable = function({ config, number, rows, groups, actions }) {
-  const filteredRows = filterRows(config, rows)
+  const filteredGroups = filterGroups(config, rows, groups, actions)
+  const allOpen = filteredGroups.every(group => !group.closed)
+  const allToggle = () => toggleGroups(filteredGroups)
 
   return (
     <div className="w-50">
@@ -15,46 +17,40 @@ const CropTable = function({ config, number, rows, groups, actions }) {
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '70%'}}>Crop</th>
-            <th style={{width: '30%'}}>Specifier</th>
+            <th style={{width: '50%'}}>Crop</th>
+            <th style={{width: '50%'}}>
+              Specifier
+              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+            </th>
           </tr>
         </thead>
         <tbody>
           {
-            groups.map(group => {
-              const groupRows = filteredRows.filter(row => row.group == group.specifier)
-              const groupClosed = !config.groups.includes(group.specifier)
-              const groupToggle = () => {
-                if (closed) actions.toggleTable('crop')
-                actions.toggleGroup(group.specifier)
-              }
+            filteredGroups.map(group => {
+              const header = [
+                <tr key="-1">
+                  <td colSpan="5" className="table-secondary">
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <strong>{group.title}</strong>
+                    {' '}
+                    {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                  </td>
+                </tr>
+              ]
 
-              if (groupRows.length > 0) {
-                const groupHeader = [
-                  <tr key="-1">
-                    <td colSpan="5" className="table-secondary">
-                      <GroupToggleLink className="float-right" closed={groupClosed} toggle={groupToggle}/>
-                      <strong>{group.title}</strong>
-                      {' '}
-                      {group.mandatory && <span className="badge badge-info">mandatory</span>}
-                    </td>
-                  </tr>
-                ]
-
-                if (groupClosed) {
-                  return groupHeader
-                } else {
-                  return groupHeader.concat(
-                    groupRows.map((row, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{row.title}</td>
-                          <td><strong>{row.specifier}</strong></td>
-                        </tr>
-                      )
-                    })
-                  )
-                }
+              if (group.closed) {
+                return header
+              } else {
+                return header.concat(
+                  group.rows.map((row, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{row.title}</td>
+                        <td><strong>{row.specifier}</strong></td>
+                      </tr>
+                    )
+                  })
+                )
               }
             })
           }

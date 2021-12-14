@@ -3,11 +3,13 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { GroupToggleLink, filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
 
 
 const VariableTable = function({ config, number, rows, groups, actions }) {
-  const filteredRows = filterRows(config, rows)
+  const filteredGroups = filterGroups(config, rows, groups, actions)
+  const allOpen = filteredGroups.every(group => !group.closed)
+  const allToggle = () => toggleGroups(filteredGroups)
 
   const addExtension = (specifier, extension) => {
       if (extension === null) {
@@ -81,8 +83,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     }
   }
 
-  if (filteredRows.length > 0 ) {
-
+  if (filteredGroups.length > 0) {
     return (
       <div className="w-100">
         <table className="table table-bordered table-fixed">
@@ -95,59 +96,53 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
               <th style={{width: '15%'}}>Variable specifier</th>
               <th style={{width: '10%'}}>Unit</th>
               <th style={{width: '15%'}}>Resolution</th>
-              <th style={{width: '40%'}}>Comments</th>
+              <th style={{width: '40%'}}>
+                Comments
+                <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+              </th>
             </tr>
           </thead>
           <tbody>
             {
-              groups.map(group => {
-                const groupRows = filteredRows.filter(row => row.group == group.specifier)
-                const groupClosed = !config.groups.includes(group.specifier)
-                const groupToggle = () => {
-                  if (closed) actions.toggleTable('soc_dataset')
-                  actions.toggleGroup(group.specifier)
-                }
+              filteredGroups.map(group => {
+                const header = [
+                  <tr key="-1">
+                    <td colSpan="5" className="table-secondary">
+                      <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                      <strong>{group.title}</strong>
+                      {' '}
+                      {group.mandatory && <span className="badge badge-info">mandatory</span>}
+                    </td>
+                  </tr>
+                ]
 
-                if (groupRows.length > 0) {
-                  const groupHeader = [
-                    <tr key="-1">
-                      <td colSpan="5" className="table-secondary">
-                        <GroupToggleLink className="float-right" closed={groupClosed} toggle={groupToggle}/>
-                        <strong>{group.title}</strong>
-                        {' '}
-                        {group.mandatory && <span className="badge badge-info">mandatory</span>}
-                      </td>
-                    </tr>
-                  ]
-
-                  if (groupClosed) {
-                    return groupHeader
-                  } else {
-                    return groupHeader.concat(
-                      groupRows.map((row, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{row.long_name}</td>
-                            <td>{getSpecifier(row)}</td>
-                            <td>{row.units}</td>
-                            <td>
-                              <ul>
-                                {getResolution(row)}
-                                {getFrequency(row)}
-                              </ul>
-                            </td>
-                            <td>
-                              <p>
-                                <Sectors config={config} sectors={row.sectors} />
-                              </p>
-                              {row.dimensions && <p><b>Level dimensions:</b> ({row.dimensions.join(', ')}).</p>}
-                              {getComment(row)}
-                            </td>
-                          </tr>
-                        )
-                      })
-                    )
-                  }
+                if (group.closed) {
+                  return header
+                } else {
+                  return header.concat(
+                    group.rows.map((row, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{row.long_name}</td>
+                          <td>{getSpecifier(row)}</td>
+                          <td>{row.units}</td>
+                          <td>
+                            <ul>
+                              {getResolution(row)}
+                              {getFrequency(row)}
+                            </ul>
+                          </td>
+                          <td>
+                            <p>
+                              <Sectors config={config} sectors={row.sectors} />
+                            </p>
+                            {row.dimensions && <p><b>Level dimensions:</b> ({row.dimensions.join(', ')}).</p>}
+                            {getComment(row)}
+                          </td>
+                        </tr>
+                      )
+                    })
+                  )
                 }
               })
             }
