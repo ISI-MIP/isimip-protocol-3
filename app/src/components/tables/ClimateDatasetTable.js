@@ -21,7 +21,7 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
             <th style={{width: '10%'}}>Variable specifier</th>
             <th style={{width: '10%'}}>Unit</th>
             <th style={{width: '10%'}}>Resolution</th>
-            <th style={{width: '50%'}}>Datasets</th>
+            <th style={{width: '50%'}}>Reference/Source and Comments</th>
           </tr>
         </thead>
         <tbody>
