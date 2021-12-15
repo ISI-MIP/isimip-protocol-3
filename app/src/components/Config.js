@@ -50,7 +50,7 @@ const Config = ({ definitions, config, actions }) => {
         </div>
       </div>
       <div className="text-muted">
-        Sectors marked with the 🚧 sign are currently in development and the protocoll will not contain nessesary all information, yet.
+        Sectors marked with the 🚧 sign are currently in development and the protocol will not contain all nessesary information, yet.
       </div>
     </div>
   )
