@@ -29,7 +29,7 @@ const Config = ({ definitions, config, actions }) => {
           }
         </div>
       </div>
-      <div>
+      <div className="mb-3">
         <div><strong>Filter for sectors:</strong></div>
         <div>
           {
@@ -42,12 +42,15 @@ const Config = ({ definitions, config, actions }) => {
                          value={row.specifier}
                          checked={config.sectors.includes(row.specifier)}
                          onChange={(event) => actions.changeSector(event.target.value)} />
-                  <label className="form-check-label" htmlFor={id}>{row.title}</label>
+                  <label className="form-check-label" htmlFor={id}>{row.title} {row.dev && <span>🚧</span>}</label>
                 </div>
               )
             })
           }
         </div>
+      </div>
+      <div className="text-muted">
+        Sectors marked with the 🚧 sign are currently in development and the protocoll will not contain nessesary all information, yet.
       </div>
     </div>
   )
