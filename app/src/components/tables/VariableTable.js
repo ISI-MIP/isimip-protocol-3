@@ -83,74 +83,77 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     }
   }
 
-  if (filteredGroups.length > 0) {
-    return (
-      <div className="w-100">
-        <table className="table table-bordered table-fixed">
-          <caption>
-            Table {number}: Output variables (<code>variable</code>).
-          </caption>
-          <thead className="thead-dark">
-            <tr>
-              <th style={{width: '20%'}}>Variable long name</th>
-              <th style={{width: '15%'}}>Variable specifier</th>
-              <th style={{width: '10%'}}>Unit</th>
-              <th style={{width: '15%'}}>Resolution</th>
-              <th style={{width: '40%'}}>
-                Comments
-                <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              filteredGroups.map(group => {
-                const header = [
-                  <tr key="-1">
-                    <td colSpan="5" className="table-secondary">
-                      <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
-                      <strong>{group.title}</strong>
-                    </td>
-                  </tr>
-                ]
+  return (
+    <div className="w-100">
+      <table className="table table-bordered table-fixed">
+        <caption>
+          Table {number}: Output variables (<code>variable</code>).
+        </caption>
+        <thead className="thead-dark">
+          <tr>
+            <th style={{width: '20%'}}>Variable long name</th>
+            <th style={{width: '15%'}}>Variable specifier</th>
+            <th style={{width: '10%'}}>Unit</th>
+            <th style={{width: '15%'}}>Resolution</th>
+            <th style={{width: '40%'}}>
+              Comments
+              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            filteredGroups.map(group => {
+              const header = [
+                <tr key="-1">
+                  <td colSpan="5" className="table-secondary">
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <strong>{group.title}</strong>
+                  </td>
+                </tr>
+              ]
 
-                if (group.closed) {
-                  return header
-                } else {
-                  return header.concat(
-                    group.rows.map((row, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{row.long_name}</td>
-                          <td>{getSpecifier(row)}</td>
-                          <td>{row.units}</td>
-                          <td>
-                            <ul>
-                              {getResolution(row)}
-                              {getFrequency(row)}
-                            </ul>
-                          </td>
-                          <td>
-                            <p>
-                              <Sectors config={config} sectors={row.sectors} />
-                            </p>
-                            {row.dimensions && <p><b>Level dimensions:</b> ({row.dimensions.join(', ')}).</p>}
-                            {getComment(row)}
-                          </td>
-                        </tr>
-                      )
-                    })
-                  )
-                }
-              })
-            }
-          </tbody>
-        </table>
-      </div>
-    )
-  } else {
-    return <span>No output variables have been defined for this combination of sectors, yet.</span>
-  }
+              if (group.closed) {
+                return header
+              } else {
+                return header.concat(
+                  group.rows.map((row, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{row.long_name}</td>
+                        <td>{getSpecifier(row)}</td>
+                        <td>{row.units}</td>
+                        <td>
+                          <ul>
+                            {getResolution(row)}
+                            {getFrequency(row)}
+                          </ul>
+                        </td>
+                        <td>
+                          <p>
+                            <Sectors config={config} sectors={row.sectors} />
+                          </p>
+                          {row.dimensions && <p><b>Level dimensions:</b> ({row.dimensions.join(', ')}).</p>}
+                          {getComment(row)}
+                        </td>
+                      </tr>
+                    )
+                  })
+                )
+              }
+            })
+          }
+          {
+            (filteredGroups.length == 0) && <tr>
+              <td colSpan="5">
+                No output variables have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
 VariableTable.propTypes = {

@@ -86,6 +86,13 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
               }
             })
           }
+          {
+            (filteredGroups.length == 0) && <tr>
+              <td colSpan="5">
+                No other climate datasets have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>

@@ -8,6 +8,8 @@ import Sectors from '../badges/Sectors'
 import { filterRows } from '../../utils'
 
 const ClimateForcingTable = function({ config, number, rows, actions }) {
+  const filteredRows = filterRows(config, rows)
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -38,7 +40,7 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
         </thead>
         <tbody>
           {
-            filterRows(config, rows).map((row, index) => {
+            filteredRows.map((row, index) => {
               return (
                 <tr key={index}>
                   <td>
@@ -73,6 +75,13 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
                 </tr>
               )
             })
+          }
+          {
+            (filteredRows.length == 0) && <tr>
+              <td colSpan="7">
+                No climate forcing have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
           }
         </tbody>
       </table>

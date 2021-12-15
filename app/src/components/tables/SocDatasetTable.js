@@ -88,6 +88,13 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
               }
             })
           }
+          {
+            (filteredGroups.length == 0) && <tr>
+              <td colSpan="4">
+                No socioeconomic datasets have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>

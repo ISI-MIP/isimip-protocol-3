@@ -80,6 +80,13 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
               }
             })
           }
+          {
+            (filteredGroups.length == 0) && <tr>
+              <td colSpan="4">
+                No static geographic information datasets have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>

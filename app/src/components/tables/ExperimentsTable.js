@@ -7,6 +7,8 @@ import Sectors from '../badges/Sectors'
 import { filterRows } from '../../utils'
 
 const ExperimentsTable = function({ config, number, rows, actions }) {
+  const filteredRows = filterRows(config, rows)
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -50,7 +52,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
         </thead>
         <tbody>
           {
-            filterRows(config, rows).map((row, index) => {
+            filteredRows.map((row, index) => {
               return (
                 <React.Fragment key={index}>
                   <tr>
@@ -160,6 +162,13 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                 </React.Fragment>
               )
             })
+          }
+          {
+            (filteredRows.length == 0) && <tr>
+              <td colSpan={config.simulation_round.endsWith('a') ? 4 : 5}>
+                No experiments have been defined for this selection of simulation round and sectors, yet.
+              </td>
+            </tr>
           }
         </tbody>
       </table>
