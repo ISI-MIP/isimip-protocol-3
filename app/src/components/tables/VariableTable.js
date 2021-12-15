@@ -8,6 +8,7 @@ import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
 
 const VariableTable = function({ config, number, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
+  const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups)
 
@@ -97,7 +98,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
             <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '40%'}}>
               Comments
-              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+              {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
           </tr>
         </thead>
@@ -144,7 +145,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
             })
           }
           {
-            (filteredGroups.length == 0) && <tr>
+            empty && <tr>
               <td colSpan="5">
                 No output variables have been defined for this selection of simulation round and sectors, yet.
               </td>

@@ -8,6 +8,7 @@ import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../
 
 const ClimateDatasetTable = function({ config, number, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
+  const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups)
 
@@ -25,7 +26,7 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
             <th style={{width: '10%'}}>Resolution</th>
             <th style={{width: '50%'}}>
               Reference/Source and Comments
-              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+              {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
           </tr>
         </thead>
@@ -87,7 +88,7 @@ const ClimateDatasetTable = function({ config, number, rows, groups, actions }) 
             })
           }
           {
-            (filteredGroups.length == 0) && <tr>
+            empty && <tr>
               <td colSpan="5">
                 No other climate datasets have been defined for this selection of simulation round and sectors, yet.
               </td>
