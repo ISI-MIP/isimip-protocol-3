@@ -9,30 +9,27 @@ The rendered protocols are found at https://protocol.isimip.org.
 You can clone this repository and work and render the files locally as documented below.
 
 You can also edit the markdown files at github directly. With a delay of minutes,
-your updates will be visible at `https://protocol.isimip.org/<simulation_round>/<sector>.html`.
+your updates will be visible at `https://protocol.isimip.org`.
 
 As a rule, the sector-specific text should be kept to a minimum and cover
 as much structure as possible by machine-readable code under [definitions](definitions/).
 
+The bibliography and the React JavaScript app build in seperate steps which are described under [bibliography/README.md]([bibliography/README.md]) and [app/README.md]([app/README.md]).
 
-Prerequisites
--------------
 
-The installation of Python (and its developing packages), however differs from operating system to operating system. In addition Git and Pandoc is need is needed.
+Local setup
+-----------
+
+The installation of Python (and its developing packages) differs from operating system to operating system. In addition Git is needed.
 
 ### Linux
 
 On Linux, Python3 is probably already installed, but the development packages are usually not. You should be able to install them using:
 
 ```
-# Ubuntu/Debian
-sudo apt-get install python3 python3-dev python3-venv git pandoc pandoc-citeproc
-
-# CentOS/RHEL
-sudo yum install python3 python3-devel git pandoc pandoc-citeproc
-
-# openSUSE/SLES
-zypper install python3 python3-devel git pandoc pandoc-citeproc
+sudo apt-get install python3 python3-dev python3-venv git  # Ubuntu/Debian
+sudo yum install python3 python3-devel git                 # CentOS/RHEL
+zypper install python3 python3-devel git                   # openSUSE/SLES
 ```
 
 ### macOS
@@ -40,7 +37,7 @@ zypper install python3 python3-devel git pandoc pandoc-citeproc
 While we reccoment using [Homebrew](https://brew.sh) to install Python3 on a Mac, other means of obtaining Python like [Anaconda](https://www.anaconda.com/products/individual), [MacPorts](https://www.macports.org/), or [Fink](https://www.finkproject.org/) should work just as fine:
 
 ```
-brew install python git pandoc pandoc-citeproc
+brew install python git
 ```
 
 ### Windows
@@ -57,9 +54,6 @@ For python:
 For git:
 * download from <https://git-for-windows.github.io/>
 * use the 64bit version if your system is not very old
-
-For pandoc:
-* download from <https://github.com/jgm/pandoc/releases/>
 
 All further steps need to be performed using the windows shell `cmd.exe`. You can open it from the Start-Menu.
 
@@ -94,46 +88,15 @@ Edit
 
 Edit the markdown files for each sector under [protocol](protocol). Common included files are located under [protocol/include](protocol/include).
 
-Tables are rendered using the table macro `{{ table(name, order) }}`. This macro combines a json file in `definitions/<name>.json` and a template in `templates/<name>.html`. If the second argument to table is a dict (`{ ... }`), e.g.:
+The interactive tables have the following syntax:
 
 ```
-{{ table('variable', {
-    'Key model output': [
-        'yield',
-        'pirnreqcum',
-        'evapcum',
-        'initrcum',
-        'soilmoist'
-    ],
-    'Key diagnostic variables': [
-        'plantday',
-        'plantyear',
-        'anthday',
-        'matyday',
-  'harvyear'
-    ],
-    'Additional output variables (optional)': [
-        'biom',
-        'nupcum',
-        'nincum',
-        'nlosscum',
-        'nleachcum'
-    ]
-}) }}
+::: table number=1 identifier=climate_scenario
 ```
 
-it will create a table with group headers. If the second argument is a list (`[ ... ]`), e.g.:
+where `number` is simply the table number to be displayed in the caption and `identifier` will not only connect the table to its definition file (see below), but will also define which JavaScript component to use. Changes of the layout of a table or the creation of new tables require work on the [app](app).
 
-```
-{{ table('variable', [
-    'yield',
-    'pirrww'
-] }}
-```
-
-it will use the given order of specifiers to create the table. If no second argument is provided, it will use the order from the json file.
-
-The definition json files themselves are lists of json objects. Every json object should have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_correction.json](definitions/bias_correction.json):
+The definition JSON files however can be changed without touching the JavaScript source code. Each definition is a list of JSON objects. Every object must have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_correction.json](definitions/bias_correction.json):
 
 ```
 [
@@ -222,6 +185,7 @@ Build
 
 ```bash
 make            # should work on Linux/macOS
+make dev        # like make, but for development of the JavaScript app
 
 sh build.sh     # Linux/macOS/WSL
 call build.cmd  # Windows cmd
