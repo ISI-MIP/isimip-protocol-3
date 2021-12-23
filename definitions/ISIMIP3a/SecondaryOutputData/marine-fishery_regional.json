@@ -1,5 +1,5 @@
 {
-  "commit": "1d667fe17031d61df42e77984cc0301eb285cbbd",
+  "commit": "cdd49079aea480af7a3a916b76dd93ad63b0ab46",
   "diazotroph_scenario": [
     {
       "specifier": "w-diaz"
@@ -656,6 +656,20 @@
         "ISIMIP3a",
         "ISIMIP3b"
       ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
     }
   ],
   "climate_forcing": [],
@@ -980,6 +994,32 @@
       ]
     },
     {
+      "specifier": "model-evaluation-nat",
+      "title": "model evaluation",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "No climate change before 1901, observed forcing afterwards; 1850 levels of CO\u2082 before 1850 and based on observations afterwards",
+        "soc": "No direct human influences"
+      },
+      "spin_up": {
+        "climate": "spinclim",
+        "soc": "nat"
+      },
+      "historical": {
+        "climate": "obsclim",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
       "specifier": "counterfactual-histsoc",
       "title": "counterfactual climate",
       "subtitle": "histsoc",
@@ -1074,6 +1114,29 @@
         "marine-fishery_regional",
         "permafrost",
         "water_global"
+      ]
+    },
+    {
+      "specifier": "counterfactual-nat",
+      "title": "counterfactual climate",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "de-trended observational climate forcing (counterfactual \"no climate change\" situation) + fixed CO\u2082 concentration at 1901 level",
+        "soc": "No direct human influences"
+      },
+      "spin_up": "\"nat\" version of the transition period of the model evaluation run",
+      "historical": {
+        "climate": "counterclim",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     },
     {

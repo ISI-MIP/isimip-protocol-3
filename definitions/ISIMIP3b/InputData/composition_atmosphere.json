@@ -1,5 +1,5 @@
 {
-  "commit": "1d667fe17031d61df42e77984cc0301eb285cbbd",
+  "commit": "cdd49079aea480af7a3a916b76dd93ad63b0ab46",
   "diazotroph_scenario": [
     {
       "specifier": "w-diaz"
@@ -888,6 +888,20 @@
       "specifier": "ssp585soc",
       "products": [
         "InputData"
+      ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     }
   ],
@@ -2328,6 +2342,33 @@
       ]
     },
     {
+      "specifier": "picontrol-nat",
+      "title": "pre-industrial control",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "no climate change, pre-industrial CO\u2082 fixed at 1850 levels",
+        "soc": "No direct human influences"
+      },
+      "pre_industrial": "does not have to be simulated as the following year already provide a large sample of years with stable climate and no (nat) DHF for period",
+      "historical": {
+        "climate": "picontrol",
+        "soc": "nat"
+      },
+      "future": {
+        "climate": "picontrol",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
       "specifier": "rcp26-histsoc",
       "title": "RCP2.6",
       "subtitle": "histsoc",
@@ -2435,6 +2476,33 @@
         "marine-fishery_regional",
         "permafrost",
         "water_global"
+      ]
+    },
+    {
+      "specifier": "rcp26-nat",
+      "title": "RCP2.6",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "Simulated historical climate and CO\u2082 in historical period, then SSP1-RCP2.6 climate & CO\u2082",
+        "soc": "No direct human influences"
+      },
+      "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
+      "historical": {
+        "climate": "historical",
+        "soc": "nat"
+      },
+      "future": {
+        "climate": "ssp126",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     },
     {
@@ -2564,6 +2632,30 @@
       ]
     },
     {
+      "specifier": "rcp7-nat",
+      "title": "RCP7",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "SSP3-RCP7 climate & CO\u2082",
+        "soc": "No direct human influences"
+      },
+      "pre_industrial": "\"nat\" version of pre-industrial of pre-industrial control experiment runs",
+      "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
+      "future": {
+        "climate": "ssp370",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
       "specifier": "co2sensitivity-rcp7-histsoc",
       "title": "CO\u2082 sensitivity RCP7",
       "subtitle": "histsoc",
@@ -2690,6 +2782,30 @@
       ]
     },
     {
+      "specifier": "rcp85-nat",
+      "title": "RCP8.5",
+      "subtitle": "nat",
+      "priority": "2nd priority",
+      "description": {
+        "climate": "SSP5-RCP8.5 climate & CO\u2082",
+        "soc": "No direct human influences"
+      },
+      "pre_industrial": "\"nat\" version of pre-industrial of pre-industrial control experiment runs",
+      "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
+      "future": {
+        "climate": "ssp585",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
       "specifier": "co2sensitivity-rcp85-histsoc",
       "title": "CO\u2082 sensitivity RCP8.5",
       "subtitle": "histsoc",
@@ -2774,6 +2890,29 @@
         "lakes_local",
         "permafrost",
         "water_global"
+      ]
+    },
+    {
+      "specifier": "co2sensitivity-rcp85-nat",
+      "title": "CO\u2082 sensitivity RCP8.5",
+      "subtitle": "nat",
+      "priority": "1st priority",
+      "description": {
+        "climate": "Historical climate and CO\u2082 forcing up to 2015, fixed 2015 CO\u2082 afterwards",
+        "soc": "No direct human influences"
+      },
+      "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
+      "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
+      "future": {
+        "climate": "ssp585",
+        "climate_sens": "2015co2",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes"
       ]
     }
   ],

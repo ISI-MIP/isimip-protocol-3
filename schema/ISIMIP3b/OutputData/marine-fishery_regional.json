@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_regional.json",
-  "commit": "1d667fe17031d61df42e77984cc0301eb285cbbd",
+  "commit": "cdd49079aea480af7a3a916b76dd93ad63b0ab46",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
             "gfdl-esm4",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll"
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -42,78 +42,79 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
+            "ssp585",
             "picontrol",
             "historical",
-            "ssp585",
+            "ssp370",
             "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
+            "histsoc",
             "1850soc",
-            "histsoc"
+            "2015soc",
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "bp90cm",
-            "tcblog10",
-            "tdc",
-            "cp30cm",
-            "bp30cm",
-            "cp30to90cm",
-            "bd30cm",
-            "cd30to90cm",
-            "tdb",
-            "tclog10",
-            "cd90cm",
-            "cd30cm",
-            "bd30to90cm",
-            "cp90cm",
-            "tpc",
-            "bd90cm",
             "tcb",
-            "tc",
+            "bp90cm",
+            "cd30to90cm",
+            "bp30cm",
             "bp30to90cm",
+            "tc",
+            "bd30cm",
+            "tpc",
+            "tdc",
+            "tcblog10",
+            "cp30cm",
+            "cd90cm",
+            "cp90cm",
+            "tclog10",
+            "bd90cm",
+            "bd30to90cm",
+            "cd30cm",
+            "cp30to90cm",
+            "tdb",
             "tpb"
           ]
         },
         "ocean_region": {
           "type": "string",
           "enum": [
-            "benguela",
-            "humboldt-n",
+            "hawaii",
+            "east-bass-strait",
+            "baltic-sea",
             "med-glob",
             "adriatic-sea",
             "se-australia",
-            "east-bering-sea",
             "nw-med-sea",
-            "hawaii",
             "cook-strait",
-            "east-bass-strait",
             "north-sea",
-            "baltic-sea"
+            "humboldt-n",
+            "benguela",
+            "east-bering-sea"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
             "3hr",
-            "annual",
-            "fixed",
+            "monthly",
             "daily",
-            "monthly"
+            "fixed",
+            "annual"
           ]
         },
         "start_year": {
