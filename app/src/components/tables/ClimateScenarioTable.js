@@ -11,7 +11,7 @@ const ClimateScenarioTable = function({ config, number, rows }) {
   return (
     <table className="table table-bordered table-fixed w-75">
       <caption>
-        Table {number}: Climate scenario specifiers (<code>sens-scenario</code>).
+        Table {number}: Climate scenario specifiers (<code>climate-scenario</code>).
       </caption>
       <thead className="thead-dark">
         <tr>

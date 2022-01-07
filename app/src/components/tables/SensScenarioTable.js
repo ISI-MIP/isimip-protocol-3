@@ -11,7 +11,7 @@ const SensScenarioTable = function({ config, number, rows }) {
   return (
     <table className="table table-bordered table-fixed w-75">
       <caption>
-        Table {number}: Sensitivity scenario specifiers (<code>climate-scenario</code>).
+        Table {number}: Sensitivity scenario specifiers (<code>sens-scenario</code>).
       </caption>
       <thead className="thead-dark">
         <tr>
