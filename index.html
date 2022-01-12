@@ -98,8 +98,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 11 January 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2c65bd3b432ee9c33044c0cff1f9ff1f37f7dfee">2c65bd3b432ee9c33044c0cff1f9ff1f37f7dfee</a></p>
+<p>Last updated: 12 January 2022</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/23c095e176e84fb95a88a0ec622a3523d246618c">23c095e176e84fb95a88a0ec622a3523d246618c</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="introduction">Introduction</h2>
 <h3 id="general-concept">General concept</h3>
@@ -146,15 +146,16 @@
 <h4 id="note-regarding-models-requiring-spin-up">Note regarding models requiring spin-up</h4>
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data. The files are located under <code>ISIMIP3a/InputData/climate/atmosphere/spinclim</code> at DKRZ and in the ISIMIP Repository. If more than 100 years of spin-up are needed, these data can be repeated as often as needed. </p>
-<ul>
-<li>For <code>historical</code> runs, use historical CO2 concentration and varying DHF, for the transition period from spin-up to the start of the experiment (1850-1900). When using a longer spin-up period that (nominally) extends back further than 1850, please keep CO₂ concentration and DHF constant at 1850 level until reaching the year corresponding to 1850.</li>
-<li>For experiments with fixed direct human influences (<code>1901soc</code>, <code>2015soc</code>), the spin-up should be based on the 1901 DHF or 2015 DHF, respectively.</li>
-<li>For sector-specific experiments without direct human influence (<code>nat</code>), the spin-up should be not using DHF as well.</li>
-</ul>
+<p>For <code>historical</code> runs, use historical CO2 concentration and varying DHF, for the transition period from spin-up to the start of the experiment (1850-1900). When using a longer spin-up period that (nominally) extends back further than 1850, please keep CO₂ concentration and DHF constant at 1850 level until reaching the year corresponding to 1850.</p>
+<p>For experiments with fixed direct human influences (<code>1901soc</code>, <code>2015soc</code>), the spin-up should be based on the 1901 DHF or 2015 DHF, respectively.</p>
+<p>For sector-specific experiments without direct human influence (nat), the spin-up should not use any DHF as well.</p>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
-<p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed. Please note that the "pre-industrial control run" from 1601-1849 is part of the regular experiments that should be reported and hence the spin-up has to be finished before that.</p>
-<p>For experiments with fixed year-2015 direct human influences (<code>2015soc</code>), spin-up should be based on the 2015 DHF. Please note that there is no "pre-industrial control run" from 1601-1849 for these experiments and hence the spin-up links directly to the historical period.</p>
+<p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed.</p>
+<p>Please note that the "pre-industrial control run" from 1601-1849 is part of the regular experiments that should be reported and hence the spin-up has to be finished before that.</p>
+<p>For experiments with fixed year-2015 direct human influences (<code>2015soc</code>), spin-up should be based on the 2015 DHF.</p>
+<p>For sector-specific experiments without direct human influence (nat), the spin-up should not use any DHF as well.</p>
+<p>Please note that there is no "pre-industrial control run" from 1601-1849 for these experiments (<code>2015soc</code>, <code>nat</code>) and hence the spin-up links directly to the historical period. </p>
 </div>
 <h2 id="input-data">Input data</h2>
 <div data-component="show" data-simulation-round="ISIMIP3a">
@@ -3613,7 +3614,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "No climate change, pre-industrial CO\u2082 fixed at 1850 levels",
         "soc": "Fixed at 2015 levels for all periods"
       },
-      "pre_industrial": "Spin-up should be based on the 2015 DHF (see note below the table)",
+      "pre_industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table)",
       "historical": {
         "climate": "picontrol",
         "soc": "2015soc"
@@ -3683,7 +3684,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "no climate change, pre-industrial CO\u2082 fixed at 1850 levels",
         "soc": "No direct human influences"
       },
-      "pre_industrial": "does not have to be simulated as the following years of the historical period already provide a large sample with stable climate and no DHF",
+      "pre_industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table)",
       "historical": {
         "climate": "picontrol",
         "soc": "nat"
@@ -3749,7 +3750,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "Simulated historical climate and CO\u2082 in historical period, then SSP1-RCP2.6 climate & CO\u2082",
         "soc": "Fixed at 2015 levels for all periods"
       },
-      "pre_industrial": "Spin-up should be based on the 2015 DHF (see note below the table)",
+      "pre_industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table)",
       "historical": {
         "climate": "historical",
         "soc": "2015soc"
@@ -3820,7 +3821,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "Simulated historical climate and CO\u2082 in historical period, then SSP1-RCP2.6 climate & CO\u2082",
         "soc": "No direct human influences"
       },
-      "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
+      "pre_industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table)",
       "historical": {
         "climate": "historical",
         "soc": "nat"
@@ -3908,7 +3909,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "SSP3-RCP7 climate & CO\u2082",
         "soc": "Fixed at 2015 levels for all periods"
       },
-      "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
+      "pre_industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table)",
       "historical": "\"2015soc\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp370",
@@ -3973,7 +3974,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "SSP3-RCP7 climate & CO\u2082",
         "soc": "No direct human influences"
       },
-      "pre_industrial": "\"nat\" version of pre-industrial of pre-industrial control experiment runs",
+      "pre_industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table)",
       "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp370",
@@ -4058,7 +4059,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "SSP5-RCP8.5 climate & CO\u2082",
         "soc": "Fixed at 2015 levels for all periods"
       },
-      "pre_industrial": "\"2015soc\" version of pre-industrial of pre-industrial control experiment runs",
+      "pre_industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table)",
       "historical": "\"2015soc\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp585",
@@ -4123,7 +4124,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "SSP5-RCP8.5 climate & CO\u2082",
         "soc": "No direct human influences"
       },
-      "pre_industrial": "\"nat\" version of pre-industrial of pre-industrial control experiment runs",
+      "pre_industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table)",
       "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp585",
@@ -4177,7 +4178,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "Historical climate and CO\u2082 forcing up to 2015, fixed 2015 CO\u2082 afterwards",
         "soc": "Fixed at 2015 levels for all periods"
       },
-      "pre_industrial": "\"2015soc\" version of the pre-industrial period of the pre-industrial control experiment",
+      "pre_industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table)",
       "historical": "\"2015soc\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp585",
@@ -4234,7 +4235,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "climate": "Historical climate and CO\u2082 forcing up to 2015, fixed 2015 CO\u2082 afterwards",
         "soc": "No direct human influences"
       },
-      "pre_industrial": "\"nat\" version of the pre-industrial period of the pre-industrial control experiment",
+      "pre_industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table)",
       "historical": "\"nat\" version of the historical period of the RCP2.6 experiment",
       "future": {
         "climate": "ssp585",
