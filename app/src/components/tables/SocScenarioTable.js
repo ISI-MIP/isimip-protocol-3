@@ -10,7 +10,7 @@ import { filterRows } from '../../utils'
 
 const SocScenarioTable = function({ config, number, rows }) {
   return (
-    <table className="table table-bordered table-fixed w-75">
+    <table className="table table-bordered table-fixed w-70">
       <caption>
         Table {number}: Socio-economic scenario specifiers (<code>soc-scenario</code>).
       </caption>

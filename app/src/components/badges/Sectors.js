@@ -9,7 +9,7 @@ const Sectors = ({ config, sectors }) => {
   } else if (sectors === null) {
     // for the title just display the configured sectors
     if (config.sectors !== undefined && config.sectors.length > 0) {
-      return config.sectors.map(sector => <span key={sector} className="badge badge-success badge-sector">{sector}</span>)
+      return config.sectors.map((sector, index) => <span key={index} className="badge badge-success badge-sector">{sector}</span>)
     } else {
       return <span className="badge badge-success badge-sector">all sectors</span>
     }
@@ -17,16 +17,16 @@ const Sectors = ({ config, sectors }) => {
     // some sectors are configured -> hightlight selected sectors
     if (config.sectors !== undefined && config.sectors.length > 0) {
       // at least one sector is selected
-      return sectors.map(sector => {
+      return sectors.map((sector, index) => {
         if (config.sectors.includes(sector)) {
-          return <span key={sector} className="badge badge-success badge-sector">{sector}</span>
+          return <span key={index} className="badge badge-success badge-sector">{sector}</span>
         } else {
-          return <span key={sector} className="badge badge-light badge-sector">{sector}</span>
+          return <span key={index} className="badge badge-light badge-sector">{sector}</span>
         }
       })
     } else {
       // no sector is selected
-      return sectors.map(sector => <span key={sector} className="badge badge-success badge-sector">{sector}</span>)
+      return sectors.map((sector, index) => <span key={index} className="badge badge-success badge-sector">{sector}</span>)
     }
   }
 }

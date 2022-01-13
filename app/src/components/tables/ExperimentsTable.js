@@ -10,30 +10,27 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
   const filteredRows = filterRows(config, rows)
 
   return (
-    <div className="w-100">
+    <div style={{ width: config.simulation_round.endsWith('a') ? '70%' : '100%'}}>
       <table className="table table-bordered table-fixed">
         <caption>
           Table {number}: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '25%'}}>Experiment</th>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
-                <th style={{width: '25%'}}>Short description</th>
-                <th style={{width: '25%'}}>
-                    <p>Transition from Spin-up to experiment</p>
-                    <p>1850-1900, only if spin-up is needed</p>
-                </th>
-                <th style={{width: '25%'}}>
+                <th style={{width: '42.8571%'}}>Experiment</th>
+                <th style={{width: '35.7142%'}}>Short description</th>
+                <th style={{width: '21.4285%'}}>
                     <p>Historical</p>
-                    <p>1901-2016</p>
+                    <p>1901-2019</p>
                 </th>
               </React.Fragment>
             }
             {
               config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '30%'}}>Short description</th>
+                <th style={{width: '30%'}}>Experiment</th>
+                <th style={{width: '25%'}}>Short description</th>
                 <th style={{width: '15%'}}>
                     <p>Pre-industrial</p>
                     <p>1601-1849</p>
@@ -70,13 +67,6 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                     </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
-                        {
-                          row.spin_up.climate ? <td className="table-success">
-                            <p><strong>{row.spin_up.climate}</strong></p>
-                          </td> : <td rowSpan="2" className="extra-border-bottom">
-                            {row.spin_up}
-                          </td>
-                        }
                         {
                           row.historical.climate ? <td className="table-secondary">
                             <p><strong>{row.historical.climate}</strong></p>
@@ -122,12 +112,6 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                     </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
-                        {
-                          row.spin_up.soc && <td className="table-success extra-border-bottom">
-                            <p><strong>{row.spin_up.soc}</strong></p>
-                            {row.spin_up.soc_sens && <p><strong>Sensitivity scenario: {row.spin_up.soc_sens}</strong></p>}
-                          </td>
-                        }
                         {
                           row.historical.soc && <td className="table-secondary extra-border-bottom">
                             <p><strong>{row.historical.soc}</strong></p>

@@ -9,7 +9,7 @@ import { filterRows } from '../../utils'
 
 const ClimateScenarioTable = function({ config, number, rows }) {
   return (
-    <table className="table table-bordered table-fixed w-75">
+    <table className="table table-bordered table-fixed w-70">
       <caption>
         Table {number}: Climate scenario specifiers (<code>climate-scenario</code>).
       </caption>
