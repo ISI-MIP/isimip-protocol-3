@@ -9,7 +9,7 @@ import { filterRows } from '../../utils'
 
 const SensScenarioTable = function({ config, number, rows }) {
   return (
-    <table className="table table-bordered table-fixed w-75">
+    <table className="table table-bordered table-fixed w-70">
       <caption>
         Table {number}: Sensitivity scenario specifiers (<code>sens-scenario</code>).
       </caption>
