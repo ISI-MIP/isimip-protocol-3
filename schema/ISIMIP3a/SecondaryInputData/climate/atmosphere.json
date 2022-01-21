@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryInputData/climate/atmosphere.json",
-  "commit": "fb59a20fd59ce7f298cc3b92b001d9c23089b394",
+  "commit": "01a44f8979df57af0ec928f14037785259371d48",
   "type": "object",
   "required": [
     "specifiers"
@@ -20,43 +20,55 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5",
-            "w5e5v2.0",
             "w5e5v1.0",
+            "w5e5v2.0",
+            "gswp3-w5e5",
             "chelsa-w5e5v1.0"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
-            "counterclim"
+            "counterclim",
+            "obsclim"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
-            "rlds",
-            "tasmax",
-            "hur",
             "huss",
-            "orog",
+            "ua",
+            "hur",
+            "tas",
+            "sfcwind",
+            "rlds",
+            "hurs",
+            "prw",
+            "rsds",
+            "mask",
+            "prsn",
+            "tasmax",
             "va",
             "ps",
-            "prsn",
-            "mask",
-            "sfcwind",
-            "ua",
-            "tasmin",
             "ta",
-            "pr",
-            "prw",
+            "orog",
             "hus",
-            "tas",
+            "psl",
             "ts",
-            "hurs",
-            "rsds",
-            "psl"
+            "tasmin",
+            "pr"
+          ]
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "onedeg",
+            "90arcsec",
+            "halfdeg",
+            "360arcsec",
+            "30arcsec",
+            "1800arcsec",
+            "twodeg"
           ]
         },
         "region": {
@@ -69,8 +81,8 @@
           "type": "string",
           "enum": [
             "annual",
-            "daily",
             "fixed",
+            "daily",
             "monthly"
           ]
         },
