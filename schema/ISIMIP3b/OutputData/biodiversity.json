@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/biodiversity.json",
-  "commit": "01a44f8979df57af0ec928f14037785259371d48",
+  "commit": "9fa9cea54f37cb4267b03265a043d9da44db6877",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "gfdl-esm4",
             "mri-esm2-0",
-            "mpi-esm1-2-hr"
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -43,19 +43,19 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp585",
             "historical",
-            "picontrol",
             "ssp370",
             "ssp126",
-            "ssp585"
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
             "1850soc",
-            "histsoc"
+            "histsoc",
+            "2015soc"
           ]
         },
         "sens_scenario": {
@@ -69,20 +69,20 @@
           "type": "string",
           "enum": [
             "endbirdsumprob",
-            "amphibiansumprob",
-            "endamphibiansumprob",
-            "birdprob",
-            "thrbirdsumprob",
-            "amphibianprob",
-            "thrmammalsumprob",
             "birdsr",
-            "mammalsr",
             "mammalsumprob",
+            "thrbirdsumprob",
+            "birdprob",
+            "birdsumprob",
             "thramphibiansumprob",
-            "endmammalsumprob",
+            "mammalsr",
             "mammalprob",
+            "endmammalsumprob",
+            "endamphibiansumprob",
+            "amphibianprob",
+            "amphibiansumprob",
             "amphibiansr",
-            "birdsumprob"
+            "thrmammalsumprob"
           ]
         },
         "region": {
@@ -94,12 +94,12 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "30year-mean",
-            "3hr",
-            "fixed",
             "annual",
+            "fixed",
             "daily",
-            "monthly"
+            "monthly",
+            "3hr",
+            "30year-mean"
           ]
         },
         "start_year": {
