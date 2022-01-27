@@ -22,7 +22,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                 <th style={{width: '42.8571%'}}>Experiment</th>
                 <th style={{width: '35.7142%'}}>Short description</th>
                 <th style={{width: '21.4285%'}}>
-                    <p>Historical</p>
+                    <p>Period: Historical</p>
                     <p>1901-2019</p>
                 </th>
               </React.Fragment>
@@ -32,15 +32,15 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                 <th style={{width: '30%'}}>Experiment</th>
                 <th style={{width: '25%'}}>Short description</th>
                 <th style={{width: '15%'}}>
-                    <p>Pre-industrial</p>
+                    <p>Period: Pre-industrial</p>
                     <p>1601-1849</p>
                 </th>
                 <th style={{width: '15%'}}>
-                    <p>Historical</p>
+                    <p>Period: Historical</p>
                     <p>1850-2014</p>
                 </th>
                 <th style={{width: '15%'}}>
-                    <p>Future</p>
+                    <p>Period: Future</p>
                     <p>2015-2100</p>
                 </th>
               </React.Fragment>
