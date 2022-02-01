@@ -45,7 +45,7 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
                 <tr key={index}>
                   <td>
                     <p>
-                      {row.url ? <a href="{row.url}" target="blank">{row.title }</a> : row.title}
+                      {row.url ? <a href={row.url} target="_blank">{row.title}</a> : row.title}
                     </p>
                     <p>
                       <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
