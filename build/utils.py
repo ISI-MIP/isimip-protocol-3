@@ -1,3 +1,4 @@
+import re
 import json
 import subprocess
 from datetime import datetime
@@ -60,6 +61,23 @@ def read_definitions():
         with open(file_path, encoding='utf-8') as fp:
             definitions[file_path.stem] = json.loads(fp.read())
     return definitions
+
+
+def read_patterns(simulation_rounds, sectors):
+    patterns = {}
+
+    for simulation_round in simulation_rounds:
+        patterns[simulation_round['specifier']] = {}
+        for sector in sectors:
+            if sector.get('simulation_rounds') is None or simulation_round in sector.get('simulation_rounds'):
+                pattern_path = Path('pattern') / simulation_round['specifier'] / 'OutputData' / '{}.json'.format(sector['specifier'])
+                pattern_list = json.loads(pattern_path.read_text())['file']
+                patterns[simulation_round['specifier']][sector['specifier']] = '_'.join(pattern_list) + '.nc'
+
+    return patterns
+
+
+
 
 
 def write_json(output_path, output):

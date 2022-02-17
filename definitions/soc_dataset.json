@@ -1,6 +1,7 @@
 [
   {
     "specifier": "landuse-totals",
+    "group": "landuse",
     "title": "Landuse totals",
     "file_path": "socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-totals_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -31,10 +32,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "landuse-5crops",
+    "group": "landuse",
     "title": "Downscaling to 5 crops",
     "file_path": "socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-5crops_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -66,10 +69,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "landuse-15crops",
+    "group": "landuse",
     "title": "Downscaling to 15 crops",
     "file_path": "socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-15crops_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -112,10 +117,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "landuse-pastures",
+    "group": "landuse",
     "title": "Managed pastures and rangeland",
     "file_path": "socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-pastures_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -144,10 +151,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "landuse-urbanareas",
+    "group": "landuse",
     "title": "Urban areas",
     "file_path": "socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-urbanareas_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -176,10 +185,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "n-fertilizer-5crops",
+    "group": "n-fertilizer",
     "title": "Nitrogen deposited by fertilizers on croplands",
     "file_path": "socioeconomic/n-fertilizer/<soc_scenario>/<soc_scenario>_n-fertilizer-5crops_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -211,10 +222,12 @@
       "permafrost",
       "water_global",
       "water_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "ndep-nhx",
+    "group": "n-deposition",
     "title": "Reduced nitrogen deposition",
     "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
     "variables": [
@@ -246,6 +259,7 @@
   },
   {
     "specifier": "ndep-noy",
+    "group": "n-deposition",
     "title": "Oxidized nitrogen deposition",
     "file_path": "socioeconomic/n-deposition/<soc_scenario>/ndep-noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
     "variables": [
@@ -277,6 +291,7 @@
   },
   {
     "specifier": "reservoirs-dams",
+    "group": "reservoirs-dams",
     "title": "Reservoirs & dams",
     "file_path": {
       "ISIMIP3a": "socioeconomic/reservoir_dams/reservoirs-dams_1850_2020.xls",
@@ -329,6 +344,7 @@
   },
   {
     "specifier": "water_abstraction",
+    "group": "water_abstraction",
     "title": "Water abstraction for domestic and industrial purposes",
     "file_path": "socioeconomic/water_abstraction/[domw|indw][w|c]_<soc_scenario>_annual_<start-year>_<end-year>.nc",
     "variables": [
@@ -364,6 +380,7 @@
   },
   {
     "specifier": "fishing_effort",
+    "group": "fishing",
     "specifier_file": "effort",
     "title": "Fishing effort",
     "file_path": "socioeconomic/fishing/effort_histsoc_1950_2014.csv",
@@ -391,10 +408,12 @@
     "sectors": [
       "marine-fishery_global",
       "marine-fishery_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "fishing_catch",
+    "group": "fishing",
     "specifier_file": "catch",
     "title": "Fish catch",
     "file_path": "socioeconomic/fishing/catch_histsoc_1950_2014.csv",
@@ -422,10 +441,12 @@
     "sectors": [
       "marine-fishery_global",
       "marine-fishery_regional"
-    ]
+    ],
+    "mandatory": true
   },
   {
     "specifier": "forest_management",
+    "group": "forest_management",
     "title": "Forest management",
     "url": "http://doi.org/10.5880/PIK.2019.008",
     "variables": [
@@ -453,6 +474,7 @@
   },
   {
     "specifier": "wood_harvesting",
+    "group": "forest_management",
     "title": "Wood harvesting",
     "file_path": "socioeconomic/wood_harvesting/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc",
     "variables": [
@@ -482,6 +504,7 @@
   },
   {
     "specifier": "pctlake",
+    "group": "lakes",
     "title": "Lake area fraction",
     "file_path": "socioeconomic/lakes/pctlake_<soc_scenario>_<start_year>_<end_year>.nc",
     "variables": [
@@ -507,6 +530,7 @@
   },
   {
     "specifier": "lakemask",
+    "group": "lakes",
     "title": "Lake mask",
     "file_path": "socioeconomic/lakes/lakemask_<soc_scenario>_<start_year>_<end_year>.nc",
     "variables": [
@@ -532,178 +556,46 @@
     ]
   },
   {
-    "specifier": "population_5arcmin",
-    "specifier_file": "population",
-    "title": "Population 5' grid",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
+    "specifier": "population",
+    "group": "population",
+    "title": "Population",
+    "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_<start-year>_<end-year>.nc",
     "variables": [
-      "total number of people (popc)",
-      "rural number of people (rurc)",
-      "urban number of people (urbc)"
+      "total number of people per country (in million)"
     ],
     "time_periods": {
       "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
+        "1950-2019"
       ],
       "ISIMIP3b": [
-        "1850-1900",
-        "1901-2014"
-      ]
-    },
-    "resolution": "5' grid",
-    "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time."
-    }
-  },
-  {
-    "specifier": "population_30arcmin",
-    "specifier_file": "population",
-    "title": "Population 0.5° grid",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
-    "variables": [
-      "total number of people (popc)",
-      "rural number of people (rurc)",
-      "urban number of people (urbc)"
-    ],
-    "time_periods": {
-      "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "ISIMIP3b": [
-        "1850-2014"
-      ]
-    },
-    "resolution": "0.5° grid",
-    "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution"
-    }
-  },
-  {
-    "specifier": "population_national",
-    "specifier_file": "population",
-    "title": "Population national",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
-    "variables": [
-      "total number of people per country"
-    ],
-    "time_periods": {
-      "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "ISIMIP3b": [
-        "1850-2014"
+        "1950-2014"
       ]
     },
     "resolution": "national",
     "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time."
-    }
-  },
-  {
-    "specifier": "population-density_5arcmin",
-    "specifier_file": "population-density",
-    "title": "Population density 5' grid",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_5arcmin_annual_<start-year>_<end-year>.nc",
-    "variables": [
-      "total number of people per square kilometer (popc)",
-      "rural number of people per square kilometer (rurc)",
-      "urban number of people per square kilometer (urbc)"
-    ],
-    "time_periods": {
-      "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "ISIMIP3b": [
-        "1850-1900",
-        "1901-2014"
-      ]
-    },
-    "resolution": "5' grid",
-    "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time.",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time."
-    }
-  },
-  {
-    "specifier": "population-density_30arcmin",
-    "specifier_file": "population-density",
-    "title": "Population density 0.5° grid",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
-    "variables": [
-      "total number of people per square kilometer (popc)",
-      "rural number of people per square kilometer (rurc)",
-      "urban number of people per square kilometer (urbc)"
-    ],
-    "time_periods": {
-      "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "ISIMIP3b": [
-        "1850-2014"
-      ]
-    },
-    "resolution": "0.5° grid",
-    "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 2000 have been linearly interpolated in time. Aggregated to 0.5° spatial resolution"
-    }
-  },
-  {
-    "specifier": "population-density_national",
-    "specifier_file": "population-density",
-    "title": "Population density national",
-    "file_path": "socioeconomic/pop/<soc_scenario>/population-density_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
-    "variables": [
-      "total number of people per square kilometer"
-    ],
-    "time_periods": {
-      "ISIMIP3a": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "ISIMIP3b": [
-        "1850-2014"
-      ]
-    },
-    "resolution": "national",
-    "frequency": "annual",
-    "comment": {
-      "ISIMIP3a": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2020, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time.",
-      "ISIMIP3b": "HYDE v3.2.1 (Klein Goldewijk et al., 2017). For 1950-2014, data are based on the 2008 Revision of the United Nations World Population Prospects, which transits from estimates to projections in 2010. Decadal data prior to year 1950 have been linearly interpolated in time."
-    }
+    "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects (United Nations, 2019). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al. 2021).",
+    "mandatory": true
   },
   {
     "specifier": "gdp",
+    "group": "gdp",
     "title": "GDP",
     "specifier_file": "gdp-countrylevel",
-    "file_path": "socioeconomic/gdp/<soc_scenario>/<soc_scenario>_gdp_annual_<start-year>_<end-year>.nc",
+    "file_path": "socioeconomic/gdp/<soc_scenario>/gdp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc",
     "variables": [
-      "GDP PPP 2005 USD (gdp)"
+      "GDP PPP 2005 Int $ (gdp)"
     ],
     "time_periods": {
       "ISIMIP3a": [
-        "1850-1900",
-        "1901-2016"
+        "1965-2019"
       ],
       "ISIMIP3b": [
-        "1850-2014"
+        "1965-2014"
       ]
     },
     "resolution": "country-level",
     "frequency": "annual",
-    "comment": "Historic country-level GDP data are an extension of the historical data provided by Geiger, 2018 (<https://www.earth-syst-sci-data.net/10/847/2018/essd-10-847-2018.html>). They are derived mainly from Penn World Tables (PWT) for recent decades, and from the Maddison Project database (2018 version, <https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2018>) for earlier periods where no PWT data is available. Gaps were filled using World Bank data (WDI). No interpolation to SSPs is performed for this historical dataset."
+    "comment": "Historic country-level GDP data are based on GDP per capita estimates from the WDI (1965-2020). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al. 2021).",
+    "mandatory": true
   }
 ]
