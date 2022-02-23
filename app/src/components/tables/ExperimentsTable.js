@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import SimulationRounds from '../badges/SimulationRounds'
@@ -72,7 +73,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                             <p><strong>{row.historical.climate}</strong></p>
                             {row.historical.climate_sens && <p><strong>Sensitivity scenario: {row.historical.climate_sens}</strong></p>}
                           </td> : <td rowSpan="2" className="extra-border-bottom">
-                            {row.historical}
+                            <ReactMarkdown children={row.historical} />
                           </td>
                         }
                       </React.Fragment>
@@ -84,7 +85,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                             <p><strong>{row.pre_industrial.climate}</strong></p>
                             {row.pre_industrial.climate_sens && <p><strong>Sensitivity scenario: {row.pre_industrial.climate_sens}</strong></p>}
                           </td> : <td rowSpan="2" className="extra-border-bottom">
-                            {row.pre_industrial}
+                            <ReactMarkdown children={row.pre_industrial} />
                           </td>
                         }
                         {
@@ -92,7 +93,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                             <p><strong>{row.historical.climate}</strong></p>
                             {row.historical.climate_sens && <p><strong>Sensitivity scenario: {row.historical.climate_sens}</strong></p>}
                           </td> : <td rowSpan="2" className="extra-border-bottom">
-                            {row.historical}
+                            <ReactMarkdown children={row.historical} />
                           </td>
                         }
                         {
@@ -100,7 +101,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                             <p><strong>{row.future.climate}</strong></p>
                             {row.future.climate_sens && <p><strong>Sensitivity scenario: {row.future.climate_sens}</strong></p>}
                           </td> : <td rowspan="2" className="extra-border-bottom">
-                            {row.future}
+                            <ReactMarkdown children={row.future} />
                           </td>
                         }
                       </React.Fragment>
