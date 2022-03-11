@@ -16,8 +16,8 @@ dev:
 	python3 build/schema.py
 	python3 build/tree.py
 
-serve: dev
-	python3 -m http.server -d output
+serve:
+	python3 -m http.server -b 127.0.0.1 -d output
 
 clean:
 	rm -fr output
