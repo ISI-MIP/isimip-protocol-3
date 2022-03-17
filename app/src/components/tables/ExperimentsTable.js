@@ -63,7 +63,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                         </p>
                     </td>
                     <td>
-                        <strong>CF:</strong> {row.description.climate}
+                        <strong>CF:</strong>{' '}{row.description.climate}
                     </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
@@ -108,7 +108,7 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                   </tr>
                   <tr>
                     <td className="extra-border-bottom">
-                        <strong>DHF:</strong> {row.description.soc}
+                        <strong>DHF:</strong>{' '}{row.description.soc}
                     </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
