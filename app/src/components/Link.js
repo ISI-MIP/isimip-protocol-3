@@ -6,7 +6,7 @@ import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'
 
 const Link = ({ definitions, config }) => {
-  let href = config.baseurl + '/#' + config.simulation_round
+  let href = config.baseurl + '#' + config.simulation_round
   if (config.sectors && config.sectors.length > 0) {
     href += '/' + config.sectors.join('/')
   }
