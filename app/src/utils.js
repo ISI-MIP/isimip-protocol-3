@@ -44,7 +44,22 @@ const filterField = (config, field) => {
         return field
     } else if (typeof field === 'object') {
         if (typeof field[config.simulation_round] !== 'undefined') {
-            return field[config.simulation_round]
+          return field[config.simulation_round]
+        } else {
+          if (config.sectors.length == 0) {
+            return field
+          } else if (config.sectors.length == 1) {
+            return field[config.sectors[0]] || field.other
+          } else {
+            return Object.fromEntries(Object.entries(field).filter(([sector, value]) => {
+              if (sector == 'other') {
+                // add the "other" entry only if there is a sector in the config which is not in the field
+                return config.sectors.filter(s => !Object.keys(field).includes(s)).length > 0
+              } else {
+                return config.sectors.includes(sector)
+              }
+            }))
+          }
         }
     } else {
         return field
