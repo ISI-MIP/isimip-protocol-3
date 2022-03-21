@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate/atmosphere.json",
-  "commit": "a4822d2e6aa4936913c2615e4b8e2694eafc3433",
+  "commit": "2cbf53734b2d92a02be8f22559df5ec4e8aaee9c",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,25 +26,25 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "counterclim",
-            "obsclim",
             "transclim",
-            "spinclim"
+            "spinclim",
+            "counterclim",
+            "obsclim"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
-            "pr",
             "huss",
+            "sfcwind",
+            "rsds",
             "rlds",
             "tasmax",
-            "rsds",
+            "tasmin",
             "ps",
             "prsn",
-            "sfcwind",
-            "tasmin",
             "hurs",
+            "pr",
             "tas"
           ]
         },
@@ -57,10 +57,10 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
+            "fixed",
             "annual",
-            "daily",
-            "fixed"
+            "monthly",
+            "daily"
           ]
         },
         "start_year": {
