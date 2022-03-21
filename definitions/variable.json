@@ -56,11 +56,12 @@
     "valid_max": 0.002,
     "valid_min": 0.0
   },
+
   {
-    "comment": "Water that percolates through the soil layer(s) into the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
+    "comment": "For models that consider both diffuse and focussed/localised recharge this should be the sum of both; other models should submit the groundwater recharge component that the model simulates. See also the descriptions in qrf and qrd.",
     "frequency": "monthly",
     "group": "hydrological-variables",
-    "long_name": "Groundwater Recharge",
+    "long_name": "Total groundwater recharge",
     "resolution": {
       "water_global": "0.5° grid",
       "water_regional": "0.5° grid if possible, otherwise at gauge location"
@@ -73,6 +74,30 @@
     "units": "kg m-2 s-1",
     "valid_max": 0.002,
     "valid_min": 0.0
+  },
+  {
+    "comment": "Water that directly flows from a surface water body into the groundwater layer below. Only submit if the model separates focussed/localised recharge from diffuse recharge.",
+    "frequency": "monthly",
+    "group": "hydrological-variables",
+    "long_name": "Focussed/localised groundwater recharge",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_global"
+    ],
+    "specifier": "qrf",
+    "units": "kg m-2 s-1"
+  },
+  {
+    "comment": "Groundwater recharge from water that enters the groundwater layer via percolation through the soil. Only submit if the model separates focussed/localised recharge from diffuse recharge. For models that do not simulate groundwater this can be seepage instead of recharge. ",
+    "frequency": "monthly",
+    "group": "hydrological-variables",
+    "long_name": "Diffuse groundwater recharge",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_global"
+    ],
+    "specifier": "qrd",
+    "units": "kg m-2 s-1"
   },
   {
     "comment": "Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg.",
