@@ -1,0 +1,47 @@
+group,specifier,long_name,units,resolution,frequency,valid_min,valid_max,comment
+hydrological-variables,evap,Evapotranspiration,kg m-2 s-1,stand,daily,0.0,0.004,"Sum of transpiration, evaporation, interception and sublimation."
+hydrological-variables,soilmoist,Total Soil Moisture Content,kg m-2,stand,"daily if possible, else monthly",0.0,10000.0,"Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+hydrological-variables,tsl,Temperature of Soil,K,stand,"daily if possible, else monthly",250.0,320.0,"Temperature of each soil layer. Reported as ""missing"" for grid cells occupied entirely by ""sea"". If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+hydrological-variables,esoil,Water Evaporation from Soil,kg m-2 s-1,stand,daily,,,Includes sublimation.
+hydrological-variables,trans,Transpiration,kg m-2 s-1,stand,daily,,,
+carbon-pools,cveg,Carbon Mass in Vegetation,kg m-2,stand,annual,,,As kg carbon m⁻². Stand total and PFT information is essential.
+carbon-pools,cvegag,Carbon Mass in Above Ground Vegetation Biomass,kg m-2,stand,annual,,,As kg carbon m⁻²Stand total and PFT information is essential.
+carbon-pools,cvegbg,Carbon Mass in Below Ground Vegetation Biomass,kg m-2,stand,annual,,,As kg carbon m⁻². Stand total and PFT information is essential.
+carbon-pools,clitterag,Carbon Mass in Above Ground Litter Pool,kg m-2,stand,annual,,,Species information is essential. Stand total and PFT information is essential.
+carbon-pools,clitterbg,Carbon Mass in Below Ground Litter Pool,kg m-2,stand,annual,,,Only if models separates below-ground litter and soil carbon. Species information is essential.
+carbon-pools,csoil,Carbon Mass in Soil Pool,kg m-2,stand,annual,,,"Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential."
+carbon-pools,csoillayer,Carbon Mass in Soil Pool in each layer,kg m-2,stand,annual,,,"Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth."
+carbon-pools,cproduct,Carbon in Products of Land Use Change,kg m-2,stand,annual,,,Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.
+carbon-pools,cleaf,Carbon Mass in Leaves,kg m-2,stand,annual,,,
+carbon-pools,cwood,Carbon Mass in Wood,kg m-2,stand,annual,,,Including sapwood and hardwood.
+carbon-pools,croot,Carbon Mass in Roots,kg m-2,stand,annual,,,Including fine and coarse roots.
+carbon-pools,ccwd,Carbon Mass in Coarse Woody Debris,kg m-2,stand,annual,,,
+carbon-fluxes,gpp,Carbon Mass Flux out of Atmosphere due to Gross Primary Production on Land,kg m-2 s-1,stand,daily,,,As kg carbon m⁻² s⁻¹. Stand total and Species information is essential.
+carbon-fluxes,ra,Carbon Mass Flux into Atmosphere due to Autotrophic (plant) Respiration on Land,kg m-2 s-1,stand,daily,,,As kg carbon m⁻² s⁻¹. Stand total and species information is essential.
+carbon-fluxes,npp,Carbon Mass Flux out of Atmosphere due to Net Primary Production on Land,kg m-2 s-1,stand,daily,,,As kg carbon m⁻² s⁻¹. Stand total and species information is essential.
+carbon-fluxes,rh,Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land,kg m-2 s-1,stand,daily,,,As kg carbon m⁻² s⁻¹. Stand total and Species information is essential.
+carbon-fluxes,rr,Root autotrophic respiration,kg m-2 s-1,stand,daily,,,As kg carbon*m-2*s-1
+nitrogen-pools,nlitterag,Nitrogen Mass in Above Ground Litter Pool,kg m-2,stand,annual,,,As kg Nitrogen m-2 a-1
+nitrogen-pools,nlitterbg,Nitrogen Mass in Below Ground Litter Pool,kg m-2,stand,annual,,,As kg Nitrogen m-2 a-1
+nitrogen-pools,nsoil,Nitrogen Mass in Soil,kg m-2,stand,annual,,,As kg Nitrogen m-2 a-1
+vegetation,fapar,Fraction of Absorbed Photosynthetically Active Radiation,%,stand,daily else monthly,,,Value between 0 and 100. Grid cell total and PFT information is essential.
+vegetation,lai,Leaf Area Index,1,stand,daily else monthly (fixed if static),0.0,10.0,"Stand total and species information is essential. If lai is static, the timestep specifier ""fixed"" can be used."
+vegetation,intercep,Evaporation from Canopy (interception),kg m-2 s-1,stand,daily,,,The canopy evaporation+sublimation (if present in model).
+forestry-variables,dbh,Mean DBH,cm,stand,annual,,,
+forestry-variables,dbhdomhei,Mean DBH of 100 Highest Trees,cm,stand,annual,,,100 highest trees per hectare.
+forestry-variables,hei,Stand Height,m ha-1,stand,annual,,,"For models including natural regeneration this variable may not make sense, please report domhei."
+forestry-variables,domhei,Dominant Height,m2 ha-1,stand,annual,,,Mean height of the 100 highest trees per hectare.
+forestry-variables,density,Stand Density,m2 ha-1,stand,annual,,,
+forestry-variables,ba,Basal Area,m2 ha-1,stand,annual,,,
+forestry-variables,mort,Volume of Dead Trees,m3 ha-1,stand,annual,,,
+forestry-variables,harv,Harvest by DBH-Class,m3 ha-1,stand,annual,,,DBH class resolution: Either DBH classes or total per species
+forestry-variables,stemno,Remaining Stem Number after Disturbance and Management by DBH-Class,ha-1,stand,annual,,,DBH-Class Resolution: Either DBH-Classes or Total per Species
+forestry-variables,vol,Stand Volume,m3 ha-1,stand,annual,,,
+forestry-variables,age,Tree Age by DBH-Class,yr,stand,annual,,,DBH class resolution: Either DBH classes or total per species
+forestry-variables,nee,Net Ecosystem Exchange,kg m-2 s-1,stand,"daily if possible, else monthly",,,As kg carbon m⁻² s⁻¹
+forestry-variables,mai,Mean Annual Increment,m3 ha-1,stand,annual,,,
+forestry-variables,species,Species Composition,%,per ha,monthly,,,
+forestry-variables,mortstemno,Removed Stem Numbers by DBH-Class by Natural Mortality,ha-1,stand,annual,,,As trees per hectare. DBH class resolution: Either DBH classes or total per species
+forestry-variables,harvstemno,Removed Stem Numbers by DBH-Class by Management,ha-1,stand,annual,,,As trees per hectare. DBH class resolution: Either DBH classes or total per species
+forestry-variables,dist,Volume of Disturbance Damage,m3 ha-1,stand,annual,,,
+static-variables,soil,Soil Types,-,stand,constant,,,"Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate)."

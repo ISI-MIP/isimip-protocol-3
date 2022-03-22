@@ -1,0 +1,104 @@
+group,specifier,long_name,units,resolution,frequency,valid_min,valid_max,comment
+hydrological-variables,qtot,Total Runoff,kg m-2 s-1,0.5° grid,daily & monthly,0.0,0.015,Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.
+hydrological-variables,qs,Surface Runoff,kg m-2 s-1,0.5° grid,monthly,0.0,0.004,Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.
+hydrological-variables,qsb,Subsurface Runoff,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.
+hydrological-variables,qr,Total groundwater recharge,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,For models that consider both diffuse and focussed/localised recharge this should be the sum of both; other models should submit the groundwater recharge component that the model simulates. See also the descriptions in qrf and qrd.
+hydrological-variables,qrf,Focussed/localised groundwater recharge,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Water that directly flows from a surface water body into the groundwater layer below. Only submit if the model separates focussed/localised recharge from diffuse recharge.
+hydrological-variables,qrd,Diffuse groundwater recharge,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Groundwater recharge from water that enters the groundwater layer via percolation through the soil. Only submit if the model separates focussed/localised recharge from diffuse recharge. For models that do not simulate groundwater this can be seepage instead of recharge. 
+hydrological-variables,qg,Groundwater Runoff,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,"Water that leaves the groundwater layer. In case seepage is simulated but no groundwater layer is present, report seepage as qr and qg."
+hydrological-variables,dis,Discharge,m3 s-1,0.5° grid,daily & monthly,0.0,700000.0,River discharge or streamflow. Please provide both daily and monthly resolution.
+hydrological-variables,evap,Evapotranspiration,kg m-2 s-1,0.5° grid,monthly,0.0,0.004,"Sum of transpiration, evaporation, interception and sublimation."
+hydrological-variables,potevap,Potential Evapotranspiration,kg m-2 s-1,0.5° grid,monthly,0.0,0.004,"As evap, but with all resistances set to zero, except the aerodynamic resistance."
+hydrological-variables,soilmoist,Total Soil Moisture Content,kg m-2,0.5° grid,"daily if possible, else monthly",0.0,10000.0,"Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+hydrological-variables,rootmoist,Soil Moisture Content at Root Zone,kg m-2,0.5° grid,monthly,0.0,10000.0,"Total simulated soil moisture available for evapotranspiration. Please indicate the depth of the root zone for each vegetation type in your model. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+hydrological-variables,soilmoistfroz,Frozen Soil Moisture Content,kg m-2,0.5° grid,monthly,0.0,10000.0,Please provide soil moisture for all depth levels and indicate depth in m. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+hydrological-variables,tsl,Temperature of Soil,K,0.5° grid,"daily if possible, else monthly",250.0,320.0,"Temperature of each soil layer. Reported as ""missing"" for grid cells occupied entirely by ""sea"". If daily resolution not possible, please provide monthly. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+hydrological-variables,snd,Snow depth,m,0.5° grid,"daily if possible, else monthly",0.0,1000.0,Grid cell mean depth of snowpack.
+hydrological-variables,swe,Snow Water Equivalent,kg m-2,0.5° grid,monthly,0.0,200000.0,Total water mass of the snowpack (liquid or frozen) averaged over grid cell.
+hydrological-variables,tws,Total Water Storage,kg m-2,0.5° grid,monthly,-200000.0,200000.0,Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.
+hydrological-variables,canopystor,Canopy Water Storage,kg m-2,0.5° grid,monthly,0.0,10000.0,Mean monthly water storage in the canopy.
+hydrological-variables,glacierstor,Glacier Water Storage,kg m-2,0.5° grid,monthly,0.0,100000.0,Mean monthly water storage in glaciers.
+hydrological-variables,groundwstor,Groundwater Storage,kg m-2,0.5° grid,monthly,-200000.0,20000.0,Mean monthly water storage in groundwater layer.
+hydrological-variables,lakestor,Lake Water Storage,kg m-2,0.5° grid,monthly,-200000.0,200000.0,Mean monthly water storage in lakes (except reservoirs).
+hydrological-variables,wetlandstor,Wetland Water Storage,kg m-2,0.5° grid,monthly,-10000.0,10000.0,Mean monthly water storage in wetlands.
+hydrological-variables,riverstor,River Water Storage,kg m-2,0.5° grid,monthly,0.0,50000.0,Mean monthly water storage in rivers.
+hydrological-variables,reservoirstor,Reservoir Water Storage,kg m-2,0.5° grid,monthly,0.0,150000.0,Mean monthly water storage in reservoirs.
+hydrological-variables,thawdepth,Annual Maximum Thaw Depth,m,0.5° grid,annual,0.0,100.0,Calculated from daily thaw depths.
+hydrological-variables,triver,River Water Temperature,K,0.5° grid,monthly,263.0,340.0,Mean monthly water temperature in river (representative of the average temperature across the channel volume).
+water-management-variables,pirrww,Potential Irrigation Water Withdrawal (assuming unlimited water supply),kg m-2 s-1,0.5° grid,monthly,0.0,0.002,"Irrigation water withdrawn in case of optimal irrigation (i.e. eliminating water stress for the plants). This includes the plant's water requirements over and above precipitation and soil moisture, as well as any losses due to conveyance or irrigation inefficiencies considered."
+water-management-variables,airrww,Actual Irrigation Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,"Irrigation water withdrawal, taking water availability into account; please provide if computed."
+water-management-variables,pirruse,Potential Irrigation Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,"Portion of withdrawal that is evapo-transpired, assuming unlimited water supply."
+water-management-variables,pirnreqcum,Cumulative Potential Net Irrigation Water Requirement,kg m-2,0.5° grid,annual,,,"Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for `firr` simulations."
+water-management-variables,airruse,Actual Irrigation Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,"Portion of withdrawal that is evapo-transpired, taking water availability into account; if computed."
+water-management-variables,airrusegreen,Actual Irrigation Green Water Consumption on Irrigated Cropland,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Actual evapotranspiration from rainwater over irrigated cropland; if computed.
+water-management-variables,pirrusegreen,Potential Irrigation Green Water Consumption on Irrigated Cropland,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Potential evapotranspiration from rainwater over irrigated cropland; if computed and different from AIrrUseGreen.
+water-management-variables,arainfusegreen,Actual Green Water Consumption on Rainfed Cropland,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Actual evapotranspiration from rainwater over rainfed cropland; if computed.
+water-management-variables,adomww,Actual Domestic Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,adomuse,Actual Domestic Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,amanww,Actual Manufacturing Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,amanuse,Actual Manufacturing Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,aelecww,Actual Electricity Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,aelecuse,Actual Electricity Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,aliveww,Actual Livestock Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,aliveuse,Actual livestock Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pdomww,Potential Domestic Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pdomuse,Potential Domestic Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pmanww,Potential Manufacturing Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pmanuse,Potential manufacturing Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pelecww,Potential electricity Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pelecuse,Potential electricity Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pliveww,Potential livestock Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,pliveuse,Potential livestock Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,atotww,Total Actual Water Withdrawal (all sectors),kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed.
+water-management-variables,atotuse,Total Actual Water Consumption (all sectors),kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Sum of actual consumptive water use from all sectors. Please indicate in metadata which sectors are included.
+water-management-variables,ptotww,Total Potential Water Withdrawal (all sectors),kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Sum of potential (i.e. assuming unlimited water supply) water withdrawal from all sectors. Please indicate in metadata which sectors are included.
+water-management-variables,ptotuse,Total Potential Water Consumption (all sectors),kg m-2 s-1,0.5° grid,monthly,0.0,0.002,Sum of potential (i.e. assuming unlimited water supply) consumptive water use from all sectors. Please indicate in metadata which sectors are included.
+water-management-variables,ainduse,Actual Industrial Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed. There is no need to submit ainduse if its components are being submitted separately (ainduse = amanuse + aelecuse).
+water-management-variables,aindww,Actual Industrial Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed. There is no need to submit aindww if its components are being submitted separately (aindww = amanww + aelecww).
+water-management-variables,pinduse,Potential Industrial Water Consumption,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed. There is no need to submit pinduse if its components are being submitted separately (pinduse = pmanuse + pelecuse).
+water-management-variables,pindww,Potential Industrial Water Withdrawal,kg m-2 s-1,0.5° grid,monthly,0.0,0.002,If computed. There is no need to submit pindww if its components are being submitted separately (pindww = pmanww + pelecww).
+water-management-variables,pirrwwgw,Potential Irrigation Water Withdrawal (assuming unlimited water supply) from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pirrww that is extracted from groundwater resources.
+water-management-variables,airrwwgw,actual irrigation water withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of airrww that is extracted from groundwater resources.
+water-management-variables,pirrusegw,Potential Irrigation Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pirruse that is extracted from groundwater resources.
+water-management-variables,airrusegw,Actual Irrigation Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of airruse that is extracted from groundwater resources.
+water-management-variables,pdomwwgw,Potential Domestic Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pdomww that is extracted from groundwater resources.
+water-management-variables,adomwwgw,Actual Domestic Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of adomww that is extracted from groundwater resources.
+water-management-variables,pdomusegw,Potential Domestic Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pdomuse that is extracted from groundwater resources.
+water-management-variables,adomusegw,Actual Domestic Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of adomuse that is extracted from groundwater resources.
+water-management-variables,pmanwwgw,Potential Manufacturing Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pmanww that is extracted from groundwater resources.
+water-management-variables,amanwwgw,Actual Manufacturing Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of amanww that is extracted from groundwater resources.
+water-management-variables,pmanusegw,Potential manufacturing Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pmanuse that is extracted from groundwater resources.
+water-management-variables,amanusegw,Actual Manufacturing Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of amanuse that is extracted from groundwater resources.
+water-management-variables,pelecwwgw,Potential electricity Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pelecww that is extracted from groundwater resources.
+water-management-variables,aelecwwgw,Actual Electricity Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of aelecww that is extracted from groundwater resources.
+water-management-variables,pelecusegw,Potential electricity Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pelecuse that is extracted from groundwater resources.
+water-management-variables,aelecusegw,Actual Electricity Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of aelecuse that is extracted from groundwater resources.
+water-management-variables,pindwwgw,Potential Industrial Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pindww that is extracted from groundwater resources.
+water-management-variables,aindwwgw,Actual Industrial Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of aindww that is extracted from groundwater resources.
+water-management-variables,pindusegw,Potential Industrial Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of pinduse that is extracted from groundwater resources.
+water-management-variables,aindusegw,Actual Industrial Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of ainduse that is extracted from groundwater resources.
+water-management-variables,plivwwgw,Potential livestock Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of plivww that is extracted from groundwater resources.
+water-management-variables,alivwwgw,Actual Livestock Water Withdrawal from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of alivww that is extracted from groundwater resources.
+water-management-variables,plivusegw,Potential livestock Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of plivuse that is extracted from groundwater resources.
+water-management-variables,alivusegw,Actual livestock Water Consumption from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of alivuse that is extracted from groundwater resources.
+water-management-variables,ptotwwgw,Total Potential Water Withdrawal (all sectors) from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of ptotww that is extracted from groundwater resources.
+water-management-variables,atotwwgw,Total Actual Water Withdrawal (all sectors) from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of atotww that is extracted from groundwater resources.
+water-management-variables,ptotusegw,Total Potential Water Consumption (all sectors) from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of ptotuse that is extracted from groundwater resources.
+water-management-variables,atotusegw,Total Actual Water Consumption (all sectors) from groundwater resources,kg m-2 s-1,0.5° grid,monthly,-0.002,0.002,Part of atotuse that is extracted from groundwater resources.
+agricultural-variables,yield,Crop Yields,dry matter (t ha-1),0.5° grid,annual,,,"Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year."
+agricultural-variables,evapcum,Cumulative Evapotranspiration,kg m-2,0.5° grid,annual,,,"Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season."
+agricultural-variables,initrcum,Cumulative Nitrogen Application,kg ha-1,0.5° grid,annual,,,"Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues)."
+agricultural-variables,plantday,Planting Date,day of year,0.5° grid,annual,,,As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may diverge from the planting calendar used for harmonization.
+agricultural-variables,plantyear,Planting Year,calendar year,0.5° grid,annual,,,
+agricultural-variables,anthday,Anthesis Date,days from planting,0.5° grid,annual,,,Together with the day and year of planting it allows for clear identification of anthesis.
+agricultural-variables,matyday,Maturity Date,days from planting,0.5° grid,annual,,,Together with the day and year of planting it allows for clear identification of maturity.
+agricultural-variables,harvyear,Harvest Year,calendar year,0.5° grid,annual,,,Usually the year when maturity is reached. Can also be computed from planting and maturuty day.
+agricultural-variables,biom,Total Above Ground Biomass Dry Matter Yields,t ha-1,0.5° grid,annual,,,The whole plant biomass above ground.
+agricultural-variables,nupcum,Cumulative Nitrogen Uptake,kg ha-1,0.5° grid,annual,,,Nitrogen balance: Uptake (growing season sum)
+agricultural-variables,nincum,Cumulative Nitrogen Inputs,kg ha-1,0.5° grid,annual,,,Nitrogen balance: Inputs (growing season sum)
+agricultural-variables,nlosscum,Cumulative Nitrogen Losses,kg ha-1,0.5° grid,annual,,,Nitrogen balance: Losses (growing season sum)
+agricultural-variables,nleachcum,Cumulative Nitrogen Leached,kg ha-1,0.5° grid,annual,,,Nitrogen balance: Leaching (growing season sum)
+vegetation,lai,Leaf Area Index,1,0.5° grid,daily else monthly (fixed if static),0.0,10.0,"If used by, or computed by the model. If lai is static, the timestep specifier ""fixed"" can be used."
+static-variables,soil,Soil Types,-,0.5° grid,constant,,,"Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate)."
+static-variables,cellarea,Grid Cell Area,km2,0.5° grid,fixed,0.0,3250.0,The total area associated with each grid cell in the model.
+static-variables,contfrac,Continental Fraction of Grid Cell,1,0.5° grid,fixed,0.0,1.0,"The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies."
