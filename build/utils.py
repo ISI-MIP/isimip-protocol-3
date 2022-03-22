@@ -1,4 +1,4 @@
-import re
+import csv
 import json
 import subprocess
 from datetime import datetime
@@ -77,10 +77,15 @@ def read_patterns(simulation_rounds, sectors):
     return patterns
 
 
-
-
-
 def write_json(output_path, output):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as fp:
         fp.write(json.dumps(output, indent=2))
+
+
+def write_csv(output_path, output, fieldnames):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8', newline='') as fp:
+        writer = csv.DictWriter(fp, fieldnames=fieldnames, extrasaction='ignore')
+        writer.writeheader()
+        writer.writerows(output)

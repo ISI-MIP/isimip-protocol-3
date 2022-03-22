@@ -1,5 +1,6 @@
 prod:
 	python3 build/assets.py
+	python3 build/csvtables.py
 	python3 build/definitions.py
 	python3 build/glossary.py
 	python3 build/pattern.py
@@ -9,6 +10,7 @@ prod:
 
 dev:
 	python3 build/assets.py --link
+	python3 build/csvtables.py
 	python3 build/definitions.py
 	python3 build/glossary.py
 	python3 build/pattern.py
