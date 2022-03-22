@@ -44,16 +44,18 @@ Build
 -----
 
 ```bash
-make            # should work on Linux/macOS
-make dev        # like make, but for development of the JavaScript app
+make                  # should work on Linux/macOS
+make dev              # like make, but for development of the JavaScript app
 
-make serve      # opens a http server on port :8000 so that 
+make serve            # starts a http server on port :8000 so that you can access the protocol in your browser
 
-sh build.sh     # Linux/macOS/WSL
-call build.cmd  # Windows cmd
+sh tools/build.sh     # Linux/macOS/WSL
+sh tools/serve.sh     # Linux/macOS/WSL, start http server
+call tools/build.cmd  # Windows cmd
+call tools/serve.cmd  # Windows cmd, start http server
 ```
 
-On Windows, a double click on `build.cmd` should also build the protocol (unless you use a virtual environment).
+On Windows, a double click on `tools/build.cmd` should also build the protocol (unless you use a virtual environment).
 
 The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
 
