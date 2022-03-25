@@ -1,5 +1,6 @@
 prod:
 	python3 build/assets.py
+	python3 build/csvtables.py
 	python3 build/definitions.py
 	python3 build/glossary.py
 	python3 build/pattern.py
@@ -9,6 +10,7 @@ prod:
 
 dev:
 	python3 build/assets.py --link
+	python3 build/csvtables.py
 	python3 build/definitions.py
 	python3 build/glossary.py
 	python3 build/pattern.py
@@ -16,8 +18,8 @@ dev:
 	python3 build/schema.py
 	python3 build/tree.py
 
-serve: dev
-	python3 -m http.server -d output
+serve:
+	python3 -m http.server -b 127.0.0.1 -d output
 
 clean:
 	rm -fr output
