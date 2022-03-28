@@ -98,8 +98,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 22 March 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/5700607bec65064c715e092c6f481a075c3fb10a">5700607bec65064c715e092c6f481a075c3fb10a</a></p>
+<p>Last updated: 28 March 2022</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/75a73c19bac8474b98af94c4b8a5d6ba6095c014">75a73c19bac8474b98af94c4b8a5d6ba6095c014</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="introduction">Introduction</h2>
 <h3 id="general-concept">General concept</h3>
@@ -178,6 +178,9 @@
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <p>The climate forcing input files can be found on DKRZ using the following pattern:</p>
 <pre><code>climate/atmosphere/&lt;climate-scenario&gt;/global/daily/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
+
+# ocean data for marine-fishery
+climate/ocean/&lt;climate-scenario&gt;/global/monthly/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc
 </code></pre>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
@@ -185,14 +188,21 @@
 <pre><code>climate/atmosphere/bias-adjusted/global/daily/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;bias-adjustment&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
 
 # ocean data for marine-fishery
-climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_onedeg_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 1° grid
-climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_halfdeg_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 0.5° grid
+climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_onedeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 1° grid
+climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_halfdeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 0.5° grid
 </code></pre>
 </div>
 <div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3b">
 <h4 id="note-on-ocean-data-availability">Note on ocean data availability</h4>
 <p>Variable availability is mainly based on the data published in ESGF
 and may vary between the CMIP experiments.</p>
+<p>Some variables are available as extracted versions from vertically resolved data. Their
+variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
+(surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
+</div>
+<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
+<h4 id="note-on-ocean-data-availability_1">Note on ocean data availability</h4>
+<p>CMIP6-OMIP variable availability is based on the data published in ESGF.</p>
 <p>Some variables are available as extracted versions from vertically resolved data. Their
 variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
 (surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
@@ -432,6 +442,21 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description_note": "Please label your simulations `1850soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-1850 levels of direct human forcing for at least some direct human forcings. This scenario may be thought of an approximation of pre-industrial levels of human impacts.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "fire",
+        "health",
+        "coastal",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     },
     {
@@ -445,8 +470,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -521,8 +544,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -555,8 +576,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -582,8 +601,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -605,9 +622,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "biomes",
-        "marine-fishery_global",
-        "marine-fishery_regional"
+        "biomes"
       ]
     },
     {
@@ -637,8 +652,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -671,8 +684,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -698,8 +709,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -721,9 +730,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "biomes",
-        "marine-fishery_global",
-        "marine-fishery_regional"
+        "biomes"
       ]
     },
     {
@@ -753,8 +760,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -787,8 +792,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -815,8 +818,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "water_global"
       ]
     },
@@ -883,6 +884,27 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "fire"
+      ]
+    },
+    {
+      "specifier": "ocean-model-evaluation-histsoc",
+      "title": "model evaluation",
+      "subtitle": "histsoc",
+      "priority": "1st priority",
+      "description": {
+        "climate": "OMIP2 climate driven by JRA55-do 1958-2018 reanalysis",
+        "soc": "Varying direct human influences according to observations"
+      },
+      "historical": {
+        "climate": "obsclim",
+        "soc": "histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     },
     {
@@ -1055,8 +1077,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1087,8 +1107,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -1192,8 +1210,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1224,8 +1240,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -1311,8 +1325,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1348,8 +1360,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1377,8 +1387,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -1402,9 +1410,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
-        "biomes",
-        "marine-fishery_global",
-        "marine-fishery_regional"
+        "biomes"
       ]
     },
     {
@@ -1498,8 +1504,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1527,8 +1531,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -9240,6 +9242,21 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations for impact attribution.",
       "simulation_rounds": [
         "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "fire",
+        "health",
+        "coastal",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     },
     {
@@ -9868,11 +9885,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Mass Concentration of Total Phytoplankton Expressed as Chlorophyll",
       "unit": "kg m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -9880,9 +9905,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9894,11 +9916,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Floor Depth",
       "unit": "m",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "fixed",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -9906,9 +9936,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9923,11 +9950,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Downward Flux of Particulate Organic Carbon",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -9935,9 +9970,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9949,20 +9981,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Particulate Organic Carbon Content",
       "unit": "kg m-2",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "MPI-ESM1-2-HR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9974,11 +10011,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Primary Organic Carbon Production by All Types of Phytoplankton",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -9986,9 +10031,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10000,20 +10042,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Net Primary Organic Carbon Production by Diatoms",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10025,19 +10072,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Net Primary Mole Productivity of Carbon by Diazotrophs",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "MPI-ESM1-2-HR"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10049,16 +10101,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Net Primary Mole Productivity of Carbon by Picophytoplankton",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4"
         ]
       },
       "simulation_rounds": [
+        "ISIMIP3a",
         "ISIMIP3b"
       ],
       "products": [
@@ -10075,9 +10136,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Net Primary Organic Carbon Production by Other Phytoplankton",
       "unit": "mol m-2 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10087,6 +10153,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         ]
       },
       "simulation_rounds": [
+        "ISIMIP3a",
         "ISIMIP3b"
       ],
       "products": [
@@ -10103,9 +10170,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Maximum Ocean Mixed Layer Thickness Defined by Sigma T",
       "unit": "m",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10116,6 +10185,35 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "mlotst",
+      "group": "ocean-variables",
+      "extension": [
+        "003",
+        "0125"
+      ],
+      "long_name": "Maximum Ocean Mixed Layer Thickness Defined by Sigma T",
+      "unit": "m",
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ]
+      },
+      "frequency": "monthly",
+      "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ]
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
       ],
       "sectors": [
         "marine-fishery_global",
@@ -10133,11 +10231,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Dissolved Oxygen Concentration",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10145,9 +10251,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10164,11 +10267,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "pH",
       "unit": "1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10176,9 +10287,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10194,11 +10302,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Phytoplankton Carbon Concentration",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10206,9 +10322,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10224,20 +10337,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Diatoms expressed as Carbon in sea water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10253,19 +10371,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Diazotrophs Expressed as Carbon in Sea Water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "MPI-ESM1-2-HR"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10281,18 +10404,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Picophytoplankton Expressed as Carbon in Sea Water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "products": [
         "SecondaryInputData"
       ],
@@ -10311,9 +10439,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Miscellaneous Phytoplankton expressed as Carbon in sea water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10340,9 +10470,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Primary Carbon Production by Total Phytoplankton",
       "unit": "mol m-3 s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10360,44 +10492,15 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "mandatory": true
     },
     {
-      "specifier": "so",
-      "group": "ocean-variables",
-      "extension": [
-        null,
-        "bot",
-        "surf"
-      ],
-      "long_name": "Sea Water Salinity",
-      "unit": "0.001",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
-      "frequency": "monthly",
-      "climate_forcing": {
-        "ISIMIP3b": [
-          "GFDL-ESM4",
-          "IPSL-CM6A-LR",
-          "MPI-ESM1-2-HR",
-          "UKESM1-0-LL"
-        ]
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "marine-fishery_global",
-        "marine-fishery_regional"
-      ],
-      "mandatory": true
-    },
-    {
       "specifier": "rsntds",
       "group": "ocean-variables",
       "long_name": "Net Downward Shortwave Radiation at Sea Water Surface",
       "unit": "W m-2",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10420,9 +10523,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Ice Area Fraction",
       "unit": "%",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10435,6 +10540,42 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "so",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "bot",
+        "surf"
+      ],
+      "long_name": "Sea Water Salinity",
+      "unit": "0.001",
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
+      "frequency": "monthly",
+      "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
+        "ISIMIP3b": [
+          "GFDL-ESM4",
+          "IPSL-CM6A-LR",
+          "MPI-ESM1-2-HR",
+          "UKESM1-0-LL"
+        ]
+      },
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10446,12 +10587,20 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Water Potential Temperature",
       "unit": "\u00b0C",
-      "resolution": [
-        "1\u00b0 grid",
-        "2\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid",
+          "2\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10459,9 +10608,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10473,11 +10619,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Ocean Model Cell Thickness",
       "unit": "m",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10485,9 +10639,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10499,11 +10650,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Water Potential Temperature at Sea Floor",
       "unit": "\u00b0C",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10511,9 +10670,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10525,12 +10681,20 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Surface Temperature",
       "unit": "\u00b0C",
-      "resolution": [
-        "1\u00b0 grid",
-        "2\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid",
+          "2\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
@@ -10538,9 +10702,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10552,20 +10713,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Water X Velocity",
       "unit": "m s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "IPSL-CM6A-LR",
           "MPI-ESM1-2-HR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10577,20 +10743,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Water Y Velocity",
       "unit": "m s-1",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "IPSL-CM6A-LR",
           "MPI-ESM1-2-HR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10602,10 +10773,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "ocean-variables",
       "long_name": "Sea Water Z Velocity",
       "unit": "m s-1",
-      "resolution": [
-        "1\u00b0 grid",
-        "2\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3b": [
+          "1\u00b0 grid",
+          "2\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
         "ISIMIP3b": [
@@ -10632,20 +10805,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Mesozooplankton expressed as Carbon in sea water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10661,20 +10839,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Mole Concentration of Microzooplankton expressed as Carbon in sea water",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
       "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
         "ISIMIP3b": [
           "GFDL-ESM4",
           "IPSL-CM6A-LR",
           "UKESM1-0-LL"
         ]
       },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -10690,20 +10873,26 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "long_name": "Zooplankton Carbon Concentration",
       "unit": "mol m-3",
-      "resolution": [
-        "1\u00b0 grid"
-      ],
+      "resolution": {
+        "ISIMIP3a": [
+          "0.25\u00b0 grid"
+        ],
+        "ISIMIP3b": [
+          "1\u00b0 grid"
+        ]
+      },
       "frequency": "monthly",
-      "climate_forcing": [
-        "CESM2",
-        "GFDL-ESM4",
-        "IPSL-CM6A-LR",
-        "MPI-ESM1-2-HR",
-        "UKESM1-0-LL"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
+      "climate_forcing": {
+        "ISIMIP3a": [
+          "GFDL-MOM6-COBALT2"
+        ],
+        "ISIMIP3b": [
+          "GFDL-ESM4",
+          "IPSL-CM6A-LR",
+          "MPI-ESM1-2-HR",
+          "UKESM1-0-LL"
+        ]
+      },
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -11362,6 +11551,48 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "simulation_rounds": [
         "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "cesm2-omip2",
+      "specifier_file": "cesm2",
+      "title": "CESM2-OMIP2",
+      "priority": 1,
+      "time_period": "1958-2018",
+      "reanalysis": "JRA55-do",
+      "bias_adjustment_target": "none",
+      "comments": "From CMIP6-OMIP activity forced by 1958-2018 JRA55-do atmospheric data set and initialized with observed physical and biogeochemical ocean data. Data on native grid was remapped to a 1\u00b0 regular grid. For further experiment design details see <https://furtherinfo.es-doc.org/CMIP6.NCAR.CESM2.omip2.none.r1i1p1f1>",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "gfdl-mom6-cobalt2",
+      "specifier_file": "gfdl-mom6-cobalt2",
+      "title": "GFDL-MOM6-COBALT2",
+      "priority": 1,
+      "time_period": "1961-2010",
+      "reanalysis": "JRA55",
+      "bias_adjustment_target": "none",
+      "comments": "JRA-55 driven MOM6-COBALT2 reanalysis. Data on native grid was remapped to a regular 0.25\u00b0 grid. For further experiment design details see <https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021GL094367>",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     }
   ],

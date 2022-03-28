@@ -1,5 +1,5 @@
 {
-  "commit": "5700607bec65064c715e092c6f481a075c3fb10a",
+  "commit": "75a73c19bac8474b98af94c4b8a5d6ba6095c014",
   "diazotroph_scenario": [
     {
       "specifier": "w-diaz"
@@ -29,8 +29,6 @@
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -87,8 +85,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -121,8 +117,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -148,8 +142,6 @@
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -171,9 +163,7 @@
         "ISIMIP3a"
       ],
       "sectors": [
-        "biomes",
-        "marine-fishery_global",
-        "marine-fishery_regional"
+        "biomes"
       ]
     },
     {
@@ -203,8 +193,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -237,8 +225,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -264,8 +250,6 @@
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global"
       ]
@@ -287,9 +271,7 @@
         "ISIMIP3a"
       ],
       "sectors": [
-        "biomes",
-        "marine-fishery_global",
-        "marine-fishery_regional"
+        "biomes"
       ]
     },
     {
@@ -319,8 +301,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -353,8 +333,6 @@
         "labour",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "permafrost",
         "water_global",
         "water_regional"
@@ -381,8 +359,6 @@
         "biomes",
         "lakes_global",
         "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "water_global"
       ]
     },
@@ -449,6 +425,27 @@
       ],
       "sectors": [
         "fire"
+      ]
+    },
+    {
+      "specifier": "ocean-model-evaluation-histsoc",
+      "title": "model evaluation",
+      "subtitle": "histsoc",
+      "priority": "1st priority",
+      "description": {
+        "climate": "OMIP2 climate driven by JRA55-do 1958-2018 reanalysis",
+        "soc": "Varying direct human influences according to observations"
+      },
+      "historical": {
+        "climate": "obsclim",
+        "soc": "histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     },
     {
@@ -7771,6 +7768,21 @@
       "description": "Detrended version of the observed climate forcing used for the \"no climate change\" baseline simulations for impact attribution.",
       "simulation_rounds": [
         "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "fire",
+        "health",
+        "coastal",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     }
   ],
@@ -8184,6 +8196,548 @@
         "SecondaryInputData",
         "SecondaryOutputData"
       ]
+    },
+    {
+      "specifier": "chl",
+      "group": "ocean-variables",
+      "long_name": "Mass Concentration of Total Phytoplankton Expressed as Chlorophyll",
+      "unit": "kg m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "deptho",
+      "group": "ocean-variables",
+      "long_name": "Sea Floor Depth",
+      "unit": "m",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "fixed",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "expc",
+      "group": "ocean-variables",
+      "extension": [
+        "bot"
+      ],
+      "long_name": "Downward Flux of Particulate Organic Carbon",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intpoc",
+      "group": "ocean-variables",
+      "long_name": "Particulate Organic Carbon Content",
+      "unit": "kg m-2",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intpp",
+      "group": "ocean-variables",
+      "long_name": "Primary Organic Carbon Production by All Types of Phytoplankton",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intppdiat",
+      "group": "ocean-variables",
+      "long_name": "Net Primary Organic Carbon Production by Diatoms",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intppdiaz",
+      "group": "ocean-variables",
+      "long_name": "Net Primary Mole Productivity of Carbon by Diazotrophs",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intpppico",
+      "group": "ocean-variables",
+      "long_name": "Net Primary Mole Productivity of Carbon by Picophytoplankton",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "intppmisc",
+      "group": "ocean-variables",
+      "long_name": "Net Primary Organic Carbon Production by Other Phytoplankton",
+      "unit": "mol m-2 s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": {
+        "ISIMIP3b": [
+          "GFDL-ESM4",
+          "IPSL-CM6A-LR",
+          "UKESM1-0-LL"
+        ]
+      },
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "mlotst",
+      "group": "ocean-variables",
+      "extension": [
+        "003",
+        "0125"
+      ],
+      "long_name": "Maximum Ocean Mixed Layer Thickness Defined by Sigma T",
+      "unit": "m",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "o2",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "bot",
+        "surf"
+      ],
+      "long_name": "Dissolved Oxygen Concentration",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "ph",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "bot",
+        "surf"
+      ],
+      "long_name": "pH",
+      "unit": "1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "phyc",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Phytoplankton Carbon Concentration",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "phydiat",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Mole Concentration of Diatoms expressed as Carbon in sea water",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "phydiaz",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Mole Concentration of Diazotrophs Expressed as Carbon in Sea Water",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "phypico",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Mole Concentration of Picophytoplankton Expressed as Carbon in Sea Water",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "so",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "bot",
+        "surf"
+      ],
+      "long_name": "Sea Water Salinity",
+      "unit": "0.001",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "thetao",
+      "group": "ocean-variables",
+      "long_name": "Sea Water Potential Temperature",
+      "unit": "\u00b0C",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "thkcello",
+      "group": "ocean-variables",
+      "long_name": "Ocean Model Cell Thickness",
+      "unit": "m",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "tob",
+      "group": "ocean-variables",
+      "long_name": "Sea Water Potential Temperature at Sea Floor",
+      "unit": "\u00b0C",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "tos",
+      "group": "ocean-variables",
+      "long_name": "Sea Surface Temperature",
+      "unit": "\u00b0C",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "uo",
+      "group": "ocean-variables",
+      "long_name": "Sea Water X Velocity",
+      "unit": "m s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "vo",
+      "group": "ocean-variables",
+      "long_name": "Sea Water Y Velocity",
+      "unit": "m s-1",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "zmeso",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Mole Concentration of Mesozooplankton expressed as Carbon in sea water",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "zmicro",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Mole Concentration of Microzooplankton expressed as Carbon in sea water",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "zooc",
+      "group": "ocean-variables",
+      "extension": [
+        null,
+        "vint"
+      ],
+      "long_name": "Zooplankton Carbon Concentration",
+      "unit": "mol m-3",
+      "resolution": [
+        "0.25\u00b0 grid"
+      ],
+      "frequency": "monthly",
+      "climate_forcing": [
+        "GFDL-MOM6-COBALT2"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
     },
     {
       "specifier": "mask",
@@ -8646,6 +9200,27 @@
       ],
       "simulation_rounds": [
         "ISIMIP3a"
+      ]
+    },
+    {
+      "specifier": "cesm2-omip2",
+      "specifier_file": "cesm2",
+      "title": "CESM2-OMIP2",
+      "priority": 1,
+      "time_period": "1958-2018",
+      "reanalysis": "JRA55-do",
+      "bias_adjustment_target": "none",
+      "comments": "From CMIP6-OMIP activity forced by 1958-2018 JRA55-do atmospheric data set and initialized with observed physical and biogeochemical ocean data. Data on native grid was remapped to a 1\u00b0 regular grid. For further experiment design details see <https://furtherinfo.es-doc.org/CMIP6.NCAR.CESM2.omip2.none.r1i1p1f1>",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "SecondaryInputData",
+        "SecondaryOutputData"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     }
   ],
