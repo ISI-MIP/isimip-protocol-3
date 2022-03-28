@@ -28,10 +28,20 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
   }
 
   const getResolutions = (row) => {
-    if (Array.isArray(row.resolution)) {
-      return row.resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
+    const resolution = filterField(config, row.resolution)
+    if (Array.isArray(resolution)) {
+      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
     } else {
-      return <li>{row.resolution}</li>
+      return <li>{resolution}</li>
+    }
+  }
+
+  const getClimateForcing = (row) => {
+    const climate_forcing = filterField(config, row.climate_forcing)
+    if (Array.isArray(climate_forcing)) {
+      return climate_forcing.map((climate_forcing, index) => <li key={index}>{climate_forcing}</li>)
+    } else {
+      return <li>{climate_forcing}</li>
     }
   }
 
@@ -104,7 +114,7 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                         </td>
                         <td>
                           <ul>
-                            {filterField(config, row.climate_forcing).map((value, idx) => <li key={idx}>{value}</li>)}
+                            {getClimateForcing(row)}
                           </ul>
                         </td>
                       </tr>
