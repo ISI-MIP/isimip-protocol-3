@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate/atmosphere.json",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate/ocean.json",
   "commit": "22c09d81ff5540c5259ce65ef169730289cfd1a5",
   "type": "object",
   "required": [
@@ -13,15 +13,17 @@
         "climate_forcing",
         "climate_scenario",
         "climate_variable",
+        "resolution",
         "region",
         "time_step"
       ],
       "properties": {
-        "climate_forcing": {
+        "climate_dataset": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5",
-            "gfdl-mom6-cobalt2"
+            "co2",
+            "ch4",
+            "lightning"
           ]
         },
         "climate_scenario": {
@@ -72,6 +74,15 @@
             "zmicro"
           ]
         },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "twodeg",
+            "halfdeg",
+            "onedeg",
+            "15arcmin"
+          ]
+        },
         "region": {
           "type": "string",
           "enum": [
@@ -86,12 +97,6 @@
             "monthly",
             "annual"
           ]
-        },
-        "start_year": {
-          "type": "number"
-        },
-        "end_year": {
-          "type": "number"
         }
       }
     }
