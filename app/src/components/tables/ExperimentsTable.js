@@ -11,18 +11,17 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
   const filteredRows = filterRows(config, rows)
 
   return (
-    <div style={{ width: config.simulation_round.endsWith('a') ? '70%' : '100%'}}>
+    <div style={{ width: config.simulation_round.endsWith('a') ? '80%' : '100%'}}>
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Experiment set-up: Each experiment is specified by the climate forcing (CF) and the Direct Human Forcing (DHF).
+          Table {number}: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row).
         </caption>
         <thead className="thead-dark">
           <tr>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
-                <th style={{width: '42.8571%'}}>Experiment</th>
-                <th style={{width: '35.7142%'}}>Short description</th>
-                <th style={{width: '21.4285%'}}>
+                <th style={{width: '70%'}}>Experiment</th>
+                <th style={{width: '30%'}}>
                     <p>Period: Historical</p>
                     <p>1901-2019</p>
                 </th>
@@ -30,17 +29,16 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
             }
             {
               config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '30%'}}>Experiment</th>
-                <th style={{width: '25%'}}>Short description</th>
-                <th style={{width: '15%'}}>
+                <th style={{width: '40%'}}>Experiment</th>
+                <th style={{width: '20%'}}>
                     <p>Period: Pre-industrial</p>
                     <p>1601-1849</p>
                 </th>
-                <th style={{width: '15%'}}>
+                <th style={{width: '20%'}}>
                     <p>Period: Historical</p>
                     <p>1850-2014</p>
                 </th>
-                <th style={{width: '15%'}}>
+                <th style={{width: '20%'}}>
                     <p>Period: Future</p>
                     <p>2015-2100</p>
                 </th>
@@ -62,9 +60,6 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                           <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
                           <Sectors config={config} sectors={row.sectors} />
                         </p>
-                    </td>
-                    <td>
-                        <strong>CF:</strong>{' '}{row.description.climate}
                     </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
@@ -108,9 +103,6 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                     }
                   </tr>
                   <tr>
-                    <td className="extra-border-bottom">
-                        <strong>DHF:</strong>{' '}{row.description.soc}
-                    </td>
                     {
                       config.simulation_round.endsWith('a') && <React.Fragment>
                         {
