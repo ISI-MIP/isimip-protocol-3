@@ -34,6 +34,8 @@ const filterRows = (config, rows) => {
         }
 
         return false
+    }).filter(row => {
+      return row.hidden != true
     })
 }
 
