@@ -1,6 +1,9 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
+import Sectors from '../badges/Sectors'
+import ClimateForcing from '../badges/ClimateForcing'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 const ClimateVariableTable = function({ config, number, rows, groups, actions }) {
@@ -36,15 +39,6 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
     }
   }
 
-  const getClimateForcing = (row) => {
-    const climate_forcing = filterField(config, row.climate_forcing)
-    if (Array.isArray(climate_forcing)) {
-      return climate_forcing.map((climate_forcing, index) => <li key={index}>{climate_forcing}</li>)
-    } else {
-      return <li>{climate_forcing}</li>
-    }
-  }
-
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -54,28 +48,13 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
         <thead className="thead-dark">
           <tr>
             <th style={{width: '30%'}}>Variable</th>
-            {
-              config.simulation_round.endsWith('a') && <React.Fragment>
-                <th style={{width: '20%'}}>Variable specifier</th>
-                <th style={{width: '15%'}}>Unit</th>
-                <th style={{width: '15%'}}>Resolution</th>
-                <th style={{width: '20%'}}>
-                  Datasets
-                  {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
-                </th>
-              </React.Fragment>
-            }
-            {
-              config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '20%'}}>Variable specifier</th>
-                <th style={{width: '15%'}}>Unit</th>
-                <th style={{width: '15%'}}>Resolution</th>
-                <th style={{width: '20%'}}>
-                  Models
-                  {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
-                </th>
-              </React.Fragment>
-            }
+            <th style={{width: '10%'}}>Variable specifier</th>
+            <th style={{width: '10%'}}>Unit</th>
+            <th style={{width: '10%'}}>Resolution</th>
+            <th style={{width: '40%'}}>
+              Sectors / Source / Comments
+              {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -96,28 +75,37 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
                 return header.concat(
                   group.rows.map((row, index) => {
                     return (
-                      <tr key={index}>
-                        <td>
-                          <p>{row.long_name}</p>
-                          {row.mandatory && <p>
-                            <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
-                              mandatory
-                            </span>
-                          </p>}
-                        </td>
-                        <td><strong>{getSpecifier(row)}</strong></td>
-                        <td>{row.unit}</td>
-                        <td>
-                          <ul>
-                            {getResolutions(row)}
-                          </ul>
-                        </td>
-                        <td>
-                          <ul>
-                            {getClimateForcing(row)}
-                          </ul>
-                        </td>
-                      </tr>
+                      <React.Fragment key={index}>
+                        <tr>
+                          <td rowSpan="2">
+                            <p>{row.long_name}</p>
+                            {row.mandatory && <p>
+                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+                                mandatory
+                              </span>
+                            </p>}
+                          </td>
+                          <td colSpan="4">
+                            <code>{filterField(config, row.path)}</code>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>{getSpecifier(row)}</strong></td>
+                          <td>{row.unit}</td>
+                          <td>
+                            <ul>
+                              {getResolutions(row)}
+                            </ul>
+                          </td>
+                          <td>
+                            <p>
+                              <Sectors config={config} sectors={row.sectors} />
+                            </p>
+                            { row.climate_forcing && <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} /> }
+                            {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                          </td>
+                        </tr>
+                      </React.Fragment>
                     )
                   })
                 )

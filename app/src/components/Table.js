@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 import { actions } from '../store'
 
-import ClimateDatasetTable from './tables/ClimateDatasetTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
 import ClimateScenarioTable from './tables/ClimateScenarioTable'
 import ClimateVariableTable from './tables/ClimateVariableTable'
@@ -30,8 +29,6 @@ const Table = ({ definitions, config, number, identifier, actions }) => {
   const rows = definitions[identifier]
 
   switch (identifier) {
-    case 'climate_dataset':
-      return <ClimateDatasetTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
     case 'climate_forcing':
       return <ClimateForcingTable config={config} number={number} rows={rows} actions={actions} />
     case 'climate_scenario':
