@@ -20,10 +20,11 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
         <thead className="thead-dark">
           <tr>
             <th style={{width: '20%'}}>Dataset</th>
-            <th style={{width: '30%'}}>Included variables (specifier)</th>
-            <th style={{width: '10%'}}>Resolution</th>
-            <th style={{width: '40%'}}>
-              Reference/Source and Comments
+            <th style={{width: '15%'}}>Variable specifier</th>
+            <th style={{width: '15%'}}>Unit</th>
+            <th style={{width: '15%'}}>Resolution</th>
+            <th style={{width: '35%'}}>
+              Sectors / Source / Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
           </tr>
@@ -33,7 +34,7 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
             filteredGroups.map(group => {
               const header = [
                 <tr key="-1">
-                  <td colSpan="4" className="table-secondary">
+                  <td colSpan="5" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
                   </td>
@@ -48,32 +49,44 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
                     return (
                       <React.Fragment key={index}>
                         <tr>
-                          <td className="no-border-bottom">
+                          <td rowSpan={row.variables.length + 1}>
                             <p>{row.title || row.specifier }</p>
+                            {row.mandatory && <p>
+                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+                                mandatory
+                              </span>
+                            </p>}
                           </td>
-                          <td colSpan="3">
-                            <code>{filterField(config, row.file_path)}</code>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>
-                            <ul>
-                              {row.variables.map((variable, index) => <li key={index}>{variable}</li>)}
-                            </ul>
-                          </td>
-                          <td>
-                            <ul>
-                                <li>{row.resolution}</li>
-                            </ul>
-                          </td>
-                          <td>
-                            <p>
-                              <Sectors config={config} sectors={row.sectors} />
-                            </p>
-                            <ReactMarkdown children={filterField(config, row.comment)} />
+                          <td colSpan="4">
+                            {row.path && <code>{filterField(config, row.path)}</code>}
+                            {row.url && <a href="{row.url}">{row.url}</a>}
                           </td>
                         </tr>
+                        {
+                          row.variables.map((variable, i) => {
+                            return (
+                              <tr key={i}>
+                                <td><strong>{variable.specifier}</strong> ({variable.long_name})</td>
+                                <td>{variable.unit}</td>
+                                {
+                                  i == 0 && <React.Fragment>
+                                    <td rowSpan={row.variables.length}>
+                                      <ul>
+                                        <li>{row.resolution}</li>
+                                      </ul>
+                                    </td>
+                                    <td rowSpan={row.variables.length}>
+                                      <p>
+                                        <Sectors config={config} sectors={row.sectors} />
+                                      </p>
+                                      {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                                    </td>
+                                  </React.Fragment>
+                                }
+                              </tr>
+                            )
+                          })
+                        }
                       </React.Fragment>
                     )
                   })

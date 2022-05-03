@@ -79,6 +79,9 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                                       </ul>
                                     </td>
                                     <td rowSpan={row.variables.length}>
+                                      <p>
+                                        <Sectors config={config} sectors={row.sectors} />
+                                      </p>
                                       {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
                                     </td>
                                   </React.Fragment>
