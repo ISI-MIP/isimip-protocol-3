@@ -56,7 +56,7 @@ def test_variable():
 
 
 def test_dataset_groups():
-    for file in ['climate_dataset.json', 'soc_dataset.json', 'geo_dataset.json']:
+    for file in ['soc_dataset.json', 'geo_dataset.json']:
         groups = json.loads(Path('definitions').joinpath('group.json').read_text())
         datasets = json.loads(Path('definitions').joinpath(file).read_text())
 
