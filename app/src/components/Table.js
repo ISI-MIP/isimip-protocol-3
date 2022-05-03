@@ -38,7 +38,7 @@ const Table = ({ definitions, config, number, identifier, actions }) => {
     case 'crop':
       return <CropTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
-      return <ExperimentsTable config={config} number={number} rows={rows} actions={actions} />
+      return <ExperimentsTable definitions={definitions} config={config} number={number} rows={rows} actions={actions} />
     case 'forest_stand':
       return <ForestStandTable config={config} number={number} rows={rows} actions={actions} />
     case 'geo_dataset':

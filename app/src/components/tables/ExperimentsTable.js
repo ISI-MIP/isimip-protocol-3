@@ -7,8 +7,17 @@ import Sectors from '../badges/Sectors'
 
 import { filterRows } from '../../utils'
 
-const ExperimentsTable = function({ config, number, rows, actions }) {
+const ExperimentsTable = function({ definitions, config, number, rows, actions }) {
   const filteredRows = filterRows(config, rows)
+  const climateScenarios = Object.fromEntries(filterRows(config, definitions.climate_scenario).map(scenario => {
+    return [scenario.specifier, scenario.description]
+  }))
+  const socScenarios = Object.fromEntries(filterRows(config, definitions.soc_scenario).map(scenario => {
+    return [scenario.specifier, scenario.description]
+  }))
+  const sensScenarios = Object.fromEntries(filterRows(config, definitions.sens_scenario).map(scenario => {
+    return [scenario.specifier, scenario.description]
+  }))
 
   return (
     <div style={{ width: config.simulation_round.endsWith('a') ? '80%' : '100%'}}>
@@ -65,8 +74,18 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                       config.simulation_round.endsWith('a') && <React.Fragment>
                         {
                           row.historical.climate ? <td className="table-secondary">
-                            <p><strong>{row.historical.climate}</strong></p>
-                            {row.historical.climate_sens && <p><strong>Sensitivity scenario: {row.historical.climate_sens}</strong></p>}
+                            <p>
+                              <strong title={climateScenarios[row.historical.climate]}>
+                                {row.historical.climate}
+                              </strong>
+                            </p>
+                            {
+                              row.historical.climate_sens && <p>
+                                <strong title={sensScenarios[row.historical.climate_sens]}>
+                                  Sensitivity scenario: {row.historical.climate_sens}
+                                </strong>
+                              </p>
+                            }
                           </td> : <td rowSpan="2" className="extra-border-bottom">
                             <ReactMarkdown children={row.historical} />
                           </td>
@@ -77,24 +96,54 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                       config.simulation_round.endsWith('b') && <React.Fragment>
                         {
                           row.pre_industrial.climate ? <td className="table-secondary">
-                            <p><strong>{row.pre_industrial.climate}</strong></p>
-                            {row.pre_industrial.climate_sens && <p><strong>Sensitivity scenario: {row.pre_industrial.climate_sens}</strong></p>}
+                            <p>
+                              <strong title={climateScenarios[row.pre_industrial.climate]}>
+                                {row.pre_industrial.climate}
+                              </strong>
+                            </p>
+                            {
+                              row.pre_industrial.climate_sens && <p>
+                                <strong title={sensScenarios[row.pre_industrial.climate_sens]}>
+                                  Sensitivity scenario: {row.pre_industrial.climate_sens}
+                                </strong>
+                              </p>
+                            }
                           </td> : <td rowSpan="2" className="extra-border-bottom">
                             <ReactMarkdown children={row.pre_industrial} />
                           </td>
                         }
                         {
                           row.historical.climate ? <td className="table-secondary">
-                            <p><strong>{row.historical.climate}</strong></p>
-                            {row.historical.climate_sens && <p><strong>Sensitivity scenario: {row.historical.climate_sens}</strong></p>}
+                            <p>
+                              <strong title={climateScenarios[row.historical.climate]}>
+                                {row.historical.climate}
+                              </strong>
+                            </p>
+                            {
+                              row.historical.climate_sens && <p>
+                                <strong title={sensScenarios[row.historical.climate_sens]}>
+                                  Sensitivity scenario: {row.historical.climate_sens}
+                                </strong>
+                              </p>
+                            }
                           </td> : <td rowSpan="2" className="extra-border-bottom">
                             <ReactMarkdown children={row.historical} />
                           </td>
                         }
                         {
                           row.future.climate ? <td className="table-danger">
-                            <p><strong>{row.future.climate}</strong></p>
-                            {row.future.climate_sens && <p><strong>Sensitivity scenario: {row.future.climate_sens}</strong></p>}
+                            <p>
+                              <strong title={climateScenarios[row.future.climate]}>
+                                {row.future.climate}
+                              </strong>
+                            </p>
+                            {
+                              row.future.climate_sens && <p>
+                                <strong title={sensScenarios[row.future.climate_sens]}>
+                                  Sensitivity scenario: {row.future.climate_sens}
+                                </strong>
+                              </p>
+                            }
                           </td> : <td rowspan="2" className="extra-border-bottom">
                             <ReactMarkdown children={row.future} />
                           </td>
@@ -107,8 +156,18 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                       config.simulation_round.endsWith('a') && <React.Fragment>
                         {
                           row.historical.soc && <td className="table-secondary extra-border-bottom">
-                            <p><strong>{row.historical.soc}</strong></p>
-                            {row.historical.soc_sens &&<p><strong>Sensitivity scenario: {row.historical.soc_sens}</strong></p>}
+                            <p>
+                              <strong title={socScenarios[row.historical.soc]}>
+                                {row.historical.soc}
+                              </strong>
+                            </p>
+                            {
+                              row.historical.soc_sens &&<p>
+                                <strong title={sensScenarios[row.historical.soc_sens]}>
+                                  Sensitivity scenario: {row.historical.soc_sens}
+                                </strong>
+                              </p>
+                            }
                           </td>
                         }
                       </React.Fragment>
@@ -117,20 +176,50 @@ const ExperimentsTable = function({ config, number, rows, actions }) {
                       config.simulation_round.endsWith('b') && <React.Fragment>
                         {
                           row.pre_industrial.soc && <td className="table-secondary extra-border-bottom">
-                            <p><strong>{row.pre_industrial.soc}</strong></p>
-                            {row.pre_industrial.soc_sens && <p><strong>Sensitivity scenario: {row.pre_industrial.soc_sens}</strong></p>}
+                            <p>
+                              <strong title={socScenarios[row.pre_industrial.soc]}>
+                                {row.pre_industrial.soc}
+                              </strong>
+                            </p>
+                            {
+                              row.pre_industrial.soc_sens && <p>
+                                <strong title={sensScenarios[row.pre_industrial.soc_sens]}>
+                                  Sensitivity scenario: {row.pre_industrial.soc_sens}
+                                </strong>
+                              </p>
+                            }
                           </td>
                         }
                         {
                           row.historical.soc && <td className="table-secondary extra-border-bottom">
-                            <p><strong>{row.historical.soc}</strong></p>
-                            {row.historical.soc_sens && <p><strong>Sensitivity scenario: {row.historical.soc_sens}</strong></p>}
+                            <p>
+                              <strong title={socScenarios[row.historical.soc]}>
+                                {row.historical.soc}
+                              </strong>
+                            </p>
+                            {
+                              row.historical.soc_sens && <p>
+                                <strong title={sensScenarios[row.historical.soc_sens]}>
+                                  Sensitivity scenario: {row.historical.soc_sens}
+                                </strong>
+                              </p>
+                            }
                           </td>
                         }
                         {
                           row.future.soc && <td className="table-danger extra-border-bottom">
-                            <p><strong>{row.future.soc}</strong></p>
-                            {row.future.soc_sens && <p><strong>Sensitivity scenario: {row.future.soc_sens}</strong></p>}
+                            <p>
+                              <strong title={socScenarios[row.future.soc]}>
+                                {row.future.soc}
+                              </strong>
+                            </p>
+                            {
+                              row.future.soc_sens && <p>
+                                <strong title={sensScenarios[row.future.soc_sens]}>
+                                  Sensitivity scenario: {row.future.soc_sens}
+                                </strong>
+                              </p>
+                            }
                           </td>
                         }
                       </React.Fragment>
