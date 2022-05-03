@@ -47,11 +47,11 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '30%'}}>Variable</th>
-            <th style={{width: '10%'}}>Variable specifier</th>
-            <th style={{width: '10%'}}>Unit</th>
-            <th style={{width: '10%'}}>Resolution</th>
-            <th style={{width: '40%'}}>
+            <th style={{width: '20%'}}>Variable</th>
+            <th style={{width: '15%'}}>Variable specifier</th>
+            <th style={{width: '15%'}}>Unit</th>
+            <th style={{width: '15%'}}>Resolution</th>
+            <th style={{width: '35%'}}>
               Sectors / Source / Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>

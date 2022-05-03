@@ -21,10 +21,11 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
         <thead className="thead-dark">
           <tr>
             <th style={{width: '20%'}}>Dataset</th>
-            <th style={{width: '30%'}}>Included variables (specifier)</th>
-            <th style={{width: '15%'}}>Covered time period/Resolution</th>
+            <th style={{width: '15%'}}>Variable specifier</th>
+            <th style={{width: '15%'}}>Unit</th>
+            <th style={{width: '15%'}}>Covered time period / Resolution</th>
             <th style={{width: '35%'}}>
-              Reference/Source and Comments
+              Sectors / Source / Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
           </tr>
@@ -34,7 +35,7 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
             filteredGroups.map(group => {
               const header = [
                 <tr key="-1">
-                  <td colSpan="4" className="table-secondary">
+                  <td colSpan="5" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
                   </td>
@@ -49,7 +50,7 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                     return (
                       <React.Fragment key={index}>
                         <tr>
-                          <td rowSpan="2">
+                          <td rowSpan={row.variables.length + 1}>
                             <p>{row.title}</p>
                             {row.mandatory && <p>
                               <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
@@ -57,31 +58,35 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
                               </span>
                             </p>}
                           </td>
-                          <td colSpan="3">
-                            {row.file_path && <code>{filterField(config, row.file_path)}</code>}
+                          <td colSpan="4">
+                            {row.path && <code>{filterField(config, row.path)}</code>}
                             {row.url && <a href="{row.url}">{row.url}</a>}
                           </td>
                         </tr>
-                        <tr>
-                          <td>
-                            <ul>
-                              {row.variables.map((variable, index) => <li key={index}>{variable}</li>)}
-                            </ul>
-                          </td>
-                          <td>
-                            <ul>
-                              {filterField(config, row.time_periods).map((time_period, index) => <li key={index}>{time_period}</li>)}
-                              <li>{row.resolution}</li>
-                              <li>{row.frequency}</li>
-                            </ul>
-                          </td>
-                          <td>
-                            <p>
-                              <Sectors config={config} sectors={row.sectors} />
-                            </p>
-                            <ReactMarkdown children={filterField(config, row.comment)} />
-                          </td>
-                        </tr>
+                        {
+                          row.variables.map((variable, i) => {
+                            return (
+                              <tr key={i}>
+                                <td><strong>{variable.specifier}</strong> ({variable.long_name})</td>
+                                <td>{variable.unit}</td>
+                                {
+                                  i == 0 && <React.Fragment>
+                                    <td rowSpan={row.variables.length}>
+                                      <ul>
+                                        {filterField(config, row.time_periods).map((time_period, index) => <li key={index}>{time_period}</li>)}
+                                        <li>{row.resolution}</li>
+                                        <li>{row.frequency}</li>
+                                      </ul>
+                                    </td>
+                                    <td rowSpan={row.variables.length}>
+                                      {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                                    </td>
+                                  </React.Fragment>
+                                }
+                              </tr>
+                            )
+                          })
+                        }
                       </React.Fragment>
                     )
                   })
