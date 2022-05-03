@@ -94,9 +94,9 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
           <tr>
             <th style={{width: '20%'}}>Variable long name</th>
             <th style={{width: '15%'}}>Variable specifier</th>
-            <th style={{width: '10%'}}>Unit</th>
+            <th style={{width: '15%'}}>Unit</th>
             <th style={{width: '15%'}}>Resolution</th>
-            <th style={{width: '40%'}}>
+            <th style={{width: '35%'}}>
               Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
