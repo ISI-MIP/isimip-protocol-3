@@ -1,0 +1,252 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_global.json",
+  "commit": "921b951d8445daefa6676d1e5211c9393e8b61bc",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "bias_adjustment",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "region",
+        "time_step"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "ec-earth3",
+            "cnrm-cm6-1",
+            "canesm5",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "miroc6",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr",
+            "cnrm-esm2-1"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "nobasd",
+            "w5e5"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "hist-nat",
+            "ssp370",
+            "ssp534-over",
+            "ssp585",
+            "ssp460",
+            "picontrol",
+            "historical",
+            "ssp245",
+            "ssp126",
+            "ssp119"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "histsoc",
+            "2015soc",
+            "1850soc"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "2015co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "riverstor",
+            "qtot",
+            "qrf",
+            "pmanuse",
+            "aliveww",
+            "amanwwgw",
+            "pliveww",
+            "lai",
+            "adomww",
+            "qg",
+            "pindww",
+            "pmanww",
+            "ptotwwgw",
+            "pindusegw",
+            "matyday",
+            "nupcum",
+            "airrwwgw",
+            "plivusegw",
+            "harvyear",
+            "triver",
+            "lakestor",
+            "snd",
+            "pdomwwgw",
+            "nincum",
+            "soilmoistfroz",
+            "qr",
+            "contfrac",
+            "qs",
+            "initrcum",
+            "thawdepth",
+            "pindwwgw",
+            "pdomuse",
+            "pliveuse",
+            "airrww",
+            "atotww",
+            "soilmoist",
+            "nlosscum",
+            "adomwwgw",
+            "yield",
+            "glacierstor",
+            "adomusegw",
+            "pirrusegreen",
+            "ptotusegw",
+            "potevap",
+            "ptotuse",
+            "pelecww",
+            "aelecwwgw",
+            "alivwwgw",
+            "atotuse",
+            "cellarea",
+            "ptotww",
+            "plantday",
+            "wetlandstor",
+            "pelecuse",
+            "alivusegw",
+            "amanww",
+            "pirrwwgw",
+            "dis",
+            "adomuse",
+            "amanusegw",
+            "atotwwgw",
+            "aindusegw",
+            "aelecww",
+            "reservoirstor",
+            "aelecuse",
+            "tsl",
+            "canopystor",
+            "airrusegw",
+            "biom",
+            "qsb",
+            "ainduse",
+            "airrusegreen",
+            "aliveuse",
+            "aindwwgw",
+            "pmanusegw",
+            "pinduse",
+            "soil",
+            "groundwstor",
+            "pmanwwgw",
+            "aelecusegw",
+            "pirrww",
+            "pdomusegw",
+            "rootmoist",
+            "swe",
+            "pelecwwgw",
+            "pdomww",
+            "plantyear",
+            "anthday",
+            "tws",
+            "pirruse",
+            "evapcum",
+            "atotusegw",
+            "nleachcum",
+            "evap",
+            "pirrusegw",
+            "qrd",
+            "pelecusegw",
+            "plivwwgw",
+            "amanuse",
+            "arainfusegreen",
+            "pirnreqcum",
+            "aindww",
+            "airruse"
+          ]
+        },
+        "crop": {
+          "type": "string",
+          "enum": [
+            "rap",
+            "sgc",
+            "pot",
+            "swh",
+            "mgr",
+            "bar",
+            "mis",
+            "wwh",
+            "sun",
+            "bea",
+            "pea",
+            "euc",
+            "soy",
+            "rye",
+            "sgb",
+            "mil",
+            "mai",
+            "cas",
+            "sor",
+            "whe",
+            "ri2",
+            "pop",
+            "nut",
+            "ric",
+            "cot",
+            "ri1"
+          ]
+        },
+        "irrigation": {
+          "type": "string",
+          "enum": [
+            "cirr",
+            "noirr"
+          ]
+        },
+        "pft": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "3hr",
+            "daily",
+            "annual",
+            "monthly"
+          ]
+        },
+        "start_year": {
+          "type": "number"
+        },
+        "end_year": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

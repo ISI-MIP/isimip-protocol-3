@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/forestry.json",
+  "commit": "921b951d8445daefa6676d1e5211c9393e8b61bc",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "bias_adjustment",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "forest_stand",
+        "time_step"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "ec-earth3",
+            "cnrm-cm6-1",
+            "canesm5",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "miroc6",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr",
+            "cnrm-esm2-1"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "nobasd",
+            "w5e5",
+            "localbc"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "hist-nat",
+            "ssp370",
+            "ssp534-over",
+            "ssp585",
+            "ssp460",
+            "picontrol",
+            "historical",
+            "ssp245",
+            "ssp126",
+            "ssp119"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "histsoc",
+            "2015soc"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "2015co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": [
+            "gpp",
+            "soilmoist",
+            "cproduct",
+            "domhei",
+            "fapar",
+            "tsl",
+            "nlitterbg",
+            "mort",
+            "lai",
+            "stemno",
+            "hei",
+            "vol",
+            "rh",
+            "esoil",
+            "evap",
+            "cveg",
+            "ccwd",
+            "species",
+            "mortstemno",
+            "rr",
+            "harv",
+            "harvstemno",
+            "clitterbg",
+            "csoil",
+            "ba",
+            "nlitterag",
+            "csoillayer",
+            "dbh",
+            "ra",
+            "soil",
+            "age",
+            "mai",
+            "trans",
+            "croot",
+            "dbhdomhei",
+            "npp",
+            "intercep",
+            "nsoil",
+            "cleaf",
+            "nee",
+            "cwood",
+            "density",
+            "cvegag",
+            "clitterag",
+            "dist",
+            "cvegbg"
+          ]
+        },
+        "species": {
+          "type": "string",
+          "enum": [
+            "soau",
+            "pisy",
+            "acpl",
+            "frex",
+            "bepu",
+            "eugl",
+            "bepe",
+            "c3gr",
+            "wi",
+            "quro",
+            "rops",
+            "lade",
+            "qupe",
+            "fasy",
+            "fi",
+            "pipi",
+            "piab",
+            "ins",
+            "hawo",
+            "poni"
+          ]
+        },
+        "forest_stand": {
+          "type": "string",
+          "enum": [
+            "solling-beech",
+            "le-bray",
+            "bily-kriz",
+            "soro",
+            "solling-spruce",
+            "kroof",
+            "collelongo",
+            "peitz",
+            "hyytiala"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "3hr",
+            "daily",
+            "annual",
+            "monthly"
+          ]
+        },
+        "start_year": {
+          "type": "number"
+        },
+        "end_year": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

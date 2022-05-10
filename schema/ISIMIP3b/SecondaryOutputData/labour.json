@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/labour.json",
+  "commit": "921b951d8445daefa6676d1e5211c9393e8b61bc",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "required": [
+        "model",
+        "climate_forcing",
+        "bias_adjustment",
+        "climate_scenario",
+        "soc_scenario",
+        "sens_scenario",
+        "variable",
+        "region",
+        "time_step"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "ec-earth3",
+            "cnrm-cm6-1",
+            "canesm5",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "miroc6",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr",
+            "cnrm-esm2-1"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "nobasd",
+            "w5e5"
+          ]
+        },
+        "climate_scenario": {
+          "type": "string",
+          "enum": [
+            "hist-nat",
+            "ssp370",
+            "ssp534-over",
+            "ssp585",
+            "ssp460",
+            "picontrol",
+            "historical",
+            "ssp245",
+            "ssp126",
+            "ssp119"
+          ]
+        },
+        "soc_scenario": {
+          "type": "string",
+          "enum": [
+            "histsoc",
+            "2015soc",
+            "1850soc"
+          ]
+        },
+        "sens_scenario": {
+          "type": "string",
+          "enum": [
+            "default",
+            "2015co2"
+          ]
+        },
+        "variable": {
+          "type": "string",
+          "enum": []
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "3hr",
+            "daily",
+            "annual",
+            "monthly"
+          ]
+        },
+        "start_year": {
+          "type": "number"
+        },
+        "end_year": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
