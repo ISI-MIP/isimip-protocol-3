@@ -12,7 +12,8 @@ const Pattern = ({ config, patterns }) => {
                   .replaceAll(/\([a-z\|]*?\)/g, '')
                   .replaceAll('\\d{4}', '').replaceAll('P', '').replaceAll('?', '')
                   .replaceAll('(<', '<').replaceAll('>)', '>')
-                  .replaceAll(/>_</g, '>@<').replaceAll('_', '-').replaceAll('@', '_')
+                  .replaceAll(/>_</g, '>@<').replaceAll('(_', '@').replaceAll(').', '.')
+                  .replaceAll('_', '-').replaceAll('@', '_')
   }
 
   return (

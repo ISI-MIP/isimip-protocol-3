@@ -14,7 +14,7 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Climate and climate-related forcing data (<code>climate-forcing</code>).
+          Table {number}: Climate forcing datasets (<code>climate-forcing</code>).
         </caption>
         <thead className="thead-dark">
           <tr>
