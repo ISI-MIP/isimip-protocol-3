@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/lightning.json",
-  "commit": "6a3e01f74eec7ce42eb0d48f7c511121918c6ea6",
+  "commit": "069172a55e3890029f6c07a82fe1ed843f090edd",
   "type": "object",
   "required": [
     "specifiers"
@@ -15,15 +15,20 @@
       ],
       "properties": {
         "climate_dataset": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "lightning",
+            "co2",
+            "ch4"
+          ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "daily",
             "annual",
-            "fixed",
             "monthly",
-            "daily"
+            "fixed"
           ]
         }
       }

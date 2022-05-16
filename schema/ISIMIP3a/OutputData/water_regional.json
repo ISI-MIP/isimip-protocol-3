@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/water_regional.json",
-  "commit": "6a3e01f74eec7ce42eb0d48f7c511121918c6ea6",
+  "commit": "069172a55e3890029f6c07a82fe1ed843f090edd",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,8 +25,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "20crv3-w5e5",
+            "20crv3-era5",
+            "chelsa-w5e5",
             "gswp3-w5e5",
-            "chelsa-w5e5"
+            "20crv3"
           ]
         },
         "detrending": {
@@ -46,72 +49,72 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "histsoc"
+            "histsoc",
+            "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
             "30arcsec",
-            "nowatermgt",
-            "90arcsec",
+            "1800arcsec",
             "300arcsec",
-            "1901co2",
+            "nowatermgt",
             "default",
-            "1800arcsec"
+            "90arcsec",
+            "1901co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "soilmoist",
             "airrww",
+            "qtot",
             "pirrusegreen",
-            "arainfusegreen",
+            "soilmoist",
             "potevap",
             "pirruse",
-            "rootmoist",
-            "pirrww",
+            "qr",
+            "dis",
+            "arainfusegreen",
             "evap",
             "qs",
-            "dis",
             "swe",
+            "pirrww",
+            "rootmoist",
             "airruse",
-            "qr",
-            "qtot",
             "airrusegreen"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "bea",
-            "rap",
-            "pop",
-            "bar",
+            "sor",
+            "ri2",
+            "soy",
+            "sgc",
+            "mai",
+            "cas",
+            "sgb",
             "wwh",
             "mgr",
-            "sgc",
-            "sor",
-            "rye",
-            "cas",
-            "pea",
-            "sun",
-            "mil",
-            "whe",
-            "cot",
-            "pot",
-            "nut",
-            "mai",
-            "ri1",
-            "sgb",
-            "ri2",
-            "ric",
-            "soy",
-            "euc",
+            "rap",
+            "bea",
+            "pop",
             "mis",
-            "swh"
+            "pea",
+            "ri1",
+            "cot",
+            "whe",
+            "ric",
+            "swh",
+            "sun",
+            "bar",
+            "nut",
+            "rye",
+            "mil",
+            "pot",
+            "euc"
           ]
         },
         "irrigation": {
@@ -127,58 +130,58 @@
         "river": {
           "type": "string",
           "enum": [
-            "indus",
-            "amazon",
-            "blue-nile",
-            "lena",
             "niger",
-            "tagus",
-            "mississippi",
-            "yangtze",
-            "ganges",
-            "danube",
-            "godavari",
+            "amazon",
+            "indus",
             "mackenzie",
-            "yellow",
+            "tagus",
+            "darling",
             "pajeu",
+            "danube",
+            "blue-nile",
+            "mississippi",
             "rhine",
-            "darling"
+            "ganges",
+            "yangtze",
+            "godavari",
+            "lena",
+            "yellow"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "khartoum",
-            "trillo",
-            "cuntan",
-            "krestovski",
-            "tarbela",
-            "wien-nussdorf",
-            "lokoja",
-            "alton",
-            "el-diem",
-            "louth",
-            "tossaye",
-            "stolb",
-            "almourol",
-            "floresta",
-            "lobith",
             "tekra",
-            "farakka",
-            "dire",
+            "almourol",
+            "arctic-red-river",
+            "cuntan",
             "koulikoro",
-            "sao-paulo-de-olivenca",
+            "floresta",
+            "louth",
+            "lobith",
+            "tarbela",
+            "farakka",
+            "krestovski",
+            "el-diem",
+            "trillo",
+            "lokoja",
             "tangnaihai",
-            "arctic-red-river"
+            "tossaye",
+            "khartoum",
+            "alton",
+            "wien-nussdorf",
+            "dire",
+            "sao-paulo-de-olivenca",
+            "stolb"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "daily",
-            "annual",
             "3hr",
+            "daily",
+            "monthly",
+            "annual",
             "fixed"
           ]
         },

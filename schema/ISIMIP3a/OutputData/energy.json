@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/energy.json",
-  "commit": "6a3e01f74eec7ce42eb0d48f7c511121918c6ea6",
+  "commit": "069172a55e3890029f6c07a82fe1ed843f090edd",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,7 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5"
+            "20crv3-w5e5",
+            "gswp3-w5e5",
+            "20crv3-era5",
+            "20crv3"
           ]
         },
         "detrending": {
@@ -44,15 +47,15 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "histsoc"
+            "histsoc",
+            "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "1901co2",
-            "default"
+            "default",
+            "1901co2"
           ]
         },
         "variable": {
@@ -68,10 +71,10 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "daily",
-            "annual",
             "3hr",
+            "daily",
+            "monthly",
+            "annual",
             "fixed"
           ]
         },

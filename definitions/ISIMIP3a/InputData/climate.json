@@ -1,5 +1,5 @@
 {
-  "commit": "6a3e01f74eec7ce42eb0d48f7c511121918c6ea6",
+  "commit": "069172a55e3890029f6c07a82fe1ed843f090edd",
   "experiments": [
     {
       "specifier": "model-evaluation-histsoc",
@@ -1521,6 +1521,44 @@
       "west": 0.0,
       "south": 0.0,
       "east": 0.0
+    }
+  ],
+  "climate_dataset": [
+    {
+      "specifier": "co2",
+      "group": "atmospheric-composition",
+      "title": "Atmospheric CO2 concentration",
+      "file_path": "climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "unit": "ppm",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Meinshausen et al. (2011) for 1850-2005; Ed Dlugokencky and Pieter Tans, NOAA/GML (gml.noaa.gov/ccgg/trends/) for 2006-2021",
+      "mandatory": true
+    },
+    {
+      "specifier": "ch4",
+      "group": "atmospheric-composition",
+      "title": "Atmospheric Methane Concentration",
+      "file_path": "climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "unit": "ppb",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Meinshausen et al. (2016) for 1850-2014; Ed Dlugokencky, NOAA/GML (gml.noaa.gov/ccgg/trends_ch4/) for 2015-2021",
+      "mandatory": true
+    },
+    {
+      "specifier": "lightning",
+      "group": "lightning",
+      "title": "Flash Rate Monthly Climatology",
+      "file_path": "climate/lightning/lightning_fixed.nc",
+      "unit": "km-2 d-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Cecil, Daniel J. 2006. LIS/OTD 0.5 Degree High Resolution Monthly Climatology (HRMC) [indicate subset used]. Dataset available online from the NASA Global Hydrology Resource Center DAAC, Huntsville, Alabama, U.S.A., DOI: <http://dx.doi.org/10.5067/LIS/LIS-OTD/DATA303>",
+      "sectors": [
+        "fire"
+      ],
+      "mandatory": true
     }
   ],
   "resolution": [
@@ -4335,7 +4373,7 @@
       "priority": 1,
       "title": "GSWP3-W5E5",
       "time_period": "1901-2019",
-      "reanalysis": "ERA5",
+      "reanalysis": "20CRv2, ERA5",
       "bias_adjustment_target": "GPCC, CRU",
       "comments": "Combination of W5E5 v2.0 (Cucchi et al., 2020, DOI: 10.5194/essd-2020-28 and Lange et al., 2021, DOI: 10.48364/ISIMIP.342217) for 1979-2019 with GSWP3 v1.09 (Kim, 2017, DOI: 10.20783/DIAS.501) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.5.0 bias adjustment method (Lange, 2019, DOI: 10.5194/gmd-12-3055-2019 and Lange, 2021, DOI: 10.5281/zenodo.4686991). For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/80/>",
       "simulation_rounds": [
@@ -4345,6 +4383,105 @@
         "InputData",
         "OutputData",
         "SecondaryInputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3-w5e5",
+      "priority": 2,
+      "title": "20CRv3-W5E5",
+      "time_period": "1901-2019",
+      "reanalysis": "20CRv3, ERA5",
+      "bias_adjustment_target": "GPCC, CRU",
+      "comments": "Combination of W5E5 v2.0 for 1979-2019 with 20CRv3 (ensemble member 1) homogenized to W5E5 for 1901-1978. The homogenization was done in the same way as for GSWP3-W5E5.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3-era5",
+      "priority": 3,
+      "title": "20CRv3-ERA5",
+      "time_period": "1901-2021",
+      "reanalysis": "20CRv3, ERA5",
+      "bias_adjustment_target": "none",
+      "comments": " Combination of ERA5 for 1979-2021 with 20CRv3 (ensemble member 1) homogenized to ERA5 for 1901-1978. The homogenization was done in the same way as for GSWP3-W5E5.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3",
+      "priority": 4,
+      "title": "20CRv3",
+      "time_period": "1901-2015",
+      "reanalysis": "20CRv3",
+      "bias_adjustment_target": "none",
+      "comments": "Ensemble member 1 of NOAA-CIRES-DOE 20th Century Reanalysis version 3 (Slivinski et al., 2019, DOI: https://doi.org/10.1002/qj.3598 and Compo et al., 2011, DOI: https://doi.org/10.1002/qj.776) interpolated to 0.5\u00b0 spatial resolution.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
       ],
       "sectors": [
         "agriculture",
