@@ -157,6 +157,7 @@ Some attributes (e.g. `frequency`) can have objects as value, which the are eval
   "lakes_local",
   "marine-fishery_global",
   "marine-fishery_regional",
+  "peat",
   "permafrost",
   "water_global",
   "water_regional"
