@@ -32,13 +32,17 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
                   if (Array.isArray(row.extension[sector])) {
                     return (
                       <li key={index}>
-                        {sector}: <strong>{row.extension[sector].map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
+                        <em className="sector">{sector}:</em>
+                        {' '}
+                        <strong>{row.extension[sector].map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
                       </li>
                     )
                   } else {
                     return (
                       <li key={index}>
-                        {sector}: <strong>{addExtension(row.specifier, row.extension[sector])}</strong>
+                        <em className="sector">{sector}:</em>
+                        {' '}
+                        <strong>{addExtension(row.specifier, row.extension[sector])}</strong>
                       </li>
                     )
                   }
@@ -60,7 +64,13 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     if (typeof resolution === 'object') {
       if (Object.keys(resolution).length > 1) {
         return Object.keys(resolution).map((sector, index) => {
-          return <li key={index}>{sector}: {resolution[sector]}</li>
+          return (
+            <li key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              {resolution[sector]}
+            </li>
+          )
         })
       } else {
         return <li>{Object.values(resolution)[0]} </li>
@@ -76,7 +86,13 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     if (typeof frequency === 'object') {
       if (Object.keys(frequency).length > 1) {
         return Object.keys(frequency).map((sector, index) => {
-          return <li key={index}>{sector}: {frequency[sector]}</li>
+          return (
+            <li key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              {frequency[sector]}
+            </li>
+          )
         })
       } else {
         return <li>{Object.values(frequency)[0]} </li>
@@ -92,7 +108,13 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     if (typeof comment === 'object') {
       if (Object.keys(comment).length > 1) {
         return Object.keys(comment).map((sector, index) => {
-          return <p key={index}>{sector}: {comment[sector]}</p>
+          return (
+            <p key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              <ReactMarkdown className="d-inline" components={{p: 'span'}} children={comment[sector]} />
+            </p>
+          )
         })
       } else {
         return <ReactMarkdown children={Object.values(comment)[0]} />
