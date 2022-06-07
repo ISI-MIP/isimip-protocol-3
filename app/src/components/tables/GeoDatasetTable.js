@@ -66,7 +66,11 @@ const GeoDatasetTable = function({ config, number, rows, groups, actions }) {
                           row.variables.map((variable, i) => {
                             return (
                               <tr key={i}>
-                                <td><strong>{variable.specifier}</strong> ({variable.long_name})</td>
+                                <td>
+                                  <strong>{variable.specifier}</strong>
+                                  {' '}
+                                  {variable.long_name && <span>({variable.long_name})</span>}
+                                </td>
                                 <td>{variable.unit}</td>
                                 {
                                   i == 0 && <React.Fragment>
