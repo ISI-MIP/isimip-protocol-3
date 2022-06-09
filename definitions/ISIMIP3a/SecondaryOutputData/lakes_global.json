@@ -1,5 +1,5 @@
 {
-  "commit": "b750527ad6813d87c601a55eef21b6e03d55b8e8",
+  "commit": "6e07c5155b91defb80ea28ab0802c2ae96872511",
   "acidification_type": [
     {
       "specifier": "oa"
@@ -1570,19 +1570,211 @@
       ]
     },
     {
-      "specifier": "lakedepth",
-      "group": "lakedepth",
-      "path": "ISIMIP3a/InputData/geo_conditions/lakes/lakedepth.nc",
+      "specifier": "biglakes_mask",
+      "title": "Biglakes mask",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/biglakes_mask.nc",
       "variables": [
         {
-          "long_name": "lake depth",
-          "specifier": "lakedepth",
+          "specifier": "biglakes_mask",
+          "unit": "-"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "File provided for reference, to produce global plots with conspicuous large lakes during figure production. To be used together with the file storing the big lakes IDs. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "elevation",
+      "title": "Lake Heigth",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/elevation.nc",
+      "variables": [
+        {
+          "specifier": "elevation",
           "unit": "m"
         }
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Based on HydroLAKES polygons dataset v1.0 June 2019 (Messager et al., 2016). The lakedepth includes depths from reservoirs (included in HydroLAKES), and is rasterized to 0.05 degrees resolution and bilinearly interpolated to 0.5 degrees resolution.",
+      "comment": "We recommend using elevation provided in this repository as inputs for your lake model. Use this file only if your lake model needs elevation values. Based on Hydrolakes polygons dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "hydrolakes_id_biglakes",
+      "title": "HydroLAKES ID for big lakes",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/hydrolakes_id_biglakes.nc",
+      "variables": [
+        {
+          "specifier": "id_biglakes",
+          "unit": "-"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "File provided for reference, to relate Hydrolakes and GLOBathy database fields to the ISIMIP3 representative lakes. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "hydrolakes_id",
+      "title": "HydroLAKES ID",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/hydrolakes_id.nc",
+      "variables": [
+        {
+          "specifier": "hydrolakes_id",
+          "unit": "-"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "File provided for reference, to produce global plots with conspicuous large lakes during figure production. To be used together with the file storing the big lakes mask. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "hypso_area",
+      "title": "Lake Heigth",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/hypso_area.nc",
+      "variables": [
+        {
+          "long_name": "Area per level",
+          "specifier": "area",
+          "unit": "km^2"
+        },
+        {
+          "long_name": "Lake level from bottom",
+          "specifier": "levels",
+          "unit": "m"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "Level-Area Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Volume Hypsographic curves in this repository). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Area is the area at the corresponding level (in km2). From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "hypso_volume",
+      "title": "Lake Volume",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/hypso_volume.nc",
+      "variables": [
+        {
+          "long_name": "Volume per level",
+          "specifier": "volume",
+          "unit": "km^3"
+        },
+        {
+          "long_name": "Lake level from bottom",
+          "specifier": "levels",
+          "unit": "m"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "Level-Volume Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Area Hypsographic curve in this repository). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Volume is the volume at the corresponding level (in km3). From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "max_lakedepth",
+      "title": "Maximum lake depth",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/max_lakedepth.nc",
+      "variables": [
+        {
+          "specifier": "max_lakedepth",
+          "unit": "m"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "We recommend using the area o volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "mean_lakedepth",
+      "title": "Mean lake depth",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/mean_lakedepth.nc",
+      "variables": [
+        {
+          "specifier": "mean_lakedepth",
+          "unit": "m"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "We recommend using the area o volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "surface_area",
+      "title": "Lake Surface Area",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/surface_area.nc",
+      "variables": [
+        {
+          "specifier": "surface_area",
+          "unit": "km^2"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "We recommend using the area o volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
+      "sectors": [
+        "lakes_global",
+        "lakes_local",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "volume",
+      "title": "Lake Volume",
+      "group": "lakes",
+      "path": "ISIMIP3a/InputData/geo_conditions/lakes/volume.nc",
+      "variables": [
+        {
+          "specifier": "volume",
+          "unit": "km^3"
+        }
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "format": "NetCDF",
+      "comment": "We recommend using the area o volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. From GLOBathy, the Global lakes Bathymetry Dataset, January 2022, https://doi.org/10.6084/m9.figshare.c.5243309.v1., and Hydrolakes dataset v1.0 June 2019, https://doi.org/10.1038/ncomms13603.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -2044,7 +2236,7 @@
     },
     {
       "identifier": "soc_dataset",
-      "specifier": "lakes",
+      "specifier": "pctlake",
       "title": "Lakes",
       "mandatory": false
     },
@@ -2084,7 +2276,7 @@
     },
     {
       "identifier": "geo_dataset",
-      "specifier": "lakedepth",
+      "specifier": "lakes",
       "title": "Lakes",
       "mandatory": false
     },
@@ -3074,7 +3266,7 @@
     },
     {
       "specifier": "pctlake",
-      "group": "lakes",
+      "group": "pctlake",
       "title": "Lake area fraction",
       "path": "ISIMIP3a/InputData/socioeconomic/lakes/<soc_scenario>/pctlake_<soc_scenario>_<start_year>_<end_year>.nc",
       "variables": [
@@ -3082,31 +3274,6 @@
           "long_name": "Lake and reservoir percent",
           "specifier": "pctlake",
           "unit": "%"
-        }
-      ],
-      "time_periods": [
-        "1850-2019"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "format": "NetCDF",
-      "comment": "Accounts for growing lake area fraction due to reservoir construction. HydroLAKES polygons dataset v1.0 June 2019 and GRanD v1.3, rasterized using the polygon_to_cellareafraction tool (https://github.com/VUB-HYDR/polygon_to_cellareafraction). Reference: Messager et al. (2016, <https://dx.doi.org/10.1038/ncomms13603>, Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>).",
-      "sectors": [
-        "lakes_global",
-        "lakes_local",
-        "water_global"
-      ]
-    },
-    {
-      "specifier": "lakemask",
-      "group": "lakes",
-      "title": "Lake mask",
-      "path": "ISIMIP3a/InputData/socioeconomic/lakes/<soc_scenario>/lakemask_<soc_scenario>_<start_year>_<end_year>.nc",
-      "variables": [
-        {
-          "long_name": "total lake surface area in grid cell",
-          "specifier": "tot_area",
-          "unit": "km^2"
         }
       ],
       "time_periods": [
