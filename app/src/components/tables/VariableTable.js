@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
+import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 
 const VariableTable = function({ config, number, rows, groups, actions }) {
@@ -32,13 +32,17 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
                   if (Array.isArray(row.extension[sector])) {
                     return (
                       <li key={index}>
-                        {sector}: <strong>{row.extension[sector].map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
+                        <em className="sector">{sector}:</em>
+                        {' '}
+                        <strong>{row.extension[sector].map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
                       </li>
                     )
                   } else {
                     return (
                       <li key={index}>
-                        {sector}: <strong>{addExtension(row.specifier, row.extension[sector])}</strong>
+                        <em className="sector">{sector}:</em>
+                        {' '}
+                        <strong>{addExtension(row.specifier, row.extension[sector])}</strong>
                       </li>
                     )
                   }
@@ -55,32 +59,68 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
   }
 
   const getResolution = (row) => {
-    if (typeof row.resolution === 'object') {
-      return Object.keys(row.resolution).map((sector, index) => {
-        return <li key={index}>{sector}: {row.resolution[sector]}</li>
-      })
+    const resolution = filterField(config, row.resolution)
+
+    if (typeof resolution === 'object') {
+      if (Object.keys(resolution).length > 1) {
+        return Object.keys(resolution).map((sector, index) => {
+          return (
+            <li key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              {resolution[sector]}
+            </li>
+          )
+        })
+      } else {
+        return <li>{Object.values(resolution)[0]} </li>
+      }
     } else {
-      return <li>{row.resolution}</li>
+      return <li>{resolution}</li>
     }
   }
 
   const getFrequency = (row) => {
-    if (typeof row.frequency === 'object') {
-      return Object.keys(row.frequency).map((sector, index) => {
-        return <li key={index}>{sector}: {row.frequency[sector]}</li>
-      })
+    const frequency = filterField(config, row.frequency)
+
+    if (typeof frequency === 'object') {
+      if (Object.keys(frequency).length > 1) {
+        return Object.keys(frequency).map((sector, index) => {
+          return (
+            <li key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              {frequency[sector]}
+            </li>
+          )
+        })
+      } else {
+        return <li>{Object.values(frequency)[0]} </li>
+      }
     } else {
-      return <li>{row.frequency}</li>
+      return <li>{frequency}</li>
     }
   }
 
   const getComment = (row) => {
-    if (typeof row.comment === 'object') {
-      return Object.keys(row.comment).map((sector, index) => {
-        return <p key={index}>{sector}: {row.comment[sector]}</p>
-      })
+    const comment = filterField(config, row.comment)
+
+    if (typeof comment === 'object') {
+      if (Object.keys(comment).length > 1) {
+        return Object.keys(comment).map((sector, index) => {
+          return (
+            <p key={index}>
+              <em className="sector">{sector}:</em>
+              {' '}
+              <ReactMarkdown className="d-inline" components={{p: 'span'}} children={comment[sector]} />
+            </p>
+          )
+        })
+      } else {
+        return <ReactMarkdown children={Object.values(comment)[0]} />
+      }
     } else {
-      return <ReactMarkdown children={row.comment} />
+      return <ReactMarkdown children={comment} />
     }
   }
 
