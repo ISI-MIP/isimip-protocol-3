@@ -1,5 +1,5 @@
 {
-  "commit": "6e07c5155b91defb80ea28ab0802c2ae96872511",
+  "commit": "c0532b40490c76fd0685779d3a88e65789014774",
   "acidification_type": [
     {
       "specifier": "oa"
@@ -70,7 +70,10 @@
       "frequency": "daily & monthly",
       "group": "hydrological-variables",
       "long_name": "Total Runoff",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": {
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
+      },
       "sectors": [
         "water_global",
         "water_regional",
@@ -88,7 +91,10 @@
       "frequency": "monthly",
       "group": "hydrological-variables",
       "long_name": "Surface Runoff",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": {
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
+      },
       "sectors": [
         "biomes",
         "water_global",
@@ -253,6 +259,22 @@
       "valid_min": 0.0
     },
     {
+      "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
+      "frequency": "constant",
+      "group": "static-variables",
+      "long_name": "Soil Types",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "fire",
+        "biomes",
+        "forestry",
+        "permafrost"
+      ],
+      "specifier": "soil",
+      "units": "-"
+    },
+    {
       "comment": "Grid cell total and PFT information is essential.",
       "extension": [
         "total",
@@ -329,7 +351,7 @@
       "units": "kg m-2"
     },
     {
-      "comment": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.  If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+      "comment": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "dimensions": [
         "time",
         "depth",
@@ -456,7 +478,7 @@
       ],
       "frequency": "monthly",
       "group": "carbon-fluxes",
-      "long_name": "Carbon Mass Flux into Atmosphere due to CO\u2082 Emission from Fire",
+      "long_name": "Carbon Mass Flux into Atmosphere due to C Emission from Fire",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
@@ -1006,6 +1028,20 @@
       "units": "1"
     },
     {
+      "comment": "Grid cell total.",
+      "frequency": "monthly, else annual",
+      "group": "carbon-fluxes",
+      "long_name": "Carbon Mass Flux into Atmosphere due to Soil Respiration on Land",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forests"
+      ],
+      "specifier": "rsoil",
+      "units": "kg m-2 s-1"
+    },
+    {
       "comment": "Flux of Nitrogen from the land into the atmosphere due to fire.",
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
@@ -1017,6 +1053,30 @@
         "fire"
       ],
       "specifier": "fngasfire",
+      "units": "kg m-2 s-1"
+    },
+    {
+      "comment": "Grid cell total and PFT information is essential.",
+      "dimensions": [
+        "time",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        "total",
+        "<pft>"
+      ],
+      "frequency": "monthly",
+      "group": "carbon-fluxes",
+      "long_name": "Carbon Mass Flux into Atmosphere from Bioenergy Harvesting",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "peat",
+        "fire",
+        "permafrost"
+      ],
+      "specifier": "fbioenergyharvest",
       "units": "kg m-2 s-1"
     }
   ],

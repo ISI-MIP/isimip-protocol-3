@@ -97,8 +97,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 09 June 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/6e07c5155b91defb80ea28ab0802c2ae96872511">6e07c5155b91defb80ea28ab0802c2ae96872511</a></p>
+<p>Last updated: 10 June 2022</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/c0532b40490c76fd0685779d3a88e65789014774">c0532b40490c76fd0685779d3a88e65789014774</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -675,8 +675,8 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       "group": "hydrological-variables",
       "long_name": "Total Runoff",
       "resolution": {
-        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
-        "other": "0.5\u00b0 grid"
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
       },
       "sectors": [
         "water_global",
@@ -696,8 +696,8 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       "group": "hydrological-variables",
       "long_name": "Surface Runoff",
       "resolution": {
-        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location",
-        "other": "0.5\u00b0 grid"
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
       },
       "sectors": [
         "biomes",
@@ -808,24 +808,16 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "Sum of transpiration, evaporation, interception and sublimation.",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "permafrost": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
         "water_global": "total",
-        "water_regional": "total"
+        "water_regional": "total",
+        "other": [
+          "total",
+          "<pft>"
+        ]
       },
       "frequency": {
         "forestry": "daily",
@@ -882,22 +874,7 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "agriculture": [
           "<crop>-<irrigation>"
         ],
-        "biomes": [
-          null
-        ],
-        "fire": [
-          null
-        ],
-        "forestry": [
-          null
-        ],
-        "water_global": [
-          null
-        ],
-        "water_regional": [
-          null
-        ],
-        "permafrost": [
+        "other": [
           null
         ]
       },
@@ -2049,7 +2026,7 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       "valid_min": -0.002
     },
     {
-      "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
+      "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
       "frequency": "constant",
       "group": "static-variables",
       "long_name": "Soil Types",
@@ -2059,8 +2036,10 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       },
       "sectors": [
         "water_global",
+        "fire",
         "biomes",
-        "forestry"
+        "forestry",
+        "permafrost"
       ],
       "specifier": "soil",
       "units": "-"
@@ -2448,19 +2427,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost": "Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2488,15 +2459,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost": "Grid cell total, PFT information if possible."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2523,15 +2490,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost": "Grid cell total, PFT information if possible."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2559,19 +2522,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost": "Grid cell total, PFT information if possible."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2594,25 +2549,15 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Only if models separates below-ground litter and soil carbon. If not, only report csoil and document this in the model documentation. Grid cell total and PFT information is essential.",
-        "fire": "Only if models separates below-ground litter and soil carbon. If not, only report csoil and document this in the model documentation. Grid cell total and PFT information is essential.",
         "forestry": "Only if models separates below-ground litter and soil carbon. Species information is essential.",
-        "permafrost": "Only if models separates below-ground litter and soil carbon. If not, only report csoil and document this in the model documentation. Grid cell total and PFT information is essential."
+        "other": "Only if models separates below-ground litter and soil carbon. If not, only report csoil and document this in the model documentation. Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2641,14 +2586,6 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
@@ -2658,6 +2595,10 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
           "<pft>",
           "<pool>",
           "<pool>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
         ]
       },
       "frequency": "annual",
@@ -2679,7 +2620,7 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": {
         "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-        "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.  If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
+        "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
         "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
         "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
       },
@@ -2690,14 +2631,6 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "lon"
       ],
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
@@ -2707,6 +2640,10 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
           "<pft>",
           "<pool>",
           "<pool>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
         ]
       },
       "frequency": "annual",
@@ -2726,30 +2663,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       "units": "kg m-2"
     },
     {
-      "comment": {
-        "biomes": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
-        "permafrost": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
-        "fire": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
-        "forestry": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage."
-      },
-      "extension": {
-        "biomes": [
-          "total",
-          "<productclass>"
-        ],
-        "permafrost": [
-          "total",
-          "<productclass>"
-        ],
-        "fire": [
-          "total",
-          "<productclass>"
-        ],
-        "forestry": [
-          "total",
-          "<productclass>"
-        ]
-      },
+      "comment": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation on the ISIMIP homepage.",
+      "extension": [
+        "total",
+        "<productclass>"
+      ],
       "frequency": "annual",
       "group": "carbon-pools",
       "long_name": "Carbon in Products of Land Use Change",
@@ -2768,25 +2686,15 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Grid cell total and PFT information is essential.",
-        "fire": "Grid cell total and PFT information is essential.",
         "forestry": "As kg carbon m\u207b\u00b2 s\u207b\u00b9. Stand total and Species information is essential.",
-        "permafrost": "Grid cell total and PFT information is essential."
+        "other": "Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2812,25 +2720,15 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Grid cell total and PFT information is essential.",
-        "fire": "Grid cell total and PFT information is essential.",
         "forestry": "As kg carbon m\u207b\u00b2 s\u207b\u00b9. Stand total and species information is essential.",
-        "permafrost": "Grid cell total and PFT information is essential."
+        "other": "Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2856,25 +2754,15 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Grid cell total and PFT information is essential.",
-        "fire": "Grid cell total and PFT information is essential.",
         "forestry": "As kg carbon m\u207b\u00b2 s\u207b\u00b9. Stand total and species information is essential.",
-        "permafrost": "Grid cell total and PFT information is essential."
+        "other": "Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2900,25 +2788,15 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Grid cell total and PFT information is essential.",
-        "fire": "Grid cell total and PFT information is essential.",
         "forestry": "As kg carbon m\u207b\u00b2 s\u207b\u00b9. Stand total and Species information is essential.",
-        "permafrost": "Grid cell total and PFT information is essential."
+        "other": "Grid cell total and PFT information is essential."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -2950,7 +2828,7 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       ],
       "frequency": "monthly",
       "group": "carbon-fluxes",
-      "long_name": "Carbon Mass Flux into Atmosphere due to CO\u2082 Emission from Fire",
+      "long_name": "Carbon Mass Flux into Atmosphere due to C Emission from Fire",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
@@ -2962,9 +2840,8 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)",
         "fire": "Report <total> daily, <pft/total> monthly",
-        "permafrost": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)"
+        "other": "Area percentage of grid cell that has burned at any time of the given day/month/year (for daily/monthly/annual resolution)"
       },
       "extension": [
         "total",
@@ -3002,8 +2879,8 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "",
-        "forestry": "As kg carbon*m-2*s-1"
+        "forestry": "As kg carbon * m-2 * s-1",
+        "other": ""
       },
       "extension": [
         "total",
@@ -3180,19 +3057,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "Value between 0 and 100. Grid cell total and PFT information is essential.",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -3215,30 +3084,20 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     },
     {
       "comment": {
-        "biomes": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can be used.",
-        "fire": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can be used.",
         "forestry": "Stand total and species information is essential. If lai is static, the timestep specifier \"fixed\" can be used.",
-        "permafrost": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can be used.",
-        "water_global": "If used by, or computed by the model. If lai is static, the timestep specifier \"fixed\" can be used."
+        "water_global": "If used by, or computed by the model. If lai is static, the timestep specifier \"fixed\" can be used.",
+        "other": "Grid cell total and PFT information is essential. If lai is static, the timestep specifier \"fixed\" can be used."
       },
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "water_global": "total",
+        "other": [
           "total",
           "<pft>"
-        ],
-        "water_global": "total"
+        ]
       },
       "frequency": "daily else monthly (fixed if static)",
       "group": "vegetation",
@@ -3280,21 +3139,13 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "The canopy evaporation+sublimation (if present in model).",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "permafrost": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
         ]
       },
       "frequency": {
@@ -3319,16 +3170,14 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "Includes sublimation.",
       "extension": {
-        "biomes": "",
-        "fire": [
+        "forestry": [
+          "total",
+          "<species>"
+        ],
+        "other": [
           "total",
           "<pft>"
-        ],
-        "permafrost": [
-          "total",
-          "<pft>"
-        ],
-        "forestry": ""
+        ]
       },
       "frequency": {
         "forestry": "daily",
@@ -3352,21 +3201,13 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
-        "permafrost": [
-          "total",
-          "<pft>"
-        ],
-        "fire": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
         ]
       },
       "frequency": {
@@ -3391,15 +3232,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -3422,15 +3259,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "Including sapwood and hardwood.",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -3453,15 +3286,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "Including fine and coarse roots.",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -3484,15 +3313,11 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
     {
       "comment": "",
       "extension": {
-        "biomes": [
-          "total",
-          "<pft>"
-        ],
         "forestry": [
           "total",
           "<species>"
         ],
-        "permafrost": [
+        "other": [
           "total",
           "<pft>"
         ]
@@ -5036,7 +4861,7 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
       "valid_min": 0.0
     },
     {
-      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, rsoillayer separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
       "dimensions": [
         "time",
         "depth",
@@ -5055,6 +4880,20 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "permafrost"
       ],
       "specifier": "rsoillayer",
+      "units": "kg m-2 s-1"
+    },
+    {
+      "comment": "Grid cell total.",
+      "frequency": "monthly, else annual",
+      "group": "carbon-fluxes",
+      "long_name": "Carbon Mass Flux into Atmosphere due to Soil Respiration on Land",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forests"
+      ],
+      "specifier": "rsoil",
       "units": "kg m-2 s-1"
     },
     {
@@ -5391,13 +5230,37 @@ href="https://doi.org/10.1175/BAMS-D-17-0212.1">10.1175/BAMS-D-17-0212.1</a>,
         "<pft>"
       ],
       "frequency": "monthly, else annual",
-      "group": "carbon-pools",
+      "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "permafrost"
       ],
       "specifier": "rhlayer",
+      "units": "kg m-2 s-1"
+    },
+    {
+      "comment": "Grid cell total and PFT information is essential.",
+      "dimensions": [
+        "time",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        "total",
+        "<pft>"
+      ],
+      "frequency": "monthly",
+      "group": "carbon-fluxes",
+      "long_name": "Carbon Mass Flux into Atmosphere from Bioenergy Harvesting",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "peat",
+        "fire",
+        "permafrost"
+      ],
+      "specifier": "fbioenergyharvest",
       "units": "kg m-2 s-1"
     }
   ],

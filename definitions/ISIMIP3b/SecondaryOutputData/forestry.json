@@ -1,5 +1,5 @@
 {
-  "commit": "6e07c5155b91defb80ea28ab0802c2ae96872511",
+  "commit": "c0532b40490c76fd0685779d3a88e65789014774",
   "acidification_type": [
     {
       "specifier": "oa"
@@ -128,15 +128,17 @@
       "valid_min": 250.0
     },
     {
-      "comment": "Soil types or texture classes as used by your model. Please include a description of each type or class, especially if these are different from the standard HSWD and GSWP3 soil types. Please also include a description of the parameters and values associated with these soil types (parameter values could be submitted as spatial fields where appropriate).",
+      "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
       "frequency": "constant",
       "group": "static-variables",
       "long_name": "Soil Types",
       "resolution": "stand",
       "sectors": [
         "water_global",
+        "fire",
         "biomes",
-        "forestry"
+        "forestry",
+        "permafrost"
       ],
       "specifier": "soil",
       "units": "-"
@@ -374,7 +376,7 @@
       "units": "kg m-2 s-1"
     },
     {
-      "comment": "As kg carbon*m-2*s-1",
+      "comment": "As kg carbon * m-2 * s-1",
       "extension": [
         "total",
         "<pft>"
@@ -452,7 +454,10 @@
     },
     {
       "comment": "Includes sublimation.",
-      "extension": "",
+      "extension": [
+        "total",
+        "<species>"
+      ],
       "frequency": "daily",
       "group": "hydrological-variables",
       "long_name": "Water Evaporation from Soil",

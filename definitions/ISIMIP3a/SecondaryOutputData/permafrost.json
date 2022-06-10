@@ -1,5 +1,5 @@
 {
-  "commit": "6e07c5155b91defb80ea28ab0802c2ae96872511",
+  "commit": "c0532b40490c76fd0685779d3a88e65789014774",
   "acidification_type": [
     {
       "specifier": "oa"
@@ -56,7 +56,10 @@
       "frequency": "daily & monthly",
       "group": "hydrological-variables",
       "long_name": "Total Runoff",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": {
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
+      },
       "sectors": [
         "water_global",
         "water_regional",
@@ -74,7 +77,10 @@
       "frequency": "monthly",
       "group": "hydrological-variables",
       "long_name": "Surface Runoff",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": {
+        "water_global": "0.5\u00b0 grid",
+        "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
+      },
       "sectors": [
         "biomes",
         "water_global",
@@ -305,6 +311,22 @@
       "units": "m",
       "valid_max": 100.0,
       "valid_min": 0.0
+    },
+    {
+      "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
+      "frequency": "constant",
+      "group": "static-variables",
+      "long_name": "Soil Types",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "water_global",
+        "fire",
+        "biomes",
+        "forestry",
+        "permafrost"
+      ],
+      "specifier": "soil",
+      "units": "-"
     },
     {
       "comment": "Grid cell total and PFT information is essential.",
@@ -550,7 +572,7 @@
       ],
       "frequency": "monthly",
       "group": "carbon-fluxes",
-      "long_name": "Carbon Mass Flux into Atmosphere due to CO\u2082 Emission from Fire",
+      "long_name": "Carbon Mass Flux into Atmosphere due to C Emission from Fire",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
@@ -1068,7 +1090,7 @@
       "valid_min": 0.0
     },
     {
-      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, rsoillayer separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
       "dimensions": [
         "time",
         "depth",
@@ -1423,13 +1445,37 @@
         "<pft>"
       ],
       "frequency": "monthly, else annual",
-      "group": "carbon-pools",
+      "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "permafrost"
       ],
       "specifier": "rhlayer",
+      "units": "kg m-2 s-1"
+    },
+    {
+      "comment": "Grid cell total and PFT information is essential.",
+      "dimensions": [
+        "time",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        "total",
+        "<pft>"
+      ],
+      "frequency": "monthly",
+      "group": "carbon-fluxes",
+      "long_name": "Carbon Mass Flux into Atmosphere from Bioenergy Harvesting",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "biomes",
+        "peat",
+        "fire",
+        "permafrost"
+      ],
+      "specifier": "fbioenergyharvest",
       "units": "kg m-2 s-1"
     }
   ],
