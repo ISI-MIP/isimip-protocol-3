@@ -20,7 +20,7 @@ carbon-fluxes,gpp,Carbon Mass Flux out of Atmosphere due to Gross Primary Produc
 carbon-fluxes,ra,Carbon Mass Flux into Atmosphere due to Autotrophic (plant) Respiration on Land,kg m-2 s-1,0.5° grid,monthly,,,Grid cell total and PFT information is essential.
 carbon-fluxes,npp,Carbon Mass Flux out of Atmosphere due to Net Primary Production on Land,kg m-2 s-1,0.5° grid,monthly,,,Grid cell total and PFT information is essential.
 carbon-fluxes,rh,Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land,kg m-2 s-1,0.5° grid,monthly,,,Grid cell total and PFT information is essential.
-carbon-fluxes,ffire,Carbon Mass Flux into Atmosphere due to C Emission from Fire,kg m-2 s-1,0.5° grid,monthly,,,
+carbon-fluxes,ffire,Carbon Mass Flux into Atmosphere due to C Emission from Fire,kg m-2 s-1,0.5° grid,monthly,,,Total C emitted from all fires (including deforestation and peat fire C emission).
 carbon-fluxes,nbp,Carbon Mass Flux out of Atmosphere due to Net Biospheric Production on Land,kg m-2 s-1,0.5° grid,monthly,,,"This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land."
 carbon-fluxes,fluc,Carbon Mass Flux into Atmosphere from Land Use Change,kg m-2 s-1,0.5° grid,monthly,,,For wood products only. Sum of carbon fluxes to wood production and wood storage turnover emissions from previous years.
 carbon-fluxes,fgrazing,Carbon Mass Flux into Atmosphere from Grazing,kg m-2 s-1,0.5° grid,monthly,,,Grid cell total and PFT information is essential.
@@ -35,9 +35,9 @@ vegetation,lai,Leaf Area Index,1,0.5° grid,daily else monthly (fixed if static)
 vegetation,pft,Plant Functional Type Grid Fraction,%,0.5° grid,annual (or fixed if static),,,"The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land. For models that have grid cells partially covered by land and ocean, please document this in the model documentation and provide your land-sea mask along the data uploads."
 vegetation,intercep,Evaporation from Canopy (interception),kg m-2 s-1,0.5° grid,monthly,,,The canopy evaporation+sublimation (if present in model).
 fire-variables,burntarea,Burnt Area Fraction,%,0.5° grid,"daily (total), monthly (pft/total)",,,"Report <total> daily, <pft/total> monthly"
-fire-variables,burntarealuc,Burnt Area Fraction from Fire Mediated Land-Cover Change,%,0.5° grid,monthly,,,Deforestation fires
-fire-variables,ffirepeat,Carbon emitted from peat fires,kg m-2 s-1,0.5° grid,monthly,,,Should not be part of ffire
-fire-variables,ffireluc,Carbon Mass Flux into Atmosphere from Fire Mediated Land-Cover Change,kg m-2 s-1,0.5° grid,monthly,,,C emitted from deforestation fires (if simulated).
+fire-variables,burntarealuc,Burnt Area Fraction from Fire Mediated Land-Cover Change,%,0.5° grid,monthly,,,Area percentage of grid cell that has burned from deforestation fires (if simulated). Should be part of burntarea-total.
+fire-variables,ffirepeat,Carbon emitted from peat fires,kg m-2 s-1,0.5° grid,monthly,,,C emitted from peat fires (if simulated). Should also be part of ffire.
+fire-variables,ffireluc,Carbon Mass Flux into Atmosphere from Fire Mediated Land-Cover Change,kg m-2 s-1,0.5° grid,monthly,,,C emitted from deforestation fires (if simulated). Should be part of ffire.
 fire-variables,fireints,Weighted Mean Fireline Intensity,kW m-1,0.5° grid,monthly,,,"If calculated, weighted by burned area. Grid cell total and PFT information is essential."
 fire-variables,cfuel,Carbon in Different Fuel Classes,kg m-2,0.5° grid,monthly,,,as appropriate for your model
 fire-variables,ccfuel,Combustion Completeness of Different Fuel Classes,1,0.5° grid,monthly,,,"(between 0 and 1), fraction of fuel combusted in a fire"

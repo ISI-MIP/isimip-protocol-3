@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/diarrhea.json",
-  "commit": "f2c08d38d4cc09463ac2a47b6cb16e219800eacf",
+  "commit": "c81a66efbe23bd0375214eeaf5306f4ac1df2f3a",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
             "gfdl-esm4",
             "mri-esm2-0",
+            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "ukesm1-0-ll"
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -43,26 +43,26 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
-            "ssp585",
             "picontrol",
+            "ssp370",
+            "historical",
             "ssp126",
-            "historical"
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "histsoc",
+            "ssp585soc",
+            "ssp1soc",
+            "2015soc",
+            "1850soc",
+            "ssp5soc",
             "2015soc-from-histsoc",
             "ssp370soc",
-            "ssp585soc",
-            "2015soc",
-            "ssp1soc",
-            "1850soc",
-            "ssp126soc",
-            "ssp5soc",
             "ssp3soc",
-            "histsoc"
+            "ssp126soc"
           ]
         },
         "sens_scenario": {
@@ -85,11 +85,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
             "daily",
-            "monthly",
+            "fixed",
+            "annual",
             "3hr",
-            "fixed"
+            "monthly"
           ]
         },
         "start_year": {
