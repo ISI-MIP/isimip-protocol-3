@@ -14,7 +14,7 @@ your updates will be visible at `https://protocol.isimip.org`.
 As a rule, the sector-specific text should be kept to a minimum and cover
 as much structure as possible by machine-readable code under [definitions](definitions/).
 
-The bibliography and the React JavaScript app build in seperate steps which are described under [bibliography/README.md]([bibliography/README.md]) and [app/README.md]([app/README.md]).
+The React JavaScript app is build in a seperate step which are described under [app/README.md]([app/README.md]).
 
 Setup
 -----
