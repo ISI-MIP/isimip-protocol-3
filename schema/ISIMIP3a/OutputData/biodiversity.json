@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/biodiversity.json",
-  "commit": "5e52d31ec37271bf5128d4143d8247ac87a75c32",
+  "commit": "9064cb1b33c9e5a96ada87a39076c891c6f03ef3",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,10 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3",
             "20crv3-era5",
             "20crv3-w5e5",
-            "gswp3-w5e5"
+            "gswp3-w5e5",
+            "20crv3"
           ]
         },
         "detrending": {
@@ -62,21 +62,21 @@
         "variable": {
           "type": "string",
           "enum": [
+            "birdprob",
+            "mammalsr",
             "birdsumprob",
-            "birdsr",
-            "thrmammalsumprob",
-            "mammalsumprob",
-            "thramphibiansumprob",
+            "amphibiansumprob",
             "thrbirdsumprob",
+            "thramphibiansumprob",
+            "endmammalsumprob",
             "mammalprob",
             "endamphibiansumprob",
-            "amphibiansr",
+            "birdsr",
+            "mammalsumprob",
             "endbirdsumprob",
-            "amphibiansumprob",
-            "mammalsr",
             "amphibianprob",
-            "endmammalsumprob",
-            "birdprob"
+            "amphibiansr",
+            "thrmammalsumprob"
           ]
         },
         "region": {
@@ -88,12 +88,12 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
-            "fixed",
+            "daily",
             "monthly",
-            "3hr",
             "30year-mean",
-            "daily"
+            "3hr",
+            "fixed",
+            "annual"
           ]
         },
         "start_year": {

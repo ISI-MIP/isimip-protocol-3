@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate/lightning.json",
-  "commit": "5e52d31ec37271bf5128d4143d8247ac87a75c32",
+  "commit": "9064cb1b33c9e5a96ada87a39076c891c6f03ef3",
   "type": "object",
   "required": [
     "specifiers"
@@ -10,20 +10,59 @@
     "specifiers": {
       "type": "object",
       "required": [
-        "climate_dataset",
+        "climate_variable",
         "time_step"
       ],
       "properties": {
-        "climate_dataset": {
-          "type": "string"
+        "climate_variable": {
+          "type": "string",
+          "enum": [
+            "mlotst",
+            "lightning",
+            "zmeso",
+            "tasmax",
+            "tas",
+            "vo",
+            "intppdiaz",
+            "ps",
+            "intpoc",
+            "ph",
+            "phydiaz",
+            "intpp",
+            "co2",
+            "o2",
+            "tasmin",
+            "chl",
+            "prsn",
+            "expc",
+            "sfcwind",
+            "hurs",
+            "huss",
+            "thkcello",
+            "phyc",
+            "intppdiat",
+            "zmicro",
+            "uo",
+            "rlds",
+            "deptho",
+            "so",
+            "tos",
+            "rsds",
+            "tob",
+            "pr",
+            "zooc",
+            "thetao",
+            "phydiat",
+            "ch4"
+          ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
+            "daily",
             "annual",
             "monthly",
-            "daily"
+            "fixed"
           ]
         }
       }
