@@ -1,5 +1,5 @@
 {
-  "commit": "1951f9b14278cbdef925bc09e37f51fade79bda5",
+  "commit": "595b0baa2d96b0e1fc68ad4cb38e1aaa827cf5a6",
   "r": [
     {
       "specifier": "lower"
@@ -4082,14 +4082,50 @@
       ]
     },
     {
-      "specifier": "population",
+      "specifier": "population-gridded",
       "group": "population",
-      "title": "Population",
-      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_<start-year>_<end-year>.nc",
+      "title": "Population (gridded)",
+      "specifier_file": "population",
+      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        {
+          "long_name": "total population",
+          "specifier": "total-population",
+          "unit": "1"
+        },
+        {
+          "long_name": "urban population",
+          "specifier": "urban-population",
+          "unit": "1"
+        },
+        {
+          "long_name": "rural population",
+          "specifier": "rural-population",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects (United Nations, 2019, <https://population.un.org/wpp/>). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al., 2021, <https://doi.org/10.5281/zenodo.4421504>).",
+      "mandatory": true
+    },
+    {
+      "specifier": "population-countrylevel",
+      "group": "population",
+      "title": "Population (country-level)",
+      "specifier_file": "population",
+      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
       "variables": [
         {
           "long_name": "total number of people per country",
-          "specifier": "pop",
+          "specifier": "population",
           "unit": "10^6 people"
         }
       ],
