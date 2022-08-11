@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_global.json",
-  "commit": "4a834fd3af1b882278434c05e8c3db0d3f0e55cf",
+  "commit": "ad486e5d5ca4d4f7238bc43874ceb41f36d347b3",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
-            "gfdl-esm4",
             "mpi-esm1-2-hr",
-            "ukesm1-0-ll"
+            "ukesm1-0-ll",
+            "gfdl-esm4",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -42,25 +42,25 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "historical",
             "ssp585",
-            "picontrol",
-            "ssp126",
             "ssp370",
-            "historical"
+            "picontrol",
+            "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
-            "ssp126soc",
-            "ssp3soc",
-            "2015soc-from-histsoc",
-            "histsoc",
-            "2015soc",
             "ssp5soc",
-            "ssp585soc",
             "ssp1soc",
+            "2015soc-from-histsoc",
+            "nat",
+            "ssp3soc",
+            "ssp126soc",
+            "histsoc",
+            "ssp585soc",
+            "2015soc",
             "ssp370soc"
           ]
         },
@@ -75,25 +75,25 @@
           "type": "string",
           "enum": [
             "bp30cm",
-            "cd30to90cm",
-            "cd30cm",
-            "cp30cm",
-            "tcblog10",
-            "bp30to90cm",
-            "tcb",
-            "tclog10",
             "cp30to90cm",
-            "tdb",
-            "tpc",
-            "bd90cm",
-            "tdc",
-            "tpb",
             "bd30to90cm",
-            "cd90cm",
             "bp90cm",
+            "bd90cm",
+            "tdb",
+            "cd30cm",
+            "tcblog10",
+            "tpb",
+            "bp30to90cm",
+            "tpc",
+            "tdc",
+            "tclog10",
             "tc",
-            "bd30cm",
-            "cp90cm"
+            "tcb",
+            "cp90cm",
+            "cp30cm",
+            "cd90cm",
+            "cd30to90cm",
+            "bd30cm"
           ]
         },
         "region": {
@@ -105,11 +105,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
+            "annual",
+            "fixed",
             "monthly",
             "daily",
-            "fixed",
-            "annual"
+            "3hr"
           ]
         },
         "start_year": {
