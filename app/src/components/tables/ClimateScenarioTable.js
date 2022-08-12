@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import SimulationRounds from '../badges/SimulationRounds'
@@ -31,6 +32,7 @@ const ClimateScenarioTable = function({ config, number, rows }) {
                     <Sectors config={config} sectors={row.sectors} />
                   </p>
                   <p>{row.description}</p>
+                  <ReactMarkdown children={row.description_note} />
                 </td>
               </tr>
             )

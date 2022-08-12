@@ -16,7 +16,7 @@ const SocDatasetTable = function({ config, number, rows, groups, actions }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Socioeconomic datasets for {config.simulation_round}.
+          Table {number}: Direct human forcing datasets for {config.simulation_round}.
         </caption>
         <thead className="thead-dark">
           <tr>
