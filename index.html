@@ -70,7 +70,7 @@
 </li>
 <li><a href="#3-input-data">3. Input data</a><ul>
 <li><a href="#31-climate-related-forcing">3.1 Climate related forcing</a></li>
-<li><a href="#32-socioeconomic-forcing">3.2 Socioeconomic forcing</a></li>
+<li><a href="#32-direct-human-forcing">3.2 Direct human forcing</a></li>
 <li><a href="#33-static-geographic-information">3.3 Static geographic information</a></li>
 </ul>
 </li>
@@ -97,7 +97,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 12 August 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/d56671b13c35dda351e7c799fd43f426c3dcb435">d56671b13c35dda351e7c799fd43f426c3dcb435</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/769843c3166f835b7c56a1ddc2dc13a5e76be741">769843c3166f835b7c56a1ddc2dc13a5e76be741</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -112,12 +112,12 @@
 <h3 id="12-simulation-round">1.2 Simulation round</h3>
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <h4 id="historical-runs-with-climate-related-forcing-based-on-observations">Historical runs with climate-related forcing based on observations</h4>
-<p>The ISIMIP3a part of the third round framework is dedicated to i) impact model evaluation and improvement and ii) detection and attribution of observed impacts according to the framework of IPCC AR5 Working Group II Chapter 18. To this end all simulations are forced by observed climate and socio-economic information and a de-trended version of the observed climate allowing for the generation of a “no climate change” baseline (counterfactual, if available).</p>
+<p>The ISIMIP3a part of the third round framework is dedicated to i) impact model evaluation and improvement and ii) detection and attribution of observed impacts according to the framework of IPCC AR5 Working Group II Chapter 18. To this end all simulations are forced by observed climate and direct human forcing and a de-trended version of the observed climate allowing for the generation of a “no climate change” baseline (counterfactual, if available).</p>
 <p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
 <h4 id="gcm-based-simulations-assuming-fixed-2015-direct-human-influences-for-the-future">GCM-based simulations assuming fixed 2015 direct human influences for the future</h4>
-<p>The ISIMIP3b part of the third simulation round is dedicated to a quantification of climate-related risks at different levels of climate change and socio-economic conditions. The Group 1 simulations refer to the pre-industrial and historical period of the CMIP6-based climate simulations. Group 2 covers all future projections assuming fixed 2015 levels of socio-economic forcing and different future projections of climate (SSP126, SSP37 and SSP585). Group 3 simulations account for future changes in socio-economic drivers and are intended to be started once the corresponding direct human forcing input data is available.</p>
+<p>The ISIMIP3b part of the third simulation round is dedicated to a quantification of climate-related risks at different levels of climate change and direct human forcing. The Group 1 simulations refer to the pre-industrial and historical period of the CMIP6-based climate simulations. Group 2 covers all future projections assuming fixed 2015 levels of direct human forcing and different future projections of climate (SSP1-2.6, SSP3-7.0 and SSP5-8.5). Group 3 simulations account for future changes in the direct human forcing and are intended to be started once the corresponding direct human forcing input data is available.</p>
 <p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
 </div>
 <h3 id="13-simulation-protocol">1.3 Simulation protocol</h3>
@@ -201,7 +201,7 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <h4 id="note-on-climate-forcing-priority">Note on climate forcing priority</h4>
 <p>The priority for the different climate forcing datasets is given in the last column of Table 5. If you cannot use all climate forcing datasets, please concentrate on those with a higher priority.</p>
 <div data-component="table" data-identifier="climate_variable" data-number="3.2"></div>
-<h3 id="32-socioeconomic-forcing">3.2 Socioeconomic forcing</h3>
+<h3 id="32-direct-human-forcing">3.2 Direct human forcing</h3>
 <div data-component="table" data-identifier="soc_dataset" data-number="3.3"></div>
 <h3 id="33-static-geographic-information">3.3 Static geographic information</h3>
 <div data-component="table" data-identifier="geo_dataset" data-number="3.4"></div>
@@ -464,14 +464,16 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   "climate_scenario": [
     {
       "specifier": "obsclim",
-      "description": "Observed climate and CO\u2082 forcing used for model evaluation and the detection and attribution task.",
+      "description": "Observation-based atmospheric and oceanic climate forcing, lightning, atmospheric CO\u2082 and CH\u2084 concentrations.",
+      "description_note": "Under development: Coastal water levels and tropical cyclone tracks and associated wind fields.",
       "simulation_rounds": [
         "ISIMIP3a"
       ]
     },
     {
       "specifier": "counterclim",
-      "description": "Detrended version of the observed climate related forcing used for the \"no climate change\" baseline simulations for impact attribution. Keep CO\u2082 and CH\u2084 concentrations at 1901 values ([CO\u2082] = 296.13 ppm; [CH\u2084] = 928.8004 ppb). Keep the same lightening data as in obsclim.",
+      "description": "De-trended atmospheric climate forcing, constant CO\u2082 and CH\u2084 concentrations at 1901 levels ([CO\u2082] = 296.13 ppm; [CH\u2084] = 928.8004 ppb). Lightning as in obsclim.",
+      "description_note": "Under development: Counterfactual coastal water levels.",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -513,42 +515,47 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "picontrol",
-      "description": "Pre-industrial climate as simulated by the GCMs.",
+      "description": "GCM-based pre-industrial atmospheric and oceanic climate forcing, CO\u2082 and CH\u2084 concentrations fixed at 1850 levels, monthly climatology of lightning.",
+      "description_note": "Under development: Pre-industrial variations in coastal water levels and tropical cyclone tracks with associated wind fields.",
       "simulation_rounds": [
         "ISIMIP3b"
       ]
     },
     {
       "specifier": "historical",
-      "description": "Historical climate as simulated by the GCMs.",
+      "description": "GCM-based historical atmospheric and oceanic climate forcing, historical changes in CO\u2082 and CH\u2084 concentrations, monthly climatology of lightning.",
+      "description_note": "Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
       "simulation_rounds": [
         "ISIMIP3b"
       ]
     },
     {
       "specifier": "ssp126",
-      "description": "SSP1-2.6 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP1-2.6, monthly climatology of lightning.",
+      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
       "simulation_rounds": [
         "ISIMIP3b"
       ]
     },
     {
       "specifier": "ssp370",
-      "description": "SSP3-7.0 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP3-7.0, monthly climatology of lightning.",
+      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
       "simulation_rounds": [
         "ISIMIP3b"
       ]
     },
     {
       "specifier": "ssp585",
-      "description": "SSP5-8.5 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP5-8.5, monthly climatology of lightning.",
+      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
       "simulation_rounds": [
         "ISIMIP3b"
       ]
     },
     {
       "specifier": "ssp119",
-      "description": "SSP1-1.9 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP1-1.9, monthly climatology of lightning.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -559,7 +566,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp245",
-      "description": "SSP2-4.5 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP2-4.5, monthly climatology of lightning.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -570,7 +577,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp460",
-      "description": "SSP4-6.0 climate as simulated by the GCMs.",
+      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP4-6.0, monthly climatology of lightning.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -581,7 +588,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp534-over",
-      "description": "SSP5-3.4-OS climate as simulated by the GCMs.",
+      "description": "",
       "simulation_rounds": [
         "ISIMIP3b"
       ],

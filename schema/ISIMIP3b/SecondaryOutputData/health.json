@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/health.json",
-  "commit": "d56671b13c35dda351e7c799fd43f426c3dcb435",
+  "commit": "769843c3166f835b7c56a1ddc2dc13a5e76be741",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,16 +26,16 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "miroc6",
+            "ec-earth3",
             "ukesm1-0-ll",
             "mri-esm2-0",
-            "canesm5",
             "mpi-esm1-2-hr",
-            "ipsl-cm6a-lr",
-            "cnrm-cm6-1",
             "gfdl-esm4",
+            "cnrm-cm6-1",
+            "miroc6",
             "cnrm-esm2-1",
-            "ec-earth3"
+            "canesm5",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -48,33 +48,33 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "picontrol",
+            "ssp119",
+            "ssp370",
             "ssp585",
             "hist-nat",
-            "ssp370",
-            "historical",
-            "ssp534-over",
             "ssp126",
             "ssp460",
             "ssp245",
-            "ssp119"
+            "picontrol",
+            "ssp534-over",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "1850soc",
-            "2015soc",
+            "ssp4soc",
+            "ssp585soc",
+            "2015soc-from-histsoc",
             "ssp5soc",
             "histsoc",
-            "ssp126soc",
-            "ssp370soc",
-            "ssp3soc",
-            "ssp585soc",
-            "ssp4soc",
+            "2015soc",
+            "ssp2soc",
             "ssp1soc",
-            "2015soc-from-histsoc",
-            "ssp2soc"
+            "ssp3soc",
+            "ssp370soc",
+            "ssp126soc",
+            "1850soc"
           ]
         },
         "sens_scenario": {
@@ -87,18 +87,18 @@
         "variable": {
           "type": "string",
           "enum": [
-            "anheat",
+            "btm",
             "ancold",
-            "pop",
-            "btm"
+            "anheat",
+            "pop"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "central",
             "upper",
-            "lower"
+            "lower",
+            "central"
           ]
         },
         "region": {
@@ -110,11 +110,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
-            "daily",
             "monthly",
+            "3hr",
             "fixed",
-            "3hr"
+            "annual",
+            "daily"
           ]
         },
         "start_year": {
