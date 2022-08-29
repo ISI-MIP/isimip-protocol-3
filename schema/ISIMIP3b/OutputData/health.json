@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.json",
-  "commit": "11a13ae3d6d5a87a0a249965a50e6a655e0b827d",
+  "commit": "18e9faad64d01acf1f391d0fa36f77fc1f558eb8",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
             "gfdl-esm4",
-            "mri-esm2-0",
+            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "ukesm1-0-ll",
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
@@ -43,33 +43,33 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
             "ssp370",
+            "ssp126",
             "picontrol",
-            "ssp585",
-            "historical"
+            "historical",
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "ssp126soc",
             "histsoc",
-            "ssp3soc",
             "2015soc-from-histsoc",
             "ssp1soc",
-            "ssp126soc",
-            "ssp370soc",
+            "ssp3soc",
             "ssp585soc",
+            "2015soc",
             "1850soc",
             "ssp5soc",
-            "2015soc"
+            "ssp370soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
@@ -77,16 +77,16 @@
           "enum": [
             "anheat",
             "ancold",
-            "pop",
-            "btm"
+            "btm",
+            "pop"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "central",
+            "upper",
             "lower",
-            "upper"
+            "central"
           ]
         },
         "region": {
@@ -98,11 +98,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
             "daily",
+            "monthly",
+            "annual",
             "3hr",
-            "fixed",
-            "monthly"
+            "fixed"
           ]
         },
         "start_year": {
