@@ -35,11 +35,11 @@ def hide_generator(ctx, simulation_round=None, sector=None):
     }, Markdown(ctx.content, ctx.parser))
 
 
-def table_generator(ctx, number, identifier):
+def table_generator(ctx, identifier, caption):
     return E('div', {
         'data-component': 'table',
-        'data-number': number,
         'data-identifier': identifier,
+        'data-caption': caption,
     }, Markdown(ctx.content, ctx.parser))
 
 

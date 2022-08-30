@@ -7,7 +7,7 @@ import Sectors from '../badges/Sectors'
 
 import { filterRows } from '../../utils'
 
-const ExperimentsTable = function({ definitions, config, number, rows, actions }) {
+const ExperimentsTable = function({ definitions, config, caption, rows, actions }) {
   const filteredRows = filterRows(config, rows)
   const climateScenarios = Object.fromEntries(filterRows(config, definitions.climate_scenario).map(scenario => {
     return [scenario.specifier, scenario.description]
@@ -23,7 +23,7 @@ const ExperimentsTable = function({ definitions, config, number, rows, actions }
     <div style={{ width: config.simulation_round.endsWith('a') ? '80%' : '100%'}}>
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -244,7 +244,7 @@ const ExperimentsTable = function({ definitions, config, number, rows, actions }
 
 ExperimentsTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }

@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
@@ -7,11 +8,11 @@ import SimulationRounds from '../badges/SimulationRounds'
 import { filterRows } from '../../utils'
 
 
-const SensScenarioTable = function({ config, number, rows }) {
+const SensScenarioTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed w-70">
       <caption>
-        Table {number}: Sensitivity scenario specifiers (<code>sens-scenario</code>).
+        <ReactMarkdown components={{p: 'span'}} children={caption} />
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -43,7 +44,7 @@ const SensScenarioTable = function({ config, number, rows }) {
 
 SensScenarioTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

@@ -107,8 +107,8 @@ document.querySelectorAll('[data-component="hide"]').forEach(el => {
 document.querySelectorAll('[data-component="table"]').forEach(el => {
   ReactDOM.render(
     <Provider store={store}>
-      <Table number={el.dataset.number}
-             identifier={el.dataset.identifier} />
+      <Table identifier={el.dataset.identifier}
+             caption={el.dataset.caption} />
     </Provider>, el
   )
 })

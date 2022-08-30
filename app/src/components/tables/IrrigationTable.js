@@ -1,14 +1,15 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { filterRows, filterField } from '../../utils'
 
 
-const IrrigationTable = function({ config, number, rows }) {
+const IrrigationTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed w-50">
       <caption>
-        Table {number}: Irrigation specifiers (<code>irrigation</code>).
+        <ReactMarkdown components={{p: 'span'}} children={caption} />
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -34,7 +35,7 @@ const IrrigationTable = function({ config, number, rows }) {
 
 IrrigationTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

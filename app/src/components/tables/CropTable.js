@@ -1,10 +1,11 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
 
 
-const CropTable = function({ config, number, rows, groups, actions }) {
+const CropTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups)
@@ -13,7 +14,7 @@ const CropTable = function({ config, number, rows, groups, actions }) {
     <div className="w-50">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Crop naming and priorities (<code>crop</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -60,7 +61,7 @@ const CropTable = function({ config, number, rows, groups, actions }) {
 
 CropTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   groups: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired

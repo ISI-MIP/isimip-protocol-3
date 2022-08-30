@@ -9,11 +9,11 @@ import Status from '../badges/Status'
 import { filterRows, filterField } from '../../utils'
 
 
-const ClimateScenarioTable = function({ config, number, rows }) {
+const ClimateScenarioTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed">
       <caption>
-        Table {number}: Climate scenario specifiers (<code>climate-scenario</code>).
+        <ReactMarkdown components={{p: 'span'}} children={caption} />
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -65,7 +65,7 @@ const ClimateScenarioTable = function({ config, number, rows }) {
 
 ClimateScenarioTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

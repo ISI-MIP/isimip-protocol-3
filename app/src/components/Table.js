@@ -24,45 +24,45 @@ import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
 
 
-const Table = ({ definitions, config, number, identifier, actions }) => {
+const Table = ({ definitions, config, identifier, caption, actions }) => {
   const groups = definitions.group.filter(group => group.identifier == identifier)
   const rows = definitions[identifier]
 
   switch (identifier) {
     case 'climate_forcing':
-      return <ClimateForcingTable config={config} number={number} rows={rows} actions={actions} />
+      return <ClimateForcingTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_scenario':
-      return <ClimateScenarioTable config={config} number={number} rows={rows} />
+      return <ClimateScenarioTable config={config} caption={caption} rows={rows} />
     case 'climate_variable':
-      return <ClimateVariableTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
+      return <ClimateVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'crop':
-      return <CropTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
+      return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
-      return <ExperimentsTable definitions={definitions} config={config} number={number} rows={rows} actions={actions} />
+      return <ExperimentsTable definitions={definitions} config={config} caption={caption} rows={rows} actions={actions} />
     case 'forest_stand':
-      return <ForestStandTable config={config} number={number} rows={rows} actions={actions} />
+      return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
-      return <GeoDatasetTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
+      return <GeoDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'harmonization':
-      return <HarmonizationTable config={config} number={number} rows={rows} />
+      return <HarmonizationTable config={config} caption={caption} rows={rows} />
     case 'irrigation':
-      return <IrrigationTable config={config} number={number} rows={rows} />
+      return <IrrigationTable config={config} caption={caption} rows={rows} />
     case 'lake_site':
-      return <LakeSiteTable config={config} number={number} rows={rows} actions={actions} />
+      return <LakeSiteTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'ocean_region':
-      return <OceanRegionTable config={config} number={number} rows={rows} actions={actions} />
+      return <OceanRegionTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'river_basin':
-      return <RiverBasinTable config={config} number={number} rows={rows} actions={actions} />
+      return <RiverBasinTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'sens_scenario':
-      return <SensScenarioTable config={config} number={number} rows={rows} />
+      return <SensScenarioTable config={config} caption={caption} rows={rows} />
     case 'soc_dataset':
-      return <SocDatasetTable config={config} number={number} rows={rows} groups={groups} actions={actions}/>
+      return <SocDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
     case 'soc_scenario':
-      return <SocScenarioTable config={config} number={number} rows={rows} />
+      return <SocScenarioTable config={config} caption={caption} rows={rows} />
     case 'species':
-      return <SpeciesTable config={config} number={number} rows={rows} actions={actions} />
+      return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'variable':
-      return <VariableTable config={config} number={number} rows={rows} groups={groups} actions={actions} />
+      return <VariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     default:
       return null
   }
@@ -71,7 +71,7 @@ const Table = ({ definitions, config, number, identifier, actions }) => {
 Table.propTypes = {
   definitions: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   identifier: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 }

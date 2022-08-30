@@ -8,11 +8,11 @@ import SimulationRounds from '../badges/SimulationRounds'
 import { filterRows } from '../../utils'
 
 
-const SocScenarioTable = function({ config, number, rows }) {
+const SocScenarioTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed w-70">
       <caption>
-        Table {number}: Direct human forcing scenario specifiers (<code>soc-scenario</code>).
+        <ReactMarkdown components={{p: 'span'}} children={caption} />
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -45,7 +45,7 @@ const SocScenarioTable = function({ config, number, rows }) {
 
 SocScenarioTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 
