@@ -49,7 +49,7 @@ const ClimateScenarioTable = function({ config, number, rows }) {
                 <td className={(index == forcings.length - 1) ? 'extra-border-bottom' : ''}>
                   {
                     forcing.doi && <p>
-                      DOI: <a href={forcing.doi}>{ forcing.doi }</a>
+                      <a className="doi-link" href={forcing.doi}>{ forcing.doi }</a>
                     </p>
                   }
                   <ReactMarkdown children={forcing.comment} />
