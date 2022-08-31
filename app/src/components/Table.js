@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { actions } from '../store'
 
 import ClimateForcingTable from './tables/ClimateForcingTable'
-import ClimateScenarioTable from './tables/ClimateScenarioTable'
 import ClimateVariableTable from './tables/ClimateVariableTable'
 import CropTable from './tables/CropTable'
 import ForestStandTable from './tables/ForestStandTable'
@@ -17,9 +16,8 @@ import IrrigationTable from './tables/IrrigationTable'
 import LakeSiteTable from './tables/LakeSiteTable'
 import OceanRegionTable from './tables/OceanRegionTable'
 import RiverBasinTable from './tables/RiverBasinTable'
-import SensScenarioTable from './tables/SensScenarioTable'
+import ScenarioTable from './tables/ScenarioTable'
 import SocDatasetTable from './tables/SocDatasetTable'
-import SocScenarioTable from './tables/SocScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
 
@@ -32,7 +30,7 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'climate_forcing':
       return <ClimateForcingTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_scenario':
-      return <ClimateScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} />
     case 'climate_variable':
       return <ClimateVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'crop':
@@ -54,11 +52,11 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'river_basin':
       return <RiverBasinTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'sens_scenario':
-      return <SensScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} />
     case 'soc_dataset':
       return <SocDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
     case 'soc_scenario':
-      return <SocScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} />
     case 'species':
       return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'variable':
