@@ -20,7 +20,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
   }))
 
   return (
-    <div style={{ width: config.simulation_round.endsWith('a') ? '80%' : '100%'}}>
+    <div style={{ width: config.simulation_round.endsWith('a') ? '60%' : '100%'}}>
       <table className="table table-bordered table-fixed">
         <caption>
           <ReactMarkdown components={{p: 'span'}} children={caption} />
@@ -82,7 +82,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.historical.climate_sens && <p>
                                 <strong title={sensScenarios[row.historical.climate_sens]}>
-                                  Sensitivity scenario: {row.historical.climate_sens}
+                                  Sensitivity experiment: {row.historical.climate_sens}
                                 </strong>
                               </p>
                             }
@@ -104,7 +104,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.pre_industrial.climate_sens && <p>
                                 <strong title={sensScenarios[row.pre_industrial.climate_sens]}>
-                                  Sensitivity scenario: {row.pre_industrial.climate_sens}
+                                  Sensitivity experiment: {row.pre_industrial.climate_sens}
                                 </strong>
                               </p>
                             }
@@ -122,7 +122,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.historical.climate_sens && <p>
                                 <strong title={sensScenarios[row.historical.climate_sens]}>
-                                  Sensitivity scenario: {row.historical.climate_sens}
+                                  Sensitivity experiment: {row.historical.climate_sens}
                                 </strong>
                               </p>
                             }
@@ -140,7 +140,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.future.climate_sens && <p>
                                 <strong title={sensScenarios[row.future.climate_sens]}>
-                                  Sensitivity scenario: {row.future.climate_sens}
+                                  Sensitivity experiment: {row.future.climate_sens}
                                 </strong>
                               </p>
                             }
@@ -164,7 +164,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.historical.soc_sens &&<p>
                                 <strong title={sensScenarios[row.historical.soc_sens]}>
-                                  Sensitivity scenario: {row.historical.soc_sens}
+                                  Sensitivity experiment: {row.historical.soc_sens}
                                 </strong>
                               </p>
                             }
@@ -184,7 +184,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.pre_industrial.soc_sens && <p>
                                 <strong title={sensScenarios[row.pre_industrial.soc_sens]}>
-                                  Sensitivity scenario: {row.pre_industrial.soc_sens}
+                                  Sensitivity experiment: {row.pre_industrial.soc_sens}
                                 </strong>
                               </p>
                             }
@@ -200,7 +200,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.historical.soc_sens && <p>
                                 <strong title={sensScenarios[row.historical.soc_sens]}>
-                                  Sensitivity scenario: {row.historical.soc_sens}
+                                  Sensitivity experiment: {row.historical.soc_sens}
                                 </strong>
                               </p>
                             }
@@ -216,7 +216,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                             {
                               row.future.soc_sens && <p>
                                 <strong title={sensScenarios[row.future.soc_sens]}>
-                                  Sensitivity scenario: {row.future.soc_sens}
+                                  Sensitivity experiment: {row.future.soc_sens}
                                 </strong>
                               </p>
                             }
