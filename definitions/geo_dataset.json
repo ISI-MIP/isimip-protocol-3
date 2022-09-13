@@ -15,7 +15,23 @@
     ],
     "resolution": "0.5° grid",
     "format": "binary",
-    "comment": "This is the land-sea mask of the W5E5 dataset (Cucchi et al., 2020, <https://doi.org/10.5194/essd-12-2097-2020>; Lange et al., 2021, <https://doi.org/10.48364/ISIMIP.342217>). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land. For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/41/>."
+    "comment": "This is the land-sea mask of the W5E5 dataset (Cucchi et al., 2020, <https://doi.org/10.5194/essd-12-2097-2020>; Lange et al., 2021, <https://doi.org/10.48364/ISIMIP.342217>). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land. For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/41/>.",
+    "sectors": [
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "energy",
+      "fire",
+      "forestry",
+      "health",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
   },
   {
     "specifier": "landseamask_no-ant",
@@ -33,7 +49,23 @@
     ],
     "resolution": "0.5° grid",
     "format": "binary",
-    "comment": "Same as **landseamask** but without Antarctica."
+    "comment": "Same as **landseamask** but without Antarctica.",
+    "sectors": [
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "energy",
+      "fire",
+      "forestry",
+      "health",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
   },
   {
     "specifier": "landseamask_water-global",
@@ -51,7 +83,23 @@
     ],
     "resolution": "0.5° grid",
     "format": "binary",
-    "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea."
+    "comment": "This is the generic land-sea mask from ISIMIP2b that is to be used for global water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**. Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are not guaranteed to represent climate conditions over land. Instead they may represent climate conditions over sea or a mix of conditions over land and sea.",
+    "sectors": [
+      "agriculture",
+      "biodiversity",
+      "biomes",
+      "diarrhea",
+      "energy",
+      "fire",
+      "forestry",
+      "health",
+      "labour",
+      "lakes_global",
+      "lakes_local",
+      "permafrost",
+      "water_global",
+      "water_regional"
+    ]
   },
   {
     "specifier": "countrymasks",
@@ -723,5 +771,30 @@
       "lakes_local",
       "water_global"
     ]
+  },
+  {
+    "specifier": "bathymetry",
+    "title": "Sea Floor Depth",
+    "group": "bathymetry",
+    "path": {
+      "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/fishmip_static/gfdl-mom6-cobalt2_obsclim_deptho_<resolution>_global_fixed.nc",
+      "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/fishmip_static/<climate-forcing>_<ensemble_member>_picontrol_deptho_onedeg_global_fixed.nc"
+    },
+    "variables": [
+      {
+        "specifier": "deptho",
+        "unit": "m"
+      }
+    ],
+    "resolution": [
+        "0.25° and 1° grid"
+    ],
+    "format": "NetCDF",
+    "comment": "Grid cell level ocean depth GFDL-MOM6-COBALT2 was running with.",
+    "sectors": [
+	"marine-fishery_global",
+	"marine-fishery_regional"
+    ]
+
   }
 ]
