@@ -12,7 +12,7 @@ const IrrigationTable = function({ config, number, rows }) {
       </caption>
       <thead className="thead-dark">
         <tr>
-          <th style={{width: '70%'}}>Crop</th>
+          <th style={{width: '70%'}}>Irrigation Type</th>
           <th style={{width: '30%'}}>Specifier</th>
         </tr>
       </thead>
