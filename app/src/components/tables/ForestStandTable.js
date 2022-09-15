@@ -9,7 +9,7 @@ const ForestStandTable = function({ config, number, rows, actions }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Harmonization specifiers (<code>harmonization</code>).
+          Table {number}: Forest stand specifiers (<code>forest-stand</code>).
         </caption>
         <thead className="thead-dark">
           <tr>
