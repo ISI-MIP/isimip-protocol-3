@@ -9,7 +9,7 @@ const OceanRegionTable = function({ config, number, rows, actions }) {
     <div className="w-75">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Harmonization specifiers (<code>ocean-region</code>).
+          Table {number}: Ocean regions (<code>ocean-region</code>).
         </caption>
         <thead className="thead-dark">
           <tr>
