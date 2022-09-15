@@ -9,7 +9,7 @@ const SpeciesTable = function({ config, number, rows, actions }) {
     <div className="w-50">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Harmonization specifiers (<code>species</code>).
+          Table {number}: Species specifiers (<code>species</code>).
         </caption>
         <thead className="thead-dark">
           <tr>
