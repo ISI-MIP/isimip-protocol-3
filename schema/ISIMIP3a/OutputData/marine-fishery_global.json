@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/coastal.json",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/marine-fishery_global.json",
   "commit": "c6b746558b29cd7a8996a62731f35b127cf8dcdf",
   "type": "object",
   "required": [
@@ -11,7 +11,6 @@
       "required": [
         "model",
         "climate_forcing",
-        "bias_adjustment",
         "climate_scenario",
         "soc_scenario",
         "sens_scenario",
@@ -26,55 +25,61 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
-            "gfdl-esm4",
-            "mri-esm2-0",
-            "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "gfdl-mom6-cobalt2"
           ]
         },
-        "bias_adjustment": {
+        "detrending": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "observed",
+            "detrended"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "picontrol",
-            "ssp370",
-            "ssp126",
-            "ssp585"
+            "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp5soc",
-            "ssp585soc",
-            "2015soc-from-histsoc",
-            "ssp370soc",
-            "ssp3soc",
             "histsoc",
-            "ssp126soc",
-            "2015soc",
-            "1850soc",
-            "ssp1soc"
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
+            "60arcmin",
+            "1955-riverine-input",
             "default"
           ]
         },
         "variable": {
           "type": "string",
-          "enum": []
+          "enum": [
+            "tdc",
+            "cp30to90cm",
+            "cd30to90cm",
+            "tclog10",
+            "cp90cm",
+            "bp30to90cm",
+            "tcblog10",
+            "bd90cm",
+            "bd30to90cm",
+            "cd30cm",
+            "tcb",
+            "bp90cm",
+            "bd30cm",
+            "cp30cm",
+            "tpb",
+            "tpc",
+            "tdb",
+            "cd90cm",
+            "tc",
+            "bp30cm"
+          ]
         },
         "region": {
           "type": "string",
