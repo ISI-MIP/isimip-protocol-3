@@ -30,7 +30,7 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'climate_forcing':
       return <ClimateForcingTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_variable':
       return <ClimateVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'crop':
@@ -52,11 +52,11 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'river_basin':
       return <RiverBasinTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'sens_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'soc_dataset':
       return <SocDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
     case 'soc_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'species':
       return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'variable':

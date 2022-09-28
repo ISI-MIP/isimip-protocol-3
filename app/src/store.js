@@ -7,6 +7,9 @@ const actions = {
   },
   toggleGroup: function(value) {
     return { type: 'toggleGroup', value }
+  },
+  toggleScenario: function(value) {
+    return { type: 'toggleScenario', value }
   }
 }
 
@@ -35,6 +38,16 @@ function reducer(state, action) {
         config.groups.push(action.value)
       } else {
         config.groups.splice(index, 1)
+      }
+      return Object.assign({}, state, { config })
+    }
+    case 'toggleScenario': {
+      const index = state.config.scenarios.indexOf(action.value)
+      const config = Object.assign({}, state.config)
+      if (index < 0) {
+        config.scenarios.push(action.value)
+      } else {
+        config.scenarios.splice(index, 1)
       }
       return Object.assign({}, state, { config })
     }

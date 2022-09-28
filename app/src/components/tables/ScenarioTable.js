@@ -6,10 +6,20 @@ import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
 import Status from '../badges/Status'
 
-import { filterRows, filterField } from '../../utils'
+import { GroupToggleLink, filterRows, filterField, toggleGroups } from '../../utils'
 
 
-const ScenarioTable = function({ config, caption, rows }) {
+const ScenarioTable = function({ config, caption, rows, actions }) {
+  const filteredRows = filterRows(config, rows).map(row => {
+    row.closed = !config.scenarios.includes(row.specifier)
+    row.toggle = () => actions.toggleScenario(row.specifier)
+    return row
+  })
+
+  const anyDatasets = filteredRows.some(row => row.datasets)
+  const allOpen = filteredRows.every(row => !row.closed)
+  const allToggle = () => toggleGroups(filteredRows, allOpen)
+
   return (
     <table className="table table-bordered table-fixed">
       <caption>
@@ -20,14 +30,17 @@ const ScenarioTable = function({ config, caption, rows }) {
           <th style={{width: '25%'}}>Experiment specifier</th>
           <th style={{width: '25%'}}>Forcing</th>
           <th style={{width: '15%'}}>Status</th>
-          <th style={{width: '35%'}}>Datasets</th>
+          <th style={{width: '35%'}}>
+            Datasets
+            {anyDatasets && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} label="datasets" />}
+          </th>
         </tr>
       </thead>
       <tbody>
         {
-          filterRows(config, rows).map((row, index) => {
+          filteredRows.map((row, index) => {
             const datasets = filterField(config, row.datasets)
-            const rowSpan = datasets !== undefined ? datasets.length + 1 : 1
+            const rowSpan = (datasets && !row.closed) ? datasets.length + 1 : 1
 
             const firstRow = [
               (
@@ -42,6 +55,7 @@ const ScenarioTable = function({ config, caption, rows }) {
                     </p>
                   </td>
                   <td colSpan="3" className={rowSpan == 1 ? 'extra-border-bottom' : ''}>
+                    {datasets && <GroupToggleLink className="float-right" closed={row.closed} toggle={row.toggle} label="datasets" />}
                     <p>{row.description}</p>
                     <ReactMarkdown children={row.description_note} />
                   </td>
@@ -49,7 +63,7 @@ const ScenarioTable = function({ config, caption, rows }) {
               )
             ]
 
-            if (datasets) {
+            if (datasets && !row.closed) {
               return firstRow.concat(datasets.map((dataset, index) => {
                 const last = (index == datasets.length - 1)
                 return (

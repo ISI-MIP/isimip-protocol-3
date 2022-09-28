@@ -8,7 +8,7 @@ import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
 const CropTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const allOpen = filteredGroups.every(group => !group.closed)
-  const allToggle = () => toggleGroups(filteredGroups)
+  const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   return (
     <div className="w-50">
@@ -21,7 +21,7 @@ const CropTable = function({ config, caption, rows, groups, actions }) {
             <th style={{width: '50%'}}>Crop</th>
             <th style={{width: '50%'}}>
               Specifier
-              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />
+              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} label="datasets" />
             </th>
           </tr>
         </thead>

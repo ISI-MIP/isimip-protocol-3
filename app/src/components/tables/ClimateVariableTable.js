@@ -10,7 +10,7 @@ const ClimateVariableTable = function({ config, caption, rows, groups, actions }
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
-  const allToggle = () => toggleGroups(filteredGroups)
+  const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   const getSpecifier = (row) => {
       if (row.extension) {
