@@ -112,7 +112,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
             <p key={index}>
               <em className="sector">{sector}:</em>
               {' '}
-              <ReactMarkdown className="d-inline" components={{p: 'span'}} children={comment[sector]} />
+              <ReactMarkdown components={{p: 'span'}} children={comment[sector]} />
             </p>
           )
         })
