@@ -63,9 +63,9 @@
 <li><a href="#13-simulation-protocol">1.3 Simulation protocol</a></li>
 </ul>
 </li>
-<li><a href="#2-experiments-scenarios">2. Experiments &amp; Scenarios</a><ul>
+<li><a href="#2-experiments">2. Experiments</a><ul>
 <li><a href="#21-experiments">2.1 Experiments</a></li>
-<li><a href="#22-scenario-definitions">2.2 Scenario definitions</a></li>
+<li><a href="#22-experiment-specifiers">2.2 Experiment specifiers</a></li>
 </ul>
 </li>
 <li><a href="#3-input-data">3. Input data</a><ul>
@@ -85,7 +85,7 @@
 </ul>
 </div>
 <p class="d-print-none">
-    The simulation protocol describes the simulation scenarios, input data sets and output variables necessary to participate in the ISIMIP3 simulation round.
+    The simulation protocol describes the experiments, input data sets and output variables necessary to participate in the ISIMIP3 simulation round.
 </p>
 
 <p class="d-print-none">
@@ -97,7 +97,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 06 October 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2f71f00e27dacbbb295b8ce9a7edf78086797555">2f71f00e27dacbbb295b8ce9a7edf78086797555</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/ea557d954e6aeff329587f85d72c3e2e715f92ae">ea557d954e6aeff329587f85d72c3e2e715f92ae</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -106,7 +106,7 @@
 <p>The main components of the ISIMIP framework are:</p>
 <ul>
 <li>A common set of climate and other forcing data which will be distributed via a central database;</li>
-<li>A common modelling protocol to ensure consistency across sectors and scales in terms of data, format and scenario set-up;</li>
+<li>A common modelling protocol to ensure consistency across sectors and scales in terms of data, format and experiment set-up;</li>
 <li>A central archive where the output data will be collected and made available to the scientific community.</li>
 </ul>
 <h3 id="12-simulation-round">1.2 Simulation round</h3>
@@ -121,13 +121,13 @@
 <p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
 </div>
 <h3 id="13-simulation-protocol">1.3 Simulation protocol</h3>
-<p>In this protocol we describe the <a href="#scenarios-experiments">scenarios &amp; experiments</a>, the different <a href="#input-data">input datasets</a>, the <a href="#output-data">output variables</a>, and how to <a href="#reporting-model-results">report model results</a>.</p>
-<p>Throughout the protocol we use <strong>specifiers</strong> that denote a particular scenario, experiment, variable or other parameter. We use these specifiers in the tables below, in the filenames of the input data sets, and ask you to use the same specifiers in your output files. More on reporting data can be found <a href="#reporting-model-results">at the end</a> of this document.</p>
-<h2 id="2-experiments-scenarios">2. Experiments &amp; Scenarios</h2>
+<p>In this protocol we describe the <a href="#2-experiments">experiments</a>, the different <a href="#3-input-data">input datasets</a>, the <a href="#4-output-data">output variables</a>, and how to <a href="#5-reporting-model-results">report model results</a>.</p>
+<p>Throughout the protocol we use <strong>specifiers</strong> that denote a particular experiment, variable or other parameter. We use these specifiers in the tables below, in the filenames of the input data sets, and ask you to use the same specifiers in your output files. More on reporting data can be found <a href="#5-reporting-model-results">at the end</a> of this document.</p>
+<h2 id="2-experiments">2. Experiments</h2>
 <h3 id="21-experiments">2.1 Experiments</h3>
-<p>In Table 2.1, we describe the different experiments for ISIMIP3. Each default experiment is defined by its <strong>climate related forcing (CRF)</strong> and the assumptions regarding <strong>direct human forcing (DHF)</strong>. The associated specifications all have a label such as <code>obsclim</code> or <code>histsoc</code> that are provided in Table 2.1 and further specified in Tables 2.2 and 2.3. These specifiers are used in the file names of the corresponding input files and should also be used for the names of the output files (see report model results <a href="#reporting-model-results">report model results</a>). Sensitivity experiments are described as deviation from a <code>default</code> experiment and represented by labels that are used as a third specifier of the experiments. Their specific meanings are defined in Table 2.4.</p>
+<p>In Table 2.1, we describe the different experiments for ISIMIP3. Each default experiment is defined by its <strong>climate related forcing (CRF)</strong> and the assumptions regarding <strong>direct human forcing (DHF)</strong>. The associated specifications all have a label such as <code>obsclim</code> or <code>histsoc</code> that are provided in Table 2.1 and further specified in Tables 2.2 and 2.3. These specifiers are used in the file names of the corresponding input files and should also be used for the names of the output files (see report model results <a href="#5-reporting-model-results">report model results</a>). Sensitivity experiments are described as deviation from a default experiment and represented by labels that are used as a third specifier of the experiments. Their specific meanings are defined in Table 2.4.</p>
 <p>Please note that the experiments are different for ISIMIP3a and ISIMIP3b and some are sector specific. You can use the menu on the top-right of the page to select the sumulation round and sectors you are interested in.</p>
-<div data-component="table" data-identifier="experiments" data-number="2.1"></div>
+<div data-caption="Table 2.1: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row)." data-component="table" data-identifier="experiments"></div>
 <h4 id="note-regarding-models-requiring-spin-up">Note regarding models requiring spin-up</h4>
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data. The files are located under <code>ISIMIP3a/InputData/climate/atmosphere/spinclim</code> at DKRZ and in the ISIMIP Repository. If more than 100 years of spin-up are needed, these data can be repeated as often as needed. </p>
@@ -142,20 +142,21 @@
 <p>For sector-specific experiments without direct human influence (nat), the spin-up should not use any DHF as well.</p>
 <p>Please note that there is no "pre-industrial control run" from 1601-1849 for these experiments (<code>2015soc</code>, <code>nat</code>) and hence the spin-up links directly to the historical period. </p>
 </div>
-<h3 id="22-scenario-definitions">2.2 Scenario definitions</h3>
-<p>Tables 2-4 describe the different scenarios for the different simulation periods as described in Table 1. They are used in the file names of the corresponding input files and should also be used for the names of the output files (see <a href="#reporting-model-results">report model results</a>).</p>
-<div data-component="table" data-identifier="climate_scenario" data-number="2.2"></div>
-<div data-component="table" data-identifier="soc_scenario" data-number="2.3"></div>
-<div data-component="table" data-identifier="sens_scenario" data-number="2.4"></div>
+<h3 id="22-experiment-specifiers">2.2 Experiment specifiers</h3>
+<p>Tables 2.2-2.4 describe the different specifiers for the different experiments as described in Table 2.1. They are used in the file names of the corresponding input files and should also be used for the names of the output files (see <a href="#5-reporting-model-results">report model results</a>).</p>
+<p>All ISMIP experiments are described by specifying the underlying set of climate-related forcings and direct human forcings. Some of the forcing data sets are <span class="badge badge-info">mandatory</span>: i.e. if impact models account for the forcing, the specified dataset must be used; if an alternative input data set is used instead, the run cannot be considered an ISIMIP simulation.</p>
+<div data-caption="Table 2.2: Experiment specifiers: Climate-Related Forcings (`climate-scenario`)." data-component="table" data-identifier="climate_scenario"></div>
+<div data-caption="Table 2.3: Experiment specifiers: Direct Human Forcing (`soc-scenario`)." data-component="table" data-identifier="soc_scenario"></div>
+<div data-caption="Table 2.4: Experiment specifiers: Sensitivity runs (`sens-scenario`)." data-component="table" data-identifier="sens_scenario"></div>
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <h4 id="general-note-regarding-sensitivity-experiments">General note regarding sensitivity experiments</h4>
 <p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as “default” in the sensitivity specifier of the file name even if the run would be identical to the <code>1901co2</code> sensitivity setting.</p>
-<p>The particular sensitivity scenario for an experiment is given in the experiments table below. For most experiments no sensitivity scenario is given, so the <code>default</code> label applies.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table below. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
 <h4 id="general-note-regarding-sensitivity-experiments_1">General note regarding sensitivity experiments</h4>
 <p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as <code>default</code> in the sensitivity specifier of the file name even if the run would be identical to the <code>1850co2</code> sensitivity setting.</p>
-<p>The particular sensitivity scenario for an experiment is given in the experiments table below. For most experiments no sensitivity scenario is given, so the <code>default</code> label applies.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table below. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
 </div>
 <h2 id="3-input-data">3. Input data</h2>
 <p>The base directory for input data at DKRZ is:</p>
@@ -196,14 +197,14 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
 (surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
 </div>
-<div data-component="table" data-identifier="climate_forcing" data-number="3.1"></div>
+<div data-caption="Table 3.1: Climate forcing datasets (`climate-forcing`)." data-component="table" data-identifier="climate_forcing"></div>
 <h4 id="note-on-climate-forcing-priority">Note on climate forcing priority</h4>
 <p>The priority for the different climate forcing datasets is given in the last column of Table 5. If you cannot use all climate forcing datasets, please concentrate on those with a higher priority.</p>
-<div data-component="table" data-identifier="climate_variable" data-number="3.2"></div>
+<div data-caption="Table 3.2: Climate related forcing variables." data-component="table" data-identifier="climate_variable"></div>
 <h3 id="32-direct-human-forcing">3.2 Direct human forcing</h3>
-<div data-component="table" data-identifier="soc_dataset" data-number="3.3"></div>
+<div data-caption="Table 3.3: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
 <h3 id="33-static-geographic-information">3.3 Static geographic information</h3>
-<div data-component="table" data-identifier="geo_dataset" data-number="3.4"></div>
+<div data-caption="Table 3.4: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
 <h2 id="4-output-data">4. Output data</h2>
 <h3 id="41-output-dimensions">4.1 Output dimensions</h3>
 <p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
@@ -213,34 +214,34 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 </div>
 <p>Many variables are defined per area (unit m-2). Typically, and unless otherwise defined, the corresponding reference area is the land area of the grid cell, excluding any water bodies. However, in some cases, it may be necessary or meaningful to report a variable relative to the continental area (including inland water bodies, lakes etc...). For example, evaporation could relate to the land area (excluding water bodies etc.), or to the continental area if the model evaporation occurs over both over land and over water. Also, for some variables, the "per PFT" reporting allows modellers to indicate whether inland water bodies are included in the model or not, and hence, what reference area the variable refers to. In such cases, please specify the reference area in a NetCDF global attribute (e.g. <code>:reference_area = "continental area (including inland water bodies)"</code>). </p>
 <h3 id="42-output-variables">4.2 Output variables</h3>
-<div data-component="table" data-identifier="variable" data-number="4.1"></div>
+<div data-caption="Table 4.1: Output variables (`variable`)." data-component="table" data-identifier="variable"></div>
 <h3 id="43-sector-specific-identifiers">4.3 Sector specific identifiers</h3>
 <div data-component="show" data-sector="agriculture">
 <h4 id="crop-priority-and-naming">Crop priority and naming</h4>
-<div data-component="table" data-identifier="crop" data-number="4.2"></div>
+<div data-caption="Table 4.2: Crop naming and priorities (`crop`)." data-component="table" data-identifier="crop"></div>
 <h4 id="irrigation">Irrigation</h4>
-<div data-component="table" data-identifier="irrigation" data-number="4.3"></div>
+<div data-caption="Table 4.3: Irrigation specifiers (`irrigation`)." data-component="table" data-identifier="irrigation"></div>
 <h4 id="harmonization">Harmonization</h4>
-<div data-component="table" data-identifier="harmonization" data-number="4.4"></div>
+<div data-caption="Table 4.4: Harmonization specifiers (`harmonization`)." data-component="table" data-identifier="harmonization"></div>
 </div>
 <div data-component="show" data-sector="forestry">
 <h4 id="species">Species</h4>
-<div data-component="table" data-identifier="species" data-number="4.5"></div>
+<div data-caption="Table 4.5: Species specifiers (`species`)." data-component="table" data-identifier="species"></div>
 <h4 id="forest-stands">Forest stands</h4>
-<div data-component="table" data-identifier="forest_stand" data-number="4.6"></div>
+<div data-caption="Table 4.6: Forest stand specifiers (`forest-stand`)." data-component="table" data-identifier="forest_stand"></div>
 </div>
 <div data-component="show" data-sector="lakes_local">
 <h4 id="lake-sites">Lake sites</h4>
-<div data-component="table" data-identifier="lake_site" data-number="4.7"></div>
+<div data-caption="Table 4.7: Lake site specifications for local lake models (`lake-site`)." data-component="table" data-identifier="lake_site"></div>
 <p>A document with additional information is maintained by the sector coordinators and provided at <a href="https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854">https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854</a>.</p>
 </div>
 <div data-component="show" data-sector="marine-fishery_regional">
 <h4 id="ocean-regions">Ocean regions</h4>
-<div data-component="table" data-identifier="ocean_region" data-number="4.8"></div>
+<div data-caption="Table 4.8: Ocean region specifiers (`ocean-region`)." data-component="table" data-identifier="ocean_region"></div>
 </div>
 <div data-component="show" data-sector="water_regional">
 <h4 id="catchment-gauging-stations">Catchment gauging stations</h4>
-<div data-component="table" data-identifier="river_basin" data-number="4.9"></div>
+<div data-caption="Table 4.9: Catchment gauging stations for reporting regional hydrological model results (`river-basin`)." data-component="table" data-identifier="river_basin"></div>
 </div>
 <div data-component="hide" data-sector="agriculture,forestry,lakes_local,marine-fishery_regional,water_regional">
 <p>No sector specific identifiers are available for this selection of simulation round and sectors.</p>
@@ -286,7 +287,7 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <p><a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a></p>
 <p>It is important that you comply precisely with the formatting specified there, in order to facilitate the analysis of your simulation results in the ISIMIP framework. Incorrect formatting can
 seriously delay the analysis. The ISIMIP Team will be glad to assist with the preparation of these files if necessary.</p>
-<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b. If you cannot fulfill this, please indicate that by using a suffix for your model name (e.g. simple version numbering: MODEL-v1, MODEL-v2 or following <a href="https://semver.org">semantic versioning</a>: MODEL-2.0.0, see also <a href="#reporting-model-results">reporting model results</a>).</p>
+<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b. If you cannot fulfill this, please indicate that by using a suffix for your model name (e.g. simple version numbering: MODEL-v1, MODEL-v2 or following <a href="https://semver.org">semantic versioning</a>: MODEL-2.0.0).</p>
 <p>This versioning does not only apply to changes in the computational logic of the model, but also to input parameters, calibration or setup. If model versions are not reported, we will name them according to the simulation round (e.g. MODEL-isimip3a). We require the strict versioning to ensure that differences between model results are fully attributable to the changes in model forcings.</p>
 <p>File names consist of a series of identifier, separated by underscores. Things to note:</p>
 <ul>
@@ -7102,7 +7103,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "binary",
-      "comment": "This is the land-sea mask of the W5E5 dataset (Cucchi et al., 2020, <https://doi.org/10.5194/essd-12-2097-2020>; Lange et al., 2021, <https://doi.org/10.48364/ISIMIP.342217>). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land. For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/41/>.",
+      "comment": "This is the land-sea mask of the W5E5 dataset ([Cucchi et al., 2020](https://doi.org/10.5194/essd-12-2097-2020); [Lange et al., 2021](https://doi.org/10.48364/ISIMIP.342217)). Over all grid cells marked as land by this mask, all climate data that are based on W5E5 (GSWP3-W5E5 as well as climate data bias-adjusted using W5E5) are guaranteed to represent climate conditions over land. For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/41/>.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -7500,7 +7501,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland (MIRCA2000 at 5 arc-minutes, <https://doi.org/10.1029/2008GB003435>).",
+      "comment": "GGCMI Phase 3 soil input data set for usage in ISIMIP/GGCMI Phase 3 simulations, data aggregated by dominant soil profile (MU_GLOBAL) within dominant soil texture class from HWSD on current cropland ([MIRCA2000 at 5 arc-minutes](https://doi.org/10.1029/2008GB003435)).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -7535,7 +7536,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002, <https://doi.org/10.1016/S0022-1694(01)00565-0>). Documentation (pdf) is provided alongside data files.",
+      "comment": "DDM30 ([D\u00f6ll & Lehner, 2002](https://doi.org/10.1016/S0022-1694(01)00565-0)). Documentation (pdf) is provided alongside data files.",
       "sectors": [
         "agriculture",
         "biomes",
@@ -7568,7 +7569,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002, <https://doi.org/10.1016/S0022-1694(01)00565-0>). Documentation (pdf) is provided alongside data files.",
+      "comment": "DDM30 ([D\u00f6ll & Lehner, 2002](https://doi.org/10.1016/S0022-1694(01)00565-0)). Documentation (pdf) is provided alongside data files.",
       "sectors": [
         "agriculture",
         "biomes",
@@ -7601,7 +7602,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF, ascii",
-      "comment": "DDM30 (D\u00f6ll & Lehner, 2002, <https://doi.org/10.1016/S0022-1694(01)00565-0>). Documentation (pdf) is provided alongside data files.",
+      "comment": "DDM30 ([D\u00f6ll & Lehner, 2002](https://doi.org/10.1016/S0022-1694(01)00565-0)). Documentation (pdf) is provided alongside data files.",
       "sectors": [
         "agriculture",
         "biomes",
@@ -7639,7 +7640,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Level-Volume Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Volume Hypsographic curves). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Volume is the volume at the corresponding level (in km3). Calculated from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>), and Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Level-Volume Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Volume Hypsographic curves). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Volume is the volume at the corresponding level (in km3). Calculated from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)), and Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603>)). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7668,7 +7669,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Level-Area Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Volume Hypsographic curves). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Area is the area at the corresponding level (in km2). Calculated from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>), and Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Level-Area Hypsographic curves to be provided to your model (alternatively, you can also use the Level-Volume Hypsographic curves). Each hypsographic consist in 11 data pairs. Level refers to the level of the lake taking the lake bottom as the reference (in meters), Area is the area at the corresponding level (in km2). Calculated from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)), and Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603>)). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7691,7 +7692,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Elevation (meters above sea level) for representative lakes calculated from Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Elevation (meters above sea level) for representative lakes calculated from Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603)). More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7714,7 +7715,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Maximum depth (meters) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>). We recommend using the area or volume hypsographic curves provided in this repository as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Maximum depth (meters) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)). We recommend using the area or volume hypsographic curves provided in this repository as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7737,7 +7738,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Mean depth (meters) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>), and Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). We recommend using the area or volume hypsographic curves provided in this repository as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Mean depth (meters) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)), and Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603)). We recommend using the area or volume hypsographic curves provided in this repository as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7760,7 +7761,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Surface area (km^2) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>), and Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). We recommend using the area or volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Surface area (km^2) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)), and Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603)). We recommend using the area or volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -7783,7 +7784,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "0.5\u00b0 grid",
       "format": "NetCDF",
-      "comment": "Volume (km^3) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 (Khazaei et al., 2022, <https://doi.org/10.6084/m9.figshare.c.5243309.v1>), and Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>). We recommend using the area or volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Volume (km^3) for representative lakes calculated from from GLOBathy, the Global lakes Bathymetry Dataset, January 2022 ([Khazaei et al., 2022](https://doi.org/10.6084/m9.figshare.c.5243309.v1)), and Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603)). We recommend using the area or volume hypsographic curves as inputs for your lake model. Use this file only if your lake model does not accept a full hypsographic curve as an input. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -8433,7 +8434,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "Based on the HYDE 3.2 data set (Klein Goldewijk, 2016, <https://doi.org/10.5194/essd-9-927-2017>), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>). For further information on the land use data refer to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/82/>.",
+      "comment": "Based on the HYDE 3.2 data set ([Klein Goldewijk, 2016](https://doi.org/10.5194/essd-9-927-2017)), but harmonized by Hurtt et al. (LUH2 v2h data set, see [Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>). For further information on the land use data refer to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/82/>.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8523,7 +8524,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "Based on the HYDE 3.2 data set (Klein Goldewijk, 2016, <https://doi.org/10.5194/essd-9-927-2017>), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>).",
+      "comment": "Based on the HYDE 3.2 data set ([Klein Goldewijk, 2016](https://doi.org/10.5194/essd-9-927-2017)), but harmonized by Hurtt et al. (LUH2 v2h data set, see [Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8718,7 +8719,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "The C4 perennial crops are not further downscaled from the \"5 crops\" data set and currently only include sugarcane.  Similarly, the C3 perennial crops are not downscaled either. The data is derived from the \"5 crops\" LUH2 data, and the crops have been downscaled to 15 crops according to the ratios given by the Monfreda data set (Monfreda, Ramankutty, and Foley, 2008, <https://doi.org/10.1029/2007GB002947>).",
+      "comment": "The C4 perennial crops are not further downscaled from the \"5 crops\" data set and currently only include sugarcane.  Similarly, the C3 perennial crops are not downscaled either. The data is derived from the \"5 crops\" LUH2 data, and the crops have been downscaled to 15 crops according to the ratios given by the Monfreda data set ([Monfreda, Ramankutty, and Foley, 2008](https://doi.org/10.1029/2007GB002947)).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8768,7 +8769,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "Based on the HYDE 3.2 data set (Klein Goldewijk, 2016, <https://doi.org/10.5194/essd-9-927-2017>), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>).",
+      "comment": "Based on the HYDE 3.2 data set ([Klein Goldewijk, 2016](https://doi.org/10.5194/essd-9-927-2017)), but harmonized by Hurtt et al. (LUH2 v2h data set, see [Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8813,7 +8814,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "Based on the HYDE 3.2 data set (Klein Goldewijk, 2016, <https://doi.org/10.5194/essd-9-927-2017>), but harmonized by Hurtt et al. (LUH2 v2h data set, see Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>).",
+      "comment": "Based on the HYDE 3.2 data set ([Klein Goldewijk, 2016](https://doi.org/10.5194/essd-9-927-2017)), but harmonized by Hurtt et al. (LUH2 v2h data set, see [Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8879,7 +8880,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual (growing season)",
-      "comment": "Based on the LUH2 v2h data set (see Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>). For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/28/>.",
+      "comment": "Based on the LUH2 v2h data set (see [Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>). For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/28/>.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8924,7 +8925,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014 (Tian et al., 2018, <https://doi.org/10.1175/BAMS-D-17-0212.1>). Nitrogen deposition data was interpolated to 0.5\u00b0 by 0.5\u00b0 by the nearest grid. Data for 2015-2019 is assumed to be same as that in 2014. For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/24/>.",
+      "comment": "Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014 ([Tian et al., 2018](https://doi.org/10.1175/BAMS-D-17-0212.1)). Nitrogen deposition data was interpolated to 0.5\u00b0 by 0.5\u00b0 by the nearest grid. Data for 2015-2019 is assumed to be same as that in 2014. For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/24/>.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -8968,7 +8969,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014 (Tian et al., 2018, <https://doi.org/10.1175/BAMS-D-17-0212.1>). Nitrogen deposition data was interpolated to 0.5\u00b0 by 0.5\u00b0 by the nearest grid. Data for 2015-2019 is assumed to be same as that in 2014 . For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/24/>.",
+      "comment": "Simulated by NCAR Chemistry-Climate Model Initiative (CCMI) during 1850-2014 ([Tian et al., 2018](https://doi.org/10.1175/BAMS-D-17-0212.1)). Nitrogen deposition data was interpolated to 0.5\u00b0 by 0.5\u00b0 by the nearest grid. Data for 2015-2019 is assumed to be same as that in 2014 . For further information refer also to <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/24/>.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -9106,7 +9107,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid and original coordinates (degree)",
       "frequency": "annual",
-      "comment": "Lehner et al. (2011a, <https://doi.org/10.7927/H4N877QK>), Lehner et al. (2011b, <https://dx.doi.org/10.1890/100125>), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications. Please contact <info@isimip.org> in case of questions.",
+      "comment": "[Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://dx.doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications. Please contact <info@isimip.org> in case of questions.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -9164,7 +9165,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by WaterGAP, PCR-GLOBWB, and H08. This data is based ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project (Wada et al., 2016, <https://doi.org/10.5194/gmd-9-175-2016>) for after 2005. Years before 1901 have been filled with the value for year 1901.",
+      "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by WaterGAP, PCR-GLOBWB, and H08. This data is based ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -9258,7 +9259,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "Marine ecosystems or exclusive economic zones",
       "frequency": "annual",
-      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: Rousseau et al. (2019, <https://doi.org/10.1073/pnas.1820344116>).",
+      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116).",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9343,7 +9344,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "Marine ecosystems or exclusive economic zones",
       "frequency": "annual",
-      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: Watson and Tidd (2018, <https://doi.org/10.1016/j.marpol.2018.04.023>).",
+      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Reference for data source: [Watson and Tidd (2018)](https://doi.org/10.1016/j.marpol.2018.04.023).",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
@@ -9380,7 +9381,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "resolution": "plot-specific",
       "frequency": "annual",
-      "comment": "Reyer et al., 2019, <https://doi.org/10.5880/PIK.2019.008>, and Reyer et al., 2020, <https://doi.org/10.5194/essd-12-1295-2020> management prescribes stem numbers remaining after harvest, management data is annual but not every year has data.",
+      "comment": "[Reyer et al. (2019)](https://doi.org/10.5880/PIK.2019.008), and [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020) management prescribes stem numbers remaining after harvest, management data is annual but not every year has data.",
       "sectors": [
         "forestry"
       ],
@@ -9457,7 +9458,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "national",
       "frequency": "annual",
-      "comment": "Historic annual country-level wood harvesting data. Based on the LUH2 v2h Harmonization Data Set (Hurtt, Chini, Sahajpal, Frolking, et al., 2020, <https://doi.org/10.5194/gmd-13-5425-2020>, see also <https://luh.umd.edu>). Interpolated to a 0.5\u00b0 grid using first-order conservative remapping and calculated over a fractional country mask (<https://gitlab.pik-potsdam.de/isipedia/countrymasks/-/blob/master/>) derived from ASAP-GAUL (<https://data.europa.eu/euodp/data/dataset/jrc-10112-10004>). For further information see <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/83/>",
+      "comment": "Historic annual country-level wood harvesting data. Based on the LUH2 v2h Harmonization Data Set ([Hurtt, Chini, Sahajpal, Frolking, et al., 2020](https://doi.org/10.5194/gmd-13-5425-2020), see also <https://luh.umd.edu>). Interpolated to a 0.5\u00b0 grid using first-order conservative remapping and calculated over a fractional country mask (<https://gitlab.pik-potsdam.de/isipedia/countrymasks/-/blob/master/>) derived from [ASAP-GAUL](https://data.europa.eu/euodp/data/dataset/jrc-10112-10004). For further information see <https://www.isimip.org/gettingstarted/input-data-bias-correction/details/83/>",
       "sectors": [
         "biomes",
         "fire",
@@ -9492,7 +9493,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
       "format": "NetCDF",
-      "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 (Messager et al., 2016, <https://doi.org/10.1038/ncomms13603>) and GRanDv1.3 databases (Lehner et al., 2011, <https://doi.org/10.1890/100125>) mapped to 0.5 degrees resolution, time steps represent increasing reservoirs in their construction year, as given by GRanDv1.3 Reservoirs from 2017 onwards are kept constant. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
+      "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://doi.org/10.1038/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://doi.org/10.1890/100125)) mapped to 0.5 degrees resolution, time steps represent increasing reservoirs in their construction year, as given by GRanDv1.3 Reservoirs from 2017 onwards are kept constant. More information about the calculation can be found at <https://github.com/icra/ISIMIP_Lake_Sector>.",
       "sectors": [
         "lakes_global",
         "lakes_local",
@@ -9536,7 +9537,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "0.5\u00b0 grid",
       "frequency": "annual",
-      "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects (United Nations, 2019, <https://population.un.org/wpp/>). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al., 2021, <https://doi.org/10.5281/zenodo.4421504>).",
+      "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects ([United Nations, 2019](https://population.un.org/wpp/)). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset ([Arujo et al., 2021](https://doi.org/10.5281/zenodo.4421504)).",
       "mandatory": true
     },
     {
@@ -9566,7 +9567,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "national",
       "frequency": "annual",
-      "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects (United Nations, 2019, <https://population.un.org/wpp/>). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al., 2021, <https://doi.org/10.5281/zenodo.4421504>).",
+      "comment": "Historical population data are based on the 2019 Revision of the United Nations World Population Prospects ([United Nations, 2019](https://population.un.org/wpp/)). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset ([Arujo et al., 2021](https://doi.org/10.5281/zenodo.4421504)).",
       "mandatory": true
     },
     {
@@ -9595,19 +9596,176 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "resolution": "country-level",
       "frequency": "annual",
-      "comment": "Historic country-level GDP data are based on GDP per capita estimates from the WDI (1965-2020). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset (Arujo et al., 2021, <https://doi.org/10.5281/zenodo.4421504>).",
+      "comment": "Historic country-level GDP data are based on GDP per capita estimates from the WDI (1965-2020). For countries not covered by the UNWPP we use data from various sources (e.g. CIA World Factbook, Insee, BEA, PRISM, and Woldometers) compiled in a MissingIslands dataset ([Arujo et al., 2021](https://doi.org/10.5281/zenodo.4421504)).",
       "mandatory": true
     }
   ],
   "soc_scenario": [
     {
       "specifier": "histsoc",
-      "description": "Varying direct human influences in the historical period (e.g. observed changes in historical land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description": "Varying direct human influences in the historical period.",
       "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
       "simulation_rounds": [
         "ISIMIP3a",
         "ISIMIP3b"
-      ]
+      ],
+      "datasets": {
+        "ISIMIP3a": [
+          {
+            "dataset": "Land use and irrigation data",
+            "status": "mandatory",
+            "doi": "https://data.isimip.org/10.48364/ISIMIP.571261.2",
+            "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947))."
+          },
+          {
+            "dataset": "Wood harvest",
+            "status": "optional",
+            "doi": "https://data.isimip.org/10.48364/ISIMIP.482888.2",
+            "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "Land transformation",
+            "status": "mandatory",
+            "doi": "",
+            "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "N-fertilizer",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.311496.2",
+            "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "N-deposition",
+            "status": "optional",
+            "doi": " https://doi.org/10.48364/ISIMIP.600567 ",
+            "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1)."
+          },
+          {
+            "dataset": "Crop calendar",
+            "status": "optional",
+            "doi": "https://doi.org/10.5281/zenodo.5062513",
+            "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y))."
+          },
+          {
+            "dataset": "Marine fishing effort and catches",
+            "status": "mandatory",
+            "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116)."
+          },
+          {
+            "dataset": "Dams and reservoirs",
+            "status": "optional",
+            "doi": "https://doi.org/10.48364/ISIMIP.769035",
+            "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications."
+          },
+          {
+            "dataset": "Water abstraction",
+            "status": "optional",
+            "doi": "https://doi.org/10.48364/ISIMIP.228996",
+            "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901."
+          },
+          {
+            "dataset": "Lake surface area",
+            "status": "optional",
+            "doi": "",
+            "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))"
+          },
+          {
+            "dataset": "Forest management",
+            "status": "optional",
+            "doi": "",
+            "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020)."
+          },
+          {
+            "dataset": "Population data",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.822480.2",
+            "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published)."
+          },
+          {
+            "dataset": "GDP data",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.824555",
+            "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators)."
+          }
+        ],
+        "ISIMIP3b": [
+          {
+            "dataset": "Land use and irrigation data",
+            "status": "mandatory",
+            "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947))."
+          },
+          {
+            "dataset": "Wood harvest",
+            "status": "optional",
+            "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "Land transformation",
+            "status": "mandatory",
+            "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "N-fertilizer",
+            "status": "mandatory",
+            "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
+          },
+          {
+            "dataset": "N-deposition",
+            "status": "optional",
+            "doi": "https://doi.org/10.48364/ISIMIP.600567",
+            "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1)."
+          },
+          {
+            "dataset": "Crop calendar",
+            "status": "optional",
+            "doi": "https://doi.org/10.5281/zenodo.5062513",
+            "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y))."
+          },
+          {
+            "dataset": "Marine fishing effort and catches",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.911570",
+            "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116)"
+          },
+          {
+            "dataset": "Dams and reservoirs",
+            "status": "optional",
+            "doi": "https://doi.org/10.48364/ISIMIP.995292",
+            "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications."
+          },
+          {
+            "dataset": "Water abstraction",
+            "status": "optional",
+            "doi": "https://doi.org/10.48364/ISIMIP.478291",
+            "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901."
+          },
+          {
+            "dataset": "Lake surface area",
+            "status": "optional",
+            "doi": "",
+            "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))"
+          },
+          {
+            "dataset": "Forest management",
+            "status": "optional",
+            "doi": "",
+            "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020)."
+          },
+          {
+            "dataset": "Population data",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
+            "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published)."
+          },
+          {
+            "dataset": "GDP data",
+            "status": "mandatory",
+            "doi": "https://doi.org/10.48364/ISIMIP.824555",
+            "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators)."
+          }
+        ]
+      }
     },
     {
       "specifier": "1850soc",
@@ -10769,16 +10927,55 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   "climate_scenario": [
     {
       "specifier": "obsclim",
-      "description": "Observation-based atmospheric and oceanic climate forcing, lightning, atmospheric CO\u2082 and CH\u2084 concentrations.",
-      "description_note": "Under development: Coastal water levels and tropical cyclone tracks and associated wind fields.",
+      "description": "Observation-based climate related forcing.",
       "simulation_rounds": [
         "ISIMIP3a"
+      ],
+      "datasets": [
+        {
+          "dataset": "Standard observation-based atmospheric climate forcing",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.982724",
+          "comment": "Factual climate input datasets: GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Tracks from IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021), Windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1))."
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "Standard observation-based oceanic forcing data",
+          "status": "under development",
+          "comment": "GFDL MOM6/COBALTv2 simulations driven by reanalysis-based atmospheric forcing ([Liu et al., 2021](https://doi.org/10.1029/2021GL094367))."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Hourly coastal water levels with long-term trends for impact attribution."
+        },
+        {
+          "dataset": "Atmospheric CO\u2082 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
+          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2021: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)"
+        },
+        {
+          "dataset": "Atmospheric CH\u2084 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
+          "comment": "1850-2014: [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017), 2015-2021: [Dlugokencky (2022)](https://gml.noaa.gov/ccgg/trends_ch4/)"
+        }
       ]
     },
     {
       "specifier": "counterclim",
-      "description": "De-trended atmospheric climate forcing, constant CO\u2082 and CH\u2084 concentrations at 1901 levels ([CO\u2082] = 296.13 ppm; [CH\u2084] = 928.8004 ppb). Lightning as in obsclim.",
-      "description_note": "Under development: Counterfactual coastal water levels.",
+      "description": "De-trended climate related forcing.",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -10796,11 +10993,52 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "permafrost",
         "water_global",
         "water_regional"
+      ],
+      "datasets": [
+        {
+          "dataset": "Counterfactual \"no-climate change\" atmospheric climate forcing",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.982724",
+          "comment": "Detrended versions of the GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3 data sets derived by the Attrici method."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "mandatory",
+          "comment": "We do not provide \"no climate change\" TC tracks and windfields but the original tracks from the IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021) windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1)) should be used in combination with the counterfactual water levels to estimate the impacts of sea level rise on TC induced damages, losses or replacement."
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "We do not provide \"no climate change\" lightning data. Instead the original Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303) should be used in the **counterclim** set-up."
+        },
+        {
+          "dataset": "Oceanic forcing data",
+          "doi": "",
+          "comment": "We do not provide any counterfactual oceanic forcings, i.e. there is no \"no climate change\" experiment proposed for the fisheries and marine ecosystems sector."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Detrended version of the **obsclim** hourly coastal water levels."
+        },
+        {
+          "dataset": "Atmospheric CO\u2082 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
+          "comment": "1901 levels ([CO2] = 296.13 ppm) of observed atmospheric CO2 concentrations according to [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z)."
+        },
+        {
+          "dataset": "Atmospheric CH\u2084 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
+          "comment": "1901 levels of atmospheric CH4 concentrations ([CH4] = 928.8004 ppb), according to [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017)."
+        }
       ]
     },
     {
       "specifier": "spinclim",
-      "description": "Detrended version of the observed climate forcing used to spin-up the simulations based on a stable 1900 climate",
+      "description": "Detrended version of the observed climate related forcing used to spin-up the simulations based on a stable 1900 climate",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -10820,47 +11058,252 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "picontrol",
-      "description": "GCM-based pre-industrial atmospheric and oceanic climate forcing, CO\u2082 and CH\u2084 concentrations fixed at 1850 levels, monthly climatology of lightning.",
-      "description_note": "Under development: Pre-industrial variations in coastal water levels and tropical cyclone tracks with associated wind fields.",
+      "description": "GCM-based pre-industrial climate related forcing, CO\u2082 and CH\u2084 concentrations fixed at 1850 levels.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "GCM-based pre-industrial atmospheric forcing",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "GCM-based pre-industrial oceanic climate forcing",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+        },
+        {
+          "dataset": "Atmospheric pre-industrial CO\u2082 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "1850 levels of atmospheric CO\u2082 concentrations ([CO2] = 284.73 ppm), according to Meinshausen et al. (2011, <https://doi.org/10.1007/s10584-011-0156-z>)."
+        },
+        {
+          "dataset": "Atmospheric pre-industrial CH\u2084 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "1850 levels of atmospheric CH\u2084 concentrations ([CH4] = 808.249 ppb), according to Meinshausen et al. (2017, <https://doi.org/10.5194/gmd-10-2057-2017>)."
+        }
       ]
     },
     {
       "specifier": "historical",
-      "description": "GCM-based historical atmospheric and oceanic climate forcing, historical changes in CO\u2082 and CH\u2084 concentrations, monthly climatology of lightning.",
-      "description_note": "Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
+      "description": "GCM-based historical climate related forcing, historical changes in CO\u2082 and CH\u2084 concentrations.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "GCM-based historical atmospheric forcing",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "GCM-based historical oceanic climate forcing",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+        },
+        {
+          "dataset": "Atmospheric historical CO\u2082 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2014: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)"
+        },
+        {
+          "dataset": "Atmospheric historical CH\u2084 concentration",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017)"
+        }
       ]
     },
     {
       "specifier": "ssp126",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP1-2.6, monthly climatology of lightning.",
-      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
+      "description": "GCM-based climate related forcing according to SSP1-2.6.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "GCM-based climate forcing according to SSP1-2.6",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "GCM-based oceanic climate forcing according to SSP1-2.6",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+        },
+        {
+          "dataset": "Atmospheric CO\u2082 concentration according to SSP1-2.6",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        },
+        {
+          "dataset": "Atmospheric CH\u2084 concentration according to SSP1-2.6",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        }
       ]
     },
     {
       "specifier": "ssp370",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP3-7.0, monthly climatology of lightning.",
-      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
+      "description": "GCM-based climate related forcing according to SSP3-7.0.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "GCM-based atmospheric climate forcing according to SSP3-7.0",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "GCM-based oceanic climate forcing according to SSP3-7.0",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+        },
+        {
+          "dataset": "Atmospheric CO\u2082 concentration according to SSP3-7.0",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        },
+        {
+          "dataset": "Atmospheric CH\u2084 concentration according to SSP3-7.0",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        }
       ]
     },
     {
       "specifier": "ssp585",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP5-8.5, monthly climatology of lightning.",
-      "description_note": "Under development: Simulated variations in coastal water levels and tropical cyclone tracks with associated wind fields as derived from GCM boundary conditions.",
+      "description": "GCM-based climate related forcing according to SSP5-8.5.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "GCM-based atmospheric climate forcing according to SSP5-8.5",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+        },
+        {
+          "dataset": "Tropical cyclone tracks and windfields",
+          "status": "under development",
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+        },
+        {
+          "dataset": "Lightning",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+        },
+        {
+          "dataset": "GCM-based oceanic climate forcing according to SSP5-8.5",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+        },
+        {
+          "dataset": "Coastal water levels",
+          "status": "under development",
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+        },
+        {
+          "dataset": "Atmospheric CO\u2082 concentration according to SSP5-8.5",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        },
+        {
+          "dataset": "Atmospheric CH\u2084 concentration according to SSP5-8.5",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+        }
       ]
     },
     {
       "specifier": "ssp119",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP1-1.9, monthly climatology of lightning.",
+      "description": "GCM-based climate related forcing according to SSP1-1.9.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -10871,7 +11314,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp245",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP2-4.5, monthly climatology of lightning.",
+      "description": "GCM-based climate related forcing according to SSP2-4.5.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -10882,7 +11325,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp460",
-      "description": "GCM-based atmospheric and oceanic climate forcing as well as changes in CO\u2082 and CH\u2084 concentrations according to SSP4-6.0, monthly climatology of lightning.",
+      "description": "GCM-based climate related forcing according to SSP4-6.0.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -10893,7 +11336,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "ssp534-over",
-      "description": "",
+      "description": "GCM-based climate related forcing according to SSP5-3.4-OS.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -10904,7 +11347,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "hist-nat",
-      "description": "",
+      "description": "GCM-based historical natural-only atmospheric forcing.",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -10952,7 +11395,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "reanalysis": "20CRv2, ERA5",
       "bias_adjustment_target": "GPCC, CRU",
       "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/80/",
-      "comments": "Combination of W5E5 v2.0 (Cucchi et al., 2020, <https://doi.org/10.5194/essd-2020-28>, and Lange et al., 2021, <https://doi.org/10.48364/ISIMIP.342217>) for 1979-2019 with GSWP3 v1.09 (Kim, 2017, <https://doi.org/10.20783/DIAS.501>) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.5.0 bias adjustment method (Lange, 2019, <https://doi.org/10.5194/gmd-12-3055-2019> and Lange, 2021, <https://doi.org/10.5281/zenodo.4686991>). For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/80/>",
+      "comments": "Combination of W5E5 v2.0 ([Cucchi et al., 2020](https://doi.org/10.5194/essd-2020-28), and [Lange et al., 2021](https://doi.org/10.48364/ISIMIP.342217)) for 1979-2019 with GSWP3 v1.09 ([Kim, 2017](https://doi.org/10.20783/DIAS.501)) homogenized to W5E5 for 1901-1978. The homogenization reduces discontinuities at the 1978/1979 transition and was done using the ISIMIP3BASD v2.5.0 bias adjustment method ([Lange, 2019](https://doi.org/10.5194/gmd-12-3055-2019) and [Lange, 2021](https://doi.org/10.5281/zenodo.4686991)). For further information see also <https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/80/>",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -11052,7 +11495,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "time_period": "1901-2015",
       "reanalysis": "20CRv3",
       "bias_adjustment_target": "none",
-      "comments": "Ensemble member 1 of NOAA-CIRES-DOE 20th Century Reanalysis version 3 (Slivinski et al., 2019, <https://doi.org/10.1002/qj.3598> and Compo et al., 2011, <https://doi.org/10.1002/qj.776>) interpolated to 0.5\u00b0 spatial resolution.",
+      "comments": "Ensemble member 1 of NOAA-CIRES-DOE 20th Century Reanalysis version 3 ([Slivinski et al., 2019](https://doi.org/10.1002/qj.3598) and [Compo et al., 2011](https://doi.org/10.1002/qj.776)) interpolated to 0.5\u00b0 spatial resolution.",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -11085,7 +11528,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "time_period": "1979-2016",
       "reanalysis": "ERA5",
       "bias_adjustment_target": "GPCC, CRU",
-      "comments": "CHELSA-W5E5 v1.0 is a downscaled version of the W5E5 v1.0 dataset, where the downscaling is done with the CHELSA v2.0 algorithm, which applies topographic adjustments based on surface altitude. For the high-resolution sensitivity experiments, this dataset is provided at its original resolution of 30 arcsec as well as in spatially aggregated form, at resolutions of 90 arcsec, 300 arcsec and 1800 arcsec. For more information see Karger et al. (2022, <https://doi.org/10.48364/ISIMIP.836809.2>).",
+      "comments": "CHELSA-W5E5 v1.0 is a downscaled version of the W5E5 v1.0 dataset, where the downscaling is done with the CHELSA v2.0 algorithm, which applies topographic adjustments based on surface altitude. For the high-resolution sensitivity experiments, this dataset is provided at its original resolution of 30 arcsec as well as in spatially aggregated form, at resolutions of 90 arcsec, 300 arcsec and 1800 arcsec. For more information see [Karger et al. (2022)](https://doi.org/10.48364/ISIMIP.836809.2).",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -11355,7 +11798,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "time_period": "1961-2010",
       "reanalysis": "JRA55",
       "bias_adjustment_target": "none",
-      "comments": "JRA-55 driven MOM6-COBALT2 reanalysis. Data on native grid was remapped to a regular 0.25\u00b0 and 1\u00b0 grid. For further experiment design details see <https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021GL094367>",
+      "comments": "JRA-55 driven MOM6-COBALT2 reanalysis. Data on native grid was remapped to a regular 0.25\u00b0 and 1\u00b0 grid. For further experiment design details see [Lui et al. (2021)](https://doi.org/10.1029/2021GL094367).",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
@@ -13081,8 +13524,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "resolution": "global",
       "frequency": "annual",
       "comment": {
-        "ISIMIP3a": "Source: Meinshausen et al. (2011, <https://doi.org/10.1007/s10584-011-0156-z>) for 1850-2005 and Dlugokencky & Tans (2019, <https://www.esrl.noaa.gov/gmd/ccgg/trends/>) from 2006-2019.",
-        "ISIMIP3b": "Source: Malte Meinshausen, Zebedee Nicholls, et al., 2020, <https://doi.org/10.5194/gmd-13-3571-2020>"
+        "ISIMIP3a": "Source: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z) for 1850-2005 and [Dlugokencky & Tans (2019)](https://www.esrl.noaa.gov/gmd/ccgg/trends/) from 2006-2019.",
+        "ISIMIP3b": "Source: [Malte Meinshausen, Zebedee Nicholls, et al., 2020](https://doi.org/10.5194/gmd-13-3571-2020)."
       },
       "path": {
         "ISIMIP3a": "ISIMIP3a/InputData/climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
@@ -13098,8 +13541,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "resolution": "global",
       "frequency": "annual",
       "comment": {
-        "ISIMIP3a": "Source: Malte Meinshausen et al. (2016, <https://doi.org/10.5194/gmd-2016-169> for 1850-2014 and Ed Dlugokencky (NOAA/GML, <https://gml.noaa.gov/ccgg/trends_ch4/>) for 2015-2019",
-        "ISIMIP3b": "Malte Meinshausen et al. (2016), Historical greenhouse gas concentrations, doi:10.5194/gmd-2016-169; Malte Meinshausen, Zebedee Nicholls, et al. Future surface greenhouse gas concentrations, GMD Special Issue http://www.geosci-model-dev.net/special_issue590.html"
+        "ISIMIP3a": "Source: [Malte Meinshausen et al. (2016)](https://doi.org/10.5194/gmd-2016-169) for 1850-2014 and [Ed Dlugokencky (NOAA/GML)](https://gml.noaa.gov/ccgg/trends_ch4/) for 2015-2019.",
+        "ISIMIP3b": "Source: [Malte Meinshausen et al. (2016, Historical greenhouse gas concentrations)](https://doi.org/10.5194/gmd-2016-169); [Malte Meinshausen, Zebedee Nicholls, et al. Future surface greenhouse gas concentrations, GMD Special Issue](http://www.geosci-model-dev.net/special_issue590.html)."
       },
       "path": {
         "ISIMIP3a": "ISIMIP3a/InputData/climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt",
@@ -13114,7 +13557,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "unit": "km-2 d-1",
       "resolution": "0.5\u00b0 grid",
       "frequency": "monthly",
-      "comment": "Source: Cecil, Daniel J. 2006. LIS/OTD 0.5 Degree High Resolution Monthly Climatology (HRMC). Dataset available online from the NASA Global Hydrology Resource Center DAAC, Huntsville, Alabama, U.S.A., <https://doi.org/10.5067/LIS/LIS-OTD/DATA303>",
+      "comment": "Source: [Cecil, Daniel J. 2006. LIS/OTD 0.5 Degree High Resolution Monthly Climatology (HRMC)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303). Dataset available online from the NASA Global Hydrology Resource Center DAAC, Huntsville, Alabama, U.S.A.",
       "sectors": [
         "fire"
       ],
