@@ -1,15 +1,16 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { filterRows } from '../../utils'
 
 
-const ForestStandTable = function({ config, number, rows, actions }) {
+const ForestStandTable = function({ config, caption, rows, actions }) {
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Forest stand specifiers (<code>forest-stand</code>).
+          Table<ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -48,7 +49,7 @@ const ForestStandTable = function({ config, number, rows, actions }) {
 
 ForestStandTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

@@ -1,15 +1,16 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { filterRows } from '../../utils'
 
 
-const RiverBasinTable = function({ config, number, rows, actions }) {
+const RiverBasinTable = function({ config, caption, rows, actions }) {
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Catchment gauging stations for reporting regional hydrological model results (<code>river-basin</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -48,7 +49,7 @@ const RiverBasinTable = function({ config, number, rows, actions }) {
 
 RiverBasinTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

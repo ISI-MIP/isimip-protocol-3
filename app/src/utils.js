@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 
 
-const GroupToggleLink = ({ closed, toggle, all }) => {
+const GroupToggleLink = ({ closed, toggle, all, label }) => {
   const onClick = event => {
     event.preventDefault()
     toggle()
   }
+
+  if (!label) {
+    label = all ? 'groups' : 'group'
+  }
+
   if (all) {
     return (
       <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? 'Show all groups' : 'Hide all groups'}
+        {closed ? `Show all ${label}` : `Hide all ${label}`}
       </a>
     )
   } else {
     return (
       <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? 'Show group' : 'Hide group'}
+        {closed ? `Show ${label}` : `Hide ${label}`}
         {closed && <span className="toggle-group-down">&#65088;</span>}
         {!closed && <span className="toggle-group-up">&#65087;</span>}
       </a>
@@ -75,8 +80,8 @@ const filterGroups = (config, rows, groups, actions) => {
   }).filter(group => group.rows.length > 0)
 }
 
-const toggleGroups = (groups) => {
-  if (groups.every(group => !group.closed)) {
+const toggleGroups = (groups, allOpen) => {
+  if (allOpen) {
     // all groups are open, toggle them all, closing them
     groups.forEach(group => group.toggle())
   } else {

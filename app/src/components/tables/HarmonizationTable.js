@@ -1,14 +1,15 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { filterRows, filterField } from '../../utils'
 
 
-const HarmonizationTable = function({ config, number, rows }) {
+const HarmonizationTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed w-100">
       <caption>
-        Table {number}: Harmonization specifiers (<code>harmonization</code>).
+        <ReactMarkdown components={{p: 'span'}} children={caption} />
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -36,7 +37,7 @@ const HarmonizationTable = function({ config, number, rows }) {
 
 HarmonizationTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 

@@ -26,7 +26,8 @@ const initialState = {
     simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
     products: ['OutputData'],
     sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
-    groups: ls.get('groups') ? JSON.parse(ls.get('groups')) : []
+    groups: ls.get('groups') ? JSON.parse(ls.get('groups')) : [],
+    scenarios: ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
   }
 }
 
@@ -53,6 +54,7 @@ store.subscribe(() => {
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
   ls.set('groups', JSON.stringify(config.groups))
+  ls.set('scenarios', JSON.stringify(config.scenarios))
 })
 
 // insert the toc in the navbar
@@ -107,8 +109,8 @@ document.querySelectorAll('[data-component="hide"]').forEach(el => {
 document.querySelectorAll('[data-component="table"]').forEach(el => {
   ReactDOM.render(
     <Provider store={store}>
-      <Table number={el.dataset.number}
-             identifier={el.dataset.identifier} />
+      <Table identifier={el.dataset.identifier}
+             caption={el.dataset.caption} />
     </Provider>, el
   )
 })

@@ -6,11 +6,11 @@ import Sectors from '../badges/Sectors'
 import ClimateForcing from '../badges/ClimateForcing'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
-const ClimateVariableTable = function({ config, number, rows, groups, actions }) {
+const ClimateVariableTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
-  const allToggle = () => toggleGroups(filteredGroups)
+  const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   const getSpecifier = (row) => {
       if (row.extension) {
@@ -43,7 +43,7 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Climate forcing variables for {config.simulation_round} simulations (<code>climate-variable</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -127,7 +127,7 @@ const ClimateVariableTable = function({ config, number, rows, groups, actions })
 
 ClimateVariableTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   groups: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired

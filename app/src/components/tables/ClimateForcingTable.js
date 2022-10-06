@@ -7,14 +7,14 @@ import Sectors from '../badges/Sectors'
 
 import { filterRows } from '../../utils'
 
-const ClimateForcingTable = function({ config, number, rows, actions }) {
+const ClimateForcingTable = function({ config, caption, rows, actions }) {
   const filteredRows = filterRows(config, rows)
 
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Climate forcing datasets (<code>climate-forcing</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -91,7 +91,7 @@ const ClimateForcingTable = function({ config, number, rows, actions }) {
 
 ClimateForcingTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }

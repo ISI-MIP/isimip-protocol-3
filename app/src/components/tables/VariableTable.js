@@ -6,11 +6,11 @@ import Sectors from '../badges/Sectors'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 
-const VariableTable = function({ config, number, rows, groups, actions }) {
+const VariableTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
-  const allToggle = () => toggleGroups(filteredGroups)
+  const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   const addExtension = (specifier, extension) => {
       if (extension === null) {
@@ -112,7 +112,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
             <p key={index}>
               <em className="sector">{sector}:</em>
               {' '}
-              <ReactMarkdown className="d-inline" components={{p: 'span'}} children={comment[sector]} />
+              <ReactMarkdown components={{p: 'span'}} children={comment[sector]} />
             </p>
           )
         })
@@ -128,7 +128,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Output variables (<code>variable</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -148,7 +148,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
               const header = [
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle} />
                     <strong>{group.title}</strong>
                   </td>
                 </tr>
@@ -199,7 +199,7 @@ const VariableTable = function({ config, number, rows, groups, actions }) {
 
 VariableTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   groups: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired

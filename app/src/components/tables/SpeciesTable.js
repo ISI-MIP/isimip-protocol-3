@@ -1,15 +1,16 @@
 import React, { Component} from 'react'
+import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import { filterRows } from '../../utils'
 
 
-const SpeciesTable = function({ config, number, rows, actions }) {
+const SpeciesTable = function({ config, caption, rows, actions }) {
   return (
     <div className="w-50">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table {number}: Species specifiers (<code>species</code>).
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -36,7 +37,7 @@ const SpeciesTable = function({ config, number, rows, actions }) {
 
 SpeciesTable.propTypes = {
   config: PropTypes.object.isRequired,
-  number: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 
