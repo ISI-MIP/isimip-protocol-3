@@ -165,8 +165,10 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                         <td>{getSpecifier(row)}</td>
                         <td>{row.units}</td>
                         <td>
-                          <ul>
+                          <ul className="resolution-list">
                             {getResolution(row)}
+                          </ul>
+                          <ul className="resolution-list">
                             {getFrequency(row)}
                           </ul>
                         </td>

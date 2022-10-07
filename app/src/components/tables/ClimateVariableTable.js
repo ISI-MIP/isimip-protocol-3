@@ -39,6 +39,15 @@ const ClimateVariableTable = function({ config, caption, rows, groups, actions }
     }
   }
 
+  const getFrequencies = (row) => {
+    const frequency = filterField(config, row.frequency)
+    if (Array.isArray(frequency)) {
+      return frequency.map((frequency, index) => <li key={index}>{frequency}</li>)
+    } else {
+      return <li>{frequency}</li>
+    }
+  }
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -93,8 +102,11 @@ const ClimateVariableTable = function({ config, caption, rows, groups, actions }
                           <td><strong>{getSpecifier(row)}</strong></td>
                           <td>{row.unit}</td>
                           <td>
-                            <ul>
+                            <ul className="resolution-list">
                               {getResolutions(row)}
+                            </ul>
+                            <ul className="resolution-list">
+                              {getFrequencies(row)}
                             </ul>
                           </td>
                           <td>

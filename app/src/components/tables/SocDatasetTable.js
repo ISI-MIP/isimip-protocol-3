@@ -72,9 +72,13 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
                                 {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
-                                      <ul>
+                                      <ul className="resolution-list">
                                         {filterField(config, row.time_periods).map((time_period, index) => <li key={index}>{time_period}</li>)}
+                                      </ul>
+                                      <ul className="resolution-list">
                                         <li>{row.resolution}</li>
+                                      </ul>
+                                      <ul className="resolution-list">
                                         <li>{row.frequency}</li>
                                       </ul>
                                     </td>

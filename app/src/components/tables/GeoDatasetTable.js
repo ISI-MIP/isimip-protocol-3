@@ -11,6 +11,15 @@ const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
+  const getResolutions = (row) => {
+    const resolution = filterField(config, row.resolution)
+    if (Array.isArray(resolution)) {
+      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
+    } else {
+      return <li>{resolution}</li>
+    }
+  }
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -76,7 +85,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
                                       <ul>
-                                        <li>{row.resolution}</li>
+                                        {getResolutions(row)}
                                       </ul>
                                     </td>
                                     <td rowSpan={row.variables.length}>
