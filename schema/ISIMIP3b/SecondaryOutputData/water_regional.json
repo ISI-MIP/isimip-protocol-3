@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_regional.json",
-  "commit": "a608799b028d4e30644b4bf296b272ae53015ee4",
+  "commit": "7350be189dbee344eea8ff5736d1771f7aa7960b",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,114 +26,114 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ipsl-cm6a-lr",
             "canesm5",
             "ukesm1-0-ll",
+            "cnrm-esm2-1",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr",
             "ec-earth3",
             "cnrm-cm6-1",
-            "cnrm-esm2-1",
             "mpi-esm1-2-hr",
             "miroc6",
-            "mri-esm2-0"
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "w5e5",
-            "nobasd"
+            "nobasd",
+            "w5e5"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp245",
+            "ssp119",
+            "ssp585",
+            "hist-nat",
             "ssp126",
             "ssp460",
-            "ssp119",
-            "hist-nat",
-            "ssp585",
-            "historical",
             "ssp370",
-            "ssp534-over",
-            "picontrol"
+            "picontrol",
+            "ssp245",
+            "historical",
+            "ssp534-over"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "ssp370soc",
             "ssp3soc",
-            "ssp585soc",
-            "1850soc",
+            "ssp5soc",
             "2015soc-from-histsoc",
+            "ssp1soc",
+            "1850soc",
             "ssp2soc",
             "histsoc",
-            "ssp126soc",
-            "ssp370soc",
+            "ssp4soc",
             "2015soc",
-            "ssp1soc",
-            "ssp5soc",
-            "ssp4soc"
+            "ssp126soc",
+            "ssp585soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
             "swe",
-            "potevap",
-            "qtot",
-            "pirrww",
             "rootmoist",
-            "evap",
-            "arainfusegreen",
             "qs",
-            "airrww",
             "pirruse",
-            "airruse",
             "pirrusegreen",
+            "airruse",
+            "pirrww",
             "soilmoist",
-            "qr",
+            "potevap",
+            "arainfusegreen",
             "dis",
+            "evap",
+            "qr",
+            "qtot",
+            "airrww",
             "airrusegreen"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "sun",
-            "whe",
-            "ri1",
-            "rye",
-            "mis",
             "cot",
-            "sgc",
-            "sgb",
-            "pot",
-            "soy",
-            "nut",
-            "swh",
-            "mai",
-            "mgr",
-            "ri2",
-            "bea",
-            "wwh",
             "rap",
-            "sor",
-            "ric",
+            "sun",
+            "swh",
+            "sgc",
             "euc",
             "mil",
+            "ri2",
             "pea",
-            "bar",
             "cas",
-            "pop"
+            "bar",
+            "pot",
+            "pop",
+            "mgr",
+            "rye",
+            "ric",
+            "bea",
+            "nut",
+            "sgb",
+            "wwh",
+            "mai",
+            "mis",
+            "sor",
+            "ri1",
+            "whe",
+            "soy"
           ]
         },
         "irrigation": {
@@ -149,59 +149,59 @@
         "river": {
           "type": "string",
           "enum": [
-            "amazon",
-            "pajeu",
-            "rhine",
+            "niger",
+            "danube",
             "darling",
-            "blue-nile",
             "ganges",
             "godavari",
-            "indus",
-            "lena",
-            "niger",
-            "tagus",
-            "yellow",
             "yangtze",
-            "danube",
+            "rhine",
+            "yellow",
+            "indus",
+            "pajeu",
+            "mackenzie",
             "mississippi",
-            "mackenzie"
+            "blue-nile",
+            "tagus",
+            "amazon",
+            "lena"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "tekra",
-            "lokoja",
-            "lobith",
-            "el-diem",
-            "arctic-red-river",
-            "trillo",
+            "tarbela",
+            "louth",
             "sao-paulo-de-olivenca",
-            "stolb",
-            "dire",
-            "alton",
-            "floresta",
+            "trillo",
+            "farakka",
+            "lobith",
             "koulikoro",
+            "arctic-red-river",
+            "floresta",
+            "krestovski",
+            "tangnaihai",
+            "alton",
+            "dire",
+            "lokoja",
+            "tekra",
+            "khartoum",
+            "wien-nussdorf",
             "almourol",
             "cuntan",
-            "louth",
-            "krestovski",
-            "farakka",
-            "khartoum",
-            "tarbela",
-            "wien-nussdorf",
-            "tossaye",
-            "tangnaihai"
+            "el-diem",
+            "stolb",
+            "tossaye"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
             "annual",
+            "daily",
+            "monthly",
             "fixed",
-            "3hr",
-            "daily"
+            "3hr"
           ]
         },
         "start_year": {
