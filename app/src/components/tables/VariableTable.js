@@ -59,24 +59,37 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
   }
 
   const getResolution = (row) => {
-    const resolution = filterField(config, row.resolution)
+    const resolutions = filterField(config, row.resolution)
 
-    if (typeof resolution === 'object') {
-      if (Object.keys(resolution).length > 1) {
-        return Object.keys(resolution).map((sector, index) => {
+    if (Array.isArray(resolutions)) {
+      return resolutions.map((r, i) => (
+        <li key={i}>{r}</li>
+      ))
+    } else if (typeof resolutions === 'object') {
+      if (Object.keys(resolutions).length > 1) {
+        return Object.keys(resolutions).map((key, index) => {
           return (
             <li key={index}>
-              <em className="sector">{sector}:</em>
+              <em className="sector">{key}:</em>
               {' '}
-              {resolution[sector]}
+              {typeof resolutions[key] === 'object' && (
+                <ul>
+                  {
+                    resolutions[key].map((r, i) => (
+                      <li key={i}>{r}</li>
+                    ))
+                  }
+                </ul>
+              )}
+              {typeof resolutions[key] !== 'object' && resolutions[key]}
             </li>
           )
         })
       } else {
-        return <li>{Object.values(resolution)[0]} </li>
+        return <li>{Object.values(resolutions)[0]} </li>
       }
     } else {
-      return <li>{resolution}</li>
+      return <li>{resolutions}</li>
     }
   }
 

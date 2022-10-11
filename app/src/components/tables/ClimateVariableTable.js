@@ -113,7 +113,7 @@ const ClimateVariableTable = function({ config, caption, rows, groups, actions }
                             <p>
                               <Sectors config={config} sectors={row.sectors} />
                             </p>
-                            { row.climate_forcing && <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} /> }
+                            {row.climate_forcing && <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} />}
                             {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
                           </td>
                         </tr>
