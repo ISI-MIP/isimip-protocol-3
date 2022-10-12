@@ -62,9 +62,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
     const resolutions = filterField(config, row.resolution)
 
     if (Array.isArray(resolutions)) {
-      return resolutions.map((r, i) => (
-        <li key={i}>{r}</li>
-      ))
+      return resolutions.map((r, i) => (<li key={i}>{r}</li>))
     } else if (typeof resolutions === 'object') {
       if (Object.keys(resolutions).length > 1) {
         return Object.keys(resolutions).map((key, index) => {
@@ -74,11 +72,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
               {' '}
               {typeof resolutions[key] === 'object' && (
                 <ul>
-                  {
-                    resolutions[key].map((r, i) => (
-                      <li key={i}>{r}</li>
-                    ))
-                  }
+                  {resolutions[key].map((r, i) => (<li key={i}>{r}</li>))}
                 </ul>
               )}
               {typeof resolutions[key] !== 'object' && resolutions[key]}
@@ -86,7 +80,12 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
           )
         })
       } else {
-        return <li>{Object.values(resolutions)[0]} </li>
+        const res = Object.values(resolutions)[0]
+        if (Array.isArray(res)) {
+          return res.map((r, i) => (<li key={i}>{r}</li>))
+        } else {
+          return <li>{res}</li>
+        }
       }
     } else {
       return <li>{resolutions}</li>
