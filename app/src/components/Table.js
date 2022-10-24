@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { actions } from '../store'
 
+import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
 import ClimateVariableTable from './tables/ClimateVariableTable'
 import CropTable from './tables/CropTable'
@@ -27,6 +28,8 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
   const rows = definitions[identifier]
 
   switch (identifier) {
+    case 'bias_adjustment':
+      return <BiasAdjustmentTable config={config} caption={caption} rows={rows} />
     case 'climate_forcing':
       return <ClimateForcingTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_scenario':
