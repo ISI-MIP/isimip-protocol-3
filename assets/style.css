@@ -17,16 +17,11 @@ h4 {
 h1, h2, h3 {
     color: rgb(74, 74, 74);
 }
-/* add an offset to make the anchor links work */
-h2::before,
-h3::before,
-h4::before {
-    content: '';
-    display: block;
-    height:      100px;
-    margin-top: -100px;
-    visibility: hidden;
+h2, h3, h4 {
+    /* add an offset to make the anchor links work */
+    scroll-margin-top: 100px;
 }
+
 a {
     color: #0681be;
 }
@@ -158,6 +153,7 @@ td .badge {
 }
 caption {
     caption-side: top;
+    padding-top: 0;
 }
 pre {
     color: white;
@@ -229,7 +225,7 @@ code {
 .show-component p:last-child,
 .show-component ul:last-child,
 .show-component pre:last-child,
-.show-component [data-component="table"]:last-child button,
+.show-component [data-component="table"]:last-child table,
 .pattern-component pre:last-child {
     margin-bottom: 0;
 }

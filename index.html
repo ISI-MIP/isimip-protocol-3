@@ -97,7 +97,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 24 October 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/8fac6a290106f6e848b890f243e8ed135d36d2b4">8fac6a290106f6e848b890f243e8ed135d36d2b4</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/b166fb5cbbe6d5ef4685e6271a35e4f1eab623e2">b166fb5cbbe6d5ef4685e6271a35e4f1eab623e2</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -197,14 +197,20 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
 (surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
 </div>
+<h4 id="climate-forcing">Climate forcing</h4>
 <div data-caption="Table 3.1: Climate forcing datasets (`climate-forcing`)." data-component="table" data-identifier="climate_forcing"></div>
 <h4 id="note-on-climate-forcing-priority">Note on climate forcing priority</h4>
 <p>The priority for the different climate forcing datasets is given in the last column of Table 5. If you cannot use all climate forcing datasets, please concentrate on those with a higher priority.</p>
-<div data-caption="Table 3.2: Climate related forcing variables." data-component="table" data-identifier="climate_variable"></div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<h4 id="bias-adjustment">Bias adjustment</h4>
+<div data-caption="Table 3.2: Bias adjustment specifiers." data-component="table" data-identifier="bias_adjustment"></div>
+</div>
+<h4 id="climate-related-variables">Climate related variables</h4>
+<div data-caption="Table 3.3: Climate related forcing variables." data-component="table" data-identifier="climate_variable"></div>
 <h3 id="32-direct-human-forcing">3.2 Direct human forcing</h3>
-<div data-caption="Table 3.3: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
+<div data-caption="Table 3.4: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
 <h3 id="33-static-geographic-information">3.3 Static geographic information</h3>
-<div data-caption="Table 3.4: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
+<div data-caption="Table 3.5: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
 <h2 id="4-output-data">4. Output data</h2>
 <h3 id="41-output-dimensions">4.1 Output dimensions</h3>
 <p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
@@ -305,7 +311,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
 </ul>
 <p>Please name the files according to a sector specific pattern:</p>
 <div data-component="pattern"></div>
-<p>and replace the identifiers with the specifiers given in the tables of this document. For questions or clarifications, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> or the data managers directly (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;">&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;</a>) before submitting files.</p>
+<p>and replace the identifiers with the specifiers given in the different tables of this document:</p>
+<ul>
+<li><a href="#2-experiments">Experiments</a>: Table 2.2: <code>climate-scenario</code>, Table 2.3: <code>soc-scenario</code>, Table 2.4: <code>sens-scenario</code></li>
+<li><a href="#3-input-data">Input data</a>: Table 3.1: <code>climate-forcing</code>, Table 3.2: <code>bias-adjustment</code></li>
+<li><a href="#4-output-data">Output data</a>: Table 4.1: <code>variable</code>, <code>resolution</code>, <code>time-step</code>, Table 4.6 - 4.9: <code>region</code> (or <code>global</code> for most sectors) </li>
+</ul>
+<p>For questions or clarifications, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> or the data managers directly (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;">&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;</a>) before submitting files.</p>
                 
             </div>
         </main>
@@ -9493,6 +9505,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   ],
   "bias_adjustment": [
     {
+      "specifier": "w5e5",
+      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
+    },
+    {
       "specifier": "nobasd",
       "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
     },
@@ -9506,10 +9522,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "OutputData",
         "SecondaryOutputData"
       ]
-    },
-    {
-      "specifier": "w5e5",
-      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
     }
   ],
   "soc_scenario": [
