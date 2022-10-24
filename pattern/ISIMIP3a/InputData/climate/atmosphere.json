@@ -8,23 +8,19 @@
     "(?P<region>(global))",
     "(?P<time_step>[a-z0-9-]+)",
     "(historical)",
-    "(?P<climate_forcing>[A-Za-z0-9-]+)"
+    "(?P<climate_forcing>[A-Za-z0-9-.]+)"
   ],
   "dataset": [
-    "(?P<climate_forcing>[a-z0-9-]+)",
+    "(?P<climate_forcing>[a-z0-9-.]+)",
     "(?P<climate_scenario>[a-z]+)",
-    "(?P<climate_variable>[a-z]+)",
-    "(?P<region>(global))",
-    "(?P<time_step>[a-z0-9-]+)"
+    "(?P<climate_variable>[a-z]+)(_(?P<resolution>[a-z0-9]+))?",
+    "(?P<region>(global))(_(?P<time_step>[a-z0-9-]+))?"
   ],
   "file": [
-    "(?P<climate_forcing>[a-z0-9-]+)",
+    "(?P<climate_forcing>[a-z0-9-.]+)",
     "(?P<climate_scenario>[a-z]+)",
-    "(?P<climate_variable>[a-z]+)",
-    "(?P<region>(global))",
-    "(?P<time_step>[a-z0-9-]+)",
-    "(?P<start_year>\\d{4})",
-    "(?P<end_year>\\d{4})"
+    "(?P<climate_variable>[a-z]+)(_(?P<resolution>[a-z0-9]+))?",
+    "(?P<region>(global))(_(?P<time_step>[a-z0-9-]+))?(_(?P<start_year>\\d{4})\\d*)?(_(?P<end_year>\\d{4}))?"
   ],
   "suffix": [
     ".nc"
