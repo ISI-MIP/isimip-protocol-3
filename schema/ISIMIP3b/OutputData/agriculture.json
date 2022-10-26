@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/agriculture.json",
-  "commit": "a64a71aa276b64deb910a3532c1ed462d0a6392f",
+  "commit": "0941d6ff1f2ef31f2d6f978d472af45af46908a3",
   "type": "object",
   "required": [
     "specifiers"
@@ -28,11 +28,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
             "gfdl-esm4",
             "mpi-esm1-2-hr",
+            "mri-esm2-0",
             "ukesm1-0-ll",
-            "mri-esm2-0"
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -45,26 +45,26 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp585",
+            "ssp126",
             "historical",
             "picontrol",
-            "ssp126",
+            "ssp585",
             "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "ssp126soc",
-            "ssp3soc",
-            "ssp5soc",
-            "1850soc",
             "histsoc",
-            "ssp1soc",
             "ssp585soc",
+            "ssp5soc",
+            "ssp3soc",
+            "2015soc",
             "ssp370soc",
-            "2015soc-from-histsoc"
+            "ssp1soc",
+            "2015soc-from-histsoc",
+            "1850soc",
+            "ssp126soc"
           ]
         },
         "sens_scenario": {
@@ -77,52 +77,52 @@
         "variable": {
           "type": "string",
           "enum": [
-            "biom",
-            "plantyear",
-            "yield",
-            "nlosscum",
-            "nleachcum",
-            "harvyear",
-            "soilmoist",
+            "evapcum",
             "nupcum",
-            "nincum",
-            "plantday",
+            "nleachcum",
             "matyday",
+            "harvyear",
+            "plantyear",
+            "soilmoist",
+            "biom",
             "initrcum",
+            "nincum",
+            "nlosscum",
+            "plantday",
             "pirnreqcum",
             "anthday",
-            "evapcum"
+            "yield"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "cas",
-            "mgr",
-            "sor",
-            "euc",
-            "ri1",
             "ric",
-            "cot",
-            "rap",
-            "pot",
-            "mil",
+            "euc",
             "rye",
+            "sun",
             "pop",
-            "mis",
+            "mai",
+            "bar",
+            "soy",
+            "wwh",
+            "swh",
             "nut",
             "bea",
-            "mai",
-            "wwh",
-            "pea",
-            "sgc",
-            "whe",
-            "bar",
-            "sgb",
-            "swh",
             "ri2",
-            "soy",
-            "sun"
+            "mgr",
+            "whe",
+            "pot",
+            "sor",
+            "cas",
+            "rap",
+            "sgb",
+            "mil",
+            "ri1",
+            "mis",
+            "pea",
+            "cot",
+            "sgc"
           ]
         },
         "irrigation": {
@@ -141,12 +141,12 @@
         "time_step": {
           "type": "string",
           "enum": [
+            "annual",
             "fixed",
-            "monthly",
             "3hr",
-            "daily",
+            "monthly",
             "seasonal",
-            "annual"
+            "daily"
           ]
         },
         "start_year": {
