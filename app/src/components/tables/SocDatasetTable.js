@@ -65,6 +65,8 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
                         </tr>
                         {
                           row.variables.map((variable, i) => {
+                            const time_periods = filterField(config, row.time_periods)
+
                             return (
                               <tr key={i}>
                                 <td><strong>{variable.specifier}</strong> ({variable.long_name})</td>
@@ -72,15 +74,21 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
                                 {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
-                                      <ul className="resolution-list">
-                                        {filterField(config, row.time_periods).map((time_period, index) => <li key={index}>{time_period}</li>)}
-                                      </ul>
-                                      <ul className="resolution-list">
-                                        <li>{row.resolution}</li>
-                                      </ul>
-                                      <ul className="resolution-list">
-                                        <li>{row.frequency}</li>
-                                      </ul>
+                                      {
+                                        time_periods.length > 0 && <ul className="resolution-list">
+                                          {time_periods.map((time_period, index) => <li key={index}>{time_period}</li>)}
+                                        </ul>
+                                      }
+                                      {
+                                        row.resolution && <ul className="resolution-list">
+                                          <li>{row.resolution}</li>
+                                        </ul>
+                                      }
+                                      {
+                                        row.frequency && <ul className="resolution-list">
+                                          <li>{row.frequency}</li>
+                                        </ul>
+                                      }
                                     </td>
                                     <td rowSpan={row.variables.length}>
                                       <p>
