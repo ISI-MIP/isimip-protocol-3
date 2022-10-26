@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere_composition.json",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryInputData/climate/ocean.json",
   "commit": "f363cbc50ce10ae68c7c5411c92cefceeb036e2a",
   "type": "object",
   "required": [
@@ -10,19 +10,26 @@
     "specifiers": {
       "type": "object",
       "required": [
-        "climate_variable",
+        "climate_forcing",
         "climate_scenario",
+        "climate_variable",
+        "resolution",
+        "region",
         "time_step"
       ],
       "properties": {
         "climate_variable": {
           "type": "string",
           "enum": [
-            "mlotstmax",
+            "mlotst",
             "vo",
+            "ua",
+            "ts",
             "phydiat",
             "ch4",
             "ph",
+            "hus",
+            "orog",
             "phydiaz",
             "zooc",
             "chl",
@@ -33,15 +40,21 @@
             "hurs",
             "tas",
             "tasmax",
+            "ta",
+            "intppmisc",
             "co2",
             "expc",
             "uo",
             "thetao",
+            "hur",
+            "prw",
             "zmeso",
             "pr",
+            "va",
             "so",
             "rlds",
             "phypico",
+            "psl",
             "rsntds",
             "siconc",
             "sfcwind",
@@ -54,21 +67,34 @@
             "intpoc",
             "intppdiaz",
             "prsn",
-            "wo",
             "zmicro",
             "tos",
             "rsds",
-            "huss"
+            "huss",
+            "mask"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp585",
-            "ssp370",
-            "ssp126",
-            "historical",
-            "picontrol"
+            "ctrlclim",
+            "obsclim",
+            "counterclim"
+          ]
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "15arcmin",
+            "120arcmin",
+            "30arcmin",
+            "60arcmin"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
           ]
         },
         "time_step": {
@@ -79,12 +105,6 @@
             "daily",
             "monthly"
           ]
-        },
-        "start_year": {
-          "type": "number"
-        },
-        "end_year": {
-          "type": "number"
         }
       }
     }
