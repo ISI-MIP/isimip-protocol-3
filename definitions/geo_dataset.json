@@ -775,7 +775,7 @@
   {
     "specifier": "bathymetry",
     "title": "Sea Floor Depth",
-    "group": "bathymetry",
+    "group": "ocean-static",
     "path": {
       "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/ocean/gfdl-mom6-cobalt2_deptho_<resolution>_global_fixed.nc",
       "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_<ensemble_member>_picontrol_deptho_onedeg_global_fixed.nc"
@@ -792,6 +792,31 @@
     ],
     "format": "NetCDF",
     "comment": "Grid cell level ocean depth GFDL-MOM6-COBALT2 was running with.",
+    "sectors": [
+      "marine-fishery_global",
+      "marine-fishery_regional"
+    ]
+  },
+  {
+    "specifier": "lme",
+    "title": "Large Marine Ecosystems",
+    "group": "ocean-static",
+    "path": {
+      "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc",
+      "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc"
+    },
+    "variables": [
+      {
+        "specifier": "mask_<lme>"
+      }
+    ],
+    "resolution": [
+      "0.25°",
+      "0.5°",
+      "1° grid"
+    ],
+    "format": "NetCDF",
+    "comment": "Created from [LME shapefiles](https://www.sciencebase.gov/catalog/item/55c77722e4b08400b1fd8244) by ISIMIP data team.",
     "sectors": [
       "marine-fishery_global",
       "marine-fishery_regional"
