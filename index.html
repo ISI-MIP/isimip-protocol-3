@@ -97,7 +97,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 09 November 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/e2c1cfd7b2795ba938f23427657ef59ccbd10537">e2c1cfd7b2795ba938f23427657ef59ccbd10537</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/ca9532c9fe5c756b055f75c492474d85a2f8fe2d">ca9532c9fe5c756b055f75c492474d85a2f8fe2d</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -134,6 +134,23 @@
 <p>For <code>historical</code> runs, use the <code>transclim</code> climate time series, historical CO₂ concentration and varying DHF, for the transition period from spin-up to the start of the experiment (1850-1900). When using a longer spin-up period that (nominally) extends back further than 1850, please keep CO₂ concentration and DHF constant at 1850 level until reaching the year corresponding to 1850.</p>
 <p>For experiments with fixed direct human influences (<code>1901soc</code>, <code>2015soc</code>), the spin-up should be based on the 1901 DHF or 2015 DHF, respectively.</p>
 <p>For sector-specific experiments without direct human influence (<code>nat</code>), the spin-up should not use any DHF as well.</p>
+</div>
+<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
+<p>The model evaluation experiment starts in 1961. To capture historical fishing effort prior
+to 1961, we also provide input for a nominal spin-up (1841-1860, fishing held constant
+at 1861 levels) and pre-industrial transition period (1861-1960, reconstructed fishing
+effort).</p>
+<p>To set-up climate-forcing variables for the entire 1841-1960 period, we ask modellers to
+use the "control run" (<code>ctrlclim</code>) monthly output for the years 1961-1980 (inclusive) on
+repeat for six cycles. These years have been selected because they correspond with
+an entire ENSO cycle and because no climate trend is detectable prior to 1980 from the
+GFDL model.</p>
+<p>For models that require longer spin-up prior to 1841, please keep 1841 levels of fishing
+effort constant and, if needed, repeat the ENSO cycle (e.g. monthly values for 1961-
+1980 inclusive from <code>ctrlclim</code>) for as many times necessary.
+For the ‘no fishing’ runs (<code>nat</code>), the spin-up and pre-industrial transition should not use
+any fishing effort.</p>
+<p>We ask modellers to include all outputs from 1841 onwards for use in our analyses.</p>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
 <p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed.</p>
@@ -2059,6 +2076,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a": "Source: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z) for 1850-2005 and [Dlugokencky & Tans (2019)](https://www.esrl.noaa.gov/gmd/ccgg/trends/) from 2006-2019.",
         "ISIMIP3b": "Source: [Malte Meinshausen, Zebedee Nicholls, et al., 2020](https://doi.org/10.5194/gmd-13-3571-2020)."
       },
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
       "path": {
         "ISIMIP3a": "ISIMIP3a/InputData/climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
         "ISIMIP3b": "ISIMIP3b/InputData/climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt"
@@ -2076,6 +2110,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a": "Source: [Malte Meinshausen et al. (2016)](https://doi.org/10.5194/gmd-2016-169) for 1850-2014 and [Ed Dlugokencky (NOAA/GML)](https://gml.noaa.gov/ccgg/trends_ch4/) for 2015-2019.",
         "ISIMIP3b": "Source: [Malte Meinshausen et al. (2016, Historical greenhouse gas concentrations)](https://doi.org/10.5194/gmd-2016-169); [Malte Meinshausen, Zebedee Nicholls, et al. Future surface greenhouse gas concentrations, GMD Special Issue](http://www.geosci-model-dev.net/special_issue590.html)."
       },
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
       "path": {
         "ISIMIP3a": "ISIMIP3a/InputData/climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt",
         "ISIMIP3b": "ISIMIP3b/InputData/climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt"
@@ -9039,7 +9090,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "bathymetry",
       "title": "Sea Floor Depth",
-      "group": "bathymetry",
+      "group": "ocean-static",
       "path": {
         "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/ocean/gfdl-mom6-cobalt2_deptho_<resolution>_global_fixed.nc",
         "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_<ensemble_member>_picontrol_deptho_onedeg_global_fixed.nc"
@@ -9060,6 +9111,31 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
+    },
+    {
+      "specifier": "lme",
+      "title": "Large Marine Ecosystems",
+      "group": "ocean-static",
+      "path": {
+        "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc",
+        "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc"
+      },
+      "variables": [
+        {
+          "specifier": "mask_<lme>"
+        }
+      ],
+      "resolution": [
+        "0.25\u00b0",
+        "0.5\u00b0",
+        "1\u00b0 grid"
+      ],
+      "format": "NetCDF",
+      "comment": "Created from [LME shapefiles](https://www.sciencebase.gov/catalog/item/55c77722e4b08400b1fd8244) by ISIMIP data team.",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
     }
   ],
   "climate_scenario": [
@@ -9074,40 +9150,132 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "Standard observation-based atmospheric climate forcing",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.982724",
-          "comment": "Factual climate input datasets: GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3."
+          "comment": "Factual climate input datasets: GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Tracks from IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021), Windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1))."
+          "comment": "Tracks from IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021), Windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1)).",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "Standard observation-based oceanic forcing data",
           "status": "under development",
-          "comment": "GFDL MOM6/COBALTv2 simulations driven by reanalysis-based atmospheric forcing ([Liu et al., 2021](https://doi.org/10.1029/2021GL094367))."
+          "comment": "GFDL MOM6/COBALTv2 simulations driven by reanalysis-based atmospheric forcing ([Liu et al., 2021](https://doi.org/10.1029/2021GL094367)).",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Hourly coastal water levels with long-term trends for impact attribution."
+          "comment": "Hourly coastal water levels with long-term trends for impact attribution.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CO\u2082 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
-          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2021: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)"
+          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2021: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CH\u2084 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
-          "comment": "1850-2014: [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017), 2015-2021: [Dlugokencky (2022)](https://gml.noaa.gov/ccgg/trends_ch4/)"
+          "comment": "1850-2014: [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017), 2015-2021: [Dlugokencky (2022)](https://gml.noaa.gov/ccgg/trends_ch4/)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9137,40 +9305,132 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "Counterfactual \"no-climate change\" atmospheric climate forcing",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.982724",
-          "comment": "Detrended versions of the GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3 data sets derived by the Attrici method."
+          "comment": "Detrended versions of the GSWP3-W5E5, 20CRv3-W5E5, 20CRv3-ERA5, 20CRv3 data sets derived by the Attrici method.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "mandatory",
-          "comment": "We do not provide \"no climate change\" TC tracks and windfields but the original tracks from the IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021) windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1)) should be used in combination with the counterfactual water levels to estimate the impacts of sea level rise on TC induced damages, losses or replacement."
+          "comment": "We do not provide \"no climate change\" TC tracks and windfields but the original tracks from the IBTrACS database ([Knapp et al. 2010](https://doi.org/10.1175/2009BAMS2755.1)) (period 1841-2021) windfields calculated by Holland model ([Holland 1980](https://doi.org/10.1175/1520-0493(1980)108%3C1212:AAMOTW%3E2.0.CO;2), [Holland 2008](https://doi.org/10.1175/2008MWR2395.1)) should be used in combination with the counterfactual water levels to estimate the impacts of sea level rise on TC induced damages, losses or replacement.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "We do not provide \"no climate change\" lightning data. Instead the original Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303) should be used in the **counterclim** set-up."
+          "comment": "We do not provide \"no climate change\" lightning data. Instead the original Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303) should be used in the **counterclim** set-up.",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "Oceanic forcing data",
           "doi": "",
-          "comment": "We do not provide any counterfactual oceanic forcings, i.e. there is no \"no climate change\" experiment proposed for the fisheries and marine ecosystems sector."
+          "comment": "We do not provide any counterfactual oceanic forcings, i.e. there is no \"no climate change\" experiment proposed for the fisheries and marine ecosystems sector.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Detrended version of the **obsclim** hourly coastal water levels."
+          "comment": "Detrended version of the **obsclim** hourly coastal water levels.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CO\u2082 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
-          "comment": "1901 levels ([CO2] = 296.13 ppm) of observed atmospheric CO2 concentrations according to [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z)."
+          "comment": "1901 levels ([CO2] = 296.13 ppm) of observed atmospheric CO2 concentrations according to [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z).",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CH\u2084 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.664235.2",
-          "comment": "1901 levels of atmospheric CH4 concentrations ([CH4] = 928.8004 ppb), according to [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017)."
+          "comment": "1901 levels of atmospheric CH4 concentrations ([CH4] = 928.8004 ppb), according to [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017).",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9216,41 +9476,133 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "GCM-based pre-industrial atmospheric forcing",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
-          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "GCM-based pre-industrial oceanic climate forcing",
           "status": "mandatory",
           "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
-          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric pre-industrial CO\u2082 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "1850 levels of atmospheric CO\u2082 concentrations ([CO2] = 284.73 ppm), according to Meinshausen et al. (2011, <https://doi.org/10.1007/s10584-011-0156-z>)."
+          "comment": "1850 levels of atmospheric CO\u2082 concentrations ([CO2] = 284.73 ppm), according to Meinshausen et al. (2011, <https://doi.org/10.1007/s10584-011-0156-z>).",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric pre-industrial CH\u2084 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "1850 levels of atmospheric CH\u2084 concentrations ([CH4] = 808.249 ppb), according to Meinshausen et al. (2017, <https://doi.org/10.5194/gmd-10-2057-2017>)."
+          "comment": "1850 levels of atmospheric CH\u2084 concentrations ([CH4] = 808.249 ppb), according to Meinshausen et al. (2017, <https://doi.org/10.5194/gmd-10-2057-2017>).",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9265,41 +9617,133 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "GCM-based historical atmospheric forcing",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
-          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "GCM-based historical oceanic climate forcing",
           "status": "mandatory",
           "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
-          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric historical CO\u2082 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2014: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)"
+          "comment": "1850-2005: [Meinshausen et al. (2011)](https://doi.org/10.1007/s10584-011-0156-z), 2006-2014: [Dlugokencky & Tans (2022)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric historical CH\u2084 concentration",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017)"
+          "comment": "From [Meinshausen et al. (2017)](https://doi.org/10.5194/gmd-10-2057-2017)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9314,41 +9758,133 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "GCM-based climate forcing according to SSP1-2.6",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
-          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "GCM-based oceanic climate forcing according to SSP1-2.6",
           "status": "mandatory",
           "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
-          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CO\u2082 concentration according to SSP1-2.6",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CH\u2084 concentration according to SSP1-2.6",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9363,41 +9899,133 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "GCM-based atmospheric climate forcing according to SSP3-7.0",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
-          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "GCM-based oceanic climate forcing according to SSP3-7.0",
           "status": "mandatory",
           "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
-          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CO\u2082 concentration according to SSP3-7.0",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CH\u2084 concentration according to SSP3-7.0",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9412,41 +10040,133 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "dataset": "GCM-based atmospheric climate forcing according to SSP5-8.5",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.842396.1",
-          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6."
+          "comment": "Bias-adjusted data, generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, and UKESM1-0-LL within CMIP6.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Tropical cyclone tracks and windfields",
           "status": "under development",
-          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));"
+          "comment": "Synthetic tropical cyclone tracks derived from the five CMIP6 GCMs considered within ISIMIP3b (GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, MRI-ESM2-0, UKESM1-0-LL) and by two different statistical downscaling approaches ([Emanuel et al., 2008](https://doi.org/10.1175/BAMS-89-3-347) and the Columbia HAZard model (CHAZ), [Lee et al. (2018)](https://doi.org/10.1002/2017MS001186));",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Lightning",
           "status": "mandatory",
           "doi": "https://doi.org/10.5067/LIS/LIS-OTD/DATA303",
-          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303)."
+          "comment": "Flash Rate Monthly Climatology from [Cecil (2006)](https://doi.org/10.5067/LIS/LIS-OTD/DATA303).",
+          "sectors": [
+            "fire"
+          ]
         },
         {
           "dataset": "GCM-based oceanic climate forcing according to SSP5-8.5",
           "status": "mandatory",
           "doi": "https://data.isimip.org/10.48364/ISIMIP.575744.2",
-          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid."
+          "comment": "Generated by GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR, and UKESM1-0-LL within CMIP6. The data has been mapped to a 1\u00b0 regular grid.",
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
         },
         {
           "dataset": "Coastal water levels",
           "status": "under development",
-          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends."
+          "comment": "Not available yet, but we plan to provide hourly water levels derived from the atmospheric forcings described above combined with long-term sea-level trends.",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CO\u2082 concentration according to SSP5-8.5",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         },
         {
           "dataset": "Atmospheric CH\u2084 concentration according to SSP5-8.5",
           "status": "mandatory",
           "doi": "https://doi.org/10.48364/ISIMIP.482153.1",
-          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)"
+          "comment": "From [Meinshausen et al. (2020)](https://doi.org/10.5194/gmd-13-3571-2020)",
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "coastal",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
         }
       ]
     },
@@ -9536,163 +10256,467 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a",
         "ISIMIP3b"
       ],
-      "datasets": {
-        "ISIMIP3a": [
-          {
-            "dataset": "Land use and irrigation data",
-            "status": "mandatory",
-            "doi": "https://data.isimip.org/10.48364/ISIMIP.571261.2",
-            "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947))."
-          },
-          {
-            "dataset": "Wood harvest",
-            "status": "optional",
-            "doi": "https://data.isimip.org/10.48364/ISIMIP.482888.2",
-            "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "Land transformation",
-            "status": "mandatory",
-            "doi": "",
-            "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "N-fertilizer",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.311496.2",
-            "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "N-deposition",
-            "status": "optional",
-            "doi": " https://doi.org/10.48364/ISIMIP.600567 ",
-            "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1)."
-          },
-          {
-            "dataset": "Crop calendar",
-            "status": "optional",
-            "doi": "https://doi.org/10.5281/zenodo.5062513",
-            "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y))."
-          },
-          {
-            "dataset": "Marine fishing effort and catches",
-            "status": "mandatory",
-            "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116)."
-          },
-          {
-            "dataset": "Dams and reservoirs",
-            "status": "optional",
-            "doi": "https://doi.org/10.48364/ISIMIP.769035",
-            "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications."
-          },
-          {
-            "dataset": "Water abstraction",
-            "status": "optional",
-            "doi": "https://doi.org/10.48364/ISIMIP.228996",
-            "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901."
-          },
-          {
-            "dataset": "Lake surface area",
-            "status": "optional",
-            "doi": "",
-            "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))"
-          },
-          {
-            "dataset": "Forest management",
-            "status": "optional",
-            "doi": "",
-            "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020)."
-          },
-          {
-            "dataset": "Population data",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.822480.2",
-            "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published)."
-          },
-          {
-            "dataset": "GDP data",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.824555",
-            "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators)."
-          }
-        ],
-        "ISIMIP3b": [
-          {
-            "dataset": "Land use and irrigation data",
-            "status": "mandatory",
-            "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947))."
-          },
-          {
-            "dataset": "Wood harvest",
-            "status": "optional",
-            "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "Land transformation",
-            "status": "mandatory",
-            "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "N-fertilizer",
-            "status": "mandatory",
-            "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020))."
-          },
-          {
-            "dataset": "N-deposition",
-            "status": "optional",
-            "doi": "https://doi.org/10.48364/ISIMIP.600567",
-            "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1)."
-          },
-          {
-            "dataset": "Crop calendar",
-            "status": "optional",
-            "doi": "https://doi.org/10.5281/zenodo.5062513",
-            "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y))."
-          },
-          {
-            "dataset": "Marine fishing effort and catches",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.911570",
-            "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116)"
-          },
-          {
-            "dataset": "Dams and reservoirs",
-            "status": "optional",
-            "doi": "https://doi.org/10.48364/ISIMIP.995292",
-            "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications."
-          },
-          {
-            "dataset": "Water abstraction",
-            "status": "optional",
-            "doi": "https://doi.org/10.48364/ISIMIP.478291",
-            "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901."
-          },
-          {
-            "dataset": "Lake surface area",
-            "status": "optional",
-            "doi": "",
-            "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))"
-          },
-          {
-            "dataset": "Forest management",
-            "status": "optional",
-            "doi": "",
-            "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020)."
-          },
-          {
-            "dataset": "Population data",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
-            "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published)."
-          },
-          {
-            "dataset": "GDP data",
-            "status": "mandatory",
-            "doi": "https://doi.org/10.48364/ISIMIP.824555",
-            "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators)."
-          }
-        ]
-      }
+      "datasets": [
+        {
+          "dataset": "Land use and irrigation data",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.571261.2",
+          "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947)).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Wood harvest",
+          "status": "optional",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.482888.2",
+          "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "biomes",
+            "fire",
+            "forestry",
+            "permafrost"
+          ]
+        },
+        {
+          "dataset": "Land transformation",
+          "status": "mandatory",
+          "doi": "",
+          "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-fertilizer",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.311496.2",
+          "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-deposition",
+          "status": "optional",
+          "doi": " https://doi.org/10.48364/ISIMIP.600567 ",
+          "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Crop calendar",
+          "status": "optional",
+          "doi": "https://doi.org/10.5281/zenodo.5062513",
+          "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y)).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "water_global",
+            "biomes"
+          ]
+        },
+        {
+          "dataset": "Marine fishing effort and catches",
+          "status": "mandatory",
+          "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
+        },
+        {
+          "dataset": "Dams and reservoirs",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.769035",
+          "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications.",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Water abstraction",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.228996",
+          "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901.",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Lake surface area",
+          "status": "optional",
+          "doi": "",
+          "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "lakes_global",
+            "lakes_local",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Forest management",
+          "status": "optional",
+          "doi": "",
+          "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "forestry"
+          ]
+        },
+        {
+          "dataset": "Population data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.822480.2",
+          "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ]
+        },
+        {
+          "dataset": "GDP data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.824555",
+          "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ]
+        },
+        {
+          "dataset": "Land use and irrigation data",
+          "status": "mandatory",
+          "comment": "HYDE-based irrigated and rainfed cropland downscaled to up to 15 crops, managed pasture and grassland, urban areas. The data originates from the historic [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)) and the Monfreda data set ([Monfreda et al, 2008](https://doi.org/10.1029/2007GB002947)).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Wood harvest",
+          "status": "optional",
+          "comment": "Historical annual country-level wood harvesting data based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "biomes",
+            "fire",
+            "forestry",
+            "permafrost"
+          ]
+        },
+        {
+          "dataset": "Land transformation",
+          "status": "mandatory",
+          "comment": "Historical annual land-use transformation data, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-fertilizer",
+          "status": "mandatory",
+          "comment": "Historical annual fertilization rates, based on the [LUH v2h Harmonization Data Set](https://luh.umd.edu) (see [Hurtt et al. 2011](https://doi.org/10.1007/s10584-011-0153-2); [Hurtt et al. 2020](https://doi.org/10.5194/gmd-13-5425-2020)).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-deposition",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.600567",
+          "comment": "NHx and NOy deposition simulated by NCAR Chemistry-Climate Model Initiative (CCMI), see [Tian et al., 2018](https://doi.org/10.48364/ISIMIP.759077.1).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Crop calendar",
+          "status": "optional",
+          "doi": "https://doi.org/10.5281/zenodo.5062513",
+          "comment": "Observation-based representation of recent average planting and maturity dates not accounting for changes over time ([J\u00e4germeyr et al. 2021](https://www.nature.com/articles/s43016-021-00400-y)).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "water_global",
+            "biomes"
+          ]
+        },
+        {
+          "dataset": "Marine fishing effort and catches",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.911570",
+          "comment": "Adopted from [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116)",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
+        },
+        {
+          "dataset": "Dams and reservoirs",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.995292",
+          "comment": "The data is based on [Lehner et al. (2011a)](https://doi.org/10.7927/H4N877QK), [Lehner et al. (2011b)](https://doi.org/10.1890/100125), and Jida Wang et al. (KSU/Kansas State University, personal communication, data starting in 2016). Because the data from KSU is yet unpublished, modeling teams using it are asked to offer co-authorship to the team at KSU on any resulting publications.",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Water abstraction",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.478291",
+          "comment": "For modelling groups that do not have their own representation, we provide files containing the multi-model mean of domestic and industrial water withdrawal and consumption generated by the WaterGAP, PCR-GLOBWB, and H08 models (1850-202118). This data is based on ISIMIP2a varsoc simulations for 1901-2005, and on RCP6.0 simulations from the Water Futures and Solutions project ([Wada et al., 2016](https://doi.org/10.5194/gmd-9-175-2016)) for after 2005. Years before 1901 have been filled with the value for year 1901.",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Lake surface area",
+          "status": "optional",
+          "doi": "",
+          "comment": "Lake and reservoir area fraction/percentage calculated from the Hydrolakes v1.0 June 2019 ([Messager et al., 2016](https://www.nature.com/articles/ncomms13603)) and GRanDv1.3 databases ([Lehner et al., 2011](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/100125))",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "lakes_global",
+            "lakes_local",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Forest management",
+          "status": "optional",
+          "doi": "",
+          "comment": "Observed stem numbers, thinning type, planting numbers from and common management practices for 9 forest sites in Europe from [Reyer et al. (2020)](https://doi.org/10.5194/essd-12-1295-2020).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "forestry"
+          ]
+        },
+        {
+          "dataset": "Population data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
+          "comment": "National and gridded historical population data. Estimates are available for total as well as urban and rural population counts. The population data are adopted from HYDE v3.3 (private communication with K. Klein Goldewijk, to be published).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ]
+        },
+        {
+          "dataset": "GDP data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.824555",
+          "comment": "Based on the [World Development Indicator database (WDI)](https://databank.worldbank.org/source/world-development-indicators).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ]
+        }
+      ]
     },
     {
       "specifier": "1850soc",
@@ -13445,6 +14469,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "mandatory": false
     },
     {
+      "identifier": "geo_dataset",
+      "specifier": "ocean-static",
+      "title": "Ocean static properties",
+      "mandatory": false
+    },
+    {
       "identifier": "variable",
       "specifier": "hydrological-variables",
       "title": "Hydrological Variables"
@@ -13538,11 +14568,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "identifier": "crop",
       "specifier": "other-crops",
       "title": "Other crops"
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "bathymetry",
-      "title": "Ocean static properties"
     }
   ],
   "irrigation": [
