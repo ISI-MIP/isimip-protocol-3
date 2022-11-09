@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/diarrhea.json",
-  "commit": "4d9c434560a26e5353afa2884943114bf7e61c3b",
+  "commit": "e2c1cfd7b2795ba938f23427657ef59ccbd10537",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "mri-esm2-0",
             "ipsl-cm6a-lr",
-            "gfdl-esm4",
             "mpi-esm1-2-hr",
             "ukesm1-0-ll",
-            "mri-esm2-0"
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -43,24 +43,24 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp126",
             "ssp370",
-            "historical",
-            "picontrol",
             "ssp585",
-            "ssp126"
+            "picontrol",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp3soc",
+            "ssp370soc",
+            "histsoc",
             "1850soc",
             "ssp585soc",
             "ssp5soc",
-            "ssp1soc",
-            "histsoc",
             "ssp126soc",
-            "ssp370soc",
+            "ssp3soc",
+            "ssp1soc",
             "2015soc-from-histsoc",
             "2015soc"
           ]
@@ -68,8 +68,8 @@
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
@@ -85,11 +85,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "daily",
             "annual",
             "fixed",
-            "3hr"
+            "3hr",
+            "daily",
+            "monthly"
           ]
         },
         "start_year": {
