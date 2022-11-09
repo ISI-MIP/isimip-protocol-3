@@ -29,6 +29,7 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
 }
 
 const filterRows = (config, rows) => {
+  if (Array.isArray(rows)) {
     return rows.filter(row => {
         if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
             if (row.products === undefined || row.products.filter(product => config.products.includes(product)).length) {
@@ -42,6 +43,9 @@ const filterRows = (config, rows) => {
     }).filter(row => {
       return row.hidden != true
     })
+  } else {
+    return []
+  }
 }
 
 const filterField = (config, field) => {

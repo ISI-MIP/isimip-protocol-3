@@ -39,7 +39,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
       <tbody>
         {
           filteredRows.map((row, index) => {
-            const datasets = filterField(config, row.datasets)
+            const datasets = filterRows(config, row.datasets)
             const rowSpan = (datasets && !row.closed) ? datasets.length + 1 : 1
 
             const firstRow = [
@@ -55,7 +55,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
                     </p>
                   </td>
                   <td colSpan="3" className={rowSpan == 1 ? 'extra-border-bottom' : ''}>
-                    {datasets && <GroupToggleLink className="float-right" closed={row.closed} toggle={row.toggle} label="datasets" />}
+                    {datasets.length > 0 && <GroupToggleLink className="float-right" closed={row.closed} toggle={row.toggle} label="datasets" />}
                     <p>{row.description}</p>
                     <ReactMarkdown children={row.description_note} />
                   </td>
@@ -63,7 +63,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
               )
             ]
 
-            if (datasets && !row.closed) {
+            if (datasets.length > 0 && !row.closed) {
               return firstRow.concat(datasets.map((dataset, index) => {
                 const last = (index == datasets.length - 1)
                 return (
