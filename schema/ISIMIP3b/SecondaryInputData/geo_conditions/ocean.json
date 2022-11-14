@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryInputData/geo_conditions/ocean.json",
+  "commit": "bc025a79438deb45bd8bcda6500ac7305ac08e57",
+  "type": "object",
+  "required": [
+    "specifiers"
+  ],
+  "properties": {
+    "specifiers": {
+      "type": "object",
+      "required": [
+        "climate_forcing",
+        "geo_dataset",
+        "resolution",
+        "region",
+        "time_step"
+      ],
+      "properties": {
+        "climate_forcing": {
+          "type": "string",
+          "enum": [
+            "ipsl-cm6a-lr",
+            "mpi-esm1-2-hr",
+            "canesm5",
+            "cnrm-esm2-1",
+            "ec-earth3",
+            "miroc6",
+            "cnrm-cm6-1",
+            "ukesm1-0-ll",
+            "cesm2",
+            "mri-esm2-0",
+            "gfdl-esm4"
+          ]
+        },
+        "geo_dataset": {
+          "type": "string",
+          "enum": [
+            "countrymasks_fractional",
+            "landseamask_no-ant",
+            "biglakes_mask",
+            "hydrolakes_id",
+            "elevation",
+            "deptho",
+            "ddm30_flowdir_cru_neva",
+            "hypso_volume",
+            "landseamask",
+            "max_lakedepth",
+            "surface_area",
+            "ddm30_slopes_cru_neva",
+            "ddm30_basins_cru_neva",
+            "lme",
+            "landseamask_water-global",
+            "hypso_area",
+            "volume",
+            "gswp3_hwsd",
+            "hwsd_soil_data_on_cropland",
+            "hwsd_soil_data_all_land",
+            "mean_lakedepth",
+            "countrymasks",
+            "hydrolakes_id_biglakes"
+          ]
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "60arcmin",
+            "120arcmin",
+            "30arcmin",
+            "15arcmin"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "enum": [
+            "global"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "monthly",
+            "fixed",
+            "annual",
+            "daily"
+          ]
+        }
+      }
+    }
+  }
+}
