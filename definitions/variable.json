@@ -2146,10 +2146,16 @@
   },
   {
     "comment": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation.",
-    "extension": [
-      "total",
-      "<productclass>"
-    ],
+    "extension": {
+      "peat": [
+        "<pt>-total",
+        "<pt>-<productclass>"
+      ],
+      "other": [
+        "total",
+        "<productclass>"
+      ]
+    },
     "frequency": "annual",
     "group": "carbon-pools",
     "long_name": "Carbon in Products of Land Use Change",
@@ -4945,8 +4951,8 @@
     ],
     "extension": {
       "peat": [
-        null,
-        "<pt>"
+        "<pool>",
+        "<pt>-<pool>"
       ],
       "permafrost": "<pool>"
     },
@@ -5130,10 +5136,16 @@
   },
   {
     "comment": "Products generated during Land-use change. Removed nitrogen should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation .",
-    "extension": [
-      "total",
-      "<productclass>"
-    ],
+    "extension": {
+      "peat": [
+        "<pt>-total",
+        "<pt>-<productclass>"
+      ],
+      "other": [
+        "total",
+        "<productclass>"
+      ]
+    },
     "frequency": "annual",
     "group": "nitrogen-pools",
     "long_name": "Nitrogen in Products of Land Use Change",
