@@ -1,6 +1,13 @@
 [
   {
     "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "daily & monthly",
     "group": "hydrological-variables",
     "long_name": "Total Runoff",
@@ -13,6 +20,7 @@
       "water_regional",
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "qtot",
@@ -23,6 +31,13 @@
   {
     "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
     "frequency": "monthly",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "group": "hydrological-variables",
     "long_name": "Surface Runoff",
     "resolution": {
@@ -33,6 +48,7 @@
       "biomes",
       "water_global",
       "water_regional",
+      "peat",
       "permafrost",
       "fire"
     ],
@@ -44,11 +60,19 @@
   {
     "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
     "frequency": "monthly",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "group": "hydrological-variables",
     "long_name": "Subsurface Runoff",
     "resolution": "0.5° grid",
     "sectors": [
       "water_global",
+      "peat",
       "permafrost"
     ],
     "specifier": "qsb",
@@ -118,6 +142,13 @@
   },
   {
     "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "daily & monthly",
     "group": "hydrological-variables",
     "long_name": "Discharge",
@@ -128,6 +159,7 @@
     "sectors": [
       "water_global",
       "water_regional",
+      "peat",
       "permafrost"
     ],
     "specifier": "dis",
@@ -141,6 +173,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "water_global": "total",
       "water_regional": "total",
@@ -162,9 +200,10 @@
     },
     "sectors": [
       "biomes",
-      "permafrost",
       "fire",
       "forestry",
+      "peat",
+      "permafrost",
       "water_global",
       "water_regional"
     ],
@@ -175,6 +214,13 @@
   },
   {
     "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "group": "hydrological-variables",
     "long_name": "Potential Evapotranspiration",
@@ -183,9 +229,10 @@
       "other": "0.5° grid"
     },
     "sectors": [
+      "peat",
+      "permafrost",
       "water_global",
-      "water_regional",
-      "permafrost"
+      "water_regional"
     ],
     "specifier": "potevap",
     "units": "kg m-2 s-1",
@@ -262,15 +309,23 @@
       "lat",
       "lon"
     ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "group": "hydrological-variables",
     "long_name": "Frozen Soil Moisture Content",
     "resolution": "0.5° grid",
     "sectors": [
       "biomes",
-      "water_global",
+      "fire",
+      "peat",
       "permafrost",
-      "fire"
+      "water_global"
     ],
     "specifier": "soilmoistfroz",
     "units": "kg m-2",
@@ -285,6 +340,13 @@
       "lat",
       "lon"
     ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "daily if possible, else monthly",
     "group": "hydrological-variables",
     "long_name": "Temperature of Soil",
@@ -296,8 +358,9 @@
       "biomes",
       "fire",
       "forestry",
-      "water_global",
-      "permafrost"
+      "peat",
+      "permafrost",
+      "water_global"
     ],
     "specifier": "tsl",
     "units": "K",
@@ -306,6 +369,13 @@
   },
   {
     "comment": "Grid cell mean depth of snowpack.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "daily if possible, else monthly",
     "group": "hydrological-variables",
     "long_name": "Snow depth",
@@ -313,8 +383,9 @@
     "sectors": [
       "biomes",
       "fire",
-      "water_global",
-      "permafrost"
+      "peat",
+      "permafrost",
+      "water_global"
     ],
     "specifier": "snd",
     "units": "m",
@@ -323,6 +394,13 @@
   },
   {
     "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "long_name": "Snow Water Equivalent",
     "group": "hydrological-variables",
@@ -333,9 +411,10 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
+      "permafrost",
       "water_global",
-      "water_regional",
-      "permafrost"
+      "water_regional"
     ],
     "specifier": "swe",
     "units": "kg m-2",
@@ -344,13 +423,21 @@
   },
   {
     "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "long_name": "Total Water Storage",
     "group": "hydrological-variables",
     "resolution": "0.5° grid",
     "sectors": [
-      "water_global",
-      "permafrost"
+      "peat",
+      "permafrost",
+      "water_global"
     ],
     "specifier": "tws",
     "units": "kg m-2",
@@ -457,6 +544,13 @@
   },
   {
     "comment": "Calculated from daily thaw depths.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "annual",
     "group": "hydrological-variables",
     "long_name": "Annual Maximum Thaw Depth",
@@ -464,6 +558,7 @@
     "sectors": [
       "biomes",
       "water_global",
+      "peat",
       "permafrost",
       "fire"
     ],
@@ -1357,6 +1452,13 @@
   },
   {
     "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "constant",
     "group": "static-variables",
     "long_name": "Soil Types",
@@ -1369,6 +1471,7 @@
       "fire",
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "soil",
@@ -1761,6 +1864,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -1777,6 +1886,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "cveg",
@@ -1793,6 +1903,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -1808,6 +1924,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "cvegag",
@@ -1824,6 +1941,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -1839,6 +1962,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "cvegbg",
@@ -1856,6 +1980,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -1872,6 +2002,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "clitterag",
@@ -1887,6 +2018,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -1901,9 +2038,10 @@
     },
     "sectors": [
       "biomes",
+      "fire",
       "forestry",
-      "permafrost",
-      "fire"
+      "peat",
+      "permafrost"
     ],
     "specifier": "clitterbg",
     "units": "kg m-2"
@@ -1919,6 +2057,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "permafrost": [
         "total",
@@ -1942,6 +2086,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "csoil",
@@ -1965,6 +2110,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "permafrost": [
         "total",
         "<pft>",
@@ -1987,6 +2138,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "csoillayer",
@@ -2007,9 +2159,10 @@
     },
     "sectors": [
       "biomes",
-      "permafrost",
       "fire",
-      "forestry"
+      "forestry",
+      "peat",
+      "permafrost"
     ],
     "specifier": "cproduct",
     "units": "kg m-2"
@@ -2023,6 +2176,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2058,6 +2217,12 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
       "other": [
         "total",
         "<pft>"
@@ -2077,6 +2242,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "ra",
@@ -2091,6 +2257,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2111,6 +2283,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "npp",
@@ -2125,6 +2298,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2145,6 +2324,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "rh",
@@ -2152,10 +2332,18 @@
   },
   {
     "comment": "Total C emitted from all fires (including deforestation and peat fire C emission).",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere due to C Emission from Fire",
@@ -2163,6 +2351,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "ffire",
@@ -2173,10 +2362,18 @@
       "fire": "Report <total> daily, <pft/total> monthly",
       "other": "Total area percentage of grid cell that has burned at any time (including peat and deforestation fires)."
     },
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "daily (total), monthly (pft/total)",
     "long_name": "Burnt Area Fraction",
     "group": "fire-variables",
@@ -2184,6 +2381,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "burntarea",
@@ -2191,10 +2389,18 @@
   },
   {
     "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux out of Atmosphere due to Net Biospheric Production on Land",
@@ -2202,6 +2408,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "nbp",
@@ -2235,28 +2442,45 @@
   },
   {
     "comment": "For wood products only. Sum of carbon fluxes to wood production and wood storage turnover emissions from previous years.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere from Land Use Change",
     "resolution": "0.5° grid",
     "sectors": [
       "biomes",
-      "permafrost",
-      "fire"
+      "fire",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fluc",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Grid cell total and PFT information is essential.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere from Grazing",
@@ -2264,6 +2488,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "fgrazing",
@@ -2271,10 +2496,18 @@
   },
   {
     "comment": "Grid cell total and PFT information is essential.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere from Crop Harvesting",
@@ -2282,6 +2515,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "fcropharvest",
@@ -2289,10 +2523,18 @@
   },
   {
     "comment": "Grid cell total and PFT information is essential.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Total Carbon Flux from Vegetation to Litter",
@@ -2300,6 +2542,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "flitter",
@@ -2307,16 +2550,25 @@
   },
   {
     "comment": "Grid cell total and PFT information is essential.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Total Carbon Flux from Litter to Soil",
     "resolution": "0.5° grid",
     "sectors": [
       "biomes",
+      "peat",
       "permafrost"
     ],
     "specifier": "flittersoil",
@@ -2330,15 +2582,24 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Total Carbon Flux from Litter to Soil in each layer",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "flittersoillayer",
@@ -2346,18 +2607,27 @@
   },
   {
     "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Total Carbon Flux from Vegetation Directly to Soil",
     "resolution": "0.5° grid",
     "sectors": [
       "biomes",
-      "permafrost",
-      "fire"
+      "fire",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fvegsoil",
     "units": "kg m-2 s-1"
@@ -2370,15 +2640,24 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Total Carbon Mass Flux from Vegetation Directly to Soil in each layer",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "fvegsoillayer",
@@ -2390,6 +2669,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2405,9 +2690,10 @@
     },
     "sectors": [
       "biomes",
+      "fire",
       "forestry",
-      "permafrost",
-      "fire"
+      "peat",
+      "permafrost"
     ],
     "specifier": "fapar",
     "units": "%"
@@ -2422,6 +2708,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "water_global": "total",
       "other": [
@@ -2440,6 +2732,7 @@
       "biomes",
       "fire",
       "forestry",
+      "peat",
       "permafrost",
       "water_global"
     ],
@@ -2450,10 +2743,18 @@
   },
   {
     "comment": "The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land. For models that have grid cells partially covered by land and ocean, please document this in the model documentation and provide your land-sea mask along the data uploads.",
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "annual (or fixed if static)",
     "group": "vegetation",
     "long_name": "Plant Functional Type Grid Fraction",
@@ -2461,6 +2762,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "pft",
@@ -2472,6 +2774,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2490,9 +2798,10 @@
     },
     "sectors": [
       "biomes",
-      "permafrost",
       "fire",
-      "forestry"
+      "forestry",
+      "peat",
+      "permafrost"
     ],
     "specifier": "intercep",
     "units": "kg m-2 s-1"
@@ -2503,6 +2812,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2521,9 +2836,10 @@
     },
     "sectors": [
       "biomes",
-      "permafrost",
       "fire",
-      "forestry"
+      "forestry",
+      "peat",
+      "permafrost"
     ],
     "specifier": "esoil",
     "units": "kg m-2 s-1"
@@ -2534,6 +2850,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2552,9 +2874,10 @@
     },
     "sectors": [
       "biomes",
-      "permafrost",
       "fire",
-      "forestry"
+      "forestry",
+      "peat",
+      "permafrost"
     ],
     "specifier": "trans",
     "units": "kg m-2 s-1"
@@ -2565,6 +2888,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2581,6 +2910,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "cleaf",
@@ -2592,6 +2922,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2608,6 +2944,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "cwood",
@@ -2619,6 +2956,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2635,6 +2978,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "croot",
@@ -2646,6 +2990,12 @@
       "forestry": [
         "total",
         "<species>"
+      ],
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
       ],
       "other": [
         "total",
@@ -2662,6 +3012,7 @@
     "sectors": [
       "biomes",
       "forestry",
+      "peat",
       "permafrost"
     ],
     "specifier": "ccwd",
@@ -2968,6 +3319,9 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        "<pt>"
+      ],
       "other": [
         null
       ]
@@ -2980,9 +3334,10 @@
       "other": "0.5° grid"
     },
     "sectors": [
+      "biomes",
       "forestry",
-      "permafrost",
-      "biomes"
+      "peat",
+      "permafrost"
     ],
     "specifier": "nlitterag",
     "units": "kg m-2"
@@ -2997,6 +3352,10 @@
         "total",
         "<species>"
       ],
+      "peat": [
+        null,
+        "<pt>"
+      ],
       "other": [
         null
       ]
@@ -3009,9 +3368,10 @@
       "other": "0.5° grid"
     },
     "sectors": [
+      "biomes",
       "forestry",
-      "permafrost",
-      "biomes"
+      "peat",
+      "permafrost"
     ],
     "specifier": "nlitterbg",
     "units": "kg m-2"
@@ -3032,10 +3392,12 @@
         "total",
         "<species>"
       ],
-      "other": [
-        "total",
-        "<pool>"
-      ]
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "permafrost": "<pool>",
+      "other": null
     },
     "frequency": "annual",
     "group": "nitrogen-pools",
@@ -3045,9 +3407,10 @@
       "other": "0.5° grid"
     },
     "sectors": [
+      "biomes",
       "forestry",
-      "permafrost",
-      "biomes"
+      "peat",
+      "permafrost"
     ],
     "specifier": "nsoil",
     "units": "kg m-2"
@@ -3326,6 +3689,13 @@
   },
   {
     "comment": "Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "group": "albedo",
     "long_name": "Surface Albedo of Land",
@@ -3333,6 +3703,7 @@
     "sectors": [
       "biomes",
       "fire",
+      "peat",
       "permafrost"
     ],
     "specifier": "landalbedo",
@@ -3558,7 +3929,15 @@
     "comment": {
       "lakes_global": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
       "lakes_local": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
+      "peat": "",
       "permafrost": ""
+    },
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
     },
     "frequency": {
       "lakes_global": "daily and monthly",
@@ -3571,6 +3950,7 @@
     "sectors": [
       "lakes_global",
       "lakes_local",
+      "peat",
       "permafrost"
     ],
     "dimensions": [
@@ -4487,13 +4867,21 @@
   },
   {
     "comment": "Net upward flux of methane from wetlands (areas where water covers the soil, or is present either at or near the surface of the soil all year or for varying periods of time during the year, including during the growing season).",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Grid averaged methane emissions from wetland",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "wetlandch4",
     "units": "kg m-2 s-1"
@@ -4506,24 +4894,40 @@
       "lat",
       "lon"
     ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly",
     "group": "carbon-fluxes",
     "long_name": "Total Surface Carbon Mass Flux into CH4 emissions",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "ch4",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Percentage of grid cell covered by wetland. Report only one year if  fixed percentage is used, or time series if values are determined dynamically.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual (or fixed if static)",
     "group": "carbon-fluxes",
     "long_name": "Wetland Fraction",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "wetlandfrac",
@@ -4539,15 +4943,19 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pool>"
-    ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "permafrost": "<pool>"
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere due to Soil Respiration on Land of pools with different turnover time in each layer",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "rsoillayer",
@@ -4575,15 +4983,24 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Vertical Carbon Mass Flux between layers",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "verticalcflux",
@@ -4597,56 +5014,89 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere due to Litter Respiration on Land in each layer",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "rlitter",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Grid cell total.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "annual",
     "group": "nitrogen-pools",
     "long_name": "Nitrogen Mass in Vegetation",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "nveg",
     "units": "kg m-2"
   },
   {
     "comment": "Grid cell total.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "annual",
     "group": "nitrogen-pools",
     "long_name": "Nitrogen Mass in Above Ground Vegetation Biomass",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "nvegag",
     "units": "kg m-2"
   },
   {
     "comment": "Grid cell total.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "annual",
     "group": "nitrogen-pools",
     "long_name": "Nitrogen Mass in Below Ground Vegetation Biomass",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "nvegbg",
     "units": "kg m-2"
@@ -4659,13 +5109,21 @@
       "lat",
       "lon"
     ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "annual",
     "group": "nitrogen-pools",
     "long_name": "Mineral Nitrogen in the soil",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "nmineral",
     "units": "kg m-2"
@@ -4681,72 +5139,113 @@
     "long_name": "Nitrogen in Products of Land Use Change",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "nproduct",
     "units": "kg m-2"
   },
   {
     "comment": "Flux of Nitrogen from the land into the atmosphere due to fire.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total Nitrogen lost to the atmosphere (including NHx, N2O, N2) from fire",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
       "biomes",
-      "fire"
+      "fire",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fngasfire",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Total flux of Nitrogen from the land into the atmosphere.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen lost to the atmosphere (sum of NHx, NOx, N2O, N2)",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fngas",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Leaching means the loss of water soluble chemical species from soil.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen loss due to leaching or runoff (sum of ammonium, nitrite and nitrate)",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnleach",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Total Nitrogen added for cropland fertilisation (artificial and manure). Relative to total land area of a grid cell, not relative to agricultural area.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen added for cropland fertilisation (artificial and manure)",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnfert",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen lost (including NHx, NOx, N2O, N2 and leaching)",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "nloss",
@@ -4754,117 +5253,189 @@
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Nitrogen in deforested or harvested biomass as a result of anthropogenic land-use or change",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnproduct",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Nitrogen mass flux out of land due to any human activity",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnanthdisturb",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen mass flux from vegetation to litter",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnveglitter",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen mass flux from vegetation directly to soil",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnvegsoil",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total nitrogen mass flux from litter to soil",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnlittersoil",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "The fixation (uptake of nitrogen gas directly from the atmosphere) of nitrogen due to biological processes.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Biological nitrogen fixation",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fbnf",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Surface upward flux of ammonia (NH3) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total land NH3 flux",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnh3",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Surface upward flux of nitrous oxide (N2O) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Total land N2O flux",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fn2o",
     "units": "kg m-2 s-1"
   },
   {
     "comment": "Surface deposition rate of nitrogen.",
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Dry and wet deposition of reactive nitrogen onto land",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fndep",
     "units": "kg m-2 s-1"
@@ -4877,13 +5448,21 @@
       "lat",
       "lon"
     ],
+    "extension": {
+      "peat": [
+        null,
+        "<pt>"
+      ],
+      "other": null
+    },
     "frequency": "monthly, else annual",
     "group": "nitrogen-fluxes",
     "long_name": "Net nitrogen release from soil and litter as the outcome of nitrogen immobilisation and gross mineralisation",
     "resolution": "0.5° grid",
     "sectors": [
-      "permafrost",
-      "biomes"
+      "biomes",
+      "peat",
+      "permafrost"
     ],
     "specifier": "fnnetmin",
     "units": "kg m-2 s-1"
@@ -4896,15 +5475,24 @@
       "lat",
       "lon"
     ],
-    "extension": [
-      "total",
-      "<pft>"
-    ],
+    "extension": {
+      "peat": [
+        "total",
+        "<pft>",
+        "<pt>-total",
+        "<pt>-<pft>"
+      ],
+      "other": [
+        "total",
+        "<pft>"
+      ]
+    },
     "frequency": "monthly, else annual",
     "group": "carbon-fluxes",
     "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer",
     "resolution": "0.5° grid",
     "sectors": [
+      "peat",
       "permafrost"
     ],
     "specifier": "rhlayer",
@@ -4922,7 +5510,6 @@
     "resolution": "0.5° grid",
     "sectors": [
       "biomes",
-      "peat",
       "fire",
       "permafrost"
     ],
