@@ -21,41 +21,42 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
   }
 
   const getSpecifier = (row) => {
-      if (row.extension) {
-        if (Array.isArray(row.extension)) {
-          return <strong>{row.extension.map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
-        } else if (typeof row.extension === 'object') {
-          return (
-            <ul className="list-unstyled">
-              {
-                Object.keys(row.extension).map((sector, index) => {
-                  if (Array.isArray(row.extension[sector])) {
-                    return (
-                      <li key={index}>
-                        <em className="sector">{sector}:</em>
-                        {' '}
-                        <strong>{row.extension[sector].map(extension => addExtension(row.specifier, extension)).join(', ')}</strong>
-                      </li>
-                    )
-                  } else {
-                    return (
-                      <li key={index}>
-                        <em className="sector">{sector}:</em>
-                        {' '}
-                        <strong>{addExtension(row.specifier, row.extension[sector])}</strong>
-                      </li>
-                    )
-                  }
-                })
-              }
-            </ul>
-          )
-        } else {
-          return <strong>{row.specifier + '-' + row.extension}</strong>
-        }
+    const extension = filterField(config, row.extension)
+    if (extension) {
+      if (Array.isArray(extension)) {
+        return <strong>{extension.map(e => addExtension(row.specifier, e)).join(', ')}</strong>
+      } else if (typeof extension === 'object') {
+        return (
+          <ul className="list-unstyled">
+            {
+              Object.keys(extension).map((sector, index) => {
+                if (Array.isArray(extension[sector])) {
+                  return (
+                    <li key={index}>
+                      <em className="sector">{sector}:</em>
+                      {' '}
+                      <strong>{extension[sector].map(e => addExtension(row.specifier, e)).join(', ')}</strong>
+                    </li>
+                  )
+                } else {
+                  return (
+                    <li key={index}>
+                      <em className="sector">{sector}:</em>
+                      {' '}
+                      <strong>{addExtension(row.specifier, extension[sector])}</strong>
+                    </li>
+                  )
+                }
+              })
+            }
+          </ul>
+        )
       } else {
-        return <strong>{row.specifier}</strong>
+        return <strong>{row.specifier + '-' + extension}</strong>
       }
+    } else {
+      return <strong>{row.specifier}</strong>
+    }
   }
 
   const getResolution = (row) => {
