@@ -2048,10 +2048,10 @@
   },
   {
     "comment": {
-      "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential.",
-      "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.",
-      "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential.",
-      "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description."
+      "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.",
+      "peat": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided (see note below the table).",
+      "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided (see note below the table).",
+      "other": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential."
     },
     "extension": {
       "forestry": [
@@ -2062,7 +2062,11 @@
         "total",
         "<pft>",
         "<pt>-total",
-        "<pt>-<pft>"
+        "<pt>-<pft>",
+        "<pool>",
+        "<pool>-<pft>",
+        "<pt>-<pool>",
+        "<pt>-<pool>-<pft>"
       ],
       "permafrost": [
         "total",
@@ -2097,7 +2101,8 @@
       "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
       "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-      "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+      "peat": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided (see note below the table).",
+      "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided (see note below the table)."
     },
     "dimensions": [
       "time",
@@ -2114,7 +2119,11 @@
         "total",
         "<pft>",
         "<pt>-total",
-        "<pt>-<pft>"
+        "<pt>-<pft>",
+        "<pool>",
+        "<pool>-<pft>",
+        "<pt>-<pool>",
+        "<pt>-<pool>-<pft>"
       ],
       "permafrost": [
         "total",
@@ -3386,7 +3395,7 @@
   {
     "comment": {
       "forestry": "As kg Nitrogen m-2 a-1",
-      "other": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+      "other": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates soil organic carbon pools of different turnover times, nsoil separated by pools can additionally be provided (see note below the table)."
     },
     "dimensions": [
       "time",
@@ -3401,9 +3410,13 @@
       ],
       "peat": [
         null,
-        "<pt>"
+        "<pt>",
+        "<pt>-<pool>"
       ],
-      "permafrost": "<pool>",
+      "permafrost": [
+        null,
+        "<pool>"
+      ],
       "other": null
     },
     "frequency": "annual",
@@ -4943,7 +4956,7 @@
     "valid_min": 0.0
   },
   {
-    "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, rsoillayer separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+    "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>. If your model simulates soil organic carbon pools of different turnover times, nsoil separated by pools can additionally be provided (see note below the table).",
     "dimensions": [
       "time",
       "depth",
@@ -4952,6 +4965,7 @@
     ],
     "extension": {
       "peat": [
+        "<pt>",
         "<pool>",
         "<pt>-<pool>"
       ],
