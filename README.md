@@ -163,6 +163,14 @@ Some attributes (e.g. `frequency`) can have objects as value, which the are eval
 ]
 ```
 
+In order to add a new sector, the following steps need to be taken:
+
+* Add the sector with `specifier` and `title` to `definitions/sector.json`.
+* Add `pattern/ISIMIP3a/OutputData/<sector>.json` and `pattern/ISIMIP3b/OutputData/<sector>.json` with the file patterns for the new sector.
+* Add new `variable` group(s) to `definitions/group.json`.
+* Add sector variables to `definitions/variable.json` and/or update existing variables with the new sector.
+
+
 Printing
 --------
 

@@ -22,7 +22,7 @@ const initialState = {
   commit_date: window.initialState.commit_date,
   commit_hash: window.initialState.commit_hash,
   config: {
-    baseurl: 'https://protocol.isimip.org',
+    baseurl: location.protocol + '//' + location.host + location.pathname,
     simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
     products: ['OutputData'],
     sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
