@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/agriculture.json",
-  "commit": "586b91ab380baf29287de6bd462ad9ebbedbf6e7",
+  "commit": "cc29816d8a693b47a1ab611aacb372d4ae422347",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,18 +27,18 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5",
-            "20crv3",
-            "20crv3-w5e5",
             "chelsa-w5e5v1.0",
-            "20crv3-era5"
+            "gswp3-w5e5",
+            "20crv3-era5",
+            "20crv3-w5e5",
+            "20crv3"
           ]
         },
         "detrending": {
           "type": "string",
           "enum": [
-            "observed",
-            "detrended"
+            "detrended",
+            "observed"
           ]
         },
         "climate_scenario": {
@@ -51,70 +51,70 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc"
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "90arcsec",
             "30arcsec",
             "300arcsec",
-            "default",
+            "90arcsec",
             "1800arcsec",
+            "default",
             "1901co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "plantyear",
-            "matyday",
-            "nupcum",
-            "nlosscum",
             "biom",
-            "harvyear",
-            "nleachcum",
+            "matyday",
+            "yield",
+            "nlosscum",
+            "nincum",
+            "evapcum",
             "pirnreqcum",
+            "nupcum",
+            "initrcum",
+            "plantyear",
             "anthday",
             "plantday",
-            "nincum",
-            "yield",
-            "evapcum",
-            "initrcum",
-            "soilmoist"
+            "harvyear",
+            "soilmoist",
+            "nleachcum"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
+            "sgb",
+            "rap",
+            "rye",
+            "mai",
+            "pop",
+            "sor",
             "nut",
-            "cot",
             "ri2",
             "pot",
-            "mai",
-            "rap",
-            "sor",
-            "bar",
-            "ric",
-            "wwh",
-            "sgb",
-            "pop",
-            "mgr",
-            "whe",
-            "rye",
-            "cas",
-            "sgc",
             "ri1",
+            "cas",
+            "mis",
+            "whe",
+            "euc",
+            "soy",
+            "sgc",
+            "bar",
+            "wwh",
+            "cot",
+            "ric",
             "mil",
             "sun",
-            "mis",
-            "pea",
-            "soy",
             "swh",
             "bea",
-            "euc"
+            "pea",
+            "mgr"
           ]
         },
         "irrigation": {
@@ -133,12 +133,12 @@
         "time_step": {
           "type": "string",
           "enum": [
+            "daily",
+            "fixed",
+            "seasonal",
             "monthly",
             "annual",
-            "fixed",
-            "daily",
-            "3hr",
-            "seasonal"
+            "3hr"
           ]
         },
         "start_year": {

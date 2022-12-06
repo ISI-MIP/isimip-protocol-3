@@ -96,8 +96,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 01 December 2022</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/586b91ab380baf29287de6bd462ad9ebbedbf6e7">586b91ab380baf29287de6bd462ad9ebbedbf6e7</a></p>
+<p>Last updated: 06 December 2022</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/cc29816d8a693b47a1ab611aacb372d4ae422347">cc29816d8a693b47a1ab611aacb372d4ae422347</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -168,12 +168,12 @@ any fishing effort.</p>
 <div data-component="show" data-simulation-round="ISIMIP3a">
 <h4 id="general-note-regarding-sensitivity-experiments">General note regarding sensitivity experiments</h4>
 <p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as “default” in the sensitivity specifier of the file name even if the run would be identical to the <code>1901co2</code> sensitivity setting.</p>
-<p>The particular sensitivity specifier for an experiment is given in the experiments table below. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
 </div>
 <div data-component="show" data-simulation-round="ISIMIP3b">
 <h4 id="general-note-regarding-sensitivity-experiments_1">General note regarding sensitivity experiments</h4>
 <p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as <code>default</code> in the sensitivity specifier of the file name even if the run would be identical to the <code>1850co2</code> sensitivity setting.</p>
-<p>The particular sensitivity specifier for an experiment is given in the experiments table below. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
 </div>
 <h2 id="3-input-data">3. Input data</h2>
 <p>The base directory for input data at DKRZ is:</p>
@@ -275,7 +275,7 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <p>To resolve potential double harvests within one year, crop yields should be reported per growing season and not per calendar year. Thus, in the NetCDF output files, do not use a time dimension but instead a unitless coordinate variable with integer values; more information on how to construct these files is given below and on the ISIMIP website (<a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>).</p>
 <p>Cumulative growing season variables such as, e.g., actual evapotranspiration or precipitation are to be accumulated over the growing season. The first season in the file (level=0) is then the first complete growing season of the time period provided by the input data without any assumed spin-up data, which equates to the growing season with the first planting after this date. To ensure that data can be matched to individual years in post-processing, it is essential to also provide the actual planting dates (as day of the year), actual planting years (year), anthesis dates (as day of the year), year of anthesis (year), maturity dates (day of the year), and year of maturity (year). This procedure is identical to the GGCMI convention (Elliott et al., 2015, <a href="https://doi.org/10.5194/gmd-8-261-2015">https://doi.org/10.5194/gmd-8-261-2015</a>).</p>
 </div>
-<div data-component="show" data-sector="biomes,fire,permafrost">
+<div data-component="show" data-sector="biomes,fire,permafrost,peat">
 <h4 id="information-about-pft-specific-outputs">Information about PFT-specific outputs</h4>
 <ul>
 <li>Unless otherwise defined, variables in ISIMIP should be reported relative to the grid cell land area.</li>
@@ -283,6 +283,14 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <li>When your model allows several PFTs to grow on the same area and hence the total cover fraction can be more than one, please scale the PFT area to one and report this step in the model documentation on the ISIMIP homepage.</li>
 <li>When your model grows the same PFT on different land-use classes, e.g. the same c3-grass represents grasses growing on natural grasslands, pasture and possible even as crop, please differentiate this in your output by defining land-use specific PFT such as c3-grass-pasture, c3-grass-natural, c3-grass-crop and report this in model documentation on the ISIMIP homepage.</li>
 </ul>
+</div>
+<div data-component="show" data-sector="peat,permafrost">
+<h4 id="information-about-soil-organic-carbon-pools-of-different-turnover-times">Information about soil organic carbon pools of different turnover times</h4>
+<p>Some variables can be provided seperately by soil organic carbon pools of different turnover times, if your model simulates those. This is done using the <code>-&lt;pool&gt;</code> extension. Please indicate them as <code>-fast</code>, <code>-slow</code>, and <code>-passive</code> and describe your definition of the turnover times in your model description. The extension is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
+</div>
+<div data-component="show" data-sector="peat">
+<h4 id="information-about-peat-outputs">Information about peat outputs</h4>
+<p>All variables should be reported separately for the peat fraction of the grid cell if they are calculated separately for peat and non-peat grid-cell fractions, with a peattype (<code>&lt;pt&gt;</code>) extension to the variable name. This extension can be <code>-naturalpeat</code>, <code>-drainpeat</code>, <code>-restorepeat</code>, or <code>-minl</code> for the non-peat (mineral) gridcell fraction. It is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
 </div>
 <div data-component="show" data-sector="health">
 <h4 id="additional-instructions-for-the-health-sector">Additional instructions for the health sector</h4>
@@ -302,7 +310,7 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
     should be <code>global</code> or indicate a region or country.</li>
 </ul>
 </div>
-<div data-component="hide" data-sector="agriculture,biomes,fire,permafrost,health">
+<div data-component="hide" data-sector="agriculture,biomes,fire,peat,permafrost,health">
 <p>No sector specific notes are available for this selection of simulation round and sectors.</p>
 </div>
 <h2 id="5-reporting-model-results">5. Reporting model results</h2>
@@ -388,16 +396,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
-      ]
-    },
-    {
-      "specifier": "2015co2",
-      "description": "CO\u2082 concentration fixed at 2015 levels.",
-      "simulation_rounds": [
-        "ISIMIP3b"
       ]
     },
     {
@@ -417,6 +419,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "simulation_rounds": [
@@ -497,6 +500,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
+    },
+    {
+      "specifier": "2015co2",
+      "description": "CO\u2082 concentration fixed at 2015 levels.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "ssp585co2",
+      "description": "CO\u2082 concentration according to SSP5-8.5.",
+      "sectors": [
+        "peat"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ]
     }
   ],
   "climate_forcing": [
@@ -530,6 +550,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -563,6 +584,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -596,6 +618,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -629,6 +652,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1194,6 +1218,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1228,6 +1253,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1262,6 +1288,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1296,6 +1323,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1330,6 +1358,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1364,6 +1393,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1478,6 +1508,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1592,6 +1623,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1625,6 +1657,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1658,6 +1691,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -1691,6 +1725,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -2016,6 +2051,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2038,6 +2074,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2078,6 +2115,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2101,6 +2139,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2124,6 +2163,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2148,6 +2188,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -2171,6 +2212,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2193,6 +2235,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2233,6 +2276,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2256,6 +2300,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2279,6 +2324,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2342,6 +2388,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2364,6 +2411,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2405,6 +2453,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2428,6 +2477,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2451,6 +2501,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2483,6 +2534,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2505,6 +2557,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2546,6 +2599,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2569,6 +2623,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2592,6 +2647,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2624,6 +2680,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2646,6 +2703,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2687,6 +2745,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2710,6 +2769,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2733,6 +2793,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2765,6 +2826,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2787,6 +2849,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2828,6 +2891,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2851,6 +2915,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2874,6 +2939,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2906,6 +2972,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2928,6 +2995,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2969,6 +3037,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -2992,6 +3061,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3015,6 +3085,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3141,6 +3212,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3158,6 +3230,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "biomes",
             "fire",
             "forestry",
+            "peat",
             "permafrost"
           ]
         },
@@ -3181,6 +3254,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3206,6 +3280,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3231,6 +3306,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3246,8 +3322,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           ],
           "sectors": [
             "agriculture",
-            "water_global",
-            "biomes"
+            "biomes",
+            "water_global"
           ]
         },
         {
@@ -3280,6 +3356,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3303,6 +3380,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3371,6 +3449,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3387,6 +3466,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "biomes",
             "fire",
             "forestry",
+            "peat",
             "permafrost"
           ]
         },
@@ -3409,6 +3489,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3433,6 +3514,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3458,6 +3540,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3473,8 +3556,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           ],
           "sectors": [
             "agriculture",
-            "water_global",
-            "biomes"
+            "biomes",
+            "water_global"
           ]
         },
         {
@@ -3508,6 +3591,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3531,6 +3615,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
             "labour",
             "lakes_global",
             "lakes_local",
+            "peat",
             "permafrost",
             "water_global",
             "water_regional"
@@ -3600,6 +3685,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -3616,6 +3702,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -3641,6 +3728,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -3736,6 +3824,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "peat",
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
@@ -3750,6 +3839,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   "variable": [
     {
       "comment": "Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily and monthly resolution.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "daily & monthly",
       "group": "hydrological-variables",
       "long_name": "Total Runoff",
@@ -3762,6 +3858,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "water_regional",
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "qtot",
@@ -3772,6 +3869,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast runoff.",
       "frequency": "monthly",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "group": "hydrological-variables",
       "long_name": "Surface Runoff",
       "resolution": {
@@ -3782,6 +3886,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "water_global",
         "water_regional",
+        "peat",
         "permafrost",
         "fire"
       ],
@@ -3793,11 +3898,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Sum of water that flows out from subsurface layer(s) including the groundwater layer (if present). Equals qg in case of a groundwater layer below only one soil layer.",
       "frequency": "monthly",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "group": "hydrological-variables",
       "long_name": "Subsurface Runoff",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "water_global",
+        "peat",
         "permafrost"
       ],
       "specifier": "qsb",
@@ -3867,6 +3980,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "River discharge or streamflow. Please provide both daily and monthly resolution.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "daily & monthly",
       "group": "hydrological-variables",
       "long_name": "Discharge",
@@ -3877,6 +3997,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "water_global",
         "water_regional",
+        "peat",
         "permafrost"
       ],
       "specifier": "dis",
@@ -3890,6 +4011,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "water_global": "total",
         "water_regional": "total",
@@ -3911,9 +4038,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
-        "permafrost",
         "fire",
         "forestry",
+        "peat",
+        "permafrost",
         "water_global",
         "water_regional"
       ],
@@ -3924,6 +4052,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "As evap, but with all resistances set to zero, except the aerodynamic resistance.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "group": "hydrological-variables",
       "long_name": "Potential Evapotranspiration",
@@ -3932,9 +4067,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "other": "0.5\u00b0 grid"
       },
       "sectors": [
+        "peat",
+        "permafrost",
         "water_global",
-        "water_regional",
-        "permafrost"
+        "water_regional"
       ],
       "specifier": "potevap",
       "units": "kg m-2 s-1",
@@ -4011,15 +4147,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "group": "hydrological-variables",
       "long_name": "Frozen Soil Moisture Content",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
-        "water_global",
+        "fire",
+        "peat",
         "permafrost",
-        "fire"
+        "water_global"
       ],
       "specifier": "soilmoistfroz",
       "units": "kg m-2",
@@ -4034,6 +4178,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "daily if possible, else monthly",
       "group": "hydrological-variables",
       "long_name": "Temperature of Soil",
@@ -4045,8 +4196,9 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
-        "water_global",
-        "permafrost"
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "specifier": "tsl",
       "units": "K",
@@ -4055,6 +4207,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Grid cell mean depth of snowpack.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "daily if possible, else monthly",
       "group": "hydrological-variables",
       "long_name": "Snow depth",
@@ -4062,8 +4221,9 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
-        "water_global",
-        "permafrost"
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "specifier": "snd",
       "units": "m",
@@ -4072,6 +4232,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Total water mass of the snowpack (liquid or frozen) averaged over grid cell.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "long_name": "Snow Water Equivalent",
       "group": "hydrological-variables",
@@ -4082,9 +4249,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
+        "permafrost",
         "water_global",
-        "water_regional",
-        "permafrost"
+        "water_regional"
       ],
       "specifier": "swe",
       "units": "kg m-2",
@@ -4093,13 +4261,21 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Mean monthly water storage in all compartments. Please indicate in the netcdf metadata which storage compartments are considered.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "long_name": "Total Water Storage",
       "group": "hydrological-variables",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "water_global",
-        "permafrost"
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "specifier": "tws",
       "units": "kg m-2",
@@ -4206,6 +4382,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Calculated from daily thaw depths.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "annual",
       "group": "hydrological-variables",
       "long_name": "Annual Maximum Thaw Depth",
@@ -4213,6 +4396,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "water_global",
+        "peat",
         "permafrost",
         "fire"
       ],
@@ -5106,6 +5290,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Soil type as used by your model. Please include a description of each type in the model documentation (under \"Other data sets used\"). Please also include a link to a database/paper describing the parameters and values associated with these soil types.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "constant",
       "group": "static-variables",
       "long_name": "Soil Types",
@@ -5118,6 +5309,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "fire",
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "soil",
@@ -5510,6 +5702,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
         "other": [
           "total",
           "<pft>"
@@ -5526,6 +5724,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "cveg",
@@ -5542,6 +5741,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
         "other": [
           "total",
           "<pft>"
@@ -5557,6 +5762,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "cvegag",
@@ -5573,6 +5779,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
         "other": [
           "total",
           "<pft>"
@@ -5588,6 +5800,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "cvegbg",
@@ -5605,6 +5818,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
         "other": [
           "total",
           "<pft>"
@@ -5621,6 +5840,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "clitterag",
@@ -5636,6 +5856,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
         "other": [
           "total",
           "<pft>"
@@ -5650,24 +5876,35 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
+        "fire",
         "forestry",
-        "permafrost",
-        "fire"
+        "peat",
+        "permafrost"
       ],
       "specifier": "clitterbg",
       "units": "kg m-2"
     },
     {
       "comment": {
-        "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential.",
-        "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.",
-        "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential.",
-        "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description."
+        "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation.",
+        "peat": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table).",
+        "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table).",
+        "other": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential."
       },
       "extension": {
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>",
+          "<pool>",
+          "<pool>-<pft>",
+          "<pt>-<pool>",
+          "<pt>-<pool>-<pft>"
         ],
         "permafrost": [
           "total",
@@ -5691,6 +5928,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "csoil",
@@ -5701,7 +5939,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
         "fire": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
         "forestry": "Soil carbon excluding belowground litter if your model reports clitter. If not including below-ground litter, i.e. only report csoil and document this in the model documentation. Grid cell total and species information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated over entire soil depth.",
-        "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, csoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive. Please describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+        "peat": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table).",
+        "permafrost": "Soil carbon excluding below-ground litter if your model reports clitterag or clitterbg. If your model does not reports clitterag or clitterbg, report soil carbon including below-ground litter as csoil and document this in the model documentation. Grid cell total and PFT information is essential. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table)."
       },
       "dimensions": [
         "time",
@@ -5713,6 +5952,16 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>",
+          "<pool>",
+          "<pool>-<pft>",
+          "<pt>-<pool>",
+          "<pt>-<pool>-<pft>"
         ],
         "permafrost": [
           "total",
@@ -5736,6 +5985,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "csoillayer",
@@ -5743,10 +5993,16 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Products generated during Land-use change. Removed carbon should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation.",
-      "extension": [
-        "total",
-        "<productclass>"
-      ],
+      "extension": {
+        "peat": [
+          "<pt>-total",
+          "<pt>-<productclass>"
+        ],
+        "other": [
+          "total",
+          "<productclass>"
+        ]
+      },
       "frequency": "annual",
       "group": "carbon-pools",
       "long_name": "Carbon in Products of Land Use Change",
@@ -5756,9 +6012,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
-        "permafrost",
         "fire",
-        "forestry"
+        "forestry",
+        "peat",
+        "permafrost"
       ],
       "specifier": "cproduct",
       "units": "kg m-2"
@@ -5772,6 +6029,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -5792,6 +6055,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "gpp",
@@ -5806,6 +6070,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -5826,6 +6096,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "ra",
@@ -5840,6 +6111,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -5860,6 +6137,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "npp",
@@ -5874,6 +6152,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -5894,6 +6178,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "rh",
@@ -5901,10 +6186,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Total C emitted from all fires (including deforestation and peat fire C emission).",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to C Emission from Fire",
@@ -5912,6 +6205,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "ffire",
@@ -5922,10 +6216,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "fire": "Report <total> daily, <pft/total> monthly",
         "other": "Total area percentage of grid cell that has burned at any time (including peat and deforestation fires)."
       },
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "daily (total), monthly (pft/total)",
       "long_name": "Burnt Area Fraction",
       "group": "fire-variables",
@@ -5933,6 +6235,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "burntarea",
@@ -5940,10 +6243,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "This is the net mass flux of carbon between land and atmosphere calculated as photosynthesis MINUS the sum of plant and soil respiration, carbonfluxes from fire, harvest, grazing and land use change. Positive flux is into the land.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux out of Atmosphere due to Net Biospheric Production on Land",
@@ -5951,6 +6262,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "nbp",
@@ -5984,28 +6296,45 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "For wood products only. Sum of carbon fluxes to wood production and wood storage turnover emissions from previous years.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere from Land Use Change",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
-        "permafrost",
-        "fire"
+        "fire",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fluc",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Grid cell total and PFT information is essential.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere from Grazing",
@@ -6013,6 +6342,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "fgrazing",
@@ -6020,10 +6350,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Grid cell total and PFT information is essential.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere from Crop Harvesting",
@@ -6031,6 +6369,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "fcropharvest",
@@ -6038,10 +6377,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Grid cell total and PFT information is essential.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Total Carbon Flux from Vegetation to Litter",
@@ -6049,6 +6396,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "flitter",
@@ -6056,16 +6404,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Grid cell total and PFT information is essential.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Total Carbon Flux from Litter to Soil",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
+        "peat",
         "permafrost"
       ],
       "specifier": "flittersoil",
@@ -6079,15 +6436,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Total Carbon Flux from Litter to Soil in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "flittersoillayer",
@@ -6095,18 +6461,27 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Carbon going  directly into the soil pool without entering litter (e.g., root exudate). Grid cell total and PFT information is essential.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Total Carbon Flux from Vegetation Directly to Soil",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
-        "permafrost",
-        "fire"
+        "fire",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fvegsoil",
       "units": "kg m-2 s-1"
@@ -6119,15 +6494,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Total Carbon Mass Flux from Vegetation Directly to Soil in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "fvegsoillayer",
@@ -6139,6 +6523,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6154,9 +6544,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
+        "fire",
         "forestry",
-        "permafrost",
-        "fire"
+        "peat",
+        "permafrost"
       ],
       "specifier": "fapar",
       "units": "%"
@@ -6171,6 +6562,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "water_global": "total",
         "other": [
@@ -6189,6 +6586,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost",
         "water_global"
       ],
@@ -6199,10 +6597,18 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "The categories may differ from model to model, depending on their PFT definitions. This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas, etc. Sum of all should equal the fraction of the grid cell that is land. For models that have grid cells partially covered by land and ocean, please document this in the model documentation and provide your land-sea mask along the data uploads.",
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "annual (or fixed if static)",
       "group": "vegetation",
       "long_name": "Plant Functional Type Grid Fraction",
@@ -6210,6 +6616,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "pft",
@@ -6221,6 +6628,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6239,9 +6652,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
-        "permafrost",
         "fire",
-        "forestry"
+        "forestry",
+        "peat",
+        "permafrost"
       ],
       "specifier": "intercep",
       "units": "kg m-2 s-1"
@@ -6252,6 +6666,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6270,9 +6690,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
-        "permafrost",
         "fire",
-        "forestry"
+        "forestry",
+        "peat",
+        "permafrost"
       ],
       "specifier": "esoil",
       "units": "kg m-2 s-1"
@@ -6283,6 +6704,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6301,9 +6728,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       },
       "sectors": [
         "biomes",
-        "permafrost",
         "fire",
-        "forestry"
+        "forestry",
+        "peat",
+        "permafrost"
       ],
       "specifier": "trans",
       "units": "kg m-2 s-1"
@@ -6314,6 +6742,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6330,6 +6764,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "cleaf",
@@ -6341,6 +6776,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6357,6 +6798,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "cwood",
@@ -6368,6 +6810,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6384,6 +6832,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "croot",
@@ -6395,6 +6844,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "forestry": [
           "total",
           "<species>"
+        ],
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
         ],
         "other": [
           "total",
@@ -6411,6 +6866,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "forestry",
+        "peat",
         "permafrost"
       ],
       "specifier": "ccwd",
@@ -6717,6 +7173,9 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          "<pt>"
+        ],
         "other": [
           null
         ]
@@ -6729,9 +7188,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "other": "0.5\u00b0 grid"
       },
       "sectors": [
+        "biomes",
         "forestry",
-        "permafrost",
-        "biomes"
+        "peat",
+        "permafrost"
       ],
       "specifier": "nlitterag",
       "units": "kg m-2"
@@ -6746,6 +7206,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
+        "peat": [
+          null,
+          "<pt>"
+        ],
         "other": [
           null
         ]
@@ -6758,9 +7222,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "other": "0.5\u00b0 grid"
       },
       "sectors": [
+        "biomes",
         "forestry",
-        "permafrost",
-        "biomes"
+        "peat",
+        "permafrost"
       ],
       "specifier": "nlitterbg",
       "units": "kg m-2"
@@ -6768,7 +7233,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": {
         "forestry": "As kg Nitrogen m-2 a-1",
-        "other": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates different pools of different turnover times, nsoil separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>."
+        "other": "Soil nitrogen excluding belowground litter if your model reports nlitterbg. If not including below-ground litter, i.e. only report nsoil and document this in the model documentation. If possible, provide soil nitrogen for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil nitrogen integrated over the entire soil depth. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table)."
       },
       "dimensions": [
         "time",
@@ -6781,10 +7246,16 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "total",
           "<species>"
         ],
-        "other": [
-          "total",
+        "peat": [
+          null,
+          "<pt>",
+          "<pt>-<pool>"
+        ],
+        "permafrost": [
+          null,
           "<pool>"
-        ]
+        ],
+        "other": null
       },
       "frequency": "annual",
       "group": "nitrogen-pools",
@@ -6794,9 +7265,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "other": "0.5\u00b0 grid"
       },
       "sectors": [
+        "biomes",
         "forestry",
-        "permafrost",
-        "biomes"
+        "peat",
+        "permafrost"
       ],
       "specifier": "nsoil",
       "units": "kg m-2"
@@ -7075,6 +7547,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Albedo of the land surface interacting with the atmosphere. Average of pfts, snow cover, bare ground.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "group": "albedo",
       "long_name": "Surface Albedo of Land",
@@ -7082,6 +7561,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ],
       "specifier": "landalbedo",
@@ -7307,7 +7787,15 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "comment": {
         "lakes_global": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
         "lakes_local": "Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.",
+        "peat": "",
         "permafrost": ""
+      },
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
       },
       "frequency": {
         "lakes_global": "daily and monthly",
@@ -7320,6 +7808,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost"
       ],
       "dimensions": [
@@ -8236,13 +8725,21 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "Net upward flux of methane from wetlands (areas where water covers the soil, or is present either at or near the surface of the soil all year or for varying periods of time during the year, including during the growing season).",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Grid averaged methane emissions from wetland",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "wetlandch4",
       "units": "kg m-2 s-1"
@@ -8255,24 +8752,40 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly",
       "group": "carbon-fluxes",
       "long_name": "Total Surface Carbon Mass Flux into CH4 emissions",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "ch4",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Percentage of grid cell covered by wetland. Report only one year if  fixed percentage is used, or time series if values are determined dynamically.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual (or fixed if static)",
       "group": "carbon-fluxes",
       "long_name": "Wetland Fraction",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "wetlandfrac",
@@ -8281,22 +8794,27 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "valid_min": 0.0
     },
     {
-      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If your model simulates soil organic carbon pools of different turnover times, rsoillayer separated by pools can additionally be provided. Please indicate them as fast, slow, and passive and describe your definition of the turnover times in your model description. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "comment": "If possible, provide soil respiration for all depth layers (i.e. 3D-field), and indicate depth in m. If you do not report layers, the depth dimension is 1. See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>. If your model simulates soil organic carbon pools of different turnover times, the variable can additionally be provided separated by pools (see note below the table).",
       "dimensions": [
         "time",
         "depth",
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pool>"
-      ],
+      "extension": {
+        "peat": [
+          "<pt>",
+          "<pool>",
+          "<pt>-<pool>"
+        ],
+        "permafrost": "<pool>"
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to Soil Respiration on Land of pools with different turnover time in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "rsoillayer",
@@ -8324,15 +8842,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Vertical Carbon Mass Flux between layers",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "verticalcflux",
@@ -8346,56 +8873,89 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to Litter Respiration on Land in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "rlitter",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Grid cell total.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "annual",
       "group": "nitrogen-pools",
       "long_name": "Nitrogen Mass in Vegetation",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "nveg",
       "units": "kg m-2"
     },
     {
       "comment": "Grid cell total.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "annual",
       "group": "nitrogen-pools",
       "long_name": "Nitrogen Mass in Above Ground Vegetation Biomass",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "nvegag",
       "units": "kg m-2"
     },
     {
       "comment": "Grid cell total.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "annual",
       "group": "nitrogen-pools",
       "long_name": "Nitrogen Mass in Below Ground Vegetation Biomass",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "nvegbg",
       "units": "kg m-2"
@@ -8408,94 +8968,149 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "annual",
       "group": "nitrogen-pools",
       "long_name": "Mineral Nitrogen in the soil",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "nmineral",
       "units": "kg m-2"
     },
     {
       "comment": "Products generated during Land-use change. Removed nitrogen should not go into the soil but into the product pool. Please use the product classes used within your model and document them in the model documentation .",
-      "extension": [
-        "total",
-        "<productclass>"
-      ],
+      "extension": {
+        "peat": [
+          "<pt>-total",
+          "<pt>-<productclass>"
+        ],
+        "other": [
+          "total",
+          "<productclass>"
+        ]
+      },
       "frequency": "annual",
       "group": "nitrogen-pools",
       "long_name": "Nitrogen in Products of Land Use Change",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "nproduct",
       "units": "kg m-2"
     },
     {
       "comment": "Flux of Nitrogen from the land into the atmosphere due to fire.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total Nitrogen lost to the atmosphere (including NHx, N2O, N2) from fire",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
         "biomes",
-        "fire"
+        "fire",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fngasfire",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Total flux of Nitrogen from the land into the atmosphere.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen lost to the atmosphere (sum of NHx, NOx, N2O, N2)",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fngas",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Leaching means the loss of water soluble chemical species from soil.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen loss due to leaching or runoff (sum of ammonium, nitrite and nitrate)",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnleach",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Total Nitrogen added for cropland fertilisation (artificial and manure). Relative to total land area of a grid cell, not relative to agricultural area.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen added for cropland fertilisation (artificial and manure)",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnfert",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen lost (including NHx, NOx, N2O, N2 and leaching)",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "nloss",
@@ -8503,117 +9118,189 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Nitrogen in deforested or harvested biomass as a result of anthropogenic land-use or change",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnproduct",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Nitrogen mass flux out of land due to any human activity",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnanthdisturb",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen mass flux from vegetation to litter",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnveglitter",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen mass flux from vegetation directly to soil",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnvegsoil",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total nitrogen mass flux from litter to soil",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnlittersoil",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "The fixation (uptake of nitrogen gas directly from the atmosphere) of nitrogen due to biological processes.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Biological nitrogen fixation",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fbnf",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Surface upward flux of ammonia (NH3) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total land NH3 flux",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnh3",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Surface upward flux of nitrous oxide (N2O) from vegetation (any living plants e.g. trees, shrubs, grass), litter (dead plant material in or above the soil), soil.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Total land N2O flux",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fn2o",
       "units": "kg m-2 s-1"
     },
     {
       "comment": "Surface deposition rate of nitrogen.",
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Dry and wet deposition of reactive nitrogen onto land",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fndep",
       "units": "kg m-2 s-1"
@@ -8626,13 +9313,21 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
+      "extension": {
+        "peat": [
+          null,
+          "<pt>"
+        ],
+        "other": null
+      },
       "frequency": "monthly, else annual",
       "group": "nitrogen-fluxes",
       "long_name": "Net nitrogen release from soil and litter as the outcome of nitrogen immobilisation and gross mineralisation",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "permafrost",
-        "biomes"
+        "biomes",
+        "peat",
+        "permafrost"
       ],
       "specifier": "fnnetmin",
       "units": "kg m-2 s-1"
@@ -8645,15 +9340,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": [
-        "total",
-        "<pft>"
-      ],
+      "extension": {
+        "peat": [
+          "total",
+          "<pft>",
+          "<pt>-total",
+          "<pt>-<pft>"
+        ],
+        "other": [
+          "total",
+          "<pft>"
+        ]
+      },
       "frequency": "monthly, else annual",
       "group": "carbon-fluxes",
       "long_name": "Carbon Mass Flux into Atmosphere due to Heterotrophic Respiration on Land in each layer",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
+        "peat",
         "permafrost"
       ],
       "specifier": "rhlayer",
@@ -8671,12 +9375,250 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "resolution": "0.5\u00b0 grid",
       "sectors": [
         "biomes",
-        "peat",
         "fire",
         "permafrost"
       ],
       "specifier": "fbioenergyharvest",
       "units": "kg m-2 s-1"
+    },
+    {
+      "comment": "Percentage of grid cell covered by the natural, drained, restored or mineral (i.e. not peat) peat types. Should be reported separately for each peat soil type (see note below the table). Report only one year if fixed percentage is used, or time series if values are determined dynamically.",
+      "extension": "<pt>",
+      "frequency": "annual",
+      "group": "peat-variables",
+      "long_name": "Peat type fraction",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "peattypefrac",
+      "units": "1"
+    },
+    {
+      "comment": "Thickness of peat layer. Should be reported separately for each peat soil type (see note below the table). Report only one year if fixed depth is used, or time series if values are determined dynamically.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Peat depth",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "peatdepth",
+      "units": "m"
+    },
+    {
+      "comment": "Hydraulic conductivity at saturation. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Saturated hydraulic conductivity",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "hydcon",
+      "units": "ms-1"
+    },
+    {
+      "comment": "Volumetric fraction of pore space in soil. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Porosity",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "smsat",
+      "units": "1"
+    },
+    {
+      "comment": "Water table level relative to the ground surface. Note that a negative value should depict a water table below the soil surface. If the model works with subgrid topographic variation (microtopography approach in peatlands), the reference soil surface for **wt** is represented by the mean elevation of the soil surface. Should be reported separately for each peat soil type (see note below the table).",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "daily if possible, else montly",
+      "group": "peat-variables",
+      "long_name": "Water table",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "wt",
+      "units": "m"
+    },
+    {
+      "comment": "Volumetric soil moisture. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Volumetric soil moisture contents at -5 hPa",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "sm5",
+      "units": "1"
+    },
+    {
+      "comment": "Volumetric soil moisture. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Volumetric soil moisture contents at -15 hPa",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "sm15",
+      "units": "1"
+    },
+    {
+      "comment": "Volumetric soil moisture. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Volumetric soil moisture contents at -50 hPa",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "sm50",
+      "units": "1"
+    },
+    {
+      "comment": "Volumetric soil moisture. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Volumetric soil moisture contents at -330 hPa",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "sm330",
+      "units": "1"
+    },
+    {
+      "comment": "Volumetric soil moisture. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Volumetric soil moisture contents at -15000 hPa",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "sm15000",
+      "units": "1"
+    },
+    {
+      "comment": "Grid fraction that is flooded, i.e. where the water table is above ground surface. Should be reported separately for each peat soil type (see note below the table).",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "daily if possible, else montly",
+      "group": "peat-variables",
+      "long_name": "Water fraction (area flooded)",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "wf",
+      "units": "1"
+    },
+    {
+      "comment": "Depth of drainage of artificial drainage network. Should be reported separately for each peat soil type (see note below the table).",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Drainage depth",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "drainagedepth",
+      "units": "m"
+    },
+    {
+      "comment": "Density of drainage network as total length of drainage network per km\u00b2. Should be reported separately for each peat soil type (see note below the table).",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual (or fixed if static)",
+      "group": "peat-variables",
+      "long_name": "Drainage density",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "drainagedensity",
+      "units": "km km-2"
+    },
+    {
+      "comment": "Age of soil carbon. Should be reported separately for each peat soil type (see note below the table). If possible, provide for all depth layers (i.e. 3D-field), and indicate depth in m. Otherwise, provide integrated over the entire soil depth. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "extension": [
+        null,
+        "<pt>"
+      ],
+      "frequency": "annual",
+      "group": "peat-variables",
+      "long_name": "Soil carbon age",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "peat"
+      ],
+      "specifier": "socage",
+      "units": "yr"
     }
   ],
   "river_basin": [
@@ -9177,6 +10119,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "identifier": "variable",
+      "specifier": "peat-variables",
+      "title": "Peatland variables"
+    },
+    {
+      "identifier": "variable",
       "specifier": "forestry-variables",
       "title": "Forestry Variables"
     },
@@ -9281,6 +10228,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9371,6 +10319,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9566,6 +10515,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9616,6 +10566,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9662,6 +10613,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9727,6 +10679,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9776,6 +10729,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9824,6 +10778,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -9865,8 +10820,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "comment": "Reference: [J\u00e4germeyr et al. 2021](https://doi.org/10.1038/s43016-021-00400-y). Data: [J\u00e4germeyr et al., 2021](https://doi.org/10.5281/zenodo.5062513). So far, only a crop calendar, which is static in time is available. It is labeled as 2015soc, but can also be used for histsoc simulations, e.g. in combination with time-varying fertilizer inputs.",
       "sectors": [
         "agriculture",
-        "water_global",
-        "biomes"
+        "biomes",
+        "water_global"
       ]
     },
     {
@@ -10000,6 +10955,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10058,6 +11014,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10345,6 +11302,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "fire",
         "forestry",
+        "peat",
         "permafrost"
       ]
     },
@@ -10508,6 +11466,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10536,6 +11495,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10557,6 +11517,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -10574,6 +11535,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
+        "peat",
         "biomes"
       ]
     },
@@ -10600,6 +11562,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10628,6 +11591,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10649,6 +11613,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -10666,6 +11631,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
+        "peat",
         "biomes"
       ]
     },
@@ -10692,6 +11658,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10720,6 +11687,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -10742,6 +11710,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "water_global"
       ]
     },
@@ -10797,6 +11766,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "fire",
+        "peat",
         "permafrost"
       ]
     },
@@ -11002,6 +11972,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11035,6 +12006,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11061,6 +12033,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -11085,7 +12058,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "marine-fishery_global",
-        "marine-fishery_regional"
+        "marine-fishery_regional",
+        "peat"
       ]
     },
     {
@@ -11118,6 +12092,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11151,6 +12126,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11184,6 +12160,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11218,6 +12195,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11244,6 +12222,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -11267,6 +12246,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "peat",
         "marine-fishery_global",
         "marine-fishery_regional"
       ]
@@ -11289,6 +12269,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "agriculture",
         "biomes",
+        "peat",
         "permafrost"
       ]
     },
@@ -11317,6 +12298,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11350,6 +12332,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11383,6 +12366,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11414,6 +12398,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11437,6 +12422,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -11456,7 +12442,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
-        "biomes"
+        "biomes",
+        "peat"
       ]
     },
     {
@@ -11477,6 +12464,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "agriculture",
         "biomes",
+        "peat",
         "permafrost"
       ]
     },
@@ -11507,6 +12495,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11540,6 +12529,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11573,6 +12563,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local",
         "marine-fishery_global",
         "marine-fishery_regional",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11604,6 +12595,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11627,6 +12619,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global"
       ]
@@ -11648,7 +12641,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [
         "biomes",
         "marine-fishery_global",
-        "marine-fishery_regional"
+        "marine-fishery_regional",
+        "peat"
       ]
     },
     {
@@ -11672,6 +12666,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "fire",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -11797,6 +12792,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes"
+      ]
+    },
+    {
+      "specifier": "climate-sensitivity-rcp85-2015soc-from-histsoc",
+      "title": "Climate sensitivity RCP2.6 with RCP8.5 CO\u2082",
+      "subtitle": "2015soc-from-histsoc",
+      "priority": "2nd priority",
+      "pre_industrial": "Identical to the similar **picontrol/1850soc** run above.",
+      "historical": "Identical to the similar **historical/histsoc** run above.",
+      "future": {
+        "climate": "ssp126",
+        "climate_sens": "ssp585co2",
+        "soc": "2015soc-from-histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
       ]
     }
   ],
@@ -11973,6 +12987,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/marine-fishery_regional",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/marine-fishery_regional"
+      }
+    },
+    {
+      "specifier": "peat",
+      "title": "Peatland",
+      "urls": {
+        "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/peat",
+        "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/peat"
       }
     },
     {
@@ -13402,6 +14424,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13444,6 +14467,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13493,6 +14517,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13535,6 +14560,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13577,6 +14603,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13619,6 +14646,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13668,6 +14696,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13710,6 +14739,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13759,6 +14789,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13808,6 +14839,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -13857,6 +14889,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -15105,6 +16138,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -15139,6 +16173,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "labour",
         "lakes_global",
         "lakes_local",
+        "peat",
         "permafrost",
         "water_global",
         "water_regional"
@@ -15242,6 +16277,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "lakes_local": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<lake_site>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "marine-fishery_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "marine-fishery_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<ocean_region>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
+    "peat": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pt>(peat|drainpeat|restorepeat|minl)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "permafrost": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9]+)_(?P<soc_scenario>[a-z0-9]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "water_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9]+)_(?P<soc_scenario>[a-z0-9]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9]+)_(?P<soc_scenario>[a-z0-9]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
@@ -15261,6 +16297,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "lakes_local": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<lake_site>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "marine-fishery_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "marine-fishery_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<ocean_region>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
+    "peat": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pt>(peat|drainpeat|restorepeat|minl)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "permafrost": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "water_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
     "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]+)-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?.nc",
