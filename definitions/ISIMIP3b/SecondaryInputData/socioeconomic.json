@@ -1,5 +1,5 @@
 {
-  "commit": "3d788e3601ef8cf7f7a98efcde7c48e73cd4c545",
+  "commit": "ab02290e02d341572a8e1a63804de45b95ffc6e1",
   "crop": [
     {
       "specifier": "whe",
@@ -1776,7 +1776,8 @@
       "mandatory": true
     },
     {
-      "specifier": "lightning",
+      "specifier": "lightning_fixed",
+      "specifier_file": "lightning",
       "group": "lightning",
       "long_name": "Flash Rate Monthly Climatology",
       "unit": "km-2 d-1",
@@ -1787,6 +1788,20 @@
         "fire"
       ],
       "path": "ISIMIP3b/InputData/climate/lightning/lightning_fixed.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "lightning",
+      "group": "lightning",
+      "long_name": "Future flash rate",
+      "unit": "km-2 d-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "comment": "Source: [Kaplan, Jed O., et al. 2023](https://doi.org/10.5281/zenodo.7511843). This is the input data for the `varlightning` sensitivity experiments. Seperate datasets are available for ssp126, ssp370, and ssp585. Please note, as this dataset is produced using UKESM output, modelers should only use this data together with UKESM climate forcing.",
+      "sectors": [
+        "fire"
+      ],
+      "path": "ISIMIP3b/InputData/climate/lightning/lightning_ukesm1-0-ll_<climate-scenario>_global_monthly_2010_2100.nc",
       "mandatory": true
     }
   ],
@@ -3657,6 +3672,17 @@
       "description": "No nitrogen cycling and CO\u2082 concentration fixed at 2015 levels.",
       "sectors": [
         "biomes"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ]
+    },
+    {
+      "specifier": "varlightning",
+      "description": "Future RCP-specific lightening data from UKESM.",
+      "description_note": "Please note, as the future lightning dataset is produced using UKESM output, modelers should **only perform this sensitivity experiment using UKESM climate forcing**, not with the other climate forcing datasets.",
+      "sectors": [
+        "fire"
       ],
       "simulation_rounds": [
         "ISIMIP3b"
@@ -6019,6 +6045,63 @@
       ],
       "sectors": [
         "biomes"
+      ]
+    },
+    {
+      "specifier": "lightning-sensitivity-rcp26-2015soc-from-histsoc",
+      "title": "Future lightning sensitivity RCP2.6",
+      "subtitle": "2015soc-from-histsoc",
+      "priority": "2nd priority",
+      "pre_industrial": "Identical to the similar **picontrol/1850soc** run above.",
+      "historical": "Identical to the similar **historical/histsoc** run above.",
+      "future": {
+        "climate": "ssp126",
+        "climate_sens": "varlightning",
+        "soc": "2015soc-from-histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "fire"
+      ]
+    },
+    {
+      "specifier": "lightning-sensitivity-rcp70-2015soc-from-histsoc",
+      "title": "Future lightning sensitivity RCP7.0",
+      "subtitle": "2015soc-from-histsoc",
+      "priority": "2nd priority",
+      "pre_industrial": "Identical to the similar **picontrol/1850soc** run above.",
+      "historical": "Identical to the similar **historical/histsoc** run above.",
+      "future": {
+        "climate": "ssp370",
+        "climate_sens": "varlightning",
+        "soc": "2015soc-from-histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "fire"
+      ]
+    },
+    {
+      "specifier": "lightning-sensitivity-rcp85-2015soc-from-histsoc",
+      "title": "Future lightning sensitivity RCP8.5",
+      "subtitle": "2015soc-from-histsoc",
+      "priority": "2nd priority",
+      "pre_industrial": "Identical to the similar **picontrol/1850soc** run above.",
+      "historical": "Identical to the similar **historical/histsoc** run above.",
+      "future": {
+        "climate": "ssp585",
+        "climate_sens": "varlightning",
+        "soc": "2015soc-from-histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "fire"
       ]
     }
   ],
