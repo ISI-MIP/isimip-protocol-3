@@ -95,7 +95,8 @@ const ClimateVariableTable = function({ config, caption, rows, groups, actions }
                             </p>}
                           </td>
                           <td colSpan="4">
-                            <code>{filterField(config, row.path)}</code>
+                            {row.path && <code>{filterField(config, row.path)}</code>}
+                            {row.url && <a href={row.url} target="_blank">{row.url}</a>}
                           </td>
                         </tr>
                         <tr>

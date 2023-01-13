@@ -68,7 +68,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
                           </td>
                           <td colSpan="4">
                             {row.path && <code>{filterField(config, row.path)}</code>}
-                            {row.url && <a href="{row.url}">{row.url}</a>}
+                            {row.url && <a href={row.url} target="_blank">{row.url}</a>}
                           </td>
                         </tr>
                         {
