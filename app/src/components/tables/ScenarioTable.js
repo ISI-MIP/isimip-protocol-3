@@ -85,18 +85,6 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
                         dataset.path && <p>Path: <code>{ dataset.path }</code></p>
                       }
                       {
-                        dataset.urls !== undefined && <p>
-                          Documentation: {
-                            Object.entries(dataset.urls).map(([text, url], index) => (
-                                <React.Fragment>
-                                  {index > 0 && <span>, </span>}
-                                  <a key={index} href={url} className="ml-1">{text}</a>
-                                </React.Fragment>
-                            ))
-                          }
-                        </p>
-                      }
-                      {
                         dataset.comment && <ReactMarkdown children={dataset.comment} />
                       }
                     </td>
