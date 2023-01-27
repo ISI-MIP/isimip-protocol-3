@@ -18,24 +18,22 @@ const ClimateForcingTable = function({ config, caption, rows, actions }) {
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '20%'}}>Title</th>
-            <th style={{width: '12%'}}>Specifier</th>
+            <th style={{width: '40%'}}>Title</th>
+            <th style={{width: '15%'}}>Specifier</th>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
                 <th style={{width: '10%'}}>Time period</th>
-                <th style={{width: '10%'}}>Reanalysis</th>
-                <th style={{width: '18%'}}>Bias adjustment target</th>
-                <th style={{width: '30%'}}>Comments</th>
+                <th style={{width: '15%'}}>Reanalysis</th>
+                <th style={{width: '10%'}}>Bias adjustment target</th>
               </React.Fragment>
             }
             {
               config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '36%'}}>Institution</th>
-                <th style={{width: '12%'}}>Native resolution</th>
-                <th style={{width: '12%'}}>Ensemble member</th>
+                <th style={{width: '20%'}}>Native resolution</th>
+                <th style={{width: '15%'}}>Ensemble member</th>
               </React.Fragment>
             }
-            <th style={{width: '8%'}}>Priority</th>
+            <th style={{width: '10%'}}>Priority</th>
           </tr>
         </thead>
         <tbody>
@@ -58,12 +56,10 @@ const ClimateForcingTable = function({ config, caption, rows, actions }) {
                       <td>{row.time_period}</td>
                       <td>{row.reanalysis}</td>
                       <td>{row.bias_adjustment_target}</td>
-                      <td><ReactMarkdown children={row.comments} /></td>
                     </React.Fragment>
                   }
                   {
                     config.simulation_round.endsWith('b') && <React.Fragment>
-                      <td>{row.institution}</td>
                       <td>
                         <p>Atmosphere: {row.original_resolution.other || row.original_resolution}</p>
                         {row.original_resolution['marine-fishery_global'] && <p>Ocean: {row.original_resolution['marine-fishery_global']}</p>}

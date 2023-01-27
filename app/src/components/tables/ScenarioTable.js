@@ -27,11 +27,10 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
       </caption>
       <thead className="thead-dark">
         <tr>
-          <th style={{width: '25%'}}>Experiment specifier</th>
-          <th style={{width: '25%'}}>Forcing</th>
-          <th style={{width: '15%'}}>Status</th>
-          <th style={{width: '35%'}}>
-            Datasets
+          <th style={{width: '20%'}}>Experiment specifier</th>
+          <th style={{width: '20%'}}>Forcing</th>
+          <th style={{width: '60%'}}>
+            DOI / Path / Documentation
             {anyDatasets && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} label="datasets" />}
           </th>
         </tr>
@@ -54,7 +53,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
                       <Sectors config={config} sectors={row.sectors} />
                     </p>
                   </td>
-                  <td colSpan="3" className={rowSpan == 1 ? 'extra-border-bottom' : ''}>
+                  <td colSpan="2" className={rowSpan == 1 ? 'extra-border-bottom' : ''}>
                     {datasets.length > 0 && <GroupToggleLink className="float-right" closed={row.closed} toggle={row.toggle} label="datasets" />}
                     <p>{row.description}</p>
                     <ReactMarkdown children={row.description_note} />
@@ -66,21 +65,40 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
             if (datasets.length > 0 && !row.closed) {
               return firstRow.concat(datasets.map((dataset, index) => {
                 const last = (index == datasets.length - 1)
+                const dois = dataset.doi !== undefined ? (Array.isArray(dataset.doi) ? dataset.doi : [dataset.doi]) : null
+
                 return (
                   <tr key={`${row.specifier}-${index}`}>
                     <td className={last ? 'extra-border-bottom' : ''}>
-                      {dataset.dataset}
-                    </td>
-                    <td className={last ? 'extra-border-bottom' : ''}>
+                      <p>{dataset.dataset}</p>
                       <Status status={dataset.status} />
                     </td>
                     <td className={last ? 'extra-border-bottom' : ''}>
                       {
-                        dataset.doi && <p>
-                          <a className="doi-link" href={dataset.doi}>{ dataset.doi }</a>
+                        dois && dois.map((doi, index) => (
+                          <p key={index}>
+                            <a className="doi-link" href={doi}>{doi}</a>
+                          </p>
+                        ))
+                      }
+                      {
+                        dataset.path && <p>Path: <code>{ dataset.path }</code></p>
+                      }
+                      {
+                        dataset.urls !== undefined && <p>
+                          Documentation: {
+                            Object.entries(dataset.urls).map(([text, url], index) => (
+                                <React.Fragment>
+                                  {index > 0 && <span>, </span>}
+                                  <a key={index} href={url} className="ml-1">{text}</a>
+                                </React.Fragment>
+                            ))
+                          }
                         </p>
                       }
-                      <ReactMarkdown children={dataset.comment} />
+                      {
+                        dataset.comment && <ReactMarkdown children={dataset.comment} />
+                      }
                     </td>
                   </tr>
                 )
