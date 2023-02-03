@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/lakes_global.json",
-  "commit": "1319f1cffb3da3bebe0caa170bed649d2a76d5a0",
+  "commit": "f1283bc07db22a665f595ea56920d3ff809c7426",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,43 +26,43 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
-            "gfdl-esm4",
             "ipsl-cm6a-lr",
-            "mri-esm2-0"
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp585",
             "ssp126",
             "picontrol",
             "ssp370",
-            "historical",
-            "ssp585"
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "1850soc",
-            "ssp585soc",
+            "ssp3soc",
+            "ssp126soc",
             "ssp5soc",
             "2015soc-from-histsoc",
+            "histsoc",
+            "ssp585soc",
+            "ssp370soc",
+            "1850soc",
             "2015soc",
-            "ssp126soc",
-            "ssp3soc",
-            "ssp1soc",
-            "ssp370soc"
+            "ssp1soc"
           ]
         },
         "sens_scenario": {
@@ -75,39 +75,39 @@
         "variable": {
           "type": "string",
           "enum": [
-            "extcoeff",
-            "watertemp",
-            "bottemp",
-            "tpd",
             "lakeheatf",
-            "turbdiffheat",
-            "doc",
-            "latentheatf",
-            "lakealbedo",
-            "thermodepth",
-            "sedheatf",
-            "lwup",
-            "pn",
             "ice",
-            "chl",
-            "zoobio",
-            "momf",
-            "tn",
-            "tdn",
+            "sensheatf",
+            "lakealbedo",
             "phytobio",
-            "pp",
+            "snowthick",
             "do",
+            "icetemp",
+            "lwup",
+            "tn",
+            "turbdiffheat",
+            "snowtemp",
+            "chl",
+            "pn",
+            "lakeicefrac",
+            "sedheatf",
             "tp",
+            "watertemp",
+            "tdn",
+            "doc",
+            "extcoeff",
+            "bottemp",
+            "zoobio",
             "si",
             "swup",
-            "sensheatf",
             "surftemp",
-            "lakeicefrac",
-            "snowthick",
-            "icethick",
-            "snowtemp",
+            "pp",
+            "tpd",
+            "momf",
+            "thermodepth",
+            "latentheatf",
             "strat",
-            "icetemp"
+            "icethick"
           ]
         },
         "region": {
@@ -119,11 +119,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
             "monthly",
-            "3hr",
+            "fixed",
             "annual",
-            "fixed"
+            "3hr",
+            "daily"
           ]
         },
         "start_year": {
