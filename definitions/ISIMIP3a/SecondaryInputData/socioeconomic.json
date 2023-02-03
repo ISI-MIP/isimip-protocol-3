@@ -1,5 +1,5 @@
 {
-  "commit": "0447f705e6b4877c81923bba1dbbe3eacddc3809",
+  "commit": "df95a6a21d619bbde2cc0ce071e157a96c84f11d",
   "experiments": [
     {
       "specifier": "model-evaluation-histsoc",
@@ -2908,80 +2908,139 @@
       "group": "fishing",
       "specifier_file": "effort",
       "title": "Fishing effort",
-      "path": "socioeconomic/fishing/histsoc/effort_histsoc_1841_2014.csv",
+      "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort_histsoc_1841_2010.csv",
       "variables": [
         {
-          "long_name": "The generic name of the FAO area in which the Effort/Catch is occurring",
-          "specifier": "FAO",
-          "unit": ""
-        },
-        {
-          "long_name": "The EEZ / high seas name in which the Effort/Catch is occurring",
-          "specifier": "EEZ",
-          "unit": ""
-        },
-        {
-          "long_name": "The generic name of the Large Marine ecosystem in which the Effort/Catch is occurring",
-          "specifier": "LME",
-          "unit": ""
-        },
-        {
-          "long_name": "Functional Group of the target species",
-          "specifier": "FGroup",
-          "unit": ""
-        },
-        {
-          "long_name": "Nominal (i.e. not including the technological creep) fishing effort corresponding to the reported catch",
-          "specifier": "NomEffReported",
-          "unit": "kW.days"
-        },
-        {
-          "long_name": "Nominal (i.e. not including the technological creep) fishing effort corresponding to the illegal catch and discards",
-          "specifier": "NomEffIUU",
-          "unit": "kW.days"
-        },
-        {
-          "long_name": "Year (end of the year) when the Effort/Catch is occurring",
-          "specifier": "Year",
-          "unit": "year"
-        },
-        {
-          "long_name": "Water surface area",
-          "specifier": "AreaSqKm2",
-          "unit": "km2"
-        },
-        {
-          "long_name": "Number of 0.5 degree cell making up the area",
-          "specifier": "NbrCells",
-          "unit": ""
-        },
-        {
-          "long_name": "Fishing country, in ISO3 notation. Ex supranational entities (USSR, Yugoslavia) are disaggregated to their constituent countries. Serbian Fishing Effort included with Montenegro",
-          "specifier": "Fcountry",
-          "unit": ""
+          "long_name": "Year (end of the year) when the effort is occurring",
+          "specifier": "Year"
         },
         {
           "long_name": "Fishing sector (artisanal/industrial), defined by the law of the country (varies by country)",
-          "specifier": "Sector",
-          "unit": ""
+          "specifier": "Sector"
         },
         {
-          "long_name": "A number code to the LME, as per NOAA notation",
-          "specifier": "LMEnbr",
-          "unit": ""
+          "long_name": "The generic name of the Large Marine ecosystem in which the Effort/Catch is occurring",
+          "specifier": "LME"
         },
         {
-          "long_name": "A number code to the FAO area",
-          "specifier": "FAOnbr",
-          "unit": ""
+          "long_name": "The exclusive economic zone/high seas name in which fishing effort is occurring",
+          "specifier": "eez_country_name"
+        },
+        {
+          "long_name": "A number code for the fishing country, following Sea Around Us numbering",
+          "specifier": "SAUP"
+        },
+        {
+          "long_name": "The fishing gear",
+          "specifier": "Gear"
+        },
+        {
+          "long_name": "Functional Group of the target species",
+          "specifier": "FGroup"
+        },
+        {
+          "long_name": "Total nominal active fishing effort",
+          "specifier": "NomActive",
+          "unit": "kW.days"
+        },
+        {
+          "long_name": "Either \"spin-up\" or \"experiment\"",
+          "specifier": "Phase"
         }
       ],
       "time_periods": [
-        "1841-2014"
+        "1841-2010"
       ],
       "resolution": "Marine ecosystems or exclusive economic zones",
       "frequency": "annual",
-      "comment": "Data comprise the nominal effort of industrial and artisanal fleets aggregated into 6 functional groups. Source: [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116).",
+      "comment": "Rousseau et al. 2023, in prep.; reconstruction of historical yearbook and  FAO compilations ([Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43))",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "gridded_artisanal_fishing_effort",
+      "group": "fishing",
+      "specifier_file": "gridded_artisanal_effort",
+      "title": "Fishing effort",
+      "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/gridded_artisanal_effort_histsoc_1961_2010.csv",
+      "variables": [
+        {
+          "long_name": "Latitude",
+          "specifier": "Lat",
+          "unit": ""
+        },
+        {
+          "long_name": "Longitude",
+          "specifier": "Lon",
+          "unit": ""
+        },
+        {
+          "long_name": "Year (end of the year) when the effort is occurring",
+          "specifier": "Year"
+        },
+        {
+          "long_name": "Total nominal active fishing effort",
+          "specifier": "NomActive",
+          "unit": "kW.days"
+        }
+      ],
+      "time_periods": [
+        "1961-2010"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "comment": "Rousseau et al. 2023, in prep.; reconstruction of historical yearbook and  FAO compilations ([Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43))",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "gridded_industrial_fishing_effort",
+      "group": "fishing",
+      "specifier_file": "gridded_industrial_effort",
+      "title": "Fishing effort",
+      "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/gridded_industrial_effort_histsoc_1961_2010.csv",
+      "variables": [
+        {
+          "long_name": "Latitude",
+          "specifier": "Lat",
+          "unit": ""
+        },
+        {
+          "long_name": "Longitude",
+          "specifier": "Lon",
+          "unit": ""
+        },
+        {
+          "long_name": "Year (end of the year) when the effort is occurring",
+          "specifier": "Year"
+        },
+        {
+          "long_name": "Total nominal active fishing effort",
+          "specifier": "NomActive",
+          "unit": "kW.days"
+        }
+      ],
+      "time_periods": [
+        "1961-2010"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "comment": "Rousseau et al. 2023, in prep.; reconstruction of historical yearbook and  FAO compilations ([Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43))",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
