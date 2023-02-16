@@ -25,7 +25,7 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
             <th style={{width: '15%'}}>Unit</th>
             <th style={{width: '15%'}}>Covered time period / Resolution</th>
             <th style={{width: '35%'}}>
-              Sectors / Source / Comments
+              Sectors / Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
           </tr>
