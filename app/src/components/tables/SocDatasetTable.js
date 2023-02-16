@@ -69,7 +69,8 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
 
                             return (
                               <tr key={i}>
-                                <td><strong>{variable.specifier}</strong> ({variable.long_name})</td>
+                                <td><strong>{variable.specifier}</strong>
+                                {variable.long_name && <span> ({variable.long_name})</span>}</td>
                                 <td>{variable.unit}</td>
                                 {
                                   i == 0 && <React.Fragment>
