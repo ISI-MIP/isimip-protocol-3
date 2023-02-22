@@ -132,7 +132,7 @@ const InputVariableTable = function({ config, caption, rows, groups, actions }) 
           {
             empty && <tr>
               <td colSpan="5">
-                No climate variables have been defined for this selection of simulation round and sectors, yet.
+                No variables have been defined for this selection of simulation round and sectors, yet.
               </td>
             </tr>
           }
