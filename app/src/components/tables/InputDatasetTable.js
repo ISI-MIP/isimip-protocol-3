@@ -6,11 +6,20 @@ import Sectors from '../badges/Sectors'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 
-const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
+const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
+
+  const getResolutions = (row) => {
+    const resolution = filterField(config, row.resolution)
+    if (Array.isArray(resolution)) {
+      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
+    } else {
+      return <li>{resolution}</li>
+    }
+  }
 
   return (
     <div className="w-100">
@@ -23,7 +32,7 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
             <th style={{width: '20%'}}>Dataset</th>
             <th style={{width: '15%'}}>Variable specifier</th>
             <th style={{width: '15%'}}>Unit</th>
-            <th style={{width: '15%'}}>Covered time period / Resolution</th>
+            <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '35%'}}>
               Sectors / Comments
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
@@ -51,7 +60,7 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
                       <React.Fragment key={index}>
                         <tr>
                           <td rowSpan={row.variables.length + 1}>
-                            <p>{row.title}</p>
+                            <p>{row.title || row.specifier }</p>
                             {row.mandatory && <p>
                               <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
                                 mandatory
@@ -76,13 +85,13 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
                                       {
-                                        time_periods.length > 0 && <ul className="resolution-list">
+                                        time_periods && time_periods.length > 0 && <ul className="resolution-list">
                                           {time_periods.map((time_period, index) => <li key={index}>{time_period}</li>)}
                                         </ul>
                                       }
                                       {
                                         row.resolution && <ul className="resolution-list">
-                                          <li>{row.resolution}</li>
+                                          {getResolutions(row)}
                                         </ul>
                                       }
                                       {
@@ -113,7 +122,7 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
           {
             empty && <tr>
               <td colSpan="4">
-                No socioeconomic datasets have been defined for this selection of simulation round and sectors, yet.
+                No datasets have been defined for this selection of simulation round and sectors, yet.
               </td>
             </tr>
           }
@@ -123,7 +132,7 @@ const SocDatasetTable = function({ config, caption, rows, groups, actions }) {
   )
 }
 
-SocDatasetTable.propTypes = {
+InputDatasetTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
@@ -131,4 +140,4 @@ SocDatasetTable.propTypes = {
   actions: PropTypes.object.isRequired
 }
 
-export default SocDatasetTable
+export default InputDatasetTable
