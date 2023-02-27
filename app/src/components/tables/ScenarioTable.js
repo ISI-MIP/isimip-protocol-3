@@ -55,7 +55,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
                   </td>
                   <td colSpan="2" className={rowSpan == 1 ? 'extra-border-bottom' : ''}>
                     {datasets.length > 0 && <GroupToggleLink className="float-right" closed={row.closed} toggle={row.toggle} label="datasets" />}
-                    <p>{row.description}</p>
+                    <ReactMarkdown children={row.description} />
                     <ReactMarkdown children={row.description_note} />
                   </td>
                 </tr>
