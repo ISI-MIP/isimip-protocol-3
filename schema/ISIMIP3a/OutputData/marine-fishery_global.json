@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/marine-fishery_global.json",
-  "commit": "2f52a5e2d2864a0c1ec809457084c9031f9e46d1",
+  "commit": "ba787943686bf84362c653132cff5e5c839862dd",
   "type": "object",
   "required": [
     "specifiers"
@@ -31,8 +31,8 @@
         "detrending": {
           "type": "string",
           "enum": [
-            "observed",
-            "detrended"
+            "detrended",
+            "observed"
           ]
         },
         "climate_scenario": {
@@ -51,34 +51,35 @@
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "60arcmin",
+            "1955-riverine-input",
+            "1955-riverine-input+60arcmin",
             "default",
-            "1955-riverine-input"
+            "60arcmin"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "tc",
-            "tpc",
             "bd30cm",
+            "tclog10",
             "cd30cm",
+            "tdb",
+            "bd30to90cm",
+            "cd30to90cm",
+            "bp90cm",
+            "cp90cm",
+            "tc",
             "cp30cm",
+            "bp30cm",
+            "tpc",
             "tpb",
             "bd90cm",
-            "cp90cm",
-            "bd30to90cm",
-            "cd90cm",
-            "cp30to90cm",
-            "tcb",
-            "tdb",
-            "bp90cm",
-            "tclog10",
-            "tcblog10",
             "bp30to90cm",
-            "bp30cm",
+            "tcb",
+            "tcblog10",
+            "cp30to90cm",
             "tdc",
-            "cd30to90cm"
+            "cd90cm"
           ]
         },
         "region": {
@@ -90,11 +91,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "daily",
             "monthly",
+            "fixed",
             "annual",
-            "fixed"
+            "3hr",
+            "daily"
           ]
         },
         "start_year": {
