@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/forestry.json",
-  "commit": "ba787943686bf84362c653132cff5e5c839862dd",
+  "commit": "b4958d36b9339d22cf5f471ac7ec92597970c834",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,138 +26,138 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
             "ukesm1-0-ll",
             "mri-esm2-0",
-            "gfdl-esm4",
-            "mpi-esm1-2-hr"
+            "ipsl-cm6a-lr",
+            "mpi-esm1-2-hr",
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
+            "localbc",
             "w5e5",
-            "nobasd",
-            "localbc"
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
-            "ssp585",
-            "ssp370",
             "picontrol",
-            "historical"
+            "ssp585",
+            "ssp126",
+            "historical",
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp585soc",
             "ssp5soc",
-            "histsoc",
-            "ssp370soc",
-            "ssp1soc",
-            "2015soc",
             "ssp126soc",
+            "ssp370soc",
+            "2015soc-from-histsoc",
             "ssp3soc",
-            "2015soc-from-histsoc"
+            "2015soc",
+            "ssp1soc",
+            "histsoc",
+            "ssp585soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "fapar",
-            "npp",
-            "esoil",
-            "ba",
-            "density",
-            "mortstemno",
-            "cveg",
+            "csoillayer",
+            "rr",
+            "dbh",
             "hei",
-            "dbhdomhei",
+            "ra",
+            "dist",
+            "mortstemno",
+            "cwood",
+            "species",
+            "ba",
+            "clitterbg",
+            "mort",
+            "vol",
             "soil",
-            "csoil",
-            "stemno",
+            "age",
             "rh",
             "nlitterag",
-            "evap",
-            "cvegbg",
-            "cwood",
-            "nlitterbg",
-            "cproduct",
-            "rr",
-            "intercep",
-            "nee",
-            "croot",
-            "age",
-            "mort",
-            "ra",
-            "harvstemno",
-            "harv",
-            "soilmoist",
+            "gpp",
             "clitterag",
             "mai",
-            "dist",
-            "nsoil",
-            "cvegag",
-            "vol",
-            "cleaf",
             "tsl",
+            "csoil",
+            "ccwd",
+            "nee",
+            "soilmoist",
+            "croot",
+            "density",
+            "stemno",
+            "cvegbg",
+            "nsoil",
+            "harv",
+            "lai",
+            "harvstemno",
+            "esoil",
+            "cvegag",
+            "cproduct",
+            "evap",
+            "intercep",
             "trans",
             "domhei",
-            "dbh",
-            "clitterbg",
-            "csoillayer",
-            "gpp",
-            "species",
-            "lai",
-            "ccwd"
+            "nlitterbg",
+            "npp",
+            "fapar",
+            "cveg",
+            "dbhdomhei",
+            "cleaf"
           ]
         },
         "species": {
           "type": "string",
           "enum": [
-            "fi",
-            "bepe",
-            "piab",
-            "rops",
-            "ins",
-            "pisy",
-            "bepu",
-            "frex",
             "c3gr",
-            "eugl",
-            "lade",
-            "acpl",
             "hawo",
-            "quro",
-            "qupe",
             "wi",
+            "bepe",
+            "fi",
             "fasy",
+            "piab",
+            "ins",
+            "qupe",
+            "bepu",
+            "acpl",
             "pipi",
             "soau",
-            "poni"
+            "quro",
+            "poni",
+            "pisy",
+            "lade",
+            "rops",
+            "eugl",
+            "frex"
           ]
         },
         "forest_stand": {
           "type": "string",
           "enum": [
-            "kroof",
-            "soro",
+            "bily-kriz",
             "solling-beech",
+            "soro",
             "le-bray",
+            "kroof",
             "hyytiala",
             "collelongo",
-            "bily-kriz",
             "solling-spruce",
             "peitz"
           ]
@@ -165,11 +165,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "fixed",
-            "annual",
+            "daily",
             "3hr",
-            "daily"
+            "fixed",
+            "monthly",
+            "annual"
           ]
         },
         "start_year": {
