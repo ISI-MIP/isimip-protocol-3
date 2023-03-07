@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/agriculture.json",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/peat.json",
   "commit": "13e89e9e3346000d5db51202f49342edb4afe134",
   "type": "object",
   "required": [
@@ -16,8 +16,6 @@
         "soc_scenario",
         "sens_scenario",
         "variable",
-        "crop",
-        "irrigation",
         "region",
         "time_step"
       ],
@@ -28,16 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ec-earth3",
-            "miroc6",
-            "ipsl-cm6a-lr",
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
-            "cnrm-cm6-1",
-            "cnrm-esm2-1",
-            "canesm5",
             "ukesm1-0-ll",
-            "gfdl-esm4"
+            "gfdl-esm4",
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -51,59 +43,131 @@
           "type": "string",
           "enum": [
             "picontrol",
-            "hist-nat",
             "ssp370",
             "ssp126",
-            "ssp119",
-            "ssp460",
             "historical",
-            "ssp534-over",
-            "ssp585",
-            "ssp245"
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "nat",
             "2015soc-from-histsoc",
             "ssp5soc",
             "2015soc",
             "1850soc",
             "ssp126soc",
-            "ssp2soc",
             "histsoc",
             "ssp370soc",
             "ssp585soc",
             "ssp1soc",
-            "ssp3soc",
-            "ssp4soc"
+            "ssp3soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
             "default",
-            "2015co2"
+            "2015co2",
+            "ssp585co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "nlosscum",
-            "plantday",
-            "pirnreqcum",
-            "nleachcum",
-            "plantyear",
-            "soilmoist",
-            "harvyear",
-            "biom",
-            "nincum",
-            "nupcum",
-            "initrcum",
-            "yield",
-            "anthday",
-            "evapcum",
-            "matyday"
+            "cvegbg",
+            "sm330",
+            "csoillayer",
+            "tsl",
+            "croot",
+            "evap",
+            "fvegsoillayer",
+            "rh",
+            "nmineral",
+            "thawdepth",
+            "fn2o",
+            "npp",
+            "esoil",
+            "peatdepth",
+            "soilmoistfroz",
+            "lai",
+            "swe",
+            "fnh3",
+            "fnanthdisturb",
+            "pft",
+            "fndep",
+            "nlitterbg",
+            "qsb",
+            "sm50",
+            "cproduct",
+            "dis",
+            "potevap",
+            "peattypefrac",
+            "nbp",
+            "drainagedepth",
+            "fgrazing",
+            "fnlittersoil",
+            "flittersoil",
+            "qs",
+            "wf",
+            "fngas",
+            "fnproduct",
+            "sm5",
+            "socage",
+            "cleaf",
+            "hydcon",
+            "smsat",
+            "trans",
+            "cveg",
+            "ccwd",
+            "flittersoillayer",
+            "cwood",
+            "ch4",
+            "rhlayer",
+            "rsoillayer",
+            "nproduct",
+            "fluc",
+            "sm15000",
+            "flitter",
+            "cvegag",
+            "nveg",
+            "tws",
+            "gpp",
+            "snd",
+            "fapar",
+            "soil",
+            "fnfert",
+            "rlitter",
+            "nvegbg",
+            "nloss",
+            "ra",
+            "verticalcflux",
+            "doc",
+            "intercep",
+            "clitterbg",
+            "clitterag",
+            "fcropharvest",
+            "fnleach",
+            "wetlandch4",
+            "landalbedo",
+            "qtot",
+            "ffire",
+            "fnveglitter",
+            "nlitterag",
+            "fvegsoil",
+            "fnnetmin",
+            "nsoil",
+            "csoil",
+            "wt",
+            "fngasfire",
+            "fbnf",
+            "nvegag",
+            "wetlandfrac",
+            "fnvegsoil",
+            "drainagedensity",
+            "sm15",
+            "burntarea"
           ]
         },
         "crop": {
@@ -140,9 +204,22 @@
         "irrigation": {
           "type": "string",
           "enum": [
-            "firr",
             "noirr"
           ]
+        },
+        "pft": {
+          "type": "string"
+        },
+        "pool": {
+          "type": "string",
+          "enum": [
+            "fast",
+            "passive",
+            "slow"
+          ]
+        },
+        "pt": {
+          "type": "string"
         },
         "region": {
           "type": "string",
@@ -154,7 +231,6 @@
           "type": "string",
           "enum": [
             "monthly",
-            "seasonal",
             "daily",
             "fixed",
             "3hr",
