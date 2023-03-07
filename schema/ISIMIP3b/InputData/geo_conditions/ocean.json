@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/geo_conditions/ocean.json",
-  "commit": "5c2b3607223c52f55e7ec448202840368a7250c8",
+  "commit": "ed5e84ae9a021cb76ba722c94e54f067eec44dc9",
   "type": "object",
   "required": [
     "specifiers"
@@ -20,52 +20,52 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
             "gfdl-esm4",
             "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "mri-esm2-0"
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
           ]
         },
         "geo_dataset": {
           "type": "string",
           "enum": [
-            "deptho",
-            "mean_lakedepth",
-            "landseamask_no-ant",
-            "landseamask_water-global",
-            "ddm30_flowdir_cru_neva",
-            "hwsd_soil_data_all_land",
+            "volume",
             "hydrolakes_id_biglakes",
-            "hydrolakes_id",
-            "ddm30_slopes_cru_neva",
-            "hypso_volume",
+            "deptho",
             "elevation",
-            "max_lakedepth",
             "surface_area",
             "countrymasks",
-            "biglakes_mask",
-            "gswp3_hwsd",
-            "volume",
-            "hypso_area",
-            "lme",
             "ddm30_basins_cru_neva",
-            "countrymasks_fractional",
+            "lme",
+            "landseamask_water-global",
             "landseamask",
-            "hwsd_soil_data_on_cropland"
+            "countrymasks_fractional",
+            "ddm30_flowdir_cru_neva",
+            "hypso_area",
+            "gswp3_hwsd",
+            "biglakes_mask",
+            "hwsd_soil_data_all_land",
+            "landseamask_no-ant",
+            "max_lakedepth",
+            "hydrolakes_id",
+            "hwsd_soil_data_on_cropland",
+            "mean_lakedepth",
+            "ddm30_slopes_cru_neva",
+            "hypso_volume"
           ]
         },
         "resolution": {
           "type": "string",
           "enum": [
             "30arcsec",
-            "30arcmin",
+            "120arcmin",
+            "1800arcsec",
             "90arcsec",
             "300arcsec",
-            "120arcmin",
             "60arcmin",
-            "1800arcsec",
-            "15arcmin"
+            "15arcmin",
+            "30arcmin"
           ]
         },
         "region": {
@@ -77,10 +77,10 @@
         "time_step": {
           "type": "string",
           "enum": [
+            "monthly",
             "fixed",
-            "annual",
             "daily",
-            "monthly"
+            "annual"
           ]
         }
       }
