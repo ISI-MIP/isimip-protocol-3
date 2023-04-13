@@ -95,21 +95,21 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                     {
                       config.simulation_round.endsWith('b') && <React.Fragment>
                         {
-                          row.pre_industrial.climate ? <td className="table-secondary">
+                          row['pre-industrial'].climate ? <td className="table-secondary">
                             <p>
-                              <strong title={climateScenarios[row.pre_industrial.climate]}>
-                                {row.pre_industrial.climate}
+                              <strong title={climateScenarios[row['pre-industrial'].climate]}>
+                                {row['pre-industrial'].climate}
                               </strong>
                             </p>
                             {
-                              row.pre_industrial.climate_sens && <p>
-                                <strong title={sensScenarios[row.pre_industrial.climate_sens]}>
-                                  Sensitivity experiment: {row.pre_industrial.climate_sens}
+                              row['pre-industrial'].climate_sens && <p>
+                                <strong title={sensScenarios[row['pre-industrial'].climate_sens]}>
+                                  Sensitivity experiment: {row['pre-industrial'].climate_sens}
                                 </strong>
                               </p>
                             }
                           </td> : <td rowSpan="2" className="extra-border-bottom">
-                            <ReactMarkdown children={row.pre_industrial} />
+                            <ReactMarkdown children={row['pre-industrial']} />
                           </td>
                         }
                         {
@@ -175,16 +175,16 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                     {
                       config.simulation_round.endsWith('b') && <React.Fragment>
                         {
-                          row.pre_industrial.soc && <td className="table-secondary extra-border-bottom">
+                          row['pre-industrial'].soc && <td className="table-secondary extra-border-bottom">
                             <p>
-                              <strong title={socScenarios[row.pre_industrial.soc]}>
-                                {row.pre_industrial.soc}
+                              <strong title={socScenarios[row['pre-industrial'].soc]}>
+                                {row['pre-industrial'].soc}
                               </strong>
                             </p>
                             {
-                              row.pre_industrial.soc_sens && <p>
-                                <strong title={sensScenarios[row.pre_industrial.soc_sens]}>
-                                  Sensitivity experiment: {row.pre_industrial.soc_sens}
+                              row['pre-industrial'].soc_sens && <p>
+                                <strong title={sensScenarios[row['pre-industrial'].soc_sens]}>
+                                  Sensitivity experiment: {row['pre-industrial'].soc_sens}
                                 </strong>
                               </p>
                             }
