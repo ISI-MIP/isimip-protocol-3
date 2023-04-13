@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/coastal.json",
-  "commit": "6765a6e66faed84f6d89fb81ff958abce2988dc2",
+  "commit": "8a6d58afe258d902a09567d01040aa159ce74b2b",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
-            "mri-esm2-0",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr",
-            "gfdl-esm4"
+            "mri-esm2-0",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -43,9 +43,9 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp585",
-            "picontrol",
             "historical",
+            "picontrol",
+            "ssp585",
             "ssp370",
             "ssp126"
           ]
@@ -53,23 +53,23 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp5soc",
-            "ssp126soc",
-            "ssp585soc",
             "1850soc",
+            "ssp5soc",
             "2015soc",
-            "2015soc-from-histsoc",
-            "ssp370soc",
-            "ssp3soc",
+            "ssp1soc",
+            "ssp126soc",
             "histsoc",
-            "ssp1soc"
+            "ssp370soc",
+            "2015soc-from-histsoc",
+            "ssp3soc",
+            "ssp585soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
@@ -85,11 +85,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "daily",
             "monthly",
+            "fixed",
+            "daily",
             "annual",
-            "fixed"
+            "3hr"
           ]
         },
         "start_year": {
