@@ -96,8 +96,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 19 April 2023</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/f816ecee6fba25bd9a9a909343ceeeda8631b54b">f816ecee6fba25bd9a9a909343ceeeda8631b54b</a></p>
+<p>Last updated: 26 April 2023</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/b2517ff5e7557bd5372d5841cff4c9c895f4b926">b2517ff5e7557bd5372d5841cff4c9c895f4b926</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -8643,14 +8643,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lat",
         "lon"
       ],
-      "extension": {
-        "agriculture": [
-          "<crop>-<irrigation>"
-        ],
-        "other": [
-          null
-        ]
-      },
       "frequency": "daily if possible, else monthly",
       "group": "hydrological-variables",
       "long_name": "Total Soil Moisture Content",
@@ -8660,7 +8652,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
       },
       "sectors": [
-        "agriculture",
         "biomes",
         "fire",
         "forestry",
@@ -8671,6 +8662,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "specifier": "soilmoist",
       "units": "kg m-2",
       "valid_max": 10000.0,
+      "valid_min": 0.0
+    },
+    {
+      "comment": "Monthly average actual absolute available soil water content of the upper 1m soil column (above wilting point) during growing season. Outside growing seasons values can be zero.",
+      "extension": {
+        "agriculture": [
+          "<crop>-<irrigation>"
+        ]
+      },
+      "frequency": "monthly",
+      "group": "hydrological-variables",
+      "long_name": "Plant Available Water in Upper 1m Soil During Growing Season",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "agriculture"
+      ],
+      "specifier": "soilmoist1m",
+      "units": "kg m-3",
+      "valid_max": 500.0,
       "valid_min": 0.0
     },
     {

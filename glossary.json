@@ -1,5 +1,5 @@
 {
-  "commit": "f816ecee6fba25bd9a9a909343ceeeda8631b54b",
+  "commit": "b2517ff5e7557bd5372d5841cff4c9c895f4b926",
   "terms": {
     "vert": {
       "vint": {}
@@ -7805,14 +7805,6 @@
           "lat",
           "lon"
         ],
-        "extension": {
-          "agriculture": [
-            "<crop>-<irrigation>"
-          ],
-          "other": [
-            null
-          ]
-        },
         "frequency": "daily if possible, else monthly",
         "group": "hydrological-variables",
         "long_name": "Total Soil Moisture Content",
@@ -7822,7 +7814,6 @@
           "water_regional": "0.5\u00b0 grid if possible, otherwise at gauge location"
         },
         "sectors": [
-          "agriculture",
           "biomes",
           "fire",
           "forestry",
@@ -7832,6 +7823,24 @@
         ],
         "units": "kg m-2",
         "valid_max": 10000.0,
+        "valid_min": 0.0
+      },
+      "soilmoist1m": {
+        "comment": "Monthly average actual absolute available soil water content of the upper 1m soil column (above wilting point) during growing season. Outside growing seasons values can be zero.",
+        "extension": {
+          "agriculture": [
+            "<crop>-<irrigation>"
+          ]
+        },
+        "frequency": "monthly",
+        "group": "hydrological-variables",
+        "long_name": "Plant Available Water in Upper 1m Soil During Growing Season",
+        "resolution": "0.5\u00b0 grid",
+        "sectors": [
+          "agriculture"
+        ],
+        "units": "kg m-3",
+        "valid_max": 500.0,
         "valid_min": 0.0
       },
       "rootmoist": {
