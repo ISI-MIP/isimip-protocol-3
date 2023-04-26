@@ -1,5 +1,5 @@
 {
-  "commit": "b2517ff5e7557bd5372d5841cff4c9c895f4b926",
+  "commit": "504af91766d1afa1b4a0147e3f07e7b9bd2a4e0a",
   "vert": [
     {
       "specifier": "vint"
@@ -4306,20 +4306,32 @@
   ],
   "variable": [
     {
-      "comment": "Monthly average actual absolute available soil water content of the upper 1m soil column (above wilting point) during growing season. Outside growing seasons values can be zero.",
+      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+      "dimensions": [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
       "extension": [
         "<crop>-<irrigation>"
       ],
-      "frequency": "monthly",
+      "frequency": "daily if possible, else monthly",
       "group": "hydrological-variables",
-      "long_name": "Plant Available Water in Upper 1m Soil During Growing Season",
+      "long_name": "Total Soil Moisture Content",
       "resolution": "0.5\u00b0 grid",
       "sectors": [
-        "agriculture"
+        "agriculture",
+        "biomes",
+        "fire",
+        "forestry",
+        "water_global",
+        "water_regional",
+        "permafrost"
       ],
-      "specifier": "soilmoist1m",
-      "units": "kg m-3",
-      "valid_max": 500.0,
+      "specifier": "soilmoist",
+      "units": "kg m-2",
+      "valid_max": 10000.0,
       "valid_min": 0.0
     },
     {
