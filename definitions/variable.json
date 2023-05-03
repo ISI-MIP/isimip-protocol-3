@@ -243,13 +243,20 @@
     "comment": {
         "other": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
         "agriculture": "Pure crop models runs provide monthly averaged soil moisture only during growing seasons and only from the upper 1m in [kg m-3]. Outside growing seasons the grid cells values are set to zero or missing."
-     },
-    "dimensions": [
-      "time",
-      "depth",
-      "lat",
-      "lon"
-    ],
+    },
+    "dimensions": {
+      "other" : [
+        "time",
+        "depth",
+        "lat",
+        "lon"
+      ],
+	"agriculture": [
+        "time",
+        "lat",
+        "lon"
+      ]
+    },
     "extension": {
       "agriculture": [
         "<crop>-<irrigation>"
@@ -258,7 +265,10 @@
         null
       ]
     },
-    "frequency": "daily if possible, else monthly",
+    "frequency": {
+	"other" : "daily if possible, else monthly",
+	"agriculture" : "monthly-gs"
+    },
     "group": "hydrological-variables",
     "long_name": "Total Soil Moisture Content",
     "resolution": {
@@ -641,7 +651,7 @@
   {
     "comment": "Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for `firr` simulations.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": "annual-gs",
     "group": "water-management-variables",
     "long_name": "Cumulative Potential Net Irrigation Water Requirement",
     "resolution": "0.5° grid",
@@ -1483,9 +1493,15 @@
     "units": "-"
   },
   {
-    "comment": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.",
+    "comment": {
+      "other": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
+      "agriculture" : "Yields are reported per growing seasons and not per year."
+    },
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Crop Yields",
     "resolution": "0.5° grid",
@@ -1502,7 +1518,10 @@
   {
     "comment": "Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Evapotranspiration",
     "resolution": "0.5° grid",
@@ -1519,7 +1538,10 @@
   {
     "comment": "Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Nitrogen Application",
     "resolution": "0.5° grid",
@@ -1536,7 +1558,10 @@
   {
     "comment": "As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may differ from the prescribed crop calendar planting date in rare cases as certain models may delay prescribed planting for a few days to have more suitable soil moisture and temperature conditions.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Planting Date",
     "resolution": "0.5° grid",
@@ -1553,7 +1578,10 @@
   {
     "comment": "",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Planting Year",
     "resolution": "0.5° grid",
@@ -1570,7 +1598,10 @@
   {
     "comment": "Together with the day and year of planting it allows for clear identification of anthesis.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Anthesis Date",
     "resolution": "0.5° grid",
@@ -1587,7 +1618,10 @@
   {
     "comment": "Together with the day and year of planting it allows for clear identification of maturity.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Maturity Date",
     "resolution": "0.5° grid",
@@ -1604,7 +1638,10 @@
   {
     "comment": "Usually the year when maturity is reached. Can also be computed from planting and maturuty day.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Harvest Year",
     "resolution": "0.5° grid",
@@ -1621,7 +1658,10 @@
   {
     "comment": "The whole plant biomass above ground.",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Total Above Ground Biomass Dry Matter Yields",
     "resolution": "0.5° grid",
@@ -1638,7 +1678,10 @@
   {
     "comment": "Nitrogen balance: Uptake (growing season sum)",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Nitrogen Uptake",
     "resolution": "0.5° grid",
@@ -1655,7 +1698,10 @@
   {
     "comment": "Nitrogen balance: Inputs (growing season sum)",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Nitrogen Inputs",
     "resolution": "0.5° grid",
@@ -1672,7 +1718,10 @@
   {
     "comment": "Nitrogen balance: Losses (growing season sum)",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Nitrogen Losses",
     "resolution": "0.5° grid",
@@ -1689,7 +1738,10 @@
   {
     "comment": "Nitrogen balance: Leaching (growing season sum)",
     "extension": "<crop>-<irrigation>",
-    "frequency": "annual",
+    "frequency": {
+      "other" : "annual",
+      "agriculture" : "annual-gs"
+    },
     "group": "agricultural-variables",
     "long_name": "Cumulative Nitrogen Leached",
     "resolution": "0.5° grid",
