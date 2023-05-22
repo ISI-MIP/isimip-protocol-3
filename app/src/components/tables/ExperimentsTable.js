@@ -58,6 +58,17 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
         <tbody>
           {
             filteredRows.map((row, index) => {
+              let futureTableClass = 'table-secondary'
+              if (row.future.climate && row.future.climate.startsWith('ssp')) {
+                if (row.future.soc.startsWith('ssp')) {
+                  // group 2 experiments
+                  futureTableClass = 'table-info'
+                } else {
+                  // group 2 experiments
+                  futureTableClass = 'table-danger'
+                }
+              }
+
               return (
                 <React.Fragment key={index}>
                   <tr>
@@ -141,7 +152,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                           </td>
                         }
                         {
-                          row.future.climate ? <td className="table-danger">
+                          row.future.climate ? <td className={futureTableClass}>
                             <p>
                               <strong title={climateScenarios[row.future.climate]}>
                                 {row.future.climate}
@@ -217,7 +228,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                           </td>
                         }
                         {
-                          row.future.soc && <td className="table-danger extra-border-bottom">
+                          row.future.soc && <td className={futureTableClass + ' extra-border-bottom'}>
                             <p>
                               <strong title={socScenarios[row.future.soc]}>
                                 {row.future.soc}
