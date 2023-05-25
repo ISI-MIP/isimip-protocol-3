@@ -58,15 +58,10 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
         <tbody>
           {
             filteredRows.map((row, index) => {
-              let futureTableClass = 'table-secondary'
-              if (row.future.climate && row.future.climate.startsWith('ssp')) {
-                if (row.future.soc.startsWith('ssp')) {
-                  // group 2 experiments
-                  futureTableClass = 'table-info'
-                } else {
-                  // group 2 experiments
-                  futureTableClass = 'table-danger'
-                }
+              let futureTableClass = 'table-danger'
+              if (row.future && row.future.soc.startsWith('ssp')) {
+                // group 2 experiments
+                futureTableClass = 'table-info'
               }
 
               return (
