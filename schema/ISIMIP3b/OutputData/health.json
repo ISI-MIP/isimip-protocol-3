@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.json",
-  "commit": "d619c12d0c7e902193b678101c968c739870ab8f",
+  "commit": "3a5e85546aa69474a0d1b06d3429e50ef0fa7f9a",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,43 +26,43 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "mri-esm2-0",
+            "mpi-esm1-2-hr",
             "ukesm1-0-ll",
+            "mri-esm2-0",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp585",
             "ssp126",
-            "historical",
             "picontrol",
-            "ssp370"
+            "historical",
+            "ssp370",
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "ssp1soc",
-            "1850soc",
+            "ssp3soc",
+            "ssp5soc",
+            "ssp370soc",
             "histsoc",
             "2015soc-from-histsoc",
-            "ssp370soc",
-            "ssp5soc",
+            "ssp585soc",
             "ssp126soc",
-            "ssp3soc",
-            "ssp585soc"
+            "2015soc",
+            "1850soc",
+            "ssp1soc"
           ]
         },
         "sens_scenario": {
@@ -75,8 +75,8 @@
         "variable": {
           "type": "string",
           "enum": [
-            "anheat",
             "ancold",
+            "anheat",
             "btm",
             "pop"
           ]
@@ -98,11 +98,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
             "3hr",
+            "fixed",
+            "daily",
             "monthly",
-            "annual",
-            "daily"
+            "annual"
           ]
         },
         "start_year": {
