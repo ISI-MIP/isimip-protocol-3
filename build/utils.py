@@ -71,8 +71,12 @@ def read_patterns(simulation_rounds, sectors):
         for sector in sectors:
             if sector.get('simulation_rounds') is None or simulation_round in sector.get('simulation_rounds'):
                 pattern_path = Path('pattern') / simulation_round['specifier'] / 'OutputData' / '{}.json'.format(sector['specifier'])
-                pattern_list = json.loads(pattern_path.read_text())['file']
-                patterns[simulation_round['specifier']][sector['specifier']] = '_'.join(pattern_list) + '.nc'
+
+                try:
+                    pattern_list = json.loads(pattern_path.read_text())['file']
+                    patterns[simulation_round['specifier']][sector['specifier']] = '_'.join(pattern_list) + '.nc'
+                except FileNotFoundError:
+                    patterns[simulation_round['specifier']][sector['specifier']] = 'No pattern has been defined for this simulation round and sector, yet.'
 
     return patterns
 
