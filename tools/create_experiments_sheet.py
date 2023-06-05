@@ -12,13 +12,14 @@ sectors = [sector['specifier'] for sector in sectors_data]
 
 rows = [[''] + sectors]
 for experiment in experiments:
-    row = [experiment.get('specifier')]
-    for sector in sectors:
-        if sector in experiment.get('sectors'):
-            row.append('x')
-        else:
-            row.append('')
-    rows.append(row)
+    if not experiment.get('hidden'):
+        row = [experiment.get('specifier')]
+        for sector in sectors:
+            if sector in experiment.get('sectors'):
+                row.append('x')
+            else:
+                row.append('')
+        rows.append(row)
 
 writer = csv.writer(sys.stdout)
 writer.writerows(rows)
