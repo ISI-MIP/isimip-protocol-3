@@ -115,6 +115,39 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
     }
   }
 
+  const getDimensions = (row) => {
+    const dimensions = filterField(config, row.dimensions)
+
+    if (Array.isArray(dimensions)) {
+      return <p><b>Level dimensions:</b> ({dimensions.join(', ')}).</p>
+    } else if (typeof dimensions === 'object') {
+      if (Object.keys(dimensions).length > 1) {
+        return (
+          <>
+            <p><b>Level dimensions:</b></p>
+            <ul>
+              {
+                Object.keys(dimensions).map((sector, index) => {
+                  return (
+                    <li key={index} className="mb-0">
+                      <em className="sector">{sector}:</em>
+                      {' '}
+                      ({dimensions[sector].join(', ')})
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </>    
+        )
+      } else {
+        return <p><b>Level dimensions:</b> ({Object.values(dimensions)[0].join(', ')}).</p>
+      }
+    } else {
+      return null
+    }
+  }
+
   const getComment = (row) => {
     const comment = filterField(config, row.comment)
 
@@ -189,7 +222,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                           <p>
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
-                          {row.dimensions && <p><b>Level dimensions:</b> ({row.dimensions.join(', ')}).</p>}
+                          {getDimensions(row)}
                           {getComment(row)}
                         </td>
                       </tr>
