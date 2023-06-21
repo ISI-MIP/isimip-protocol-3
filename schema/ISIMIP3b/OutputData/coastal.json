@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/coastal.json",
-  "commit": "2ae5de627828f2fcb20739072291b1568ab3f7e3",
+  "commit": "db73da2de12b5f896c8b055f16acc1cca166a7d5",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
             "mri-esm2-0",
-            "gfdl-esm4"
+            "ipsl-cm6a-lr",
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -43,26 +43,26 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
+            "picontrol",
+            "ssp126",
             "ssp370",
             "ssp585",
-            "picontrol",
-            "ssp126"
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp370soc",
-            "ssp126soc",
-            "ssp585soc",
-            "2015soc",
-            "2015soc-from-histsoc",
-            "1850soc",
             "ssp5soc",
-            "ssp1soc",
+            "ssp3soc",
+            "2015soc",
+            "ssp370soc",
+            "ssp585soc",
             "histsoc",
-            "ssp3soc"
+            "ssp1soc",
+            "1850soc",
+            "ssp126soc",
+            "2015soc-from-histsoc"
           ]
         },
         "sens_scenario": {
@@ -86,8 +86,9 @@
           "type": "string",
           "enum": [
             "daily",
-            "3hr",
             "fixed",
+            "3hr",
+            "annual",
             "monthly"
           ]
         },
