@@ -96,8 +96,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 16 June 2023</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/fc75fc15d6c59bc75beb25a91da567645deea607">fc75fc15d6c59bc75beb25a91da567645deea607</a></p>
+<p>Last updated: 21 June 2023</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/2ae5de627828f2fcb20739072291b1568ab3f7e3">2ae5de627828f2fcb20739072291b1568ab3f7e3</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -234,7 +234,7 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
 <div data-component="show" data-sector="agriculture">
 <h4 id="note-on-agriculture-output">Note on agriculture output</h4>
-<p>For agricultural output, variables are to be reported with the dimensions <strong>(time,lat,lon)</strong> where the time axis' unit is <code>growing seasons since 1901-01-01 00:00:00</code> resp. <code>growing seasons since 1661-01-01 00:00:00</code> for all variables unless these are reported on a transient time axis, e.g. 'soilmoist1m'. In many cases growing seasons are equivalent to years, as there is always only one planting event per year. However, due to temperature-sensitive growing season lengths, the growing seasons are not fully equivalent to years and users should note the difference. Reported variables on start and end of the growing season are supplied to allow allocating events to transient time axes if desired.</p>
+<p>For agricultural output, variables are to be reported with the dimensions <strong>(time,lat,lon)</strong> where the time axis' unit is <code>growing seasons since 1901-01-01 00:00:00</code> resp. <code>growing seasons since 1601-01-01 00:00:00</code> for all variables unless these are reported on a monthly time axis, e.g. <code>soilmoist</code>. In many cases growing seasons are equivalent to years, as there is always only one planting event per year. However, due to temperature-sensitive growing season lengths, the growing seasons are not fully equivalent to years and users should note the difference. Reported variables on start and end of the growing season are supplied to allow allocating events to transient time axes if desired.</p>
 </div>
 <p>Many variables are defined per area (unit m-2). Typically, and unless otherwise defined, the corresponding reference area is the land area of the grid cell, excluding any water bodies. However, in some cases, it may be necessary or meaningful to report a variable relative to the continental area (including inland water bodies, lakes etc...). For example, evaporation could relate to the land area (excluding water bodies etc.), or to the continental area if the model evaporation occurs over both over land and over water. Also, for some variables, the "per PFT" reporting allows modellers to indicate whether inland water bodies are included in the model or not, and hence, what reference area the variable refers to. In such cases, please specify the reference area in a NetCDF global attribute (e.g. <code>:reference_area = "continental area (including inland water bodies)"</code>). </p>
 <h3 id="42-output-variables">4.2 Output variables</h3>
@@ -9319,13 +9319,23 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "valid_min": 0.0
     },
     {
-      "comment": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
-      "dimensions": [
-        "time",
-        "depth",
-        "lat",
-        "lon"
-      ],
+      "comment": {
+        "other": "Please provide soil moisture for all depth layers (i.e. 3D-field), and indicate depth in m. If depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.",
+        "agriculture": "Pure crop models runs provide monthly averaged soil moisture only during growing seasons and only from the upper 1m in [kg m-3]. Outside growing seasons the grid cells values are set to zero or missing."
+      },
+      "dimensions": {
+        "other": [
+          "time",
+          "depth",
+          "lat",
+          "lon"
+        ],
+        "agriculture": [
+          "time",
+          "lat",
+          "lon"
+        ]
+      },
       "extension": {
         "agriculture": [
           "<crop>-<irrigation>"
@@ -9334,7 +9344,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           null
         ]
       },
-      "frequency": "daily if possible, else monthly",
+      "frequency": {
+        "other": "daily if possible, else monthly",
+        "agriculture": "monthly-gs"
+      },
       "group": "hydrological-variables",
       "long_name": "Total Soil Moisture Content",
       "resolution": {
@@ -9717,7 +9730,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Soil water demand required to avoid water stress accumulated across the growing season, excluding any water losses associated with application or transport and without constraints due to water availability; only needed for `firr` simulations.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": "annual-gs",
       "group": "water-management-variables",
       "long_name": "Cumulative Potential Net Irrigation Water Requirement",
       "resolution": "0.5\u00b0 grid",
@@ -10559,9 +10572,15 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "units": "-"
     },
     {
-      "comment": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production. Yields are reported per growing seasons and not per year.",
+      "comment": {
+        "other": "Yield may be identical to above-ground biomass (biom) if the entire plant is harvested, e.g. for bioenergy production.",
+        "agriculture": "Yields are reported per growing seasons and not per year."
+      },
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Crop Yields",
       "resolution": "0.5\u00b0 grid",
@@ -10578,7 +10597,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Evapotranspiration = sum of transpiration, evaporation, interception and sublimation aggregated across the growing season.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Evapotranspiration",
       "resolution": "0.5\u00b0 grid",
@@ -10595,7 +10617,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Integral of the total nitrogen application rate over the growing season. If organic and inorganic amendments are applied, the nitrogen application should be reported as effective inorganic nitrogen input (ignoring residues).",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Nitrogen Application",
       "resolution": "0.5\u00b0 grid",
@@ -10612,7 +10637,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "As Julian dates. The planting date reported here corresponds to the actual planting date in the simulation and may differ from the prescribed crop calendar planting date in rare cases as certain models may delay prescribed planting for a few days to have more suitable soil moisture and temperature conditions.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Planting Date",
       "resolution": "0.5\u00b0 grid",
@@ -10629,7 +10657,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Planting Year",
       "resolution": "0.5\u00b0 grid",
@@ -10646,7 +10677,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Together with the day and year of planting it allows for clear identification of anthesis.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Anthesis Date",
       "resolution": "0.5\u00b0 grid",
@@ -10663,7 +10697,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Together with the day and year of planting it allows for clear identification of maturity.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Maturity Date",
       "resolution": "0.5\u00b0 grid",
@@ -10680,7 +10717,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Usually the year when maturity is reached. Can also be computed from planting and maturuty day.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Harvest Year",
       "resolution": "0.5\u00b0 grid",
@@ -10697,7 +10737,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "The whole plant biomass above ground.",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Total Above Ground Biomass Dry Matter Yields",
       "resolution": "0.5\u00b0 grid",
@@ -10714,7 +10757,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Nitrogen balance: Uptake (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Nitrogen Uptake",
       "resolution": "0.5\u00b0 grid",
@@ -10731,7 +10777,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Nitrogen balance: Inputs (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Nitrogen Inputs",
       "resolution": "0.5\u00b0 grid",
@@ -10748,7 +10797,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Nitrogen balance: Losses (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Nitrogen Losses",
       "resolution": "0.5\u00b0 grid",
@@ -10765,7 +10817,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "comment": "Nitrogen balance: Leaching (growing season sum)",
       "extension": "<crop>-<irrigation>",
-      "frequency": "annual",
+      "frequency": {
+        "other": "annual",
+        "agriculture": "annual-gs"
+      },
       "group": "agricultural-variables",
       "long_name": "Cumulative Nitrogen Leached",
       "resolution": "0.5\u00b0 grid",
@@ -15933,17 +15988,16 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "increment": "days"
     },
     {
-      "specifier": "annual",
-      "increment": "days"
+      "specifier": "monthly-gs",
+      "increment": "months",
+      "sectors": [
+        "agriculture"
+      ]
     },
     {
-      "specifier": "seasonal",
+      "specifier": "annual-gs",
       "increment": "growing seasons",
       "description": "per growing season",
-      "products": [
-        "OutputData",
-        "SecondaryOutputData"
-      ],
       "sectors": [
         "agriculture"
       ]
