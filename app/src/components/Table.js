@@ -7,18 +7,17 @@ import { actions } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
-import ClimateVariableTable from './tables/ClimateVariableTable'
+import InputDatasetTable from './tables/InputDatasetTable'
+import InputVariableTable from './tables/InputVariableTable'
 import CropTable from './tables/CropTable'
 import ForestStandTable from './tables/ForestStandTable'
 import ExperimentsTable from './tables/ExperimentsTable'
-import GeoDatasetTable from './tables/GeoDatasetTable'
 import HarmonizationTable from './tables/HarmonizationTable'
 import IrrigationTable from './tables/IrrigationTable'
 import LakeSiteTable from './tables/LakeSiteTable'
 import OceanRegionTable from './tables/OceanRegionTable'
 import RiverBasinTable from './tables/RiverBasinTable'
 import ScenarioTable from './tables/ScenarioTable'
-import SocDatasetTable from './tables/SocDatasetTable'
 import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
 
@@ -35,7 +34,7 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'climate_scenario':
       return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'climate_variable':
-      return <ClimateVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <InputVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'crop':
       return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
@@ -43,7 +42,7 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
-      return <GeoDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'harmonization':
       return <HarmonizationTable config={config} caption={caption} rows={rows} />
     case 'irrigation':
@@ -57,11 +56,13 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'sens_scenario':
       return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'soc_dataset':
-      return <SocDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
+      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
     case 'soc_scenario':
       return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'species':
       return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
+    case 'upstream_variable':
+      return <InputVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
     case 'variable':
       return <VariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     default:
