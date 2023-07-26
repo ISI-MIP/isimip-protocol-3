@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/labour.json",
-  "commit": "e53abb3ce071285adea758d82abe67ec4549da87",
+  "commit": "a273447ec9ae48ea7e1cbfc8474f9f96c19ebbcc",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,10 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3-era5",
             "gswp3-w5e5",
+            "20crv3-w5e5",
             "20crv3",
-            "20crv3-w5e5"
+            "20crv3-era5"
           ]
         },
         "detrending": {
@@ -41,34 +41,34 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
-            "counterclim"
+            "counterclim",
+            "obsclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc"
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "90arcsec",
+            "300arcsec",
             "1901co2",
             "30arcsec",
+            "90arcsec",
             "1800arcsec",
-            "300arcsec"
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "labsupp",
+            "labprod",
             "labeff",
-            "labprod"
+            "labsupp"
           ]
         },
         "region": {
@@ -80,11 +80,11 @@
         "time_step": {
           "type": "string",
           "enum": [
+            "monthly",
+            "daily",
             "fixed",
             "annual",
-            "3hr",
-            "daily",
-            "monthly"
+            "3hr"
           ]
         },
         "start_year": {
