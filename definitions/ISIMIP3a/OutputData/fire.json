@@ -1,5 +1,849 @@
 {
-  "commit": "97ead10b18c3d2620f8d75013dc372bdfc1130be",
+  "commit": "c061051a30763e003aa9e9e65498ddd94b492763",
+  "climate_forcing": [
+    {
+      "specifier": "gswp3-w5e5",
+      "priority": 1,
+      "title": "GSWP3-W5E5",
+      "time_period": "1901-2019",
+      "reanalysis": "20CRv2, ERA5",
+      "bias_adjustment_target": "GPCC, CRU",
+      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData",
+        "SecondaryInputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3-w5e5",
+      "priority": 2,
+      "title": "20CRv3-W5E5",
+      "time_period": "1901-2019",
+      "reanalysis": "20CRv3, ERA5",
+      "bias_adjustment_target": "GPCC, CRU",
+      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3-era5",
+      "priority": 3,
+      "title": "20CRv3-ERA5",
+      "time_period": "1901-2021",
+      "reanalysis": "20CRv3, ERA5",
+      "bias_adjustment_target": "none",
+      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "20crv3",
+      "priority": 4,
+      "title": "20CRv3",
+      "time_period": "1901-2015",
+      "reanalysis": "20CRv3",
+      "bias_adjustment_target": "none",
+      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "InputData",
+        "OutputData"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    }
+  ],
+  "soc_scenario": [
+    {
+      "specifier": "histsoc",
+      "description": "Varying direct human influences in the historical period.",
+      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "datasets": [
+        {
+          "dataset": "Land use and irrigation data",
+          "status": "mandatory",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.571261.2",
+          "path": "ISIMIP3a/InputData/socioeconomic/landuse/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Wood harvest",
+          "status": "optional",
+          "doi": "https://data.isimip.org/10.48364/ISIMIP.482888.2",
+          "path": "ISIMIP3a/InputData/socioeconomic/wood_harvesting/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "biomes",
+            "fire",
+            "forestry",
+            "peat",
+            "permafrost"
+          ]
+        },
+        {
+          "dataset": "Land transformation",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.249531",
+          "path": "ISIMIP3a/InputData/socioeconomic/land-transformation/",
+          "comment": "Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-fertilizer",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.311496.2",
+          "path": "ISIMIP3a/InputData/socioeconomic/n-fertilizer/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-deposition",
+          "status": "optional",
+          "doi": " https://doi.org/10.48364/ISIMIP.600567",
+          "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/24).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Crop calendar",
+          "status": "optional",
+          "doi": "https://doi.org/10.5281/zenodo.5062513",
+          "path": "ISIMIP3a/InputData/socioeconomic/crop_calendar/2015soc/",
+          "comment": "Input dataset documentation \u2192 [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biomes",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Marine fishing effort and catches",
+          "status": "mandatory",
+          "path": "ISIMIP3a/InputData/socioeconomic/fishing/",
+          "comment": "Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
+        },
+        {
+          "dataset": "Dams and reservoirs",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.769035",
+          "path": "ISIMIP3a/InputData/socioeconomic/reservoirs_dams/",
+          "comment": "Input dataset documentation \u2192 [Dams & reservoirs](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/129).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Water abstraction",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.228996",
+          "path": "ISIMIP3a/InputData/socioeconomic/water_abstraction/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Lake surface area",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.263794.2",
+          "path": "ISIMIP3a/InputData/socioeconomic/lakes/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Lake area fraction](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/132).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "lakes_global",
+            "lakes_local",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Forest management",
+          "status": "optional",
+          "doi": "https://doi.org/10.5194/essd-12-1295-2020",
+          "comment": "Input dataset documentation \u2192 [Forest management](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/131).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ],
+          "sectors": [
+            "forestry"
+          ]
+        },
+        {
+          "dataset": "Population data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.822480.2",
+          "path": "ISIMIP3a/InputData/socioeconomic/pop/histsoc/",
+          "comment": "Input dataset documentation \u2192 [National, gridded historical population](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/123).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ]
+        },
+        {
+          "dataset": "GDP data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.824555",
+          "path": "ISIMIP3a/InputData/socioeconomic/gdp/histsoc/",
+          "comment": "Input dataset documentation \u2192 [National historical Gross Domestic Product (GDP)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/125).",
+          "simulation_rounds": [
+            "ISIMIP3a"
+          ]
+        },
+        {
+          "dataset": "Land use and irrigation data",
+          "status": "mandatory",
+          "path": "ISIMIP3b/InputData/socioeconomic/landuse/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Wood harvest",
+          "status": "optional",
+          "path": "ISIMIP3b/InputData/socioeconomic/wood_harvesting/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/141).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "biomes",
+            "fire",
+            "forestry",
+            "peat",
+            "permafrost"
+          ]
+        },
+        {
+          "dataset": "Land transformation",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.537686",
+          "path": "ISIMIP3b/InputData/socioeconomic/land-transformation/",
+          "comment": "Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-fertilizer",
+          "status": "mandatory",
+          "path": "ISIMIP3b/InputData/socioeconomic/n-fertilizer/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/112/).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "N-deposition",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.600567",
+          "path": "ISIMIP3b/InputData/socioeconomic/n-deposition/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/24/).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "fire",
+            "forestry",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Crop calendar",
+          "status": "optional",
+          "doi": "https://doi.org/10.5281/zenodo.5062513",
+          "path": "ISIMIP3b/InputData/socioeconomic/crop_calendar/",
+          "comment": "Input dataset documentation \u2192 [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biomes",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Marine fishing effort and catches",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.911570",
+          "path": "ISIMIP3b/InputData/socioeconomic/fishing/",
+          "comment": "Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/127).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "marine-fishery_global",
+            "marine-fishery_regional"
+          ]
+        },
+        {
+          "dataset": "Dams and reservoirs",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.995292",
+          "path": "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/",
+          "comment": "Input dataset documentation \u2192 [Reservoirs & dams ](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/130).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Water abstraction",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.478291",
+          "path": "ISIMIP3b/InputData/socioeconomic/water_abstraction/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "agriculture",
+            "biodiversity",
+            "biomes",
+            "diarrhea",
+            "energy",
+            "health",
+            "labour",
+            "lakes_global",
+            "lakes_local",
+            "peat",
+            "permafrost",
+            "water_global",
+            "water_regional"
+          ]
+        },
+        {
+          "dataset": "Lake surface area",
+          "status": "optional",
+          "doi": "https://doi.org/10.48364/ISIMIP.383948.1",
+          "path": "ISIMIP3b/InputData/socioeconomic/lakes/histsoc/",
+          "comment": "Input dataset documentation \u2192 [Reservoirs Lakes area fraction](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/133).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "lakes_global",
+            "lakes_local",
+            "water_global"
+          ]
+        },
+        {
+          "dataset": "Forest management",
+          "status": "optional",
+          "doi": "https://doi.org/10.5194/essd-12-1295-2020",
+          "comment": "Input dataset documentation \u2192 [Forest management](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/131).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ],
+          "sectors": [
+            "forestry"
+          ]
+        },
+        {
+          "dataset": "Population data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
+          "path": "ISIMIP3b/InputData/socioeconomic/pop/histsoc/",
+          "comment": "Input dataset documentation \u2192 [National, gridded historical population](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/124).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ]
+        },
+        {
+          "dataset": "GDP data",
+          "status": "mandatory",
+          "doi": "https://doi.org/10.48364/ISIMIP.824555",
+          "path": "ISIMIP3b/InputData/socioeconomic/gdp/histsoc/",
+          "comment": "Input dataset documentation \u2192 [National historical Gross Domestic Product (GDP)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/126).",
+          "simulation_rounds": [
+            "ISIMIP3b"
+          ]
+        }
+      ]
+    },
+    {
+      "specifier": "2015soc",
+      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    }
+  ],
+  "subcategory": [
+    {
+      "specifier": "atmosphere",
+      "title": "Atmosphere",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "atmosphere_composition",
+      "title": "Atmospheric composition",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "lightning",
+      "title": "Lightning",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "ocean",
+      "title": "Ocean",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "fishing",
+      "title": "Fishing",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "gdp",
+      "title": "GDP",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "land-transformation",
+      "title": "Land transformation",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "landuse",
+      "title": "Land use",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-deposition",
+      "title": "N-deposition",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "n-fertilizer",
+      "title": "N-fertilizer",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "crop_calendar",
+      "title": "Crop calendar",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "pop",
+      "title": "Population",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "reservoirs_dams",
+      "title": "Reservoirs & dams",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "water_abstraction",
+      "title": "Water abstraction",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "wood_harvesting",
+      "title": "Wood harvesting",
+      "categories": [
+        "socioeconomic"
+      ]
+    },
+    {
+      "specifier": "lakes",
+      "title": "Lakes",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "landseamask",
+      "title": "Land/Sea masks",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "countrymasks",
+      "title": "Country masks",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "orography",
+      "title": "Orography",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "river_routing",
+      "title": "River routing",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "soil",
+      "title": "Soil",
+      "categories": [
+        "geo_conditions"
+      ]
+    },
+    {
+      "specifier": "bathymetry",
+      "title": "Ocean bathymetry",
+      "categories": [
+        "geo_conditions"
+      ]
+    }
+  ],
   "climate_scenario": [
     {
       "specifier": "obsclim",
@@ -317,68 +1161,21 @@
       ]
     }
   ],
-  "river": [
+  "harmonization": [
     {
-      "specifier": "amazon"
+      "specifier": "default",
+      "title": "Default",
+      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
     },
     {
-      "specifier": "blue-nile"
+      "specifier": "fullharm",
+      "title": "Fully harmonized",
+      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
     },
     {
-      "specifier": "danube"
-    },
-    {
-      "specifier": "darling"
-    },
-    {
-      "specifier": "ganges"
-    },
-    {
-      "specifier": "godavari"
-    },
-    {
-      "specifier": "indus"
-    },
-    {
-      "specifier": "lena"
-    },
-    {
-      "specifier": "mackenzie"
-    },
-    {
-      "specifier": "mississippi"
-    },
-    {
-      "specifier": "niger"
-    },
-    {
-      "specifier": "pajeu"
-    },
-    {
-      "specifier": "rhine"
-    },
-    {
-      "specifier": "tagus"
-    },
-    {
-      "specifier": "yangtze"
-    },
-    {
-      "specifier": "yellow"
-    }
-  ],
-  "region": [
-    {
-      "specifier": "global",
-      "title": "Global"
-    }
-  ],
-  "fishing_type": [
-    {
-      "specifier": "fishing"
-    },
-    {
-      "specifier": "no-fishing"
+      "specifier": "harmnon",
+      "title": "Harmonized seasons with no N constraints",
+      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
     }
   ],
   "sector": [
@@ -477,292 +1274,874 @@
       "urls": "https://protocol.isimip.org/#ISIMIP3a/water_regional"
     }
   ],
-  "subcategory": [
+  "dimensions": [
     {
-      "specifier": "atmosphere",
-      "title": "Atmosphere",
-      "categories": [
-        "climate"
+      "specifier": "lon",
+      "axis": "X",
+      "units": "degrees_east",
+      "size": 720,
+      "minimum": -179.75,
+      "maximum": 179.75,
+      "standard_name": "longitude",
+      "long_names": [
+        "Longitude",
+        "longitude"
       ]
     },
     {
-      "specifier": "atmosphere_composition",
-      "title": "Atmospheric composition",
-      "categories": [
-        "climate"
+      "specifier": "lat",
+      "axis": "Y",
+      "units": "degrees_north",
+      "size": 360,
+      "minimum": -89.75,
+      "maximum": 89.75,
+      "standard_name": "latitude",
+      "long_names": [
+        "Latitude",
+        "latitude"
       ]
     },
     {
-      "specifier": "lightning",
-      "title": "Lightning",
-      "categories": [
-        "climate"
+      "specifier": "time",
+      "axis": "T",
+      "standard_name": "time",
+      "long_names": [
+        "time",
+        "time axis",
+        "Time",
+        "Time axis"
+      ],
+      "calenders_daily": [
+        "standard",
+        "proleptic_gregorian",
+        "gregorian",
+        "366_day",
+        "365_day"
       ]
     },
     {
-      "specifier": "ocean",
-      "title": "Ocean",
-      "categories": [
-        "climate"
+      "specifier": "depth",
+      "axis": "Z",
+      "standard_name": "depth_below_surface",
+      "long_name": "Depth of Vertical Layer Center Below Surface",
+      "positive": "down",
+      "units": "m"
+    },
+    {
+      "specifier": "levlak",
+      "axis": "Z",
+      "standard_name": "water_layer",
+      "long_name": "Vertical Water Layer Index",
+      "positive": "down",
+      "units": "-"
+    },
+    {
+      "specifier": "bins",
+      "axis": "Z",
+      "standard_name": "log10_weight_bins",
+      "long_name": "log10 Weight Bins",
+      "units": "-"
+    },
+    {
+      "specifier": "fuelclass",
+      "axis": "Z",
+      "standard_name": "fuel_class",
+      "long_name": "Fuel Class",
+      "units": "-"
+    },
+    {
+      "specifier": "bnds",
+      "size": 2
+    }
+  ],
+  "irrigation": [
+    {
+      "specifier": "noirr",
+      "title": "No irrigation (rainfed land)"
+    }
+  ],
+  "river": [
+    {
+      "specifier": "amazon"
+    },
+    {
+      "specifier": "blue-nile"
+    },
+    {
+      "specifier": "danube"
+    },
+    {
+      "specifier": "darling"
+    },
+    {
+      "specifier": "ganges"
+    },
+    {
+      "specifier": "godavari"
+    },
+    {
+      "specifier": "indus"
+    },
+    {
+      "specifier": "lena"
+    },
+    {
+      "specifier": "mackenzie"
+    },
+    {
+      "specifier": "mississippi"
+    },
+    {
+      "specifier": "niger"
+    },
+    {
+      "specifier": "pajeu"
+    },
+    {
+      "specifier": "rhine"
+    },
+    {
+      "specifier": "tagus"
+    },
+    {
+      "specifier": "yangtze"
+    },
+    {
+      "specifier": "yellow"
+    }
+  ],
+  "simulation_round": [
+    {
+      "specifier": "ISIMIP3a",
+      "title": "ISIMIP3a simulation round",
+      "description": "Historical model evaluation and attribution runs"
+    },
+    {
+      "specifier": "ISIMIP3b",
+      "title": "ISIMIP3b simulation round",
+      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
+    }
+  ],
+  "soc_dataset": [
+    {
+      "specifier": "landuse-totals",
+      "group": "landuse",
+      "title": "Landuse totals",
+      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-totals_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+      "variables": [
+        {
+          "long_name": "all of the rainfed cropland",
+          "specifier": "cropland_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "all of the irrigated cropland",
+          "specifier": "cropland_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of the total cropland",
+          "specifier": "cropland_total",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of managed pastures or rangeland",
+          "specifier": "pastures",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "landuse-5crops",
+      "group": "landuse",
+      "title": "Downscaling to 5 crops",
+      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-5crops_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+      "variables": [
+        {
+          "long_name": "share of irrigated C3 annual crops",
+          "specifier": "c3ann_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed C3 annual crops",
+          "specifier": "c3ann_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated C3 perennial crops",
+          "specifier": "c3per_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed C3 perennial crops",
+          "specifier": "c3per_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated C3 N-fixing crops",
+          "specifier": "c3nfx_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed C3 N-fixing crops",
+          "specifier": "c3nfx_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated C4 annual crops",
+          "specifier": "c4ann_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed C4 annual crops",
+          "specifier": "c4ann_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated C4 perennial crops",
+          "specifier": "c4per_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed C4 perennial crops",
+          "specifier": "c4per_rainfed",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "landuse-15crops",
+      "group": "landuse",
+      "title": "Downscaling to 15 crops",
+      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-15crops_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+      "variables": [
+        {
+          "long_name": "share of irrigated others perennial",
+          "specifier": "c3per_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed others perennial",
+          "specifier": "c3per_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Sugarcane",
+          "specifier": "c4per_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Sugarcane",
+          "specifier": "c4per_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Maize",
+          "specifier": "maize_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Maize",
+          "specifier": "maize_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Oil crops groundnut",
+          "specifier": "oil_crops_groundnut_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Oil crops groundnut",
+          "specifier": "oil_crops_groundnut_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Oil crops rapeseed",
+          "specifier": "oil_crops_rapeseed_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Oil crops rapeseed",
+          "specifier": "oil_crops_rapeseed_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated ",
+          "specifier": "oil_crops_soybean_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed ",
+          "specifier": "oil_crops_soybean_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated ",
+          "specifier": "oil_crops_sunflower_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed ",
+          "specifier": "oil_crops_sunflower_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated ",
+          "specifier": "others_c3ann_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed ",
+          "specifier": "others_c3ann_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated ",
+          "specifier": "others_c3nfx_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed ",
+          "specifier": "others_c3nfx_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "managed grassland",
+          "specifier": "pastures",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Pulses",
+          "specifier": "pulses_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Pulses",
+          "specifier": "pulses_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Rice",
+          "specifier": "rice_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Rice",
+          "specifier": "rice_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Temperate cereals",
+          "specifier": "temperate_cereals_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Temperate cereals",
+          "specifier": "temperate_cereals_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Temperate roots",
+          "specifier": "temperate_roots_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Temperate roots",
+          "specifier": "temperate_roots_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Tropical cereals",
+          "specifier": "tropical_cereals_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Tropical cereals",
+          "specifier": "tropical_cereals_rainfed",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of irrigated Tropical roots",
+          "specifier": "tropical_roots_irrigated",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rainfed Tropical roots",
+          "specifier": "tropical_roots_rainfed",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "landuse-pastures",
+      "group": "landuse",
+      "title": "Managed pastures and rangeland",
+      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-pastures_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+      "variables": [
+        {
+          "long_name": "share of managed pastures",
+          "specifier": "managed_pastures",
+          "unit": "1"
+        },
+        {
+          "long_name": "share of rangeland",
+          "specifier": "rangeland",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "landuse-urbanareas",
+      "group": "landuse",
+      "title": "Urban areas",
+      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-urbanareas_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
+      "variables": [
+        {
+          "long_name": "share of urban areas",
+          "specifier": "urbanareas",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "n-fertilizer-5crops",
+      "group": "n-fertilizer",
+      "title": "Nitrogen deposited by fertilizers on croplands",
+      "path": "ISIMIP3a/InputData/socioeconomic/n-fertilizer/<soc_scenario>/<soc_scenario>_n-fertilizer-5crops_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
+      "variables": [
+        {
+          "long_name": "N input through fertilizer on cropland with C3 annual crops",
+          "specifier": "fertl_c3ann",
+          "unit": "kg ha-1 yr-1 (crop season)"
+        },
+        {
+          "long_name": "C3 N-fixing crops",
+          "specifier": "fertl_c3nfx",
+          "unit": "kg ha-1 yr-1 (crop season)"
+        },
+        {
+          "long_name": "C3 perennial crops",
+          "specifier": "fertl_c3per",
+          "unit": "kg ha-1 yr-1 (crop season)"
+        },
+        {
+          "long_name": "C4 annual crops",
+          "specifier": "fertl_c4ann",
+          "unit": "kg ha-1 yr-1 (crop season)"
+        },
+        {
+          "long_name": "C4 perennial crops",
+          "specifier": "fertl_c4per",
+          "unit": "kg ha-1 yr-1 (crop season)"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual (growing season)",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "mandatory": true
+    },
+    {
+      "specifier": "ndep-nhx",
+      "group": "n-deposition",
+      "title": "Reduced nitrogen deposition",
+      "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/<soc_scenario>/ndep-nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).",
+      "variables": [
+        {
+          "long_name": "NHx deposition (nhx)",
+          "specifier": "nhx",
+          "unit": "g N m-2 mon-1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     },
     {
-      "specifier": "fishing",
-      "title": "Fishing",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "gdp",
-      "title": "GDP",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "land-transformation",
-      "title": "Land transformation",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "landuse",
-      "title": "Land use",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "n-deposition",
-      "title": "N-deposition",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "n-fertilizer",
-      "title": "N-fertilizer",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "crop_calendar",
-      "title": "Crop calendar",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "pop",
-      "title": "Population",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "reservoirs_dams",
-      "title": "Reservoirs & dams",
-      "categories": [
-        "socioeconomic"
-      ]
-    },
-    {
-      "specifier": "water_abstraction",
-      "title": "Water abstraction",
-      "categories": [
-        "socioeconomic"
+      "specifier": "ndep-noy",
+      "group": "n-deposition",
+      "title": "Oxidized nitrogen deposition",
+      "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/<soc_scenario>/ndep-noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).",
+      "variables": [
+        {
+          "long_name": "NOy deposition (noy)",
+          "specifier": "noy",
+          "unit": "g N m-2 mon-1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     },
     {
       "specifier": "wood_harvesting",
+      "group": "landuse",
       "title": "Wood harvesting",
-      "categories": [
-        "socioeconomic"
+      "path": "ISIMIP3a/InputData/socioeconomic/wood_harvesting/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc",
+      "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).",
+      "variables": [
+        {
+          "long_name": "wood harvest area from primary forest land",
+          "specifier": "primf-harv",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest area from primary non forest land",
+          "specifier": "primn-harv",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest area from secondary mature forest land",
+          "specifier": "secmf-harv",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest area from secondary young forest land",
+          "specifier": "secyf-harv",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest area from secondary non forest land",
+          "specifier": "secnf-harv",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest biomass carbon from primary forest land",
+          "specifier": "primf-bioh",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest biomass carbon from primary non forest land",
+          "specifier": "primn-bioh",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest biomass carbon from secondary mature forest land",
+          "specifier": "secmf-bioh",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest biomass carbon from secondary young forest land",
+          "specifier": "secyf-bioh",
+          "unit": "kg"
+        },
+        {
+          "long_name": "wood harvest biomass carbon from secondary non forest land",
+          "specifier": "secnf-bioh",
+          "unit": "kg"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "national",
+      "frequency": "annual",
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "peat",
+        "permafrost"
       ]
     },
     {
-      "specifier": "lakes",
-      "title": "Lakes",
-      "categories": [
-        "geo_conditions"
+      "specifier": "land-transformation",
+      "group": "landuse",
+      "title": "Not forest-related land transformation",
+      "path": "ISIMIP3a/InputData/socioeconomic/land-transformation/<soc_scenario>/land-transformation_<soc_scenario>_annual_<start_year>_<end_year>.nc",
+      "comment": "The data set consists of 115 land transformation categories, one for each transition from one type of land use to another. Considered land use types: **secdf** (potentially forested secondary land), **secdn** (potentially non-forested secondary land), **urban** (urban land), **c3ann** (C3 annual crops), **c4ann** (C4 annual crops), **c3per** (C3 perennial crops), **c4per** (C4 perennial crops), **c3nfx** (C3 nitrogen-fixing crops), **pastr** (managed asture), **range** (rangeland). Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/). ",
+      "variables": [
+        {
+          "long_name": "One variable for each transition from one type of land use to another.",
+          "specifier": "<type>_to_<type>",
+          "unit": "1"
+        }
+      ],
+      "time_periods": [
+        "1850-1900",
+        "1901-2020"
+      ],
+      "resolution": "national",
+      "frequency": "annual",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
       ]
     },
     {
-      "specifier": "landseamask",
-      "title": "Land/Sea masks",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "countrymasks",
-      "title": "Country masks",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "orography",
-      "title": "Orography",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "river_routing",
-      "title": "River routing",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "soil",
-      "title": "Soil",
-      "categories": [
-        "geo_conditions"
-      ]
-    },
-    {
-      "specifier": "bathymetry",
-      "title": "Ocean bathymetry",
-      "categories": [
-        "geo_conditions"
-      ]
-    }
-  ],
-  "forest_stand": [
-    {
-      "specifier": "hyytiala",
-      "title": "Hyyti\u00e4l\u00e4",
-      "lat": 61.8475,
-      "lon": 24.295,
-      "country": "FI",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy",
-        "piab"
+      "specifier": "population-gridded",
+      "group": "population",
+      "title": "Population (gridded)",
+      "specifier_file": "population",
+      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        {
+          "long_name": "total population",
+          "specifier": "total-population",
+          "unit": "1"
+        },
+        {
+          "long_name": "urban population",
+          "specifier": "urban-population",
+          "unit": "1"
+        },
+        {
+          "long_name": "rural population",
+          "specifier": "rural-population",
+          "unit": "1"
+        }
       ],
-      "thinning": "below",
-      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
+      "time_periods": [
+        "1850-1900",
+        "1901-2021"
+      ],
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "annual",
+      "mandatory": true
     },
     {
-      "specifier": "peitz",
-      "title": "Peitz",
-      "lat": 51.9166,
-      "lon": 14.35,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "pisy"
+      "specifier": "population-countrylevel",
+      "group": "population",
+      "title": "Population (country-level)",
+      "specifier_file": "population",
+      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
+      "variables": [
+        {
+          "long_name": "total number of people per country",
+          "specifier": "population",
+          "unit": "10^6 people"
+        }
       ],
-      "thinning": "below",
-      "comment": "Managed using a weak thinning from below."
+      "time_periods": [
+        "1950-2021"
+      ],
+      "resolution": "national",
+      "frequency": "annual",
+      "mandatory": true
     },
     {
-      "specifier": "solling-beech",
-      "title": "Solling (beech)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
+      "specifier": "gdp",
+      "group": "gdp",
+      "title": "GDP",
+      "specifier_file": "gdp-countrylevel",
+      "path": "ISIMIP3a/InputData/socioeconomic/gdp/<soc_scenario>/gdp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc",
+      "variables": [
+        {
+          "long_name": "Gross domestic product",
+          "specifier": "gdp",
+          "unit": "PPP 2005 Int $"
+        }
       ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "solling-spruce",
-      "title": "Solling (spruce)",
-      "lat": 51.77,
-      "lon": 9.57,
-      "country": "DE",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab "
+      "time_periods": [
+        "1965-2021"
       ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "soro",
-      "title": "Sor\u00f8",
-      "lat": 55.485844,
-      "lon": 11.644616,
-      "country": "DK",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "kroof",
-      "title": "Kranzberg Roof Project",
-      "lat": 48.25,
-      "lon": 11.4,
-      "country": "DE",
-      "type": "Mixed deciduous and conifers",
-      "species": [
-        "fasy",
-        "piab",
-        "acpl",
-        "lade",
-        "pisy",
-        "quro"
-      ],
-      "thinning": "below",
-      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
-    },
-    {
-      "specifier": "le-bray",
-      "title": "Le Bray",
-      "lat": 44.71711,
-      "lon": -0.7693,
-      "country": "FR",
-      "type": "Even-aged conifer",
-      "species": [
-        "pipi"
-      ],
-      "thinning": "below",
-      "comment": ""
-    },
-    {
-      "specifier": "collelongo",
-      "title": "Collelongo",
-      "lat": 41.8494,
-      "lon": 13.5881,
-      "country": "IT",
-      "type": "Even-aged deciduous",
-      "species": [
-        "fasy"
-      ],
-      "thinning": "above",
-      "comment": ""
-    },
-    {
-      "specifier": "bily-kriz",
-      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
-      "lat": 49.3,
-      "lon": 18.32,
-      "country": "CZ",
-      "type": "Even-aged conifer",
-      "species": [
-        "piab"
-      ],
-      "thinning": "below",
-      "comment": ""
+      "resolution": "country-level",
+      "frequency": "annual",
+      "mandatory": true
     }
   ],
   "variable": [
@@ -1997,1330 +3376,27 @@
       "units": "kg m-2 s-1"
     }
   ],
-  "acidification_type": [
+  "resolution": [
     {
-      "specifier": "oa"
+      "specifier": "120arcmin"
     },
     {
-      "specifier": "no-oa"
+      "specifier": "60arcmin"
+    },
+    {
+      "specifier": "30arcmin"
+    },
+    {
+      "specifier": "15arcmin"
     }
   ],
-  "product": [
+  "period": [
     {
-      "specifier": "InputData",
-      "title": "Input Data",
-      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryInputData",
-      "title": "Secondary Input Data",
-      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
-    },
-    {
-      "specifier": "OutputData",
-      "title": "Output Data",
-      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
-    },
-    {
-      "specifier": "SecondaryOutputData",
-      "title": "Secondary Output Data",
-      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
-    }
-  ],
-  "time_step": [
-    {
-      "specifier": "3hr",
-      "increment": "hours",
-      "products": [
-        "OutputData",
-        "SecondaryOutputData"
-      ]
-    },
-    {
-      "specifier": "daily",
-      "increment": "days"
-    },
-    {
-      "specifier": "monthly",
-      "increment": "days"
-    },
-    {
-      "specifier": "annual",
-      "increment": "days"
-    },
-    {
-      "specifier": "fixed"
-    }
-  ],
-  "soc_scenario": [
-    {
-      "specifier": "histsoc",
-      "description": "Varying direct human influences in the historical period.",
-      "description_note": "Please label your model run `histsoc` **even if** it only partly accounts for varying direct human forcings while another part of the the direct human forcing is considered constant or is ignored.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ],
-      "datasets": [
-        {
-          "dataset": "Land use and irrigation data",
-          "status": "mandatory",
-          "doi": "https://data.isimip.org/10.48364/ISIMIP.571261.2",
-          "path": "ISIMIP3a/InputData/socioeconomic/landuse/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Wood harvest",
-          "status": "optional",
-          "doi": "https://data.isimip.org/10.48364/ISIMIP.482888.2",
-          "path": "ISIMIP3a/InputData/socioeconomic/wood_harvesting/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "biomes",
-            "fire",
-            "forestry",
-            "peat",
-            "permafrost"
-          ]
-        },
-        {
-          "dataset": "Land transformation",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.249531",
-          "path": "ISIMIP3a/InputData/socioeconomic/land-transformation/",
-          "comment": "Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "N-fertilizer",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.311496.2",
-          "path": "ISIMIP3a/InputData/socioeconomic/n-fertilizer/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "N-deposition",
-          "status": "optional",
-          "doi": " https://doi.org/10.48364/ISIMIP.600567",
-          "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/24).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Crop calendar",
-          "status": "optional",
-          "doi": "https://doi.org/10.5281/zenodo.5062513",
-          "path": "ISIMIP3a/InputData/socioeconomic/crop_calendar/2015soc/",
-          "comment": "Input dataset documentation \u2192 [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biomes",
-            "water_global"
-          ]
-        },
-        {
-          "dataset": "Marine fishing effort and catches",
-          "status": "mandatory",
-          "path": "ISIMIP3a/InputData/socioeconomic/fishing/",
-          "comment": "Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "marine-fishery_global",
-            "marine-fishery_regional"
-          ]
-        },
-        {
-          "dataset": "Dams and reservoirs",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.769035",
-          "path": "ISIMIP3a/InputData/socioeconomic/reservoirs_dams/",
-          "comment": "Input dataset documentation \u2192 [Dams & reservoirs](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/129).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Water abstraction",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.228996",
-          "path": "ISIMIP3a/InputData/socioeconomic/water_abstraction/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Lake surface area",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.263794.2",
-          "path": "ISIMIP3a/InputData/socioeconomic/lakes/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Lake area fraction](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/132).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "lakes_global",
-            "lakes_local",
-            "water_global"
-          ]
-        },
-        {
-          "dataset": "Forest management",
-          "status": "optional",
-          "doi": "https://doi.org/10.5194/essd-12-1295-2020",
-          "comment": "Input dataset documentation \u2192 [Forest management](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/131).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ],
-          "sectors": [
-            "forestry"
-          ]
-        },
-        {
-          "dataset": "Population data",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.822480.2",
-          "path": "ISIMIP3a/InputData/socioeconomic/pop/histsoc/",
-          "comment": "Input dataset documentation \u2192 [National, gridded historical population](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/123).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ]
-        },
-        {
-          "dataset": "GDP data",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.824555",
-          "path": "ISIMIP3a/InputData/socioeconomic/gdp/histsoc/",
-          "comment": "Input dataset documentation \u2192 [National historical Gross Domestic Product (GDP)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/125).",
-          "simulation_rounds": [
-            "ISIMIP3a"
-          ]
-        },
-        {
-          "dataset": "Land use and irrigation data",
-          "status": "mandatory",
-          "path": "ISIMIP3b/InputData/socioeconomic/landuse/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Wood harvest",
-          "status": "optional",
-          "path": "ISIMIP3b/InputData/socioeconomic/wood_harvesting/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/141).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "biomes",
-            "fire",
-            "forestry",
-            "peat",
-            "permafrost"
-          ]
-        },
-        {
-          "dataset": "Land transformation",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.537686",
-          "path": "ISIMIP3b/InputData/socioeconomic/land-transformation/",
-          "comment": "Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "N-fertilizer",
-          "status": "mandatory",
-          "path": "ISIMIP3b/InputData/socioeconomic/n-fertilizer/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/112/).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "N-deposition",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.600567",
-          "path": "ISIMIP3b/InputData/socioeconomic/n-deposition/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/24/).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Crop calendar",
-          "status": "optional",
-          "doi": "https://doi.org/10.5281/zenodo.5062513",
-          "path": "ISIMIP3b/InputData/socioeconomic/crop_calendar/",
-          "comment": "Input dataset documentation \u2192 [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biomes",
-            "water_global"
-          ]
-        },
-        {
-          "dataset": "Marine fishing effort and catches",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.911570",
-          "path": "ISIMIP3b/InputData/socioeconomic/fishing/",
-          "comment": "Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/127).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "marine-fishery_global",
-            "marine-fishery_regional"
-          ]
-        },
-        {
-          "dataset": "Dams and reservoirs",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.995292",
-          "path": "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/",
-          "comment": "Input dataset documentation \u2192 [Reservoirs & dams ](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/130).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Water abstraction",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.478291",
-          "path": "ISIMIP3b/InputData/socioeconomic/water_abstraction/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "diarrhea",
-            "energy",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
-          ]
-        },
-        {
-          "dataset": "Lake surface area",
-          "status": "optional",
-          "doi": "https://doi.org/10.48364/ISIMIP.383948.1",
-          "path": "ISIMIP3b/InputData/socioeconomic/lakes/histsoc/",
-          "comment": "Input dataset documentation \u2192 [Reservoirs Lakes area fraction](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/133).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "lakes_global",
-            "lakes_local",
-            "water_global"
-          ]
-        },
-        {
-          "dataset": "Forest management",
-          "status": "optional",
-          "doi": "https://doi.org/10.5194/essd-12-1295-2020",
-          "comment": "Input dataset documentation \u2192 [Forest management](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/131).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ],
-          "sectors": [
-            "forestry"
-          ]
-        },
-        {
-          "dataset": "Population data",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
-          "path": "ISIMIP3b/InputData/socioeconomic/pop/histsoc/",
-          "comment": "Input dataset documentation \u2192 [National, gridded historical population](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/124).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ]
-        },
-        {
-          "dataset": "GDP data",
-          "status": "mandatory",
-          "doi": "https://doi.org/10.48364/ISIMIP.824555",
-          "path": "ISIMIP3b/InputData/socioeconomic/gdp/histsoc/",
-          "comment": "Input dataset documentation \u2192 [National historical Gross Domestic Product (GDP)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/126).",
-          "simulation_rounds": [
-            "ISIMIP3b"
-          ]
-        }
-      ]
-    },
-    {
-      "specifier": "2015soc",
-      "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-      "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
-      "simulation_rounds": [
-        "ISIMIP3a",
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    }
-  ],
-  "soc_dataset": [
-    {
-      "specifier": "landuse-totals",
-      "group": "landuse",
-      "title": "Landuse totals",
-      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-totals_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-      "variables": [
-        {
-          "long_name": "all of the rainfed cropland",
-          "specifier": "cropland_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "all of the irrigated cropland",
-          "specifier": "cropland_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of the total cropland",
-          "specifier": "cropland_total",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of managed pastures or rangeland",
-          "specifier": "pastures",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "landuse-5crops",
-      "group": "landuse",
-      "title": "Downscaling to 5 crops",
-      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-5crops_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-      "variables": [
-        {
-          "long_name": "share of irrigated C3 annual crops",
-          "specifier": "c3ann_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed C3 annual crops",
-          "specifier": "c3ann_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated C3 perennial crops",
-          "specifier": "c3per_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed C3 perennial crops",
-          "specifier": "c3per_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated C3 N-fixing crops",
-          "specifier": "c3nfx_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed C3 N-fixing crops",
-          "specifier": "c3nfx_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated C4 annual crops",
-          "specifier": "c4ann_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed C4 annual crops",
-          "specifier": "c4ann_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated C4 perennial crops",
-          "specifier": "c4per_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed C4 perennial crops",
-          "specifier": "c4per_rainfed",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "landuse-15crops",
-      "group": "landuse",
-      "title": "Downscaling to 15 crops",
-      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-15crops_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-      "variables": [
-        {
-          "long_name": "share of irrigated others perennial",
-          "specifier": "c3per_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed others perennial",
-          "specifier": "c3per_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Sugarcane",
-          "specifier": "c4per_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Sugarcane",
-          "specifier": "c4per_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Maize",
-          "specifier": "maize_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Maize",
-          "specifier": "maize_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Oil crops groundnut",
-          "specifier": "oil_crops_groundnut_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Oil crops groundnut",
-          "specifier": "oil_crops_groundnut_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Oil crops rapeseed",
-          "specifier": "oil_crops_rapeseed_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Oil crops rapeseed",
-          "specifier": "oil_crops_rapeseed_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated ",
-          "specifier": "oil_crops_soybean_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed ",
-          "specifier": "oil_crops_soybean_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated ",
-          "specifier": "oil_crops_sunflower_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed ",
-          "specifier": "oil_crops_sunflower_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated ",
-          "specifier": "others_c3ann_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed ",
-          "specifier": "others_c3ann_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated ",
-          "specifier": "others_c3nfx_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed ",
-          "specifier": "others_c3nfx_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "managed grassland",
-          "specifier": "pastures",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Pulses",
-          "specifier": "pulses_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Pulses",
-          "specifier": "pulses_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Rice",
-          "specifier": "rice_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Rice",
-          "specifier": "rice_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Temperate cereals",
-          "specifier": "temperate_cereals_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Temperate cereals",
-          "specifier": "temperate_cereals_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Temperate roots",
-          "specifier": "temperate_roots_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Temperate roots",
-          "specifier": "temperate_roots_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Tropical cereals",
-          "specifier": "tropical_cereals_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Tropical cereals",
-          "specifier": "tropical_cereals_rainfed",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of irrigated Tropical roots",
-          "specifier": "tropical_roots_irrigated",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rainfed Tropical roots",
-          "specifier": "tropical_roots_rainfed",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "landuse-pastures",
-      "group": "landuse",
-      "title": "Managed pastures and rangeland",
-      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-pastures_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-      "variables": [
-        {
-          "long_name": "share of managed pastures",
-          "specifier": "managed_pastures",
-          "unit": "1"
-        },
-        {
-          "long_name": "share of rangeland",
-          "specifier": "rangeland",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "landuse-urbanareas",
-      "group": "landuse",
-      "title": "Urban areas",
-      "path": "ISIMIP3a/InputData/socioeconomic/landuse/<soc_scenario>/<soc_scenario>_landuse-urbanareas_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Historical, gridded land use](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/82/).",
-      "variables": [
-        {
-          "long_name": "share of urban areas",
-          "specifier": "urbanareas",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "n-fertilizer-5crops",
-      "group": "n-fertilizer",
-      "title": "Nitrogen deposited by fertilizers on croplands",
-      "path": "ISIMIP3a/InputData/socioeconomic/n-fertilizer/<soc_scenario>/<soc_scenario>_n-fertilizer-5crops_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
-      "variables": [
-        {
-          "long_name": "N input through fertilizer on cropland with C3 annual crops",
-          "specifier": "fertl_c3ann",
-          "unit": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "long_name": "C3 N-fixing crops",
-          "specifier": "fertl_c3nfx",
-          "unit": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "long_name": "C3 perennial crops",
-          "specifier": "fertl_c3per",
-          "unit": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "long_name": "C4 annual crops",
-          "specifier": "fertl_c4ann",
-          "unit": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "long_name": "C4 perennial crops",
-          "specifier": "fertl_c4per",
-          "unit": "kg ha-1 yr-1 (crop season)"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual (growing season)",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "mandatory": true
-    },
-    {
-      "specifier": "ndep-nhx",
-      "group": "n-deposition",
-      "title": "Reduced nitrogen deposition",
-      "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/<soc_scenario>/ndep-nhx_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).",
-      "variables": [
-        {
-          "long_name": "NHx deposition (nhx)",
-          "specifier": "nhx",
-          "unit": "g N m-2 mon-1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "ndep-noy",
-      "group": "n-deposition",
-      "title": "Oxidized nitrogen deposition",
-      "path": "ISIMIP3a/InputData/socioeconomic/n-deposition/<soc_scenario>/ndep-noy_<soc_scenario>_monthly_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).",
-      "variables": [
-        {
-          "long_name": "NOy deposition (noy)",
-          "specifier": "noy",
-          "unit": "g N m-2 mon-1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "wood_harvesting",
-      "group": "landuse",
-      "title": "Wood harvesting",
-      "path": "ISIMIP3a/InputData/socioeconomic/wood_harvesting/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc",
-      "comment": "Input dataset documentation \u2192 [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).",
-      "variables": [
-        {
-          "long_name": "wood harvest area from primary forest land",
-          "specifier": "primf-harv",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest area from primary non forest land",
-          "specifier": "primn-harv",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest area from secondary mature forest land",
-          "specifier": "secmf-harv",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest area from secondary young forest land",
-          "specifier": "secyf-harv",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest area from secondary non forest land",
-          "specifier": "secnf-harv",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest biomass carbon from primary forest land",
-          "specifier": "primf-bioh",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest biomass carbon from primary non forest land",
-          "specifier": "primn-bioh",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest biomass carbon from secondary mature forest land",
-          "specifier": "secmf-bioh",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest biomass carbon from secondary young forest land",
-          "specifier": "secyf-bioh",
-          "unit": "kg"
-        },
-        {
-          "long_name": "wood harvest biomass carbon from secondary non forest land",
-          "specifier": "secnf-bioh",
-          "unit": "kg"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "national",
-      "frequency": "annual",
-      "sectors": [
-        "biomes",
-        "fire",
-        "forestry",
-        "peat",
-        "permafrost"
-      ]
-    },
-    {
-      "specifier": "land-transformation",
-      "group": "landuse",
-      "title": "Not forest-related land transformation",
-      "path": "ISIMIP3a/InputData/socioeconomic/land-transformation/<soc_scenario>/land-transformation_<soc_scenario>_annual_<start_year>_<end_year>.nc",
-      "comment": "The data set consists of 115 land transformation categories, one for each transition from one type of land use to another. Considered land use types: **secdf** (potentially forested secondary land), **secdn** (potentially non-forested secondary land), **urban** (urban land), **c3ann** (C3 annual crops), **c4ann** (C4 annual crops), **c3per** (C3 perennial crops), **c4per** (C4 perennial crops), **c3nfx** (C3 nitrogen-fixing crops), **pastr** (managed asture), **range** (rangeland). Input dataset documentation \u2192 [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/). ",
-      "variables": [
-        {
-          "long_name": "One variable for each transition from one type of land use to another.",
-          "specifier": "<type>_to_<type>",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2020"
-      ],
-      "resolution": "national",
-      "frequency": "annual",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "population-gridded",
-      "group": "population",
-      "title": "Population (gridded)",
-      "specifier_file": "population",
-      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_30arcmin_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        {
-          "long_name": "total population",
-          "specifier": "total-population",
-          "unit": "1"
-        },
-        {
-          "long_name": "urban population",
-          "specifier": "urban-population",
-          "unit": "1"
-        },
-        {
-          "long_name": "rural population",
-          "specifier": "rural-population",
-          "unit": "1"
-        }
-      ],
-      "time_periods": [
-        "1850-1900",
-        "1901-2021"
-      ],
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "annual",
-      "mandatory": true
-    },
-    {
-      "specifier": "population-countrylevel",
-      "group": "population",
-      "title": "Population (country-level)",
-      "specifier_file": "population",
-      "path": "ISIMIP3a/InputData/socioeconomic/pop/<soc_scenario>/population_<soc_scenario>_national_annual_<start-year>_<end-year>.csv",
-      "variables": [
-        {
-          "long_name": "total number of people per country",
-          "specifier": "population",
-          "unit": "10^6 people"
-        }
-      ],
-      "time_periods": [
-        "1950-2021"
-      ],
-      "resolution": "national",
-      "frequency": "annual",
-      "mandatory": true
-    },
-    {
-      "specifier": "gdp",
-      "group": "gdp",
-      "title": "GDP",
-      "specifier_file": "gdp-countrylevel",
-      "path": "ISIMIP3a/InputData/socioeconomic/gdp/<soc_scenario>/gdp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc",
-      "variables": [
-        {
-          "long_name": "Gross domestic product",
-          "specifier": "gdp",
-          "unit": "PPP 2005 Int $"
-        }
-      ],
-      "time_periods": [
-        "1965-2021"
-      ],
-      "resolution": "country-level",
-      "frequency": "annual",
-      "mandatory": true
-    }
-  ],
-  "r": [
-    {
-      "specifier": "lower"
-    },
-    {
-      "specifier": "central"
-    },
-    {
-      "specifier": "upper"
+      "specifier": "historical",
+      "title": "Historical",
+      "description": "Historical simulation period.",
+      "start_year": 1901,
+      "end_year": 2019
     }
   ],
   "category": [
@@ -3340,170 +3416,689 @@
       "description": "Independent additional forcing data, which influence climate impacts, such as land-use, population or economic changes."
     }
   ],
-  "climate_forcing": [
+  "detrending": [
     {
-      "specifier": "gswp3-w5e5",
-      "priority": 1,
-      "title": "GSWP3-W5E5",
-      "time_period": "1901-2019",
-      "reanalysis": "20CRv2, ERA5",
-      "bias_adjustment_target": "GPCC, CRU",
-      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData",
-        "SecondaryInputData"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
+      "specifier": "observed"
     },
     {
-      "specifier": "20crv3-w5e5",
-      "priority": 2,
-      "title": "20CRv3-W5E5",
-      "time_period": "1901-2019",
-      "reanalysis": "20CRv3, ERA5",
-      "bias_adjustment_target": "GPCC, CRU",
-      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "20crv3-era5",
-      "priority": 3,
-      "title": "20CRv3-ERA5",
-      "time_period": "1901-2021",
-      "reanalysis": "20CRv3, ERA5",
-      "bias_adjustment_target": "none",
-      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
-    },
-    {
-      "specifier": "20crv3",
-      "priority": 4,
-      "title": "20CRv3",
-      "time_period": "1901-2015",
-      "reanalysis": "20CRv3",
-      "bias_adjustment_target": "none",
-      "url": "https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "products": [
-        "InputData",
-        "OutputData"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
+      "specifier": "detrended"
     }
   ],
-  "irrigation": [
+  "ocean_region": [
     {
-      "specifier": "noirr",
-      "title": "No irrigation (rainfed land)"
+      "specifier": "north-sea",
+      "title": "North Sea",
+      "north": 62.5,
+      "west": -4.5,
+      "south": 50.5,
+      "east": 9.5
+    },
+    {
+      "specifier": "baltic-sea",
+      "title": "Baltic Sea",
+      "north": 64.5,
+      "west": 15.5,
+      "south": 55.5,
+      "east": 23.5
+    },
+    {
+      "specifier": "nw-med-sea",
+      "title": "North-west Meditteranean",
+      "north": 43.5,
+      "west": -1.5,
+      "south": 36.5,
+      "east": 6.5
+    },
+    {
+      "specifier": "adriatic-sea",
+      "title": "Adriatic Sea",
+      "north": 45.5,
+      "west": 11.5,
+      "south": 39.5,
+      "east": 20.5
+    },
+    {
+      "specifier": "med-glob",
+      "title": "Mediterranean Sea",
+      "north": 45.5,
+      "west": -6.5,
+      "south": 29.5,
+      "east": 35.5
+    },
+    {
+      "specifier": "se-australia",
+      "title": "South-East Australia",
+      "north": -23.5,
+      "west": 120.5,
+      "south": -47.5,
+      "east": 170.5
+    },
+    {
+      "specifier": "east-bass-strait",
+      "title": "Eastern Bass Strait",
+      "north": -37.5,
+      "west": 145.5,
+      "south": -41.5,
+      "east": 151.5
+    },
+    {
+      "specifier": "cook-strait",
+      "title": "Cook Strait",
+      "north": -40.5,
+      "west": 174.5,
+      "south": -46.5,
+      "east": 179.5
+    },
+    {
+      "specifier": "humboldt-n",
+      "title": "North Humboldt Sea",
+      "north": 6.5,
+      "west": -93.5,
+      "south": -20.5,
+      "east": -69.5
+    },
+    {
+      "specifier": "hawaii",
+      "title": "Hawaii",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
+    },
+    {
+      "specifier": "benguela",
+      "title": "Benguela Current",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
+    },
+    {
+      "specifier": "east-bering-sea",
+      "title": "Eastern Bering Sea",
+      "north": 0.0,
+      "west": 0.0,
+      "south": 0.0,
+      "east": 0.0
     }
   ],
-  "harmonization": [
+  "vert": [
     {
-      "specifier": "default",
-      "title": "Default",
-      "description": "Model should use their individual \u201cbest representation\u201d of the historical period with regard to sowing dates, harvesting dates, fertilizer application rates and crop varieties."
+      "specifier": "vint"
+    }
+  ],
+  "diazotroph_scenario": [
+    {
+      "specifier": "w-diaz"
     },
     {
-      "specifier": "fullharm",
-      "title": "Fully harmonized",
-      "description": "Simulations based on prescribed \u201cpresent day\u201d fertilization rates (available for download) and fixed planting and harvesting dates (also available for download). Modelers should have planting as closely as possible to these dates, but it may be admissible to use these dates as indicators for planting windows (depending on model specifics)."
+      "specifier": "wo-diaz"
+    }
+  ],
+  "model": [
+    {
+      "specifier": "acea",
+      "title": "ACEA"
     },
     {
-      "specifier": "harmnon",
-      "title": "Harmonized seasons with no N constraints",
-      "description": "For models with an explicit description of the nitrogen cycle: harmnon simulations should be run with nitrogen stress turned off completely or (if that\u2019s not possible) with very high N application rates to make model results comparable between those GGCMs that have explicit N dynamics and those that do not. For models without the nitrogen cycle: harmnon and fullharm simulations are the same and do not need to be duplicated. Please contact the sector coordination to push on with this side branch."
+      "specifier": "classic",
+      "title": "CLASSIC"
+    },
+    {
+      "specifier": "crover",
+      "title": "CROVER"
+    },
+    {
+      "specifier": "cygma1p74",
+      "title": "CYGMA1p74"
+    },
+    {
+      "specifier": "daycent",
+      "title": "DayCent"
+    },
+    {
+      "specifier": "dssat-pythia",
+      "title": "DSSAT-Pythia"
+    },
+    {
+      "specifier": "feisty",
+      "title": "FEISTY"
+    },
+    {
+      "specifier": "isam",
+      "title": "ISAM"
+    },
+    {
+      "specifier": "jules-w2",
+      "title": "JULES-W2"
+    },
+    {
+      "specifier": "jules-w2-ddm30",
+      "title": "JULES-W2-DDM30"
+    },
+    {
+      "specifier": "hydropy",
+      "title": "HydroPy"
+    },
+    {
+      "specifier": "ldndc",
+      "title": "LDNDC"
+    },
+    {
+      "specifier": "miroc-integ-land",
+      "title": "MIROC-INTEG-LAND"
+    },
+    {
+      "specifier": "promet",
+      "title": "PROMET"
+    },
+    {
+      "specifier": "simplace-lintul5",
+      "title": "SIMPLACE-LINTUL5"
+    }
+  ],
+  "climate_variable": [
+    {
+      "specifier": "hurs",
+      "group": "atmospheric-variables",
+      "long_name": "Near-Surface Relative Humidity",
+      "unit": "%",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_hurs_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "huss",
+      "group": "atmospheric-variables",
+      "long_name": "Near-Surface Specific Humidity",
+      "unit": "kg kg-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_huss_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "pr",
+      "group": "atmospheric-variables",
+      "long_name": "Precipitation",
+      "unit": "kg m-2 s-1",
+      "resolution": [
+        "0.5\u00b0 grid",
+        "30\" grid",
+        "90\" grid",
+        "300\" grid",
+        "1800\" grid"
+      ],
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5",
+        "CHELSA-W5E5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_pr_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "prsn",
+      "group": "atmospheric-variables",
+      "long_name": "Snowfall Flux",
+      "unit": "kg m-2 s-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_prsn_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "ps",
+      "group": "atmospheric-variables",
+      "long_name": "Surface Air Pressure",
+      "unit": "Pa",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_ps_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "rlds",
+      "group": "atmospheric-variables",
+      "long_name": "Surface Downwelling Longwave Radiation",
+      "unit": "W m-2",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_rlds_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "rsds",
+      "group": "atmospheric-variables",
+      "long_name": "Surface Downwelling Shortwave Radiation",
+      "unit": "W m-2",
+      "resolution": [
+        "0.5\u00b0 grid",
+        "30\" grid",
+        "90\" grid",
+        "300\" grid",
+        "1800\" grid"
+      ],
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5",
+        "CHELSA-W5E5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_rsds_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "sfcwind",
+      "group": "atmospheric-variables",
+      "long_name": "Near-Surface Wind Speed",
+      "unit": "m s-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_sfcwind_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "tas",
+      "group": "atmospheric-variables",
+      "long_name": "Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": [
+        "0.5\u00b0 grid",
+        "30\" grid",
+        "90\" grid",
+        "300\" grid",
+        "1800\" grid"
+      ],
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5",
+        "CHELSA-W5E5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tas_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "tasmax",
+      "group": "atmospheric-variables",
+      "long_name": "Daily Maximum Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": [
+        "0.5\u00b0 grid",
+        "30\" grid",
+        "90\" grid",
+        "300\" grid",
+        "1800\" grid"
+      ],
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5",
+        "CHELSA-W5E5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tasmax_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "tasmin",
+      "group": "atmospheric-variables",
+      "long_name": "Daily Minimum Near-Surface Air Temperature",
+      "unit": "K",
+      "resolution": [
+        "0.5\u00b0 grid",
+        "30\" grid",
+        "90\" grid",
+        "300\" grid",
+        "1800\" grid"
+      ],
+      "frequency": "daily",
+      "climate_forcing": [
+        "GSWP3-W5E5",
+        "20CRv3",
+        "20CRv3-W5E5",
+        "20CRv3-ERA5",
+        "CHELSA-W5E5"
+      ],
+      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tasmin_global_<start_year>_<end_year>.nc",
+      "mandatory": true
+    },
+    {
+      "specifier": "co2",
+      "group": "atmospheric-composition",
+      "long_name": "Atmospheric CO\u2082 concentration",
+      "unit": "ppm",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Input dataset documentation \u2192 [Globally averaged CO\u2082 and CH\u2084 annual data](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/111/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "fs-n",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "mandatory": true
+    },
+    {
+      "specifier": "ch4",
+      "group": "atmospheric-composition",
+      "long_name": "Atmospheric Methane concentration",
+      "unit": "ppb",
+      "resolution": "global",
+      "frequency": "annual",
+      "comment": "Input dataset documentation \u2192 [Globally averaged CO\u2082 and CH\u2084 annual data](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/111/).",
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ],
+      "path": "ISIMIP3a/InputData/climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt",
+      "mandatory": true
+    },
+    {
+      "specifier": "lightning_fixed",
+      "specifier_file": "lightning",
+      "group": "lightning",
+      "long_name": "Flash Rate Monthly Climatology",
+      "unit": "km-2 d-1",
+      "resolution": "0.5\u00b0 grid",
+      "frequency": "monthly",
+      "sectors": [
+        "fire"
+      ],
+      "path": "ISIMIP3a/InputData/climate/lightning/lightning_fixed.nc",
+      "mandatory": true
     }
   ],
   "pool": [
@@ -3520,13 +4115,180 @@
       "description": ""
     }
   ],
-  "period": [
+  "bias_adjustment": [
     {
-      "specifier": "historical",
-      "title": "Historical",
-      "description": "Historical simulation period.",
-      "start_year": 1901,
-      "end_year": 2019
+      "specifier": "w5e5",
+      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
+    },
+    {
+      "specifier": "nobasd",
+      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+    }
+  ],
+  "identifier": [
+    {
+      "specifier": "acidification_type",
+      "title": "Acidification type"
+    },
+    {
+      "specifier": "bias_adjustment",
+      "title": "Bias adjustment"
+    },
+    {
+      "specifier": "category",
+      "title": "Input category"
+    },
+    {
+      "specifier": "climate_forcing",
+      "title": "Climate forcing"
+    },
+    {
+      "specifier": "climate_scenario",
+      "title": "Climate scenario"
+    },
+    {
+      "specifier": "climate_variable",
+      "title": "Climate variable"
+    },
+    {
+      "specifier": "crop",
+      "title": "Crop type"
+    },
+    {
+      "specifier": "crop_calendar",
+      "title": "Crop calendar"
+    },
+    {
+      "specifier": "detrending",
+      "title": "Detrending"
+    },
+    {
+      "specifier": "diazotroph_scenario",
+      "title": "Diazotroph scenario"
+    },
+    {
+      "specifier": "ensemble_member",
+      "title": "Ensemble member"
+    },
+    {
+      "specifier": "fishing_type",
+      "title": "Fishing type"
+    },
+    {
+      "specifier": "forest_stand",
+      "title": "Forest stand",
+      "location": true
+    },
+    {
+      "specifier": "frequency",
+      "title": "Temporal resolution"
+    },
+    {
+      "specifier": "geo_dataset",
+      "title": "Geo dataset"
+    },
+    {
+      "specifier": "harmonization",
+      "title": "Harmonization"
+    },
+    {
+      "specifier": "irrigation",
+      "title": "Irrigation"
+    },
+    {
+      "specifier": "lake_site",
+      "title": "lake site",
+      "location": true
+    },
+    {
+      "specifier": "ocean_region",
+      "title": "Ocean region",
+      "location": true
+    },
+    {
+      "specifier": "product",
+      "title": "Data product"
+    },
+    {
+      "specifier": "region",
+      "title": "Region"
+    },
+    {
+      "specifier": "resolution",
+      "title": "Spatial resolution"
+    },
+    {
+      "specifier": "river_basin",
+      "title": "River basin",
+      "location": true
+    },
+    {
+      "specifier": "river",
+      "title": "River"
+    },
+    {
+      "specifier": "r",
+      "title": "ERF estimate"
+    },
+    {
+      "specifier": "sector",
+      "title": "Sector"
+    },
+    {
+      "specifier": "sens_scenario",
+      "title": "Sensitivity scenario"
+    },
+    {
+      "specifier": "simulation_round",
+      "title": "Simulation round"
+    },
+    {
+      "specifier": "soc_dataset",
+      "title": "Socio-economic dataset"
+    },
+    {
+      "specifier": "soc_scenario",
+      "title": "Socio-economic scenario"
+    },
+    {
+      "specifier": "soc_variable",
+      "title": "Socio-economic variable"
+    },
+    {
+      "specifier": "species",
+      "title": "Species"
+    },
+    {
+      "specifier": "sigmat",
+      "title": "Sigma T"
+    },
+    {
+      "specifier": "subcategory",
+      "title": "Input subcategory"
+    },
+    {
+      "specifier": "time_span",
+      "title": "Time span"
+    },
+    {
+      "specifier": "time_step",
+      "title": "Time step"
+    },
+    {
+      "specifier": "variable",
+      "title": "Variable"
+    },
+    {
+      "specifier": "vert",
+      "title": "Vertical resolution"
+    },
+    {
+      "specifier": "ocean_static",
+      "title": "Ocean Properties"
+    },
+    {
+      "specifier": "exp",
+      "title": "Exposure working conditions"
     }
   ],
   "experiments": [
@@ -3723,6 +4485,108 @@
         "peat",
         "permafrost"
       ]
+    }
+  ],
+  "product": [
+    {
+      "specifier": "InputData",
+      "title": "Input Data",
+      "description": "The data used to drive the impact models, exactly as described in the ISIMIP simulation protocol."
+    },
+    {
+      "specifier": "SecondaryInputData",
+      "title": "Secondary Input Data",
+      "description": "Data that have been derived from or are related to the input data, but not described in the simulation protocol (e.g. with a differnt spatial or temporal resolution)."
+    },
+    {
+      "specifier": "OutputData",
+      "title": "Output Data",
+      "description": "The climate-impacts simulation data provided by participating modelling groups, corresponding to the output variables described in the ISIMIP simulation protocol."
+    },
+    {
+      "specifier": "SecondaryOutputData",
+      "title": "Secondary Output Data",
+      "description": "Data that have been derived by processing the ISIMIP output data, but do not correspond to output variables described in the simulation protocol."
+    }
+  ],
+  "sens_scenario": [
+    {
+      "specifier": "default",
+      "description": "For all experiments other than the sensitivity experiments."
+    },
+    {
+      "specifier": "1901co2",
+      "description": "CO\u2082 concentration fixed at 1901 levels as a deviation from the `obsclim` climate + CO\u2082 forcing.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "energy",
+        "fire",
+        "forestry",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "nofire",
+      "description": "Simulation with fire switched off to identify impact of fire within the model.",
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost"
+      ],
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ]
+    }
+  ],
+  "ensemble_member": [
+    {
+      "specifier": "r1i1p1f1"
+    },
+    {
+      "specifier": "r1i1p1f2"
+    },
+    {
+      "specifier": "r4i1p1f1"
+    }
+  ],
+  "time_step": [
+    {
+      "specifier": "3hr",
+      "increment": "hours",
+      "products": [
+        "OutputData",
+        "SecondaryOutputData"
+      ]
+    },
+    {
+      "specifier": "daily",
+      "increment": "days"
+    },
+    {
+      "specifier": "monthly",
+      "increment": "days"
+    },
+    {
+      "specifier": "annual",
+      "increment": "days"
+    },
+    {
+      "specifier": "fixed"
     }
   ],
   "geo_dataset": [
@@ -4230,27 +5094,244 @@
       ]
     }
   ],
-  "upstream_variable": [],
-  "bias_adjustment": [
+  "region": [
     {
-      "specifier": "w5e5",
-      "description": "Refers to W5E5 data used for the bias-correction globally on a 0.5\u00b0 grid."
-    },
-    {
-      "specifier": "nobasd",
-      "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
+      "specifier": "global",
+      "title": "Global"
     }
   ],
-  "simulation_round": [
+  "group": [
     {
-      "specifier": "ISIMIP3a",
-      "title": "ISIMIP3a simulation round",
-      "description": "Historical model evaluation and attribution runs"
+      "identifier": "climate_variable",
+      "specifier": "atmospheric-variables",
+      "title": "Atmospheric Variables"
     },
     {
-      "specifier": "ISIMIP3b",
-      "title": "ISIMIP3b simulation round",
-      "description": "GCM-based simulations assuming fixed 2015 direct human influences for the future"
+      "identifier": "climate_variable",
+      "specifier": "ocean-variables",
+      "title": "Ocean Variables"
+    },
+    {
+      "identifier": "climate_variable",
+      "specifier": "atmospheric-composition",
+      "title": "Atmospheric composition"
+    },
+    {
+      "identifier": "climate_variable",
+      "specifier": "lightning",
+      "title": "Lightning"
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "landuse",
+      "title": "Landuse"
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "n-fertilizer",
+      "title": "N-fertilizer"
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "n-deposition",
+      "title": "N-deposition",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "crop-calendar",
+      "title": "Crop calendar",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "reservoirs-dams",
+      "title": "Reservoirs & dams",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "water_abstraction",
+      "title": "Water abstraction",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "fishing",
+      "title": "Fishing"
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "forest_management",
+      "title": "Forest management",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "pctlake",
+      "title": "Lakes",
+      "mandatory": false
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "population",
+      "title": "Population"
+    },
+    {
+      "identifier": "soc_dataset",
+      "specifier": "gdp",
+      "title": "GDP"
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "landseamask",
+      "title": "Land/Sea masks",
+      "mandatory": false
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "countrymasks",
+      "title": "Country masks",
+      "mandatory": false
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "soil",
+      "title": "Soil",
+      "mandatory": false
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "river-routing",
+      "title": "River routing",
+      "mandatory": false
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "lakes",
+      "title": "Lakes",
+      "mandatory": false
+    },
+    {
+      "identifier": "geo_dataset",
+      "specifier": "ocean-static",
+      "title": "Ocean static properties",
+      "mandatory": false
+    },
+    {
+      "identifier": "upstream_variable",
+      "specifier": "biophysical-forcing",
+      "title": "Biophysical forcing"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "hydrological-variables",
+      "title": "Hydrological Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "water-management-variables",
+      "title": "Water management Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "agricultural-variables",
+      "title": "Agricultural Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "carbon-pools",
+      "title": "Carbon Pools"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "carbon-fluxes",
+      "title": "Carbon Fluxes"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "nitrogen-pools",
+      "title": "Nitrogen Pools"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "nitrogen-fluxes",
+      "title": "Nitrogen Fluxes"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "vegetation",
+      "title": "Vegetation Cover & Structure"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "fire-variables",
+      "title": "Fire variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "peat-variables",
+      "title": "Peatland variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "forestry-variables",
+      "title": "Forestry Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "hydrothermal-variables",
+      "title": "Hydrothermal Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "water-quality-variables",
+      "title": "Water Quality Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "albedo",
+      "title": "Albedo"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "biodiversity-variables",
+      "title": "Biodiversity Variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "marine-fishery-variables",
+      "title": "Fisheries and Marine Ecosystems"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "health-variables",
+      "title": "Temperature-related Mortality"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "static-variables",
+      "title": "Static output"
+    },
+    {
+      "identifier": "crop",
+      "specifier": "major-crops",
+      "title": "Major crops"
+    },
+    {
+      "identifier": "crop",
+      "specifier": "other-crops",
+      "title": "Other crops"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "fs-n-variables",
+      "title": "FS-N variables"
+    },
+    {
+      "identifier": "variable",
+      "specifier": "labour-variables",
+      "title": "Labour variables"
     }
   ],
   "river_basin": [
@@ -4519,502 +5600,105 @@
       "area_upstream": 121000
     }
   ],
-  "vert": [
+  "r": [
     {
-      "specifier": "vint"
+      "specifier": "lower"
+    },
+    {
+      "specifier": "central"
+    },
+    {
+      "specifier": "upper"
     }
   ],
-  "diazotroph_scenario": [
+  "species": [
     {
-      "specifier": "w-diaz"
+      "title": "Fagus sylvatica",
+      "specifier": "fasy"
     },
     {
-      "specifier": "wo-diaz"
+      "title": "Quercus robur",
+      "specifier": "quro"
+    },
+    {
+      "title": "Quercus petraea",
+      "specifier": "qupe"
+    },
+    {
+      "title": "Pinus sylvestris",
+      "specifier": "pisy"
+    },
+    {
+      "title": "Picea abies",
+      "specifier": "piab"
+    },
+    {
+      "title": "Pinus pinaster",
+      "specifier": "pipi"
+    },
+    {
+      "title": "Larix decidua",
+      "specifier": "lade"
+    },
+    {
+      "title": "Acer platanoides",
+      "specifier": "acpl"
+    },
+    {
+      "title": "Eucalyptus globulus",
+      "specifier": "eugl"
+    },
+    {
+      "title": "Betula pendula",
+      "specifier": "bepe"
+    },
+    {
+      "title": "Betula pubescens",
+      "specifier": "bepu"
+    },
+    {
+      "title": "Robinia pseudoacacia",
+      "specifier": "rops"
+    },
+    {
+      "title": "Fraxinus excelsior",
+      "specifier": "frex"
+    },
+    {
+      "title": "Populus nigra",
+      "specifier": "poni"
+    },
+    {
+      "title": "Sorbus aucuparia",
+      "specifier": "soau"
+    },
+    {
+      "title": "C3 grass",
+      "specifier": "c3gr"
+    },
+    {
+      "title": "hard woods",
+      "specifier": "hawo"
+    },
+    {
+      "title": "fire",
+      "specifier": "fi"
+    },
+    {
+      "title": "wind",
+      "specifier": "wi"
+    },
+    {
+      "title": "Insects",
+      "specifier": "ins"
     }
   ],
-  "ensemble_member": [
+  "fishing_type": [
     {
-      "specifier": "r1i1p1f1"
+      "specifier": "fishing"
     },
     {
-      "specifier": "r1i1p1f2"
-    },
-    {
-      "specifier": "r4i1p1f1"
-    }
-  ],
-  "time_span": [
-    {
-      "specifier": "minimum",
-      "value": 1901
-    },
-    {
-      "specifier": "maximum",
-      "value": 2019
-    },
-    {
-      "specifier": "start_pre-ind",
-      "value": {
-        "ISIMIP3b": 1601
-      }
-    },
-    {
-      "specifier": "end_pre-ind",
-      "value": {
-        "ISIMIP3b": 1849
-      }
-    },
-    {
-      "specifier": "start_hist",
-      "value": {
-        "gswp3-w5e5": 1901,
-        "20crv3": 1901,
-        "20crv3-w5e5": 1901,
-        "20crv3-era5": 1901,
-        "gfdl-mom6-cobalt2": 1961
-      }
-    },
-    {
-      "specifier": "end_hist",
-      "value": {
-        "gswp3-w5e5": 2019,
-        "20crv3": 2015,
-        "20crv3-w5e5": 2019,
-        "20crv3-era5": 2021,
-        "gfdl-mom6-cobalt2": 2010
-      }
-    },
-    {
-      "specifier": "start_fut",
-      "value": {
-        "ISIMIP3b": 2015
-      }
-    },
-    {
-      "specifier": "end_fut",
-      "value": {
-        "ISIMIP3b": 2100
-      }
-    }
-  ],
-  "dimensions": [
-    {
-      "specifier": "lon",
-      "axis": "X",
-      "units": "degrees_east",
-      "size": 720,
-      "minimum": -179.75,
-      "maximum": 179.75,
-      "standard_name": "longitude",
-      "long_names": [
-        "Longitude",
-        "longitude"
-      ]
-    },
-    {
-      "specifier": "lat",
-      "axis": "Y",
-      "units": "degrees_north",
-      "size": 360,
-      "minimum": -89.75,
-      "maximum": 89.75,
-      "standard_name": "latitude",
-      "long_names": [
-        "Latitude",
-        "latitude"
-      ]
-    },
-    {
-      "specifier": "time",
-      "axis": "T",
-      "standard_name": "time",
-      "long_names": [
-        "time",
-        "time axis",
-        "Time",
-        "Time axis"
-      ],
-      "calenders_daily": [
-        "standard",
-        "proleptic_gregorian",
-        "gregorian",
-        "366_day",
-        "365_day"
-      ]
-    },
-    {
-      "specifier": "depth",
-      "axis": "Z",
-      "standard_name": "depth_below_surface",
-      "long_name": "Depth of Vertical Layer Center Below Surface",
-      "positive": "down",
-      "units": "m"
-    },
-    {
-      "specifier": "levlak",
-      "axis": "Z",
-      "standard_name": "water_layer",
-      "long_name": "Vertical Water Layer Index",
-      "positive": "down",
-      "units": "-"
-    },
-    {
-      "specifier": "bins",
-      "axis": "Z",
-      "standard_name": "log10_weight_bins",
-      "long_name": "log10 Weight Bins",
-      "units": "-"
-    },
-    {
-      "specifier": "fuelclass",
-      "axis": "Z",
-      "standard_name": "fuel_class",
-      "long_name": "Fuel Class",
-      "units": "-"
-    },
-    {
-      "specifier": "bnds",
-      "size": 2
-    }
-  ],
-  "detrending": [
-    {
-      "specifier": "observed"
-    },
-    {
-      "specifier": "detrended"
-    }
-  ],
-  "group": [
-    {
-      "identifier": "climate_variable",
-      "specifier": "atmospheric-variables",
-      "title": "Atmospheric Variables"
-    },
-    {
-      "identifier": "climate_variable",
-      "specifier": "ocean-variables",
-      "title": "Ocean Variables"
-    },
-    {
-      "identifier": "climate_variable",
-      "specifier": "atmospheric-composition",
-      "title": "Atmospheric composition"
-    },
-    {
-      "identifier": "climate_variable",
-      "specifier": "lightning",
-      "title": "Lightning"
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "landuse",
-      "title": "Landuse"
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "n-fertilizer",
-      "title": "N-fertilizer"
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "n-deposition",
-      "title": "N-deposition",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "crop-calendar",
-      "title": "Crop calendar",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "reservoirs-dams",
-      "title": "Reservoirs & dams",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "water_abstraction",
-      "title": "Water abstraction",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "fishing",
-      "title": "Fishing"
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "forest_management",
-      "title": "Forest management",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "pctlake",
-      "title": "Lakes",
-      "mandatory": false
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "population",
-      "title": "Population"
-    },
-    {
-      "identifier": "soc_dataset",
-      "specifier": "gdp",
-      "title": "GDP"
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "landseamask",
-      "title": "Land/Sea masks",
-      "mandatory": false
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "countrymasks",
-      "title": "Country masks",
-      "mandatory": false
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "soil",
-      "title": "Soil",
-      "mandatory": false
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "river-routing",
-      "title": "River routing",
-      "mandatory": false
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "lakes",
-      "title": "Lakes",
-      "mandatory": false
-    },
-    {
-      "identifier": "geo_dataset",
-      "specifier": "ocean-static",
-      "title": "Ocean static properties",
-      "mandatory": false
-    },
-    {
-      "identifier": "upstream_variable",
-      "specifier": "biophysical-forcing",
-      "title": "Biophysical forcing"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "hydrological-variables",
-      "title": "Hydrological Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "water-management-variables",
-      "title": "Water management Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "agricultural-variables",
-      "title": "Agricultural Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "carbon-pools",
-      "title": "Carbon Pools"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "carbon-fluxes",
-      "title": "Carbon Fluxes"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "nitrogen-pools",
-      "title": "Nitrogen Pools"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "nitrogen-fluxes",
-      "title": "Nitrogen Fluxes"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "vegetation",
-      "title": "Vegetation Cover & Structure"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "fire-variables",
-      "title": "Fire variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "peat-variables",
-      "title": "Peatland variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "forestry-variables",
-      "title": "Forestry Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "hydrothermal-variables",
-      "title": "Hydrothermal Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "water-quality-variables",
-      "title": "Water Quality Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "albedo",
-      "title": "Albedo"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "biodiversity-variables",
-      "title": "Biodiversity Variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "marine-fishery-variables",
-      "title": "Fisheries and Marine Ecosystems"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "health-variables",
-      "title": "Temperature-related Mortality"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "static-variables",
-      "title": "Static output"
-    },
-    {
-      "identifier": "crop",
-      "specifier": "major-crops",
-      "title": "Major crops"
-    },
-    {
-      "identifier": "crop",
-      "specifier": "other-crops",
-      "title": "Other crops"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "fs-n-variables",
-      "title": "FS-N variables"
-    },
-    {
-      "identifier": "variable",
-      "specifier": "labour-variables",
-      "title": "Labour variables"
-    }
-  ],
-  "ocean_region": [
-    {
-      "specifier": "north-sea",
-      "title": "North Sea",
-      "north": 62.5,
-      "west": -4.5,
-      "south": 50.5,
-      "east": 9.5
-    },
-    {
-      "specifier": "baltic-sea",
-      "title": "Baltic Sea",
-      "north": 64.5,
-      "west": 15.5,
-      "south": 55.5,
-      "east": 23.5
-    },
-    {
-      "specifier": "nw-med-sea",
-      "title": "North-west Meditteranean",
-      "north": 43.5,
-      "west": -1.5,
-      "south": 36.5,
-      "east": 6.5
-    },
-    {
-      "specifier": "adriatic-sea",
-      "title": "Adriatic Sea",
-      "north": 45.5,
-      "west": 11.5,
-      "south": 39.5,
-      "east": 20.5
-    },
-    {
-      "specifier": "med-glob",
-      "title": "Mediterranean Sea",
-      "north": 45.5,
-      "west": -6.5,
-      "south": 29.5,
-      "east": 35.5
-    },
-    {
-      "specifier": "se-australia",
-      "title": "South-East Australia",
-      "north": -23.5,
-      "west": 120.5,
-      "south": -47.5,
-      "east": 170.5
-    },
-    {
-      "specifier": "east-bass-strait",
-      "title": "Eastern Bass Strait",
-      "north": -37.5,
-      "west": 145.5,
-      "south": -41.5,
-      "east": 151.5
-    },
-    {
-      "specifier": "cook-strait",
-      "title": "Cook Strait",
-      "north": -40.5,
-      "west": 174.5,
-      "south": -46.5,
-      "east": 179.5
-    },
-    {
-      "specifier": "humboldt-n",
-      "title": "North Humboldt Sea",
-      "north": 6.5,
-      "west": -93.5,
-      "south": -20.5,
-      "east": -69.5
-    },
-    {
-      "specifier": "hawaii",
-      "title": "Hawaii",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    },
-    {
-      "specifier": "benguela",
-      "title": "Benguela Current",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
-    },
-    {
-      "specifier": "east-bering-sea",
-      "title": "Eastern Bering Sea",
-      "north": 0.0,
-      "west": 0.0,
-      "south": 0.0,
-      "east": 0.0
+      "specifier": "no-fishing"
     }
   ],
   "crop": [
@@ -5149,13 +5833,201 @@
       "title": "Sunflower"
     }
   ],
+  "upstream_variable": [],
+  "time_span": [
+    {
+      "specifier": "minimum",
+      "value": 1901
+    },
+    {
+      "specifier": "maximum",
+      "value": 2019
+    },
+    {
+      "specifier": "start_pre-ind",
+      "value": {
+        "ISIMIP3b": 1601
+      }
+    },
+    {
+      "specifier": "end_pre-ind",
+      "value": {
+        "ISIMIP3b": 1849
+      }
+    },
+    {
+      "specifier": "start_hist",
+      "value": {
+        "gswp3-w5e5": 1901,
+        "20crv3": 1901,
+        "20crv3-w5e5": 1901,
+        "20crv3-era5": 1901,
+        "gfdl-mom6-cobalt2": 1961
+      }
+    },
+    {
+      "specifier": "end_hist",
+      "value": {
+        "gswp3-w5e5": 2019,
+        "20crv3": 2015,
+        "20crv3-w5e5": 2019,
+        "20crv3-era5": 2021,
+        "gfdl-mom6-cobalt2": 2010
+      }
+    },
+    {
+      "specifier": "start_fut",
+      "value": {
+        "ISIMIP3b": 2015
+      }
+    },
+    {
+      "specifier": "end_fut",
+      "value": {
+        "ISIMIP3b": 2100
+      }
+    }
+  ],
+  "forest_stand": [
+    {
+      "specifier": "hyytiala",
+      "title": "Hyyti\u00e4l\u00e4",
+      "lat": 61.8475,
+      "lon": 24.295,
+      "country": "FI",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy",
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": "Note that an experimental plot of pine contains a lot of data while footprint of flux tower is larger. Please note that the deciduous admixtures only appear in the data at a later stage and hence do not need to be simulated. Only simulate pine and spruce (no hard-woods) and regenerate as pure pine stand"
+    },
+    {
+      "specifier": "peitz",
+      "title": "Peitz",
+      "lat": 51.9166,
+      "lon": 14.35,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "pisy"
+      ],
+      "thinning": "below",
+      "comment": "Managed using a weak thinning from below."
+    },
+    {
+      "specifier": "solling-beech",
+      "title": "Solling (beech)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "solling-spruce",
+      "title": "Solling (spruce)",
+      "lat": 51.77,
+      "lon": 9.57,
+      "country": "DE",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab "
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "soro",
+      "title": "Sor\u00f8",
+      "lat": 55.485844,
+      "lon": 11.644616,
+      "country": "DK",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "kroof",
+      "title": "Kranzberg Roof Project",
+      "lat": 48.25,
+      "lon": 11.4,
+      "country": "DE",
+      "type": "Mixed deciduous and conifers",
+      "species": [
+        "fasy",
+        "piab",
+        "acpl",
+        "lade",
+        "pisy",
+        "quro"
+      ],
+      "thinning": "below",
+      "comment": "Unmanaged/ thinning from below in past 20 years for all species."
+    },
+    {
+      "specifier": "le-bray",
+      "title": "Le Bray",
+      "lat": 44.71711,
+      "lon": -0.7693,
+      "country": "FR",
+      "type": "Even-aged conifer",
+      "species": [
+        "pipi"
+      ],
+      "thinning": "below",
+      "comment": ""
+    },
+    {
+      "specifier": "collelongo",
+      "title": "Collelongo",
+      "lat": 41.8494,
+      "lon": 13.5881,
+      "country": "IT",
+      "type": "Even-aged deciduous",
+      "species": [
+        "fasy"
+      ],
+      "thinning": "above",
+      "comment": ""
+    },
+    {
+      "specifier": "bily-kriz",
+      "title": "B\u00edl\u00fd K\u0159\u00ed\u017e",
+      "lat": 49.3,
+      "lon": 18.32,
+      "country": "CZ",
+      "type": "Even-aged conifer",
+      "species": [
+        "piab"
+      ],
+      "thinning": "below",
+      "comment": ""
+    }
+  ],
+  "acidification_type": [
+    {
+      "specifier": "oa"
+    },
+    {
+      "specifier": "no-oa"
+    }
+  ],
   "lake_site": [
     {
-      "specifier": "allequash-lake",
+      "specifier": "allequash",
       "title": "Allequash Lake",
       "country": "USA",
-      "lon": -89.75,
-      "lat": 46.25,
+      "lon": -89.62,
+      "lat": 46.04,
       "type": "lake"
     },
     {
@@ -5165,14 +6037,6 @@
       "lon": -7.49,
       "lat": 38.2,
       "type": "reservoir"
-    },
-    {
-      "specifier": "annecy",
-      "title": "Lake Annecy",
-      "country": "France",
-      "lon": 6.17,
-      "lat": 45.87,
-      "type": "lake"
     },
     {
       "specifier": "annie",
@@ -5199,7 +6063,7 @@
       "type": "lake"
     },
     {
-      "specifier": "big-muskellunge-lake",
+      "specifier": "big-muskellunge",
       "title": "Big Muskellunge Lake",
       "country": "USA",
       "lon": -89.61,
@@ -5212,14 +6076,6 @@
       "country": "USA",
       "lon": -89.32,
       "lat": 46.16,
-      "type": "lake"
-    },
-    {
-      "specifier": "bourget",
-      "title": "Lake Bourget",
-      "country": "France",
-      "lon": 5.86,
-      "lat": 45.76,
       "type": "lake"
     },
     {
@@ -5255,7 +6111,7 @@
       "type": "lake"
     },
     {
-      "specifier": "dickie-lake",
+      "specifier": "dickie",
       "title": "Dickie Lake",
       "country": "Canada",
       "lon": -79.09,
@@ -5263,7 +6119,7 @@
       "type": "lake"
     },
     {
-      "specifier": "eagle-lake",
+      "specifier": "eagle",
       "title": "Eagle Lake",
       "country": "Canada",
       "lon": -76.7,
@@ -5271,8 +6127,8 @@
       "type": "lake"
     },
     {
-      "specifier": "ekoln-basin-of-malaren",
-      "title": "Ekoln basin of M\u00e4laren",
+      "specifier": "ekoln",
+      "title": "Ekoln basin of Malaren",
       "country": "Sweden",
       "lon": 17.62,
       "lat": 59.75,
@@ -5295,7 +6151,7 @@
       "type": "lake"
     },
     {
-      "specifier": "falling-creek-reservoir",
+      "specifier": "falling-creek",
       "title": "Falling Creek Reservoir",
       "country": "USA",
       "lon": -79.84,
@@ -5311,7 +6167,7 @@
       "type": "lake"
     },
     {
-      "specifier": "fish-lake",
+      "specifier": "fish",
       "title": "Fish Lake",
       "country": "USA",
       "lon": -89.65,
@@ -5319,15 +6175,7 @@
       "type": "lake"
     },
     {
-      "specifier": "geneva",
-      "title": "Lake Geneva",
-      "country": "France/Switzerland",
-      "lon": 6.59,
-      "lat": 46.45,
-      "type": "lake"
-    },
-    {
-      "specifier": "great-pond",
+      "specifier": "great",
       "title": "Great Pond",
       "country": "USA",
       "lon": -69.89,
@@ -5335,7 +6183,7 @@
       "type": "lake"
     },
     {
-      "specifier": "green-lake",
+      "specifier": "green",
       "title": "Green Lake",
       "country": "USA",
       "lon": -89.0,
@@ -5343,7 +6191,7 @@
       "type": "lake"
     },
     {
-      "specifier": "harp-lake",
+      "specifier": "harp",
       "title": "Harp Lake",
       "country": "Canada",
       "lon": -79.13,
@@ -5352,7 +6200,7 @@
     },
     {
       "specifier": "kilpisjarvi",
-      "title": "Kilpisj\u00e4rvi",
+      "title": "Kilpisjarvi",
       "country": "Finland",
       "lon": 20.77,
       "lat": 69.03,
@@ -5362,8 +6210,8 @@
       "specifier": "kinneret",
       "title": "Lake Kinneret",
       "country": "Israel",
-      "lon": 35.35,
-      "lat": 32.49,
+      "lon": 35.58,
+      "lat": 32.82,
       "type": "lake"
     },
     {
@@ -5399,7 +6247,7 @@
       "type": "lake"
     },
     {
-      "specifier": "laramie-lake",
+      "specifier": "laramie",
       "title": "Laramie Lake",
       "country": "USA",
       "lon": -105.84,
@@ -5448,7 +6296,7 @@
     },
     {
       "specifier": "mueggelsee",
-      "title": "Lake M\u00fcggelsee",
+      "title": "Lake Muggelsee",
       "country": "Germany",
       "lon": 13.65,
       "lat": 52.43,
@@ -5456,46 +6304,38 @@
     },
     {
       "specifier": "neuchatel",
-      "title": "Lake Neuch\u00e2tel",
+      "title": "Lake Neuchatel",
       "country": "Switzerland",
       "lon": 6.52,
       "lat": 46.54,
       "type": "lake"
     },
     {
-      "specifier": "ngoring ",
-      "title": "Ngoring ",
+      "specifier": "ngoring",
+      "title": "Ngoring",
       "country": "China",
       "lon": 97.7,
       "lat": 34.9,
       "type": "lake"
     },
     {
-      "specifier": "nohipalo-mustjarv",
-      "title": "Lake Nohipalo Mustj\u00e4rv",
+      "specifier": "nohipalo-mustjaerv",
+      "title": "Lake Nohipalo Mustjaerv",
       "country": "Estonia",
       "lon": 27.34,
       "lat": 57.93,
       "type": "lake"
     },
     {
-      "specifier": "nohipalo-valgejarv",
-      "title": "Lake Nohipalo Valgej\u00e4rv",
+      "specifier": "nohipalo-valgejaerv",
+      "title": "Lake Nohipalo Valgejaerv",
       "country": "Estonia",
       "lon": 27.35,
       "lat": 57.94,
       "type": "lake"
     },
     {
-      "specifier": "north-aral",
-      "title": "North Aral Sea",
-      "country": "Kazakhstan",
-      "lon": 60.16,
-      "lat": 46.53,
-      "type": "lake"
-    },
-    {
-      "specifier": "okauchee-lake",
+      "specifier": "okauchee",
       "title": "Okauchee Lake",
       "country": "USA",
       "lon": -88.43,
@@ -5503,23 +6343,15 @@
       "type": "lake"
     },
     {
-      "specifier": "paajarvi",
-      "title": "Lake P\u00e4\u00e4j\u00e4rvi",
+      "specifier": "paaijarvi",
+      "title": "Lake Paaijarvi",
       "country": "Finland",
       "lon": 25.13,
       "lat": 61.07,
       "type": "lake"
     },
     {
-      "specifier": "qinghai",
-      "title": "Qinghai",
-      "country": "China",
-      "lon": 100.33,
-      "lat": 36.83,
-      "type": "lake"
-    },
-    {
-      "specifier": "rappbode-reservoir",
+      "specifier": "rappbode",
       "title": "Rappbode Reservoir",
       "country": "Germany",
       "lon": 10.89,
@@ -5551,7 +6383,7 @@
       "type": "lake"
     },
     {
-      "specifier": "sau-reservoir",
+      "specifier": "sau",
       "title": "Sau Reservoir",
       "country": "Spain",
       "lon": 2.4,
@@ -5559,7 +6391,7 @@
       "type": "reservoir"
     },
     {
-      "specifier": "sparkling-lake",
+      "specifier": "sparkling",
       "title": "Sparkling Lake",
       "country": "USA",
       "lon": -89.7,
@@ -5599,15 +6431,7 @@
       "type": "lake"
     },
     {
-      "specifier": "taupo",
-      "title": "Lake Taupo",
-      "country": "New Zealand",
-      "lon": 175.89,
-      "lat": -38.8,
-      "type": "lake"
-    },
-    {
-      "specifier": "toolik-lake",
+      "specifier": "toolik",
       "title": "Toolik Lake",
       "country": "USA",
       "lon": -149.6,
@@ -5631,7 +6455,7 @@
       "type": "lake"
     },
     {
-      "specifier": "two-sisters-lake",
+      "specifier": "two-sisters",
       "title": "Two Sisters Lake",
       "country": "USA",
       "lon": -89.53,
@@ -5639,35 +6463,11 @@
       "type": "lake"
     },
     {
-      "specifier": "vendyurskoe",
-      "title": "Lake Vendyurskoe",
-      "country": "Russia",
-      "lon": 33.1,
-      "lat": 62.1,
-      "type": "lake"
-    },
-    {
-      "specifier": "victoria",
-      "title": "Lake Victoria",
-      "country": "Tanzania/Uganda/Kenya",
-      "lon": 33.1,
-      "lat": 62.1,
-      "type": "lake"
-    },
-    {
-      "specifier": "vortsjarv",
-      "title": "Lake V\u00f5rtsj\u00e4rv",
+      "specifier": "vortsjaerv",
+      "title": "Lake Vortsjarv",
       "country": "Estonia",
       "lon": 26.01,
       "lat": 58.31,
-      "type": "lake"
-    },
-    {
-      "specifier": "waahi",
-      "title": "Lake Waahi",
-      "country": "New Zealand",
-      "lon": 175.07,
-      "lat": 37.33,
       "type": "lake"
     },
     {
@@ -5703,884 +6503,108 @@
       "type": "reservoir"
     },
     {
+      "specifier": "taihu",
+      "title": "Lake Taihu",
+      "country": "China",
+      "lon": 120.17,
+      "lat": 31.24,
+      "type": "lake"
+    },
+    {
+      "specifier": "chao",
+      "title": "Lake Chao",
+      "country": "China",
+      "lon": 117.53,
+      "lat": 31.53,
+      "type": "lake"
+    },
+    {
+      "specifier": "hulun",
+      "title": "Lake Hulun",
+      "country": "China",
+      "lon": 117.39,
+      "lat": 49.0,
+      "type": "lake"
+    },
+    {
+      "specifier": "rappbodep",
+      "title": "Rappbode Predam",
+      "country": "Germany",
+      "lon": 10.8,
+      "lat": 51.71,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "hassel",
+      "title": "Hassel Predam",
+      "country": "Germany",
+      "lon": 10.83,
+      "lat": 51.71,
+      "type": "reservoir"
+    },
+    {
+      "specifier": "arendsee",
+      "title": "Lake Arendsee",
+      "country": "Germany",
+      "lon": 11.47,
+      "lat": 52.89,
+      "type": "lake"
+    },
+    {
+      "specifier": "scharmutzelsee",
+      "title": "Lake Scharmutzelsee",
+      "country": "Germany",
+      "lon": 14.05,
+      "lat": 52.25,
+      "type": "lake"
+    },
+    {
+      "specifier": "zurich",
+      "title": "Lake Zurich",
+      "country": "Switzerland",
+      "lon": 8.6,
+      "lat": 47.28,
+      "type": "lake"
+    },
+    {
+      "specifier": "thun",
+      "title": "Lake Thun",
+      "country": "Switzerland",
+      "lon": 7.7,
+      "lat": 46.7,
+      "type": "lake"
+    },
+    {
       "specifier": "murten",
-      "title": "Murtensee",
+      "title": "Lake Murten",
       "country": "Switzerland",
       "lon": 7.08,
       "lat": 46.93,
       "type": "lake"
-    }
-  ],
-  "identifier": [
-    {
-      "specifier": "acidification_type",
-      "title": "Acidification type"
-    },
-    {
-      "specifier": "bias_adjustment",
-      "title": "Bias adjustment"
-    },
-    {
-      "specifier": "category",
-      "title": "Input category"
-    },
-    {
-      "specifier": "climate_forcing",
-      "title": "Climate forcing"
-    },
-    {
-      "specifier": "climate_scenario",
-      "title": "Climate scenario"
-    },
-    {
-      "specifier": "climate_variable",
-      "title": "Climate variable"
-    },
-    {
-      "specifier": "crop",
-      "title": "Crop type"
-    },
-    {
-      "specifier": "crop_calendar",
-      "title": "Crop calendar"
-    },
-    {
-      "specifier": "detrending",
-      "title": "Detrending"
-    },
-    {
-      "specifier": "diazotroph_scenario",
-      "title": "Diazotroph scenario"
-    },
-    {
-      "specifier": "ensemble_member",
-      "title": "Ensemble member"
-    },
-    {
-      "specifier": "fishing_type",
-      "title": "Fishing type"
-    },
-    {
-      "specifier": "forest_stand",
-      "title": "Forest stand",
-      "location": true
-    },
-    {
-      "specifier": "frequency",
-      "title": "Temporal resolution"
-    },
-    {
-      "specifier": "geo_dataset",
-      "title": "Geo dataset"
-    },
-    {
-      "specifier": "harmonization",
-      "title": "Harmonization"
-    },
-    {
-      "specifier": "irrigation",
-      "title": "Irrigation"
-    },
-    {
-      "specifier": "lake_site",
-      "title": "lake site",
-      "location": true
-    },
-    {
-      "specifier": "ocean_region",
-      "title": "Ocean region",
-      "location": true
-    },
-    {
-      "specifier": "product",
-      "title": "Data product"
-    },
-    {
-      "specifier": "region",
-      "title": "Region"
-    },
-    {
-      "specifier": "resolution",
-      "title": "Spatial resolution"
-    },
-    {
-      "specifier": "river_basin",
-      "title": "River basin",
-      "location": true
-    },
-    {
-      "specifier": "river",
-      "title": "River"
-    },
-    {
-      "specifier": "r",
-      "title": "ERF estimate"
-    },
-    {
-      "specifier": "sector",
-      "title": "Sector"
-    },
-    {
-      "specifier": "sens_scenario",
-      "title": "Sensitivity scenario"
-    },
-    {
-      "specifier": "simulation_round",
-      "title": "Simulation round"
-    },
-    {
-      "specifier": "soc_dataset",
-      "title": "Socio-economic dataset"
-    },
-    {
-      "specifier": "soc_scenario",
-      "title": "Socio-economic scenario"
-    },
-    {
-      "specifier": "soc_variable",
-      "title": "Socio-economic variable"
-    },
-    {
-      "specifier": "species",
-      "title": "Species"
-    },
-    {
-      "specifier": "sigmat",
-      "title": "Sigma T"
-    },
-    {
-      "specifier": "subcategory",
-      "title": "Input subcategory"
-    },
-    {
-      "specifier": "time_span",
-      "title": "Time span"
-    },
-    {
-      "specifier": "time_step",
-      "title": "Time step"
-    },
-    {
-      "specifier": "variable",
-      "title": "Variable"
-    },
-    {
-      "specifier": "vert",
-      "title": "Vertical resolution"
-    },
-    {
-      "specifier": "ocean_static",
-      "title": "Ocean Properties"
-    },
-    {
-      "specifier": "exp",
-      "title": "Exposure working conditions"
-    }
-  ],
-  "model": [
-    {
-      "specifier": "acea",
-      "title": "ACEA"
-    },
-    {
-      "specifier": "classic",
-      "title": "CLASSIC"
-    },
-    {
-      "specifier": "crover",
-      "title": "CROVER"
-    },
-    {
-      "specifier": "cygma1p74",
-      "title": "CYGMA1p74"
-    },
-    {
-      "specifier": "daycent",
-      "title": "DayCent"
-    },
-    {
-      "specifier": "dssat-pythia",
-      "title": "DSSAT-Pythia"
     },
-    {
-      "specifier": "feisty",
-      "title": "FEISTY"
-    },
-    {
-      "specifier": "isam",
-      "title": "ISAM"
-    },
-    {
-      "specifier": "jules-w2",
-      "title": "JULES-W2"
-    },
-    {
-      "specifier": "jules-w2-ddm30",
-      "title": "JULES-W2-DDM30"
-    },
-    {
-      "specifier": "hydropy",
-      "title": "HydroPy"
-    },
-    {
-      "specifier": "ldndc",
-      "title": "LDNDC"
-    },
-    {
-      "specifier": "miroc-integ-land",
-      "title": "MIROC-INTEG-LAND"
-    },
-    {
-      "specifier": "promet",
-      "title": "PROMET"
-    },
-    {
-      "specifier": "simplace-lintul5",
-      "title": "SIMPLACE-LINTUL5"
-    }
-  ],
-  "resolution": [
-    {
-      "specifier": "120arcmin"
-    },
-    {
-      "specifier": "60arcmin"
-    },
-    {
-      "specifier": "30arcmin"
-    },
-    {
-      "specifier": "15arcmin"
-    }
-  ],
-  "climate_variable": [
-    {
-      "specifier": "hurs",
-      "group": "atmospheric-variables",
-      "long_name": "Near-Surface Relative Humidity",
-      "unit": "%",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_hurs_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "huss",
-      "group": "atmospheric-variables",
-      "long_name": "Near-Surface Specific Humidity",
-      "unit": "kg kg-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_huss_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "pr",
-      "group": "atmospheric-variables",
-      "long_name": "Precipitation",
-      "unit": "kg m-2 s-1",
-      "resolution": [
-        "0.5\u00b0 grid",
-        "30\" grid",
-        "90\" grid",
-        "300\" grid",
-        "1800\" grid"
-      ],
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5",
-        "CHELSA-W5E5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_pr_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "prsn",
-      "group": "atmospheric-variables",
-      "long_name": "Snowfall Flux",
-      "unit": "kg m-2 s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_prsn_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "ps",
-      "group": "atmospheric-variables",
-      "long_name": "Surface Air Pressure",
-      "unit": "Pa",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_ps_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "rlds",
-      "group": "atmospheric-variables",
-      "long_name": "Surface Downwelling Longwave Radiation",
-      "unit": "W m-2",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_rlds_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "rsds",
-      "group": "atmospheric-variables",
-      "long_name": "Surface Downwelling Shortwave Radiation",
-      "unit": "W m-2",
-      "resolution": [
-        "0.5\u00b0 grid",
-        "30\" grid",
-        "90\" grid",
-        "300\" grid",
-        "1800\" grid"
-      ],
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5",
-        "CHELSA-W5E5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_rsds_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "sfcwind",
-      "group": "atmospheric-variables",
-      "long_name": "Near-Surface Wind Speed",
-      "unit": "m s-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_sfcwind_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "tas",
-      "group": "atmospheric-variables",
-      "long_name": "Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": [
-        "0.5\u00b0 grid",
-        "30\" grid",
-        "90\" grid",
-        "300\" grid",
-        "1800\" grid"
-      ],
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5",
-        "CHELSA-W5E5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tas_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "tasmax",
-      "group": "atmospheric-variables",
-      "long_name": "Daily Maximum Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": [
-        "0.5\u00b0 grid",
-        "30\" grid",
-        "90\" grid",
-        "300\" grid",
-        "1800\" grid"
-      ],
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5",
-        "CHELSA-W5E5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tasmax_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "tasmin",
-      "group": "atmospheric-variables",
-      "long_name": "Daily Minimum Near-Surface Air Temperature",
-      "unit": "K",
-      "resolution": [
-        "0.5\u00b0 grid",
-        "30\" grid",
-        "90\" grid",
-        "300\" grid",
-        "1800\" grid"
-      ],
-      "frequency": "daily",
-      "climate_forcing": [
-        "GSWP3-W5E5",
-        "20CRv3",
-        "20CRv3-W5E5",
-        "20CRv3-ERA5",
-        "CHELSA-W5E5"
-      ],
-      "comment": "Input dataset documentation \u2192 [GSWP3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/110/), [20CRv3](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/106/), [20CRv3-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/104/), [20CRv3-ERA5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/105/), [CHELSA-W5E5](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/107/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere/<climate-scenario>/global/daily/historical/<climate-forcing>/<climate-forcing>_<climate-scenario>_tasmin_global_<start_year>_<end_year>.nc",
-      "mandatory": true
-    },
-    {
-      "specifier": "co2",
-      "group": "atmospheric-composition",
-      "long_name": "Atmospheric CO\u2082 concentration",
-      "unit": "ppm",
-      "resolution": "global",
-      "frequency": "annual",
-      "comment": "Input dataset documentation \u2192 [Globally averaged CO\u2082 and CH\u2084 annual data](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/111/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "fs-n",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere_composition/co2/<climate-scenario>/co2_<climate-scenario>_annual_<start_year>_<end_year>.txt",
-      "mandatory": true
-    },
-    {
-      "specifier": "ch4",
-      "group": "atmospheric-composition",
-      "long_name": "Atmospheric Methane concentration",
-      "unit": "ppb",
-      "resolution": "global",
-      "frequency": "annual",
-      "comment": "Input dataset documentation \u2192 [Globally averaged CO\u2082 and CH\u2084 annual data](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/111/).",
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "path": "ISIMIP3a/InputData/climate/atmosphere_composition/ch4/<climate-scenario>/ch4_<climate-scenario>_annual_<start_year>_<end_year>.txt",
-      "mandatory": true
-    },
-    {
-      "specifier": "lightning_fixed",
-      "specifier_file": "lightning",
-      "group": "lightning",
-      "long_name": "Flash Rate Monthly Climatology",
-      "unit": "km-2 d-1",
-      "resolution": "0.5\u00b0 grid",
-      "frequency": "monthly",
-      "sectors": [
-        "fire"
-      ],
-      "path": "ISIMIP3a/InputData/climate/lightning/lightning_fixed.nc",
-      "mandatory": true
-    }
-  ],
-  "species": [
-    {
-      "title": "Fagus sylvatica",
-      "specifier": "fasy"
-    },
-    {
-      "title": "Quercus robur",
-      "specifier": "quro"
-    },
-    {
-      "title": "Quercus petraea",
-      "specifier": "qupe"
-    },
-    {
-      "title": "Pinus sylvestris",
-      "specifier": "pisy"
-    },
-    {
-      "title": "Picea abies",
-      "specifier": "piab"
-    },
-    {
-      "title": "Pinus pinaster",
-      "specifier": "pipi"
-    },
-    {
-      "title": "Larix decidua",
-      "specifier": "lade"
-    },
-    {
-      "title": "Acer platanoides",
-      "specifier": "acpl"
-    },
-    {
-      "title": "Eucalyptus globulus",
-      "specifier": "eugl"
-    },
-    {
-      "title": "Betula pendula",
-      "specifier": "bepe"
-    },
-    {
-      "title": "Betula pubescens",
-      "specifier": "bepu"
-    },
-    {
-      "title": "Robinia pseudoacacia",
-      "specifier": "rops"
-    },
-    {
-      "title": "Fraxinus excelsior",
-      "specifier": "frex"
-    },
-    {
-      "title": "Populus nigra",
-      "specifier": "poni"
-    },
-    {
-      "title": "Sorbus aucuparia",
-      "specifier": "soau"
-    },
-    {
-      "title": "C3 grass",
-      "specifier": "c3gr"
-    },
-    {
-      "title": "hard woods",
-      "specifier": "hawo"
-    },
-    {
-      "title": "fire",
-      "specifier": "fi"
-    },
-    {
-      "title": "wind",
-      "specifier": "wi"
-    },
-    {
-      "title": "Insects",
-      "specifier": "ins"
-    }
-  ],
-  "sens_scenario": [
     {
-      "specifier": "default",
-      "description": "For all experiments other than the sensitivity experiments."
+      "specifier": "bryrup",
+      "title": "Lake Bryrup",
+      "country": "Denmark",
+      "lon": 9.52,
+      "lat": 56.02,
+      "type": "lake"
     },
     {
-      "specifier": "1901co2",
-      "description": "CO\u2082 concentration fixed at 1901 levels as a deviation from the `obsclim` climate + CO\u2082 forcing.",
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy",
-        "fire",
-        "forestry",
-        "health",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ]
+      "specifier": "bosumtwi",
+      "title": "Lake Bosumtwi",
+      "country": "Ghana",
+      "lon": 1.25,
+      "lat": 6.3,
+      "type": "lake"
     },
     {
-      "specifier": "nofire",
-      "description": "Simulation with fire switched off to identify impact of fire within the model.",
-      "sectors": [
-        "biomes",
-        "fire",
-        "peat",
-        "permafrost"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3a"
-      ]
+      "specifier": "vendyurskoe",
+      "title": "Lake Vendyurskoe",
+      "country": "Russia",
+      "lon": 33.1,
+      "lat": 62.1,
+      "type": "lake"
     }
   ]
 }
