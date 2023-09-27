@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/energy.json",
-  "commit": "7015cd7eb3dedb32182f8fb30eb47046fac8cc5e",
+  "commit": "95fa1f0854d278623cecafa8ff28064c3b477439",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "gfdl-esm4",
+            "mri-esm2-0",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -53,15 +53,15 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "2015soc-from-histsoc",
+            "histsoc",
+            "2015soc",
             "ssp585soc",
-            "ssp1soc",
             "ssp5soc",
             "ssp3soc",
-            "histsoc",
-            "ssp370soc",
-            "2015soc-from-histsoc",
+            "ssp1soc",
             "ssp126soc",
-            "2015soc"
+            "ssp370soc"
           ]
         },
         "sens_scenario": {
@@ -84,10 +84,10 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
-            "annual",
             "fixed",
+            "annual",
             "monthly",
+            "daily",
             "3hr"
           ]
         },
