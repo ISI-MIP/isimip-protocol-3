@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_regional.json",
-  "commit": "b0385ba0910be5f5f4341215dfaf24b93fdbf103",
+  "commit": "17d65680f447a8b3f8bda897914e3a4be30f10c4",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,16 +26,16 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "canesm5",
-            "cnrm-cm6-1",
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
             "cnrm-esm2-1",
-            "gfdl-esm4",
-            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "miroc6",
+            "canesm5",
+            "mri-esm2-0",
             "ec-earth3",
+            "gfdl-esm4",
+            "cnrm-cm6-1",
             "ipsl-cm6a-lr",
-            "miroc6"
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -48,33 +48,33 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp534-over",
-            "ssp585",
-            "ssp119",
             "ssp460",
-            "hist-nat",
             "historical",
-            "ssp245",
+            "ssp534-over",
+            "ssp119",
             "ssp126",
-            "picontrol",
-            "ssp370"
+            "hist-nat",
+            "ssp585",
+            "ssp245",
+            "ssp370",
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp1soc",
-            "ssp370soc",
-            "2015soc",
-            "ssp5soc",
             "2015soc-from-histsoc",
-            "ssp4soc",
             "ssp126soc",
-            "histsoc",
-            "ssp585soc",
-            "ssp2soc",
+            "ssp370soc",
+            "1850soc",
             "ssp3soc",
-            "1850soc"
+            "ssp2soc",
+            "ssp5soc",
+            "ssp1soc",
+            "2015soc",
+            "ssp4soc",
+            "ssp585soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -87,53 +87,53 @@
         "variable": {
           "type": "string",
           "enum": [
-            "qs",
-            "evap",
-            "dis",
             "potevap",
-            "soilmoist",
             "swe",
-            "airrusegreen",
-            "pirrusegreen",
-            "qr",
-            "pirrww",
-            "qtot",
             "pirruse",
-            "arainfusegreen",
-            "rootmoist",
+            "airruse",
+            "qtot",
+            "pirrusegreen",
+            "evap",
+            "soilmoist",
+            "pirrww",
             "airrww",
-            "airruse"
+            "rootmoist",
+            "dis",
+            "qr",
+            "airrusegreen",
+            "qs",
+            "arainfusegreen"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "euc",
-            "rap",
-            "ri2",
-            "swh",
-            "mai",
-            "rye",
-            "mis",
-            "ri1",
-            "mil",
-            "pea",
-            "mgr",
-            "pot",
-            "ric",
-            "sor",
-            "whe",
             "bar",
-            "cot",
-            "nut",
-            "sun",
-            "pop",
-            "sgc",
-            "soy",
-            "sgb",
+            "mil",
+            "ric",
             "cas",
+            "euc",
+            "sgb",
+            "mgr",
+            "pop",
+            "mai",
+            "nut",
+            "mis",
+            "soy",
+            "ri2",
+            "sgc",
+            "ri1",
+            "pea",
+            "whe",
+            "sun",
+            "wwh",
+            "sor",
+            "swh",
+            "rye",
             "bea",
-            "wwh"
+            "rap",
+            "cot",
+            "pot"
           ]
         },
         "irrigation": {
@@ -149,59 +149,59 @@
         "river": {
           "type": "string",
           "enum": [
-            "blue-nile",
-            "niger",
-            "danube",
-            "darling",
-            "godavari",
-            "tagus",
-            "ganges",
-            "yangtze",
-            "indus",
             "yellow",
-            "mackenzie",
+            "tagus",
+            "indus",
+            "rhine",
             "pajeu",
+            "niger",
             "amazon",
             "lena",
             "mississippi",
-            "rhine"
+            "blue-nile",
+            "mackenzie",
+            "godavari",
+            "yangtze",
+            "danube",
+            "darling",
+            "ganges"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "sao-paulo-de-olivenca",
-            "khartoum",
             "lobith",
-            "lokoja",
-            "dire",
-            "krestovski",
-            "el-diem",
-            "tekra",
+            "tarbela",
+            "louth",
+            "sao-paulo-de-olivenca",
             "tossaye",
-            "cuntan",
+            "arctic-red-river",
+            "khartoum",
+            "almourol",
             "trillo",
+            "alton",
+            "el-diem",
+            "lokoja",
             "floresta",
+            "dire",
+            "wien-nussdorf",
+            "koulikoro",
             "farakka",
             "stolb",
-            "louth",
-            "wien-nussdorf",
-            "almourol",
-            "alton",
-            "tangnaihai",
-            "tarbela",
-            "koulikoro",
-            "arctic-red-river"
+            "krestovski",
+            "tekra",
+            "cuntan",
+            "tangnaihai"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
             "daily",
-            "annual",
             "3hr",
-            "monthly"
+            "monthly",
+            "annual",
+            "fixed"
           ]
         },
         "start_year": {
