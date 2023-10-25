@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/climate/ocean.json",
-  "commit": "70aa97bda1d876f97244228d469008de86945c84",
+  "commit": "bcdd2b3cc76202128493a26ee1f54273cfb1a09c",
   "type": "object",
   "required": [
     "specifiers"
@@ -12,79 +12,77 @@
       "required": [
         "climate_forcing",
         "climate_scenario",
-        "climate_variable",
         "resolution",
-        "region",
         "time_step"
       ],
       "properties": {
         "climate_variable": {
           "type": "string",
           "enum": [
-            "siconc",
-            "phydiaz",
-            "prsn",
-            "tos",
-            "sfcwind",
-            "intppdiaz",
-            "thetao",
-            "zmeso",
             "huss",
-            "co2",
-            "chl",
-            "mask",
-            "zooc",
-            "ph",
-            "tob",
-            "tas",
-            "vo",
-            "zmicro",
-            "phypico",
             "intppdiat",
-            "o2",
-            "uo",
-            "lightning",
-            "phyc",
-            "orog",
-            "rsds",
-            "intpppico",
-            "expc",
-            "phydiat",
             "ps",
-            "rlds",
-            "tasmax",
-            "ch4",
-            "hurs",
+            "ph",
+            "tos",
             "pr",
-            "tasmin",
-            "rsntds",
-            "so",
+            "phypico",
             "thkcello",
+            "sfcwind",
+            "phydiat",
+            "zmeso",
+            "orog",
+            "co2",
+            "phydiaz",
+            "tasmax",
             "intpp",
+            "mask",
+            "uo",
+            "rlds",
             "mlotst",
-            "intpoc"
+            "zooc",
+            "ch4",
+            "expc",
+            "tas",
+            "intpppico",
+            "vo",
+            "rsds",
+            "intppdiaz",
+            "tasmin",
+            "chl",
+            "prsn",
+            "lightning",
+            "intpoc",
+            "rsntds",
+            "phyc",
+            "so",
+            "tob",
+            "siconc",
+            "zmicro",
+            "hurs",
+            "thetao",
+            "o2"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "counterclim",
             "spinclim",
             "obsclim",
-            "ctrlclim",
-            "transclim"
+            "transclim",
+            "counterclim",
+            "ctrlclim"
           ]
         },
         "resolution": {
           "type": "string",
           "enum": [
-            "60arcmin",
             "300arcsec",
             "15arcmin",
-            "90arcsec",
             "30arcmin",
             "1800arcsec",
+            "90arcsec",
             "30arcsec",
+            "60arcmin",
             "120arcmin"
           ]
         },
@@ -94,15 +92,49 @@
             "global"
           ]
         },
+        "ocean_region": {
+          "type": "string",
+          "enum": [
+            "gulf-alaska",
+            "kerguelen",
+            "seaustralia-mizer",
+            "east-bass-strait",
+            "mediterraneansea",
+            "eastern-scotian-shelf",
+            "east-bering-sea",
+            "seaustralia-atlantis",
+            "taiwancentralsouthpacific",
+            "baltic-sea",
+            "east-bearing-sea-shelf",
+            "hawaii",
+            "chatham-rise-ll-nz",
+            "med-glob",
+            "northsea-ibts",
+            "nw-med-sea",
+            "northernhumboldt",
+            "cook-strait",
+            "se-australia",
+            "benguela",
+            "brasil-ne",
+            "adriatic-sea",
+            "prydz-bay",
+            "humboldt-n",
+            "north-sea",
+            "hawaiian-longline",
+            "northsea-ewe",
+            "himi",
+            "tasman-golden-bays-nz"
+          ]
+        },
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
-            "fixed",
-            "monthly-gs",
             "daily",
+            "annual",
             "annual-gs",
-            "monthly"
+            "monthly-gs",
+            "monthly",
+            "fixed"
           ]
         }
       }
