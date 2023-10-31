@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/marine-fishery_global.json",
-  "commit": "4a2ffffa91099eb58bf998c81a666bb3fc1f5c41",
+  "commit": "8ab7273639d2ded0659a18a4a13b8f05f352d954",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,16 +26,16 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "cnrm-esm2-1",
-            "gfdl-esm4",
-            "miroc6",
             "cnrm-cm6-1",
-            "canesm5",
+            "miroc6",
             "ukesm1-0-ll",
-            "ipsl-cm6a-lr",
             "cesm2",
-            "ec-earth3"
+            "ec-earth3",
+            "ipsl-cm6a-lr",
+            "gfdl-esm4",
+            "cnrm-esm2-1",
+            "canesm5",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -48,64 +48,64 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp585",
+            "ssp245",
             "ssp370",
             "ssp460",
-            "ssp534-over",
-            "ssp585",
-            "historical",
             "ssp119",
-            "picontrol",
+            "historical",
+            "ssp534-over",
             "hist-nat",
-            "ssp245",
-            "ssp126"
+            "ssp126",
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp5soc",
             "2015soc-from-histsoc",
-            "ssp1soc",
-            "ssp585soc",
-            "ssp370soc",
             "ssp3soc",
+            "ssp5soc",
+            "ssp585soc",
+            "histsoc",
             "ssp4soc",
             "ssp2soc",
-            "nat",
+            "ssp370soc",
+            "ssp1soc",
             "ssp126soc",
-            "histsoc"
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
+            "cp30cm",
+            "cd90cm",
+            "tclog10",
+            "tc",
+            "cp30to90cm",
+            "bd30to90cm",
+            "bp30cm",
+            "cd30cm",
+            "tcb",
+            "tpb",
+            "tdc",
+            "bp90cm",
+            "cd30to90cm",
             "tcblog10",
             "cp90cm",
-            "cd30to90cm",
-            "tc",
-            "bd30cm",
-            "bd30to90cm",
-            "bp90cm",
-            "cp30to90cm",
-            "tclog10",
             "bd90cm",
             "tpc",
-            "tdc",
-            "bp30cm",
-            "tdb",
-            "tpb",
-            "cd30cm",
-            "cp30cm",
             "bp30to90cm",
-            "tcb",
-            "cd90cm"
+            "tdb",
+            "bd30cm"
           ]
         },
         "region": {
@@ -117,8 +117,8 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
             "daily",
+            "annual",
             "monthly",
             "fixed",
             "3hr"
