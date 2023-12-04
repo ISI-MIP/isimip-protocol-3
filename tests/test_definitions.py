@@ -98,9 +98,10 @@ def test_nested_simulation_rounds():
                 instance = json.loads(f.read())
 
                 for row in instance:
+                    simulation_rounds = row.get('simulation_rounds', simulation_round_specifiers)
                     for value in row.values():
                         if isinstance(value, dict):
-                            if simulation_round_specifiers[0] in value.keys():
+                            if simulation_rounds[0] in value.keys():
                                 # assert that all (both simulation_round_specifiers) are there
-                                for simulation_round_specifier in simulation_round_specifiers[1:]:
-                                    assert simulation_round_specifier in value.keys(), row.get('specifier')
+                                for simulation_round in simulation_rounds[1:]:
+                                    assert simulation_round in value.keys(), row.get('specifier')
