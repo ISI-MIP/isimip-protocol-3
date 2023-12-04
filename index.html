@@ -97,8 +97,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 29 November 2023</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/dec962b01d02c6e6e21d249c12a044a3fa9fe3f0">dec962b01d02c6e6e21d249c12a044a3fa9fe3f0</a></p>
+<p>Last updated: 04 December 2023</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/23af6a5efb9eceb3ca75b1d6b5c5d9d97b4611c4">23af6a5efb9eceb3ca75b1d6b5c5d9d97b4611c4</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -406,6 +406,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "identifier": "climate_variable",
       "specifier": "lightning",
       "title": "Lightning data"
+    },
+    {
+      "identifier": "climate_variable",
+      "specifier": "sealevel-variables",
+      "title": "Sea level data"
     },
     {
       "identifier": "soc_dataset",
@@ -719,25 +724,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         },
         {
           "dataset": "Coastal water levels",
-          "status": "under development",
+          "status": "mandatory",
+          "path": "ISIMIP3a/InputData/climate/sealevel/obsclim/",
+          "doi": "https://doi.org/10.48364/ISIMIP.749905",
           "comment": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/).",
           "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "coastal",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
+            "coastal"
           ]
         },
         {
@@ -893,26 +885,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         },
         {
           "dataset": "Coastal water levels",
-          "status": "under development",
+          "status": "mandatory",
           "path": "ISIMIP3a/InputData/climate/sealevel/counterclim/",
+          "doi": "https://doi.org/10.48364/ISIMIP.749905",
           "comment": "Detrended version of the **obsclim** hourly coastal water levels.",
           "sectors": [
-            "agriculture",
-            "biodiversity",
-            "biomes",
-            "coastal",
-            "diarrhea",
-            "energy",
-            "fire",
-            "forestry",
-            "health",
-            "labour",
-            "lakes_global",
-            "lakes_local",
-            "peat",
-            "permafrost",
-            "water_global",
-            "water_regional"
+            "coastal"
           ]
         },
         {
@@ -1800,6 +1778,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     }
   ],
   "time_step": [
+    {
+      "specifier": "hourly",
+      "increment": "hours"
+    },
     {
       "specifier": "3hr",
       "increment": "hours",
@@ -4487,6 +4469,54 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
+      "specifier": "geocentricwaterlevel",
+      "group": "sealevel-variables",
+      "long_name": "Geocentric Water Level",
+      "unit": "mm",
+      "resolution": "station",
+      "frequency": [
+        "daily (before 1978)",
+        "hourly (after 1978)"
+      ],
+      "comment": {
+        "ISIMIP3a": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/)"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "coastal"
+      ],
+      "path": {
+        "ISIMIP3a": "ISIMIP3a/InputData/climate/sealevel/<climate-scenario>/global/<time_step>/historical/HCC/hcc_<climate-scenario>_geocentricwaterlevel_global_<start_year>(_<end_year>).nc"
+      },
+      "mandatory": true
+    },
+    {
+      "specifier": "waterlevel",
+      "group": "sealevel-variables",
+      "long_name": "Relative Water Level",
+      "unit": "mm",
+      "resolution": "station",
+      "frequency": [
+        "daily (before 1978)",
+        "hourly (after 1978)"
+      ],
+      "comment": {
+        "ISIMIP3a": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/)"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "coastal"
+      ],
+      "path": {
+        "ISIMIP3a": "ISIMIP3a/InputData/climate/sealevel/<climate-scenario>/global/<time_step>/historical/HCC/hcc_<climate-scenario>_waterlevel_global_<start_year>(_<end_year>).nc"
+      },
+      "mandatory": true
+    },
+    {
       "specifier": "co2",
       "group": "atmospheric-composition",
       "long_name": "Atmospheric CO\u2082 concentration",
@@ -5556,6 +5586,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "ocean",
       "title": "Oceanic forcings",
+      "categories": [
+        "climate"
+      ]
+    },
+    {
+      "specifier": "sealevel",
+      "title": "Sea level",
       "categories": [
         "climate"
       ]
@@ -8501,6 +8538,15 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "specifier": "socioeconomic",
       "title": "Direct human forcing",
       "description": "Independent additional forcing data, which influence climate impacts, such as land-use, population or economic changes."
+    }
+  ],
+  "climate_dataset": [
+    {
+      "specifier": "hcc",
+      "title": "HCC",
+      "sectors": [
+        "coastal"
+      ]
     }
   ],
   "period": [
@@ -16756,6 +16802,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "category",
       "title": "Input category"
+    },
+    {
+      "specifier": "climate_dataset",
+      "title": "Climate dataset"
     },
     {
       "specifier": "climate_forcing",

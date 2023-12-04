@@ -1,5 +1,5 @@
 {
-  "commit": "dec962b01d02c6e6e21d249c12a044a3fa9fe3f0",
+  "commit": "23af6a5efb9eceb3ca75b1d6b5c5d9d97b4611c4",
   "terms": {
     "group": {
       "atmospheric-variables": {
@@ -17,6 +17,10 @@
       "lightning": {
         "identifier": "climate_variable",
         "title": "Lightning data"
+      },
+      "sealevel-variables": {
+        "identifier": "climate_variable",
+        "title": "Sea level data"
       },
       "landuse": {
         "identifier": "soc_dataset",
@@ -289,25 +293,12 @@
           },
           {
             "dataset": "Coastal water levels",
-            "status": "under development",
+            "status": "mandatory",
+            "path": "ISIMIP3a/InputData/climate/sealevel/obsclim/",
+            "doi": "https://doi.org/10.48364/ISIMIP.749905",
             "comment": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/).",
             "sectors": [
-              "agriculture",
-              "biodiversity",
-              "biomes",
-              "coastal",
-              "diarrhea",
-              "energy",
-              "fire",
-              "forestry",
-              "health",
-              "labour",
-              "lakes_global",
-              "lakes_local",
-              "peat",
-              "permafrost",
-              "water_global",
-              "water_regional"
+              "coastal"
             ]
           },
           {
@@ -462,26 +453,12 @@
           },
           {
             "dataset": "Coastal water levels",
-            "status": "under development",
+            "status": "mandatory",
             "path": "ISIMIP3a/InputData/climate/sealevel/counterclim/",
+            "doi": "https://doi.org/10.48364/ISIMIP.749905",
             "comment": "Detrended version of the **obsclim** hourly coastal water levels.",
             "sectors": [
-              "agriculture",
-              "biodiversity",
-              "biomes",
-              "coastal",
-              "diarrhea",
-              "energy",
-              "fire",
-              "forestry",
-              "health",
-              "labour",
-              "lakes_global",
-              "lakes_local",
-              "peat",
-              "permafrost",
-              "water_global",
-              "water_regional"
+              "coastal"
             ]
           },
           {
@@ -1356,6 +1333,9 @@
       }
     },
     "time_step": {
+      "hourly": {
+        "increment": "hours"
+      },
       "3hr": {
         "increment": "hours",
         "products": [
@@ -3948,6 +3928,52 @@
           "SecondaryInputData"
         ]
       },
+      "geocentricwaterlevel": {
+        "group": "sealevel-variables",
+        "long_name": "Geocentric Water Level",
+        "unit": "mm",
+        "resolution": "station",
+        "frequency": [
+          "daily (before 1978)",
+          "hourly (after 1978)"
+        ],
+        "comment": {
+          "ISIMIP3a": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/)"
+        },
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "coastal"
+        ],
+        "path": {
+          "ISIMIP3a": "ISIMIP3a/InputData/climate/sealevel/<climate-scenario>/global/<time_step>/historical/HCC/hcc_<climate-scenario>_geocentricwaterlevel_global_<start_year>(_<end_year>).nc"
+        },
+        "mandatory": true
+      },
+      "waterlevel": {
+        "group": "sealevel-variables",
+        "long_name": "Relative Water Level",
+        "unit": "mm",
+        "resolution": "station",
+        "frequency": [
+          "daily (before 1978)",
+          "hourly (after 1978)"
+        ],
+        "comment": {
+          "ISIMIP3a": "Input dataset documentation \u2192 [Coastal water levels](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/181/)"
+        },
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "coastal"
+        ],
+        "path": {
+          "ISIMIP3a": "ISIMIP3a/InputData/climate/sealevel/<climate-scenario>/global/<time_step>/historical/HCC/hcc_<climate-scenario>_waterlevel_global_<start_year>(_<end_year>).nc"
+        },
+        "mandatory": true
+      },
       "co2": {
         "group": "atmospheric-composition",
         "long_name": "Atmospheric CO\u2082 concentration",
@@ -4926,6 +4952,12 @@
       },
       "ocean": {
         "title": "Oceanic forcings",
+        "categories": [
+          "climate"
+        ]
+      },
+      "sealevel": {
+        "title": "Sea level",
         "categories": [
           "climate"
         ]
@@ -7693,6 +7725,14 @@
       "socioeconomic": {
         "title": "Direct human forcing",
         "description": "Independent additional forcing data, which influence climate impacts, such as land-use, population or economic changes."
+      }
+    },
+    "climate_dataset": {
+      "hcc": {
+        "title": "HCC",
+        "sectors": [
+          "coastal"
+        ]
       }
     },
     "period": {
@@ -15544,6 +15584,9 @@
       },
       "category": {
         "title": "Input category"
+      },
+      "climate_dataset": {
+        "title": "Climate dataset"
       },
       "climate_forcing": {
         "title": "Climate forcing"

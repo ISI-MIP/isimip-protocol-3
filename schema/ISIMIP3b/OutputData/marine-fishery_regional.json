@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_regional.json",
-  "commit": "dec962b01d02c6e6e21d249c12a044a3fa9fe3f0",
+  "commit": "23af6a5efb9eceb3ca75b1d6b5c5d9d97b4611c4",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ipsl-cm6a-lr",
             "ukesm1-0-ll",
-            "mpi-esm1-2-hr"
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr",
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -42,100 +42,101 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
             "ssp370",
-            "ssp585",
+            "historical",
             "ssp126",
-            "picontrol"
+            "picontrol",
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "ssp3soc",
+            "ssp126soc",
+            "ssp585soc",
             "ssp5soc",
             "histsoc",
-            "ssp1soc",
             "ssp370soc",
-            "ssp585soc",
             "nat",
-            "ssp126soc",
-            "ssp3soc",
+            "ssp1soc",
             "2015soc-from-histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "tdb",
-            "tdc",
-            "cd30cm",
-            "tpb",
-            "bp30cm",
-            "cp30to90cm",
             "bp30to90cm",
-            "bd90cm",
-            "cd90cm",
-            "tcblog10",
-            "cp30cm",
-            "bd30cm",
-            "tpc",
-            "tcb",
             "tclog10",
+            "tpc",
+            "bp30cm",
+            "cd90cm",
             "cp90cm",
-            "cd30to90cm",
-            "bp90cm",
+            "tpb",
+            "bd30cm",
+            "tdb",
+            "bd90cm",
             "bd30to90cm",
-            "tc"
+            "cp30to90cm",
+            "bp90cm",
+            "cp30cm",
+            "cd30to90cm",
+            "tcb",
+            "cd30cm",
+            "tcblog10",
+            "tc",
+            "tdc"
           ]
         },
         "ocean_region": {
           "type": "string",
           "enum": [
-            "hawaii",
-            "adriatic-sea",
-            "seaustralia-mizer",
-            "northsea-ewe",
-            "himi",
-            "cook-strait",
             "northsea-ibts",
-            "hawaiian-longline",
-            "nw-med-sea",
-            "northernhumboldt",
-            "east-bearing-sea-shelf",
-            "med-glob",
-            "chatham-rise-ll-nz",
-            "humboldt-n",
-            "brasil-ne",
-            "benguela",
-            "prydz-bay",
-            "se-australia",
-            "gulf-alaska",
-            "mediterraneansea",
-            "east-bering-sea",
-            "taiwancentralsouthpacific",
-            "north-sea",
-            "tasman-golden-bays-nz",
-            "east-bass-strait",
             "kerguelen",
+            "himi",
+            "northsea-ewe",
+            "east-bass-strait",
+            "prydz-bay",
+            "seaustralia-mizer",
+            "northernhumboldt",
+            "mediterraneansea",
+            "seaustralia-atlantis",
             "eastern-scotian-shelf",
+            "hawaiian-longline",
+            "med-glob",
             "baltic-sea",
-            "seaustralia-atlantis"
+            "gulf-alaska",
+            "tasman-golden-bays-nz",
+            "north-sea",
+            "se-australia",
+            "nw-med-sea",
+            "adriatic-sea",
+            "hawaii",
+            "benguela",
+            "cook-strait",
+            "east-bering-sea",
+            "brasil-ne",
+            "taiwancentralsouthpacific",
+            "chatham-rise-ll-nz",
+            "east-bearing-sea-shelf",
+            "humboldt-n"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
             "daily",
-            "annual",
+            "3hr",
             "monthly",
+            "annual",
+            "hourly",
             "fixed"
           ]
         },
