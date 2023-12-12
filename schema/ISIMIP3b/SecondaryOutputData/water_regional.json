@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_regional.json",
-  "commit": "ad9e793f0a63ee4483d8cedfc6814d204494b848",
+  "commit": "cb4f0218817546c7e7bf0449075135926daf0843",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,16 +26,16 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ec-earth3",
             "gfdl-esm4",
-            "cnrm-cm6-1",
-            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
             "mri-esm2-0",
-            "cnrm-esm2-1",
+            "mpi-esm1-2-hr",
+            "canesm5",
+            "cnrm-cm6-1",
+            "ec-earth3",
             "miroc6",
             "ukesm1-0-ll",
-            "canesm5"
+            "cnrm-esm2-1"
           ]
         },
         "bias_adjustment": {
@@ -49,91 +49,91 @@
           "type": "string",
           "enum": [
             "ssp370",
+            "ssp585",
             "ssp534-over",
+            "ssp119",
+            "ssp126",
+            "ssp460",
+            "ssp245",
             "historical",
             "hist-nat",
-            "ssp585",
-            "ssp245",
-            "picontrol",
-            "ssp126",
-            "ssp119",
-            "ssp460"
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
             "ssp2soc",
-            "ssp1soc",
-            "histsoc",
-            "ssp585soc",
-            "ssp5soc",
             "ssp370soc",
+            "ssp1soc",
+            "ssp585soc",
             "2015soc-from-histsoc",
-            "1850soc",
-            "ssp3soc",
-            "ssp4soc",
             "2015soc",
-            "ssp126soc"
+            "ssp5soc",
+            "1850soc",
+            "ssp126soc",
+            "ssp4soc",
+            "histsoc",
+            "ssp3soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "qr",
-            "evap",
-            "qtot",
+            "airrww",
+            "swe",
+            "soilmoist",
             "pirruse",
             "airruse",
-            "swe",
-            "arainfusegreen",
+            "potevap",
+            "airrusegreen",
             "qs",
             "pirrusegreen",
-            "potevap",
+            "arainfusegreen",
+            "evap",
+            "qtot",
+            "rootmoist",
             "pirrww",
             "dis",
-            "airrusegreen",
-            "rootmoist",
-            "soilmoist",
-            "airrww"
+            "qr"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "pea",
-            "pot",
             "nut",
-            "bea",
-            "soy",
-            "whe",
+            "cas",
+            "ri2",
+            "mai",
+            "mgr",
+            "pot",
+            "bar",
+            "ric",
+            "swh",
+            "sgc",
             "wwh",
             "rye",
-            "cas",
-            "mai",
-            "ric",
+            "soy",
             "mis",
-            "ri2",
-            "rap",
-            "euc",
-            "mgr",
-            "mil",
-            "sgb",
-            "sor",
-            "sun",
             "pop",
-            "sgc",
-            "swh",
-            "cot",
             "ri1",
-            "bar"
+            "pea",
+            "cot",
+            "rap",
+            "mil",
+            "sor",
+            "euc",
+            "sgb",
+            "bea",
+            "whe",
+            "sun"
           ]
         },
         "irrigation": {
@@ -149,60 +149,60 @@
         "river": {
           "type": "string",
           "enum": [
-            "blue-nile",
-            "rhine",
-            "tagus",
+            "danube",
+            "mackenzie",
             "lena",
-            "darling",
+            "mississippi",
+            "rhine",
+            "yangtze",
             "amazon",
             "indus",
+            "niger",
+            "darling",
+            "blue-nile",
             "yellow",
             "pajeu",
+            "tagus",
             "godavari",
-            "yangtze",
-            "danube",
-            "ganges",
-            "niger",
-            "mackenzie",
-            "mississippi"
+            "ganges"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "cuntan",
-            "lokoja",
-            "tangnaihai",
-            "alton",
-            "tarbela",
-            "almourol",
             "krestovski",
-            "koulikoro",
-            "el-diem",
-            "tossaye",
-            "trillo",
-            "stolb",
-            "sao-paulo-de-olivenca",
-            "lobith",
-            "wien-nussdorf",
-            "floresta",
-            "khartoum",
-            "louth",
-            "farakka",
             "tekra",
+            "koulikoro",
+            "stolb",
+            "wien-nussdorf",
+            "tarbela",
+            "tossaye",
+            "almourol",
+            "trillo",
             "dire",
-            "arctic-red-river"
+            "cuntan",
+            "lobith",
+            "el-diem",
+            "alton",
+            "sao-paulo-de-olivenca",
+            "khartoum",
+            "floresta",
+            "arctic-red-river",
+            "tangnaihai",
+            "lokoja",
+            "farakka",
+            "louth"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "daily",
-            "hourly",
             "fixed",
+            "monthly",
+            "annual",
             "3hr",
-            "annual"
+            "daily",
+            "hourly"
           ]
         },
         "start_year": {
