@@ -19,7 +19,7 @@ The React JavaScript app is build in a seperate step which are described under [
 Setup
 -----
 
-Building the protocol needs git and a recent Python version (> 3.6). The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/master/README.md#prerequisites).
+Building the protocol needs git and a recent Python version (> 3.6). The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
 
 If you work with different Python applications, we recommend to create a virtual enviroment for the protocol.
 
