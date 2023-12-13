@@ -113,12 +113,19 @@
     "valid_min": 0.0
   },
   {
-    "comment": "Groundwater recharge from water that enters the groundwater layer via percolation through the soil. Only submit if the model separates focussed/localised recharge from diffuse recharge. For models that do not simulate groundwater this can be seepage instead of recharge. ",
+    "comment": {
+      "groundwater": "Downwards flux from soil to groundwater (entering aquifer= positive value). Unit is equal to mm s-1.",
+      "water_global": "Groundwater recharge from water that enters the groundwater layer via percolation through the soil. Only submit if the model separates focussed/localised recharge from diffuse recharge. For models that do not simulate groundwater this can be seepage instead of recharge."
+    },
     "frequency": "monthly",
     "group": "hydrological-variables",
     "long_name": "Diffuse groundwater recharge",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "groundwater": "5' grid",
+      "water_global": "0.5° grid"
+    },
     "sectors": [
+      "groundwater",
       "water_global"
     ],
     "specifier": "qrd",
@@ -6395,7 +6402,7 @@
     "units": "m"
   },
   {
-    "comment": "Depth to the water table below land surface (dem).",
+    "comment": "Depth to the water table below land surface (digital elevation mode, DEM).",
     "frequency": "monthly",
     "group": "groundwater-variables",
     "long_name": "Water table depth",
@@ -6407,19 +6414,7 @@
     "units": "m"
   },
   {
-    "comment": "Downwards flux from soil to groundwater (entering aquifer= positive value). Unit is equal to mm s-1.",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "Diffuse groundwater recharge",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "qrd",
-    "units": "kg m-2 s-1"
-  },
-  {
-    "comment": "Upward flux from groundwater to soil.",
+    "comment": "Upward flux from groundwater to soil (leaving aquifer = negative value).",
     "frequency": "monthly",
     "group": "groundwater-variables",
     "long_name": "Capillary rise",
@@ -6527,6 +6522,18 @@
     "units": "m3 m-2 month-1"
   },
   {
+    "comment": "Gross water demand",
+    "frequency": "monthly",
+    "group": "groundwater-variables",
+    "long_name": "Groundwater demands",
+    "resolution": "5' grid",
+    "sectors": [
+      "groundwater"
+    ],
+    "specifier": "absd",
+    "units": "m3 m-2 month-1"
+  },
+  {
     "comment": "Same as abs but split into different sectors if available.",
     "frequency": "monthly",
     "group": "groundwater-variables",
@@ -6572,18 +6579,6 @@
       "groundwater"
     ],
     "specifier": "absliv",
-    "units": "m3 m-2 month-1"
-  },
-  {
-    "comment": "Gross water demand",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "Groundwater demands",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "absd",
     "units": "m3 m-2 month-1"
   },
   {
@@ -6657,53 +6652,5 @@
     ],
     "specifier": "lflf",
     "units": "m3 m-2 month-1"
-  },
-  {
-    "comment": "We request models to share their inputs for hydrologic conductivity.",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "Hydrologic conductivity",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "k",
-    "units": "m days-1"
-  },
-  {
-    "comment": "We request models to share their inputs for aquifer thickness. If more than one aquifer layer is simulated, report the total aquifer thickness.",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "Aquifer thickness",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "aqthick",
-    "units": "m"
-  },
-  {
-    "comment": "We request models to share their inputs for river bed conductance. Provide the conductance of river bed and other drainage.",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "River bed conductance",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "rivcond",
-    "units": "d"
-  },
-  {
-    "comment": "We request models to share their inputs for drainage elevation/river bottom (bottom boundary drainage).",
-    "frequency": "monthly",
-    "group": "groundwater-variables",
-    "long_name": "Drainage elevation/river bottom",
-    "resolution": "5' grid",
-    "sectors": [
-      "groundwater"
-    ],
-    "specifier": "drnlev",
-    "units": "m above sea level"
   }
 ]
