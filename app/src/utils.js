@@ -31,9 +31,20 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
 const filterRows = (config, rows) => {
   if (Array.isArray(rows)) {
     return rows.filter(row => {
-        if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
-            if (row.products === undefined || row.products.filter(product => config.products.includes(product)).length) {
-                if (row.sectors === undefined || config.sectors.length == 0 || row.sectors.filter(sector => config.sectors.includes(sector)).length) {
+        if (
+          row.simulation_rounds === undefined ||
+          row.simulation_rounds.includes(config.simulation_round)
+        ) {
+            if (
+              row.products === undefined ||
+              (Array.isArray(row.products) && row.products.filter(product => config.products.includes(product)).length) ||
+              (Array.isArray(row.products[config.simulation_round]) && row.products[config.simulation_round].filter(product => config.products.includes(product)).length)
+            ) {
+                if (
+                  row.sectors === undefined ||
+                  config.sectors.length == 0 ||
+                  row.sectors.filter(sector => config.sectors.includes(sector)).length
+                ) {
                     return true
                 }
             }
