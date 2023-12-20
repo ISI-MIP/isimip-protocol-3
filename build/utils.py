@@ -17,8 +17,7 @@ def get_commit_date():
 def filter_rows(rows, simulation_round, product, category=None, sector=None):
     for row in rows:
         if 'simulation_rounds' not in row or simulation_round in row['simulation_rounds']:
-            if 'products' not in row or product in row['products'] \
-                    or (simulation_round in row['products'] and product in row['products'][simulation_round]):
+            if 'products' not in row or product in row['products']:
                 if category is not None:
                     if 'categories' not in row or category in row['categories']:
                         yield row
