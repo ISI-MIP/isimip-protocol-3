@@ -63,7 +63,17 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                   <tr>
                     <td rowSpan="2" className="extra-border-bottom">
                         <h4>{row.title}</h4>
-                        {row.subtitle && <p>{row.subtitle}</p>}
+                        {
+                          row.subtitles && <p>
+                            {
+                              row.subtitles.map(subtitle => (
+                                <div>
+                                  <code>{subtitle}</code>
+                                </div>
+                              ))
+                            }
+                          </p>
+                        }
                         {row.priority && <p><strong>{row.priority}</strong></p>}
                         <p>
                           <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
