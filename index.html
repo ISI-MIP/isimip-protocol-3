@@ -97,8 +97,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 22 January 2024</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/98b2a52a7bb0ce679c9e4f45d9af4e707a8d6e8e">98b2a52a7bb0ce679c9e4f45d9af4e707a8d6e8e</a></p>
+<p>Last updated: 24 January 2024</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/5d1bd16ead8ad211b2c0bad7101414da07bd4353">5d1bd16ead8ad211b2c0bad7101414da07bd4353</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -128,7 +128,7 @@
 <h3 id="21-experiments">2.1 Experiments</h3>
 <p>In Table 2.1, we describe the different experiments for ISIMIP3. Each default experiment is defined by its <strong>climate related forcing (CRF)</strong> and the assumptions regarding <strong>direct human forcing (DHF)</strong>. The associated specifications all have a label such as <code>obsclim</code> or <code>histsoc</code> that are provided in Table 2.1 and further specified in Tables 2.2 and 2.3. These specifiers are used in the file names of the corresponding input files and should also be used for the names of the output files (see report model results <a href="#5-reporting-model-results">report model results</a>). Sensitivity experiments are described as deviation from a default experiment and represented by labels that are used as a third specifier of the experiments. Their specific meanings are defined in Table 2.4.</p>
 <p>Please note that the experiments are different for ISIMIP3a and ISIMIP3b and some are sector specific. You can use the menu on the top-right of the page to select the sumulation round and sectors you are interested in.</p>
-<div data-caption="Table 2.1: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row)." data-component="table" data-identifier="experiments"></div>
+<div data-caption="Table 2.1: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row). Sensitivity labels indicate deviations from the default settings. The subtitles in the first row indicate how the experiment is defined in filenames." data-component="table" data-identifier="experiments"></div>
 <h4 id="note-regarding-models-requiring-spin-up">Note regarding models requiring spin-up</h4>
 <div data-component="show" data-sector="agriculture,biodiversity,biomes,coastal,diarrhea,energy,fire,forestry,health,labour,lakes_global,lakes_local,peat,permafrost,water_global,water_regional" data-simulation-round="ISIMIP3a">
 <p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data. The files are located under <code>ISIMIP3a/InputData/climate/atmosphere/spinclim</code> at DKRZ and in the ISIMIP Repository. If more than 100 years of spin-up are needed, these data can be repeated as often as needed. </p>
@@ -14511,9 +14511,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   ],
   "experiments": [
     {
-      "specifier": "model-evaluation-histsoc",
+      "specifier": "obsclim_histsoc_default",
       "title": "Model evaluation",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_default"
+      ],
       "priority": "1st priority",
       "historical": {
         "climate": "obsclim",
@@ -14542,9 +14544,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "model-evaluation-2015soc",
+      "specifier": "obsclim_2015soc_default",
       "title": "Model evaluation",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "obsclim_2015soc_default"
+      ],
       "priority": "1st priority",
       "historical": {
         "climate": "obsclim",
@@ -14571,9 +14575,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "model-evaluation-1901soc",
+      "specifier": "obsclim_1901soc_default",
       "title": "Model evaluation",
-      "subtitle": "1901soc",
+      "subtitles": [
+        "obsclim_1901soc_default"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14592,9 +14598,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "model-evaluation-nat",
+      "specifier": "obsclim_nat_default",
       "title": "Model evaluation",
-      "subtitle": "nat",
+      "subtitles": [
+        "obsclim_nat_default"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14609,9 +14617,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "counterfactual-histsoc",
+      "specifier": "counterclim_histsoc_default",
       "title": "Counterfactual climate",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "counterclim_histsoc_default"
+      ],
       "priority": "1st priority",
       "historical": {
         "climate": "counterclim",
@@ -14638,9 +14648,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "counterfactual-2015soc",
+      "specifier": "counterclim_2015soc_default",
       "title": "Counterfactual climate",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "counterclim_2015soc_default"
+      ],
       "priority": "1st priority",
       "historical": {
         "climate": "counterclim",
@@ -14667,9 +14679,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "counterfactual-1901soc",
+      "specifier": "counterclim_1901soc_default",
       "title": "Counterfactual climate",
-      "subtitle": "1901soc",
+      "subtitles": [
+        "counterclim_1901soc_default"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "counterclim",
@@ -14688,9 +14702,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "counterfactual-nat",
+      "specifier": "counterclim_nat_default",
       "title": "Counterfactual climate",
-      "subtitle": "nat",
+      "subtitles": [
+        "counterclim_nat_default"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "counterclim",
@@ -14705,9 +14721,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-histsoc",
+      "specifier": "counterclim_histsoc_1901co2",
       "title": "CO\u2082 sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "counterclim_histsoc_1901co2"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14733,9 +14751,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-2015soc",
+      "specifier": "obsclim_2015soc_1901co2",
       "title": "CO\u2082 sensitivity",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "obsclim_2015soc_1901co2"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14761,9 +14781,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-1901soc",
+      "specifier": "obsclim_1901soc_1901co2",
       "title": "CO\u2082 sensitivity",
-      "subtitle": "1901soc",
+      "subtitles": [
+        "obsclim_1901soc_1901co2"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14782,9 +14804,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "nowatermgt-histsoc",
+      "specifier": "obsclim_histsoc_nowatermgt",
       "title": "Water management sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_nowatermgt"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14800,9 +14824,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "nowatermgt-2015soc",
+      "specifier": "obsclim_2015soc_nowatermgt",
       "title": "Water management sensitivity",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "obsclim_2015soc_nowatermgt"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14818,9 +14844,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "1901irr-histsoc",
+      "specifier": "obsclim_histsoc_1901irr",
       "title": "Irrigation sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_1901irr"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14836,9 +14864,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "nofire-histsoc",
+      "specifier": "obsclim_histsoc_nofire",
       "title": "No-fire sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_nofire"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -14856,9 +14886,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "counterfactual-co2sensitivity",
+      "specifier": "counterclim_histsoc_obsco2",
       "title": "Counterfactual climate and CO\u2082 sensitivity",
-      "subtitle": "obsco2",
+      "subtitles": [
+        "counterclim_histsoc_obsco2"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "counterclim",
@@ -14873,9 +14905,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "High-resolution-histsoc-30arcsec",
+      "specifier": "obsclim_histsoc_30arcsec",
       "title": "High-resolution sensitivity 1km",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_30arcsec"
+      ],
       "priority": "2st priority",
       "historical": {
         "climate": "obsclim",
@@ -14896,9 +14930,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "High-resolution-histsoc-90arcsec",
+      "specifier": "obsclim_histsoc_90arcsec",
       "title": "High-resolution sensitivity 3km",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_90arcsec"
+      ],
       "priority": "2st priority",
       "historical": {
         "climate": "obsclim",
@@ -14919,9 +14955,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "High-resolution-histsoc-300arcsec",
+      "specifier": "obsclim_histsoc_300arcsec",
       "title": "High-resolution sensitivity 10km",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_300arcsec"
+      ],
       "priority": "2st priority",
       "historical": {
         "climate": "obsclim",
@@ -14944,9 +14982,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "High-resolution-histsoc-1800arcsec",
+      "specifier": "obsclim_histsoc_1800arcsec",
       "title": "High-resolution sensitivity 60km",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_1800arcsec"
+      ],
       "priority": "2st priority",
       "historical": {
         "climate": "obsclim",
@@ -14969,9 +15009,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-nat",
+      "specifier": "obsclim_nat_default_fishmip",
       "title": "Model evaluation",
-      "subtitle": "nat",
+      "subtitles": [
+        "obsclim_nat_default"
+      ],
       "priority": "1st priority",
       "historical": {
         "climate": "obsclim",
@@ -14986,9 +15028,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-histsoc-fixed-river-nutrients",
+      "specifier": "obsclim_histsoc_1955-riverine-input",
       "title": "Riverine influx sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_1955-riverine-input"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15006,7 +15050,9 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "fishmip-nat-fixed-river-nutrients",
       "title": "Riverine influx sensitivity",
-      "subtitle": "nat",
+      "subtitles": [
+        "fishmip-nat-fixed-river-nutrients"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15022,9 +15068,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-histsoc-onedeg",
+      "specifier": "obsclim_histsoc_60arcmin",
       "title": "Resolution sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_60arcmin"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15040,9 +15088,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-nat-onedeg",
+      "specifier": "obsclim_nat_60arcmin",
       "title": "Resolution sensitivity",
-      "subtitle": "nat",
+      "subtitles": [
+        "obsclim_nat_60arcmin"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15058,9 +15108,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-histsoc-fixed-river-nutrients-60arcmin",
+      "specifier": "obsclim_histsoc_1955-riverine-input+60arcmin",
       "title": "Riverine influx and resolution sensitivity",
-      "subtitle": "histsoc",
+      "subtitles": [
+        "obsclim_histsoc_1955-riverine-input+60arcmin"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15076,9 +15128,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "fishmip-nat-fixed-river-nutrients-60arcmin",
+      "specifier": "obsclim_nat_1955-riverine-input+60arcmin",
       "title": "Riverine influx and resolution sensitivity",
-      "subtitle": "nat",
+      "subtitles": [
+        "obsclim_nat_1955-riverine-input+60arcmin"
+      ],
       "priority": "2nd priority",
       "historical": {
         "climate": "obsclim",
@@ -15094,9 +15148,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "picontrol-2015soc-from-histsoc",
+      "specifier": "picontrol_2015soc-from-histsoc_default",
       "title": "Pre-industrial control",
       "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "picontrol_1850soc_default",
+        "picontrol_histsoc_default",
+        "picontrol_2015soc-from-histsoc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": {
         "climate": "picontrol",
@@ -15134,9 +15193,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "picontrol-2015soc",
+      "specifier": "picontrol_2015soc_default",
       "title": "Pre-industrial control",
       "subtitle": "2015soc",
+      "subtitles": [
+        "picontrol_2015soc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table).",
       "historical": {
@@ -15169,9 +15231,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "picontrol-1850soc",
+      "specifier": "picontrol_1850soc_default",
       "title": "Pre-industrial control",
       "subtitle": "1850soc",
+      "subtitles": [
+        "picontrol_1850soc_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": {
@@ -15195,9 +15260,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "picontrol-nat",
+      "specifier": "picontrol_nat_default",
       "title": "Pre-industrial control",
       "subtitle": "nat",
+      "subtitles": [
+        "picontrol_nat_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
       "historical": {
@@ -15219,9 +15287,13 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp26-2015soc-from-histsoc",
+      "specifier": "ssp126_2015soc-from-histsoc_default",
       "title": "RCP2.6",
       "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp126_histsoc_default",
+        "ssp126_2015soc-from-histsoc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": {
@@ -15326,9 +15398,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp26-2015soc",
+      "specifier": "ssp126_2015soc_default",
       "title": "RCP2.6",
       "subtitle": "2015soc",
+      "subtitles": [
+        "ssp126_2015soc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table).",
       "historical": {
@@ -15362,9 +15437,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp26-1850soc",
+      "specifier": "ssp126_1850soc_default",
       "title": "RCP2.6",
       "subtitle": "1850soc",
+      "subtitles": [
+        "ssp126_1850soc_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": {
@@ -15388,9 +15466,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp26-nat",
+      "specifier": "ssp126_nat_default",
       "title": "RCP2.6",
       "subtitle": "nat",
+      "subtitles": [
+        "ssp126_nat_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
       "historical": {
@@ -15412,9 +15493,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp26-2015soc-from-histsoc",
+      "specifier": "ssp126_2015soc-from-histsoc_2015co2",
       "title": "CO\u2082 sensitivity RCP2.6",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp126_2015soc-from-histsoc_2015co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15434,9 +15517,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp70-2015soc-from-histsoc",
+      "specifier": "ssp370_2015soc-from-histsoc_default",
       "title": "RCP7.0",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp370_2015soc-from-histsoc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15536,9 +15621,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp70-2015soc",
+      "specifier": "ssp370_2015soc_default",
       "title": "RCP7.0",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "ssp370_2015soc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table).",
       "historical": "Identical to the similar **historical/2015soc** run above.",
@@ -15569,9 +15656,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp70-1850soc",
+      "specifier": "ssp370_1850soc_default",
       "title": "RCP7.0",
-      "subtitle": "1850soc",
+      "subtitles": [
+        "ssp370_1850soc_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/1850soc** run above.",
@@ -15592,9 +15681,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp70-nat",
+      "specifier": "ssp370_nat_default",
       "title": "RCP7.0",
-      "subtitle": "nat",
+      "subtitles": [
+        "ssp370_nat_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
       "historical": "Identical to the similar **historical/nat** run above.",
@@ -15611,9 +15702,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp70-2015soc-from-histsoc",
+      "specifier": "ssp370_2015soc-from-histsoc_2015co2",
       "title": "CO\u2082 sensitivity RCP70",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp370_2015soc-from-histsoc_2015co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15633,9 +15726,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_default",
       "title": "RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp585_2015soc-from-histsoc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15737,9 +15832,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp85-2015soc",
+      "specifier": "ssp585_2015soc_default",
       "title": "RCP8.5",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "ssp585_2015soc_default"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table).",
       "historical": "Identical to the similar **historical/2015soc** run above.",
@@ -15770,9 +15867,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp85-1850soc",
+      "specifier": "ssp585_1850soc_default",
       "title": "RCP8.5",
-      "subtitle": "1850soc",
+      "subtitles": [
+        "ssp585_1850soc_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/1850soc** run above.",
@@ -15793,9 +15892,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "rcp85-nat",
+      "specifier": "ssp585_nat_default",
       "title": "RCP8.5",
-      "subtitle": "nat",
+      "subtitles": [
+        "ssp585_nat_default"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
       "historical": "Identical to the similar **historical/nat** run above.",
@@ -15814,9 +15915,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_2015co2",
       "title": "CO\u2082 sensitivity RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp585_2015soc-from-histsoc_2015co2"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15895,9 +15998,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp85-2015soc",
+      "specifier": "ssp585_2015soc_2015co2",
       "title": "CO\u2082 sensitivity RCP8.5",
-      "subtitle": "2015soc",
+      "subtitles": [
+        "ssp585_2015soc_2015co2"
+      ],
       "priority": "1st priority",
       "pre-industrial": "Does not have to be simulated, spin-up should be based on the 2015 DHF (see note below the table).",
       "historical": "Identical to the similar **historical/2015soc** run above.",
@@ -15921,9 +16026,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp85-1850soc",
+      "specifier": "ssp585_1850soc_2015co2",
       "title": "CO\u2082 sensitivity RCP8.5",
-      "subtitle": "1850soc",
+      "subtitles": [
+        "ssp585_1850soc_2015co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/1850soc** run above.",
@@ -15944,9 +16051,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "co2sensitivity-rcp85-nat",
+      "specifier": "ssp585_nat_2015co2",
       "title": "CO\u2082 sensitivity RCP8.5",
-      "subtitle": "nat",
+      "subtitles": [
+        "ssp585_nat_2015co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
       "historical": "Identical to the similar **historical/nat** run above.",
@@ -15963,9 +16072,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "climate-sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp126_2015soc-from-histsoc_ssp585co2",
       "title": "Climate sensitivity RCP2.6 with RCP8.5 CO\u2082",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp126_2015soc-from-histsoc_ssp585co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -15982,9 +16093,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "ssp585ndep-sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_ssp585ndep",
       "title": "Nitrogen deposition sensitivity RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp585_2015soc-from-histsoc_ssp585ndep"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -16001,9 +16114,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "nondep-sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_nondep",
       "title": "No nitrogen cycling sensitivity RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "historical_histsoc_nondep",
+        "ssp585_2015soc-from-histsoc_nondep"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not include any nitrogen cycling (see note below the table).",
       "historical": {
@@ -16024,9 +16140,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "nondep2015co2-sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_nondep2015co2",
       "title": "No nitrogen cycling and CO\u2082 sensitivity RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp585_2015soc-from-histsoc_nondep2015co2"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Does not have to be simulated, spin-up should not include any nitrogen cycling (see note below the table).",
       "historical": "Identical to the similar **historical/histsoc/nondep** run above.",
@@ -16043,9 +16161,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "lightning-sensitivity-rcp26-2015soc-from-histsoc",
+      "specifier": "ssp126_2015soc-from-histsoc_varlightning",
       "title": "Future lightning sensitivity RCP2.6",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp126_2015soc-from-histsoc_varlightning"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -16062,9 +16182,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "lightning-sensitivity-rcp70-2015soc-from-histsoc",
+      "specifier": "ssp370_2015soc-from-histsoc_varlightning",
       "title": "Future lightning sensitivity RCP7.0",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp370_2015soc-from-histsoc_varlightning"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
@@ -16081,9 +16203,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "lightning-sensitivity-rcp85-2015soc-from-histsoc",
+      "specifier": "ssp585_2015soc-from-histsoc_varlightning",
       "title": "Future lightning sensitivity RCP8.5",
-      "subtitle": "2015soc-from-histsoc",
+      "subtitles": [
+        "ssp585_2015soc-from-histsoc_varlightning"
+      ],
       "priority": "2nd priority",
       "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
       "historical": "Identical to the similar **historical/histsoc** run above.",
