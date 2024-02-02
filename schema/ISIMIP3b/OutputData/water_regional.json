@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/water_regional.json",
-  "commit": "4e24cbbd71afb15afb4b634faff0877d8c2c0b5c",
+  "commit": "5f0332bea9a4c191e83e94c651a8d9a5681d07b6",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,109 +26,110 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
-            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "mri-esm2-0"
+            "mpi-esm1-2-hr",
+            "gfdl-esm4",
+            "mri-esm2-0",
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
-            "picontrol",
-            "historical",
             "ssp126",
-            "ssp585"
+            "ssp585",
+            "historical",
+            "picontrol",
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp585soc",
-            "ssp3soc",
-            "ssp370soc",
-            "ssp126soc",
             "1850soc",
-            "ssp1soc",
+            "ssp370soc",
+            "ssp585soc",
             "2015soc-from-histsoc",
+            "ssp3soc",
             "ssp5soc",
+            "histsoc",
             "2015soc",
-            "histsoc"
+            "ssp126soc",
+            "ssp1soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "airruse",
-            "soilmoist",
-            "qr",
-            "qtot",
-            "airrusegreen",
-            "pirrusegreen",
-            "evap",
-            "arainfusegreen",
-            "rootmoist",
-            "swe",
-            "potevap",
-            "airrww",
             "pirrww",
-            "pirruse",
+            "rootmoist",
+            "soilmoist",
             "qs",
-            "dis"
+            "swe",
+            "airrww",
+            "pirruse",
+            "airrusegreen",
+            "potevap",
+            "evap",
+            "pirrusegreen",
+            "qr",
+            "arainfusegreen",
+            "reservoirstor",
+            "dis",
+            "qtot",
+            "airruse"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "mil",
-            "cas",
-            "sgb",
-            "mgr",
-            "pop",
-            "sor",
-            "swh",
-            "whe",
-            "sgc",
-            "euc",
-            "wwh",
             "sun",
-            "pea",
-            "ri2",
-            "pot",
-            "rye",
-            "nut",
-            "cot",
-            "soy",
-            "ri1",
-            "bea",
-            "ric",
-            "bar",
-            "mis",
             "mai",
-            "rap"
+            "cas",
+            "rye",
+            "ric",
+            "sgc",
+            "pea",
+            "bea",
+            "ri1",
+            "pot",
+            "soy",
+            "sor",
+            "ri2",
+            "whe",
+            "wwh",
+            "mil",
+            "rap",
+            "cot",
+            "pop",
+            "euc",
+            "nut",
+            "mis",
+            "swh",
+            "sgb",
+            "bar",
+            "mgr"
           ]
         },
         "irrigation": {
           "type": "string",
           "enum": [
-            "cirr",
-            "noirr"
+            "noirr",
+            "cirr"
           ]
         },
         "pft": {
@@ -137,59 +138,59 @@
         "river": {
           "type": "string",
           "enum": [
-            "tagus",
-            "darling",
-            "yangtze",
-            "blue-nile",
-            "danube",
             "amazon",
-            "indus",
-            "mackenzie",
-            "niger",
             "rhine",
-            "yellow",
+            "danube",
+            "indus",
+            "yangtze",
+            "tagus",
+            "blue-nile",
+            "mackenzie",
             "lena",
-            "ganges",
             "godavari",
-            "pajeu",
-            "mississippi"
+            "mississippi",
+            "niger",
+            "ganges",
+            "yellow",
+            "darling",
+            "pajeu"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "khartoum",
-            "tossaye",
-            "farakka",
             "alton",
-            "trillo",
+            "tossaye",
+            "sao-paulo-de-olivenca",
             "koulikoro",
+            "dire",
+            "farakka",
+            "trillo",
+            "cuntan",
+            "floresta",
+            "almourol",
             "arctic-red-river",
+            "krestovski",
+            "louth",
             "stolb",
             "lokoja",
-            "floresta",
-            "louth",
-            "krestovski",
+            "khartoum",
             "tangnaihai",
-            "lobith",
             "tekra",
-            "wien-nussdorf",
             "el-diem",
-            "almourol",
-            "tarbela",
-            "cuntan",
-            "sao-paulo-de-olivenca",
-            "dire"
+            "lobith",
+            "wien-nussdorf",
+            "tarbela"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "annual",
-            "daily",
-            "fixed",
             "monthly",
+            "fixed",
             "3hr",
+            "daily",
+            "annual",
             "hourly"
           ]
         },
