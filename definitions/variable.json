@@ -582,6 +582,10 @@
   },
   {
     "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
+     "comment": {
+      "water_global": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
+      "water_quality" : "(sub)basin models can provide water-quality data from the grids of their (sub)basin outlets and/or river mouths."
+    },
     "frequency": "monthly",
     "group": "hydrological-variables",
     "long_name": "River Water Temperature",
@@ -4169,7 +4173,10 @@
     "units": "mole m-3"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
+    "comment": {
+      "other" : "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
+      "water_quality": "see comment under “River water temperature”"
+    },
     "dimensions": [
       "time",
       "levlak",
@@ -4179,10 +4186,14 @@
     "frequency": "daily and monthly",
     "group": "water-quality-variables",
     "long_name": "Total Dissolved Nitrogen",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "others": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "tdn",
     "units": "mole m-3"
@@ -4261,6 +4272,186 @@
     ],
     "specifier": "si",
     "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved organic nitrogen",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "don",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "Sum of NO3, NO2 and NH4. See comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved inorganic nitrogen",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "din",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Total dissolved phosphorus",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tdp",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Total dissolved organic phosphorus",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "top",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Total dissolved inorganic phosphorus",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tip",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Particulate nitrogen",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "pn",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "see comment under “River water temperature”",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Particulate phosphorus",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "pp",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "In-stream concentration. Biochemical oxygen demand is the most important and widely used environmental index for monitoring organic pollutants in wastewater. Measures the amount of dissolved oxygen required for the microbial oxidation of carbonaceous organic material under specified conditions",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Biochemical oxygen demand",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "bod",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "Dissolved minerals and salts in the water. Often closely related to conductivity, salinity, alkalinity, and hardness measures. Most freshwater fish and bugs cannot tolerate high TDS because they are not adapted to saline (salty) water, like marine fish are.",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Total dissolved solids",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tds",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Arsenic",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "TBD",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Diclofenac",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "TBD",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Microplastics",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "mip",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Macroplastics",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "map",
+    "units": "mole m-3"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Microorganisms",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "TBD",
+    "units": "TBD"
+  },
+  {
+    "comment": "See comment under “River water temperature",
+    "frequency": "annual, monthly and daily wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Faecal coliform",
+    "resolution": "0.5° grid",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "TBD",
+    "units": "TBD"
   },
   {
     "comment": "All consumers (trophic level >1, vertebrates and invertebrates)",
