@@ -10,7 +10,7 @@ const ForestStandTable = function({ config, caption, rows, actions }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          Table<ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}} children={caption} />
         </caption>
         <thead className="thead-dark">
           <tr>
