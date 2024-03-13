@@ -138,7 +138,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                 })
               }
             </ul>
-          </>    
+          </>
         )
       } else {
         return <p><b>Level dimensions:</b> ({Object.values(dimensions)[0].join(', ')}).</p>
