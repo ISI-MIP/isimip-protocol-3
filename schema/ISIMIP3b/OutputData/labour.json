@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/labour.json",
-  "commit": "330b33e53ca908496ac61714674d926ef9a50e37",
+  "commit": "66c1d2d16f17682ad1bdfe80c9e04b0ab85e03d9",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,57 +26,57 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
-            "mri-esm2-0",
             "mpi-esm1-2-hr",
             "ukesm1-0-ll",
-            "gfdl-esm4"
+            "gfdl-esm4",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
             "picontrol",
-            "historical",
             "ssp370",
-            "ssp585"
+            "ssp126",
+            "ssp585",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp3soc",
-            "histsoc",
-            "2015soc-from-histsoc",
-            "1850soc",
-            "ssp370soc",
-            "2015soc",
             "ssp1soc",
-            "ssp585soc",
+            "2015soc",
+            "histsoc",
+            "ssp370soc",
+            "ssp5soc",
             "ssp126soc",
-            "ssp5soc"
+            "2015soc-from-histsoc",
+            "ssp3soc",
+            "1850soc",
+            "ssp585soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "labsupp",
             "labprod",
+            "labsupp",
             "labeff"
           ]
         },
@@ -90,12 +90,12 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "monthly",
-            "annual",
             "daily",
-            "hourly",
+            "fixed",
+            "monthly",
             "3hr",
-            "fixed"
+            "hourly",
+            "annual"
           ]
         },
         "start_year": {
