@@ -18,6 +18,7 @@
     "sectors": [
       "water_global",
       "water_regional",
+      "water_quality",
       "biomes",
       "fire",
       "peat",
@@ -48,6 +49,7 @@
       "biomes",
       "water_global",
       "water_regional",
+      "water_quality",
       "peat",
       "permafrost",
       "fire"
@@ -605,13 +607,23 @@
     "valid_min": 0.0
   },
   {
-    "comment": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
-    "frequency": "monthly",
+    "comment": {
+      "water_global": "Mean monthly water temperature in river (representative of the average temperature across the channel volume).",
+      "water_quality": "(Sub)basin models can provide water-quality data from the grids of their (sub)basin outlets and/or river mouths. Those grids represent the total amount of pollution from the upstream areas."
+    },
+    "frequency": {
+      "water_global": "monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "hydrological-variables",
     "long_name": "River Water Temperature",
-    "resolution": "0.5° grid",
+    "resolution": {
+      "water_global": "0.5° grid",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
-      "water_global"
+      "water_global",
+      "water_quality"
     ],
     "specifier": "triver",
     "units": "K",
@@ -4134,20 +4146,30 @@
     "units": "mole m-3 as carbon"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+    "comment": {
+      "other": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+      "water_quality": "See comment under **triver**."
+    },
     "dimensions": [
       "time",
       "levlak",
       "lat",
       "lon"
     ],
-    "frequency": "daily and monthly",
+    "frequency": {
+      "other": "daily and monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "water-quality-variables",
     "long_name": "Total Phosphorus",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "other": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "tp",
     "units": "mole m-3"
@@ -4191,20 +4213,30 @@
     "units": "mole m-3"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+    "comment": {
+      "other": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+      "water_quality": "See comment under **triver**."
+    },
     "dimensions": [
       "time",
       "levlak",
       "lat",
       "lon"
     ],
-    "frequency": "daily and monthly",
+    "frequency": {
+      "other": "daily and monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "water-quality-variables",
     "long_name": "Total Nitrogen",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "other": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "tn",
     "units": "mole m-3"
@@ -4217,32 +4249,49 @@
       "lat",
       "lon"
     ],
-    "frequency": "daily and monthly",
+    "frequency": {
+      "other": "daily and monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "water-quality-variables",
     "long_name": "Particulate Nitrogen",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "other": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "pn",
     "units": "mole m-3"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
+    "comment": {
+      "other": "Depth resolution: Either full profile, or mean epi and mean hypo. Some models may also output data for Nitrate (N02) nitrite (NO3) and ammonium (NH4).",
+      "water_quality": "See comment under **triver**."
+    },
     "dimensions": [
       "time",
       "levlak",
       "lat",
       "lon"
     ],
-    "frequency": "daily and monthly",
+    "frequency": {
+      "other": "daily and monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "water-quality-variables",
     "long_name": "Total Dissolved Nitrogen",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "other": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "tdn",
     "units": "mole m-3"
@@ -6641,5 +6690,185 @@
     ],
     "specifier": "lflf",
     "units": "m3 m-2 month-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Total dissolved phosphorus",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tdp",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved organic nitrogen",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "don",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved inorganic nitrogen",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "din",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved organic phosphorus",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "dop",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "water-quality-variables",
+    "long_name": "Dissolved inorganic phosphorus",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "dip",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "In stream concentration. Biochemical oxygen demand (BOD) is the most important and widely used environmental index for monitoring organic pollutants in wastewater.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "organic-pollution-salinity-variables",
+    "long_name": "Biochemical oxygen demand",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "bod",
+    "units": "mg l-1"
+  },
+  {
+    "comment": "Dissolved minerals and salts in the water. **tds**Otherwise is often closely related to conductivity, salinity, alkalinity, and hardness measures.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "organic-pollution-salinity-variables",
+    "long_name": "Total dissolved solids",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tds",
+    "units": "mg l-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "chemicals-ermerging-contaminants-variables",
+    "long_name": "Arsenic",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "as",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "chemicals-ermerging-contaminants-variables",
+    "long_name": "Diclofenac",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "dcl",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "chemicals-ermerging-contaminants-variables",
+    "long_name": "Glyphosate",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "gly",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "plastic-variables",
+    "long_name": "Microplastics",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "mip",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "plastic-variables",
+    "long_name": "Macroplastics",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "map",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "plastic-variables",
+    "long_name": "Nanoplastics",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "nap",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "microorganism-variables",
+    "long_name": "Fecal coliform",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "fcol",
+    "units": "cfu 100ml-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "microorganism-variables",
+    "long_name": "Microorganisms: Cryptosporidium",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "crypto",
+    "units": "Oocysts a-1"
   }
 ]
