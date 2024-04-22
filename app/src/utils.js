@@ -58,7 +58,7 @@ const filterField = (config, field) => {
       if (config.sectors.length == 0) {
         return field
       } else if (config.sectors.length == 1) {
-        return field[config.sectors[0]] || field.other
+        return (typeof field[config.sectors[0]] === 'undefined') ? field.other : field[config.sectors[0]]
       } else {
         return Object.fromEntries(Object.entries(field).filter(([sector, value]) => {
           if (sector == 'other') {
