@@ -18,7 +18,6 @@
     "sectors": [
       "water_global",
       "water_regional",
-      "water_quality",
       "biomes",
       "fire",
       "peat",
@@ -49,7 +48,6 @@
       "biomes",
       "water_global",
       "water_regional",
-      "water_quality",
       "peat",
       "permafrost",
       "fire"
@@ -4175,20 +4173,30 @@
     "units": "mole m-3"
   },
   {
-    "comment": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+    "comment": {
+      "other": "Depth resolution: Either full profile, or mean epi and mean hypo.",
+      "water_quality": "See comment under **triver**."
+    },
     "dimensions": [
       "time",
       "levlak",
       "lat",
       "lon"
     ],
-    "frequency": "daily and monthly",
+    "frequency": {
+      "other": "daily and monthly",
+      "water_quality": "annual, daily and monthly wherever possible"
+    },
     "group": "water-quality-variables",
     "long_name": "Particulate Phosphorus",
-    "resolution": "Representative lake associated with grid cell",
+    "resolution": {
+      "other": "Representative lake associated with grid cell",
+      "water_quality": "0.5° grid (or disperse 0.5° grid)"
+    },
     "sectors": [
       "lakes_global",
-      "lakes_local"
+      "lakes_local",
+      "water_quality"
     ],
     "specifier": "pp",
     "units": "mole m-3"
@@ -6764,7 +6772,7 @@
     "units": "mg l-1"
   },
   {
-    "comment": "Dissolved minerals and salts in the water. **tds**Otherwise is often closely related to conductivity, salinity, alkalinity, and hardness measures.",
+    "comment": "Dissolved minerals and salts in the water. **tds** is often closely related to conductivity, salinity, alkalinity, and hardness measures.",
     "frequency": "annual, daily and monthly wherever possible",
     "group": "organic-pollution-salinity-variables",
     "long_name": "Total dissolved solids",
@@ -6809,6 +6817,18 @@
       "water_quality"
     ],
     "specifier": "gly",
+    "units": "kg a-1"
+  },
+  {
+    "comment": "See comment under **triver**.",
+    "frequency": "annual, daily and monthly wherever possible",
+    "group": "chemicals-ermerging-contaminants-variables",
+    "long_name": "Triclosan",
+    "resolution": "0.5° grid (or disperse 0.5° grid)",
+    "sectors": [
+      "water_quality"
+    ],
+    "specifier": "tcs",
     "units": "kg a-1"
   },
   {
