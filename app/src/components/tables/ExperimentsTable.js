@@ -64,15 +64,15 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                     <td rowSpan="2" className="extra-border-bottom">
                         <h4>{row.title}</h4>
                         {
-                          row.subtitles && <p>
+                          row.subtitles && <div className="mb-2">
                             {
-                              row.subtitles.map(subtitle => (
-                                <div>
+                              row.subtitles.map((subtitle, subtitleIndex)  => (
+                                <p key={subtitleIndex} className="mb-0">
                                   <code>{subtitle}</code>
-                                </div>
+                                </p>
                               ))
                             }
-                          </p>
+                          </div>
                         }
                         {row.priority && <p><strong>{row.priority}</strong></p>}
                         <p>
