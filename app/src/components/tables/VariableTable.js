@@ -118,7 +118,9 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
   const getDimensions = (row) => {
     const dimensions = filterField(config, row.dimensions)
 
-    if (Array.isArray(dimensions)) {
+    if (dimensions === null) {
+      return null
+    } else if (Array.isArray(dimensions)) {
       return <p><b>Level dimensions:</b> ({dimensions.join(', ')}).</p>
     } else if (typeof dimensions === 'object') {
       if (Object.keys(dimensions).length > 1) {
@@ -132,7 +134,13 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                     <li key={index} className="mb-0">
                       <em className="sector">{sector}:</em>
                       {' '}
-                      ({dimensions[sector].join(', ')})
+                      {
+                        dimensions[sector] === null ? (
+                          <span>no dimensions</span>
+                        ) : (
+                          <span>({dimensions[sector].join(', ')})</span>
+                        )
+                      }
                     </li>
                   )
                 })
