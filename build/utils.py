@@ -4,6 +4,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+import yaml
 
 def get_commit_hash():
     return subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
@@ -54,12 +55,32 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
     return values
 
 
+def read_definitions_file(file_path):
+    if file_path.suffix == '.json':
+        return json.loads(file_path.read_text(encoding='utf-8'))
+    elif file_path.suffix == '.yaml':
+        return [
+            dict(specifier=specifier, **definition)
+            for specifier, definition in yaml.safe_load(file_path.read_text(encoding='utf-8')).items()
+        ]
+    else:
+        return []
+
+
 def read_definitions():
     definitions_path = Path('definitions')
     definitions = {}
     for file_path in definitions_path.iterdir():
-        with open(file_path, encoding='utf-8') as fp:
-            definitions[file_path.stem] = json.loads(fp.read())
+        if file_path.is_dir():
+            definitions[file_path.stem] = []
+            for group_path in file_path.iterdir():
+                definitions[file_path.stem] += [
+                    dict(group=group_path.stem, **definition)
+                    for definition in read_definitions_file(group_path)
+                ]
+        else:
+            definitions[file_path.stem] = read_definitions_file(file_path)
+
     return definitions
 
 
