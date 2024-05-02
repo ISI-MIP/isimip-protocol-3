@@ -1,16 +1,25 @@
-import { first, isEmpty, last, trimStart } from 'lodash'
+import { first, isEmpty, isNil, last, trimStart } from 'lodash'
 
 const parseLocation = () => {
   if (isEmpty(window.location.hash)) {
     return {}
   } else {
-    const tokens = trimStart(window.location.hash, '#/').split('/')
+    const location = trimStart(window.location.hash, '#/')
+    const tokens = location.split('/').slice(0, -1)
 
-    return {
-      simulation_round: first(tokens),
-      sectors: tokens.slice(1, -1),
-      anchor: last(tokens)
+    const simulationRound = first(tokens)
+    const sectors = tokens.slice(1)
+    const config = {}
+
+    if (!isNil(simulationRound)) {
+      config.simulation_round = simulationRound
     }
+
+    if (!isEmpty(sectors)) {
+      config.sectors = sectors
+    }
+
+    return config
   }
 }
 
@@ -25,6 +34,14 @@ const updateLocation = (config) => {
 
   if (pathname != window.location.pathname) {
     history.pushState(null, null, pathname)
+  }
+}
+
+const parseAnchor = () => {
+  if (isEmpty(window.location.hash) || window.location.hash.endsWith('/')) {
+    return null
+  } else {
+    return document.getElementById(window.location.hash.split('/').pop())
   }
 }
 
@@ -58,4 +75,4 @@ const buildPath = (config) => {
   return path
 }
 
-export { parseLocation, updateLocation, updateAnchor, buildPath }
+export { parseLocation, updateLocation, parseAnchor, updateAnchor, buildPath }

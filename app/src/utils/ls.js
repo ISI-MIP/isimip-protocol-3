@@ -1,6 +1,6 @@
 import ls from 'local-storage'
 
-const readLocalStorage = () => {
+const getConfig = () => {
   const config = {}
   const definitions = window.initialState.definitions
 
@@ -30,11 +30,19 @@ const readLocalStorage = () => {
   return config
 }
 
-const updateLocalStorage = (config) => {
+const updateConfig = (config) => {
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
   ls.set('groups', JSON.stringify(config.groups))
   ls.set('scenarios', JSON.stringify(config.scenarios))
 }
 
-export { readLocalStorage, updateLocalStorage }
+const getScrollPosition = () => {
+  return ls.get('scroll_position')
+}
+
+const updateScrollPosition = (scrollPosition) => {
+  ls.set('scroll_position', scrollPosition)
+}
+
+export { getConfig, updateConfig, getScrollPosition, updateScrollPosition }

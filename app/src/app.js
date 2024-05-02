@@ -4,7 +4,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { isNil, isEmpty } from 'lodash'
+import { isNil, isEmpty, isNumber } from 'lodash'
 import ls from 'local-storage'
 
 import { actions, reducer } from './store'
@@ -17,8 +17,8 @@ import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
 
-import { parseLocation, updateLocation, updateAnchor } from './utils/location'
-import { readLocalStorage, updateLocalStorage } from './utils/ls'
+import { parseLocation, updateLocation, parseAnchor, updateAnchor } from './utils/location'
+import { getConfig, updateConfig, getScrollPosition, updateScrollPosition } from './utils/ls'
 
 const initConfig = () => {
   const definitions = window.initialState.definitions
@@ -29,13 +29,15 @@ const initConfig = () => {
     scenarios: []
   }
 
-  return {...defaultConfig, ...readLocalStorage(), ...parseLocation()}
+  return {...defaultConfig, ...getConfig, ...parseLocation()}
 }
 
 const initialConfig = initConfig()
+const anchor = parseAnchor()
+const scrollPosition = getScrollPosition()
 
 updateLocation(initialConfig)
-updateLocalStorage(initialConfig)
+updateConfig(initialConfig)
 
 const initialState = {
   definitions: window.initialState.definitions,
@@ -56,7 +58,7 @@ store.subscribe(() => {
   const { config } = store.getState()
 
   updateLocation(config)
-  updateLocalStorage(config)
+  updateConfig(config)
 })
 
 // insert the toc in the navbar
@@ -138,11 +140,17 @@ document.querySelectorAll('.toc a').forEach(el => {
   }
 })
 
-if (!(isNil(initialConfig.anchor) || isEmpty(initialConfig.anchor))) {
-  setTimeout(() => {
-      document.getElementById(initialConfig.anchor).scrollIntoView()
-  }, 100)
-}
+window.addEventListener('scroll', () => {
+  updateScrollPosition(window.pageYOffset)
+});
+
+setTimeout(() => {
+  if (anchor) {
+    anchor.scrollIntoView()
+  } else if (isNumber(scrollPosition)) {
+    window.scrollTo(0, scrollPosition)
+  }
+}, 300)
 
 // remove the cover div
 const cover = document.getElementsByClassName('cover')[0]
