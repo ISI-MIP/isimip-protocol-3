@@ -139,15 +139,6 @@ document.querySelectorAll('[data-component="hide"]').forEach(el => {
   )
 })
 
-document.querySelectorAll('[data-component="table"]').forEach(el => {
-  createRoot(el).render(
-    <Provider store={store}>
-      <Table identifier={el.dataset.identifier}
-             caption={el.dataset.caption} />
-    </Provider>
-  )
-})
-
 document.querySelectorAll('[data-component="pattern"]').forEach(el => {
   createRoot(el).render(
     <Provider store={store}>
@@ -155,6 +146,18 @@ document.querySelectorAll('[data-component="pattern"]').forEach(el => {
     </Provider>
   )
 })
+
+setTimeout(() => {
+  // otherwise the el.innerHTML would not work in Show/Hide ...
+  document.querySelectorAll('[data-component="table"]').forEach(el => {
+    createRoot(el).render(
+      <Provider store={store}>
+        <Table identifier={el.dataset.identifier}
+               caption={el.dataset.caption} />
+      </Provider>
+    )
+  })
+}, 100)
 
 // remove the cover div
 const cover = document.getElementsByClassName('cover')[0]
