@@ -1,7 +1,7 @@
 import 'bootstrap'
 
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import ls from 'local-storage'
@@ -63,63 +63,63 @@ const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
 
 document.querySelectorAll('[data-component="title"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Title />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="link"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Link />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="config"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Config />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="show"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Show simulationRound={el.dataset.simulationRound}
             sector={el.dataset.sector}
             html={el.innerHTML} />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="hide"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Hide simulationRound={el.dataset.simulationRound}
             sector={el.dataset.sector}
             html={el.innerHTML} />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="table"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Table identifier={el.dataset.identifier}
              caption={el.dataset.caption} />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="pattern"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Pattern />
-    </Provider>, el
+    </Provider>
   )
 })
 
