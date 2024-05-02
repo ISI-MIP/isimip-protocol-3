@@ -10,13 +10,13 @@ const Status = ({ status }) => {
     )
   } else if (status == 'optional') {
     return (
-      <span className="badge badge-light">
+      <span className="badge badge-light badge-optional">
         {status}
       </span>
     )
   } else if (status) {
     return (
-      <span className="badge badge-secondary">
+      <span className="badge badge-secondary badge-status">
         {status}
       </span>
     )
