@@ -16,40 +16,46 @@ const actions = {
 function reducer(state, action) {
   switch (action.type) {
     case 'changeSimulationRound': {
-      const config = Object.assign({}, state.config, {
-        simulation_round: action.value
-      })
-      return Object.assign({}, state, { config })
+      return { ...state, config: { ...state.config, simulation_round: action.value } }
     }
     case 'changeSector': {
-      const index = state.config.sectors.indexOf(action.value)
-      const config = Object.assign({}, state.config)
-      if (index < 0) {
-        config.sectors.push(action.value)
+      if (state.config.sectors.find((sector) => sector === action.value)) {
+        return {
+          ...state,
+          config: { ...state.config, sectors: state.config.sectors.filter((sector) => sector !== action.value) }
+        }
       } else {
-        config.sectors.splice(index, 1)
+        return {
+          ...state,
+          config: { ...state.config, sectors: [...state.config.sectors, action.value] }
+        }
       }
-      return Object.assign({}, state, { config })
     }
     case 'toggleGroup': {
-      const index = state.config.groups.indexOf(action.value)
-      const config = Object.assign({}, state.config)
-      if (index < 0) {
-        config.groups.push(action.value)
+      if (state.config.groups.find((group) => group === action.value)) {
+        return {
+          ...state,
+          config: { ...state.config, groups: state.config.groups.filter((group) => group !== action.value) }
+        }
       } else {
-        config.groups.splice(index, 1)
+        return {
+          ...state,
+          config: { ...state.config, groups: [...state.config.groups, action.value] }
+        }
       }
-      return Object.assign({}, state, { config })
     }
     case 'toggleScenario': {
-      const index = state.config.scenarios.indexOf(action.value)
-      const config = Object.assign({}, state.config)
-      if (index < 0) {
-        config.scenarios.push(action.value)
+      if (state.config.scenarios.find((scenario) => scenario === action.value)) {
+        return {
+          ...state,
+          config: { ...state.config, scenarios: state.config.scenarios.filter((scenario) => scenario !== action.value) }
+        }
       } else {
-        config.scenarios.splice(index, 1)
+        return {
+          ...state,
+          config: { ...state.config, scenarios: [...state.config.scenarios, action.value] }
+        }
       }
-      return Object.assign({}, state, { config })
     }
     default:
       return state
