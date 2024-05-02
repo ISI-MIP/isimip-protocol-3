@@ -59,8 +59,8 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
           {
             filteredRows.map((row, index) => {
               let futureTableClass = 'table-danger'
-              if (row.future && row.future.soc.startsWith('ssp')) {
-                // group 2 experiments
+              if (row.future && row.group3) {
+                // group 3 experiments
                 futureTableClass = 'table-info'
               }
 
@@ -83,6 +83,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                         {row.priority && <p><strong>{row.priority}</strong></p>}
                         <p>
                           <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
+                          {row.group3 && <span className="badge badge-info">Group 3</span>}
                           <Sectors config={config} sectors={row.sectors} />
                         </p>
                     </td>
