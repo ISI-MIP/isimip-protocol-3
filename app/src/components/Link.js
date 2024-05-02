@@ -2,14 +2,13 @@ import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { buildPath } from '../location'
+
 import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'
 
 const Link = ({ definitions, config }) => {
-  let href = config.baseurl + '#' + config.simulation_round
-  if (config.sectors && config.sectors.length > 0) {
-    href += '/' + config.sectors.join('/')
-  }
+  const href = config.baseurl + buildPath(config)
 
   return (
     <span className="title">

@@ -4,9 +4,10 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { isNil, isEmpty } from 'lodash'
 import ls from 'local-storage'
 
-import { reducer } from './store'
+import { actions, reducer } from './store'
 
 import Config from './components/Config'
 import Hide from './components/Hide'
@@ -16,39 +17,24 @@ import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
 
+import { parseLocation, updateLocation, updateAnchor, readLocalStorage, updateLocalStorage } from './location'
+
 const initConfig = () => {
-  const config = {}
   const definitions = window.initialState.definitions
-
-  config.simulation_round = ls.get('simulation_round')
-  if (!definitions.simulation_round.map((simulation_round) => simulation_round.specifier)
-                                   .includes(config.simulation_round)) {
-    config.simulation_round = 'ISIMIP3a'
-    ls.set('simulation_round', config.simulation_round)
+  const defaultConfig = {
+    simulation_round: 'ISIMIP3a',
+    sectors: [],
+    groups: [],
+    scenarios: []
   }
 
-  config.sectors = ls.get('sectors') ? JSON.parse(ls.get('sectors')) : []
-  if (!definitions.sector.some((sector) => config.sectors.includes(sector.specifier))) {
-    config.sectors = []
-    ls.set('sectors', JSON.stringify(config.sectors))
-  }
-
-  config.groups = ls.get('groups') ? JSON.parse(ls.get('groups')) : []
-  if (!definitions.group.some((group) => config.groups.includes(group.specifier))) {
-    config.groups = []
-    ls.set('groups', JSON.stringify(config.groups))
-  }
-
-  config.scenarios = ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
-  if (![
-    ...definitions.climate_scenario, ...definitions.soc_scenario, ...definitions.sens_scenario
-  ].some((scenario) => config.scenarios.includes(scenario.specifier))) {
-    config.scenarios = []
-    ls.set('scenarios', JSON.stringify(config.scenarios))
-  }
-
-  return config
+  return {...defaultConfig, ...readLocalStorage(), ...parseLocation()}
 }
+
+const initialConfig = initConfig()
+
+updateLocation(initialConfig)
+updateLocalStorage(initialConfig)
 
 const initialState = {
   definitions: window.initialState.definitions,
@@ -56,38 +42,20 @@ const initialState = {
   commit_date: window.initialState.commit_date,
   commit_hash: window.initialState.commit_hash,
   config: {
-    ...initConfig(),
+    ...initialConfig,
     baseurl: location.protocol + '//' + location.host + location.pathname,
     products: ['OutputData']
   }
 }
 
-// try to get simulation_round or sectors from the location
-if (window.location.hash) {
-  const hash = window.location.hash.toLowerCase().substring(1)
-  const parts = hash.split('/')
-
-  if (parts[0] == 'isimip3a') {
-    initialState.config.simulation_round = 'ISIMIP3a'
-    if (parts.length > 1) initialState.config.sectors = parts.slice(1)
-    history.replaceState(null, null, ' ');
-  } else if (parts[0] == 'isimip3b')  {
-    initialState.config.simulation_round = 'ISIMIP3b'
-    if (parts.length > 1) initialState.config.sectors = parts.slice(1)
-    history.replaceState(null, null, ' ');
-  }
-}
-
 const store = createStore(reducer, initialState)
+
+// update the local storage when the store changed
 store.subscribe(() => {
-  // update the local storage when the store changed
   const { config } = store.getState()
 
-
-  ls.set('simulation_round', config.simulation_round)
-  ls.set('sectors', JSON.stringify(config.sectors))
-  ls.set('groups', JSON.stringify(config.groups))
-  ls.set('scenarios', JSON.stringify(config.scenarios))
+  updateLocation(config)
+  updateLocalStorage(config)
 })
 
 // insert the toc in the navbar
@@ -158,6 +126,22 @@ setTimeout(() => {
     )
   })
 }, 100)
+
+document.querySelectorAll('.toc a').forEach(el => {
+  el.onclick = function(event) {
+    event.preventDefault()
+
+    const id = el.href.split('#').pop()
+    document.getElementById(id).scrollIntoView()
+    updateAnchor(id)
+  }
+})
+
+if (!(isNil(initialConfig.anchor) || isEmpty(initialConfig.anchor))) {
+  setTimeout(() => {
+      document.getElementById(initialConfig.anchor).scrollIntoView()
+  }, 100)
+}
 
 // remove the cover div
 const cover = document.getElementsByClassName('cover')[0]
