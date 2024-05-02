@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 const GroupToggleLink = ({ closed, toggle, all, label }) => {
   const onClick = event => {
     event.preventDefault()

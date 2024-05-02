@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { buildPath } from '../location'
+import { buildPath } from '../utils/location'
 
 import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'

@@ -17,7 +17,8 @@ import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
 
-import { parseLocation, updateLocation, updateAnchor, readLocalStorage, updateLocalStorage } from './location'
+import { parseLocation, updateLocation, updateAnchor } from './utils/location'
+import { readLocalStorage, updateLocalStorage } from './utils/ls'
 
 const initConfig = () => {
   const definitions = window.initialState.definitions
