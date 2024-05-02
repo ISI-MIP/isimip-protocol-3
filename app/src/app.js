@@ -16,18 +16,49 @@ import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
 
+const initConfig = () => {
+  const config = {}
+  const definitions = window.initialState.definitions
+
+  config.simulation_round = ls.get('simulation_round')
+  if (!definitions.simulation_round.map((simulation_round) => simulation_round.specifier)
+                                   .includes(config.simulation_round)) {
+    config.simulation_round = 'ISIMIP3a'
+    ls.set('simulation_round', config.simulation_round)
+  }
+
+  config.sectors = ls.get('sectors') ? JSON.parse(ls.get('sectors')) : []
+  if (!definitions.sector.some((sector) => config.sectors.includes(sector.specifier))) {
+    config.sectors = []
+    ls.set('sectors', JSON.stringify(config.sectors))
+  }
+
+  config.groups = ls.get('groups') ? JSON.parse(ls.get('groups')) : []
+  if (!definitions.group.some((group) => config.groups.includes(group.specifier))) {
+    config.groups = []
+    ls.set('groups', JSON.stringify(config.groups))
+  }
+
+  config.scenarios = ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
+  if (![
+    ...definitions.climate_scenario, ...definitions.soc_scenario, ...definitions.sens_scenario
+  ].some((scenario) => config.scenarios.includes(scenario.specifier))) {
+    config.scenarios = []
+    ls.set('scenarios', JSON.stringify(config.scenarios))
+  }
+
+  return config
+}
+
 const initialState = {
   definitions: window.initialState.definitions,
   patterns: window.initialState.patterns,
   commit_date: window.initialState.commit_date,
   commit_hash: window.initialState.commit_hash,
   config: {
+    ...initConfig(),
     baseurl: location.protocol + '//' + location.host + location.pathname,
-    simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
-    products: ['OutputData'],
-    sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
-    groups: ls.get('groups') ? JSON.parse(ls.get('groups')) : [],
-    scenarios: ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
+    products: ['OutputData']
   }
 }
 
@@ -51,6 +82,8 @@ const store = createStore(reducer, initialState)
 store.subscribe(() => {
   // update the local storage when the store changed
   const { config } = store.getState()
+
+
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
   ls.set('groups', JSON.stringify(config.groups))
