@@ -29,7 +29,7 @@ const initConfig = () => {
     scenarios: []
   }
 
-  return {...defaultConfig, ...getConfig, ...parseLocation()}
+  return {...defaultConfig, ...getConfig(), ...parseLocation()}
 }
 
 const initialConfig = initConfig()
