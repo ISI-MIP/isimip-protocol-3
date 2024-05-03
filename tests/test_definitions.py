@@ -7,25 +7,14 @@ import yaml
 
 
 def read_file(file_path):
-    if file_path.suffix == '.json':
-        return json.loads(file_path.read_text(encoding='utf-8'))
-    elif file_path.suffix == '.yaml':
-        return [
-            dict(specifier=specifier, **definition)
-            for specifier, definition in yaml.safe_load(file_path.read_text(encoding='utf-8')).items()
-        ]
-    else:
-        raise AssertionError()
+    return yaml.safe_load(file_path.read_text(encoding='utf-8'))
 
 
 def read_instance(file_path):
     if file_path.is_dir():
         instance = []
         for group_path in file_path.iterdir():
-            instance += [
-                dict(group=group_path.stem, **definition)
-                for definition in read_file(group_path)
-            ]
+            instance += read_file(group_path)
         return instance
     else:
         return read_file(file_path)
@@ -62,11 +51,11 @@ def test_double_specifiers():
 
 
 def test_variable():
-    simulation_rounds = read_instance(Path('definitions') / 'simulation_round.json')
+    simulation_rounds = read_instance(Path('definitions') / 'simulation_round.yaml')
     simulation_round_specifiers = [simulation_round['specifier'] for simulation_round in simulation_rounds]
 
     # read the instance
-    instance = read_instance(Path('definitions') / 'variable.json')
+    instance = read_instance(Path('definitions') / 'variable')
 
     for row in instance:
         sectors = row.get('sectors') + ['other']
@@ -83,8 +72,8 @@ def test_variable():
 
 
 def test_dataset_groups():
-    for file in ['soc_dataset.json', 'geo_dataset.json']:
-        groups = read_instance(Path('definitions') / 'group.json')
+    for file in ['soc_dataset.yaml', 'geo_dataset.yaml']:
+        groups = read_instance(Path('definitions') / 'group.yaml')
         datasets = read_instance(Path('definitions') / file)
 
         group_specifiers = [group['specifier'] for group in groups]
@@ -96,8 +85,8 @@ def test_dataset_groups():
 
 
 def test_variable_groups():
-    groups = read_instance(Path('definitions') / 'group.json')
-    variables = read_instance(Path('definitions') / 'variable.json')
+    groups = read_instance(Path('definitions') / 'group.yaml')
+    variables = read_instance(Path('definitions') / 'variable')
 
     group_specifiers = [group['specifier'] for group in groups]
 
@@ -108,11 +97,11 @@ def test_variable_groups():
 
 
 def test_nested_simulation_rounds():
-    simulation_rounds = read_instance(Path('definitions') / 'simulation_round.json')
+    simulation_rounds = read_instance(Path('definitions') / 'simulation_round.yaml')
     simulation_round_specifiers = [simulation_round['specifier'] for simulation_round in simulation_rounds]
 
     for file_path in Path('definitions').iterdir():
-        if file_path.name not in ['experiments.json']:
+        if file_path.name not in ['experiments.yaml']:
             # read the instance
             instance = read_instance(file_path)
 
