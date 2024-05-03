@@ -1,0 +1,636 @@
+- specifier: qtot
+  long_name: Total Runoff
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2 s-1
+  frequency: daily & monthly
+  resolution:
+    other: 0.5°
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Total (surface + subsurface) runoff (qtot = qs + qsb). Please provide both daily
+    and monthly resolution.
+  sectors:
+  - water_global
+  - water_regional
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  valid_max: 0.017
+  valid_min: 0.0
+
+- specifier: qs
+  long_name: Surface Runoff
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5°
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Water that leaves the surface layer (top soil layer) e.g. as overland flow / fast
+    runoff.
+  sectors:
+  - biomes
+  - water_global
+  - water_regional
+  - peat
+  - permafrost
+  - fire
+  valid_max: 0.004
+  valid_min: 0.0
+
+- specifier: qsb
+  long_name: Subsurface Runoff
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Sum of water that flows out from subsurface layer(s) including the groundwater
+    layer (if present). Equals qg in case of a groundwater layer below only one soil
+    layer.
+  sectors:
+  - water_global
+  - peat
+  - permafrost
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: qr
+  long_name: Total groundwater recharge
+  group: hydrological-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5°
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    For models that consider both diffuse and focussed/localised recharge this should
+    be the sum of both; other models should submit the groundwater recharge component
+    that the model simulates. See also the descriptions in qrf and qrd.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: qrf
+  long_name: Focussed/localised groundwater recharge
+  group: hydrological-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Water that directly flows from a surface water body into the groundwater layer
+    below. Only submit if the model separates focussed/localised recharge from diffuse
+    recharge.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: qrd
+  long_name: Diffuse groundwater recharge
+  group: hydrological-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    groundwater: 5' grid
+    water_global: 0.5° grid
+  comment:
+    groundwater: Downwards flux from soil to groundwater (entering aquifer= positive
+      value). Unit is equal to mm s-1.
+    water_global: Groundwater recharge from water that enters the groundwater layer
+      via percolation through the soil. Only submit if the model separates focussed/localised
+      recharge from diffuse recharge. For models that do not simulate groundwater
+      this can be seepage instead of recharge.
+  sectors:
+  - groundwater
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: qg
+  long_name: Groundwater Runoff
+  group: hydrological-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Water that leaves the groundwater layer. In case seepage is simulated but no groundwater
+    layer is present, report seepage as qr and qg.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: dis
+  long_name: Discharge
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: m3 s-1
+  frequency: daily & monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    River discharge or streamflow. Please provide both daily and monthly resolution.
+  sectors:
+  - water_global
+  - water_regional
+  - peat
+  - permafrost
+  valid_max: 700000.0
+  valid_min: 0.0
+
+- specifier: evap
+  long_name: Evapotranspiration
+  group: hydrological-variables
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+    water_global: total
+    water_regional: total
+  units: kg m-2 s-1
+  frequency:
+    forestry: daily
+    other: monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Sum of transpiration, evaporation, interception and sublimation.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  valid_max: 0.004
+  valid_min: 0.0
+
+- specifier: potevap
+  long_name: Potential Evapotranspiration
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    As evap, but with all resistances set to zero, except the aerodynamic resistance.
+  sectors:
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  valid_max: 0.004
+  valid_min: 0.0
+
+- specifier: soilmoist
+  long_name: Total Soil Moisture Content
+  group: hydrological-variables
+  extension:
+    agriculture:
+    - <crop>-<irrigation>
+    other:
+    - null
+  units: kg m-2
+  frequency:
+    agriculture: monthly-gs
+    other: daily if possible, else monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment:
+    agriculture: Pure crop models runs provide monthly averaged soil moisture only
+      during growing seasons and only from the upper 1m in [kg m-3]. Outside growing
+      seasons the grid cells values are set to zero or missing.
+    other: Please provide soil moisture for all depth layers (i.e. 3D-field), and
+      indicate depth in m. If depth varies over time or space, see instructions for
+      depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - agriculture
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - water_global
+  - water_regional
+  - permafrost
+  dimensions:
+    agriculture:
+    - time
+    - lat
+    - lon
+    other:
+    - time
+    - depth
+    - lat
+    - lon
+  valid_max: 10000.0
+  valid_min: 0.0
+
+- specifier: rootmoist
+  long_name: Soil Moisture Content at Root Zone
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Total simulated soil moisture available for evapotranspiration. Please indicate
+    the depth of the root zone for each vegetation type in your model. If depth varies
+    over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - water_global
+  - water_regional
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 10000.0
+  valid_min: 0.0
+
+- specifier: soilmoistfroz
+  long_name: Frozen Soil Moisture Content
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Please provide soil moisture for all depth levels and indicate depth in m. See
+    instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  - water_global
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 10000.0
+  valid_min: 0.0
+
+- specifier: tsl
+  long_name: Temperature of Soil
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: K
+  frequency: daily if possible, else monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Temperature of each soil layer. Reported as "missing" for grid cells occupied
+    entirely by "sea". If daily resolution not possible, please provide monthly. If
+    depth varies over time or space, see instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  - water_global
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 322.0
+  valid_min: 209.0
+
+- specifier: snd
+  long_name: Snow Depth
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: m
+  frequency: daily if possible, else monthly
+  resolution: 0.5° grid
+  comment: >-
+    Grid cell mean depth of snowpack.
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  - water_global
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: snm
+  long_name: Snow Melt
+  group: hydrological-variables
+  units: kg m-2 s-1
+  frequency: daily if possible, else monthly
+  resolution: 0.5° grid
+  comment: >-
+    Water that leaves the snow storage as a result of melting
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: swe
+  long_name: Snow Water Equivalent
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Total water mass of the snowpack (liquid or frozen) averaged over grid cell.
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  valid_max: 200000.0
+  valid_min: 0.0
+
+- specifier: tws
+  long_name: Total Water Storage
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in all compartments. Please indicate in the netcdf
+    metadata which storage compartments are considered.
+  sectors:
+  - peat
+  - permafrost
+  - water_global
+  valid_max: 200000.0
+  valid_min: -200000.0
+
+- specifier: canopystor
+  long_name: Canopy Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in the canopy.
+  sectors:
+  - water_global
+  valid_max: 10000.0
+  valid_min: 0.0
+
+- specifier: glacierstor
+  long_name: Glacier Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in glaciers.
+  sectors:
+  - water_global
+  valid_max: 100000.0
+  valid_min: 0.0
+
+- specifier: groundwstor
+  long_name: Groundwater Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in groundwater layer.
+  sectors:
+  - groundwater
+  - water_global
+  valid_max: 20000.0
+  valid_min: -20000.0
+
+- specifier: lakestor
+  long_name: Lake Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in lakes (except reservoirs).
+  sectors:
+  - water_global
+  valid_max: 20000.0
+  valid_min: -20000.0
+
+- specifier: wetlandstor
+  long_name: Wetland Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in wetlands.
+  sectors:
+  - water_global
+  valid_max: 10000.0
+  valid_min: -10000.0
+
+- specifier: riverstor
+  long_name: River Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in rivers.
+  sectors:
+  - water_global
+  valid_max: 50000.0
+  valid_min: 0.0
+
+- specifier: reservoirstor
+  long_name: Reservoir Water Storage
+  group: hydrological-variables
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean monthly water storage in reservoirs.
+  sectors:
+  - water_regional
+  - water_global
+  valid_max: 150000.0
+  valid_min: 0.0
+- specifier: thawdepth
+  long_name: Maximum Thaw Depth
+  group: hydrological-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: m
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Calculated from daily thaw depths.
+  sectors:
+  - biomes
+  - water_global
+  - peat
+  - permafrost
+  - fire
+  valid_max: 100.0
+  valid_min: 0.0
+
+- specifier: triver
+  long_name: River Water Temperature
+  group: hydrological-variables
+  units: K
+  frequency:
+    water_global: monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    water_global: 0.5° grid
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    water_global: Mean monthly water temperature in river (representative of the average
+      temperature across the channel volume).
+    water_quality: (Sub)basin models can provide water-quality data from the grids
+      of their (sub)basin outlets and/or river mouths. Those grids represent the total
+      amount of pollution from the upstream areas.
+  sectors:
+  - water_global
+  - water_quality
+  valid_max: 340.0
+  valid_min: 263.0
+
+
+- specifier: esoil
+  long_name: Water Evaporation from Soil
+  group: hydrological-variables
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2 s-1
+  frequency:
+    forestry: daily
+    other: monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Includes sublimation.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 0.004
+  valid_min: 0.0
+
+- specifier: trans
+  long_name: Transpiration
+  group: hydrological-variables
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2 s-1
+  frequency:
+    forestry: daily
+    other: monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: ""
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 0.004
+  valid_min: 0.0

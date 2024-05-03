@@ -1,0 +1,324 @@
+- specifier: burntarea
+  long_name: Burnt Area Fraction
+  group: fire-variables
+  extension:
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: '%'
+  frequency: daily (total), monthly (pft/total)
+  resolution: 0.5° grid
+  comment:
+    fire: Report <total> daily, <pft/total> monthly
+    other: Total area percentage of grid cell that has burned at any time (including
+      peat and deforestation fires).
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  valid_max: 200.0
+  valid_min: 0.0
+
+- specifier: burntarealuc
+  long_name: Burnt Area Fraction from Fire Mediated Land-Cover Change
+  group: fire-variables
+  extension: total
+  units: '%'
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Area percentage of grid cell that has burned from deforestation fires (if simulated).
+    Should be part of burntarea-total.
+  sectors:
+  - fire
+  valid_max: 200.0
+  valid_min: 0.0
+
+- specifier: burntareapeat
+  long_name: Burnt Area Fraction from Peat Fire
+  group: fire-variables
+  extension: total
+  units: '%'
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Area percentage of grid cell that has burned from peatland fires (if simulated).
+    Should be part of burntarea-total.
+  sectors:
+  - fire
+
+- specifier: ffirepeat
+  long_name: Carbon emitted from peat fires
+  group: fire-variables
+  extension: total
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    C emitted from peat fires (if simulated). Should also be part of ffire.
+  sectors:
+  - fire
+  valid_max: 1.0e-05
+  valid_min: 0.0
+
+- specifier: ffireluc
+  long_name: Carbon Mass Flux into Atmosphere from Fire Mediated Land-Cover Change
+  group: fire-variables
+  extension: total
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    C emitted from deforestation fires (if simulated). Should be part of ffire.
+  sectors:
+  - biomes
+  - fire
+  - peat
+  valid_max: 1.0e-05
+  valid_min: 0.0
+
+- specifier: fireints
+  long_name: Weighted Mean Fireline Intensity
+  group: fire-variables
+  extension: total
+  units: kW m-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If calculated, weighted by burned area. Grid cell total and PFT information is
+    essential.
+  sectors:
+  - fire
+  valid_min: 0.0
+
+- specifier: cfuel
+  long_name: Carbon in Different Fuel Classes
+  group: fire-variables
+  extension: total
+  units: kg m-2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Model-specific fuel classes stored in the `classes` attribute of the `fuelclass`
+    dimension.
+  sectors:
+  - fire
+  dimensions:
+  - time
+  - fuelclass
+  - lat
+  - lon
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: ccfuel
+  long_name: Combustion Completeness of Different Fuel Classes
+  group: fire-variables
+  extension: total
+  units: '1'
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    (between 0 and 1), fraction of fuel combusted in a fire. Model-specific fuel classes
+    stored in the `classes` attribute of the `fuelclass` dimension.
+  sectors:
+  - fire
+  dimensions:
+  - time
+  - fuelclass
+  - lat
+  - lon
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: mfuel
+  long_name: Fuel Moisture for Different Fuel Classes
+  group: fire-variables
+  extension: total
+  units: '1'
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    As a fraction of fuel dry mass (not percentage). Model-specific fuel classes stored
+    in the `classes` attribute of the `fuelclass` dimension.
+  sectors:
+  - fire
+  dimensions:
+  - time
+  - fuelclass
+  - lat
+  - lon
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: firenr
+  long_name: Mean Number of Fires
+  group: fire-variables
+  extension: total
+  units: km-2 day-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: ""
+  sectors:
+  - fire
+  valid_max: 1000000.0
+  valid_min: 0.0
+
+- specifier: firenrperc95
+  long_name: 95th Percentile of Number of Fires
+  group: fire-variables
+  extension: total
+  units: km-2 day-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    95th percentile of number of fires in one day during the month
+  sectors:
+  - fire
+  valid_max: 1000000.0
+  valid_min: 0.0
+
+- specifier: firemortality
+  long_name: Tree Mortality Caused by Fire
+  group: fire-variables
+  extension: total
+  units: '1'
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Fraction of area covered by trees
+  sectors:
+  - fire
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: firesize
+  long_name: Weighted Mean Fire Size
+  group: fire-variables
+  extension: total
+  units: km2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Monthly mean weighted with the number of fires of each day
+  sectors:
+  - fire
+  valid_max: 100000.0
+  valid_min: 0.0
+
+- specifier: firesizeperc95
+  long_name: 95th Percentile of Fire Size
+  group: fire-variables
+  extension: total
+  units: km2
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    95th percentile of fire size computed during the month
+  sectors:
+  - fire
+  valid_max: 100000.0
+  valid_min: 0.0
+
+- specifier: fireduration
+  long_name: Weighted Mean Fire Duration
+  group: fire-variables
+  extension: total
+  units: s
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean needs to be weighted with the number of fires
+  sectors:
+  - fire
+  valid_max: 100000000.0
+  valid_min: 0.0
+
+- specifier: fireros
+  long_name: Weighted Mean Fire Rate of Spread
+  group: fire-variables
+  extension: total
+  units: m s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Mean needs to be weighted with burned area
+  sectors:
+  - fire
+  valid_max: 150.0
+  valid_min: 0.0
+
+- specifier: ignhuman
+  long_name: Ignitions Caused by Human
+  group: fire-variables
+  extension: total
+  units: km-2 day-1
+  frequency: annual
+  resolution: 0.5° grid
+  comment: ""
+  sectors:
+  - fire
+  valid_max: 1000000.0
+  valid_min: 0.0
+
+- specifier: ignlight
+  long_name: Ignitions Caused by Lightning
+  group: fire-variables
+  extension: total
+  units: km-2 day-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: ""
+  sectors:
+  - fire
+  valid_max: 1000000.0
+  valid_min: 0.0
+
+- specifier: canopyheight
+  long_name: Mean Canopy Height
+  group: fire-variables
+  extension: total
+  units: m
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Mean height of canopy formed by trees over 5m.  Vegetation of less than 5m should
+    be excluded from the canopy height calculation (i.e. not contributing with zero)
+  sectors:
+  - fire
+  valid_max: 200.0
+  valid_min: 0.0
+
+- specifier: lowcover
+  long_name: Low Vegetation Cover
+  group: fire-variables
+  extension: total
+  units: '1'
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Fraction of grid cell covered with vegetation less than 5 m tall
+  sectors:
+  - fire
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: highcover
+  long_name: High Vegetation Cover
+  group: fire-variables
+  extension: total
+  units: '1'
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Fraction of grid cell covered with vegetation more than 5 m tall
+  sectors:
+  - fire
+  valid_max: 1.0
+  valid_min: 0.0

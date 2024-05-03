@@ -1,0 +1,819 @@
+- specifier: pirrww
+  long_name: Potential Irrigation Water Withdrawal (assuming unlimited water supply)
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Irrigation water withdrawn in case of optimal irrigation (i.e. eliminating water
+    stress for the plants). This includes the plant's water requirements over and
+    above precipitation and soil moisture, as well as any losses due to conveyance
+    or irrigation inefficiencies considered.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: airrww
+  long_name: Actual Irrigation Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Irrigation water withdrawal, taking water availability into account; please provide
+    if computed.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pirruse
+  long_name: Potential Irrigation Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Portion of withdrawal that is evapo-transpired, assuming unlimited water supply.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pirnreqcum
+  long_name: Cumulative Potential Net Irrigation Water Requirement
+  group: water-management-variables
+  extension: <crop>-<irrigation>
+  units: kg m-2
+  frequency: annual-gs
+  resolution: 0.5° grid
+  comment: >-
+    Soil water demand required to avoid water stress accumulated across the growing
+    season, excluding any water losses associated with application or transport and
+    without constraints due to water availability; only needed for `firr` simulations.
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 3000.0
+  valid_min: 0.0
+
+- specifier: airruse
+  long_name: Actual Irrigation Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Portion of withdrawal that is evapo-transpired, taking water availability into
+    account; if computed.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: airrusegreen
+  long_name: Actual Irrigation Green Water Consumption on Irrigated Cropland
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Actual evapotranspiration from rainwater over irrigated cropland; if computed.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pirrusegreen
+  long_name: Potential Irrigation Green Water Consumption on Irrigated Cropland
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Potential evapotranspiration from rainwater over irrigated cropland; if computed
+    and different from AIrrUseGreen.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: arainfusegreen
+  long_name: Actual Green Water Consumption on Rainfed Cropland
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution:
+    other: 0.5° grid
+    water_regional: 0.5° grid if possible, otherwise at gauge location
+  comment: >-
+    Actual evapotranspiration from rainwater over rainfed cropland; if computed.
+  sectors:
+  - water_global
+  - water_regional
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: adomww
+  long_name: Actual Domestic Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: adomuse
+  long_name: Actual Domestic Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: amanww
+  long_name: Actual Manufacturing Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: amanuse
+  long_name: Actual Manufacturing Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: aelecww
+  long_name: Actual Electricity Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: aelecuse
+  long_name: Actual Electricity Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: aliveww
+  long_name: Actual Livestock Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: aliveuse
+  long_name: Actual livestock Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pdomww
+  long_name: Potential Domestic Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pdomuse
+  long_name: Potential Domestic Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pmanww
+  long_name: Potential Manufacturing Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pmanuse
+  long_name: Potential manufacturing Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pelecww
+  long_name: Potential electricity Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pelecuse
+  long_name: Potential electricity Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pliveww
+  long_name: Potential livestock Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pliveuse
+  long_name: Potential livestock Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: atotww
+  long_name: Total Actual Water Withdrawal (all sectors)
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: atotuse
+  long_name: Total Actual Water Consumption (all sectors)
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Sum of actual consumptive water use from all sectors. Please indicate in metadata
+    which sectors are included.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: ptotww
+  long_name: Total Potential Water Withdrawal (all sectors)
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Sum of potential (i.e. assuming unlimited water supply) water withdrawal from
+    all sectors. Please indicate in metadata which sectors are included.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: ptotuse
+  long_name: Total Potential Water Consumption (all sectors)
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Sum of potential (i.e. assuming unlimited water supply) consumptive water use
+    from all sectors. Please indicate in metadata which sectors are included.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: ainduse
+  long_name: Actual Industrial Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed. There is no need to submit ainduse if its components are being submitted
+    separately (ainduse = amanuse + aelecuse).
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: aindww
+  long_name: Actual Industrial Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed. There is no need to submit aindww if its components are being submitted
+    separately (aindww = amanww + aelecww).
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pinduse
+  long_name: Potential Industrial Water Consumption
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed. There is no need to submit pinduse if its components are being submitted
+    separately (pinduse = pmanuse + pelecuse).
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pindww
+  long_name: Potential Industrial Water Withdrawal
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    If computed. There is no need to submit pindww if its components are being submitted
+    separately (pindww = pmanww + pelecww).
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: 0.0
+
+- specifier: pirrwwgw
+  long_name: Potential Irrigation Water Withdrawal (assuming unlimited water supply)
+    from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pirrww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: airrwwgw
+  long_name: actual irrigation water withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of airrww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pirrusegw
+  long_name: Potential Irrigation Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pirruse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: airrusegw
+  long_name: Actual Irrigation Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of airruse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pdomwwgw
+  long_name: Potential Domestic Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pdomww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: adomwwgw
+  long_name: Actual Domestic Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of adomww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pdomusegw
+  long_name: Potential Domestic Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pdomuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: adomusegw
+  long_name: Actual Domestic Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of adomuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pmanwwgw
+  long_name: Potential Manufacturing Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pmanww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: amanwwgw
+  long_name: Actual Manufacturing Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of amanww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pmanusegw
+  long_name: Potential manufacturing Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pmanuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: amanusegw
+  long_name: Actual Manufacturing Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of amanuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pelecwwgw
+  long_name: Potential electricity Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pelecww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: aelecwwgw
+  long_name: Actual Electricity Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of aelecww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pelecusegw
+  long_name: Potential electricity Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pelecuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: aelecusegw
+  long_name: Actual Electricity Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of aelecuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pindwwgw
+  long_name: Potential Industrial Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pindww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: aindwwgw
+  long_name: Actual Industrial Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of aindww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: pindusegw
+  long_name: Potential Industrial Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of pinduse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: aindusegw
+  long_name: Actual Industrial Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of ainduse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: plivwwgw
+  long_name: Potential livestock Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of plivww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: alivwwgw
+  long_name: Actual Livestock Water Withdrawal from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of alivww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: plivusegw
+  long_name: Potential livestock Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of plivuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: alivusegw
+  long_name: Actual livestock Water Consumption from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of alivuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: ptotwwgw
+  long_name: Total Potential Water Withdrawal (all sectors) from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of ptotww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: atotwwgw
+  long_name: Total Actual Water Withdrawal (all sectors) from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of atotww that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: ptotusegw
+  long_name: Total Potential Water Consumption (all sectors) from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of ptotuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002
+
+- specifier: atotusegw
+  long_name: Total Actual Water Consumption (all sectors) from groundwater resources
+  group: water-management-variables
+  units: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  comment: >-
+    Part of atotuse that is extracted from groundwater resources.
+  sectors:
+  - water_global
+  valid_max: 0.002
+  valid_min: -0.002

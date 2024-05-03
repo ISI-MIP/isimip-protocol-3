@@ -1,0 +1,266 @@
+- specifier: dbh
+  long_name: Mean DBH
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: cm
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 600.0
+  valid_min: 0.0
+
+- specifier: dbhdomhei
+  long_name: Mean DBH of 100 Highest Trees
+  group: forestry-variables
+  units: cm
+  frequency: annual
+  resolution: stand
+  comment: >-
+    100 highest trees per hectare.
+  sectors:
+  - forestry
+  valid_max: 600.0
+  valid_min: 0.0
+
+- specifier: hei
+  long_name: Stand Height
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    For models including natural regeneration this variable may not make sense, please
+    report domhei.
+  sectors:
+  - forestry
+  valid_max: 90.0
+  valid_min: 0.0
+
+- specifier: domhei
+  long_name: Dominant Height
+  group: forestry-variables
+  units: m ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    Mean height of the 100 highest trees per hectare.
+  sectors:
+  - forestry
+  valid_max: 90.0
+  valid_min: 0.0
+
+- specifier: density
+  long_name: Stand Density
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: tree number ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 150.0
+  valid_min: 0.0
+
+- specifier: ba
+  long_name: Basal Area
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m2 ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 150.0
+  valid_min: 0.0
+
+- specifier: mort
+  long_name: Volume of Dead Trees
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m3 ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 1500.0
+  valid_min: 0.0
+
+- specifier: harv
+  long_name: Harvest by DBH-Class
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m3 ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
+  sectors:
+  - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
+  valid_max: 1500.0
+  valid_min: 0.0
+
+- specifier: stemno
+  long_name: Remaining Stem Number after Disturbance and Management by DBH-Class
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    DBH-Class Resolution: Either DBH-Classes or Total per Species
+  sectors:
+  - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
+  valid_max: 500000.0
+  valid_min: 0.0
+
+- specifier: vol
+  long_name: Stand Volume
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m3 ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 1500.0
+  valid_min: 0.0
+
+- specifier: age
+  long_name: Tree Age by DBH-Class
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: yr
+  frequency: annual
+  resolution: stand
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
+  sectors:
+  - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
+  valid_max: 5000.0
+  valid_min: 0.0
+
+
+- specifier: mai
+  long_name: Mean Annual Increment
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: m3 ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 40.0
+  valid_min: 0.0
+
+- specifier: species
+  long_name: Species Composition
+  group: forestry-variables
+  extension:
+  - <species>
+  units: '%'
+  frequency: monthly
+  resolution: stand
+  comment: >-
+    Weighted by basal area to avoid over-representation of small trees
+  sectors:
+  - forestry
+  valid_max: 100.0
+  valid_min: 0.0
+
+- specifier: mortstemno
+  long_name: Removed Stem Numbers by DBH-Class by Natural Mortality
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    As trees per hectare. DBH class resolution: Either DBH classes or total per species
+  sectors:
+  - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
+  valid_max: 500000.0
+  valid_min: 0.0
+
+- specifier: harvstemno
+  long_name: Removed Stem Numbers by DBH-Class by Management
+  group: forestry-variables
+  extension:
+  - total
+  - <species>
+  units: ha-1
+  frequency: annual
+  resolution: stand
+  comment: >-
+    As trees per hectare. DBH class resolution: Either DBH classes or total per species
+  sectors:
+  - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
+  valid_max: 500000.0
+  valid_min: 0.0
+
+- specifier: dist
+  long_name: Volume of Disturbance Damage
+  group: forestry-variables
+  extension: <dist-name>-<species/total>
+  units: m3 ha-1
+  frequency: annual
+  resolution: stand
+  comment: ""
+  sectors:
+  - forestry
+  valid_max: 1500.0
+  valid_min: 0.0

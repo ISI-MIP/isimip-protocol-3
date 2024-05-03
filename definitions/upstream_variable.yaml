@@ -1,0 +1,64 @@
+- specifier: yield
+  long_name: Crop Yields
+  group: biophysical-forcing
+  mandatory: true
+  unit: dry matter (t ha-1)
+  frequency: annual
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/OutputData/agriculture/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<crop>-<irrigation>_global_annual_<start_year>_<end_year>.nc
+    ISIMIP3b: ISIMIP3a/OutputData/agriculture/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<crop>-<irrigation>_global_annual_<start_year>_<end_year>.nc
+  comment: >-
+    The biophysical forcing data consists of the crop yield data provided by a subset
+    of crop models, including: DSSAT-Pythia, EPIC-IIASA, LPJmL, PEPIC, pDSSAT, and
+    GEPIC. Only crop yields  and not crop production, at GADM administrative level-2,
+    are required. The gridded crop yield data will be aggregated to the sub-national
+    level. Only the 2015soc and 2015soc-from-histsoc runs will be used.
+  sectors:
+  - fs-n
+
+- specifier: qtot
+  long_name: Total Runoff
+  group: biophysical-forcing
+  unit: kg m-2 s-1
+  frequency: daily
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc
+    ISIMIP3b: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc
+  comment: >-
+    Please use one or several ISIMIP3a global water model(s), but not a multi-model
+    mean.
+  sectors:
+  - water_quality
+
+- specifier: dis
+  long_name: Discharge
+  group: biophysical-forcing
+  unit: m3 s-1
+  frequency: daily
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc
+    ISIMIP3b: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc
+  comment: >-
+    Please use one or several ISIMIP3a global water model(s), but not a multi-model
+    mean.
+  sectors:
+  - groundwater
+  - water_quality
+
+- specifier: qrd
+  long_name: Diffuse groundwater recharge
+  group: biophysical-forcing
+  unit: kg m-2 s-1
+  frequency: monthly
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_monthly_<start_year>_<end_year>.nc
+    ISIMIP3b: ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_monthly_<start_year>_<end_year>.nc
+  comment: >-
+    Please use one or several ISIMIP3a global water model(s), but not a multi-model
+    mean.
+  sectors:
+  - groundwater

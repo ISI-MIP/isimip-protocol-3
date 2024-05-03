@@ -1,0 +1,128 @@
+- specifier: fapar
+  long_name: Fraction of Absorbed Photosynthetically Active Radiation
+  group: vegetation
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: '%'
+  frequency: daily else monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Value between 0 and 100. Grid cell total and PFT information is essential.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 100.0
+  valid_min: 0.0
+
+- specifier: lai
+  long_name: Leaf Area Index
+  group: vegetation
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+    water_global: total
+  units: '1'
+  frequency: daily else monthly (fixed if static)
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    forestry: Stand total and species information is essential. If lai is static,
+      the timestep specifier "fixed" can be used.
+    other: Grid cell total and PFT information is essential. If lai is static, the
+      timestep specifier "fixed" can be used.
+    water_global: If used by, or computed by the model. If lai is static, the timestep
+      specifier "fixed" can be used.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  - water_global
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: pft
+  long_name: Plant Functional Type Grid Fraction
+  group: vegetation
+  extension:
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: '%'
+  frequency: annual (or fixed if static)
+  resolution: 0.5° grid
+  comment: >-
+    The categories may differ from model to model, depending on their PFT definitions.
+    This may include natural PFTs, anthropogenic PFTs, bare soil, lakes, urban areas,
+    etc. Sum of all should equal the fraction of the grid cell that is land. For models
+    that have grid cells partially covered by land and ocean, please document this
+    in the model documentation and provide your land-sea mask along the data uploads.
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+
+- specifier: intercep
+  long_name: Evaporation from Canopy (interception)
+  group: vegetation
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2 s-1
+  frequency:
+    forestry: daily
+    other: monthly
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    The canopy evaporation+sublimation (if present in model).
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 1000.0
+  valid_min: 0.0

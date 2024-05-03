@@ -1,0 +1,475 @@
+- specifier: cveg
+  long_name: Carbon Mass in Vegetation
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    biomes: Grid cell total and PFT information is essential.
+    fire: Grid cell total and PFT information is essential.
+    forestry: As kg carbon m⁻². Stand total and PFT information is essential.
+    permafrost: Grid cell total and PFT information is essential.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 120.0
+  valid_min: 0.0
+
+- specifier: cvegag
+  long_name: Carbon Mass in Above Ground Vegetation Biomass
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    biomes: Grid cell total and PFT information is essential.
+    forestry: As kg carbon m⁻²Stand total and PFT information is essential.
+    permafrost: Grid cell total, PFT information if possible.
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 70.0
+  valid_min: 0.0
+
+- specifier: cvegbg
+  long_name: Carbon Mass in Below Ground Vegetation Biomass
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    biomes: Grid cell total and PFT information is essential.
+    forestry: As kg carbon m⁻². Stand total and PFT information is essential.
+    permafrost: Grid cell total, PFT information if possible.
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: clitterag
+  long_name: Carbon Mass in Above Ground Litter Pool
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    biomes: Grid cell total and PFT information is essential.
+    fire: Grid cell total and PFT information is essential.
+    forestry: Species information is essential. Stand total and PFT information is
+      essential.
+    permafrost: Grid cell total, PFT information if possible.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: clitterbg
+  long_name: Carbon Mass in Below Ground Litter Pool
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    forestry: Only if models separates below-ground litter and soil carbon. Species
+      information is essential.
+    other: Only if models separates below-ground litter and soil carbon. If not, only
+      report csoil and document this in the model documentation. Grid cell total and
+      PFT information is essential.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: clitter
+  long_name: Total Carbon Mass in both Above and Below Ground Litter Pool
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Sum of below and above ground carbon in litter pools. Not required if `clitterag`
+    and `clitterbg` are provided. Grid cell total and PFT information is essential.
+    The comments for `clitterag` and `clitterbg` apply.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: csoil
+  long_name: Carbon Mass in Soil Pool
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+    - <pool>
+    - <pool>-<pft>
+    - <pt>-<pool>
+    - <pt>-<pool>-<pft>
+    permafrost:
+    - total
+    - <pft>
+    - <pool>
+    - <pool>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    forestry: Soil carbon excluding belowground litter if your model reports clitter.
+      If not including below-ground litter, i.e. only report csoil and document this
+      in the model documentation.
+    other: Soil carbon excluding belowground litter if your model reports clitter.
+      If not including below-ground litter, i.e. only report csoil and document this
+      in the model documentation. Grid cell total and species information is essential.
+    peat: Soil carbon excluding below-ground litter if your model reports clitterag
+      or clitterbg. If your model does not reports clitterag or clitterbg, report
+      soil carbon including below-ground litter as csoil and document this in the
+      model documentation. Grid cell total and PFT information is essential. If your
+      model simulates soil organic carbon pools of different turnover times, the variable
+      can additionally be provided separated by pools (see note below the table).
+    permafrost: Soil carbon excluding below-ground litter if your model reports clitterag
+      or clitterbg. If your model does not reports clitterag or clitterbg, report
+      soil carbon including below-ground litter as csoil and document this in the
+      model documentation. Grid cell total and PFT information is essential. If your
+      model simulates soil organic carbon pools of different turnover times, the variable
+      can additionally be provided separated by pools (see note below the table).
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 3000.0
+  valid_min: 0.0
+
+- specifier: csoillayer
+  long_name: Carbon Mass in Soil Pool in each layer
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+    - <pool>
+    - <pool>-<pft>
+    - <pt>-<pool>
+    - <pt>-<pool>-<pft>
+    permafrost:
+    - total
+    - <pft>
+    - <pool>
+    - <pool>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment:
+    biomes: Soil carbon excluding belowground litter if your model reports clitter.
+      If not including below-ground litter, i.e. only report csoil and document this
+      in the model documentation. Grid cell total and PFT information is essential.
+      If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate
+      depth in m. Otherwise, provide soil carbon integrated over entire soil depth.
+    fire: Soil carbon excluding belowground litter if your model reports clitter.
+      If not including below-ground litter, i.e. only report csoil and document this
+      in the model documentation. If possible, provide soil carbon for all depth layers
+      (i.e. 3D-field), and indicate depth in m. Otherwise, provide soil carbon integrated
+      over entire soil depth.
+    forestry: Soil carbon excluding belowground litter if your model reports clitter.
+      If not including below-ground litter, i.e. only report csoil and document this
+      in the model documentation. Grid cell total and species information is essential.
+      If possible, provide soil carbon for all depth layers (i.e. 3D-field), and indicate
+      depth in m. Otherwise, provide soil carbon integrated over entire soil depth.
+    peat: Soil carbon excluding below-ground litter if your model reports clitterag
+      or clitterbg. If your model does not reports clitterag or clitterbg, report
+      soil carbon including below-ground litter as csoil and document this in the
+      model documentation. Grid cell total and PFT information is essential. If your
+      model simulates soil organic carbon pools of different turnover times, the variable
+      can additionally be provided separated by pools (see note below the table).
+    permafrost: Soil carbon excluding below-ground litter if your model reports clitterag
+      or clitterbg. If your model does not reports clitterag or clitterbg, report
+      soil carbon including below-ground litter as csoil and document this in the
+      model documentation. Grid cell total and PFT information is essential. If your
+      model simulates soil organic carbon pools of different turnover times, the variable
+      can additionally be provided separated by pools (see note below the table).
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 1000000000.0
+  valid_min: 0.0
+
+- specifier: cproduct
+  long_name: Carbon in Products of Land Use Change
+  group: carbon-pools
+  extension:
+    other:
+    - total
+    - <productclass>
+    peat:
+    - <pt>-total
+    - <pt>-<productclass>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Products generated during Land-use change. Removed carbon should not go into the
+    soil but into the product pool. Please use the product classes used within your
+    model and document them in the model documentation.
+  sectors:
+  - biomes
+  - fire
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 20.0
+  valid_min: 0.0
+
+
+- specifier: cleaf
+  long_name: Carbon Mass in Leaves
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: ""
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 2.0
+  valid_min: 0.0
+
+- specifier: cwood
+  long_name: Carbon Mass in Wood
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Including sapwood and hardwood.
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 70.0
+  valid_min: 0.0
+
+- specifier: croot
+  long_name: Carbon Mass in Roots
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Including fine and coarse roots.
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: ccwd
+  long_name: Carbon Mass in Coarse Woody Debris
+  group: carbon-pools
+  extension:
+    forestry:
+    - total
+    - <species>
+    other:
+    - total
+    - <pft>
+    peat:
+    - total
+    - <pft>
+    - <pt>-total
+    - <pt>-<pft>
+  units: kg m-2
+  frequency: annual
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: ""
+  sectors:
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+  valid_max: 50.0
+  valid_min: 0.0

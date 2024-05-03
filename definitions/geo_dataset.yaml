@@ -1,0 +1,710 @@
+- specifier: landseamask
+  group: landseamask
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/landseamask/landseamask.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/landseamask/landseamask.nc
+  variables:
+  - specifier: mask
+    long_name: land-sea mask
+    unit: '1'
+  comment: >-
+    Input dataset documentation → [Land-sea mask](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/41/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: binary
+
+- specifier: landseamask_no-ant
+  group: landseamask
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/landseamask/landseamask_no-ant.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/landseamask/landseamask_no-ant.nc
+  variables:
+  - specifier: mask
+    long_name: land-sea mask
+    unit: '1'
+  comment: >-
+    Input dataset documentation → [Land-sea mask](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/41/).
+    Same as **landseamask** but without Antarctica.
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: binary
+
+- specifier: landseamask_water-global
+  group: landseamask
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/landseamask/landseamask_water-global.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/landseamask/landseamask_water-global.nc
+  variables:
+  - specifier: mask
+    long_name: land-sea mask
+    unit: '1'
+  comment: >-
+    Input dataset documentation → [Land-sea mask](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/41/).
+    This is the generic land-sea mask from ISIMIP2b that is to be used for global
+    water simulations in ISIMIP3. It marks more grid cells as land than **landseamask**.
+    Over those additional land cells, the climate data that are based on W5E5 (GSWP3-W5E5
+    as well as climate data bias-adjusted using W5E5) are not guaranteed to represent
+    climate conditions over land. Instead they may represent climate conditions over
+    sea or a mix of conditions over land and sea.
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: binary
+
+- specifier: countrymasks
+  group: countrymasks
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks.nc
+  variables:
+  - specifier: m_<country-code>
+    long_name: countrymasks
+    unit: ''
+  comment: >-
+    Country masks from the ISIpedia project. More formats are available at <https://github.com/ISI-MIP/isipedia-countries>.
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - fs-n
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  format: binary
+
+- specifier: countrymasks_fractional
+  group: countrymasks
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks_fractional.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks_fractional.nc
+  variables:
+  - specifier: m_<country-code>
+    long_name: fractional countrymasks
+    unit: ''
+  comment: >-
+    Fractional country masks from the ISIpedia project. More formats are available
+    at <https://github.com/ISI-MIP/isipedia-countries>.
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - fs-n
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  format: binary
+
+- specifier: gadm
+  group: countrymasks
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/countrymasks/gadm.gpkg
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/countrymasks/gadm.gpkg
+  variables:
+  - specifier: m_<country-code>
+    long_name: Global Administrative Areas
+    unit: ''
+  comment: >-
+    Database of Global Administrative Areas (GADM) at administrative levels 0,1 and
+    2 (Version 4.1, 16 July 2022). More formats are available at <https://gadm.org/data.html>.
+  sectors:
+  - fs-n
+  format: binary
+
+- specifier: gswp3_hwsd
+  group: soil
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/soil/gswp3_hwsd.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/soil/gswp3_hwsd.nc
+  variables:
+  - specifier: soiltexture
+    long_name: Soil texture
+    unit: ''
+  comment: >-
+    Input dataset documentation → [Soil data (gswp3_hwsd)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/93/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: NetCDF
+
+- specifier: hwsd_soil_data_all_land
+  group: soil
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/soil/hwsd_soil_data_all_land.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/soil/hwsd_soil_data_all_land.nc
+  variables:
+  - specifier: texture_class
+    long_name: USDA soil texture class dominant HWSD on cropland (texture_class)
+    unit: ''
+  - specifier: mu_global
+    long_name: domiant HWSD soil mapping unit within dominant USDA soil texture class
+      on cropland (mu_global)
+    unit: ''
+  - specifier: soil_ph
+    long_name: Topsoil pH(H2O) (soil_ph)
+    unit: ''
+  - specifier: soil_caco3
+    long_name: Topsoil Calcium Carbonate (soil_caco3)
+    unit: percent weight
+  - specifier: bulk_density
+    long_name: Topsoil Bulk Density (bulk_density)
+    unit: kg dm-1
+  - specifier: cec_soil
+    long_name: Topsoil Cation Exchange Capacity (soil) (cec_soil)
+    unit: cmol kg-1
+  - specifier: oc
+    long_name: Topsoil Organic Carbon (oc)
+    unit: percent weight
+  - specifier: root_obstacles
+    long_name: depth of Obstacles to Roots (ESDB) (root_obstacles)
+    unit: class
+  - specifier: impermeable_layer
+    long_name: depth of Impermeable Layer (ESDB) (impermeable_layer)
+    unit: class
+  - specifier: awc
+    long_name: Available Water Content (awc)
+    unit: mm
+  - specifier: sand
+    long_name: Topsoil Sand Fraction (sand)
+    unit: percent
+  - specifier: silt
+    long_name: Topsoil Silt Fraction (silt)
+    unit: percent
+  - specifier: clay
+    long_name: Topsoil Clay Fraction (clay)
+    unit: percent
+  - specifier: gravel
+    long_name: Topsoil Gravel Content (gravel)
+    unit: percent
+  - specifier: ece
+    long_name: Topsoil Salinity (ece)
+    unit: dS m-1
+  - specifier: bs_soil
+    long_name: Topsoil Base Saturation (bs_soil)
+    unit: percent weight
+  - specifier: issoil
+    long_name: flag for valid soils (issoil)
+    unit: ''
+  comment: >-
+    Input dataset documentation → [Soil data (hwsd_soil_data_all_land, hwsd_soil_data_on_cropland)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/138/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: NetCDF
+
+- specifier: hwsd_soil_data_on_cropland
+  group: soil
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/soil/hwsd_soil_data_on_cropland.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/soil/hwsd_soil_data_on_cropland.nc
+  variables:
+  - specifier: texture_class
+    long_name: USDA soil texture class dominant HWSD on cropland (texture_class)
+    unit: ''
+  - specifier: mu_global
+    long_name: domiant HWSD soil mapping unit within dominant USDA soil texture class
+      on cropland (mu_global)
+    unit: ''
+  - specifier: soil_ph
+    long_name: Topsoil pH(H2O) (soil_ph)
+    unit: ''
+  - specifier: soil_caco3
+    long_name: Topsoil Calcium Carbonate (soil_caco3)
+    unit: percent weight
+  - specifier: bulk_density
+    long_name: Topsoil Bulk Density (bulk_density)
+    unit: kg dm-1
+  - specifier: cec_soil
+    long_name: Topsoil Cation Exchange Capacity (soil) (cec_soil)
+    unit: cmol kg-1
+  - specifier: oc
+    long_name: Topsoil Organic Carbon (oc)
+    unit: percent weight
+  - specifier: root_obstacles
+    long_name: depth of Obstacles to Roots (ESDB) (root_obstacles)
+    unit: class
+  - specifier: impermeable_layer
+    long_name: depth of Impermeable Layer (ESDB) (impermeable_layer)
+    unit: class
+  - specifier: awc
+    long_name: Available Water Content (awc)
+    unit: mm
+  - specifier: sand
+    long_name: Topsoil Sand Fraction (sand)
+    unit: percent
+  - specifier: silt
+    long_name: Topsoil Silt Fraction (silt)
+    unit: percent
+  - specifier: clay
+    long_name: Topsoil Clay Fraction (clay)
+    unit: percent
+  - specifier: gravel
+    long_name: Topsoil Gravel Content (gravel)
+    unit: percent
+  - specifier: ece
+    long_name: Topsoil Salinity (ece)
+    unit: dS m-1
+  - specifier: bs_soil
+    long_name: Topsoil Base Saturation (bs_soil)
+    unit: percent weight
+  - specifier: issoil
+    long_name: flag for valid soils (issoil)
+    unit: ''
+  comment: >-
+    Input dataset documentation → [Soil data (hwsd_soil_data_all_land, hwsd_soil_data_on_cropland)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/138/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_quality
+  - water_regional
+  format: NetCDF
+
+- specifier: ddm30_basins_cru_neva
+  title: basins
+  group: river-routing
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/river_routing/ddm30_basins_cru_neva.[nc|asc]
+  variables:
+  - specifier: basinnumber
+    long_name: basin number
+    unit: value
+  comment: >-
+    Input dataset documentation → [River-routing network](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/20/).
+  sectors:
+  - agriculture
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: NetCDF, ascii
+
+- specifier: ddm30_flowdir_cru_neva
+  title: flowdir
+  group: river-routing
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/river_routing/ddm30_flowdir_cru_neva.[nc|asc]
+  variables:
+  - specifier: flowdirection
+    long_name: flow direction
+    unit: value
+  comment: >-
+    Input dataset documentation → [River-routing network](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/20/).
+  sectors:
+  - agriculture
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: NetCDF, ascii
+
+- specifier: ddm30_slopes_cru_neva
+  title: slopes
+  group: river-routing
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/river_routing/ddm30_slopes_cru_neva.[nc|asc]
+  variables:
+  - specifier: slope
+    long_name: slope
+    unit: value
+  comment: >-
+    Input dataset documentation → [River-routing network](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/20/).
+  sectors:
+  - agriculture
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - groundwater
+  - health
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  format: NetCDF, ascii
+
+- specifier: hypso_volume
+  title: 'Hypsographic: Volume'
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/hypso_volume.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/hypso_volume.nc
+  variables:
+  - specifier: volume
+    long_name: Volume per level
+    unit: km^3
+  - specifier: levels
+    long_name: Lake level from bottom
+    unit: m
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: hypso_area
+  title: 'Hypsographic: Area'
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/hypso_area.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/hypso_area.nc
+  variables:
+  - specifier: area
+    long_name: Area per level
+    unit: km^2
+  - specifier: levels
+    long_name: Lake level from bottom
+    unit: m
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: lake_elevation
+  specifier_file: elevation
+  title: Lake Heigth
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/elevation.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/elevation.nc
+  variables:
+  - specifier: elevation
+    unit: m
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: max_lakedepth
+  title: Maximum lake depth
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/max_lakedepth.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/max_lakedepth.nc
+  variables:
+  - specifier: max_lakedepth
+    unit: m
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: mean_lakedepth
+  title: Mean lake depth
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/mean_lakedepth.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/mean_lakedepth.nc
+  variables:
+  - specifier: mean_lakedepth
+    unit: m
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: surface_area
+  title: Lake Surface Area
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/surface_area.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/surface_area.nc
+  variables:
+  - specifier: surface_area
+    unit: km^2
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: volume
+  title: Lake Volume
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/volume.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/volume.nc
+  variables:
+  - specifier: volume
+    unit: km^3
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: hydrolakes_id_biglakes
+  title: HydroLAKES ID for big lakes
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/hydrolakes_id_biglakes.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/hydrolakes_id_biglakes.nc
+  variables:
+  - specifier: id_biglakes
+    unit: '-'
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: biglakes_mask
+  title: Biglakes mask
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/biglakes_mask.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/biglakes_mask.nc
+  variables:
+  - specifier: biglakes_mask
+    unit: '-'
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: hydrolakes_id
+  title: HydroLAKES ID
+  group: lakes
+  resolution: 0.5° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/lakes/hydrolakes_id.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/lakes/hydrolakes_id.nc
+  variables:
+  - specifier: hydrolakes_id
+    unit: '-'
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  format: NetCDF
+
+- specifier: bathymetry
+  specifier_file: deptho
+  title: Sea Floor Depth
+  group: ocean-static
+  resolution:
+  - 0.25° grid
+  - 1° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/ocean/gfdl-mom6-cobalt2_deptho_<resolution>_global_fixed.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_<ensemble_member>_picontrol_deptho_onedeg_global_fixed.nc
+  variables:
+  - specifier: deptho
+    unit: m
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+  format: NetCDF
+
+- specifier: lme
+  specifier_file: LMEs66_masks
+  title: Large Marine Ecosystems
+  group: ocean-static
+  resolution:
+  - 0.25° grid
+  - 0.5° grid
+  - 1° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/fishmip_regions/LMEs66_masks_<resolution>.nc
+  variables:
+  - specifier: mask_<lme>
+  comment: >-
+    Created from [LME shapefiles](https://www.sciencebase.gov/catalog/item/55c77722e4b08400b1fd8244)
+    by ISIMIP data team.
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+  format: NetCDF
+
+- specifier: rme
+  specifier_file: RME_masks
+  title: Regional Marine Ecosystem masks
+  group: ocean-static
+  resolution:
+  - 0.25° grid
+  - 1° grid
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/geo_conditions/fishmip_regions/RME_mask_<resolution>.nc
+    ISIMIP3b: ISIMIP3b/InputData/geo_conditions/fishmip_regions/RME_mask_<resolution>.nc
+  variables:
+  - specifier: RegionMask
+  comment: >-
+    Binary masks describing the 21 ocean regions for the regional modelling activities
+    in the fisheries and marine ecosystems available at 0.25° and 1° resolution. These
+    masks have been used for the ocean forcing data extractions (see CRF part of this
+    table).
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+  format: NetCDF
