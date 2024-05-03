@@ -1,21 +1,35 @@
-import { first, isEmpty, isNil, last, trimStart } from 'lodash'
+import { first, isEmpty, isNil, last, trim } from 'lodash'
+
+const splitLocationHash = () => {
+  const hash = trim(window.location.hash, '#/ ')
+  if (isEmpty(location)) {
+    return []
+  } else {
+    return hash.split('/')
+  }
+}
 
 const parseLocation = () => {
-  if (isEmpty(window.location.hash)) {
-    return {}
-  } else {
-    const location = trimStart(window.location.hash, '#/')
-    const tokens = location.split('/').slice(0, -1)
+  const tokens = splitLocationHash()
+  const definitions = window.initialState.definitions
+  const config = {}
 
-    const simulationRound = first(tokens)
-    const sectors = tokens.slice(1)
-    const config = {}
-
-    if (!isNil(simulationRound)) {
-      config.simulation_round = simulationRound
+  if (isEmpty(tokens)) {
+    return config
+  } else if (last(tokens).match(/^\d/)) {
+    // remove anchor id
+    if (!isNil(last(tokens)) && last(tokens).match(/^\d/)) {
+      tokens.pop()
     }
 
-    if (!isEmpty(sectors)) {
+    const simulation_round = first(tokens)
+    if (definitions.simulation_round.map((simulation_round) => simulation_round.specifier)
+                                    .includes(simulation_round)) {
+      config.simulation_round = simulation_round
+    }
+
+    const sectors = tokens.slice(1)
+    if (definitions.sector.some((sector) => sectors.includes(sector.specifier))) {
       config.sectors = sectors
     }
 
@@ -24,12 +38,16 @@ const parseLocation = () => {
 }
 
 const updateLocation = (config) => {
+  const tokens = splitLocationHash()
+
   let pathname = window.location.pathname
 
-  if (isEmpty(window.location.hash) || window.location.hash.endsWith('/')) {
+  if (isEmpty(tokens)) {
     pathname += buildPath(config)
+  } else if (last(tokens).match(/^\d/)) {
+    pathname += buildPath(config) + '/' + last(tokens)
   } else {
-    pathname += buildPath(config) + window.location.hash.split('/').pop()
+    pathname += buildPath(config)
   }
 
   if (pathname != window.location.pathname) {
@@ -38,22 +56,28 @@ const updateLocation = (config) => {
 }
 
 const parseAnchor = () => {
-  if (isEmpty(window.location.hash) || window.location.hash.endsWith('/')) {
+  const tokens = splitLocationHash()
+
+  if (!isEmpty(tokens)) {
     return null
+  } else if (last(tokens).match(/^\d/)) {
+    return document.getElementById(last(tokens))
   } else {
-    return document.getElementById(window.location.hash.split('/').pop())
+    return null
   }
 }
 
 const updateAnchor = (anchor) => {
+  const tokens = splitLocationHash()
+
   let pathname = window.location.pathname
 
-  if (isEmpty(window.location.hash)) {
+  if (isEmpty(tokens)) {
     pathname += '#/' + anchor
-  } else if (window.location.hash.endsWith('/')) {
-    pathname += window.location.hash + anchor
+  } else if (last(tokens).match(/^\d/)) {
+    pathname += '#/' + tokens.slice(0, -1).join('/') + '/' + anchor
   } else {
-    pathname += window.location.hash.split('/').slice(0, -1).join('/') + '/' + anchor
+    pathname += '#/' + tokens.join('/') + '/' + anchor
   }
 
   if (pathname != window.location.pathname) {
@@ -62,14 +86,14 @@ const updateAnchor = (anchor) => {
 }
 
 const buildPath = (config) => {
-  let path = '#/'
+  let path = '#'
 
   if (config.simulation_round) {
-    path += config.simulation_round + '/'
+    path += '/' + config.simulation_round
   }
 
   config.sectors.forEach((sector) => {
-    path += sector + '/'
+    path += '/' + sector
   })
 
   return path
