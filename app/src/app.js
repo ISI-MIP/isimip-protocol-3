@@ -18,7 +18,7 @@ import Title from './components/Title'
 import Table from './components/Table'
 
 import { parseLocation, updateLocation, parseAnchor, updateAnchor } from './utils/location'
-import { getConfig, updateConfig, getScrollPosition, updateScrollPosition } from './utils/ls'
+import { getConfig, updateConfig } from './utils/ls'
 
 const initConfig = () => {
   const definitions = window.initialState.definitions
@@ -34,7 +34,6 @@ const initConfig = () => {
 
 const initialConfig = initConfig()
 const anchor = parseAnchor()
-const scrollPosition = getScrollPosition()
 
 updateLocation(initialConfig)
 updateConfig(initialConfig)
@@ -118,6 +117,16 @@ document.querySelectorAll('[data-component="pattern"]').forEach(el => {
   )
 })
 
+document.querySelectorAll('.toc a').forEach(el => {
+  el.onclick = function(event) {
+    event.preventDefault()
+
+    const id = el.href.split('#').pop()
+    document.getElementById(id).scrollIntoView()
+    updateAnchor(id)
+  }
+})
+
 setTimeout(() => {
   // otherwise the el.innerHTML would not work in Show/Hide ...
   document.querySelectorAll('[data-component="table"]').forEach(el => {
@@ -130,28 +139,13 @@ setTimeout(() => {
   })
 }, 100)
 
-document.querySelectorAll('.toc a').forEach(el => {
-  el.onclick = function(event) {
-    event.preventDefault()
-
-    const id = el.href.split('#').pop()
-    document.getElementById(id).scrollIntoView()
-    updateAnchor(id)
-  }
-})
-
-window.addEventListener('scroll', () => {
-  updateScrollPosition(window.pageYOffset)
-});
-
 setTimeout(() => {
+  // scroll to anchor or position once everthing is settled
   if (anchor) {
     anchor.scrollIntoView()
-  } else if (isNumber(scrollPosition)) {
-    window.scrollTo(0, scrollPosition)
   }
-}, 300)
 
-// remove the cover div
-const cover = document.getElementsByClassName('cover')[0]
-cover.remove()
+  // remove the cover div
+  const cover = document.getElementsByClassName('cover')[0]
+  cover.remove()
+}, 200)

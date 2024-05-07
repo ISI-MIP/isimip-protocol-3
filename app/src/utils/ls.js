@@ -37,12 +37,4 @@ const updateConfig = (config) => {
   ls.set('scenarios', JSON.stringify(config.scenarios))
 }
 
-const getScrollPosition = () => {
-  return ls.get('scroll_position')
-}
-
-const updateScrollPosition = (scrollPosition) => {
-  ls.set('scroll_position', scrollPosition)
-}
-
-export { getConfig, updateConfig, getScrollPosition, updateScrollPosition }
+export { getConfig, updateConfig }
