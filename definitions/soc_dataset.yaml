@@ -981,26 +981,47 @@
     unit: 10^6 people
   time_periods:
     ISIMIP3a:
-    - 1950-2021
+    - 1850-1900
+    - 1901-2021
     ISIMIP3b:
     - 1950-2014
 
-- specifier: gdp
-  specifier_file: gdp-countrylevel
-  title: GDP
+- specifier: gdp-ppp-countrylevel
+  title: GDP PPP
   group: gdp
   mandatory: true
   frequency: annual
   resolution: country-level
   path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/gdp/<soc_scenario>/gdp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/gdp/<soc_scenario>/gdp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/gdp/<soc_scenario>/gdp-ppp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/gdp/<soc_scenario>/gdp-ppp-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
   variables:
   - specifier: gdp
     long_name: Gross domestic product
     unit: PPP 2005 Int $
   time_periods:
     ISIMIP3a:
-    - 1965-2021
+    - 1850-1900
+    - 1901-2021
     ISIMIP3b:
-    - 1965-2014
+    - 1850-2014
+
+- specifier: gdp-mer-countrylevel
+  title: GDP MER
+  group: gdp
+  mandatory: true
+  frequency: annual
+  resolution: country-level
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/gdp/<soc_scenario>/gdp-mer-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/gdp/<soc_scenario>/gdp-mer-countrylevel_<soc_scenario>_annual_<start-year>_<end-year>.nc
+  variables:
+  - specifier: gdp
+    long_name: Gross domestic product
+    unit: MER 2005 US $
+  time_periods:
+    ISIMIP3a:
+    - 1850-1900
+    - 1901-2021
+    ISIMIP3b:
+    - 1850-2014
