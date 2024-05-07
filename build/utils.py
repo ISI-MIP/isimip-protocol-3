@@ -56,7 +56,7 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
 
 
 def read_definitions_file(file_path):
-    return yaml.safe_load(file_path.read_text(encoding='utf-8'))
+    return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
 
 
 def read_definitions():
