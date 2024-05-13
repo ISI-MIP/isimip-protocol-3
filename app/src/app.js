@@ -1,12 +1,13 @@
 import 'bootstrap'
 
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { isNil, isEmpty, isNumber } from 'lodash'
 import ls from 'local-storage'
 
-import { reducer } from './store'
+import { actions, reducer } from './store'
 
 import Config from './components/Config'
 import Hide from './components/Hide'
@@ -16,45 +17,47 @@ import Show from './components/Show'
 import Title from './components/Title'
 import Table from './components/Table'
 
+import { parseLocation, updateLocation, parseAnchor, updateAnchor } from './utils/location'
+import { getConfig, updateConfig } from './utils/ls'
+
+const initConfig = () => {
+  const definitions = window.initialState.definitions
+  const defaultConfig = {
+    simulation_round: 'ISIMIP3a',
+    sectors: [],
+    groups: [],
+    scenarios: []
+  }
+
+  return {...defaultConfig, ...getConfig(), ...parseLocation()}
+}
+
+const initialConfig = initConfig()
+const anchor = parseAnchor()
+
+updateLocation(initialConfig)
+updateConfig(initialConfig)
+
 const initialState = {
   definitions: window.initialState.definitions,
   patterns: window.initialState.patterns,
   commit_date: window.initialState.commit_date,
   commit_hash: window.initialState.commit_hash,
   config: {
+    ...initialConfig,
     baseurl: location.protocol + '//' + location.host + location.pathname,
-    simulation_round: ls.get('simulation_round') || 'ISIMIP3a',
-    products: ['OutputData'],
-    sectors: ls.get('sectors') ? JSON.parse(ls.get('sectors')) : [],
-    groups: ls.get('groups') ? JSON.parse(ls.get('groups')) : [],
-    scenarios: ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
-  }
-}
-
-// try to get simulation_round or sectors from the location
-if (window.location.hash) {
-  const hash = window.location.hash.toLowerCase().substring(1)
-  const parts = hash.split('/')
-
-  if (parts[0] == 'isimip3a') {
-    initialState.config.simulation_round = 'ISIMIP3a'
-    if (parts.length > 1) initialState.config.sectors = parts.slice(1)
-    history.replaceState(null, null, ' ');
-  } else if (parts[0] == 'isimip3b')  {
-    initialState.config.simulation_round = 'ISIMIP3b'
-    if (parts.length > 1) initialState.config.sectors = parts.slice(1)
-    history.replaceState(null, null, ' ');
+    products: ['OutputData']
   }
 }
 
 const store = createStore(reducer, initialState)
+
+// update the local storage when the store changed
 store.subscribe(() => {
-  // update the local storage when the store changed
   const { config } = store.getState()
-  ls.set('simulation_round', config.simulation_round)
-  ls.set('sectors', JSON.stringify(config.sectors))
-  ls.set('groups', JSON.stringify(config.groups))
-  ls.set('scenarios', JSON.stringify(config.scenarios))
+
+  updateLocation(config)
+  updateConfig(config)
 })
 
 // insert the toc in the navbar
@@ -63,66 +66,86 @@ const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
 
 document.querySelectorAll('[data-component="title"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Title />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="link"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Link />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="config"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Config />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="show"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Show simulationRound={el.dataset.simulationRound}
             sector={el.dataset.sector}
             html={el.innerHTML} />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="hide"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Hide simulationRound={el.dataset.simulationRound}
             sector={el.dataset.sector}
             html={el.innerHTML} />
-    </Provider>, el
-  )
-})
-
-document.querySelectorAll('[data-component="table"]').forEach(el => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <Table identifier={el.dataset.identifier}
-             caption={el.dataset.caption} />
-    </Provider>, el
+    </Provider>
   )
 })
 
 document.querySelectorAll('[data-component="pattern"]').forEach(el => {
-  ReactDOM.render(
+  createRoot(el).render(
     <Provider store={store}>
       <Pattern />
-    </Provider>, el
+    </Provider>
   )
 })
 
-// remove the cover div
-const cover = document.getElementsByClassName('cover')[0]
-cover.remove()
+document.querySelectorAll('.toc a').forEach(el => {
+  el.onclick = function(event) {
+    event.preventDefault()
+
+    const id = el.href.split('#').pop()
+    document.getElementById(id).scrollIntoView()
+    updateAnchor(id)
+  }
+})
+
+setTimeout(() => {
+  // otherwise the el.innerHTML would not work in Show/Hide ...
+  document.querySelectorAll('[data-component="table"]').forEach(el => {
+    createRoot(el).render(
+      <Provider store={store}>
+        <Table identifier={el.dataset.identifier}
+               caption={el.dataset.caption} />
+      </Provider>
+    )
+  })
+}, 100)
+
+setTimeout(() => {
+  // scroll to anchor or position once everthing is settled
+  if (anchor) {
+    anchor.scrollIntoView()
+  }
+
+  // remove the cover div
+  const cover = document.getElementsByClassName('cover')[0]
+  cover.remove()
+}, 200)

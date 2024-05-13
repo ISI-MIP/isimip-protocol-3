@@ -1,0 +1,306 @@
+- specifier: strat
+  long_name: Thermal Stratification
+  group: hydrothermal-variables
+  units: '1'
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    1 if lake grid cell is thermally stratified, 0 if lake grid cell is not thermally
+    stratified
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: thermodepth
+  long_name: Depth of Thermocline
+  group: hydrothermal-variables
+  units: m
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth corresponding the maximum water density gradient
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 300.0
+  valid_min: 0.0
+
+- specifier: watertemp
+  long_name: Temperature of Lake Water
+  group: hydrothermal-variables
+  units: K
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Full Profile. Simulated water temperature. Layer averages and
+    full profiles.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+  valid_max: 306.0
+  valid_min: 273.0
+
+- specifier: surftemp
+  long_name: Temperature of Lake Surface Water
+  group: hydrothermal-variables
+  units: K
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Average of the upper layer in case not simulated directly.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 313.0
+  valid_min: 273.0
+
+- specifier: bottemp
+  long_name: Temperature of Lake Bottom Water
+  group: hydrothermal-variables
+  units: K
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Average of the lowest layer in case not simulated directly.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 313.0
+  valid_min: 273.0
+
+- specifier: ice
+  long_name: Lake Ice Cover
+  group: hydrothermal-variables
+  units: '1'
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    1 if ice cover is present in lake grid cell, 0 if no ice cover is present in lake
+    grid cell
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: lakeicefrac
+  long_name: Lake Layer Ice Mass Fraction
+  group: hydrothermal-variables
+  units: '1'
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Mean epi. Fraction of mass of a given layer taken up by ice.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 1.0
+  valid_min: 0.0
+
+- specifier: icethick
+  long_name: Ice Thickness
+  group: hydrothermal-variables
+  units: m
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: ""
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 100.0
+  valid_min: 0.0
+
+- specifier: snowthick
+  long_name: Snow Thickness
+  group: hydrothermal-variables
+  units: m
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: ""
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 5.0
+  valid_min: 0.0
+
+- specifier: icetemp
+  long_name: Ice Temperature at Upper Surface
+  group: hydrothermal-variables
+  units: K
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: ""
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 275.0
+  valid_min: 203.0
+
+- specifier: snowtemp
+  long_name: Snow Temperature at Upper Surface
+  group: hydrothermal-variables
+  units: K
+  frequency: daily
+  resolution: Representative lake associated with grid cell
+  comment: ""
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 275.0
+  valid_min: 203.0
+
+- specifier: sensheatf
+  long_name: Sensible Heat Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  extension:
+    fire:
+    - total
+    - <pft>
+    lakes_global: total
+    lakes_local: total
+  units: W m-2
+  frequency: daily if possible, else monthly
+  resolution:
+    fire: 0.5° grid
+    lakes_global: Representative lake associated with grid cell
+    lakes_local: Representative lake associated with grid cell
+  comment: >-
+    At the surface of the layer in contact with the atmosphere. Positive if upwards.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - fire
+  valid_max: 250.0
+  valid_min: -50.0
+
+- specifier: latentheatf
+  long_name: Latent Heat Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  units: W m-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    At the surface of snow, ice or water depending on the layer in contact with the
+    atmosphere. Positive if upwards.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 250.0
+  valid_min: -50.0
+
+- specifier: momf
+  long_name: Momentum Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  units: kg m-1 s-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    At the surface of snow, ice or water depending on the layer in contact with the
+    atmosphere. Positive if upwards.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_min: 0.0
+
+- specifier: swup
+  long_name: Upward Short-Wave Radiation Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  units: W m-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    At the surface of snow, ice or water depending on the layer in contact with the
+    atmosphere. Positive if upwards. Not to be confused with net shortwave radiation.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 250.0
+  valid_min: 0.0
+
+- specifier: lwup
+  long_name: Upward Long-Wave Radiation Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  units: W m-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    At the surface of snow, ice or water depending on the layer in contact with the
+    atmosphere. Positive if upwards. Not to be confused with net longwave radiation.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 600.0
+  valid_min: 0.0
+
+- specifier: lakeheatf
+  long_name: Downward Heat Flux at Lake-Atmosphere Interface
+  group: hydrothermal-variables
+  units: W m-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    At the surface of snow, ice or water depending on the layer in contact with the
+    atmosphere. Positive if upwards. the residual term of the surface energy balance,
+    i.e. the net amount of energy that enters the lake on daily time scale: lakeheatf
+    = swdown - swup + lwdown - lwup - sensheatf - latenheatf (terms defined positive
+    when directed upwards)
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 600.0
+  valid_min: -400.0
+
+- specifier: turbdiffheat
+  long_name: Turbulent Diffusivity of Heat
+  group: hydrothermal-variables
+  units: m2 s-1
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Only if computed
+    by the model.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+  valid_max: 0.01
+  valid_min: 1.0e-07
+
+- specifier: extcoeff
+  long_name: Light Extinction Coefficient
+  group: hydrothermal-variables
+  units: m-1
+  frequency: fixed
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Only to be reported for global models, local models should use extcoeff as input.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 5.0
+  valid_min: 0.07
+
+- specifier: sedheatf
+  long_name: Sediment Upward Heat Flux at Lake-Sediment Interface
+  group: hydrothermal-variables
+  units: W m-2
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Positive if upwards. Only if computed by the model.
+  sectors:
+  - lakes_global
+  - lakes_local
+  valid_max: 50.0
+  valid_min: -50.0

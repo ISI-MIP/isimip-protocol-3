@@ -1,0 +1,53 @@
+- specifier: soil
+  long_name: Soil Types
+  group: static-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: '-'
+  frequency: constant
+  resolution:
+    forestry: stand
+    other: 0.5° grid
+  comment: >-
+    Soil type as used by your model. Please include a description of each type in
+    the model documentation (under "Other data sets used"). Please also include a
+    link to a database/paper describing the parameters and values associated with
+    these soil types.
+  sectors:
+  - water_global
+  - fire
+  - biomes
+  - forestry
+  - peat
+  - permafrost
+
+- specifier: cellarea
+  long_name: Grid Cell Area
+  group: static-variables
+  units: km2
+  frequency: fixed
+  resolution: 0.5° grid
+  comment: >-
+    The total area associated with each grid cell in the model.
+  sectors:
+  - water_global
+  valid_max: 3250.0
+  valid_min: 0.0
+
+- specifier: contfrac
+  long_name: Continental Fraction of Grid Cell
+  group: static-variables
+  units: '1'
+  frequency: fixed
+  resolution: 0.5° grid
+  comment: >-
+    The fraction of each grid cell that is assumed to be continent, i.e., not ocean.
+    Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is
+    assumed to be covered by land or inland water bodies.
+  sectors:
+  - water_global
+  valid_max: 1.0
+  valid_min: 0.0

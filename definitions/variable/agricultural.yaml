@@ -1,0 +1,243 @@
+- specifier: yield
+  long_name: Crop Yields
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: dry matter (t ha-1)
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment:
+    agriculture: Yields are reported per growing seasons and not per year.
+    other: Yield may be identical to above-ground biomass (biom) if the entire plant
+      is harvested, e.g. for bioenergy production.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 30.0
+  valid_min: 0.0
+
+- specifier: evapcum
+  long_name: Cumulative Evapotranspiration
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg m-2
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Evapotranspiration = sum of transpiration, evaporation, interception and sublimation
+    aggregated across the growing season.
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 1500.0
+  valid_min: 0.0
+
+- specifier: initrcum
+  long_name: Cumulative Nitrogen Application
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Integral of the total nitrogen application rate over the growing season. If organic
+    and inorganic amendments are applied, the nitrogen application should be reported
+    as effective inorganic nitrogen input (ignoring residues).
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: plantday
+  long_name: Planting Date
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: day of year
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    As Julian dates. The planting date reported here corresponds to the actual planting
+    date in the simulation and may differ from the prescribed crop calendar planting
+    date in rare cases as certain models may delay prescribed planting for a few days
+    to have more suitable soil moisture and temperature conditions.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 366.0
+  valid_min: 1.0
+
+- specifier: plantyear
+  long_name: Planting Year
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: calendar year
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: ""
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 2100.0
+  valid_min: 1850.0
+
+- specifier: anthday
+  long_name: Anthesis Date
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: days from planting
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Together with the day and year of planting it allows for clear identification
+    of anthesis.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 200.0
+  valid_min: 30.0
+
+- specifier: matyday
+  long_name: Maturity Date
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: days from planting
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Together with the day and year of planting it allows for clear identification
+    of maturity.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 400.0
+  valid_min: 50.0
+
+- specifier: harvyear
+  long_name: Harvest Year
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: calendar year
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Usually the year when maturity is reached. Can also be computed from planting
+    and maturuty day.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 2100.0
+  valid_min: 1850.0
+
+- specifier: biom
+  long_name: Total Above Ground Biomass Dry Matter Yields
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: t ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    The whole plant biomass above ground.
+  sectors:
+  - agriculture
+  - water_global
+  - biomes
+  valid_max: 50.0
+  valid_min: 0.0
+
+- specifier: nupcum
+  long_name: Cumulative Nitrogen Uptake
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Nitrogen balance: Uptake (growing season sum)
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: nincum
+  long_name: Cumulative Nitrogen Inputs
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Nitrogen balance: Inputs (growing season sum)
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: nlosscum
+  long_name: Cumulative Nitrogen Losses
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Nitrogen balance: Losses (growing season sum)
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 1000.0
+  valid_min: 0.0
+
+- specifier: nleachcum
+  long_name: Cumulative Nitrogen Leached
+  group: agricultural-variables
+  extension: <crop>-<irrigation>
+  units: kg ha-1
+  frequency:
+    agriculture: annual-gs
+    other: annual
+  resolution: 0.5° grid
+  comment: >-
+    Nitrogen balance: Leaching (growing season sum)
+  sectors:
+  - agriculture
+  - biomes
+  - water_global
+  valid_max: 1000.0
+  valid_min: 0.0

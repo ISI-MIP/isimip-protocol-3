@@ -1,0 +1,159 @@
+- specifier: nveg
+  long_name: Nitrogen Mass in Vegetation
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Grid cell total.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nvegag
+  long_name: Nitrogen Mass in Above Ground Vegetation Biomass
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Grid cell total.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nvegbg
+  long_name: Nitrogen Mass in Below Ground Vegetation Biomass
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Grid cell total.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nmineral
+  long_name: Mineral nitrogen in the soil
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Sum of **nmineralnh4** (mineral ammonium in the soil) and **nmineralno3** (mineral
+    nitrate in the soil). See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nmineralnh4
+  long_name: Mineral ammonium (NH₃) in the soil
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nmineralno3
+  long_name: Mineral nitrate (NO₃) in the soil
+  group: nitrogen-pools
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    See instructions for depth layers on <https://www.isimip.org/protocol/preparing-simulation-files>.
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  dimensions:
+  - time
+  - depth
+  - lat
+  - lon
+  valid_max: 10.0
+  valid_min: 0.0
+
+- specifier: nproduct
+  long_name: Nitrogen in Products of Land Use Change
+  group: nitrogen-pools
+  extension:
+    other:
+    - total
+    - <productclass>
+    peat:
+    - <pt>-total
+    - <pt>-<productclass>
+  units: kg m-2
+  frequency: annual
+  resolution: 0.5° grid
+  comment: >-
+    Products generated during Land-use change. Removed nitrogen should not go into
+    the soil but into the product pool. Please use the product classes used within
+    your model and document them in the model documentation .
+  sectors:
+  - biomes
+  - peat
+  - permafrost
+  valid_max: 10.0
+  valid_min: 0.0

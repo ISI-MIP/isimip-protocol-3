@@ -58,6 +58,12 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
         <tbody>
           {
             filteredRows.map((row, index) => {
+              let futureTableClass = 'table-danger'
+              if (row.future && row.group3) {
+                // group 3 experiments
+                futureTableClass = 'table-info'
+              }
+
               return (
                 <React.Fragment key={index}>
                   <tr>
@@ -77,6 +83,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                         {row.priority && <p><strong>{row.priority}</strong></p>}
                         <p>
                           <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
+                          {row.group3 && <span className="badge badge-info">Group 3</span>}
                           <Sectors config={config} sectors={row.sectors} />
                         </p>
                     </td>
@@ -141,7 +148,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                           </td>
                         }
                         {
-                          row.future.climate ? <td className="table-danger">
+                          row.future.climate ? <td className={futureTableClass}>
                             <p>
                               <strong title={climateScenarios[row.future.climate]}>
                                 {row.future.climate}
@@ -217,7 +224,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                           </td>
                         }
                         {
-                          row.future.soc && <td className="table-danger extra-border-bottom">
+                          row.future.soc && <td className={futureTableClass + ' extra-border-bottom'}>
                             <p>
                               <strong title={socScenarios[row.future.soc]}>
                                 {row.future.soc}

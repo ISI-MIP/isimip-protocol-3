@@ -1,0 +1,440 @@
+- specifier: chl
+  long_name: Chlorophyll Concentration
+  group: water-quality-variables
+  units: g-3 m-3
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Total water
+    chlorophyll concentration – indicator of phytoplankton.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: phytobio
+  long_name: Phytoplankton Functional Group Biomass
+  group: water-quality-variables
+  units: mole m-3 as carbon
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Different models
+    will have different numbers of functional groups so that the reporting of these
+    will vary by model.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: zoobio
+  long_name: Phytoplankton Functional Group Biomass
+  group: water-quality-variables
+  units: mole m-3 as carbon
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Total simulated
+    Zooplankton biomass.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: tp
+  long_name: Total Phosphorus
+  group: water-quality-variables
+  units: mole m-3
+  frequency:
+    other: daily and monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    other: Representative lake associated with grid cell
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    other: 'Depth resolution: Either full profile, or mean epi and mean hypo.'
+    water_quality: See comment under **triver**.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - water_quality
+  dimensions:
+    other:
+    - time
+    - levlak
+    - lat
+    - lon
+    water_quality: null
+
+- specifier: pp
+  long_name: Particulate Phosphorus
+  group: water-quality-variables
+  units: mole m-3
+  frequency:
+    other: daily and monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    other: Representative lake associated with grid cell
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    other: 'Depth resolution: Either full profile, or mean epi and mean hypo.'
+    water_quality: See comment under **triver**.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - water_quality
+  dimensions:
+    other:
+    - time
+    - levlak
+    - lat
+    - lon
+    water_quality: null
+
+- specifier: tpd
+  long_name: Total Dissolved Phosphorus
+  group: water-quality-variables
+  units: mole m-3
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Some models
+    may also output data for soluble reactive phosphorus (SRP).
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: tn
+  long_name: Total Nitrogen
+  group: water-quality-variables
+  units: mole m-3
+  frequency:
+    other: daily and monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    other: Representative lake associated with grid cell
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    other: 'Depth resolution: Either full profile, or mean epi and mean hypo.'
+    water_quality: See comment under **triver**.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - water_quality
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: pn
+  long_name: Particulate Nitrogen
+  group: water-quality-variables
+  units: mole m-3
+  frequency:
+    other: daily and monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    other: Representative lake associated with grid cell
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    other: 'Depth resolution: Either full profile, or mean epi and mean hypo.'
+    water_quality: See comment under **triver**.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - water_quality
+  dimensions:
+    other:
+    - time
+    - levlak
+    - lat
+    - lon
+    water_quality: null
+
+- specifier: tdn
+  long_name: Total Dissolved Nitrogen
+  group: water-quality-variables
+  units: mole m-3
+  frequency:
+    other: daily and monthly
+    water_quality: annual, daily and monthly wherever possible
+  resolution:
+    other: Representative lake associated with grid cell
+    water_quality: 0.5° grid (or disperse 0.5° grid)
+  comment:
+    other: 'Depth resolution: Either full profile, or mean epi and mean hypo. Some
+      models may also output data for Nitrate (N0₂) nitrite (NO₃) and ammonium (NH₄).'
+    water_quality: See comment under **triver**.
+  sectors:
+  - lakes_global
+  - lakes_local
+  - water_quality
+  dimensions:
+    other:
+    - time
+    - levlak
+    - lat
+    - lon
+    water_quality: null
+
+- specifier: do
+  long_name: Dissolved Oxygen
+  group: water-quality-variables
+  units: mole m-3
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: doc
+  long_name: Dissolved Organic Carbon
+  group: water-quality-variables
+  extension:
+    other: null
+    peat:
+    - null
+    - <pt>
+  units: mole m-3
+  frequency:
+    lakes_global: daily and monthly
+    lakes_local: daily and monthly
+    permafrost: daily, else monthly
+  resolution: Representative lake associated with grid cell
+  comment:
+    lakes_global: 'Depth resolution: Either full profile, or mean epi and mean hypo.
+      Not always available.'
+    lakes_local: 'Depth resolution: Either full profile, or mean epi and mean hypo.
+      Not always available.'
+    peat: ''
+    permafrost: ''
+  sectors:
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: si
+  long_name: Dissolved Silica
+  group: water-quality-variables
+  units: mole m-3
+  frequency: daily and monthly
+  resolution: Representative lake associated with grid cell
+  comment: >-
+    Depth resolution: Either full profile, or mean epi and mean hypo. Not always available.
+  sectors:
+  - lakes_global
+  - lakes_local
+  dimensions:
+  - time
+  - levlak
+  - lat
+  - lon
+
+- specifier: tdp
+  long_name: Total dissolved phosphorus
+  group: water-quality-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: don
+  long_name: Dissolved organic nitrogen
+  group: water-quality-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: din
+  long_name: Dissolved inorganic nitrogen
+  group: water-quality-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: dop
+  long_name: Dissolved organic phosphorus
+  group: water-quality-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: dip
+  long_name: Dissolved inorganic phosphorus
+  group: water-quality-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: bod
+  long_name: Biochemical oxygen demand
+  group: organic-pollution-salinity-variables
+  units: mg l-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    In stream concentration. Biochemical oxygen demand (BOD) is the most important
+    and widely used environmental index for monitoring organic pollutants in wastewater.
+  sectors:
+  - water_quality
+
+- specifier: tds
+  long_name: Total dissolved solids
+  group: organic-pollution-salinity-variables
+  units: mg l-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    Dissolved minerals and salts in the water. **tds** is often closely related to
+    conductivity, salinity, alkalinity, and hardness measures.
+  sectors:
+  - water_quality
+
+- specifier: as
+  long_name: Arsenic
+  group: chemicals-ermerging-contaminants-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: dcl
+  long_name: Diclofenac
+  group: chemicals-ermerging-contaminants-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: gly
+  long_name: Glyphosate
+  group: chemicals-ermerging-contaminants-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: tcs
+  long_name: Triclosan
+  group: chemicals-ermerging-contaminants-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: mip
+  long_name: Microplastics
+  group: plastic-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: map
+  long_name: Macroplastics
+  group: plastic-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: nap
+  long_name: Nanoplastics
+  group: plastic-variables
+  units: kg a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: fcol
+  long_name: Fecal coliform
+  group: microorganism-variables
+  units: cfu 100ml-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
+
+- specifier: crypto
+  long_name: 'Microorganisms: Cryptosporidium'
+  group: microorganism-variables
+  units: Oocysts a-1
+  frequency: annual, daily and monthly wherever possible
+  resolution: 0.5° grid (or disperse 0.5° grid)
+  comment: >-
+    See comment under **triver**.
+  sectors:
+  - water_quality
