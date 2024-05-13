@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/water_regional.json",
-  "commit": "ee33de0a910be4b760d79276b62386449685a84d",
+  "commit": "bf19b0e26f2c840504ed2279d0bfd90e0bc42390",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,42 +27,42 @@
           "type": "string",
           "enum": [
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr",
-            "gfdl-esm4",
             "ukesm1-0-ll",
-            "mri-esm2-0"
+            "gfdl-esm4",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "w5e5",
-            "nobasd"
+            "nobasd",
+            "w5e5"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
             "picontrol",
-            "ssp370",
-            "ssp126",
             "ssp585",
-            "historical"
+            "ssp370",
+            "historical",
+            "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp370soc",
-            "ssp585soc",
-            "2015soc-from-histsoc",
-            "2015soc",
-            "histsoc",
             "1850soc",
-            "ssp1soc",
-            "ssp5soc",
-            "ssp126soc",
-            "ssp3soc"
+            "ssp126soc-adapt",
+            "ssp370soc-adapt",
+            "2015soc",
+            "ssp126soc-noadapt",
+            "ssp370soc-noadapt",
+            "2015soc-from-histsoc",
+            "histsoc",
+            "ssp585soc-noadapt",
+            "ssp585soc-adapt"
           ]
         },
         "sens_scenario": {
@@ -75,54 +75,54 @@
         "variable": {
           "type": "string",
           "enum": [
-            "qtot",
+            "qs",
+            "pirrusegreen",
+            "pirrww",
+            "qr",
+            "reservoirstor",
+            "airruse",
+            "pirruse",
+            "potevap",
+            "soilmoist",
             "swe",
+            "qtot",
+            "arainfusegreen",
+            "evap",
             "airrww",
             "airrusegreen",
-            "qr",
-            "pirrww",
-            "reservoirstor",
-            "evap",
-            "qs",
             "rootmoist",
-            "airruse",
-            "pirrusegreen",
-            "arainfusegreen",
-            "pirruse",
-            "dis",
-            "soilmoist",
-            "potevap"
+            "dis"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "euc",
-            "rye",
-            "ric",
-            "pot",
-            "pea",
-            "pop",
+            "rap",
+            "mil",
+            "ri1",
             "bar",
+            "mgr",
             "sgb",
+            "sgc",
+            "mis",
+            "whe",
+            "ric",
+            "sun",
+            "ri2",
+            "pea",
+            "sor",
+            "rye",
+            "nut",
             "cot",
+            "mai",
             "swh",
             "wwh",
-            "mis",
             "soy",
-            "rap",
-            "ri1",
-            "ri2",
-            "sgc",
-            "mgr",
-            "whe",
+            "euc",
             "cas",
-            "sor",
-            "nut",
+            "pop",
             "bea",
-            "sun",
-            "mai",
-            "mil"
+            "pot"
           ]
         },
         "irrigation": {
@@ -138,60 +138,60 @@
         "river": {
           "type": "string",
           "enum": [
-            "pajeu",
+            "yellow",
+            "danube",
+            "blue-nile",
+            "yangtze",
             "ganges",
             "rhine",
-            "lena",
-            "indus",
-            "tagus",
-            "blue-nile",
-            "darling",
-            "mississippi",
-            "danube",
             "mackenzie",
+            "darling",
+            "indus",
             "niger",
+            "amazon",
+            "mississippi",
+            "lena",
+            "pajeu",
             "godavari",
-            "yangtze",
-            "yellow",
-            "amazon"
+            "tagus"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "floresta",
-            "tossaye",
-            "tangnaihai",
-            "sao-paulo-de-olivenca",
             "tekra",
-            "khartoum",
-            "lobith",
-            "dire",
             "stolb",
-            "wien-nussdorf",
-            "koulikoro",
-            "cuntan",
-            "louth",
-            "farakka",
-            "tarbela",
-            "alton",
-            "el-diem",
             "krestovski",
+            "sao-paulo-de-olivenca",
+            "tossaye",
+            "tarbela",
+            "tangnaihai",
+            "koulikoro",
+            "lobith",
+            "floresta",
             "almourol",
+            "louth",
             "lokoja",
+            "dire",
             "arctic-red-river",
-            "trillo"
+            "farakka",
+            "cuntan",
+            "el-diem",
+            "trillo",
+            "alton",
+            "khartoum",
+            "wien-nussdorf"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "daily",
             "annual",
             "fixed",
-            "hourly",
-            "monthly"
+            "monthly",
+            "3hr",
+            "daily",
+            "hourly"
           ]
         },
         "start_year": {
