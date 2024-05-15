@@ -56,8 +56,10 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
 
 
 def read_definitions_file(file_path):
-    return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
-
+    try:
+        return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
+    except AttributeError:
+        return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.SafeLoader)
 
 def read_definitions():
     definitions_path = Path('definitions')
