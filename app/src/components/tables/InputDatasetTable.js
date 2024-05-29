@@ -12,6 +12,15 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
+  const getPath = (row) => {
+    const path = filterField(config, row.path)
+    if (Array.isArray(path)) {
+      return path.map((p, index) => <code className="d-block" key={index}>{p}</code>)
+    } else {
+      return <code>{path}</code>
+    }
+  }
+
   const getResolutions = (row) => {
     const resolution = filterField(config, row.resolution)
     if (Array.isArray(resolution)) {
@@ -68,7 +77,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
                             </p>}
                           </td>
                           <td colSpan="4">
-                            {row.path && <code>{filterField(config, row.path)}</code>}
+                            {getPath(row)}
                             {row.url && <a href={row.url} target="_blank">{row.url}</a>}
                           </td>
                         </tr>
