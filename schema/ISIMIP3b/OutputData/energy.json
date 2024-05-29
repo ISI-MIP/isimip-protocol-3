@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/energy.json",
-  "commit": "f7d3210d265296e23aaa2c60d9b157ec6bf28209",
+  "commit": "da608ca18a7a9bb4c33a6fc9350e5677dc4659e2",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,49 +26,49 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "gfdl-esm4",
+            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
             "mri-esm2-0",
-            "gfdl-esm4",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll"
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "picontrol",
             "ssp585",
+            "historical",
             "ssp126",
-            "ssp370"
+            "ssp370",
+            "picontrol"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp585soc-adapt",
+            "histsoc",
+            "ssp585soc-noadapt",
             "ssp126soc-adapt",
+            "ssp370soc-noadapt",
+            "ssp585soc-adapt",
+            "2015soc",
             "2015soc-from-histsoc",
             "ssp370soc-adapt",
-            "ssp585soc-noadapt",
-            "ssp126soc-noadapt",
-            "ssp370soc-noadapt",
-            "2015soc",
-            "histsoc"
+            "ssp126soc-noadapt"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
@@ -78,19 +78,19 @@
         "region": {
           "type": "string",
           "enum": [
-            "along-track",
-            "global"
+            "global",
+            "along-track"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "daily",
-            "fixed",
-            "hourly",
             "annual",
-            "monthly"
+            "fixed",
+            "monthly",
+            "hourly",
+            "daily",
+            "3hr"
           ]
         },
         "start_year": {
