@@ -20,7 +20,7 @@ import RiverBasinTable from './tables/RiverBasinTable'
 import ScenarioTable from './tables/ScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
-
+import ForcingTable from './tables/ForcingTable'
 
 const Table = ({ definitions, config, identifier, caption, actions }) => {
   const groups = definitions.group.filter(group => group.identifier == identifier)
@@ -39,6 +39,8 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
       return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
       return <ExperimentsTable definitions={definitions} config={config} caption={caption} rows={rows} actions={actions} />
+    case 'forcing':
+      return <ForcingTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
