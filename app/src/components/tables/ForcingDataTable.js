@@ -88,6 +88,11 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                               ) : (
                                 <p>
                                   Path: <code>{filterField(config, row.path)}</code>
+                                  {
+                                    row.path_comment && <>
+                                      {' ('}<ReactMarkdown children={row.path_comment} components={{p: React.Fragment}}/>{')'}
+                                    </>
+                                  }
                                 </p>
                               )
                             )
