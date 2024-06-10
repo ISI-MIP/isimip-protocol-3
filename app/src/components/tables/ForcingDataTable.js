@@ -33,7 +33,7 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
             filteredGroups.map(group => {
               const header = [
                 <tr key="-1">
-                  <td colSpan="5" className="table-secondary">
+                  <td colSpan="6" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
                     <strong>{group.title}</strong>
                   </td>
@@ -46,15 +46,17 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                 return header.concat(
                   group.rows.map((row, index) => {
                     const dois = filterField(config, row.doi)
-                    console.log(dois)
+                    const path = filterField(config, row.path)
+
                     return (
                       <tr key={index}>
-                        <td>
+                        <td colSpan="1">
                           <p>{row.title}</p>
                           <Status status={row.status} />
                         </td>
                         <td>
                           <p>
+                            {row.group3 && <span className="badge badge-info">Group 3</span>}
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {
@@ -73,7 +75,50 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                             )
                           }
                           {
-                            row.path && <p>Path: <code>{filterField(config, row.path)}</code></p>
+                            row.path && (
+                              Array.isArray(path) ? (
+                                <>
+                                  <p className="mb-0">Paths:</p>
+                                  <ul className="list-unstyled mb-1">
+                                  {
+                                    path.map((p, i) => <div className="mb-0" key={i}><code>{p}</code></div>)
+                                  }
+                                  </ul>
+                                </>
+                              ) : (
+                                <p>
+                                  Path: <code>{filterField(config, row.path)}</code>
+                                </p>
+                              )
+                            )
+                          }
+                          {
+                            row.noadapt && (
+                              <p>
+                                noadapt forcing:{' '}
+                                {
+                                  Array.isArray(row.noadapt) ? (
+                                    row.noadapt.map((s, i) => <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur])
+                                  ) : (
+                                    <ReactMarkdown children={row.noadapt} components={{p: React.Fragment}}/>
+                                  )
+                                }
+                              </p>
+                            )
+                          }
+                          {
+                            row.adapt && (
+                              <p>
+                                adapt forcing:{' '}
+                                {
+                                  Array.isArray(row.adapt) ? (
+                                    row.adapt.map((s, i) => <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur])
+                                  ) : (
+                                    <ReactMarkdown children={row.adapt} components={{p: React.Fragment}}/>
+                                  )
+                                }
+                              </p>
+                            )
                           }
                           {
                             row.comment && <ReactMarkdown children={filterField(config, row.comment)} />
