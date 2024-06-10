@@ -21,8 +21,8 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
         </caption>
         <thead className="thead-dark">
           <tr>
-            <th style={{width: '40%'}}>Forcing</th>
-            <th style={{width: '60%'}}>
+            <th style={{width: '30%'}}>Forcing</th>
+            <th style={{width: '70%'}}>
               DOI / Path / Documentation
               {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
             </th>
@@ -45,8 +45,8 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
               } else {
                 return header.concat(
                   group.rows.map((row, index) => {
-                    const dois = row.doi !== undefined ? (Array.isArray(row.doi) ? row.doi : [row.doi]) : null
-
+                    const dois = filterField(config, row.doi)
+                    console.log(dois)
                     return (
                       <tr key={index}>
                         <td>
@@ -58,17 +58,25 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {
-                            dois && dois.map((doi, index) => (
-                              <p key={index}>
-                                <a className="doi-link" href={doi}>{doi}</a>
-                              </p>
-                            ))
+                            dois && (
+                              Array.isArray(dois) ? (
+                                dois.map((doi, index) => (
+                                  <p key={index}>
+                                    <a className="doi-link" href={doi}>{doi}</a>
+                                  </p>
+                                ))
+                              ) : (
+                                <p>
+                                  <a className="doi-link" href={dois}>{dois}</a>
+                                </p>
+                              )
+                            )
                           }
                           {
-                            row.path && <p>Path: <code>{ row.path }</code></p>
+                            row.path && <p>Path: <code>{filterField(config, row.path)}</code></p>
                           }
                           {
-                            row.comment && <ReactMarkdown children={row.comment} />
+                            row.comment && <ReactMarkdown children={filterField(config, row.comment)} />
                           }
                         </td>
                       </tr>

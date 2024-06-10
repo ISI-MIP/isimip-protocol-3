@@ -48,7 +48,9 @@ const filterRows = (config, rows) => {
 }
 
 const filterField = (config, field) => {
-  if (Array.isArray(field)) {
+  if (field === null) {
+    return null
+  } else if (Array.isArray(field)) {
     return field
   } else if (typeof field === 'object') {
     if (typeof field[config.simulation_round] !== 'undefined') {
