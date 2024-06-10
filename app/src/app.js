@@ -137,15 +137,21 @@ setTimeout(() => {
       </Provider>
     )
   })
+
+  setTimeout(() => {
+    // scroll to anchor or position once everthing is settled
+    if (anchor) {
+      anchor.scrollIntoView()
+    }
+
+    // set the main height to auto
+    const main = document.getElementsByTagName('main')[0]
+    main.style.height = 'auto'
+
+    setTimeout(() => {
+      // remove the cover div
+      const cover = document.getElementsByClassName('cover')[0]
+      cover.remove()
+    }, 100)
+  }, 200)
 }, 100)
-
-setTimeout(() => {
-  // scroll to anchor or position once everthing is settled
-  if (anchor) {
-    anchor.scrollIntoView()
-  }
-
-  // remove the cover div
-  const cover = document.getElementsByClassName('cover')[0]
-  cover.remove()
-}, 200)

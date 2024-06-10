@@ -7,12 +7,13 @@ import { actions } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
+import CropTable from './tables/CropTable'
+import ExperimentsTable from './tables/ExperimentsTable'
+import ForcingDataTable from './tables/ForcingDataTable'
+import ForestStandTable from './tables/ForestStandTable'
+import HarmonizationTable from './tables/HarmonizationTable'
 import InputDatasetTable from './tables/InputDatasetTable'
 import InputVariableTable from './tables/InputVariableTable'
-import CropTable from './tables/CropTable'
-import ForestStandTable from './tables/ForestStandTable'
-import ExperimentsTable from './tables/ExperimentsTable'
-import HarmonizationTable from './tables/HarmonizationTable'
 import IrrigationTable from './tables/IrrigationTable'
 import LakeSiteTable from './tables/LakeSiteTable'
 import OceanRegionTable from './tables/OceanRegionTable'
@@ -20,7 +21,6 @@ import RiverBasinTable from './tables/RiverBasinTable'
 import ScenarioTable from './tables/ScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
-import ForcingTable from './tables/ForcingTable'
 
 const Table = ({ definitions, config, identifier, caption, actions }) => {
   const groups = definitions.group.filter(group => group.identifier == identifier)
@@ -39,8 +39,8 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
       return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
       return <ExperimentsTable definitions={definitions} config={config} caption={caption} rows={rows} actions={actions} />
-    case 'forcing':
-      return <ForcingTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+    case 'forcing_data':
+      return <ForcingDataTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
