@@ -11,6 +11,7 @@ import CropTable from './tables/CropTable'
 import ExperimentsTable from './tables/ExperimentsTable'
 import ForcingDataTable from './tables/ForcingDataTable'
 import ForestStandTable from './tables/ForestStandTable'
+import Group3RankingTable from './tables/Group3RankingTable'
 import Group3RequirementsTable from './tables/Group3RequirementsTable'
 import HarmonizationTable from './tables/HarmonizationTable'
 import InputDatasetTable from './tables/InputDatasetTable'
@@ -44,6 +45,8 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
       return <ForcingDataTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
+    case 'group3_ranking':
+      return <Group3RankingTable config={config} caption={caption} rows={rows} actions={actions} actions={actions} />
     case 'group3_requirements':
       return <Group3RequirementsTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
