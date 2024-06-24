@@ -42,7 +42,11 @@ const Config = ({ definitions, config, actions }) => {
                          value={row.specifier}
                          checked={config.sectors.includes(row.specifier)}
                          onChange={(event) => actions.changeSector(event.target.value)} />
-                  <label className="form-check-label" htmlFor={id}>{row.title} {row.dev && <span>🚧</span>}</label>
+                  <label className="form-check-label" htmlFor={id}>
+                    {row.title}
+                    {row.dev && <span>🚧</span>}
+                    {row.group3 && <span>🚀</span>}
+                  </label>
                 </div>
               )
             })
@@ -50,7 +54,7 @@ const Config = ({ definitions, config, actions }) => {
         </div>
       </div>
       <div className="text-muted">
-        Sectors marked with the 🚧 sign are currently in development and the protocol will not contain all nessesary information, yet.
+        Sectors marked with the 🚧 sign are currently in development and the protocol will not contain all nessesary information, yet. For sectors marked with the 🚀, group III input data is already available and simulations can start right away.
       </div>
     </div>
   )
