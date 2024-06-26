@@ -9,8 +9,8 @@ import { actions } from '../store'
 const Config = ({ definitions, config, actions }) => {
   const dev_note = 'Currently in development.'
   const group3_note = 'Ready for Group III simulations.'
-  const group3_dev_note = 'Data is still under construction (see Table 3.1), but models' +
-    ' not needing those data may start group III simulations.'
+  const group3_dev_note = 'Data still under construction (see Table 3.1), but models' +
+    ' not needing those data may already start.'
 
   return (
     <div className="config">

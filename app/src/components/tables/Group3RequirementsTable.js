@@ -14,10 +14,10 @@ const Group3RequirementsTable = function({ config, caption, rows }) {
       </caption>
       <thead className="thead-dark">
         <tr>
-          <th style={{width: '20%'}}>Forcing</th>
-          <th style={{width: '30%'}}>Required</th>
-          <th style={{width: '30%'}}>Harmonized</th>
-          <th style={{width: '20%'}}>Reference to data sets that are used for the harmonization</th>
+          <th style={{width: '25%'}}>Forcing</th>
+          <th style={{width: '25%'}}>Required</th>
+          <th style={{width: '25%'}}>Harmonized</th>
+          <th style={{width: '25%'}}>Reference to data sets that are used for the harmonization</th>
         </tr>
       </thead>
       <tbody>
@@ -29,11 +29,15 @@ const Group3RequirementsTable = function({ config, caption, rows }) {
                 <td><Sectors config={config} sectors={row.required} /></td>
                 <td><Sectors config={config} sectors={row.harmonized} /></td>
                 <td>
-                  <ul>
                   {
-                    row.datasets.map((d, i) => <li key={i}>{d}</li>)
+                    row.datasets && (
+                      <ul>
+                        {
+                          row.datasets.map((d, i) => <li key={i}>{d}</li>)
+                        }
+                      </ul>
+                    )
                   }
-                  </ul>
                 </td>
               </tr>
             )
