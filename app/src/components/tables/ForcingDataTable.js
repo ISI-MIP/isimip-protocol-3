@@ -56,7 +56,7 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                         </td>
                         <td>
                           <p>
-                            {row.group3 && <span className="badge badge-info">Group 3</span>}
+                            {row.group3 && <span className="badge badge-info">Group III</span>}
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {

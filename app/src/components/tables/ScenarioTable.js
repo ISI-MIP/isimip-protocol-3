@@ -50,7 +50,7 @@ const ScenarioTable = function({ config, caption, rows, actions }) {
                     </p>
                     <p>
                       <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
-                      {row.group3 && <span className="badge badge-info">Group 3</span>}
+                      {row.group3 && <span className="badge badge-info">Group III</span>}
                       <Sectors config={config} sectors={row.sectors} />
                     </p>
                   </td>
