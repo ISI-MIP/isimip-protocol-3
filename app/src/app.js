@@ -26,8 +26,7 @@ const initConfig = () => {
     simulation_round: 'ISIMIP3a',
     sectors: [],
     groups: [],
-    scenarios: [],
-    sortRanking: false
+    scenarios: []
   }
 
   return {...defaultConfig, ...getConfig(), ...parseLocation()}
