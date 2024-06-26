@@ -7,6 +7,11 @@ import { actions } from '../store'
 
 
 const Config = ({ definitions, config, actions }) => {
+  const dev_note = 'Currently in development.'
+  const group3_note = 'Ready for Group III simulations.'
+  const group3_dev_note = 'Data is still under construction (see Table 3.1), but models' +
+    ' not needing those data may start group III simulations.'
+
   return (
     <div className="config">
       <div className="mb-3">
@@ -44,8 +49,15 @@ const Config = ({ definitions, config, actions }) => {
                          onChange={(event) => actions.changeSector(event.target.value)} />
                   <label className="form-check-label" htmlFor={id}>
                     {row.title}
-                    {row.dev && <span>🚧</span>}
-                    {row.group3 && <span>🚀</span>}
+                    {row.dev && <span className="ml-1" title={dev_note}>🚧</span>}
+                    {
+                      row.group3 && (
+                        <span className="badge badge-info ml-1" title={group3_note}>III</span>
+                      )
+                    }
+                    {
+                      row.group3_dev && <span className="badge badge-warning ml-1" title={group3_dev_note}>III</span>
+                    }
                   </label>
                 </div>
               )
@@ -53,9 +65,15 @@ const Config = ({ definitions, config, actions }) => {
           }
         </div>
       </div>
-      <div className="text-muted">
-        Sectors marked with the 🚧 sign are currently in development and the protocol will not contain all nessesary information, yet. For sectors marked with the 🚀, group III input data is already available and simulations can start right away.
-      </div>
+      <p className="text-muted mb-1">
+        🚧: {dev_note}
+      </p>
+      <p className="text-muted mb-1">
+        <span className="badge badge-info">III</span>: {group3_note}
+      </p>
+      <p className="text-muted mb-1">
+        <span className="badge badge-warning">III</span>: {group3_dev_note}
+      </p>
     </div>
   )
 }
