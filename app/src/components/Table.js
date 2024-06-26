@@ -46,7 +46,7 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'group3_ranking':
-      return <Group3RankingTable config={config} caption={caption} rows={rows} actions={actions} actions={actions} />
+      return <Group3RankingTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'group3_requirements':
       return <Group3RequirementsTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
