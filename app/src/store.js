@@ -10,9 +10,6 @@ const actions = {
   },
   toggleScenario: function(value) {
     return { type: 'toggleScenario', value }
-  },
-  toggleSortRanking: function() {
-    return { type: 'toggleSortRanking' }
   }
 }
 
@@ -58,12 +55,6 @@ function reducer(state, action) {
           ...state,
           config: { ...state.config, scenarios: [...state.config.scenarios, action.value] }
         }
-      }
-    }
-    case 'toggleSortRanking': {
-      return {
-        ...state,
-        config: { ...state.config, sortRanking: !state.config.sortRanking }
       }
     }
     default:
