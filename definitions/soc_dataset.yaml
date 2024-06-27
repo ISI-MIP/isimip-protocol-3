@@ -883,7 +883,9 @@
   title: Wood harvesting
   group: wood_harvesting
   frequency: annual
-  resolution: national
+  resolution:
+  - 0.5° grid
+  - national
   path:
     ISIMIP3a: ISIMIP3a/InputData/socioeconomic/wood_harvesting/<soc_scenario>/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc
     ISIMIP3b: ISIMIP3b/InputData/socioeconomic/wood_harvesting/<soc_scenario>/<variable>_<soc_scenario>_national_annual_<start_year>_<end_year>.nc
@@ -918,8 +920,9 @@
   - specifier: secnf-bioh
     long_name: wood harvest biomass carbon from secondary non forest land
     unit: kg
-  comment: >-
-    Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).
+  comment:
+    ISIMIP3a: Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).
+    ISIMIP3b: Input dataset documentation → [Wood harvesting (group I+II)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/141/), [Wood harvesting (group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/185/).
   sectors:
   - biomes
   - fire
@@ -930,15 +933,16 @@
   time_periods:
     ISIMIP3a:
     - 1850-1900
-    - 1901-2020
+    - 1901-2021
     ISIMIP3b:
     - 1850-2014
+    - 2015-2099
 
 - specifier: land-transformation
-  title: Not forest-related land transformation
+  title: Land transformation
   group: land-transformation
   frequency: annual
-  resolution: national
+  resolution: 0.5° grid
   path:
     ISIMIP3a: ISIMIP3a/InputData/socioeconomic/land-transformation/<soc_scenario>/land-transformation_<soc_scenario>_annual_<start_year>_<end_year>.nc
     ISIMIP3b: ISIMIP3b/InputData/socioeconomic/land-transformation/<soc_scenario>/land-transformation_<soc_scenario>_annual_<start_year>_<end_year>.nc
@@ -946,13 +950,10 @@
   - specifier: <type>_to_<type>
     long_name: One variable for each transition from one type of land use to another.
     unit: '1'
-  comment: "The data set consists of 115 land transformation categories, one for each\
-    \ transition from one type of land use to another. Considered land use types:\
-    \ **secdf** (potentially forested secondary land), **secdn** (potentially non-forested\
-    \ secondary land), **urban** (urban land), **c3ann** (C3 annual crops), **c4ann**\
-    \ (C4 annual crops), **c3per** (C3 perennial crops), **c4per** (C4 perennial crops),\
-    \ **c3nfx** (C3 nitrogen-fixing crops), **pastr** (managed asture), **range**\
-    \ (rangeland). Input dataset documentation → [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/). "
+  comment:
+    ISIMIP3a: Input dataset documentation → [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).
+    ISIMIP3b: Input dataset documentation → [Gridded historical land transformation (group I+II)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/186/), [Gridded historical land transformation (group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/187/).
+
   sectors:
   - agriculture
   - biodiversity
@@ -973,9 +974,10 @@
   time_periods:
     ISIMIP3a:
     - 1850-1900
-    - 1901-2020
+    - 1901-2021
     ISIMIP3b:
     - 1850-2014
+    - 2015-2099
 
 - specifier: pctlake
   title: Lake area fraction
