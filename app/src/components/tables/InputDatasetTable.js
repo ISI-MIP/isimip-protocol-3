@@ -15,7 +15,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
   const getPath = (row) => {
     const path = filterField(config, row.path)
     if (Array.isArray(path)) {
-      return path.map((p, index) => <code className="d-block" key={index}>{p}</code>)
+      return path.map((p, index) => <code key={index} className="pre">{p}{'\n'}</code>)
     } else {
       return <code>{path}</code>
     }
@@ -76,9 +76,11 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
                               </span>
                             </p>}
                           </td>
-                          <td colSpan="4">
-                            {getPath(row)}
-                            {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                          <td colSpan="4" className="nowrap">
+                            <div>
+                              {getPath(row)}
+                              {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                            </div>
                           </td>
                         </tr>
                         {
