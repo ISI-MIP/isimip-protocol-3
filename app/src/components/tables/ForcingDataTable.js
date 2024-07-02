@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
 import Status from '../badges/Status'
-import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
+import Mandatory from '../badges/Mandatory'
+import SocForcing from '../badges/SocForcing'
 
+import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 const ForcingTable = function({ config, caption, rows, groups, actions }) {
   const filteredGroups = filterGroups(config, rows, groups, actions)
@@ -52,6 +54,7 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                       <tr key={index}>
                         <td colSpan="1">
                           <p>{row.title}</p>
+                          <Mandatory mandatory={row.mandatory} />
                           <Status status={row.status} />
                         </td>
                         <td>
@@ -59,6 +62,13 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                             {row.group3 && <span className="badge badge-info">Group III</span>}
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
+                          {
+                            row.soc_forcing && (
+                              <p>
+                                <SocForcing socForcings={row.soc_forcing} />
+                              </p>
+                            )
+                          }
                           {
                             dois && (
                               Array.isArray(dois) ? (
