@@ -61,9 +61,60 @@
   - water_regional
   - water_quality
 
+- specifier: histsoc_wood_harvest
+  group: histsoc-forcing
+  title: Wood harvest
+  status: optional
+  doi:
+    ISIMIP3a: https://data.isimip.org/10.48364/ISIMIP.482888.2
+    ISIMIP3b: https://doi.org/10.48364/ISIMIP.782211
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/wood_harvesting/histsoc/
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/wood_harvesting/histsoc/
+  comment:
+    ISIMIP3a: >-
+      Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).
+    ISIMIP3b: >-
+      Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/141).
+  sectors:
+  - biomes
+  - fire
+  - groundwater
+  - peat
+  - permafrost
+
+- specifier: histsoc_land_transformation
+  group: histsoc-forcing
+  title: Land transformation
+  status: optional
+  doi:
+    ISIMIP3a: https://doi.org/10.48364/ISIMIP.249531
+    ISIMIP3b: https://doi.org/10.48364/ISIMIP.537686
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/land-transformation/histsoc/
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/land-transformation/histsoc/
+  comment: >-
+    Input dataset documentation → [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+
 - specifier: histsoc_n_fertilizer
   group: histsoc-forcing
-  title: N-fertilizer inputs
+  title: Synthetic fertilizers N
   status: mandatory
   doi:
     ISIMIP3a: https://doi.org/10.48364/ISIMIP.311496.2
@@ -94,57 +145,6 @@
   - water_global
   - water_regional
   - water_quality
-
-- specifier: histsoc_wood_harvest
-  group: histsoc-forcing
-  title: Wood harvest
-  status: optional
-  doi:
-    ISIMIP3a: https://data.isimip.org/10.48364/ISIMIP.482888.2
-    ISIMIP3b: https://doi.org/10.48364/ISIMIP.782211
-  path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/wood_harvesting/histsoc/
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/wood_harvesting/histsoc/
-  comment:
-    ISIMIP3a: >-
-      Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/83/).
-    ISIMIP3b: >-
-      Input dataset documentation → [Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/141).
-  sectors:
-  - biomes
-  - fire
-  - groundwater
-  - peat
-  - permafrost
-
-- specifier: histsoc_land_transformation
-  group: histsoc-forcing
-  title: Land transformation
-  status: mandatory
-  doi:
-    ISIMIP3a: https://doi.org/10.48364/ISIMIP.249531
-    ISIMIP3b: https://doi.org/10.48364/ISIMIP.537686
-  path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/land-transformation/histsoc/
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/land-transformation/histsoc/
-  comment: >-
-    Input dataset documentation → [Gridded historical land transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/142/).
-  sectors:
-  - agriculture
-  - biodiversity
-  - biomes
-  - diarrhea
-  - energy
-  - fire
-  - groundwater
-  - health
-  - labour
-  - lakes_global
-  - lakes_local
-  - peat
-  - permafrost
-  - water_global
-  - water_regional
 
 - specifier: histsoc_ndep
   group: histsoc-forcing
@@ -180,11 +180,11 @@
 - specifier: histsoc_crop_calendar
   group: histsoc-forcing
   title: Crop calendar
-  status: optional
+  status: mandatory
   doi: https://doi.org/10.5281/zenodo.5062513
   path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/crop_calendar/histsoc/
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/crop_calendar/histsoc/
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/crop_calendar/2015soc/
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/crop_calendar/2015soc/
   comment: >-
     Input dataset documentation → [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115/).
   sectors:
@@ -192,6 +192,25 @@
   - biomes
   - groundwater
   - water_global
+
+- specifier: histsoc_fishing
+  group: histsoc-forcing
+  title: Marine fishing effort
+  status: mandatory
+  doi:
+    ISIMIP3a:
+    ISIMIP3b: https://doi.org/10.48364/ISIMIP.911570
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/fishing/histsoc/
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/fishing/histsoc/
+  comment:
+    ISIMIP3a: >-
+      Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128).
+    ISIMIP3b: >-
+      Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/127).
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
 
 - specifier: histsoc_reservoirs_dams
   group: histsoc-forcing
@@ -208,6 +227,35 @@
       Input dataset documentation → [Dams & reservoirs](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/129).
     ISIMIP3b: >-
       Input dataset documentation → [Reservoirs & dams ](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/130).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+
+- specifier: histsoc_water_abstraction
+  group: histsoc-forcing
+  title: Water abstraction
+  status: optional
+  doi:
+    ISIMIP3a: https://doi.org/10.48364/ISIMIP.228996
+    ISIMIP3b: https://doi.org/10.48364/ISIMIP.478291
+  path:
+    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/water_abstraction/histsoc/
+    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/water_abstraction/histsoc/
+  comment: >-
+    Input dataset documentation → [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).
   sectors:
   - agriculture
   - biodiversity
@@ -246,54 +294,6 @@
   - lakes_local
   - water_global
   - water_quality
-
-- specifier: histsoc_water_abstraction
-  group: histsoc-forcing
-  title: Water abstraction
-  status: optional
-  doi:
-    ISIMIP3a: https://doi.org/10.48364/ISIMIP.228996
-    ISIMIP3b: https://doi.org/10.48364/ISIMIP.478291
-  path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/water_abstraction/histsoc/
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/water_abstraction/histsoc/
-  comment: >-
-    Input dataset documentation → [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).
-  sectors:
-  - agriculture
-  - biodiversity
-  - biomes
-  - diarrhea
-  - energy
-  - groundwater
-  - health
-  - labour
-  - lakes_global
-  - lakes_local
-  - peat
-  - permafrost
-  - water_global
-  - water_regional
-  - water_quality
-
-- specifier: histsoc_fishing
-  group: histsoc-forcing
-  title: Marine fishing effort
-  status: mandatory
-  doi:
-    ISIMIP3a:
-    ISIMIP3b: https://doi.org/10.48364/ISIMIP.911570
-  path:
-    ISIMIP3a: ISIMIP3a/InputData/socioeconomic/fishing/histsoc/
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/fishing/histsoc/
-  comment:
-    ISIMIP3a: >-
-      Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128).
-    ISIMIP3b: >-
-      Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/127).
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
 
 - specifier: histsoc_forest_management_3a
   group: histsoc-forcing

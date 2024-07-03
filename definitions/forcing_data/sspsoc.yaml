@@ -13,9 +13,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp126
-  - ssp370
-  - ssp585
+  - ssp1
+  - ssp3
+  - ssp5
   adapt: use **noadapt** data
 
 - specifier: sspsoc_gdp
@@ -30,13 +30,14 @@
   - ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-adapt/
   - ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-noadapt/
   - ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-adapt/
+  comment: "Gridded GDP data is still under construction."
   simulation_rounds:
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp126
-  - ssp370
-  - ssp585
+  - ssp1
+  - ssp3
+  - ssp5
   adapt: use **noadapt** data
 
 - specifier: sspsoc_protein_uptake
@@ -66,7 +67,7 @@
 
 - specifier: sspsoc_land_use
   group: sspsoc-forcing
-  title: Land use data
+  title: Land use and irrigation data
   mandatory: true
   path:
   - ISIMIP3b/InputData/socioeconomic/landuse/ssp126soc-noadapt/
@@ -76,19 +77,30 @@
   - ISIMIP3b/InputData/socioeconomic/landuse/ssp585soc-noadapt/
   - ISIMIP3b/InputData/socioeconomic/landuse/ssp585soc-adapt/
   sectors:
+  - agriculture
+  - biodiversity
   - biomes
+  - diarrhea
+  - energy
   - fire
   - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
   - peat
   - permafrost
   - water_global
+  - water_regional
+  - water_quality
   simulation_rounds:
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -97,34 +109,6 @@
   - MagPIE
   - IMAGE
   - GLOBIOM
-
-- specifier: sspsoc_irrigation
-  group: sspsoc-forcing
-  title: Irrigation data
-  mandatory: true
-  status: under construction
-  sectors:
-  - biomes
-  - fire
-  - peat
-  - permafrost
-  - water_global
-  simulation_rounds:
-  - ISIMIP3b
-  group3: true
-  noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
-  adapt:
-  - ssp126
-  - ssp370
-  - ssp585
-  soc_forcing:
-  - MagPIE
-  - IMAGE
-  - GLOBIOM
-
 
 - specifier: sspsoc_wood_harvest
   group: sspsoc-forcing
@@ -149,9 +133,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -164,7 +148,7 @@
 - specifier: sspsoc_land_transformation
   group: sspsoc-forcing
   title: Land transformation
-  mandatory: true
+  mandatory: false
   path:
   - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp126soc-noadapt/
   - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp126soc-adapt/
@@ -175,19 +159,28 @@
   comment: >-
     Input dataset documentation → [Future Land Transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/187/).
   sectors:
+  - agriculture
+  - biodiversity
   - biomes
+  - diarrhea
+  - energy
   - fire
-  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
   - peat
   - permafrost
   - water_global
+  - water_regional
   simulation_rounds:
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -209,18 +202,30 @@
   - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-noadapt/
   - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/
   sectors:
+  - agriculture
+  - biodiversity
   - biomes
+  - diarrhea
+  - energy
   - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
   - peat
   - permafrost
   - water_global
+  - water_regional
+  - water_quality
   simulation_rounds:
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -246,9 +251,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -267,9 +272,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -292,9 +297,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -317,9 +322,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -338,9 +343,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -358,9 +363,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -379,9 +384,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -399,9 +404,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -420,9 +425,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -444,12 +449,23 @@
   comment: >-
     Input dataset documentation → [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).
   sectors:
+  - agriculture
+  - biodiversity
   - biomes
+  - diarrhea
+  - energy
   - fire
   - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
   - peat
   - permafrost
   - water_global
+  - water_regional
+  - water_quality
   simulation_rounds:
   - ISIMIP3b
   group3: true
@@ -461,7 +477,7 @@
 
 - specifier: sspsoc_ndep_image
   group: sspsoc-forcing
-  title: Agricultural N deposition
+  title: Total N deposition (consistent with IMAGE LU patterns)
   mandatory: false
   status: under construction
   sectors:
@@ -470,9 +486,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -490,9 +506,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -511,9 +527,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - use noadapt data
   soc_forcing:
@@ -529,9 +545,9 @@
   - ISIMIP3b
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - use noadapt data
   soc_forcing:
@@ -590,12 +606,26 @@
   simulation_rounds:
   - ISIMIP3b
   sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
   - water_global
+  - water_regional
+  - water_quality
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -609,12 +639,26 @@
   simulation_rounds:
   - ISIMIP3b
   sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
   - water_global
+  - water_regional
+  - water_quality
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -630,9 +674,9 @@
   sectors: []
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - use noadapt data
   soc_forcing:
@@ -648,9 +692,9 @@
   sectors: []
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - use noadapt data
   soc_forcing:
@@ -666,9 +710,9 @@
   sectors: []
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - use noadapt data
   soc_forcing:
@@ -685,9 +729,9 @@
   - water_global
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -734,12 +778,16 @@
   simulation_rounds:
   - ISIMIP3b
   sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
   - water_global
+  - water_quality
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -753,12 +801,13 @@
   simulation_rounds:
   - ISIMIP3b
   sectors:
+  - groundwater
   - forestry
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -774,9 +823,9 @@
   sectors: []
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
@@ -792,9 +841,9 @@
   sectors: []
   group3: true
   noadapt:
-  - ssp1
-  - ssp3
-  - ssp5
+  - ssp126
+  - ssp370
+  - ssp585
   adapt:
   - ssp126
   - ssp370
