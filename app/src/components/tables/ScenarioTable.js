@@ -18,7 +18,7 @@ const ScenarioTable = function({ config, caption, rows }) {
       <thead className="thead-dark">
         <tr>
           <th style={{width: '30%'}}>Experiment specifier</th>
-          <th style={{width: '70%'}}>Desciption</th>
+          <th style={{width: '70%'}}>Description</th>
         </tr>
       </thead>
       <tbody>
