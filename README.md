@@ -2,7 +2,7 @@ ISIMIP3 simulation protocol
 ===========================
 
 This project builds sector-specific ISIMIP protocols from a common data source.
-Machine-readable data is under [definitions](definitions/), and text under [protocol](protocol/).
+Machine-readable data are under [definitions](definitions/), and text under [protocol](protocol/).
 
 The rendered protocols are found at https://protocol.isimip.org.
 

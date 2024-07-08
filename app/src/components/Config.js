@@ -7,6 +7,50 @@ import { actions } from '../store'
 
 
 const Config = ({ definitions, config, actions }) => {
+  const dev_note = 'Currently in development.'
+
+  const group3_full_note = 'Ready for Group III.'
+  const group3_half_note = 'Some data are still under construction (see Table 3.1), but models' +
+    ' not needing those data may already start.'
+  const group3_none_note = 'Since most of the data are still under construction, the sector is not ready for Group III simulations.'
+
+  const group3_full_badge = (
+    <span className="badge-split" title={group3_full_note}>
+      <span className="badge badge-info badge-left">
+        <span className="circle circle-green"></span>
+      </span>
+      <span className="badge badge-info badge-right">III</span>
+    </span>
+  )
+
+  const group3_half_badge = (
+    <span className="badge-split" title={group3_half_note}>
+      <span className="badge badge-info badge-left">
+        <span className="circle-left circle-green"></span>
+        <span className="circle-right circle-yellow"></span>
+      </span>
+      <span className="badge badge-info badge-right">III</span>
+    </span>
+  )
+  const group3_none_badge = (
+    <span className="badge-split" title={group3_none_note}>
+      <span className="badge badge-info badge-left">
+        <span className="circle circle-yellow"></span>
+      </span>
+      <span className="badge badge-info badge-right">III</span>
+    </span>
+  )
+
+  const getGroup3Badge = (row) => {
+    if (row.group3) {
+      return group3_full_badge
+    } else if (row.group3_dev) {
+      return group3_half_badge
+    } else {
+      return group3_none_badge
+    }
+  }
+
   return (
     <div className="config">
       <div className="mb-3">
@@ -42,16 +86,33 @@ const Config = ({ definitions, config, actions }) => {
                          value={row.specifier}
                          checked={config.sectors.includes(row.specifier)}
                          onChange={(event) => actions.changeSector(event.target.value)} />
-                  <label className="form-check-label" htmlFor={id}>{row.title} {row.dev && <span>🚧</span>}</label>
+                  <label className="form-check-label d-flex" htmlFor={id}>
+                    <div>
+                      {row.title}
+                      {row.dev && <span className="ml-1" title={dev_note}>🚧</span>}
+                    </div>
+                    <div className="ml-auto text-nowrap">
+                      &nbsp;{getGroup3Badge(row)}
+                    </div>
+                  </label>
                 </div>
               )
             })
           }
         </div>
       </div>
-      <div className="text-muted">
-        Sectors marked with the 🚧 sign are currently in development and the protocol will not contain all nessesary information, yet.
-      </div>
+      <p className="text-muted mb-1">
+        🚧: {dev_note}
+      </p>
+      <p className="text-muted mb-1">
+        {group3_full_badge} {group3_full_note}
+      </p>
+      <p className="text-muted mb-1">
+        {group3_half_badge} {group3_half_note}
+      </p>
+      <p className="text-muted mb-1">
+        {group3_none_badge} {group3_none_note}
+      </p>
     </div>
   )
 }

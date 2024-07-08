@@ -7,12 +7,15 @@ import { actions } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
+import CropTable from './tables/CropTable'
+import ExperimentsTable from './tables/ExperimentsTable'
+import ForcingDataTable from './tables/ForcingDataTable'
+import ForestStandTable from './tables/ForestStandTable'
+import Group3RankingTable from './tables/Group3RankingTable'
+import Group3RequirementsTable from './tables/Group3RequirementsTable'
+import HarmonizationTable from './tables/HarmonizationTable'
 import InputDatasetTable from './tables/InputDatasetTable'
 import InputVariableTable from './tables/InputVariableTable'
-import CropTable from './tables/CropTable'
-import ForestStandTable from './tables/ForestStandTable'
-import ExperimentsTable from './tables/ExperimentsTable'
-import HarmonizationTable from './tables/HarmonizationTable'
 import IrrigationTable from './tables/IrrigationTable'
 import LakeSiteTable from './tables/LakeSiteTable'
 import OceanRegionTable from './tables/OceanRegionTable'
@@ -20,7 +23,6 @@ import RiverBasinTable from './tables/RiverBasinTable'
 import ScenarioTable from './tables/ScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
 import VariableTable from './tables/VariableTable'
-
 
 const Table = ({ definitions, config, identifier, caption, actions }) => {
   const groups = definitions.group.filter(group => group.identifier == identifier)
@@ -39,8 +41,14 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
       return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'experiments':
       return <ExperimentsTable definitions={definitions} config={config} caption={caption} rows={rows} actions={actions} />
+    case 'forcing_data':
+      return <ForcingDataTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'forest_stand':
       return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
+    case 'group3_ranking':
+      return <Group3RankingTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+    case 'group3_requirements':
+      return <Group3RequirementsTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'geo_dataset':
       return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
     case 'harmonization':

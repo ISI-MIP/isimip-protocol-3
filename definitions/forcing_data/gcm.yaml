@@ -1,0 +1,243 @@
+- specifier: gcm_climate_atmosphere
+  group: gcm-forcing
+  title: GCM-based atmospheric forcing
+  status: mandatory
+  doi: https://doi.org/10.48364/ISIMIP.842396.1
+  path:
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/picontrol/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/historical/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp126/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp370/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp585/
+  comment: >-
+    Input dataset documentation → [GFDL-ESM4](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/84/),
+    [IPSL-CM6A-LR](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/87/),
+    [MPI-ESM1-2-HR](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/87/),
+    [MRI-ESM2-0](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/88/),
+    [UKESM1-0-LL](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/85/).
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - coastal
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+
+- specifier: gcm_climate_atmosphere_local
+  group: gcm-forcing
+  title: Local atmospheric climate forcing for lake locations
+  status: mandatory
+  doi: https://doi.org/10.48364/ISIMIP.842396.1
+  path:
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/picontrol/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/historical/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp126/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp370/
+  - ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/ssp585/
+  comment: >-
+    Extractions of grid cell data from global atmospheric climate forcing. See list
+    of lakes sites [here](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/isimip3-local-lake-sites/).
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - lakes_local
+
+- specifier: gcm_tropical_cyclones
+  group: gcm-forcing
+  title: Tropical cyclone tracks and windfields
+  status: under development
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - coastal
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+
+- specifier: gcm_lightning
+  group: gcm-forcing
+  title: Lightning
+  status: mandatory
+  doi:
+  - https://doi.org/10.5067/LIS/LIS-OTD/DATA303
+  path: ISIMIP3b/InputData/climate/lightning/lightning_fixed.nc
+  comment: >-
+    Flash Rate Monthly Climatology, not changing with climate change.
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - fire
+
+- specifier: gcm_varlightning
+  group: gcm-forcing-varlightning
+  title: Varying lightning according to climate change
+  status: mandatory
+  doi:
+  - https://doi.org/10.5281/zenodo.7511843
+  path:
+  - ISIMIP3b/InputData/climate/lightning/lightning_ukesm1-0-ll_ssp126_global_monthly_2010_2099.nc
+  - ISIMIP3b/InputData/climate/lightning/lightning_ukesm1-0-ll_ssp370_global_monthly_2010_2100.nc
+  - ISIMIP3b/InputData/climate/lightning/lightning_ukesm1-0-ll_ssp585_global_monthly_2010_2100.nc
+  comment: >-
+    Varying lightning according to climate change, used for the **varlightning** sensitivity experiment.
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - fire
+
+- specifier: gcm_climate_ocean
+  group: gcm-forcing
+  title: GCM-based oceanic climate forcing
+  status: mandatory
+  doi: https://data.isimip.org/10.48364/ISIMIP.575744.2
+  path:
+  - ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/picontrol/
+  - ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/historical/
+  - ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/ssp126/
+  - ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/ssp370/
+  - ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/ssp585/
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+
+- specifier: gcm_climate_ocean_debiased
+  group: gcm-forcing-debiased
+  title: Oceanic forcings based on de-biased atmospheric forcings
+  status: mandatory
+  comment: >-
+    Simulated by the ocean biogeochemistry model ocean-biogeochemistry NEMO-PISCES forced by a de-biased version of the IPSL-CM6A-LR-based atmospheric forcing, used for the **de-biased** sensitivity experiment.
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+
+- specifier: gcm_climate_ocean_debiased_regional
+  group: gcm-forcing-debiased
+  title: De-biased oceanic forcing based on observed oceanic data for individual variables and regions.
+  status: mandatory
+  comment: >-
+    Used for the **de-biased** sensitivity experiment.
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+
+- specifier: gcm_climate_coastal_water_levels
+  group: gcm-forcing
+  title: Coastal water levels
+  status: under development
+  comment: >-
+    Not available yet, but we plan to provide hourly water levels derived from the
+    atmospheric forcings described above combined with long-term sea-level trends.
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - coastal
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+
+- specifier: gcm_climate_co2
+  group: gcm-forcing
+  title: Atmospheric CO₂ concentration
+  status: mandatory
+  doi: https://doi.org/10.48364/ISIMIP.482153.1
+  path:
+  - ISIMIP3b/InputData/climate/atmosphere_composition/co2/picontrol/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/co2/historical/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/co2/ssp126/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/co2/ssp370/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/co2/ssp585/
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - coastal
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+
+- specifier: gcm_climate_ch4
+  group: gcm-forcing
+  title: Atmospheric CH₄ concentration
+  status: mandatory
+  doi: https://doi.org/10.48364/ISIMIP.482153.1
+  path:
+  - ISIMIP3b/InputData/climate/atmosphere_composition/ch4/picontrol/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/ch4/historical/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/ch4/ssp126/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/ch4/ssp370/
+  - ISIMIP3b/InputData/climate/atmosphere_composition/ch4/ssp585/
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - coastal
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality

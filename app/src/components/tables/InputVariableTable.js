@@ -94,9 +94,11 @@ const InputVariableTable = function({ config, caption, rows, groups, actions }) 
                               </span>
                             </p>}
                           </td>
-                          <td colSpan="4">
-                            {row.path && <code>{filterField(config, row.path)}</code>}
-                            {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                          <td colSpan="4" className="nowrap">
+                            <div>
+                              {row.path && <code>{filterField(config, row.path)}</code>}
+                              {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                            </div>
                           </td>
                         </tr>
                         <tr>

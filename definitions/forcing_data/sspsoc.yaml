@@ -1,0 +1,830 @@
+- specifier: sspsoc_pop
+  group: sspsoc-forcing
+  title: Population data
+  mandatory: true
+  path:
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-adapt/
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp1
+  - ssp3
+  - ssp5
+  adapt: use **noadapt** data
+
+- specifier: sspsoc_gdp
+  group: sspsoc-forcing
+  title: GDP data
+  mandatory: true
+  doi:
+  path:
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-adapt/
+  comment: "Gridded GDP data are still under construction."
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp1
+  - ssp3
+  - ssp5
+  adapt: use **noadapt** data
+
+- specifier: sspsoc_protein_uptake
+  group: sspsoc-forcing
+  title: Protein uptake per capita
+  mandatory: true
+  status: under construction
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+
+- specifier: sspsoc_land_use
+  group: sspsoc-forcing
+  title: Land use and irrigation data
+  mandatory: true
+  path:
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/landuse/ssp585soc-adapt/
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+  - GLOBIOM
+
+- specifier: sspsoc_wood_harvest
+  group: sspsoc-forcing
+  title: Wood harvest
+  mandatory: false
+  path:
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/wood_harvesting/ssp585soc-adapt/
+  comment: >-
+    Input dataset documentation → [Future Wood harvesting](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/185/).
+  sectors:
+  - biomes
+  - fire
+  - groundwater
+  - peat
+  - permafrost
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+  - GLOBIOM
+
+- specifier: sspsoc_land_transformation
+  group: sspsoc-forcing
+  title: Land transformation
+  mandatory: false
+  path:
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/land-transformation/ssp585soc-adapt/
+  comment: >-
+    Input dataset documentation → [Future Land Transformation](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/187/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+  - GLOBIOM
+
+- specifier: sspsoc_n_fertilizer
+  group: sspsoc-forcing
+  title: Synthetic fertilizers N
+  status: mandatory
+  path:
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+  - GLOBIOM
+
+- specifier: sspsoc_synthetic_fetilizers_n
+  group: sspsoc-forcing
+  title: Synthetic fertilizers (N, cropland/grassland)
+  mandatory: true
+  status: under construction
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  - water_global
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_applied_synthetic_fetilizers_p
+  group: sspsoc-forcing
+  title: Applied synthetic fertilizers (P, cropland/grassland)
+  mandatory: true
+  status: under construction
+  sectors:
+  - water_global
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_animal_manure_n
+  group: sspsoc-forcing
+  title: Animal manure N
+  mandatory: true
+  status: under construction
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE-GNM
+
+- specifier: sspsoc_animal_manure_p
+  group: sspsoc-forcing
+  title: Animal manure P
+  mandatory: true
+  status: under construction
+  sectors:
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_livestock_numbers
+  group: sspsoc-forcing
+  title: Livestock numbers
+  mandatory: false
+  status: under construction
+  sectors:
+  - water_global
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE
+
+- specifier: sspsoc_crop_uptake_n
+  group: sspsoc-forcing
+  title: Crop uptake N
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MAgPIE
+  - IMAGE
+
+- specifier: sspsoc_crop_uptake_p
+  group: sspsoc-forcing
+  title: Crop uptake P
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE
+
+- specifier: sspsoc_grassland_uptake_n
+  group: sspsoc-forcing
+  title: Grassland uptake N
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MAgPIE
+  - IMAGE
+
+- specifier: sspsoc_grassland_uptake_p
+  group: sspsoc-forcing
+  title: Grassland uptake P
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE
+
+- specifier: sspsoc_ndep
+  group: sspsoc-forcing
+  title: Total N deposition
+  status: optional
+  path:
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp585soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/n-deposition/ssp585soc-adapt/
+  comment: >-
+    Input dataset documentation → [Nitrogen deposition](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/116/).
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt: use **adapt** data
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_ndep_image
+  group: sspsoc-forcing
+  title: Total N deposition (consistent with IMAGE LU patterns)
+  mandatory: false
+  status: under construction
+  sectors:
+  - water_global
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - IMAGE
+
+- specifier: sspsoc_biological_fixation
+  group: sspsoc-forcing
+  title: Biological fixation (N, cropland/grassland/natural)
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MagPIE
+  - IMAGE
+
+- specifier: sspsoc_anthropogenic_point_sources_n
+  group: sspsoc-forcing
+  title: Anthropogenic point sources (N, total affluent)
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - use noadapt data
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_anthropogenic_point_sources_p
+  group: sspsoc-forcing
+  title: Anthropogenic point sources (P)
+  mandatory: false
+  status: under construction
+  sectors: []
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - use noadapt data
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_crop_calendar
+  group: sspsoc-forcing
+  title: Crop calendar
+  mandatory: true
+  path:
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp126soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp370soc-noadapt/
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp585soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/crop_calendar/ssp585soc-noadapt/
+  comment: >-
+    Input dataset documentation → [Crop calendar](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/115/).
+    For the no adaptation case the fixed `2015soc` calendar should be used.
+  sectors:
+  - agriculture
+  - biomes
+  - groundwater
+  - water_global
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  noadapt: "fixed historical values, no ssp dependence"
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_fishing
+  group: sspsoc-forcing
+  title: Marine fishing effort
+  mandatory: true
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - marine-fishery_global
+  - marine-fishery_regional
+  group3: true
+  noadapt: "n/a"
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_reservoirs_dams
+  group: sspsoc-forcing
+  title: Dams and reservoirs
+  mandatory: true
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_water_abstraction
+  group: sspsoc-forcing
+  title: Non-irrigation water use (withdrawal and consumption)
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - energy
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_sewage
+  group: sspsoc-forcing
+  title: Sewage connections (urban/rural population)
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors: []
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - use noadapt data
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_treatment_removal_fractions
+  group: sspsoc-forcing
+  title: Treatment removal fractions
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors: []
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - use noadapt data
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_waste_water_treatment
+  group: sspsoc-forcing
+  title: Waste water treatment
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors: []
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - use noadapt data
+  soc_forcing:
+  - IMAGE-GNM
+
+- specifier: sspsoc_seawater_desalination
+  group: sspsoc-forcing
+  title: Seawater desalination
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - water_global
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_inter_basin_water_transfer
+  group: sspsoc-forcing
+  title: Inter-basin water transfer
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - water_global
+  group3: true
+  noadapt:
+  - "??"
+  adapt:
+  - "??"
+
+- specifier: sspsoc_rpctlake
+  group: sspsoc-forcing
+  title: Lake and reservoir surface area
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - groundwater
+  - lakes_global
+  - lakes_local
+  - water_global
+  - water_quality
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_forest_management_3a
+  group: sspsoc-forcing
+  title: Forest management
+  mandatory: true
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - groundwater
+  - forestry
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_ac_penetration
+  group: sspsoc-forcing
+  title: Residential air conditioning (AC penetration)
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors: []
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+
+- specifier: sspsoc_ac_consumption
+  group: sspsoc-forcing
+  title: AC energy consumption
+  mandatory: false
+  status: under construction
+  simulation_rounds:
+  - ISIMIP3b
+  sectors: []
+  group3: true
+  noadapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585

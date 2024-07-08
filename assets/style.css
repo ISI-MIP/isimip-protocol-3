@@ -60,6 +60,7 @@ nav.navbar .navbar-nav .nav-link:hover {
     border: 1px solid rgb(164, 164, 164);
 }
 main {
+    height: 1000000px;
     padding-top: 40px;
     padding-bottom: 40px;
 }
@@ -71,6 +72,7 @@ table.table {
     overflow-wrap: break-word;
     margin-bottom: 1rem;
     font-size: small;
+    background-color: white;
 }
 table.table-fixed {
     table-layout: fixed;
@@ -174,7 +176,7 @@ code {
 }
 .toc,
 .config {
-    width: 250px;
+    width: 260px;
     float: right;
     margin-left: 1rem;
     margin-bottom: 1rem;
@@ -221,6 +223,9 @@ code {
 .show-component,
 .pattern-component {
     margin-bottom: 1rem;
+}
+.show-component h3:first-child {
+    margin-top: 0;
 }
 .show-component p:last-child,
 .show-component ul:last-child,
@@ -276,11 +281,68 @@ em.sector {
 .badge-mandatory {
     cursor: help;
 }
+.badge-soc-forcing {
+    background-color: #556B2F;
+}
+.badge-split .badge-info {
+    border: 1px solid #17a2b8;
+}
+.badge-split .badge-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: white;
+}
+.badge-split .badge-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.circle,
+.circle-left,
+.circle-right {
+    display: inline-block;
+    margin-top: 1px !important;
+    margin-bottom: -1px !important;
+}
+.circle {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+}
+.circle-left {
+    height: 8px;
+    width: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.circle-right {
+    height: 8px;
+    width: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.circle-green {
+    background-color: #28a745;
+}
+.circle-yellow {
+    background-color: #ffc107;
+}
+
 .w-70 {
     width: 70%;
 }
 [title] {
     cursor: help;
+}
+td.nowrap {
+    padding: 0;
+}
+td.nowrap > div {
+    padding: 0.75rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.pre {
+    white-space: pre;
 }
 
 .doi-link:before {
@@ -308,7 +370,19 @@ em.sector {
     border-top: none;
     padding-top: 0;
 }
-
+.group3-update {
+    border: 1px solid #17a2b8;
+    background-color: rgba(23, 162, 184, 0.1);
+    padding: .5rem;
+    margin-bottom: 20px;
+}
+.group3-update .badge-split {
+    vertical-align: top;
+    font-size: small;
+}
+.group3-update > :last-child {
+    margin-bottom: 0;
+}
 
 @media print {
     body {

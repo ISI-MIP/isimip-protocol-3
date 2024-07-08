@@ -7,6 +7,7 @@ import Sectors from './badges/Sectors'
 
 const Show = ({ config, simulationRound, sector, html }) => {
   let className = 'show-component'
+  let tocClassName = ''
 
   const simulationRounds = simulationRound === undefined ? [] : simulationRound.split(',')
   const sectors = sector === undefined ? [] : sector.split(',')
@@ -16,6 +17,7 @@ const Show = ({ config, simulationRound, sector, html }) => {
 
     if (!simulationRounds.includes(config.simulation_round)) {
       className += ' hidden'
+      tocClassName = 'hidden'
     }
   }
   if (sectors.length > 0) {
@@ -23,6 +25,16 @@ const Show = ({ config, simulationRound, sector, html }) => {
 
     if (!(config.sectors.length == 0 || sectors.filter(sector => config.sectors.includes(sector)).length)) {
       className += ' hidden'
+      tocClassName = 'hidden'
+    }
+  }
+
+  const matches = html.matchAll('<h3 id="(.*?)"');
+  for (const match of matches) {
+    const id = match[1]
+    const tocLinks = document.querySelectorAll(`a[href="#${id}"]`)
+    for (let tocLink of tocLinks) {
+      tocLink.className = tocClassName
     }
   }
 
