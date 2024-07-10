@@ -35,4 +35,7 @@ schema:
 tree:
 	python3 build/tree.py
 
-.PHONY: prod dev serve clean assets links csvtables definitions glossary pattern protocol schema tree
+typos:
+	typos --write-changes --force-exclude
+
+.PHONY: prod dev serve clean assets links csvtables definitions glossary pattern protocol schema tree typos
