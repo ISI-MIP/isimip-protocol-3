@@ -6,8 +6,8 @@ import Sectors from '../badges/Sectors'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 
-const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
-  const filteredGroups = filterGroups(config, rows, groups, actions)
+const InputDatasetTable = function({ config, caption, rows, groups, actions, group3 }) {
+  const filteredGroups = filterGroups(config, rows, groups, actions, group3)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
@@ -70,11 +70,22 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions }) {
                         <tr>
                           <td rowSpan={row.variables.length + 1}>
                             <p>{row.title || row.specifier }</p>
-                            {row.mandatory && <p>
-                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
-                                mandatory
-                              </span>
-                            </p>}
+                            {
+                              (row.mandatory || row.group3) && (
+                                <p>
+                                  {
+                                    row.group3 && <span className="badge badge-info">Group III</span>
+                                  }
+                                  {
+                                    row.mandatory && (
+                                      <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+                                        mandatory
+                                      </span>
+                                    )
+                                  }
+                                </p>
+                              )
+                            }
                           </td>
                           <td colSpan="4" className="nowrap">
                             <div>
@@ -148,7 +159,8 @@ InputDatasetTable.propTypes = {
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   groups: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  group3: PropTypes.bool
 }
 
 export default InputDatasetTable

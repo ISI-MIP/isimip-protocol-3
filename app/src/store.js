@@ -8,8 +8,8 @@ const actions = {
   toggleGroup: function(value) {
     return { type: 'toggleGroup', value }
   },
-  toggleScenario: function(value) {
-    return { type: 'toggleScenario', value }
+  toggleGroup3: function() {
+    return { type: 'toggleGroup3' }
   }
 }
 
@@ -44,18 +44,8 @@ function reducer(state, action) {
         }
       }
     }
-    case 'toggleScenario': {
-      if (state.config.scenarios.find((scenario) => scenario === action.value)) {
-        return {
-          ...state,
-          config: { ...state.config, scenarios: state.config.scenarios.filter((scenario) => scenario !== action.value) }
-        }
-      } else {
-        return {
-          ...state,
-          config: { ...state.config, scenarios: [...state.config.scenarios, action.value] }
-        }
-      }
+    case 'toggleGroup3': {
+      return { ...state, config: { ...state.config, group3: !state.config.group3 }}
     }
     default:
       return state

@@ -10,7 +10,7 @@ import SocForcing from '../badges/SocForcing'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
 
 const ForcingTable = function({ config, caption, rows, groups, actions }) {
-  const filteredGroups = filterGroups(config, rows, groups, actions)
+  const filteredGroups = filterGroups(config, rows, groups, actions, true)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)

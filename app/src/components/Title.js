@@ -21,6 +21,9 @@ const Title = ({ definitions, config }) => {
   return (
     <div className="title">
       <SimulationRounds config={config} /> protocol for <Sectors config={config} sectors={null} />
+      {
+        config.simulation_round.endsWith('b') && config.group3 && <span className="badge badge-info">only Group III</span>
+      }
     </div>
   )
 }

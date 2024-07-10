@@ -9,7 +9,7 @@ import Status from '../badges/Status'
 import { filterRows } from '../../utils'
 
 
-const ScenarioTable = function({ config, caption, rows }) {
+const ScenarioTable = function({ config, caption, rows, group3 }) {
   return (
     <table className="table table-bordered table-fixed">
       <caption>
@@ -23,7 +23,7 @@ const ScenarioTable = function({ config, caption, rows }) {
       </thead>
       <tbody>
         {
-          filterRows(config, rows).map((row, index) => {
+          filterRows(config, rows, group3).map((row, index) => {
             return (
               <tr key={row.specifier}>
                 <td>
@@ -52,7 +52,8 @@ const ScenarioTable = function({ config, caption, rows }) {
 ScenarioTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  group3: PropTypes.bool
 }
 
 export default ScenarioTable

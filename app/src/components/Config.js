@@ -61,13 +61,27 @@ const Config = ({ definitions, config, actions }) => {
               const id = 'control-simulation-round-' + row.specifier
 
               return (
-                <div className="form-check" key={index}>
-                  <input className="form-check-input" type="radio" id={id}
-                         value={row.specifier}
-                         checked={row.specifier == config.simulation_round}
-                         onChange={(event) => actions.changeSimulationRound(event.target.value)} />
-                  <label className="form-check-label" htmlFor={id}>{row.title}</label>
-                </div>
+                <React.Fragment key={index}>
+                  <div className="form-check">
+                    {
+                      row.specifier.endsWith('b') && (
+                        <div className="float-right">
+                          <input className="form-check-input" type="checkbox" id="control-group3"
+                           checked={config.group3}
+                           onChange={(event) => actions.toggleGroup3()} />
+                          <label className="form-check-label" htmlFor="control-group3">
+                            <span className="badge badge-info">only Group III</span>
+                          </label>
+                        </div>
+                      )
+                    }
+                    <input className="form-check-input" type="radio" id={id}
+                           value={row.specifier}
+                           checked={row.specifier == config.simulation_round}
+                           onChange={(event) => actions.changeSimulationRound(event.target.value)} />
+                    <label className="form-check-label" htmlFor={id}>{row.title}</label>
+                  </div>
+                </React.Fragment>
               )
             })
           }

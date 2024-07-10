@@ -8,7 +8,7 @@ import Sectors from '../badges/Sectors'
 import { filterRows } from '../../utils'
 
 const ExperimentsTable = function({ definitions, config, caption, rows, actions }) {
-  const filteredRows = filterRows(config, rows)
+  const filteredRows = filterRows(config, rows, true)
   const climateScenarios = Object.fromEntries(filterRows(config, definitions.climate_scenario).map(scenario => {
     return [scenario.specifier, scenario.description]
   }))

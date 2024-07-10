@@ -62,11 +62,11 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
     case 'river_basin':
       return <RiverBasinTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'sens_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} group3={true} />
     case 'soc_dataset':
-      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
+      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} group3={true} />
     case 'soc_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} group3={true} />
     case 'species':
       return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'upstream_variable':

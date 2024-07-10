@@ -20,12 +20,7 @@ const getConfig = () => {
     config.groups = groups
   }
 
-  const scenarios = ls.get('scenarios') ? JSON.parse(ls.get('scenarios')) : []
-  if ([
-    ...definitions.climate_scenario, ...definitions.soc_scenario, ...definitions.sens_scenario
-  ].some((scenario) => scenarios.includes(scenario.specifier))) {
-    config.scenarios = scenarios
-  }
+  config.group3 = ls.get('group3') ? JSON.parse(ls.get('group3')) : false
 
   return config
 }
@@ -34,7 +29,7 @@ const updateConfig = (config) => {
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
   ls.set('groups', JSON.stringify(config.groups))
-  ls.set('scenarios', JSON.stringify(config.scenarios))
+  ls.set('group3', JSON.stringify(config.group3))
 }
 
 export { getConfig, updateConfig }

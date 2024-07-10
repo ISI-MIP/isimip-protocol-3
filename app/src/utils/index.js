@@ -27,7 +27,7 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
   }
 }
 
-const filterRows = (config, rows) => {
+const filterRows = (config, rows, group3) => {
   if (Array.isArray(rows)) {
     return rows.filter(row => {
         if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
@@ -41,6 +41,8 @@ const filterRows = (config, rows) => {
         return false
     }).filter(row => {
       return row.hidden != true
+    }).filter(row => {
+      return config.simulation_round.endsWith('a') || !group3 || !config.group3 || row.group3
     })
   } else {
     return []
@@ -76,9 +78,9 @@ const filterField = (config, field) => {
   }
 }
 
-const filterGroups = (config, rows, groups, actions) => {
+const filterGroups = (config, rows, groups, actions, group3) => {
   return groups.map(group => {
-    group.rows = filterRows(config, rows).filter(row => row.group == group.specifier)
+    group.rows = filterRows(config, rows, group3).filter(row => row.group == group.specifier)
     group.closed = !config.groups.includes(group.specifier)
     group.toggle = () => actions.toggleGroup(group.specifier)
     return group
