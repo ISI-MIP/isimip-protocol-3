@@ -14,14 +14,14 @@ your updates will be visible at `https://protocol.isimip.org`.
 As a rule, the sector-specific text should be kept to a minimum and cover
 as much structure as possible by machine-readable code under [definitions](definitions/).
 
-The React JavaScript app is build in a seperate step which are described under [app/README.md]([app/README.md]).
+The React JavaScript app is build in a separate step which are described under [app/README.md]([app/README.md]).
 
 Setup
 -----
 
 Building the protocol needs git and a recent Python version (> 3.6). The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
 
-If you work with different Python applications, we recommend to create a virtual enviroment for the protocol.
+If you work with different Python applications, we recommend to create a virtual environment for the protocol.
 
 ```bash
 # setup venv on Linux/macOS/Windows WSL

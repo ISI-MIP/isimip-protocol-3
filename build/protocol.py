@@ -63,8 +63,8 @@ def main():
     protocol_path = Path('protocol') / '00.base.md'
     template_string = protocol_path.read_text()
 
-    enviroment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
-    template = enviroment.from_string(template_string)
+    environment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
+    template = environment.from_string(template_string)
 
     md = template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date)
     html = markdown(md, extensions=[
@@ -84,10 +84,10 @@ def main():
     template_path = Path('templates') / 'layout.html'
     output_path = Path('output') / 'index.html'
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    enviroment = Environment(loader=FileSystemLoader(['templates']))
+    environment = Environment(loader=FileSystemLoader(['templates']))
 
     with open(template_path, encoding='utf-8') as f:
-        template = enviroment.from_string(f.read())
+        template = environment.from_string(f.read())
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(template.render(html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)))
