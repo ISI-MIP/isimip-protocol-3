@@ -28,4 +28,4 @@ In order to rebuild the app or work on the code, the following setup needs to be
 
 5. Run `python3 build/assets.py --link` or `make dev` in the main protocol directory to link the assets instead of copying them.
 
-6. Before commiting any changes, run `npm run build:prod` or just `make` to create a production version of the app, which then will be part of the repository.
+6. Before committing any changes, run `npm run build:prod` or just `make` to create a production version of the app, which then will be part of the repository.

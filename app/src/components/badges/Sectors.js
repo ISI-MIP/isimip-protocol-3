@@ -7,7 +7,7 @@ const Sectors = ({ config, sectors }) => {
   if (sectors === undefined) {
     return <span className="badge badge-success badge-sector">all sectors</span>
   } else if (sectors === []) {
-    // by setting `sectors: []` the display of sectors can be ommited
+    // by setting `sectors: []` the display of sectors can be omitted
     return null
   } else if (sectors === null) {
     // for the title just display the configured sectors
@@ -17,7 +17,7 @@ const Sectors = ({ config, sectors }) => {
       return <span className="badge badge-success badge-sector">all sectors</span>
     }
   } else {
-    // some sectors are configured -> hightlight selected sectors
+    // some sectors are configured -> highlight selected sectors
     if (config.sectors !== undefined && config.sectors.length > 0) {
       // at least one sector is selected
       return sectors.map((sector, index) => {

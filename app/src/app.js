@@ -139,7 +139,7 @@ setTimeout(() => {
   })
 
   setTimeout(() => {
-    // scroll to anchor or position once everthing is settled
+    // scroll to anchor or position once everything is settled
     if (anchor) {
       anchor.scrollIntoView()
     }
