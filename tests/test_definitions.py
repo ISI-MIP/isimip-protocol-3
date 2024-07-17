@@ -58,7 +58,7 @@ def test_variable():
     instance = read_instance(Path('definitions') / 'variable')
 
     for row in instance:
-        sectors = row.get('sectors') + ['other']
+        sectors = row.get('sectors', []) + ['other']
         if sectors:
             for key, value in row.items():
                 if isinstance(value, dict):
@@ -92,8 +92,10 @@ def test_variable_groups():
 
     for variable in variables:
         group = variable.get('group')
-        assert group, variable.get('specifier')
-        assert group in group_specifiers
+        products = variable.get('products')
+        if products is None or 'OutputData' in products:
+            assert group, variable.get('specifier')
+            assert group in group_specifiers
 
 
 def test_nested_simulation_rounds():
