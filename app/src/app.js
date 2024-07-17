@@ -65,6 +65,17 @@ const toc = document.getElementsByClassName('toc')[0]
 const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
 
+// add table classes
+const tables = document.getElementsByTagName('table')
+for (let table of tables) {
+  table.classList.add('table')
+  table.classList.add('table-bordered')
+  table.classList.add('table-fixed')
+
+  const thead = document.getElementsByTagName('thead')[0]
+  thead.classList.add('thead-dark')
+}
+
 document.querySelectorAll('[data-component="title"]').forEach(el => {
   createRoot(el).render(
     <Provider store={store}>
