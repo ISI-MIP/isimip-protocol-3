@@ -93,7 +93,7 @@
 <li><a href="#42-output-variables">4.2 Output variables</a></li>
 <li><a href="#43-sector-specific-identifiers">4.3 Sector specific identifiers</a></li>
 <li><a href="#44-sector-specific-notes">4.4 Sector specific notes</a></li>
-<li><a href="#45-additional-notes">4.5 Additional notes</a></li>
+<li><a href="#45-bias-adjustment">4.5 Bias adjustment</a></li>
 </ul>
 </li>
 <li><a href="#5-reporting-model-results">5. Reporting model results</a></li>
@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 10 July 2024</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/0826b77a9e463658bd0c2d8e5e44240527265229">0826b77a9e463658bd0c2d8e5e44240527265229</a></p>
+<p>Last updated: 17 July 2024</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/88da4de28b3d00e03d4441e408c2ba0df582576a">88da4de28b3d00e03d4441e408c2ba0df582576a</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -360,14 +360,10 @@ Work is underway to estimate labour productivity response-functions using empiri
 <div data-component="hide" data-sector="agriculture,biomes,fire,peat,permafrost,health,water_quality">
 <p>No sector specific notes are available for this selection of simulation round and sectors.</p>
 </div>
-<h3 id="45-additional-notes">4.5 Additional notes</h3>
 <div data-component="show" data-simulation-round="ISIMIP3b">
-<h4 id="bias-adjustment">Bias adjustment</h4>
+<h3 id="45-bias-adjustment">4.5 Bias adjustment</h3>
 <p>Depending on the used climate input data, the corresponding bias adjustment needs to be part of the output filename.</p>
 <div data-caption="Table 4.11: Bias adjustment specifiers." data-component="table" data-identifier="bias_adjustment"></div>
-</div>
-<div data-component="hide" data-simulation-round="ISIMIP3b">
-<p>No additional notes are available for this selection of simulation round and sectors.</p>
 </div>
 <h2 id="5-reporting-model-results">5. Reporting model results</h2>
 <p>The specification on how to submit the data, as well as further information and instructions are given on the ISIMIP website at:</p>
@@ -3909,6 +3905,17 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "valid_max": 1000.0,
       "valid_min": 0.0
+    },
+    {
+      "specifier": "yieldchange",
+      "long_name": "Crop Yield Changes",
+      "extension": "<crop>",
+      "units": "kg ha-1",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "products": [
+        "DerivedOutputData"
+      ]
     },
     {
       "specifier": "pirrww",
@@ -15708,17 +15715,51 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "n-fetilizer",
-      "title": "Fertilizer inputs",
+      "specifier": "n-fertilizer",
+      "title": "Synthetic N-fertilizer inputs",
       "required": [],
       "harmonized": [
+        "biomes",
+        "fire",
+        "forestry",
+        "peat",
+        "permafrost",
         "water_global"
       ],
       "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "peat",
+        "permafrost",
         "water_global"
       ],
       "datasets": [
         "N-fertilizer inputs"
+      ]
+    },
+    {
+      "specifier": "animal-menure",
+      "title": "Animal manure N",
+      "required": [],
+      "harmonized": [
+        "biomes",
+        "fire",
+        "forestry",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
+      "sectors": [
+        "biomes",
+        "fire",
+        "forestry",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
+      "datasets": [
+        "Animal manure N"
       ]
     },
     {
@@ -19343,7 +19384,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "InputData",
         "OutputData",
         "SecondaryInputData",
-        "SecondaryOutputData"
+        "SecondaryOutputData",
+        "DerivedOutputData"
       ],
       "ensemble_member": "r1i1p1f1",
       "original_resolution": {
@@ -19364,7 +19406,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "InputData",
         "OutputData",
         "SecondaryInputData",
-        "SecondaryOutputData"
+        "SecondaryOutputData",
+        "DerivedOutputData"
       ],
       "ensemble_member": "r1i1p1f2",
       "original_resolution": {
@@ -19385,7 +19428,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "InputData",
         "OutputData",
         "SecondaryInputData",
-        "SecondaryOutputData"
+        "SecondaryOutputData",
+        "DerivedOutputData"
       ],
       "ensemble_member": "r1i1p1f1",
       "original_resolution": {
@@ -19406,7 +19450,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "InputData",
         "OutputData",
         "SecondaryInputData",
-        "SecondaryOutputData"
+        "SecondaryOutputData",
+        "DerivedOutputData"
       ],
       "ensemble_member": "r1i1p1f1",
       "original_resolution": {
@@ -19427,7 +19472,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "InputData",
         "OutputData",
         "SecondaryInputData",
-        "SecondaryOutputData"
+        "SecondaryOutputData",
+        "DerivedOutputData"
       ],
       "sectors": [
         "agriculture",
