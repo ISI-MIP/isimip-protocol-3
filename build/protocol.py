@@ -70,6 +70,7 @@ def main():
     html = markdown(md, extensions=[
         'fenced_code',
         'attr_list',
+        'tables',
         TocExtension(toc_depth='2-3', title='Table of Contents'),
         CustomBlocksExtension(generators={
             'config': config_generator,
