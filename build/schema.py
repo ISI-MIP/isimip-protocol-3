@@ -44,6 +44,9 @@ def main():
                         if product.endswith('InputData'):
                             for row in filter_rows(rows, simulation_round, product, category=category):
                                 enum.append(row.get('specifier_file') or row.get('specifier'))
+                        elif product == 'DerivedOutputData':
+                            for row in filter_rows(rows, simulation_round, product):
+                                enum.append(row.get('specifier_file') or row.get('specifier'))
                         else:
                             for row in filter_rows(rows, simulation_round, product, sector=sector):
                                 enum.append(row.get('specifier_file') or row.get('specifier'))
