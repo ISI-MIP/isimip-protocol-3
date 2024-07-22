@@ -55,7 +55,7 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
     return values
 
 
-def read_definitions_file(file_path):
+def read_yaml_file(file_path):
     try:
         return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
     except AttributeError:
@@ -68,9 +68,9 @@ def read_definitions():
         if file_path.is_dir():
             definitions[file_path.stem] = []
             for group_path in file_path.iterdir():
-                definitions[file_path.stem] += read_definitions_file(group_path)
+                definitions[file_path.stem] += read_yaml_file(group_path)
         elif file_path.suffix == '.yaml':
-            definitions[file_path.stem] = read_definitions_file(file_path)
+            definitions[file_path.stem] = read_yaml_file(file_path)
 
     return definitions
 
