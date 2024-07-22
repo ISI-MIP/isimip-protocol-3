@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.json",
-  "commit": "cb5d83c6f8e25c8998aef7dba5d0fa433e8fe465",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.yaml",
+  "commit": "b399270131443be49e59a15c82dad93a80c62127",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,43 +26,43 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
             "gfdl-esm4",
-            "ukesm1-0-ll"
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "ssp370",
-            "picontrol",
             "ssp585",
+            "historical",
+            "picontrol",
+            "ssp370",
             "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "ssp370soc-adapt",
             "ssp126soc-noadapt",
             "2015soc-from-histsoc",
-            "ssp585soc-noadapt",
-            "ssp585soc-adapt",
             "1850soc",
-            "ssp370soc-noadapt",
+            "ssp126soc-adapt",
+            "ssp585soc-adapt",
             "histsoc",
-            "ssp126soc-adapt"
+            "ssp370soc-noadapt",
+            "ssp370soc-adapt",
+            "ssp585soc-noadapt",
+            "2015soc"
           ]
         },
         "sens_scenario": {
@@ -75,8 +75,8 @@
         "variable": {
           "type": "string",
           "enum": [
-            "anheat",
             "btm",
+            "anheat",
             "ancold",
             "pop"
           ]
@@ -84,8 +84,8 @@
         "r": {
           "type": "string",
           "enum": [
-            "upper",
             "lower",
+            "upper",
             "central"
           ]
         },
@@ -99,12 +99,12 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
-            "3hr",
-            "daily",
             "monthly",
+            "fixed",
+            "annual",
             "hourly",
-            "annual"
+            "3hr",
+            "daily"
           ]
         },
         "start_year": {

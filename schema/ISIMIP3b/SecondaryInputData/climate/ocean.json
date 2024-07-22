@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryInputData/climate/ocean.yaml",
   "commit": "b399270131443be49e59a15c82dad93a80c62127",
   "type": "object",
   "required": [
@@ -8,50 +8,13 @@
   ],
   "properties": {
     "specifiers": {
+      "type": "object",
       "required": [
-        "climate_forcing",
-        "ensemble_member",
-        "climate_scenario",
         "climate_variable",
-        "region",
+        "climate_scenario",
         "time_step"
       ],
       "properties": {
-        "climate_forcing": {
-          "type": "string",
-          "enum": [
-            "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
-            "gfdl-esm4",
-            "mri-esm2-0"
-          ]
-        },
-        "ensemble_member": {
-          "type": "string",
-          "enum": [
-            "r1i1p1f2",
-            "r4i1p1f1",
-            "r1i1p1f1"
-          ]
-        },
-        "bias_adjustment": {
-          "type": "string",
-          "enum": [
-            "w5e5",
-            "nobasd"
-          ]
-        },
-        "climate_scenario": {
-          "type": "string",
-          "enum": [
-            "ssp585",
-            "historical",
-            "picontrol",
-            "ssp370",
-            "ssp126"
-          ]
-        },
         "climate_variable": {
           "type": "string",
           "enum": [
@@ -59,13 +22,16 @@
             "o2",
             "mlotstmax",
             "hurs",
+            "ts",
             "vo",
+            "hur",
             "expc",
             "phydiaz",
             "co2",
             "phydiat",
             "rsds",
             "phymisc",
+            "ta",
             "ps",
             "thkcello",
             "rlds",
@@ -79,8 +45,11 @@
             "tos",
             "tasmax",
             "intppmisc",
+            "hus",
             "chl",
+            "ua",
             "tasmin",
+            "psl",
             "pr",
             "intpppico",
             "intpoc",
@@ -92,19 +61,29 @@
             "huss",
             "phyc",
             "lightning",
+            "prw",
             "intppdiat",
             "siconc",
             "so",
+            "va",
             "prsn",
             "thetao",
             "ph"
           ]
         },
-        "region": {
+        "climate_scenario": {
           "type": "string",
           "enum": [
-            "along-track",
-            "global"
+            "ssp585",
+            "historical",
+            "ssp119",
+            "ssp460",
+            "ssp534-over",
+            "hist-nat",
+            "picontrol",
+            "ssp370",
+            "ssp245",
+            "ssp126"
           ]
         },
         "time_step": {
