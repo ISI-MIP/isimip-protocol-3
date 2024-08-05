@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_global.yaml",
-  "commit": "1def10e03df3e42a7836109edac0d9e75e08c27d",
+  "commit": "e26c21e31a613364b0d1f7dfe6870acbb1c68fc7",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,26 +26,26 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
             "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
-            "ipsl-cm6a-lr"
+            "gfdl-esm4",
+            "ipsl-cm6a-lr",
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
             "ssp585",
-            "historical",
-            "picontrol",
             "ssp126",
+            "picontrol",
+            "historical",
             "ssp370"
           ]
         },
@@ -53,51 +53,52 @@
           "type": "string",
           "enum": [
             "ssp126soc-adapt",
-            "ssp585soc-noadapt",
             "2015soc-from-histsoc",
-            "ssp126soc-noadapt",
-            "ssp370soc-adapt",
-            "ssp585soc-adapt",
-            "nat",
             "histsoc",
-            "ssp370soc-noadapt"
+            "ssp370soc-adapt",
+            "ssp585soc-noadapt",
+            "ssp370soc-noadapt",
+            "ssp126soc-noadapt",
+            "nat",
+            "ssp585soc-adapt"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "cp30to90cm",
-            "bp30to90cm",
-            "tcb",
-            "cd30cm",
-            "cd90cm",
-            "bp30cm",
-            "cd30to90cm",
-            "bp90cm",
-            "cp30cm",
             "bd30cm",
-            "tpc",
+            "bp30cm",
             "tpb",
+            "cd30cm",
+            "bp30to90cm",
             "tdb",
+            "cd30to90cm",
+            "bd90cm",
             "tdc",
-            "tclog10",
-            "tc",
-            "cp90cm",
-            "tcblog10",
             "bd30to90cm",
-            "bd90cm"
+            "cd90cm",
+            "cp30cm",
+            "cp90cm",
+            "tc",
+            "cp30to90cm",
+            "tpc",
+            "tclog10",
+            "bp90cm",
+            "tcblog10",
+            "tcb"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
+            "europe",
             "global",
             "along-track"
           ]
@@ -105,11 +106,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "hourly",
-            "3hr",
-            "annual",
             "fixed",
+            "annual",
+            "hourly",
             "monthly",
+            "3hr",
             "daily"
           ]
         },

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/health.yaml",
-  "commit": "1def10e03df3e42a7836109edac0d9e75e08c27d",
+  "commit": "e26c21e31a613364b0d1f7dfe6870acbb1c68fc7",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,17 +25,17 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "gswp3-w5e5",
             "20crv3-w5e5",
-            "20crv3-era5",
             "20crv3",
-            "gswp3-w5e5"
+            "20crv3-era5"
           ]
         },
         "detrending": {
           "type": "string",
           "enum": [
-            "detrended",
-            "observed"
+            "observed",
+            "detrended"
           ]
         },
         "climate_scenario": {
@@ -48,8 +48,8 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc"
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -62,23 +62,24 @@
         "variable": {
           "type": "string",
           "enum": [
+            "pop",
             "anheat",
-            "ancold",
             "btm",
-            "pop"
+            "ancold"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "lower",
             "central",
-            "upper"
+            "upper",
+            "lower"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
+            "europe",
             "global",
             "along-track"
           ]
@@ -86,11 +87,11 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "hourly",
-            "3hr",
-            "annual",
             "fixed",
+            "annual",
+            "hourly",
             "monthly",
+            "3hr",
             "daily"
           ]
         },
