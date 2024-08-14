@@ -1,5 +1,5 @@
 {
-  "commit": "28cbdb3f120a4ced0801318cb6f20c70f3965198",
+  "commit": "ed72e3799e1f34ea63235c974f709da48032218e",
   "terms": {
     "group3_ranking": {
       "gfdl-esm4-ssp585-image-noadapt": {
@@ -9825,7 +9825,7 @@
         "units": "K",
         "frequency": "daily",
         "resolution": "Representative lake associated with grid cell",
-        "comment": "Depth resolution: Full Profile. Simulated water temperature. Layer averages and full profiles.",
+        "comment": "Depth resolution: Full profile of simulated water temperature layer averages.",
         "sectors": [
           "lakes_global",
           "lakes_local"
@@ -9866,6 +9866,66 @@
         ],
         "valid_max": 313.0,
         "valid_min": 273.0
+      },
+      "sedtemp": {
+        "long_name": "Temperature of Sediments",
+        "group": "hydrothermal-variables",
+        "units": "K",
+        "frequency": "daily and monthly",
+        "resolution": "Representative lake associated with grid cell",
+        "comment": "Depth resolution below lake bottom: Full profile if possible, 2d otherwise. If the model permits, the temperatures for the littoral and pelagic zones should be provided. See below.",
+        "sectors": [
+          "lakes_global",
+          "lakes_local"
+        ],
+        "dimensions": [
+          "time",
+          "depthsed",
+          "lat",
+          "lon"
+        ],
+        "valid_max": 313.0,
+        "valid_min": 203.0
+      },
+      "sedlittemp": {
+        "long_name": "Temperature of Littoral Zone Sediments",
+        "group": "hydrothermal-variables",
+        "units": "K",
+        "frequency": "daily and monthly",
+        "resolution": "Representative lake associated with grid cell",
+        "comment": "Depth resolution below lake bottom: Full profile if possible, 2d otherwise.",
+        "sectors": [
+          "lakes_global",
+          "lakes_local"
+        ],
+        "dimensions": [
+          "time",
+          "depthsed",
+          "lat",
+          "lon"
+        ],
+        "valid_max": 313.0,
+        "valid_min": 203.0
+      },
+      "sedpeltemp": {
+        "long_name": "Temperature of Pelagic Zone Sediments",
+        "group": "hydrothermal-variables",
+        "units": "K",
+        "frequency": "daily and monthly",
+        "resolution": "Representative lake associated with grid cell",
+        "comment": "Depth resolution below lake bottom: Full profile if possible, 2d otherwise.",
+        "sectors": [
+          "lakes_global",
+          "lakes_local"
+        ],
+        "dimensions": [
+          "time",
+          "depthsed",
+          "lat",
+          "lon"
+        ],
+        "valid_max": 313.0,
+        "valid_min": 203.0
       },
       "ice": {
         "long_name": "Lake Ice Cover",
@@ -20967,6 +21027,13 @@
       "depth": {
         "long_name": "Depth of Vertical Layer Center Below Surface",
         "standard_name": "depth_below_surface",
+        "units": "m",
+        "axis": "Z",
+        "positive": "down"
+      },
+      "depthsed": {
+        "long_name": "Depth of Vertical Layer Center Below water-sediment interface",
+        "standard_name": "depth_below_bottom",
         "units": "m",
         "axis": "Z",
         "positive": "down"
