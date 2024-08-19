@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/agriculture.yaml",
-  "commit": "ed72e3799e1f34ea63235c974f709da48032218e",
+  "commit": "a036dbee0e971e2369c58c651e0406071a064dd7",
   "type": "object",
   "required": [
     "specifiers"
@@ -28,11 +28,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
-            "mri-esm2-0",
+            "gfdl-esm4",
             "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "ukesm1-0-ll",
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
@@ -45,114 +45,114 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp126",
             "picontrol",
-            "ssp370",
-            "ssp585",
             "historical",
-            "ssp126"
+            "ssp585",
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
+            "1850soc",
+            "ssp126soc-noadapt",
+            "ssp370soc-adapt",
             "ssp126soc-adapt",
             "histsoc",
-            "ssp126soc-noadapt",
-            "ssp370soc-noadapt",
-            "ssp585soc-adapt",
-            "ssp370soc-adapt",
             "2015soc-from-histsoc",
             "ssp585soc-noadapt",
-            "1850soc"
+            "ssp585soc-adapt",
+            "ssp370soc-noadapt",
+            "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
             "default",
-            "2015co2",
             "2015fert",
-            "2015gs"
+            "2015gs",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "nincum",
-            "plantday",
-            "biom",
-            "matyday",
-            "nleachcum",
-            "harvyear",
+            "nupcum",
             "soilmoist",
-            "yield",
-            "nlosscum",
-            "evapcum",
-            "pirnreqcum",
-            "anthday",
-            "plantyear",
             "initrcum",
-            "nupcum"
+            "harvyear",
+            "biom",
+            "nleachcum",
+            "plantyear",
+            "nincum",
+            "nlosscum",
+            "plantday",
+            "matyday",
+            "evapcum",
+            "anthday",
+            "yield",
+            "pirnreqcum"
           ]
         },
         "crop": {
           "type": "string",
           "enum": [
-            "pea",
-            "mil",
-            "rye",
-            "sgc",
-            "nut",
-            "sor",
-            "soy",
-            "bar",
-            "cot",
-            "whe",
-            "mis",
-            "bea",
-            "ric",
-            "sgb",
-            "pop",
-            "mai",
-            "ri1",
-            "ri2",
-            "swh",
-            "rap",
-            "pot",
-            "euc",
-            "wwh",
-            "cas",
             "sun",
-            "mgr"
+            "sor",
+            "rap",
+            "cot",
+            "cas",
+            "mai",
+            "ri2",
+            "bea",
+            "pea",
+            "sgc",
+            "swh",
+            "wwh",
+            "euc",
+            "soy",
+            "pot",
+            "nut",
+            "mis",
+            "mil",
+            "bar",
+            "sgb",
+            "whe",
+            "ric",
+            "ri1",
+            "mgr",
+            "rye",
+            "pop"
           ]
         },
         "irrigation": {
           "type": "string",
           "enum": [
-            "noirr",
-            "firr"
+            "firr",
+            "noirr"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
             "global",
-            "europe",
-            "along-track"
+            "along-track",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "annual-gs",
-            "daily",
             "hourly",
-            "monthly",
             "fixed",
+            "annual",
+            "annual-gs",
             "3hr",
             "monthly-gs",
-            "annual"
+            "monthly",
+            "daily"
           ]
         },
         "start_year": {

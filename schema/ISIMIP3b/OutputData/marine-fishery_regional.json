@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_regional.yaml",
-  "commit": "ed72e3799e1f34ea63235c974f709da48032218e",
+  "commit": "a036dbee0e971e2369c58c651e0406071a064dd7",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ukesm1-0-ll",
-            "mpi-esm1-2-hr",
             "gfdl-esm4",
-            "ipsl-cm6a-lr"
+            "ipsl-cm6a-lr",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -42,25 +42,25 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp126",
             "picontrol",
-            "ssp370",
-            "ssp585",
             "historical",
-            "ssp126"
+            "ssp585",
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp126soc-adapt",
-            "nat",
-            "histsoc",
             "ssp126soc-noadapt",
-            "ssp370soc-noadapt",
-            "ssp585soc-adapt",
             "ssp370soc-adapt",
+            "histsoc",
             "2015soc-from-histsoc",
-            "ssp585soc-noadapt"
+            "ssp585soc-noadapt",
+            "ssp585soc-adapt",
+            "ssp370soc-noadapt",
+            "nat",
+            "ssp126soc-adapt"
           ]
         },
         "sens_scenario": {
@@ -73,71 +73,71 @@
         "variable": {
           "type": "string",
           "enum": [
-            "tdc",
-            "bp90cm",
-            "tdb",
-            "cp30to90cm",
-            "tclog10",
-            "bp30to90cm",
-            "bd30to90cm",
-            "bd30cm",
-            "tpb",
-            "tpc",
-            "cd30to90cm",
-            "tcblog10",
-            "cd30cm",
-            "cp90cm",
-            "cd90cm",
-            "cp30cm",
-            "tcb",
             "bd90cm",
+            "bp30cm",
+            "cp90cm",
+            "tpb",
             "tc",
-            "bp30cm"
+            "cp30cm",
+            "bp30to90cm",
+            "tclog10",
+            "bd30cm",
+            "tdc",
+            "cp30to90cm",
+            "cd30to90cm",
+            "cd90cm",
+            "tdb",
+            "tcblog10",
+            "bp90cm",
+            "cd30cm",
+            "bd30to90cm",
+            "tpc",
+            "tcb"
           ]
         },
         "ocean_region": {
           "type": "string",
           "enum": [
-            "east-bearing-sea-shelf",
-            "gulf-alaska",
+            "se-australia",
+            "prydz-bay",
             "adriatic-sea",
-            "taiwancentralsouthpacific",
-            "chatham-rise-ll-nz",
-            "baltic-sea",
-            "east-bering-sea",
-            "hawaiian-longline",
-            "east-bass-strait",
-            "benguela",
-            "northernhumboldt",
+            "med-glob",
+            "eastern-scotian-shelf",
+            "north-sea",
             "seaustralia-mizer",
             "mediterraneansea",
-            "se-australia",
-            "hawaii",
-            "nw-med-sea",
-            "seaustralia-atlantis",
-            "med-glob",
-            "northsea-ibts",
             "brasil-ne",
-            "eastern-scotian-shelf",
-            "humboldt-n",
-            "cook-strait",
-            "prydz-bay",
+            "east-bearing-sea-shelf",
+            "east-bering-sea",
             "northsea-ewe",
+            "seaustralia-atlantis",
             "kerguelen",
-            "north-sea",
+            "gulf-alaska",
             "tasman-golden-bays-nz",
-            "himi"
+            "northernhumboldt",
+            "himi",
+            "cook-strait",
+            "benguela",
+            "baltic-sea",
+            "northsea-ibts",
+            "chatham-rise-ll-nz",
+            "taiwancentralsouthpacific",
+            "nw-med-sea",
+            "hawaii",
+            "east-bass-strait",
+            "hawaiian-longline",
+            "humboldt-n"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
             "hourly",
-            "monthly",
             "fixed",
+            "annual",
             "3hr",
-            "annual"
+            "monthly",
+            "daily"
           ]
         },
         "start_year": {
