@@ -37,7 +37,7 @@ const ForcingTable = function({ config, caption, rows, groups, actions }) {
                 <tr key="-1">
                   <td colSpan="6" className="table-secondary">
                     <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
-                    <strong>{group.title}</strong>
+                    <strong>{group.title[config.simulation_round] || group.title}</strong>
                   </td>
                 </tr>
               ]
