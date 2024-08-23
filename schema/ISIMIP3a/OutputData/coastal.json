@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/coastal.yaml",
-  "commit": "fff19f17170a724229b26a892476b8496f0504c5",
+  "commit": "7d58f83083e559d99a862673f2d16dbb9cf726b0",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,10 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3",
-            "20crv3-w5e5",
+            "20crv3-era5",
             "gswp3-w5e5",
-            "20crv3-era5"
+            "20crv3-w5e5",
+            "20crv3"
           ]
         },
         "detrending": {
@@ -48,8 +48,8 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "histsoc"
+            "histsoc",
+            "2015soc"
           ]
         },
         "sens_scenario": {
@@ -66,17 +66,17 @@
         "region": {
           "type": "string",
           "enum": [
+            "along-track",
             "global",
-            "europe",
-            "along-track"
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "3hr",
             "annual",
             "hourly",
-            "3hr",
             "monthly",
             "daily",
             "fixed"

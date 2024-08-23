@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/labour.yaml",
-  "commit": "fff19f17170a724229b26a892476b8496f0504c5",
+  "commit": "7d58f83083e559d99a862673f2d16dbb9cf726b0",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "ukesm1-0-ll",
+            "gfdl-esm4",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -43,26 +43,26 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "ssp585",
-            "picontrol",
+            "ssp126",
             "ssp370",
-            "ssp126"
+            "picontrol",
+            "historical",
+            "ssp585"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp585soc-noadapt",
             "histsoc",
-            "ssp370soc-adapt",
-            "ssp126soc-noadapt",
+            "2015soc",
+            "ssp585soc-noadapt",
             "ssp370soc-noadapt",
-            "ssp585soc-adapt",
-            "2015soc-from-histsoc",
-            "ssp126soc-adapt",
+            "ssp126soc-noadapt",
             "1850soc",
-            "2015soc"
+            "2015soc-from-histsoc",
+            "ssp370soc-adapt",
+            "ssp126soc-adapt",
+            "ssp585soc-adapt"
           ]
         },
         "sens_scenario": {
@@ -83,17 +83,17 @@
         "region": {
           "type": "string",
           "enum": [
+            "along-track",
             "global",
-            "europe",
-            "along-track"
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "3hr",
             "annual",
             "hourly",
-            "3hr",
             "monthly",
             "daily",
             "fixed"
