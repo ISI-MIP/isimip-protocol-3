@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/agriculture.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_regional.yaml",
   "commit": "086f5d131d3b97d6288c6841d78a364f9788ff0b",
   "type": "object",
   "required": [
@@ -16,9 +16,7 @@
         "soc_scenario",
         "sens_scenario",
         "variable",
-        "crop",
-        "irrigation",
-        "region",
+        "river",
         "time_step"
       ],
       "properties": {
@@ -28,8 +26,17 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "ec-earth3",
+            "taiesm1",
+            "miroc6",
             "mpi-esm1-2-hr",
+            "cnrm-esm2-1",
+            "canesm5",
+            "iitm-esm",
+            "kace-1-0-g",
             "mri-esm2-0",
+            "cesm2-waccm",
+            "cnrm-cm6-1",
             "ukesm1-0-ll",
             "ipsl-cm6a-lr",
             "gfdl-esm4"
@@ -45,11 +52,16 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp534-over",
+            "hist-nat",
             "ssp370",
+            "ssp245",
+            "ssp460",
             "ssp126",
             "picontrol",
             "historical",
-            "ssp585"
+            "ssp585",
+            "ssp119"
           ]
         },
         "soc_scenario": {
@@ -70,76 +82,78 @@
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015fert",
             "default",
-            "2015co2",
-            "2015gs"
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "plantday",
-            "anthday",
-            "nlosscum",
-            "nincum",
-            "nleachcum",
-            "plantyear",
-            "biom",
-            "harvyear",
-            "nupcum",
-            "matyday",
-            "pirnreqcum",
-            "yield",
+            "airrusegreen",
+            "qr",
+            "pirruse",
+            "pirrww",
+            "pirrusegreen",
+            "dis",
+            "swe",
+            "airruse",
+            "reservoirstor",
+            "potevap",
+            "airrww",
+            "qtot",
+            "arainfusegreen",
             "soilmoist",
-            "initrcum",
-            "evapcum"
+            "evap",
+            "rootmoist",
+            "qs"
           ]
         },
-        "crop": {
+        "river": {
           "type": "string",
           "enum": [
-            "mil",
-            "mai",
-            "soy",
-            "ri2",
-            "rye",
-            "nut",
-            "euc",
-            "ric",
-            "cot",
-            "mis",
-            "mgr",
-            "sun",
-            "ri1",
-            "sgb",
-            "pop",
-            "cas",
-            "pot",
-            "swh",
-            "pea",
-            "bar",
-            "sor",
-            "rap",
-            "whe",
-            "bea",
-            "wwh",
-            "sgc"
+            "mississippi",
+            "yangtze",
+            "tagus",
+            "darling",
+            "mackenzie",
+            "yellow",
+            "danube",
+            "lena",
+            "ganges",
+            "godavari",
+            "blue-nile",
+            "niger",
+            "rhine",
+            "pajeu",
+            "amazon",
+            "indus"
           ]
         },
-        "irrigation": {
+        "river_basin": {
           "type": "string",
           "enum": [
-            "firr",
-            "noirr"
-          ]
-        },
-        "region": {
-          "type": "string",
-          "enum": [
-            "along-track",
-            "europe",
-            "global"
+            "alton",
+            "tossaye",
+            "cuntan",
+            "wien-nussdorf",
+            "lobith",
+            "tangnaihai",
+            "krestovski",
+            "tekra",
+            "trillo",
+            "stolb",
+            "khartoum",
+            "dire",
+            "floresta",
+            "koulikoro",
+            "louth",
+            "lokoja",
+            "arctic-red-river",
+            "farakka",
+            "sao-paulo-de-olivenca",
+            "el-diem",
+            "almourol",
+            "tarbela"
           ]
         },
         "time_step": {
@@ -150,8 +164,6 @@
             "hourly",
             "annual",
             "monthly",
-            "monthly-gs",
-            "annual-gs",
             "3hr"
           ]
         },

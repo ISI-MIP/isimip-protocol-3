@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/energy.yaml",
-  "commit": "7d58f83083e559d99a862673f2d16dbb9cf726b0",
+  "commit": "086f5d131d3b97d6288c6841d78a364f9788ff0b",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
-            "ukesm1-0-ll",
-            "gfdl-esm4",
+            "mpi-esm1-2-hr",
             "mri-esm2-0",
-            "mpi-esm1-2-hr"
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -43,8 +43,8 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
             "ssp370",
+            "ssp126",
             "picontrol",
             "historical",
             "ssp585"
@@ -53,15 +53,15 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
             "2015soc",
             "ssp585soc-noadapt",
-            "ssp370soc-noadapt",
-            "ssp126soc-noadapt",
-            "2015soc-from-histsoc",
             "ssp370soc-adapt",
             "ssp126soc-adapt",
-            "ssp585soc-adapt"
+            "ssp585soc-adapt",
+            "2015soc-from-histsoc",
+            "ssp370soc-noadapt",
+            "histsoc",
+            "ssp126soc-noadapt"
           ]
         },
         "sens_scenario": {
@@ -79,19 +79,19 @@
           "type": "string",
           "enum": [
             "along-track",
-            "global",
-            "europe"
+            "europe",
+            "global"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "annual",
-            "hourly",
-            "monthly",
+            "fixed",
             "daily",
-            "fixed"
+            "hourly",
+            "annual",
+            "monthly",
+            "3hr"
           ]
         },
         "start_year": {

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/water_regional.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/SecondaryOutputData/water_regional.yaml",
   "commit": "086f5d131d3b97d6288c6841d78a364f9788ff0b",
   "type": "object",
   "required": [
@@ -11,7 +11,6 @@
       "required": [
         "model",
         "climate_forcing",
-        "bias_adjustment",
         "climate_scenario",
         "soc_scenario",
         "sens_scenario",
@@ -26,50 +25,41 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "mri-esm2-0",
-            "ukesm1-0-ll",
-            "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "localclim"
           ]
         },
-        "bias_adjustment": {
+        "detrending": {
           "type": "string",
           "enum": [
-            "w5e5",
-            "nobasd"
+            "observed",
+            "detrended"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
-            "ssp126",
-            "picontrol",
-            "historical",
-            "ssp585"
+            "obsclim",
+            "counterclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
             "2015soc",
-            "ssp585soc-noadapt",
-            "ssp370soc-adapt",
-            "ssp126soc-adapt",
-            "1850soc",
-            "2015soc-from-histsoc",
-            "ssp370soc-noadapt",
-            "ssp585soc-adapt",
-            "histsoc",
-            "ssp126soc-noadapt"
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
+            "1901irr",
+            "nowatermgt",
+            "1901co2",
+            "90arcsec",
+            "300arcsec",
+            "1800arcsec",
             "default",
-            "2015co2"
+            "30arcsec"
           ]
         },
         "variable": {

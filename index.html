@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 23 August 2024</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/7d58f83083e559d99a862673f2d16dbb9cf726b0">7d58f83083e559d99a862673f2d16dbb9cf726b0</a></p>
+<p>Last updated: 27 August 2024</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/086f5d131d3b97d6288c6841d78a364f9788ff0b">086f5d131d3b97d6288c6841d78a364f9788ff0b</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -4229,6 +4229,19 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "60arcmin": 360
         }
       }
+    },
+    {
+      "specifier": "localclim",
+      "title": "Local observed climate",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "products": [
+        "SecondaryOutputData"
+      ],
+      "sectors": [
+        "water_regional"
+      ]
     }
   ],
   "sector": [
@@ -13672,7 +13685,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "20crv3": 1901,
           "20crv3-w5e5": 1901,
           "20crv3-era5": 1901,
-          "gfdl-mom6-cobalt2": 1961
+          "gfdl-mom6-cobalt2": 1961,
+          "localclim": 1961
         },
         "ISIMIP3b": 1850
       }
@@ -13685,7 +13699,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
           "20crv3": 2015,
           "20crv3-w5e5": 2019,
           "20crv3-era5": 2021,
-          "gfdl-mom6-cobalt2": 2010
+          "gfdl-mom6-cobalt2": 2010,
+          "localclim": 2019
         },
         "ISIMIP3b": 2014
       }
@@ -22893,7 +22908,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "peat": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pt>(peat|drainpeat|restorepeat|minl)))?(-(?P<pool>(slow|fast|passive)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "permafrost": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pool>(slow|fast|passive)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "water_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
-    "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
+    "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<river>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "water_quality": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?"
   },
   "ISIMIP3b": {
@@ -22915,7 +22930,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "peat": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pt>(peat|drainpeat|restorepeat|minl)))?(-(?P<pool>(slow|fast|passive)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "permafrost": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<pool>(slow|fast|passive)))?(-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "water_global": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
-    "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
+    "water_regional": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<river>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?",
     "water_quality": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<river_basin>[a-z-]+)_(?P<time_step>[a-z0-9-]+)(_(?P<start_year>\\d{4})_(?P<end_year>\\d{4}))?"
   }
 },
