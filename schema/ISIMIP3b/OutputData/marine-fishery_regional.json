@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/marine-fishery_regional.yaml",
-  "commit": "024f191d355312380935f5f6bf7d33d94bae7e79",
+  "commit": "c31f5d019f6dd476c6b30ce779f3881710b8b5cd",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,10 +26,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "ipsl-cm6a-lr",
+            "ukesm1-0-ll",
             "gfdl-esm4",
             "mpi-esm1-2-hr",
-            "ukesm1-0-ll"
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -43,24 +43,24 @@
           "type": "string",
           "enum": [
             "picontrol",
+            "historical",
             "ssp585",
             "ssp370",
-            "historical",
             "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "ssp370soc-noadapt",
-            "ssp126soc-adapt",
+            "2015soc-from-histsoc",
             "ssp585soc-noadapt",
-            "ssp126soc-noadapt",
+            "ssp585soc-adapt",
             "nat",
             "ssp370soc-adapt",
-            "2015soc-from-histsoc",
             "histsoc",
-            "ssp585soc-adapt"
+            "ssp370soc-noadapt",
+            "ssp126soc-adapt",
+            "ssp126soc-noadapt"
           ]
         },
         "sens_scenario": {
@@ -73,71 +73,71 @@
         "variable": {
           "type": "string",
           "enum": [
-            "tdb",
-            "cp30cm",
-            "cd30to90cm",
-            "bd30cm",
-            "cp30to90cm",
-            "bp30to90cm",
-            "bd90cm",
             "tcb",
-            "bd30to90cm",
+            "cd90cm",
             "tdc",
-            "tclog10",
-            "tpc",
+            "tdb",
+            "bd30to90cm",
             "bp90cm",
             "tc",
-            "cd90cm",
-            "cp90cm",
-            "bp30cm",
+            "tcblog10",
             "cd30cm",
+            "cp30to90cm",
+            "cd30to90cm",
+            "bp30to90cm",
+            "bd30cm",
+            "tclog10",
+            "tpc",
+            "bp30cm",
             "tpb",
-            "tcblog10"
+            "cp90cm",
+            "bd90cm",
+            "cp30cm"
           ]
         },
         "ocean_region": {
           "type": "string",
           "enum": [
-            "mediterraneansea",
-            "gulf-alaska",
-            "humboldt-n",
             "tasman-golden-bays-nz",
-            "hawaii",
-            "cook-strait",
-            "east-bearing-sea-shelf",
-            "med-glob",
-            "northernhumboldt",
-            "baltic-sea",
-            "northsea-ibts",
+            "seaustralia-atlantis",
+            "gulf-alaska",
             "benguela",
-            "prydz-bay",
-            "nw-med-sea",
-            "himi",
-            "chatham-rise-ll-nz",
-            "hawaiian-longline",
+            "mediterraneansea",
             "se-australia",
-            "east-bass-strait",
-            "brasil-ne",
-            "eastern-scotian-shelf",
-            "north-sea",
-            "taiwancentralsouthpacific",
-            "kerguelen",
-            "east-bering-sea",
-            "seaustralia-mizer",
+            "hawaiian-longline",
+            "humboldt-n",
             "adriatic-sea",
+            "cook-strait",
+            "northsea-ibts",
+            "east-bearing-sea-shelf",
+            "eastern-scotian-shelf",
+            "taiwancentralsouthpacific",
+            "north-sea",
+            "himi",
+            "prydz-bay",
+            "chatham-rise-ll-nz",
+            "east-bass-strait",
+            "med-glob",
+            "baltic-sea",
+            "kerguelen",
+            "brasil-ne",
+            "nw-med-sea",
+            "hawaii",
             "northsea-ewe",
-            "seaustralia-atlantis"
+            "northernhumboldt",
+            "seaustralia-mizer",
+            "east-bering-sea"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
             "annual",
-            "monthly",
-            "daily",
             "hourly",
-            "3hr",
-            "fixed"
+            "monthly",
+            "fixed",
+            "daily",
+            "3hr"
           ]
         },
         "start_year": {
