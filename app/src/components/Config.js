@@ -11,7 +11,7 @@ const Config = ({ definitions, config, actions }) => {
 
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = 'Some data are still under construction (see Table 3.1), but models' +
-    ' not needing those data may already start.'
+    ' not needing those data may already start Group III simulations.'
   const group3_none_note = 'Since most of the data are still under construction, the sector is not ready for Group III simulations.'
 
   const group3_full_badge = (

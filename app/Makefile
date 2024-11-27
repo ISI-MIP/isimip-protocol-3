@@ -1,5 +1,5 @@
 prod:
-	npm run build:prod
+	source ${NVM_DIR}/nvm.sh; nvm use; npm run build:prod
 
 watch:
-	npm run watch
+	source ${NVM_DIR}/nvm.sh; nvm use; npm run watch
