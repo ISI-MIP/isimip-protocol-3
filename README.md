@@ -14,29 +14,29 @@ your updates will be visible at `https://protocol.isimip.org`.
 As a rule, the sector-specific text should be kept to a minimum and cover
 as much structure as possible by machine-readable code under [definitions](definitions/).
 
-The React JavaScript app is build in a separate step which are described under [app/README.md]([app/README.md]).
-
 Setup
 -----
 
 Building the protocol needs git and a recent Python version (> 3.6). The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
 
-If you work with different Python applications, we recommend to create a virtual environment for the protocol.
+A `Makefile` is provided to help with the installation process.
+
+If you work with different Python applications, we recommend to create a virtual environment for the protocol:
 
 ```bash
-# setup venv on Linux/macOS/Windows WSL
-python3 -m venv env
-source env/bin/activate
-
-# setup venv on Windows cmd
-python -m venv env
-call env\Scripts\activate.bat
+make env
 ```
 
-The Python dependencies are installed using:
+Otherwise, the Python dependencies are installed using:
 
 ```bash
 pip install -r requirements.txt
+```
+
+The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only:
+
+```
+make app
 ```
 
 
@@ -45,17 +45,10 @@ Build
 
 ```bash
 make                  # should work on Linux/macOS
-make dev              # like make, but for development of the JavaScript app
+make dev              # like make, but lining the front-end assets for development
 
 make serve            # starts a http server on port :8000 so that you can access the protocol in your browser
-
-sh tools/build.sh     # Linux/macOS/WSL
-sh tools/serve.sh     # Linux/macOS/WSL, start http server
-call tools/build.cmd  # Windows cmd
-call tools/serve.cmd  # Windows cmd, start http server
 ```
-
-On Windows, a double click on `tools/build.cmd` should also build the protocol (unless you use a virtual environment).
 
 The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
 
@@ -63,7 +56,7 @@ The output files are located in `output`. The files, e.g. `index.html` can opene
 Development server
 ------------------
 
-The command `make serve` will open a local webserver on port `:8000`. The protocol can than be accessed at http://localhost:8000 from a browser.
+The command `make serve` will open a local webserver on port `:8000`. The protocol can than be accessed at http://localhost:8080 from a browser.
 
 
 Editing
@@ -79,96 +72,37 @@ The interactive tables have the following syntax:
 
 where `number` is simply the table number to be displayed in the caption and `identifier` will not only connect the table to its definition file (see below), but will also define which JavaScript component to use. Changes of the layout of a table or the creation of new tables require work on the [app](app).
 
-The definition JSON files however can be changed without touching the JavaScript source code. Each definition is a list of JSON objects. Every object must have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_correction.json](definitions/bias_correction.json):
+The definition YAML files however can be changed without touching the JavaScript source code. Each definition is a list of objects. Every object must have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_adjustment.yaml](definitions/bias_adjustment.yaml):
 
 ```
-[
-  {
-    "specifier": "nobc",
-    "description": "Indicates that no bias correction was performed on the climate data (e.g. ocean data)."
-  },
-  {
-    "specifier": "localbc",
-    "description": "Refers to local data from weather stations used for the bias-correction in e.g. the forest sector.",
-    "sectors": [
-      "forestry"
-    ]
-  },
-  {
-    "specifier": "ewembi",
-    "description": "Refers to EWEMBI data used for the bias-correction globally on a 0.5° grid."
-  },
-  {
-    "specifier": "ewembi-isimip3basd",
-    "description": "Refers to EWEMBI data used for the bias-correction globally on a 0.5°, using improved bias-correction methods (Lange 2018, doi: 10.5194/esd-9-627-2018), and with statistical downscaling (instead of interpolation) of GCM data to the 0.5° grid prior to bias-correction."
-  }
-]
+- specifier: w5e5
+  description: >-
+    Refers to W5E5 data used for the bias-correction globally on a 0.5° grid.
+
+- specifier: nobasd
+  description: >-
+    Indicates that no bias correction was performed on the climate data (e.g. ocean
+    data).
+
+- specifier: localbc
+  description: >-
+    Refers to local data from weather stations used for the bias-correction in e.g.
+    the forest sector.
+  products:
+  - OutputData
+  - SecondaryOutputData
+  sectors:
+  - forestry
 ```
 
-Here `localbc` only applies to the `forestry` sector, while the other objects are used in every sector. The longest and most complicated definition is [definitions/variable.json](definitions/variable.json):
-
-```
-[
-  {
-    "specifier": "qtot",
-    "title": "Runoff",
-    "unit": "kg m-2 s-1",
-    "resolution": "grid cell",
-    "frequency": {
-      "biomes": "monthly",
-      "permafrost": "monthly",
-      "water_global": "daily",
-      "water_regional": "daily"
-    },
-    "comment": "Total runoff leaving the land portion of the grid cell",
-    "sectors": [
-      "water_global",
-      "water_regional",
-      "biomes",
-      "permafrost"
-    ]
-  },
-
-  ...
-]
-```
-
-Some attributes (e.g. `frequency`) can have objects as value, which the are evaluated for the particular sector. For reference, the full list for `simulation_rounds` and `sectors` are:
-
-```
-"simulation_rounds": [
-  "ISIMIP3a",
-  "ISIMIP3b"
-],
-```
-
-```
-"sectors": [
-  "agriculture",
-  "biodiversity",
-  "biomes",
-  "coastal",
-  "diarrhea",
-  "energy",
-  "forestry",
-  "health",
-  "labour",
-  "lakes_global",
-  "lakes_local",
-  "marine-fishery_global",
-  "marine-fishery_regional",
-  "permafrost",
-  "water_global",
-  "water_regional"
-]
-```
+Here `localbc` only applies to the `forestry` sector, while the other objects are used in every sector. Some attributes (e.g. `frequency` in `definitions/variable`) can have objects as value, which the are evaluated for the particular sector.
 
 In order to add a new sector, the following steps need to be taken:
 
-* Add the sector with `specifier` and `title` to `definitions/sector.json`.
-* Add `pattern/ISIMIP3a/OutputData/<sector>.json` and `pattern/ISIMIP3b/OutputData/<sector>.json` with the file patterns for the new sector.
-* Add new `variable` group(s) to `definitions/group.json`.
-* Add sector variables to `definitions/variable.json` and/or update existing variables with the new sector.
+* Add the sector with `specifier` and `title` to `definitions/sector.yaml`.
+* Add `pattern/ISIMIP3a/OutputData/<sector>.yaml` and `pattern/ISIMIP3b/OutputData/<sector>.yaml` with the file patterns for the new sector.
+* Add new `variable` group(s) to `definitions/group.yaml`.
+* Add sector variables to `definitions/variable.yaml` and/or update existing variables with the new sector.
 
 
 Printing
