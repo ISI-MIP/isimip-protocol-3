@@ -24,18 +24,19 @@ A `Makefile` is provided to help with the installation process.
 If you work with different Python applications, we recommend to create a virtual environment for the protocol:
 
 ```bash
-make env
+python3 -m venv env
+source env/bin/activate  # the env needs to be sourced everytime you use a new terminal
 ```
 
-Otherwise, the Python dependencies are installed using:
+The Python requirements are installed using:
 
 ```bash
-pip install -r requirements.txt
+make install
 ```
 
 The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only:
 
-```
+```bash
 make app
 ```
 

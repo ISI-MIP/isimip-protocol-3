@@ -1,7 +1,7 @@
 export NVM_DIR="${PWD}/app/nvm"
 
 .PHONY: prod dev serve assets links csvtables definitions glossary pattern protocol schema tree \
-	typos env app clean distclean
+	typos app watch clean distclean
 
 prod: assets csvtables definitions glossary pattern protocol schema tree
 
@@ -40,13 +40,11 @@ tree:
 typos:
 	typos --write-changes --force-exclude
 
-env:
-	python3 -m venv env
-	env/bin/pip install --upgrade pip
-	env/bin/pip install -r requirements.txt
-
 app:
 	make -C app
+
+watch:
+	make -C app watch
 
 clean:
 	rm -fr output

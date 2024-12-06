@@ -46,6 +46,9 @@ const productionConfig = {
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin()]
+  },
+  performance: {
+    hints: false
   }
 }
 
