@@ -1,12 +1,14 @@
+export NVM_DIR="${PWD}/app/nvm"
+
+.PHONY: prod dev serve assets links csvtables definitions glossary pattern protocol schema tree \
+	typos app watch clean distclean
+
 prod: assets csvtables definitions glossary pattern protocol schema tree
 
 dev: links csvtables definitions glossary pattern protocol schema tree
 
 serve:
 	python3 -m http.server -b 127.0.0.1 8080 -d output
-
-clean:
-	rm -fr output
 
 assets:
 	python3 build/assets.py
@@ -38,4 +40,16 @@ tree:
 typos:
 	typos --write-changes --force-exclude
 
-.PHONY: prod dev serve clean assets links csvtables definitions glossary pattern protocol schema tree typos
+app:
+	make -C app
+
+watch:
+	make -C app watch
+
+clean:
+	rm -fr output
+
+distclean:
+	rm -fr output
+	rm -fr env
+	make -C app clean
