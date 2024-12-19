@@ -1,5 +1,5 @@
 {
-  "commit": "a797c2b09e3c98a5a01730d97f0de0759b44c411",
+  "commit": "f6856540c1ac4ae80edf3efaf182739693da55fa",
   "category": [
     {
       "specifier": "climate",
@@ -13328,6 +13328,10 @@
       "resolution": "0.5\u00b0 grid",
       "comment": "The total area associated with each grid cell in the model.",
       "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
         "water_global"
       ],
       "valid_max": 3250.0,
@@ -13340,8 +13344,30 @@
       "units": "1",
       "frequency": "fixed",
       "resolution": "0.5\u00b0 grid",
-      "comment": "The fraction of each grid cell that is assumed to be continent, i.e., not ocean. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
+      "comment": "The fraction of each grid cell that is assumed to be continent, i.e. including inland water bodies but excluding ocean shares. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
       "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "landfrac",
+      "long_name": "Land Fraction of Grid Cell",
+      "group": "static-variables",
+      "units": "1",
+      "frequency": "fixed",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "The fraction of each grid cell that is assumed to be land, i.e. excluding oceans and inland water bodies.",
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
         "water_global"
       ],
       "valid_max": 1.0,
