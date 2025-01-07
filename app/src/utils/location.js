@@ -16,7 +16,7 @@ const parseLocation = () => {
 
   if (isEmpty(tokens)) {
     return config
-  } else if (last(tokens).match(/^\d/)) {
+  } else {
     // remove anchor id
     if (!isNil(last(tokens)) && last(tokens).match(/^\d/)) {
       tokens.pop()
@@ -58,7 +58,7 @@ const updateLocation = (config) => {
 const parseAnchor = () => {
   const tokens = splitLocationHash()
 
-  if (!isEmpty(tokens)) {
+  if (isEmpty(tokens)) {
     return null
   } else if (last(tokens).match(/^\d/)) {
     return document.getElementById(last(tokens))
