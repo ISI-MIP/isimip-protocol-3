@@ -20,8 +20,8 @@ def main():
 
     if args.link:
         for file_path in src_path.iterdir():
-            os.symlink(file_path, dst_path / file_path.name)
-        os.symlink(app_path, dst_path / app_path.name)
+            os.symlink(Path('../..') / file_path, dst_path / file_path.name)
+        os.symlink(Path('../..') / app_path, dst_path / app_path.name)
     else:
         for file_path in src_path.iterdir():
             shutil.copy(file_path, dst_path / file_path.name)
