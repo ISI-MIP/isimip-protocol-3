@@ -1,8 +1,8 @@
-import os
 import argparse
+import os
+import shutil
 
 from pathlib import Path
-from shutil import copytree, rmtree
 
 
 def main():
@@ -12,18 +12,20 @@ def main():
     args = parser.parse_args()
 
     src_path = Path('assets')
+    app_path = Path('app/output/app.js')
     dst_path = Path('output') / 'assets'
+
+    shutil.rmtree(dst_path, ignore_errors=True)
     dst_path.mkdir(parents=True, exist_ok=True)
 
-    if dst_path.is_symlink():
-        os.remove(dst_path)
-    else:
-        rmtree(dst_path)
-
     if args.link:
-        os.symlink(Path('..') / src_path, dst_path, target_is_directory=True)
+        for file_path in src_path.iterdir():
+            os.symlink(Path('../..') / file_path, dst_path / file_path.name)
+        os.symlink(Path('../..') / app_path, dst_path / app_path.name)
     else:
-        copytree(src_path, dst_path)
+        for file_path in src_path.iterdir():
+            shutil.copy(file_path, dst_path / file_path.name)
+        shutil.copy(app_path, dst_path / app_path.name)
 
 
 if __name__ == "__main__":

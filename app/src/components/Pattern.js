@@ -8,12 +8,16 @@ import SimulationRounds from './badges/SimulationRounds'
 const Pattern = ({ config, patterns }) => {
   const sectors = Object.keys(patterns[config.simulation_round])
   const simple_pattern = (pattern) => {
-    return pattern.replaceAll(/\[.*?\]\+/g, '')
-                  .replaceAll(/\([a-z\|]*?\)/g, '')
-                  .replaceAll('\\d{4}', '').replaceAll('P', '').replaceAll('?', '')
-                  .replaceAll('(<', '<').replaceAll('>)', '>')
-                  .replaceAll(/>_</g, '>@<').replaceAll('(_', '@').replaceAll(').', '.')
-                  .replaceAll('_', '-').replaceAll('@', '_')
+    return pattern
+      .replaceAll(/\[.*?\]\+/g, '')                     // remove [a-z0-9] etc.
+      .replaceAll(/\([a-z\|]*?\)/g, '')                 // ??
+      .replaceAll('\\d{4}', '')                         // remove \d{4} etc.
+      .replaceAll('\?P', '')                            // remove ?P
+      .replaceAll('?', '')                              // remove ?
+      .replaceAll('(<', '<').replaceAll('>)', '>')      // remove parentesis around (< ... >)
+      .replaceAll(/>_/g, '>@').replaceAll(/_</g, '@<')  // replace underscore between identifiers with @
+      .replaceAll('_', '-')                             // replace remaining _ with -
+      .replaceAll('@', '_')                             // replace @ with _
   }
 
   return (
