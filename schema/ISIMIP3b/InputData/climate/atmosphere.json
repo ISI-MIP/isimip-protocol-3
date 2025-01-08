@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/climate/atmosphere.yaml",
-  "commit": "f6856540c1ac4ae80edf3efaf182739693da55fa",
+  "commit": "a7e55d15db46a400394d72f6aa249ffabd23bb11",
   "type": "object",
   "required": [
     "specifiers"
@@ -20,18 +20,18 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
             "mri-esm2-0",
+            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "mpi-esm1-2-hr",
+            "gfdl-esm4"
           ]
         },
         "ensemble_member": {
           "type": "string",
           "enum": [
-            "r1i1p1f1",
             "r4i1p1f1",
+            "r1i1p1f1",
             "r1i1p1f2"
           ]
         },
@@ -45,79 +45,79 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "historical",
             "ssp585",
             "picontrol",
             "ssp370",
-            "historical",
             "ssp126"
           ]
         },
         "climate_variable": {
           "type": "string",
           "enum": [
-            "phydiaz",
-            "chl",
-            "hurs",
-            "intppdiat",
-            "prsn",
-            "intppdiaz",
-            "uo",
-            "intpoc",
-            "thetao",
-            "tasmin",
-            "ps",
-            "intpp",
-            "rsntds",
-            "tob",
-            "tasmax",
-            "co2",
-            "huss",
-            "sfcwind",
-            "phydiat",
-            "phymisc",
-            "so",
-            "phyc",
-            "zmicro",
-            "tas",
-            "zmeso",
-            "vo",
-            "intpppico",
-            "zooc",
-            "lightning",
-            "siconc",
-            "intppmisc",
-            "pr",
-            "ch4",
             "ph",
-            "o2",
-            "expc",
-            "phypico",
-            "tos",
-            "thkcello",
-            "wo",
+            "phymisc",
+            "intpp",
+            "intppmisc",
+            "phydiaz",
+            "tas",
+            "intppdiat",
+            "so",
             "mlotstmax",
+            "zmeso",
+            "intpoc",
+            "zooc",
+            "rsds",
+            "chl",
+            "siconc",
             "rlds",
-            "rsds"
+            "lightning",
+            "sfcwind",
+            "phyc",
+            "thetao",
+            "ch4",
+            "tob",
+            "tos",
+            "uo",
+            "o2",
+            "phypico",
+            "expc",
+            "ps",
+            "hurs",
+            "intpppico",
+            "prsn",
+            "phydiat",
+            "vo",
+            "rsntds",
+            "intppdiaz",
+            "pr",
+            "tasmin",
+            "co2",
+            "thkcello",
+            "zmicro",
+            "tasmax",
+            "huss",
+            "wo"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "along-track",
+            "global",
             "europe",
-            "global"
+            "along-track"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
-            "hourly",
-            "annual-gs",
-            "fixed",
             "monthly",
+            "monthly-gs",
+            "fixed",
+            "annual-gs",
             "annual",
-            "monthly-gs"
+            "hourly",
+            "daily"
           ]
         },
         "start_year": {
