@@ -73,30 +73,51 @@ The interactive tables have the following syntax:
 
 where `number` is simply the table number to be displayed in the caption and `identifier` will not only connect the table to its definition file (see below), but will also define which JavaScript component to use. Changes of the layout of a table or the creation of new tables require work on the [app](app).
 
-The definition YAML files however can be changed without touching the JavaScript source code. Each definition is a list of objects. Every object must have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/bias_adjustment.yaml](definitions/bias_adjustment.yaml):
+The definition YAML files however can be changed without touching the JavaScript source code. Each definition is a list of objects. Every object must have an attribute `specifier` which is used to refer to it in other objects/tables but also in file names. An example for a relatively simple definition file is [definitions/soc_scenario.yaml](definitions/soc_scenario.yaml):
 
 ```
-- specifier: w5e5
+- specifier: histsoc
   description: >-
-    Refers to W5E5 data used for the bias-correction globally on a 0.5° grid.
+    Varying direct human influences in the historical period.
+  description_note: Please label your model run `histsoc` **even if** it only partly
+    accounts for varying direct human forcings while another part of the the direct
+    human forcing is considered constant or is ignored.
+  simulation_rounds:
+  - ISIMIP3a
+  - ISIMIP3b
 
-- specifier: nobasd
+- specifier: 1850soc
   description: >-
-    Indicates that no bias correction was performed on the climate data (e.g. ocean
-    data).
-
-- specifier: localbc
-  description: >-
-    Refers to local data from weather stations used for the bias-correction in e.g.
-    the forest sector.
-  products:
-  - OutputData
-  - SecondaryOutputData
+    Fixed year-1850 direct human influences (e.g. land use, nitrogen deposition and
+    fertilizer input, fishing effort).
+  description_note: Please label your simulations `1850soc` if they do not at all
+    account for historical changes in direct human forcing, but they do represent
+    constant year-1850 levels of direct human forcing for at least some direct human
+    forcings. This scenario may be thought of an approximation of pre-industrial levels
+    of human impacts.
+  simulation_rounds:
+  - ISIMIP3b
   sectors:
-  - forestry
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - fire
+  - health
+  - coastal
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+
+...
 ```
 
-Here `localbc` only applies to the `forestry` sector, while the other objects are used in every sector. Some attributes (e.g. `frequency` in `definitions/variable`) can have objects as value, which the are evaluated for the particular sector.
+Here `1850soc` only applies to the givem set of sectors and only to `ISIMIP3b`, while `histsoc` is used both in `ISIMIP3a` and `ISIMIP3b` and in every sector. Some attributes (e.g. `frequency` in `definitions/variable`) can have objects as value, which the are evaluated for the particular sector.
 
 In order to add a new sector, the following steps need to be taken:
 
