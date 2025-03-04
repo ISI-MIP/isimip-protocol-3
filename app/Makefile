@@ -1,3 +1,4 @@
+SHELL := bash
 export NVM_DIR=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))/nvm
 
 .PHONY: prod build watch
