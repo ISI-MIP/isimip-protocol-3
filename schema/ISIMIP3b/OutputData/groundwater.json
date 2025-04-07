@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/labour.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/groundwater.yaml",
   "commit": "5894c8831de291663b833dbceba8483938bfce13",
   "type": "object",
   "required": [
@@ -11,6 +11,7 @@
       "required": [
         "model",
         "climate_forcing",
+        "bias_adjustment",
         "climate_scenario",
         "soc_scenario",
         "sens_scenario",
@@ -25,50 +26,76 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3-w5e5",
-            "20crv3-era5",
-            "20crv3",
-            "gswp3-w5e5"
+            "ipsl-cm6a-lr",
+            "mpi-esm1-2-hr",
+            "gfdl-esm4",
+            "ukesm1-0-ll"
           ]
         },
-        "detrending": {
+        "bias_adjustment": {
           "type": "string",
           "enum": [
-            "detrended",
-            "observed"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
-            "counterclim"
+            "historical",
+            "ssp126",
+            "ssp585",
+            "picontrol",
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "histsoc",
+            "2015soc-from-histsoc",
+            "ssp585soc-noadapt",
             "2015soc",
-            "histsoc"
+            "ssp126soc-noadapt",
+            "ssp585soc-adapt",
+            "ssp370soc-noadapt",
+            "ssp126soc-adapt",
+            "ssp370soc-adapt"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "1901co2",
-            "30arcsec",
-            "300arcsec",
-            "1800arcsec",
-            "90arcsec",
+            "2015co2",
             "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "labprod",
-            "labsupp",
-            "labeff"
+            "absdom",
+            "absind",
+            "head",
+            "groundwstor",
+            "depl",
+            "gwdrnlak",
+            "lfrf",
+            "absd",
+            "absirr",
+            "qrd",
+            "sgd",
+            "gwdrn",
+            "gwdrnspr",
+            "capillary",
+            "gwdrnriv",
+            "absliv",
+            "gwdrnwet",
+            "lflf",
+            "lfff",
+            "wtd",
+            "ret",
+            "lfn",
+            "abs"
           ]
         },
         "region": {
