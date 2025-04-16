@@ -7,8 +7,6 @@ import { actions } from '../store'
 
 
 const Config = ({ definitions, config, actions }) => {
-  const dev_note = 'Currently in development.'
-
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = 'Some data are still under construction (see Table 3.1), but models' +
     ' not needing those data may already start Group III simulations.'
@@ -42,12 +40,13 @@ const Config = ({ definitions, config, actions }) => {
   )
 
   const getGroup3Badge = (row) => {
-    if (row.group3) {
-      return group3_full_badge
-    } else if (row.group3_dev) {
-      return group3_half_badge
-    } else {
-      return group3_none_badge
+    switch (row.group3) {
+      case true:
+        return group3_full_badge
+      case 'dev':
+        return group3_half_badge
+      case false:
+        return group3_none_badge
     }
   }
 
@@ -89,9 +88,9 @@ const Config = ({ definitions, config, actions }) => {
       </div>
       <div className="mb-3">
         <div><strong>Filter for sectors:</strong></div>
-        <div>
+        <div className="mb-2">
           {
-            definitions.sector.map((row, index) => {
+            definitions.sector.filter(row => !row.dev).map((row, index) => {
               const id = 'control-sector-' + row.specifier
 
               return (
@@ -103,7 +102,6 @@ const Config = ({ definitions, config, actions }) => {
                   <label className="form-check-label d-flex" htmlFor={id}>
                     <div>
                       {row.title}
-                      {row.dev && <span className="ml-1" title={dev_note}>🚧</span>}
                     </div>
                     <div className="ml-auto text-nowrap">
                       &nbsp;{getGroup3Badge(row)}
@@ -114,10 +112,27 @@ const Config = ({ definitions, config, actions }) => {
             })
           }
         </div>
+        <div><strong>Still under development 🚧:</strong></div>
+        <div>
+          {
+            definitions.sector.filter(row => row.dev).map((row, index) => {
+              const id = 'control-sector-' + row.specifier
+
+              return (
+                <div className="form-check" key={index}>
+                  <input className="form-check-input" type="checkbox" id={id}
+                         value={row.specifier}
+                         checked={config.sectors.includes(row.specifier)}
+                         onChange={(event) => actions.changeSector(event.target.value)} />
+                  <label className="form-check-label d-flex" htmlFor={id}>
+                    <div>{row.title}</div>
+                  </label>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
-      <p className="text-muted mb-1">
-        🚧: {dev_note}
-      </p>
       <p className="text-muted mb-1">
         {group3_full_badge} {group3_full_note}
       </p>

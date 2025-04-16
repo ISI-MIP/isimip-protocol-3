@@ -1,17 +1,40 @@
+- specifier: biophysical-yield
+  group: biophysical-forcing
+  title: Crop Yields
+  mandatory: mandatory
+  doi:
+    ISIMIP3a:
+    - https://doi.org/10.48364/ISIMIP.370868.1
+    ISIMIP3b:
+    - https://doi.org/10.48364/ISIMIP.723340.2
+  path:
+    ISIMIP3a:
+      - ISIMIP3a/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc
+    ISIMIP3b:
+      - ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc
+      - ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc
+      - ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc
+  sectors:
+  - fs-n
+
 - specifier: biophysical-qtot
   group: biophysical-forcing
   title: Runoff
   status: mandatory
-  doi: https://doi.org/10.48364/ISIMIP.889136.1
+  doi:
+    ISIMIP3a:
+    - https://doi.org/10.48364/ISIMIP.398165.5
+    ISIMIP3b:
+    - https://doi.org/10.48364/ISIMIP.230418.4
   path:
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_qtot_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_qtot_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_qtot_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_qtot_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_qtot_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_qtot_global_daily_<start>_<end>.nc
-  simulation_rounds:
-  - ISIMIP3b
+    ISIMIP3a:
+      - ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc
+    ISIMIP3b:
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc
+  sectors:
+  - water_quality
   group3: true
 
 - specifier: biophysical-dis
@@ -19,13 +42,37 @@
   title: Water discharge
   status: mandatory
   doi:
+    ISIMIP3a:
+    - https://doi.org/10.48364/ISIMIP.398165.5
+    ISIMIP3b:
+    - https://doi.org/10.48364/ISIMIP.230418.4
   path:
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_dis_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_dis_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_dis_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_dis_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_dis_global_daily_<start>_<end>.nc
-  - ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_dis_global_daily_<start>_<end>.nc
-  simulation_rounds:
-  - ISIMIP3b
+    ISIMIP3a:
+      - ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc
+    ISIMIP3b:
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc
+  sectors:
+  - groundwater
+  - water_quality
   group3: true
+
+- specifier: biophysical-qrd
+  group: biophysical-forcing
+  title: Diffuse groundwater recharge
+  status: mandatory
+  doi:
+    ISIMIP3a:
+    - https://doi.org/10.48364/ISIMIP.398165.5
+    ISIMIP3b:
+    - https://doi.org/10.48364/ISIMIP.230418.4
+  path:
+    ISIMIP3a:
+      - ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc
+    ISIMIP3b:
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc
+      - ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc
+  sectors:
+  - groundwater
