@@ -73,10 +73,16 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
               {' '}
               {typeof resolutions[key] === 'object' && (
                 <ul>
-                  {resolutions[key].map((r, i) => (<li key={i}>{r}</li>))}
+                  {resolutions[key].map((r, i) => (
+                    <li key={i}>
+                      <ReactMarkdown children={r} />
+                    </li>
+                  ))}
                 </ul>
               )}
-              {typeof resolutions[key] !== 'object' && resolutions[key]}
+              {typeof resolutions[key] !== 'object' && (
+                <ReactMarkdown children={resolutions[key]} />
+              )}
             </li>
           )
         })
@@ -85,11 +91,11 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
         if (Array.isArray(res)) {
           return res.map((r, i) => (<li key={i}>{r}</li>))
         } else {
-          return <li>{res}</li>
+          return <li><ReactMarkdown children={res} /></li>
         }
       }
     } else {
-      return <li>{resolutions}</li>
+      return <li><ReactMarkdown children={resolutions} /></li>
     }
   }
 
