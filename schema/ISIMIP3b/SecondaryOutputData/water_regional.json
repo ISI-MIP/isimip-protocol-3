@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/water_regional.yaml",
-  "commit": "399edb2e79bea486fa704b783102ade25cc31650",
+  "commit": "baef87754a4f649c6911c6ae34d2fb793ec592a7",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,20 +26,20 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "cnrm-cm6-1",
             "iitm-esm",
-            "ukesm1-0-ll",
-            "ipsl-cm6a-lr",
-            "mri-esm2-0",
-            "mpi-esm1-2-hr",
-            "cesm2-waccm",
-            "miroc6",
-            "cnrm-esm2-1",
-            "taiesm1",
-            "kace-1-0-g",
             "canesm5",
             "ec-earth3",
-            "gfdl-esm4"
+            "miroc6",
+            "kace-1-0-g",
+            "cesm2-waccm",
+            "ipsl-cm6a-lr",
+            "gfdl-esm4",
+            "cnrm-esm2-1",
+            "taiesm1",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
+            "cnrm-cm6-1"
           ]
         },
         "bias_adjustment": {
@@ -52,31 +52,25 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp245",
-            "ssp585",
             "picontrol",
+            "ssp460",
             "hist-nat",
             "ssp534-over",
-            "ssp370",
             "ssp119",
-            "historical",
             "ssp126",
-            "ssp460"
+            "ssp370",
+            "ssp585",
+            "ssp245",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "1850soc",
             "2015soc-from-histsoc",
-            "histsoc",
             "2015soc",
-            "ssp126soc-noadapt",
-            "ssp585soc-noadapt",
-            "ssp370soc-adapt",
-            "ssp585soc-adapt",
-            "ssp126soc-adapt",
-            "ssp370soc-noadapt",
-            "1850soc"
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -89,84 +83,84 @@
         "variable": {
           "type": "string",
           "enum": [
-            "swe",
-            "reservoirstor",
             "qr",
-            "soilmoist",
+            "pirrusegreen",
             "pirrww",
-            "airrww",
+            "potevap",
+            "rootmoist",
+            "pirruse",
+            "airruse",
+            "reservoirstor",
+            "swe",
+            "airrusegreen",
             "evap",
             "qtot",
-            "potevap",
-            "airruse",
-            "qs",
-            "dis",
-            "airrusegreen",
             "arainfusegreen",
-            "pirruse",
-            "rootmoist",
-            "pirrusegreen"
+            "dis",
+            "soilmoist",
+            "qs",
+            "airrww"
           ]
         },
         "river": {
           "type": "string",
           "enum": [
-            "godavari",
-            "niger",
-            "mississippi",
-            "danube",
-            "ganges",
-            "blue-nile",
             "tagus",
-            "yellow",
-            "lena",
-            "mackenzie",
-            "pajeu",
-            "darling",
-            "yangtze",
             "engsetvatn",
-            "rhine",
+            "ganges",
+            "amazon",
+            "pajeu",
             "indus",
-            "amazon"
+            "danube",
+            "mississippi",
+            "rhine",
+            "lena",
+            "yangtze",
+            "niger",
+            "darling",
+            "mackenzie",
+            "yellow",
+            "blue-nile",
+            "godavari"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "tekra",
-            "koulikoro",
-            "arctic-red-river",
-            "louth",
+            "cuntan",
+            "trillo",
             "krestovski",
+            "el-diem",
+            "arctic-red-river",
+            "wien-nussdorf",
+            "alton",
+            "dire",
+            "tekra",
+            "floresta",
+            "khartoum",
             "tarbela",
             "sao-paulo-de-olivenca",
-            "alton",
-            "cuntan",
-            "tossaye",
-            "floresta",
-            "engsetvatn",
-            "lobith",
-            "el-diem",
-            "khartoum",
             "tangnaihai",
             "lokoja",
-            "stolb",
+            "tossaye",
+            "louth",
+            "koulikoro",
+            "engsetvatn",
+            "lobith",
             "almourol",
             "farakka",
-            "trillo",
-            "dire",
-            "wien-nussdorf"
+            "stolb"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
-            "daily",
-            "annual",
-            "monthly",
             "hourly",
-            "3hr"
+            "3hr",
+            "monthly",
+            "fixed",
+            "annual",
+            "daily"
           ]
         },
         "start_year": {

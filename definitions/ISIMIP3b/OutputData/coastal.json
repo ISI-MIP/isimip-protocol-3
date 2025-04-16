@@ -1,5 +1,5 @@
 {
-  "commit": "399edb2e79bea486fa704b783102ade25cc31650",
+  "commit": "baef87754a4f649c6911c6ae34d2fb793ec592a7",
   "model": [
     {
       "specifier": "acea",
@@ -1146,6 +1146,7 @@
     {
       "specifier": "agriculture",
       "title": "Agriculture",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3b/agriculture"
     },
     {
@@ -1157,7 +1158,7 @@
     {
       "specifier": "biomes",
       "title": "Biomes",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/biomes"
     },
     {
@@ -1175,7 +1176,7 @@
     {
       "specifier": "fire",
       "title": "Fire",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/fire"
     },
     {
@@ -1228,18 +1229,19 @@
     {
       "specifier": "peat",
       "title": "Peatland",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/peat"
     },
     {
       "specifier": "permafrost",
       "title": "Permafrost",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/permafrost"
     },
     {
       "specifier": "water_global",
       "title": "Water (global)",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3b/water_global"
     },
     {
@@ -2175,44 +2177,6 @@
     }
   ],
   "forcing_data": [
-    {
-      "specifier": "biophysical-qtot",
-      "group": "biophysical-forcing",
-      "title": "Runoff",
-      "status": "mandatory",
-      "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_qtot_global_daily_<start>_<end>.nc"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "biophysical-dis",
-      "group": "biophysical-forcing",
-      "title": "Water discharge",
-      "status": "mandatory",
-      "doi": null,
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_dis_global_daily_<start>_<end>.nc"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
     {
       "specifier": "gcm_climate_atmosphere",
       "group": "gcm-forcing",
@@ -3201,228 +3165,6 @@
       "subtitle": "2015soc"
     },
     {
-      "specifier": "picontrol_ssp126soc-noadapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp126soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp126soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "picontrol_ssp126soc-adapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp126soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp126soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "picontrol_ssp370soc-noadapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp370soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp370soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "picontrol_ssp370soc-adapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp370soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp370soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "picontrol_ssp585soc-noadapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp585soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp585soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "picontrol_ssp585soc-adapt_default",
-      "title": "Pre-industrial control",
-      "subtitles": [
-        "picontrol_ssp585soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **picontrol/histsoc** run above.",
-      "future": {
-        "climate": "picontrol",
-        "soc": "ssp585soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
       "specifier": "ssp126_2015soc-from-histsoc_default",
       "title": "RCP2.6",
       "subtitles": [
@@ -3508,80 +3250,6 @@
       "subtitle": "2015soc"
     },
     {
-      "specifier": "ssp126_ssp126soc-noadapt_default",
-      "title": "RCP2.6",
-      "subtitles": [
-        "ssp126_ssp126soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run  above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp126",
-        "soc": "ssp126soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp126_ssp126soc-adapt_default",
-      "title": "RCP2.6",
-      "subtitles": [
-        "ssp126_ssp126soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp126",
-        "soc": "ssp126soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
       "specifier": "ssp370_2015soc-from-histsoc_default",
       "title": "RCP7.0",
       "subtitles": [
@@ -3654,80 +3322,6 @@
         "water_quality",
         "water_quality"
       ]
-    },
-    {
-      "specifier": "ssp370_ssp370soc-noadapt_default",
-      "title": "RCP7.0",
-      "subtitles": [
-        "ssp370_ssp370soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp370",
-        "soc": "ssp370soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp370_ssp370soc-adapt_default",
-      "title": "RCP7.0",
-      "subtitles": [
-        "ssp370_ssp370soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp370",
-        "soc": "ssp370soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
     },
     {
       "specifier": "ssp585_2015soc-from-histsoc_default",
@@ -3803,80 +3397,6 @@
         "water_regional",
         "water_quality"
       ]
-    },
-    {
-      "specifier": "ssp585_ssp585soc-noadapt_default",
-      "title": "RCP8.5",
-      "subtitles": [
-        "ssp585_ssp585soc-noadapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp585",
-        "soc": "ssp585soc-noadapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp585_ssp585soc-adapt_default",
-      "title": "RCP8.5",
-      "subtitles": [
-        "ssp585_ssp585soc-adapt_default"
-      ],
-      "priority": "1st priority, see Table 2.5 for Group III experiment priorities",
-      "pre-industrial": "Identical to the similar **picontrol/1850soc** run above.",
-      "historical": "Identical to the similar **historical/histsoc** run above.",
-      "future": {
-        "climate": "ssp585",
-        "soc": "ssp585soc-adapt"
-      },
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional"
-      ],
-      "group3": true
     }
   ],
   "soc_scenario": [
@@ -3949,54 +3469,6 @@
       "simulation_rounds": [
         "ISIMIP3b"
       ]
-    },
-    {
-      "specifier": "ssp126soc-noadapt",
-      "description": "Varying direct human influences in the future period according to the SSP1-2.6 scenario, not accounting for the impact of climate change under a RCP2.6 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp126soc-adapt",
-      "description": "Varying direct human influences in the future period according to the SSP1-2.6 scenario accounting for the impact of climate change under a RCP2.6 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp370soc-noadapt",
-      "description": "Varying direct human influences in the future period according to the SSP3-7.0 scenario, not accounting for the impact of climate change under a RCP7.0 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp370soc-adapt",
-      "description": "Varying direct human influences in the future period according to the SSP3-7.0 scenario accounting for the impact of climate change under a RCP7.0 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp585soc-noadapt",
-      "description": "Varying direct human influences in the future period according to the SSP5-8.5 scenario, not accounting for the impact of climate change under a RCP8.5 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
-    },
-    {
-      "specifier": "ssp585soc-adapt",
-      "description": "Varying direct human influences in the future period according to the SSP5-8.5 scenario accounting for the impact of climate change under a RCP8.5 climate.",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "group3": true
     }
   ],
   "sens_scenario": [
@@ -4108,7 +3580,7 @@
     },
     {
       "specifier": "biophysical-forcing",
-      "title": "Biophysical forcing (ssp126soc-noadapt, ssp126soc-adapt, ssp370soc-noadapt, ssp370soc-adapt, ssp585soc-noadapt, ssp585soc-adapt)",
+      "title": "Biophysical forcing",
       "identifier": "forcing_data"
     },
     {

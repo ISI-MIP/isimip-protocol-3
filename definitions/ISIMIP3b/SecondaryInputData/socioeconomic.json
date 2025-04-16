@@ -1,5 +1,5 @@
 {
-  "commit": "399edb2e79bea486fa704b783102ade25cc31650",
+  "commit": "baef87754a4f649c6911c6ae34d2fb793ec592a7",
   "model": [
     {
       "specifier": "acea",
@@ -1572,7 +1572,7 @@
       "unit": "dry matter (t ha-1)",
       "frequency": "annual",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/agriculture/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<crop>-<irrigation>_global_annual_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
       "comment": "The biophysical forcing data consists of the crop yield data provided by a subset of crop models, including: DSSAT-Pythia, EPIC-IIASA, LPJmL, PEPIC, pDSSAT, and GEPIC. Only crop yields  and not crop production, at GADM administrative level-2, are required. The gridded crop yield data will be aggregated to the sub-national level. Only the 2015soc and 2015soc-from-histsoc runs will be used.",
       "sectors": [
         "fs-n"
@@ -1585,7 +1585,7 @@
       "unit": "kg m-2 s-1",
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
         "water_quality"
@@ -1598,7 +1598,7 @@
       "unit": "m3 s-1",
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
         "groundwater",
@@ -1612,7 +1612,7 @@
       "unit": "kg m-2 s-1",
       "frequency": "monthly",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_monthly_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily_<start_year>_<end_year>.nc",
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
         "groundwater"
@@ -3149,6 +3149,7 @@
     {
       "specifier": "agriculture",
       "title": "Agriculture",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3b/agriculture"
     },
     {
@@ -3160,7 +3161,7 @@
     {
       "specifier": "biomes",
       "title": "Biomes",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/biomes"
     },
     {
@@ -3178,7 +3179,7 @@
     {
       "specifier": "fire",
       "title": "Fire",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/fire"
     },
     {
@@ -3231,18 +3232,19 @@
     {
       "specifier": "peat",
       "title": "Peatland",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/peat"
     },
     {
       "specifier": "permafrost",
       "title": "Permafrost",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3b/permafrost"
     },
     {
       "specifier": "water_global",
       "title": "Water (global)",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3b/water_global"
     },
     {
@@ -4179,21 +4181,37 @@
   ],
   "forcing_data": [
     {
+      "specifier": "biophysical-yield",
+      "group": "biophysical-forcing",
+      "title": "Crop Yields",
+      "mandatory": "mandatory",
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.723340.2"
+      ],
+      "path": [
+        "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+        "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+        "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
+      ],
+      "sectors": [
+        "fs-n"
+      ]
+    },
+    {
       "specifier": "biophysical-qtot",
       "group": "biophysical-forcing",
       "title": "Runoff",
       "status": "mandatory",
-      "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_qtot_global_daily_<start>_<end>.nc"
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.230418.4"
       ],
-      "simulation_rounds": [
-        "ISIMIP3b"
+      "path": [
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+      ],
+      "sectors": [
+        "water_quality"
       ],
       "group3": true
     },
@@ -4202,19 +4220,36 @@
       "group": "biophysical-forcing",
       "title": "Water discharge",
       "status": "mandatory",
-      "doi": null,
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_dis_global_daily_<start>_<end>.nc"
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.230418.4"
       ],
-      "simulation_rounds": [
-        "ISIMIP3b"
+      "path": [
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+      ],
+      "sectors": [
+        "groundwater",
+        "water_quality"
       ],
       "group3": true
+    },
+    {
+      "specifier": "biophysical-qrd",
+      "group": "biophysical-forcing",
+      "title": "Diffuse groundwater recharge",
+      "status": "mandatory",
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.230418.4"
+      ],
+      "path": [
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+        "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc"
+      ],
+      "sectors": [
+        "groundwater"
+      ]
     },
     {
       "specifier": "static-lakes",
@@ -6820,22 +6855,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -6857,22 +6881,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -6894,22 +6907,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -6931,22 +6933,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -6968,22 +6959,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7005,22 +6985,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7187,22 +7156,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7224,22 +7182,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7408,22 +7355,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7445,22 +7381,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7632,22 +7557,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7669,22 +7583,11 @@
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -7819,13 +7722,9 @@
         "agriculture",
         "biomes",
         "fire",
-        "groundwater",
-        "lakes_global",
-        "lakes_local",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -8059,6 +7958,14 @@
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -8066,6 +7973,14 @@
       "description": "Varying direct human influences in the future period according to the SSP1-2.6 scenario accounting for the impact of climate change under a RCP2.6 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -8075,6 +7990,14 @@
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -8082,6 +8005,14 @@
       "description": "Varying direct human influences in the future period according to the SSP3-7.0 scenario accounting for the impact of climate change under a RCP7.0 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -8091,6 +8022,14 @@
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -8098,6 +8037,14 @@
       "description": "Varying direct human influences in the future period according to the SSP5-8.5 scenario accounting for the impact of climate change under a RCP8.5 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -8300,7 +8247,7 @@
     },
     {
       "specifier": "biophysical-forcing",
-      "title": "Biophysical forcing (ssp126soc-noadapt, ssp126soc-adapt, ssp370soc-noadapt, ssp370soc-adapt, ssp585soc-noadapt, ssp585soc-adapt)",
+      "title": "Biophysical forcing",
       "identifier": "forcing_data"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "commit": "399edb2e79bea486fa704b783102ade25cc31650",
+  "commit": "baef87754a4f649c6911c6ae34d2fb793ec592a7",
   "model": [
     {
       "specifier": "acea",
@@ -1165,7 +1165,7 @@
       "unit": "kg m-2 s-1",
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
         "water_quality"
@@ -1178,7 +1178,7 @@
       "unit": "m3 s-1",
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
-      "path": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
+      "path": "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
         "groundwater",
@@ -1927,6 +1927,7 @@
     {
       "specifier": "agriculture",
       "title": "Agriculture",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3a/agriculture"
     },
     {
@@ -1938,7 +1939,7 @@
     {
       "specifier": "biomes",
       "title": "Biomes",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3a/biomes"
     },
     {
@@ -1956,7 +1957,7 @@
     {
       "specifier": "fire",
       "title": "Fire",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3a/fire"
     },
     {
@@ -2009,18 +2010,19 @@
     {
       "specifier": "peat",
       "title": "Peatland",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3a/peat"
     },
     {
       "specifier": "permafrost",
       "title": "Permafrost",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": "https://protocol.isimip.org/#ISIMIP3a/permafrost"
     },
     {
       "specifier": "water_global",
       "title": "Water (global)",
+      "group3": false,
       "urls": "https://protocol.isimip.org/#ISIMIP3a/water_global"
     },
     {
@@ -3051,6 +3053,39 @@
         "water_regional",
         "water_quality"
       ]
+    },
+    {
+      "specifier": "biophysical-qtot",
+      "group": "biophysical-forcing",
+      "title": "Runoff",
+      "status": "mandatory",
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.398165.5"
+      ],
+      "path": [
+        "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+      ],
+      "sectors": [
+        "water_quality"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "biophysical-dis",
+      "group": "biophysical-forcing",
+      "title": "Water discharge",
+      "status": "mandatory",
+      "doi": [
+        "https://doi.org/10.48364/ISIMIP.398165.5"
+      ],
+      "path": [
+        "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+      ],
+      "sectors": [
+        "groundwater",
+        "water_quality"
+      ],
+      "group3": true
     },
     {
       "specifier": "obsclim_climate_atmosphere",
@@ -4356,7 +4391,7 @@
     },
     {
       "specifier": "biophysical-forcing",
-      "title": "Biophysical forcing (ssp126soc-noadapt, ssp126soc-adapt, ssp370soc-noadapt, ssp370soc-adapt, ssp585soc-noadapt, ssp585soc-adapt)",
+      "title": "Biophysical forcing",
       "identifier": "forcing_data"
     },
     {

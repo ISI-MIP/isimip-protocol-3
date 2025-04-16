@@ -57,7 +57,7 @@
 <div class="-print-none group3-update">
     <span class="badge badge-info float-right">Group III</span>
     <p>
-        <strong>Update:</strong> ISIMIP3b Group III (simulations accounting for future changes in the direct human forcing) input data are now available and simulations can be started for a set of sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-green"></span></span><span class="badge badge-info badge-right">III</span></span> in the menu). For other sectors, some of the data are not available yet (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle-left circle-green"></span><span class="circle-right circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>), but models not needing those data may already start. The remaining sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>) are not ready for group III yet, since most of the data are still under construction.
+        <strong>Update:</strong> ISIMIP3b Group III (simulations accounting for future changes in the direct human forcing) input data are now available and simulations can be started for a set of sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-green"></span></span><span class="badge badge-info badge-right">III</span></span> in the menu). For other sectors, some of the data are not available yet (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle-left circle-green"></span><span class="circle-right circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>), but models not needing those data may already start. For a third group of sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>) Group III experiments have been defined but are not ready to begin because most of the data are still under construction.
     </p>
     <p>
         With Group III we introduce new <strong>experiments</strong> (Table 2.1), new <strong>direct human forcing specifiers</strong> (Table 2.3), a new <strong>table of priorities</strong> (Table 2.5), a new <strong>table of requirements</strong> (Table 2.6), and the new <strong>input data</strong> are added to Tables 3.1 and 3.4.
@@ -85,7 +85,7 @@
 <li><a href="#32-climate-related-forcing">3.2 Climate related forcing</a></li>
 <li><a href="#32-direct-human-forcing">3.2 Direct human forcing</a></li>
 <li><a href="#33-static-geographic-information">3.3 Static geographic information</a></li>
-<li><a href="#34-upstream-impact-model-data">3.4 Upstream impact model data</a></li>
+<li><a href="#34-biophysical-forcing">3.4 Biophysical forcing</a></li>
 </ul>
 </li>
 <li><a href="#4-output-data">4. Output data</a><ul>
@@ -112,7 +112,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 16 April 2025</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/399edb2e79bea486fa704b783102ade25cc31650">399edb2e79bea486fa704b783102ade25cc31650</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/baef87754a4f649c6911c6ae34d2fb793ec592a7">baef87754a4f649c6911c6ae34d2fb793ec592a7</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -249,8 +249,8 @@ variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <st
 <div data-caption="Table 3.4: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
 <h3 id="33-static-geographic-information">3.3 Static geographic information</h3>
 <div data-caption="Table 3.5: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
-<h3 id="34-upstream-impact-model-data">3.4 Upstream impact model data</h3>
-<div data-caption="Table 3.6: Input data from other ISIMIP impact models." data-component="table" data-identifier="upstream_variable"></div>
+<h3 id="34-biophysical-forcing">3.4 Biophysical forcing</h3>
+<div data-caption="Table 3.6: Biophysical forcing data from other ISIMIP impact models." data-component="table" data-identifier="upstream_variable"></div>
 <div data-component="hide" data-sector="fs-n,groundwater">
 <p>No input data from other ISIMIP impact models are available for this selection of simulation round and sectors.</p>
 </div>
@@ -2161,8 +2161,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "frequency": "annual",
       "resolution": "0.5\u00b0 grid",
       "path": {
-        "ISIMIP3a": "ISIMIP3a/OutputData/agriculture/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<crop>-<irrigation>_global_annual_<start_year>_<end_year>.nc",
-        "ISIMIP3b": "ISIMIP3a/OutputData/agriculture/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<crop>-<irrigation>_global_annual_<start_year>_<end_year>.nc"
+        "ISIMIP3a": "ISIMIP3a/OutputData/agriculture/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+        "ISIMIP3b": "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
       },
       "comment": "The biophysical forcing data consists of the crop yield data provided by a subset of crop models, including: DSSAT-Pythia, EPIC-IIASA, LPJmL, PEPIC, pDSSAT, and GEPIC. Only crop yields  and not crop production, at GADM administrative level-2, are required. The gridded crop yield data will be aggregated to the sub-national level. Only the 2015soc and 2015soc-from-histsoc runs will be used.",
       "sectors": [
@@ -2177,8 +2177,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
       "path": {
-        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc",
-        "ISIMIP3b": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily_<start_year>_<end_year>.nc"
+        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+        "ISIMIP3b": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
       },
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
@@ -2193,8 +2193,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "frequency": "daily",
       "resolution": "0.5\u00b0 grid",
       "path": {
-        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
-        "ISIMIP3b": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc"
+        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc",
+        "ISIMIP3b": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily_<start_year>_<end_year>.nc"
       },
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
@@ -2210,8 +2210,8 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "frequency": "monthly",
       "resolution": "0.5\u00b0 grid",
       "path": {
-        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_monthly_<start_year>_<end_year>.nc",
-        "ISIMIP3b": "ISIMIP3a/OutputData/water_global/<upstream-model>/<climate-forcing>/<period>/<upstream-model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_monthly_<start_year>_<end_year>.nc"
+        "ISIMIP3a": "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+        "ISIMIP3b": "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/<period>/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily_<start_year>_<end_year>.nc"
       },
       "comment": "Please use one or several ISIMIP3a global water model(s), but not a multi-model mean.",
       "sectors": [
@@ -5098,6 +5098,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "agriculture",
       "title": "Agriculture",
+      "group3": false,
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/agriculture",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/agriculture"
@@ -5115,7 +5116,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "biomes",
       "title": "Biomes",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/biomes",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/biomes"
@@ -5142,7 +5143,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "fire",
       "title": "Fire",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/fire",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/fire"
@@ -5225,7 +5226,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "peat",
       "title": "Peatland",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/peat",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/peat"
@@ -5234,7 +5235,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "permafrost",
       "title": "Permafrost",
-      "group3_dev": true,
+      "group3": "dev",
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/permafrost",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/permafrost"
@@ -5243,6 +5244,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "water_global",
       "title": "Water (global)",
+      "group3": false,
       "urls": {
         "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/water_global",
         "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/water_global"
@@ -6371,21 +6373,57 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
+      "specifier": "biophysical-yield",
+      "group": "biophysical-forcing",
+      "title": "Crop Yields",
+      "mandatory": "mandatory",
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.370868.1"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.723340.2"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
+        ]
+      },
+      "sectors": [
+        "fs-n"
+      ]
+    },
+    {
       "specifier": "biophysical-qtot",
       "group": "biophysical-forcing",
       "title": "Runoff",
       "status": "mandatory",
-      "doi": "https://doi.org/10.48364/ISIMIP.889136.1",
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_qtot_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_qtot_global_daily_<start>_<end>.nc"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "water_quality"
       ],
       "group3": true
     },
@@ -6394,19 +6432,56 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group": "biophysical-forcing",
       "title": "Water discharge",
       "status": "mandatory",
-      "doi": null,
-      "path": [
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp126_ssp126soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp370_ssp370soc-adapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-noadapt_default_dis_global_daily_<start>_<end>.nc",
-        "ISIMIP3b/OutputData/water_global/<model>/<gcm>/future/<model>_<gcm>_w5e5_ssp585_ssp585soc-adapt_default_dis_global_daily_<start>_<end>.nc"
-      ],
-      "simulation_rounds": [
-        "ISIMIP3b"
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "groundwater",
+        "water_quality"
       ],
       "group3": true
+    },
+    {
+      "specifier": "biophysical-qrd",
+      "group": "biophysical-forcing",
+      "title": "Diffuse groundwater recharge",
+      "status": "mandatory",
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "groundwater"
+      ]
     },
     {
       "specifier": "obsclim_climate_atmosphere",
@@ -10125,22 +10200,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10162,22 +10226,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10199,22 +10252,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10236,22 +10278,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10273,22 +10304,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10310,22 +10330,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10492,22 +10501,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10529,22 +10527,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10713,22 +10700,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10750,22 +10726,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10937,22 +10902,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -10974,22 +10928,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
-        "coastal",
-        "diarrhea",
         "fire",
-        "health",
-        "groundwater",
-        "labour",
-        "lakes_global",
-        "lakes_local",
-        "marine-fishery_global",
-        "marine-fishery_regional",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -11124,13 +11067,9 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "agriculture",
         "biomes",
         "fire",
-        "groundwater",
-        "lakes_global",
-        "lakes_local",
         "peat",
         "permafrost",
-        "water_global",
-        "water_regional"
+        "water_global"
       ],
       "group3": true
     },
@@ -11392,6 +11331,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -11399,6 +11346,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description": "Varying direct human influences in the future period according to the SSP1-2.6 scenario accounting for the impact of climate change under a RCP2.6 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -11408,6 +11363,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -11415,6 +11378,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description": "Varying direct human influences in the future period according to the SSP3-7.0 scenario accounting for the impact of climate change under a RCP7.0 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -11424,6 +11395,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "simulation_rounds": [
         "ISIMIP3b"
       ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
+      ],
       "group3": true
     },
     {
@@ -11431,6 +11410,14 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description": "Varying direct human influences in the future period according to the SSP5-8.5 scenario accounting for the impact of climate change under a RCP8.5 climate.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
       "group3": true
     },
@@ -11832,7 +11819,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "biophysical-forcing",
-      "title": "Biophysical forcing (ssp126soc-noadapt, ssp126soc-adapt, ssp370soc-noadapt, ssp370soc-adapt, ssp585soc-noadapt, ssp585soc-adapt)",
+      "title": "Biophysical forcing",
       "identifier": "forcing_data"
     },
     {
