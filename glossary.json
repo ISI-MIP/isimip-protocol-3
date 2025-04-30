@@ -1,5 +1,5 @@
 {
-  "commit": "eb2f6141ea8736d82813588d9d06bdf4e60eeda8",
+  "commit": "88d6706ca8102a6c77aa3a7bef822d8103dee3a2",
   "terms": {
     "period": {
       "pre-industrial": {
@@ -138,7 +138,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -173,7 +173,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -208,7 +208,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -243,7 +243,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -278,7 +278,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -334,7 +334,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "health",
@@ -450,7 +449,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -566,7 +564,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -601,7 +598,6 @@
           "agriculture",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -635,7 +631,6 @@
           "agriculture",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -669,7 +664,6 @@
           "agriculture",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -2022,6 +2016,190 @@
         ],
         "valid_max": 1.0,
         "valid_min": 0.0
+      },
+      "resac": {
+        "long_name": "Residential air conditioning (AC) penetration",
+        "group": "energy-demand-variables",
+        "units": "index [0-1]",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "acely": {
+        "long_name": "Electricity consumption for cooling",
+        "extension": [
+          "res",
+          "tot"
+        ],
+        "group": "energy-demand-variables",
+        "units": "kWh",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Separated into the residential electricity (**res**) and the total consumption (**tot**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "ratefenely": {
+        "long_name": "Change in final energy consumption for adaptation (electricity)",
+        "extension": [
+          "res",
+          "com",
+          "ind",
+          "agr"
+        ],
+        "group": "energy-demand-variables",
+        "units": "%",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Separated into residential electricity (**res**), commercial electricity (**com**), industrial electricity (**ind**), agriculture electricity (**agr**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "ratefenfof": {
+        "long_name": "Change in final energy consumption for adaptation (fossil fuels)",
+        "extension": [
+          "res",
+          "com",
+          "ind",
+          "agr"
+        ],
+        "group": "energy-demand-variables",
+        "units": "%",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Separated into residential fossil fuels (**res**), commercial fossil fuels (**com**), industrial fossil fuels (**ind**), agriculture fossil fuels (**agr**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "levlfenely": {
+        "long_name": "Final energy consumption for adaptation (electricity)",
+        "extension": [
+          "res",
+          "com",
+          "ind",
+          "agr"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Separated into residential electricity (**res**), commercial electricity (**com**), industrial electricity (**ind**), agriculture electricity (**agr**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "levlfenfof": {
+        "long_name": "Final energy consumption for adaptation (fossil fuels)",
+        "extension": [
+          "res",
+          "com",
+          "ind",
+          "agr"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Separated into residential fossil fuels (**res**), commercial fossil fuels (**com**), industrial fossil fuels (**ind**), agriculture fossil fuels (**agr**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "shue": {
+        "long_name": "Useful energy demand for space heating",
+        "extension": [
+          "biomod",
+          "biotrad",
+          "coal",
+          "elec",
+          "heat",
+          "natgas",
+          "petrol"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "5-year time steps",
+        "resolution": "model-specific regions as defined in the variable **regions**",
+        "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "scue": {
+        "long_name": "Useful energy demand for space cooling",
+        "extension": [
+          "biomod",
+          "biotrad",
+          "coal",
+          "elec",
+          "heat",
+          "natgas",
+          "petrol"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "5-year time steps",
+        "resolution": "model-specific regions as defined in the variable **regions**",
+        "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "shfe": {
+        "long_name": "Final energy demand for space heating",
+        "extension": [
+          "biomod",
+          "biotrad",
+          "coal",
+          "elec",
+          "heat",
+          "natgas",
+          "petrol"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "5-year time steps",
+        "resolution": "model-specific regions as defined in the variable **regions**",
+        "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "scfe": {
+        "long_name": "Final energy demand for space cooling",
+        "extension": [
+          "biomod",
+          "biotrad",
+          "coal",
+          "elec",
+          "heat",
+          "natgas",
+          "petrol"
+        ],
+        "group": "energy-demand-variables",
+        "units": "EJ a-1",
+        "frequency": "5-year time steps",
+        "resolution": "model-specific regions as defined in the variable **regions**",
+        "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+        "sectors": [
+          "energy_demand"
+        ]
+      },
+      "regions": {
+        "long_name": "Regions",
+        "group": "static-variables",
+        "units": "-",
+        "frequency": "constant",
+        "resolution": "0.5\u00b0 grid",
+        "comment": "Specific regional masks used by regional/local models. Please include one binary variable per region in one NetCDF file.",
+        "sectors": [
+          "energy_demand"
+        ]
       },
       "soil": {
         "long_name": "Soil Types",
@@ -9354,7 +9532,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -9391,7 +9569,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -9428,7 +9606,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -9465,7 +9643,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -9774,7 +9952,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -10493,6 +10671,10 @@
       "microorganism-variables": {
         "title": "Microorganism variables",
         "identifier": "variable"
+      },
+      "energy-demand-variables": {
+        "title": "Energy demand variables",
+        "identifier": "variable"
       }
     },
     "soc_scenario": {
@@ -10502,6 +10684,28 @@
         "simulation_rounds": [
           "ISIMIP3a",
           "ISIMIP3b"
+        ],
+        "sectors": [
+          "agriculture",
+          "biodiversity",
+          "biomes",
+          "coastal",
+          "diarrhea",
+          "fire",
+          "forestry",
+          "fs-n",
+          "groundwater",
+          "health",
+          "labour",
+          "lakes_global",
+          "lakes_local",
+          "marine-fishery_global",
+          "marine-fishery_regional",
+          "peat",
+          "permafrost",
+          "water_global",
+          "water_regional",
+          "water_quality"
         ]
       },
       "1850soc": {
@@ -10567,7 +10771,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "groundwater",
           "health",
@@ -10586,6 +10790,28 @@
         "description_note": "Please label your simulations `2015soc-from-histsoc` for the future period, if your model run extends a historical period which used the `histsoc` scenario. This distinguishes the data from experiments which use both `2015soc` in the past and the future. If your model output is identical for both cases, please only submit the `2015soc` files for the future period.",
         "simulation_rounds": [
           "ISIMIP3b"
+        ],
+        "sectors": [
+          "agriculture",
+          "biodiversity",
+          "biomes",
+          "coastal",
+          "diarrhea",
+          "fire",
+          "forestry",
+          "fs-n",
+          "groundwater",
+          "health",
+          "labour",
+          "lakes_global",
+          "lakes_local",
+          "marine-fishery_global",
+          "marine-fishery_regional",
+          "peat",
+          "permafrost",
+          "water_global",
+          "water_regional",
+          "water_quality"
         ]
       },
       "ssp126soc-noadapt": {
@@ -10754,7 +10980,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -10864,7 +11089,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11079,7 +11303,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11149,7 +11372,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11215,7 +11437,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -11306,7 +11528,6 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11394,7 +11615,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11466,7 +11686,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11538,7 +11757,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -11797,7 +12015,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -11855,7 +12072,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -12266,7 +12482,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -13143,7 +13358,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -13179,7 +13394,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -14305,8 +14520,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "lat": {
@@ -14323,8 +14537,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "lon": {
@@ -14341,8 +14554,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "basin": {
@@ -14360,8 +14572,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "pres": {
@@ -14378,8 +14589,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "penv": {
@@ -14396,8 +14606,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "windspatialmax": {
@@ -14414,8 +14623,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "rmw": {
@@ -14432,8 +14640,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "roci": {
@@ -14450,8 +14657,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "u850": {
@@ -14468,8 +14674,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "v850": {
@@ -14486,8 +14691,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "t600": {
@@ -14504,8 +14708,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "rain": {
@@ -14522,8 +14725,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "maxrain": {
@@ -14540,8 +14742,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "wind": {
@@ -14558,8 +14759,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "windlifetimemax": {
@@ -14576,8 +14776,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "34knarea": {
@@ -14594,8 +14793,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "48knarea": {
@@ -14612,8 +14810,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "64knarea": {
@@ -14630,8 +14827,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "96knarea": {
@@ -14648,8 +14844,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "34knpop": {
@@ -14666,8 +14861,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "48knpop": {
@@ -14684,8 +14878,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "64knpop": {
@@ -14702,8 +14895,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "96knpop": {
@@ -14720,8 +14912,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "34knassets": {
@@ -14738,8 +14929,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "48knassets": {
@@ -14756,8 +14946,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "64knassets": {
@@ -14774,8 +14963,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "96knassets": {
@@ -14792,8 +14980,7 @@
           "ISIMIP3a"
         ],
         "sectors": [
-          "coastal",
-          "energy"
+          "coastal"
         ]
       },
       "hurs": {
@@ -14817,7 +15004,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -14869,7 +15056,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -14927,7 +15114,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -14980,7 +15167,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15032,7 +15219,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15084,7 +15271,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15142,7 +15329,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15195,7 +15382,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15253,7 +15440,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15312,7 +15499,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15371,7 +15558,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15546,6 +15733,7 @@
         "required": [],
         "harmonized": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15555,6 +15743,7 @@
         ],
         "sectors": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15571,6 +15760,7 @@
         "required": [],
         "harmonized": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15580,6 +15770,7 @@
         ],
         "sectors": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15613,6 +15804,7 @@
         ],
         "harmonized": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15622,6 +15814,7 @@
         ],
         "sectors": [
           "biomes",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -15854,16 +16047,6 @@
         "sectors": [],
         "datasets": [
           "Biological fixation (N, cropland/grassland/natural)"
-        ]
-      },
-      "residential-cooling": {
-        "title": "Residential cooling energy demand",
-        "required": [],
-        "harmonized": [],
-        "sectors": [],
-        "datasets": [
-          "Residential air conditioning (AC penetration)",
-          "AC energy consumption"
         ]
       }
     },
@@ -16873,6 +17056,7 @@
           "biomes",
           "coastal",
           "diarrhea",
+          "energy_demand",
           "fire",
           "health",
           "fs-n",
@@ -17162,6 +17346,7 @@
           "biomes",
           "coastal",
           "diarrhea",
+          "energy_demand",
           "fire",
           "health",
           "groundwater",
@@ -17366,6 +17551,7 @@
           "biomes",
           "coastal",
           "diarrhea",
+          "energy_demand",
           "fire",
           "health",
           "groundwater",
@@ -17560,6 +17746,7 @@
           "biomes",
           "coastal",
           "diarrhea",
+          "energy_demand",
           "fire",
           "health",
           "fs-n",
@@ -18167,7 +18354,6 @@
           "agriculture",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -18194,7 +18380,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -18222,7 +18407,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -18267,7 +18452,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -18323,7 +18508,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -18366,7 +18551,6 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "health",
@@ -18436,7 +18620,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -18467,7 +18651,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -18534,7 +18718,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -18594,7 +18778,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -18629,7 +18812,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -18661,7 +18843,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -18738,7 +18919,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -18770,7 +18950,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "groundwater",
           "health",
@@ -18846,7 +19025,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -18893,7 +19072,6 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "health",
@@ -19002,7 +19180,6 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "health",
@@ -19036,7 +19213,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -19071,7 +19248,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "health",
@@ -19182,7 +19359,7 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -19277,7 +19454,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -19327,7 +19503,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -19634,7 +19809,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "groundwater",
@@ -19825,7 +19999,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "groundwater",
           "health",
           "labour",
@@ -19862,7 +20035,6 @@
           "biodiversity",
           "biomes",
           "diarrhea",
-          "energy",
           "groundwater",
           "health",
           "labour",
@@ -20092,48 +20264,6 @@
           "ssp585"
         ]
       },
-      "sspsoc_ac_penetration": {
-        "group": "sspsoc-forcing",
-        "title": "Residential air conditioning (AC penetration)",
-        "mandatory": false,
-        "status": "under construction",
-        "simulation_rounds": [
-          "ISIMIP3b"
-        ],
-        "sectors": [],
-        "group3": true,
-        "noadapt": [
-          "ssp126",
-          "ssp370",
-          "ssp585"
-        ],
-        "adapt": [
-          "ssp126",
-          "ssp370",
-          "ssp585"
-        ]
-      },
-      "sspsoc_ac_consumption": {
-        "group": "sspsoc-forcing",
-        "title": "AC energy consumption",
-        "mandatory": false,
-        "status": "under construction",
-        "simulation_rounds": [
-          "ISIMIP3b"
-        ],
-        "sectors": [],
-        "group3": true,
-        "noadapt": [
-          "ssp126",
-          "ssp370",
-          "ssp585"
-        ],
-        "adapt": [
-          "ssp126",
-          "ssp370",
-          "ssp585"
-        ]
-      },
       "biophysical-yield": {
         "group": "biophysical-forcing",
         "title": "Crop Yields",
@@ -20257,7 +20387,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "groundwater",
           "forestry",
@@ -20351,7 +20481,6 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
           "fire",
           "forestry",
           "health",
@@ -20439,7 +20568,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -20470,7 +20599,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -20501,7 +20630,7 @@
           "biomes",
           "coastal",
           "diarrhea",
-          "energy",
+          "energy_demand",
           "fire",
           "forestry",
           "groundwater",
@@ -20664,6 +20793,28 @@
         "description": "CO\u2082 concentration fixed at 2015 levels.",
         "simulation_rounds": [
           "ISIMIP3b"
+        ],
+        "sectors": [
+          "agriculture",
+          "biodiversity",
+          "biomes",
+          "coastal",
+          "diarrhea",
+          "fire",
+          "forestry",
+          "fs-n",
+          "groundwater",
+          "health",
+          "labour",
+          "lakes_global",
+          "lakes_local",
+          "marine-fishery_global",
+          "marine-fishery_regional",
+          "peat",
+          "permafrost",
+          "water_global",
+          "water_regional",
+          "water_quality"
         ]
       },
       "ssp585co2": {
@@ -20948,12 +21099,12 @@
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/coastal"
         }
       },
-      "energy": {
-        "title": "Energy",
-        "dev": true,
+      "energy_demand": {
+        "title": "Energy (demand)",
+        "group3": true,
         "urls": {
-          "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/energy",
-          "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/energy"
+          "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/energy_demand",
+          "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/energy_demand"
         }
       },
       "fire": {

@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 24 April 2025</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/eb2f6141ea8736d82813588d9d06bdf4e60eeda8">eb2f6141ea8736d82813588d9d06bdf4e60eeda8</a></p>
+<p>Last updated: 30 April 2025</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/88d6706ca8102a6c77aa3a7bef822d8103dee3a2">88d6706ca8102a6c77aa3a7bef822d8103dee3a2</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -197,6 +197,10 @@ any fishing effort.</p>
 <h3 id="24-group-iii-requirements">2.4 Group III requirements</h3>
 <p>Table 2.6 lists the <strong>direct human forcings (DHF)</strong> that are relevant for the different sectors for <strong>group III</strong> simulations in ISIMIP3b. <strong>Required</strong> means that the forcing has to be accounted for in the simulations in the given sectors to count as a group III simulation. In addition a forcing can be <strong>harmonized</strong> by e.g. prescribing the application of a specific forcing data set from Table 2.7, or the specific implementation of the forcing can be left to the individual modellers. The harmonization setting is closely connected to the <strong>mandatory</strong> / <strong>optional</strong> setting in Table 3.1 (mandatory means that all modelling teams must use the same forcings dataset and not an alternative one).</p>
 <div data-caption="Table 2.6: Direct Human Forcings (DHF) considered in the group III simulations." data-component="table" data-identifier="group3_requirements"></div>
+</div>
+<div data-component="show" data-sector="energy_demand" data-simulation-round="ISIMIP3b">
+<h4 id="note-regarding-group-iii-simulations-for-the-energy-demand-sector">Note regarding Group III simulations for the Energy (demand) sector</h4>
+<p>In the <em>no-adaptation</em> runs (<code>no-adapt</code>), changes in the output variables such as the residential air conditioning penetration rate are driven by socioeconomic development only, whereas in the <em>adaptation</em> runs (<code>adapt</code>), these changes are additionally driven by climate change.</p>
 </div>
 <h2 id="3-input-data">3. Input data</h2>
 <h3 id="31-forcing-data">3.1 Forcing data</h3>
@@ -575,7 +579,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -611,7 +615,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -647,7 +651,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -683,7 +687,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -719,7 +723,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -777,7 +781,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "health",
@@ -894,7 +897,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -1011,7 +1013,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -1047,7 +1048,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "agriculture",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -1082,7 +1082,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "agriculture",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -1117,7 +1116,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "agriculture",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -2557,6 +2555,201 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "valid_max": 1.0,
       "valid_min": 0.0
+    },
+    {
+      "specifier": "resac",
+      "long_name": "Residential air conditioning (AC) penetration",
+      "group": "energy-demand-variables",
+      "units": "index [0-1]",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "acely",
+      "long_name": "Electricity consumption for cooling",
+      "extension": [
+        "res",
+        "tot"
+      ],
+      "group": "energy-demand-variables",
+      "units": "kWh",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Separated into the residential electricity (**res**) and the total consumption (**tot**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "ratefenely",
+      "long_name": "Change in final energy consumption for adaptation (electricity)",
+      "extension": [
+        "res",
+        "com",
+        "ind",
+        "agr"
+      ],
+      "group": "energy-demand-variables",
+      "units": "%",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Separated into residential electricity (**res**), commercial electricity (**com**), industrial electricity (**ind**), agriculture electricity (**agr**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "ratefenfof",
+      "long_name": "Change in final energy consumption for adaptation (fossil fuels)",
+      "extension": [
+        "res",
+        "com",
+        "ind",
+        "agr"
+      ],
+      "group": "energy-demand-variables",
+      "units": "%",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Separated into residential fossil fuels (**res**), commercial fossil fuels (**com**), industrial fossil fuels (**ind**), agriculture fossil fuels (**agr**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "levlfenely",
+      "long_name": "Final energy consumption for adaptation (electricity)",
+      "extension": [
+        "res",
+        "com",
+        "ind",
+        "agr"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Separated into residential electricity (**res**), commercial electricity (**com**), industrial electricity (**ind**), agriculture electricity (**agr**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "levlfenfof",
+      "long_name": "Final energy consumption for adaptation (fossil fuels)",
+      "extension": [
+        "res",
+        "com",
+        "ind",
+        "agr"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Separated into residential fossil fuels (**res**), commercial fossil fuels (**com**), industrial fossil fuels (**ind**), agriculture fossil fuels (**agr**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "shue",
+      "long_name": "Useful energy demand for space heating",
+      "extension": [
+        "biomod",
+        "biotrad",
+        "coal",
+        "elec",
+        "heat",
+        "natgas",
+        "petrol"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "5-year time steps",
+      "resolution": "model-specific regions as defined in the variable **regions**",
+      "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "scue",
+      "long_name": "Useful energy demand for space cooling",
+      "extension": [
+        "biomod",
+        "biotrad",
+        "coal",
+        "elec",
+        "heat",
+        "natgas",
+        "petrol"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "5-year time steps",
+      "resolution": "model-specific regions as defined in the variable **regions**",
+      "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "shfe",
+      "long_name": "Final energy demand for space heating",
+      "extension": [
+        "biomod",
+        "biotrad",
+        "coal",
+        "elec",
+        "heat",
+        "natgas",
+        "petrol"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "5-year time steps",
+      "resolution": "model-specific regions as defined in the variable **regions**",
+      "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "scfe",
+      "long_name": "Final energy demand for space cooling",
+      "extension": [
+        "biomod",
+        "biotrad",
+        "coal",
+        "elec",
+        "heat",
+        "natgas",
+        "petrol"
+      ],
+      "group": "energy-demand-variables",
+      "units": "EJ a-1",
+      "frequency": "5-year time steps",
+      "resolution": "model-specific regions as defined in the variable **regions**",
+      "comment": "Separated into demand from modern biomass (**biomod**), traditional biomass (**biotrad**), coal (**coal**), electricity (**elec**), district heating (**heat**), natural gas (**natgas**), petrol (**petrol**).",
+      "sectors": [
+        "energy_demand"
+      ]
+    },
+    {
+      "specifier": "regions",
+      "long_name": "Regions",
+      "group": "static-variables",
+      "units": "-",
+      "frequency": "constant",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Specific regional masks used by regional/local models. Please include one binary variable per region in one NetCDF file.",
+      "sectors": [
+        "energy_demand"
+      ]
     },
     {
       "specifier": "soil",
@@ -10398,7 +10591,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -10436,7 +10629,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -10474,7 +10667,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -10512,7 +10705,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -10834,7 +11027,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -11683,6 +11876,11 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "specifier": "microorganism-variables",
       "title": "Microorganism variables",
       "identifier": "variable"
+    },
+    {
+      "specifier": "energy-demand-variables",
+      "title": "Energy demand variables",
+      "identifier": "variable"
     }
   ],
   "soc_scenario": [
@@ -11693,6 +11891,28 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "simulation_rounds": [
         "ISIMIP3a",
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "fire",
+        "forestry",
+        "fs-n",
+        "groundwater",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional",
+        "water_quality"
       ]
     },
     {
@@ -11762,7 +11982,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "groundwater",
         "health",
@@ -11782,6 +12002,28 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description_note": "Please label your simulations `2015soc-from-histsoc` for the future period, if your model run extends a historical period which used the `histsoc` scenario. This distinguishes the data from experiments which use both `2015soc` in the past and the future. If your model output is identical for both cases, please only submit the `2015soc` files for the future period.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "fire",
+        "forestry",
+        "fs-n",
+        "groundwater",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional",
+        "water_quality"
       ]
     },
     {
@@ -11958,7 +12200,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12069,7 +12310,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12285,7 +12525,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12356,7 +12595,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12423,7 +12661,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -12515,7 +12753,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12604,7 +12841,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12677,7 +12913,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -12750,7 +12985,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -13012,7 +13246,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -13071,7 +13304,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -13489,7 +13721,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -14388,7 +14619,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -14425,7 +14656,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -15582,8 +15813,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15601,8 +15831,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15620,8 +15849,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15640,8 +15868,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15659,8 +15886,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15678,8 +15904,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15697,8 +15922,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15716,8 +15940,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15735,8 +15958,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15754,8 +15976,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15773,8 +15994,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15792,8 +16012,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15811,8 +16030,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15830,8 +16048,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15849,8 +16066,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15868,8 +16084,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15887,8 +16102,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15906,8 +16120,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15925,8 +16138,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15944,8 +16156,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15963,8 +16174,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -15982,8 +16192,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16001,8 +16210,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16020,8 +16228,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16039,8 +16246,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16058,8 +16264,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16077,8 +16282,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16096,8 +16300,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "coastal",
-        "energy"
+        "coastal"
       ]
     },
     {
@@ -16122,7 +16325,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16175,7 +16378,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16234,7 +16437,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16288,7 +16491,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16341,7 +16544,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16394,7 +16597,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16453,7 +16656,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16507,7 +16710,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16566,7 +16769,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16626,7 +16829,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16686,7 +16889,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16878,6 +17081,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "required": [],
       "harmonized": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16887,6 +17091,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16904,6 +17109,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "required": [],
       "harmonized": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16913,6 +17119,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16948,6 +17155,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "harmonized": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -16957,6 +17165,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -17204,17 +17413,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "sectors": [],
       "datasets": [
         "Biological fixation (N, cropland/grassland/natural)"
-      ]
-    },
-    {
-      "specifier": "residential-cooling",
-      "title": "Residential cooling energy demand",
-      "required": [],
-      "harmonized": [],
-      "sectors": [],
-      "datasets": [
-        "Residential air conditioning (AC penetration)",
-        "AC energy consumption"
       ]
     }
   ],
@@ -18279,6 +18477,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
+        "energy_demand",
         "fire",
         "health",
         "fs-n",
@@ -18578,6 +18777,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
+        "energy_demand",
         "fire",
         "health",
         "groundwater",
@@ -18789,6 +18989,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
+        "energy_demand",
         "fire",
         "health",
         "groundwater",
@@ -18990,6 +19191,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
+        "energy_demand",
         "fire",
         "health",
         "fs-n",
@@ -19689,7 +19891,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "agriculture",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -19717,7 +19918,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -19746,7 +19946,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -19793,7 +19993,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -19852,7 +20052,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -19897,7 +20097,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "health",
@@ -19971,7 +20170,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -20003,7 +20202,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -20073,7 +20272,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -20135,7 +20334,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -20171,7 +20369,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -20204,7 +20401,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -20284,7 +20480,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -20317,7 +20512,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "groundwater",
         "health",
@@ -20396,7 +20590,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -20445,7 +20639,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "health",
@@ -20560,7 +20753,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "health",
@@ -20595,7 +20787,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -20631,7 +20823,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "health",
@@ -20746,7 +20938,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -20843,7 +21035,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -20894,7 +21085,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -21211,7 +21401,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "groundwater",
@@ -21409,7 +21598,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "groundwater",
         "health",
         "labour",
@@ -21447,7 +21635,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biodiversity",
         "biomes",
         "diarrhea",
-        "energy",
         "groundwater",
         "health",
         "labour",
@@ -21686,50 +21873,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ]
     },
     {
-      "specifier": "sspsoc_ac_penetration",
-      "group": "sspsoc-forcing",
-      "title": "Residential air conditioning (AC penetration)",
-      "mandatory": false,
-      "status": "under construction",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [],
-      "group3": true,
-      "noadapt": [
-        "ssp126",
-        "ssp370",
-        "ssp585"
-      ],
-      "adapt": [
-        "ssp126",
-        "ssp370",
-        "ssp585"
-      ]
-    },
-    {
-      "specifier": "sspsoc_ac_consumption",
-      "group": "sspsoc-forcing",
-      "title": "AC energy consumption",
-      "mandatory": false,
-      "status": "under construction",
-      "simulation_rounds": [
-        "ISIMIP3b"
-      ],
-      "sectors": [],
-      "group3": true,
-      "noadapt": [
-        "ssp126",
-        "ssp370",
-        "ssp585"
-      ],
-      "adapt": [
-        "ssp126",
-        "ssp370",
-        "ssp585"
-      ]
-    },
-    {
       "specifier": "biophysical-yield",
       "group": "biophysical-forcing",
       "title": "Crop Yields",
@@ -21857,7 +22000,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "groundwater",
         "forestry",
@@ -21956,7 +22099,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
         "fire",
         "forestry",
         "health",
@@ -22049,7 +22191,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -22081,7 +22223,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -22114,7 +22256,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "biomes",
         "coastal",
         "diarrhea",
-        "energy",
+        "energy_demand",
         "fire",
         "forestry",
         "groundwater",
@@ -22289,6 +22431,28 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "description": "CO\u2082 concentration fixed at 2015 levels.",
       "simulation_rounds": [
         "ISIMIP3b"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "coastal",
+        "diarrhea",
+        "fire",
+        "forestry",
+        "fs-n",
+        "groundwater",
+        "health",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "marine-fishery_global",
+        "marine-fishery_regional",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional",
+        "water_quality"
       ]
     },
     {
@@ -22645,12 +22809,12 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       }
     },
     {
-      "specifier": "energy",
-      "title": "Energy",
-      "dev": true,
+      "specifier": "energy_demand",
+      "title": "Energy (demand)",
+      "group3": true,
       "urls": {
-        "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/energy",
-        "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/energy"
+        "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/energy_demand",
+        "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/energy_demand"
       }
     },
     {
@@ -23158,7 +23322,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "biomes": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "coastal": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
-    "energy": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
+    "energy_demand": "No pattern has been defined for this simulation round and sector, yet.",
     "fire": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "forestry": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<species>[a-z0-9]+))?_(?P<forest_stand>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "fs-n": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<exp>[a-z0-9]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
@@ -23180,7 +23344,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "biomes": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "coastal": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
-    "energy": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
+    "energy_demand": "No pattern has been defined for this simulation round and sector, yet.",
     "fire": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "forestry": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<species>[a-z0-9]+))?_(?P<forest_stand>[a-z0-9-]+)_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "fs-n": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<exp>[a-z0-9]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
