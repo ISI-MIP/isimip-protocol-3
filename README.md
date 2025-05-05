@@ -31,7 +31,7 @@ source env/bin/activate  # the env needs to be sourced everytime you use a new t
 The Python requirements are installed using:
 
 ```bash
-make install
+pip install -r requirements.txt
 ```
 
 The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only:
