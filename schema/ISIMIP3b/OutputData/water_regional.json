@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/water_regional.yaml",
-  "commit": "b13dc0bfd99613d954af6c2ac2ea299cdb02813a",
+  "commit": "5681057ac522d8472aca8bc0a69db16a06c09a41",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
             "ipsl-cm6a-lr",
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
             "mri-esm2-0",
-            "mpi-esm1-2-hr"
+            "gfdl-esm4"
           ]
         },
         "bias_adjustment": {
@@ -43,20 +43,20 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "picontrol",
             "ssp370",
             "ssp585",
-            "historical",
-            "ssp126"
+            "ssp126",
+            "picontrol",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc",
-            "1850soc",
+            "2015soc-from-histsoc",
             "histsoc",
-            "2015soc-from-histsoc"
+            "2015soc",
+            "1850soc"
           ]
         },
         "sens_scenario": {
@@ -69,84 +69,84 @@
         "variable": {
           "type": "string",
           "enum": [
-            "rootmoist",
-            "qtot",
-            "dis",
-            "evap",
-            "airruse",
-            "pirruse",
-            "airrww",
-            "qs",
-            "arainfusegreen",
-            "qr",
             "swe",
-            "potevap",
-            "reservoirstor",
-            "airrusegreen",
+            "airrww",
+            "rootmoist",
+            "pirruse",
+            "airruse",
+            "dis",
             "pirrww",
+            "qr",
+            "airrusegreen",
+            "pirrusegreen",
+            "potevap",
+            "arainfusegreen",
+            "reservoirstor",
+            "evap",
+            "qtot",
             "soilmoist",
-            "pirrusegreen"
+            "qs"
           ]
         },
         "river": {
           "type": "string",
           "enum": [
+            "godavari",
+            "pajeu",
+            "rhine",
+            "mississippi",
+            "indus",
+            "darling",
+            "danube",
             "ganges",
-            "tagus",
+            "mackenzie",
             "niger",
             "lena",
+            "tagus",
             "yangtze",
-            "engsetvatn",
-            "darling",
-            "rhine",
-            "godavari",
             "blue-nile",
             "yellow",
-            "mississippi",
-            "pajeu",
-            "danube",
-            "mackenzie",
-            "amazon",
-            "indus"
+            "engsetvatn",
+            "amazon"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "dire",
-            "almourol",
-            "arctic-red-river",
-            "sao-paulo-de-olivenca",
             "wien-nussdorf",
-            "louth",
-            "farakka",
-            "lobith",
-            "trillo",
-            "el-diem",
-            "koulikoro",
-            "alton",
+            "dire",
             "cuntan",
-            "floresta",
+            "almourol",
+            "sao-paulo-de-olivenca",
+            "farakka",
+            "el-diem",
+            "tangnaihai",
+            "louth",
+            "arctic-red-river",
             "lokoja",
+            "trillo",
+            "tossaye",
+            "floresta",
+            "tarbela",
+            "lobith",
+            "alton",
+            "stolb",
             "tekra",
             "krestovski",
-            "tossaye",
-            "engsetvatn",
-            "tangnaihai",
             "khartoum",
-            "stolb",
-            "tarbela"
+            "engsetvatn",
+            "koulikoro"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
+            "hourly",
             "daily",
             "monthly",
+            "fixed",
             "3hr",
-            "annual",
-            "hourly"
+            "annual"
           ]
         },
         "start_year": {
