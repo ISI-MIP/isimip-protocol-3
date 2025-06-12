@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/permafrost.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/biomes.yaml",
   "commit": "2da166ba5623a60027585734b235d2319b761c06",
   "type": "object",
   "required": [
@@ -11,6 +11,7 @@
       "required": [
         "model",
         "climate_forcing",
+        "bias_adjustment",
         "climate_scenario",
         "soc_scenario",
         "sens_scenario",
@@ -25,46 +26,70 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3-w5e5",
-            "chelsa-w5e5",
-            "20crv3",
-            "20crv3-era5",
-            "gswp3-w5e5"
+            "cnrm-cm6-1",
+            "gfdl-esm4",
+            "miroc6",
+            "taiesm1",
+            "mpi-esm1-2-hr",
+            "ec-earth3",
+            "iitm-esm",
+            "cesm2-waccm",
+            "mri-esm2-0",
+            "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
+            "kace-1-0-g",
+            "cnrm-esm2-1",
+            "canesm5"
           ]
         },
-        "detrending": {
+        "bias_adjustment": {
           "type": "string",
           "enum": [
-            "observed",
-            "detrended"
+            "nobasd",
+            "w5e5"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
-            "counterclim"
+            "ssp126",
+            "ssp245",
+            "picontrol",
+            "ssp585",
+            "hist-nat",
+            "historical",
+            "ssp534-over",
+            "ssp119",
+            "ssp370",
+            "ssp460"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "ssp370soc-noadapt",
+            "ssp370soc-adapt",
+            "ssp126soc-adapt",
+            "ssp585soc-adapt",
+            "1850soc",
+            "ssp126soc-noadapt",
+            "2015soc-from-histsoc",
+            "ssp585soc-noadapt",
             "2015soc",
             "histsoc",
-            "1901soc"
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "1901co2",
-            "nofire",
-            "30arcsec",
-            "300arcsec",
-            "obsco2",
+            "nondep2015co2",
+            "2015co2",
+            "ssp585ndep",
+            "ssp126ndep",
+            "ssp370ndep",
             "default",
-            "90arcsec",
-            "1800arcsec"
+            "nondep"
           ]
         },
         "variable": {
@@ -72,14 +97,17 @@
           "enum": [
             "fnnetmin",
             "fvegsoil",
+            "ffireluc",
             "fndep",
+            "nupcum",
             "tsl",
             "snd",
             "cleaf",
             "fnh3",
-            "tws",
             "nvegbg",
             "qs",
+            "nlosscum",
+            "anthday",
             "evap",
             "fapar",
             "nvegag",
@@ -92,46 +120,50 @@
             "burntarea",
             "fngasfire",
             "nbp",
-            "dis",
             "npp",
             "csoillayer",
             "soilmoistfroz",
             "fcropharvest",
             "cveg",
             "wetlandch4",
+            "initrcum",
             "nlitterbg",
             "ra",
+            "nleachcum",
             "lai",
+            "pirnreqcum",
             "nwood",
             "csoil",
             "fgrazing",
             "clitterag",
-            "rhlayer",
+            "plantyear",
             "gpp",
             "intercep",
             "clitter",
-            "fvegsoillayer",
             "fluc",
+            "nincum",
+            "matyday",
             "cvegbg",
-            "flittersoillayer",
             "flitter",
             "croot",
             "fnfert",
+            "plantday",
             "nroot",
             "flittersoil",
             "ccwd",
             "fngas",
+            "biom",
             "fnlittersoil",
             "nproduct",
             "nleaf",
             "soil",
             "trans",
             "fnvegsoil",
-            "potevap",
+            "harvyear",
             "nmineral",
-            "doc",
             "cellarea",
             "nlitterag",
+            "yield",
             "nmineralnh4",
             "pft",
             "fnproduct",
@@ -140,6 +172,7 @@
             "fnveglitter",
             "esoil",
             "rlitter",
+            "rr",
             "fbnf",
             "cvegag",
             "nveg",
@@ -149,53 +182,16 @@
             "nsoil",
             "fn2o",
             "cwood",
-            "rsoillayer",
             "thawdepth",
             "landalbedo",
-            "verticalcflux",
+            "rsoil",
+            "evapcum",
             "soilmoist",
             "fnanthdisturb",
             "rh",
             "ffire",
             "fbioenergyharvest",
             "nloss"
-          ]
-        },
-        "crop": {
-          "type": "string",
-          "enum": [
-            "sun",
-            "rye",
-            "nut",
-            "sgb",
-            "bar",
-            "pop",
-            "mil",
-            "rap",
-            "bea",
-            "wwh",
-            "swh",
-            "ri1",
-            "euc",
-            "mai",
-            "ric",
-            "pot",
-            "mgr",
-            "sgc",
-            "ri2",
-            "soy",
-            "whe",
-            "cot",
-            "sor",
-            "pea",
-            "cas",
-            "mis"
-          ]
-        },
-        "irrigation": {
-          "type": "string",
-          "enum": [
-            "noirr"
           ]
         },
         "pft": {
