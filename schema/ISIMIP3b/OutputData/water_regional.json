@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/water_regional.yaml",
-  "commit": "f0992689f0ad2c6328a86eba343a0e5d8e3b5415",
+  "commit": "40b4dc371182c71d659f25ac6298e8141f1a7e67",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr",
             "mri-esm2-0",
             "gfdl-esm4",
-            "ukesm1-0-ll",
-            "mpi-esm1-2-hr",
-            "ipsl-cm6a-lr"
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -43,11 +43,11 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "ssp126",
-            "ssp585",
             "picontrol",
-            "ssp370"
+            "historical",
+            "ssp370",
+            "ssp585",
+            "ssp126"
           ]
         },
         "soc_scenario": {
@@ -55,98 +55,146 @@
           "enum": [
             "1850soc",
             "2015soc",
-            "histsoc",
-            "2015soc-from-histsoc"
+            "2015soc-from-histsoc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
+            "qr",
             "qs",
-            "swe",
+            "potevap",
             "evap",
             "arainfusegreen",
-            "pirruse",
-            "qtot",
-            "soilmoist",
-            "airrww",
-            "airrusegreen",
-            "potevap",
-            "reservoirstor",
-            "airruse",
             "pirrusegreen",
-            "rootmoist",
             "dis",
             "pirrww",
-            "qr"
+            "airrww",
+            "qtot",
+            "soilmoist",
+            "pirruse",
+            "airrusegreen",
+            "rootmoist",
+            "reservoirstor",
+            "airruse",
+            "swe"
           ]
         },
         "river": {
           "type": "string",
           "enum": [
-            "yangtze",
-            "danube",
-            "yellow",
-            "godavari",
-            "darling",
-            "tagus",
-            "rhine",
-            "ganges",
-            "mackenzie",
-            "mississippi",
-            "amazon",
-            "indus",
+            "grunnfoss",
+            "krinsvatn",
+            "engeren",
+            "fustvatn",
+            "atnasjoe",
             "lena",
-            "niger",
-            "engsetvatn",
+            "sneisvatn",
+            "tannsvatn",
+            "mackenzie",
+            "ytre-fiskeloesvatn",
+            "femundsenden",
+            "oeyungen",
+            "roeykenes",
+            "skarsvatn",
+            "oeye-ndf",
+            "oevrevatn",
+            "rosten",
+            "skogsfjordvatn",
+            "indus",
+            "pajeu",
+            "etna",
+            "hoeggaas-bru",
+            "amazon",
+            "hoelen",
+            "yellow",
+            "darling",
+            "bulken",
+            "brekke-bru",
             "blue-nile",
-            "pajeu"
+            "godavari",
+            "junkerdalselv",
+            "myglevatn",
+            "mississippi",
+            "ganges",
+            "niger",
+            "danube",
+            "reinsnosvatn",
+            "osenelv",
+            "fetvatn",
+            "rhine",
+            "ulleboeelv",
+            "langvatn",
+            "lille-rostavatn",
+            "storvatn",
+            "dalsboevatn",
+            "stordalsvatn",
+            "jordbrufjell",
+            "laksaa-bru",
+            "engsetvatn",
+            "karpelva",
+            "knappom",
+            "lenglingen",
+            "lombola",
+            "hersvikvatn",
+            "austenaa",
+            "polmak",
+            "oksfjordvatn",
+            "yangtze",
+            "tagus",
+            "eggafoss",
+            "gaaslandsvatn",
+            "landbru",
+            "salsvatn",
+            "tingvatn",
+            "nautsundvatn",
+            "murusjoe"
           ]
         },
         "river_basin": {
           "type": "string",
           "enum": [
-            "el-diem",
-            "alton",
-            "tekra",
-            "tangnaihai",
-            "trillo",
-            "khartoum",
-            "stolb",
-            "sao-paulo-de-olivenca",
             "tarbela",
-            "koulikoro",
-            "krestovski",
-            "cuntan",
-            "tossaye",
-            "engsetvatn",
-            "arctic-red-river",
-            "lobith",
-            "almourol",
             "dire",
-            "lokoja",
-            "louth",
-            "floresta",
+            "alton",
+            "tossaye",
+            "tekra",
+            "almourol",
             "farakka",
-            "wien-nussdorf"
+            "floresta",
+            "tangnaihai",
+            "cuntan",
+            "khartoum",
+            "arctic-red-river",
+            "stolb",
+            "trillo",
+            "sao-paulo-de-olivenca",
+            "krestovski",
+            "lokoja",
+            "el-diem",
+            "lobith",
+            "wien-nussdorf",
+            "louth",
+            "koulikoro"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
             "fixed",
-            "daily",
+            "hourly",
             "monthly",
             "3hr",
-            "hourly",
-            "annual"
+            "annual",
+            "daily"
           ]
         },
         "start_year": {

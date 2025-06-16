@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/biodiversity.yaml",
-  "commit": "f0992689f0ad2c6328a86eba343a0e5d8e3b5415",
+  "commit": "40b4dc371182c71d659f25ac6298e8141f1a7e67",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr",
             "mri-esm2-0",
             "gfdl-esm4",
-            "ukesm1-0-ll",
-            "mpi-esm1-2-hr",
-            "ipsl-cm6a-lr"
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -43,11 +43,11 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "historical",
-            "ssp126",
-            "ssp585",
             "picontrol",
-            "ssp370"
+            "historical",
+            "ssp370",
+            "ssp585",
+            "ssp126"
           ]
         },
         "soc_scenario": {
@@ -55,55 +55,55 @@
           "enum": [
             "1850soc",
             "2015soc",
-            "histsoc",
-            "2015soc-from-histsoc"
+            "2015soc-from-histsoc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default",
-            "2015co2"
+            "2015co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
             "amphibiansumprob",
-            "endamphibiansumprob",
-            "endbirdsumprob",
-            "birdsr",
-            "thrmammalsumprob",
-            "mammalprob",
             "amphibiansr",
-            "endmammalsumprob",
-            "birdprob",
+            "mammalsr",
             "thramphibiansumprob",
-            "mammalsumprob",
-            "birdsumprob",
-            "amphibianprob",
+            "endamphibiansumprob",
             "thrbirdsumprob",
-            "mammalsr"
+            "amphibianprob",
+            "endmammalsumprob",
+            "birdsumprob",
+            "birdprob",
+            "mammalsumprob",
+            "thrmammalsumprob",
+            "birdsr",
+            "mammalprob",
+            "endbirdsumprob"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
             "global",
-            "europe",
-            "along-track"
+            "along-track",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
             "fixed",
-            "daily",
+            "hourly",
             "monthly",
             "3hr",
-            "hourly",
             "30year-mean",
-            "annual"
+            "annual",
+            "daily"
           ]
         },
         "start_year": {

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/labour.yaml",
-  "commit": "f0992689f0ad2c6328a86eba343a0e5d8e3b5415",
+  "commit": "40b4dc371182c71d659f25ac6298e8141f1a7e67",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,24 +25,24 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5",
             "20crv3-era5",
             "20crv3-w5e5",
-            "20crv3"
+            "20crv3",
+            "gswp3-w5e5"
           ]
         },
         "detrending": {
           "type": "string",
           "enum": [
-            "detrended",
-            "observed"
+            "observed",
+            "detrended"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim",
-            "counterclim"
+            "counterclim",
+            "obsclim"
           ]
         },
         "soc_scenario": {
@@ -55,39 +55,39 @@
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "300arcsec",
-            "default",
-            "1800arcsec",
             "30arcsec",
+            "300arcsec",
+            "1800arcsec",
             "90arcsec",
-            "1901co2"
+            "1901co2",
+            "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
+            "labeff",
             "labsupp",
-            "labprod",
-            "labeff"
+            "labprod"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
             "global",
-            "europe",
-            "along-track"
+            "along-track",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
             "fixed",
-            "daily",
+            "hourly",
             "monthly",
             "3hr",
-            "hourly",
-            "annual"
+            "annual",
+            "daily"
           ]
         },
         "start_year": {
