@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.yaml",
-  "commit": "35223ef329e4b8a3bada5a7089da2415797a0e0f",
+  "commit": "f0992689f0ad2c6328a86eba343a0e5d8e3b5415",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "ukesm1-0-ll",
+            "mri-esm2-0",
             "gfdl-esm4",
-            "ipsl-cm6a-lr",
-            "mri-esm2-0"
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
@@ -43,20 +43,20 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
             "historical",
+            "ssp126",
+            "ssp585",
             "picontrol",
-            "ssp370",
-            "ssp585"
+            "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc-from-histsoc",
+            "1850soc",
             "2015soc",
             "histsoc",
-            "1850soc"
+            "2015soc-from-histsoc"
           ]
         },
         "sens_scenario": {
@@ -69,37 +69,37 @@
         "variable": {
           "type": "string",
           "enum": [
+            "pop",
             "btm",
             "anheat",
-            "ancold",
-            "pop"
+            "ancold"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "central",
+            "lower",
             "upper",
-            "lower"
+            "central"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "along-track",
             "global",
-            "europe"
+            "europe",
+            "along-track"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
-            "annual",
-            "3hr",
             "fixed",
+            "daily",
+            "monthly",
+            "3hr",
             "hourly",
-            "monthly"
+            "annual"
           ]
         },
         "start_year": {

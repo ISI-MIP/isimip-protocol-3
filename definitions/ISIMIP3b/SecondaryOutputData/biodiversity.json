@@ -1,5 +1,5 @@
 {
-  "commit": "35223ef329e4b8a3bada5a7089da2415797a0e0f",
+  "commit": "f0992689f0ad2c6328a86eba343a0e5d8e3b5415",
   "simulation_round": [
     {
       "specifier": "ISIMIP3a",
@@ -522,8 +522,17 @@
     {
       "specifier": "sspsoc_reservoirs_dams",
       "group": "sspsoc-forcing",
-      "title": "Dams and reservoirs",
+      "title": "Reservoirs & dams",
       "mandatory": true,
+      "path": [
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp126soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp126soc-noadapt/",
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp370soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp370soc-noadapt/",
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp585soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/ssp585soc-noadapt/"
+      ],
+      "comment": "Input dataset documentation \u2192 [Reservoirs & dams (Group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/130/).",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -560,6 +569,15 @@
       "group": "sspsoc-forcing",
       "title": "Non-irrigation water use (withdrawal and consumption)",
       "mandatory": false,
+      "path": [
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp126soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp126soc-noadapt/",
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp370soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp370soc-noadapt/",
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp585soc-adapt/",
+        "ISIMIP3b/InputData/socioeconomic/water_abstraction/ssp585soc-noadapt/"
+      ],
+      "comment": "Input dataset documentation \u2192 [Water abstraction (Group III) ](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/189/).",
       "simulation_rounds": [
         "ISIMIP3b"
       ],
@@ -3208,6 +3226,18 @@
       "identifier": "soc_dataset"
     },
     {
+      "specifier": "desalination",
+      "title": "Seawater desalination",
+      "mandatory": false,
+      "identifier": "soc_dataset"
+    },
+    {
+      "specifier": "inter_basin_water_transfer",
+      "title": "Inter-basin water transfer",
+      "mandatory": false,
+      "identifier": "soc_dataset"
+    },
+    {
       "specifier": "pctlake",
       "title": "Lake surface area",
       "mandatory": false,
@@ -4851,7 +4881,7 @@
       "group": "reservoirs-dams",
       "frequency": "annual",
       "resolution": "0.5\u00b0 grid and original coordinates (degree)",
-      "path": "ISIMIP3b/InputData/socioeconomic/reservoir_dams/reservoirs-dams_1850_2015.xls",
+      "path": "ISIMIP3b/InputData/socioeconomic/reservoir_dams/histsoc/reservoirs-dams_1850_2015.xls",
       "variables": [
         {
           "specifier": "ID",
@@ -4976,6 +5006,152 @@
       ]
     },
     {
+      "specifier": "reservoirs-dams-group-3",
+      "title": "Reservoirs & dams (Group III)",
+      "group": "reservoirs-dams",
+      "frequency": "annual",
+      "resolution": "original coordinates (degree)",
+      "path": [
+        "ISIMIP3b/InputData/socioeconomic/reservoirs_dams/<soc_scenario>/dams-reservoirs_<model>_<climate-forcing>_<climate_scenario>_2015_2100.csv"
+      ],
+      "variables": [
+        {
+          "specifier": "ID",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "year.built",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "latitude",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "longitude",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "COE....kWh.",
+          "long_name": "",
+          "unit": "kWh"
+        },
+        {
+          "specifier": "Production..GWh.",
+          "long_name": "",
+          "unit": "GWh"
+        },
+        {
+          "specifier": "Continent_id",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "Continent_name",
+          "long_name": "model.irrigation.yaml",
+          "unit": ""
+        },
+        {
+          "specifier": "Basin_id",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "country_iso_id",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "SystemID..1.DiversionalCanalPower.2.RiverPower.",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "Design.Load.factor",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "Dam.height..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Dam.length..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Lake.surface..m2.",
+          "long_name": "",
+          "unit": "m2"
+        },
+        {
+          "specifier": "Lake.volume..m3.",
+          "long_name": "",
+          "unit": "m3"
+        },
+        {
+          "specifier": "Dam.pipe.head..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Headrace.lenght..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Number.of.pipes",
+          "long_name": "",
+          "unit": ""
+        },
+        {
+          "specifier": "Pipe.diameter..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Penstock.lenght..m.",
+          "long_name": "",
+          "unit": "m"
+        },
+        {
+          "specifier": "Cumulative.Production..GWh.",
+          "long_name": "",
+          "unit": "GWh"
+        },
+        {
+          "specifier": "cum.vol",
+          "long_name": "",
+          "unit": ""
+        }
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "biomes",
+        "diarrhea",
+        "fire",
+        "groundwater",
+        "health",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional",
+        "water_quality"
+      ],
+      "time_periods": [
+        "2015-2100"
+      ]
+    },
+    {
       "specifier": "water_abstraction",
       "title": "Water abstraction for domestic and industrial purposes",
       "group": "water_abstraction",
@@ -5004,7 +5180,7 @@
           "unit": "m3/yr"
         }
       ],
-      "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/).",
+      "comment": "Input dataset documentation \u2192 [Water abstraction for domestic and industrial uses](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/38/), [Water abstraction (group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/189/).",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -5022,7 +5198,8 @@
         "water_quality"
       ],
       "time_periods": [
-        "1850-2014"
+        "1850-2014",
+        "2015-2100"
       ]
     },
     {
