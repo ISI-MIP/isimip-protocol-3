@@ -25,6 +25,7 @@ const initConfig = () => {
   const defaultConfig = {
     simulation_round: 'ISIMIP3a',
     sectors: [],
+    experiments: [],
     groups: [],
     group3: false
   }

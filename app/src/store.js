@@ -5,6 +5,9 @@ const actions = {
   changeSector: function(value) {
     return { type: 'changeSector', value }
   },
+  toggleExperiments: function(value) {
+    return { type: 'toggleExperiments', value }
+  },
   toggleGroup: function(value) {
     return { type: 'toggleGroup', value }
   },
@@ -31,11 +34,24 @@ function reducer(state, action) {
         }
       }
     }
-    case 'toggleGroup': {
-      if (state.config.groups.find((group) => group === action.value)) {
+    case 'toggleExperiments': {
+      if (state.config.experiments.find((value) => value === action.value)) {
         return {
           ...state,
-          config: { ...state.config, groups: state.config.groups.filter((group) => group !== action.value) }
+          config: { ...state.config, experiments: state.config.experiments.filter((value) => value !== action.value) }
+        }
+      } else {
+        return {
+          ...state,
+          config: { ...state.config, experiments: [...state.config.experiments, action.value] }
+        }
+      }
+    }
+    case 'toggleGroup': {
+      if (state.config.groups.find((value) => value === action.value)) {
+        return {
+          ...state,
+          config: { ...state.config, groups: state.config.groups.filter((value) => value !== action.value) }
         }
       } else {
         return {
