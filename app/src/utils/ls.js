@@ -15,6 +15,11 @@ const getConfig = () => {
     config.sectors = sectors
   }
 
+  const experiments = ls.get('experiments') ? JSON.parse(ls.get('experiments')) : []
+  if (definitions.experiments.some((experiment) => experiments.includes(experiment.specifier))) {
+    config.experiments = experiments
+  }
+
   const groups = ls.get('groups') ? JSON.parse(ls.get('groups')) : []
   if (definitions.group.some((group) => groups.includes(group.specifier))) {
     config.groups = groups
@@ -28,6 +33,7 @@ const getConfig = () => {
 const updateConfig = (config) => {
   ls.set('simulation_round', config.simulation_round)
   ls.set('sectors', JSON.stringify(config.sectors))
+  ls.set('experiments', JSON.stringify(config.experiments))
   ls.set('groups', JSON.stringify(config.groups))
   ls.set('group3', JSON.stringify(config.group3))
 }
