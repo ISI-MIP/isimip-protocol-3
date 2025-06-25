@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/energy.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/SecondaryOutputData/marine-fishery_global.yaml",
   "commit": "beb105a13d4560f32013094a833a679a86a8231d",
   "type": "object",
   "required": [
@@ -11,6 +11,7 @@
       "required": [
         "model",
         "climate_forcing",
+        "bias_adjustment",
         "climate_scenario",
         "soc_scenario",
         "sens_scenario",
@@ -24,34 +25,84 @@
         },
         "climate_forcing": {
           "type": "string",
-          "enum": []
+          "enum": [
+            "kace-1-0-g",
+            "cesm2",
+            "taiesm1",
+            "gfdl-esm4",
+            "mpi-esm1-2-hr",
+            "ipsl-cm6a-lr",
+            "canesm5",
+            "cesm2-waccm",
+            "ec-earth3",
+            "miroc6",
+            "iitm-esm",
+            "cnrm-cm6-1",
+            "ukesm1-0-ll",
+            "cnrm-esm2-1"
+          ]
         },
-        "detrending": {
+        "bias_adjustment": {
           "type": "string",
           "enum": [
-            "observed",
-            "detrended"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "obsclim"
+            "ssp245",
+            "ssp460",
+            "historical",
+            "picontrol",
+            "ssp370",
+            "hist-nat",
+            "ssp585",
+            "ssp126",
+            "ssp534-over",
+            "ssp119"
           ]
         },
         "soc_scenario": {
           "type": "string",
-          "enum": []
+          "enum": [
+            "nat",
+            "histsoc",
+            "2015soc-from-histsoc"
+          ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
-          "enum": []
+          "enum": [
+            "tcblog10",
+            "bp90cm",
+            "bp30cm",
+            "tclog10",
+            "cd30to90cm",
+            "cp30cm",
+            "tpc",
+            "bd90cm",
+            "cd90cm",
+            "bd30to90cm",
+            "bd30cm",
+            "tpb",
+            "cp90cm",
+            "tdc",
+            "tc",
+            "cp30to90cm",
+            "cd30cm",
+            "bp30to90cm",
+            "tdb",
+            "tcb"
+          ]
         },
         "region": {
           "type": "string",
