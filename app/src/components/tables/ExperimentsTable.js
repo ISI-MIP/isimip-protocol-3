@@ -44,7 +44,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                   <GroupToggleLink
                     closed={!config.experiments.includes(row.specifier)}
                     toggle={() => actions.toggleExperiments(row.specifier)}
-                    label={`${row.children.length} sensitivity experiments`}
+                    label={`${row.children.length} sensitivity experiment${row.children.length > 1 ? 's' : ''}`}
                   />
                 </p>
               )
