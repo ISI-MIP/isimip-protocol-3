@@ -1,12 +1,15 @@
 import React, { Component} from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 
 import { filterRows, filterField } from '../../utils'
 
 import Sectors from '../badges/Sectors'
 
 const Group3RequirementsTable = function({ config, caption, rows }) {
+  const filteredRows = filterRows(config, rows)
+
   return (
     <table className="table table-bordered table-fixed">
       <caption>
@@ -42,6 +45,13 @@ const Group3RequirementsTable = function({ config, caption, rows }) {
               </tr>
             )
           })
+        }
+        {
+          isEmpty(filteredRows) && <tr>
+            <td colSpan={config.simulation_round.endsWith('a') ? 4 : 5}>
+              No Group III requirements have been defined for this selection of sectors, yet.
+            </td>
+          </tr>
         }
       </tbody>
     </table>
