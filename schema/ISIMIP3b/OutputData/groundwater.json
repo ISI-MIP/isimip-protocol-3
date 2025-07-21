@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/groundwater.yaml",
-  "commit": "ee5d1774881b525d73e0a575dce964206be37946",
+  "commit": "5cb0e55133d5cea8d4f9f0d27dac318ca3713078",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,11 +26,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "ipsl-cm6a-lr",
-            "gfdl-esm4",
             "ukesm1-0-ll",
-            "mri-esm2-0"
+            "gfdl-esm4",
+            "ipsl-cm6a-lr",
+            "mri-esm2-0",
+            "mpi-esm1-2-hr"
           ]
         },
         "bias_adjustment": {
@@ -43,18 +43,18 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp370",
-            "historical",
             "ssp585",
-            "ssp126",
-            "picontrol"
+            "historical",
+            "picontrol",
+            "ssp370",
+            "ssp126"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "2015soc-from-histsoc",
             "2015soc",
+            "2015soc-from-histsoc",
             "histsoc"
           ]
         },
@@ -68,47 +68,47 @@
         "variable": {
           "type": "string",
           "enum": [
+            "lfn",
+            "wtd",
+            "gwdrnlak",
+            "gwdrnspr",
+            "sgd",
+            "absirr",
+            "depl",
+            "absliv",
+            "gwdrnriv",
+            "gwdrn",
+            "capillary",
+            "head",
+            "abs",
+            "groundwstor",
+            "ret",
+            "qrd",
+            "lflf",
+            "absdom",
+            "absind",
             "gwdrnwet",
             "absd",
-            "groundwstor",
-            "capillary",
-            "lflf",
-            "absliv",
-            "gwdrnlak",
-            "absind",
             "lfff",
-            "head",
-            "wtd",
-            "absirr",
-            "lfn",
-            "depl",
-            "absdom",
-            "ret",
-            "gwdrn",
-            "gwdrnspr",
-            "qrd",
-            "lfrf",
-            "abs",
-            "sgd",
-            "gwdrnriv"
+            "lfrf"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "global",
-            "along-track"
+            "along-track",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
-            "annual",
             "fixed",
             "hourly",
+            "annual",
             "monthly",
+            "daily",
             "3hr"
           ]
         },
