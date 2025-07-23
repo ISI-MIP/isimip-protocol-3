@@ -1,5 +1,5 @@
 {
-  "commit": "5cb0e55133d5cea8d4f9f0d27dac318ca3713078",
+  "commit": "b489c2de3a4cef5d1a8e83715c6bd8dcda6d169b",
   "terms": {
     "fishing_type": {
       "fishing": {},
@@ -113,31 +113,6 @@
         ]
       },
       "1850soc": {
-        "description": "Fixed year-1850 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
-        "description_note": "Please label your simulations `1850soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-1850 levels of direct human forcing for at least some direct human forcings. This scenario may be thought of an approximation of pre-industrial levels of human impacts.",
-        "simulation_rounds": [
-          "ISIMIP3b"
-        ],
-        "sectors": [
-          "agriculture",
-          "biodiversity",
-          "biomes",
-          "diarrhea",
-          "fire",
-          "health",
-          "coastal",
-          "labour",
-          "lakes_global",
-          "lakes_local",
-          "peat",
-          "permafrost",
-          "water_global",
-          "water_regional",
-          "water_quality"
-        ]
-      },
-      "1850soc-input-only": {
-        "specifier_file": "1850soc",
         "simulation_rounds": [
           "ISIMIP3a"
         ],
@@ -4462,9 +4437,8 @@
         ],
         "format": "NetCDF"
       },
-      "lake_elevation": {
-        "specifier_file": "elevation",
-        "title": "Lake Height",
+      "elevation": {
+        "title": "Lake Elevation",
         "group": "lakes",
         "resolution": "0.5\u00b0 grid",
         "path": {
@@ -4647,8 +4621,7 @@
         ],
         "format": "NetCDF"
       },
-      "bathymetry": {
-        "specifier_file": "deptho",
+      "deptho": {
         "title": "Sea Floor Depth",
         "group": "ocean-static",
         "resolution": [
@@ -4671,8 +4644,7 @@
         ],
         "format": "NetCDF"
       },
-      "lme": {
-        "specifier_file": "LMEs66_masks",
+      "LMEs66_masks": {
         "title": "Large Marine Ecosystems",
         "group": "ocean-static",
         "resolution": [
@@ -4696,8 +4668,7 @@
         ],
         "format": "NetCDF"
       },
-      "rme": {
-        "specifier_file": "RME_masks",
+      "RME_masks": {
         "title": "Regional Marine Ecosystem masks",
         "group": "ocean-static",
         "resolution": [
@@ -12622,8 +12593,7 @@
           ]
         }
       },
-      "ggcmi-crop-calendar-2015soc": {
-        "specifier_file": "ggcmi-crop-calendar-phase3",
+      "ggcmi-crop-calendar-phase3": {
         "title": "GGCMI crop calendar (2015 fixed observation based)",
         "group": "crop-calendar",
         "frequency": "fixed",
@@ -13143,121 +13113,7 @@
           ]
         }
       },
-      "fishing_effort": {
-        "specifier_file": "effort",
-        "title": "Fishing effort",
-        "group": "fishing",
-        "mandatory": true,
-        "frequency": "annual",
-        "resolution": "Marine ecosystems or exclusive economic zones",
-        "path": [
-          "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort_isimip3a_histsoc_1841_2010.csv",
-          "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-artisanal-gridded_isimip3a_histsoc_1961_2010.csv",
-          "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-industrial-gridded_isimip3a_histsoc_1961_2010.csv"
-        ],
-        "variables": [
-          {
-            "specifier": "Sector",
-            "long_name": "Fishing sector (artisanal/industrial), defined by the law of the country (varies by country)"
-          },
-          {
-            "specifier": "LME",
-            "long_name": "The generic name of the Large Marine ecosystem in which the Effort/Catch is occurring"
-          },
-          {
-            "specifier": "eez_country_name",
-            "long_name": "The exclusive economic zone/high seas name in which fishing effort is occurring"
-          },
-          {
-            "specifier": "SAUP",
-            "long_name": "A number code for the fishing country, following Sea Around Us numbering"
-          },
-          {
-            "specifier": "Gear",
-            "long_name": "The fishing gear"
-          },
-          {
-            "specifier": "FGroup",
-            "long_name": "Functional Group of the target species"
-          },
-          {
-            "specifier": "NomActive",
-            "long_name": "Total nominal active fishing effort",
-            "unit": "kW.days"
-          },
-          {
-            "specifier": "Phase",
-            "long_name": "Either \"spin-up\" or \"transition\""
-          }
-        ],
-        "comment": "[Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43). Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128/).",
-        "simulation_rounds": [
-          "ISIMIP3a"
-        ],
-        "sectors": [
-          "marine-fishery_global",
-          "marine-fishery_regional"
-        ],
-        "time_periods": [
-          "1841-2010"
-        ]
-      },
-      "gridded_artisanal_fishing_effort": {
-        "specifier_file": "effort-artisanal-gridded",
-        "title": "Gridded artisanal fishing effort",
-        "group": "fishing",
-        "mandatory": true,
-        "frequency": "annual",
-        "resolution": "0.5\u00b0 grid",
-        "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-artisanal-gridded_isimip3a_histsoc_1961_2010.csv",
-        "variables": [
-          {
-            "specifier": "NomActive",
-            "long_name": "Total nominal active fishing effort",
-            "unit": "kW.days"
-          }
-        ],
-        "comment": "[Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43). Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128/).",
-        "simulation_rounds": [
-          "ISIMIP3a"
-        ],
-        "sectors": [
-          "marine-fishery_global",
-          "marine-fishery_regional"
-        ],
-        "time_periods": [
-          "1961-2010"
-        ]
-      },
-      "gridded_industrial_fishing_effort": {
-        "specifier_file": "effort-industrial-gridded",
-        "title": "Gridded industrial fishing effort",
-        "group": "fishing",
-        "mandatory": true,
-        "frequency": "annual",
-        "resolution": "0.5\u00b0 grid",
-        "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-industrial-gridded_isimip3a_histsoc_1961_2010.csv",
-        "variables": [
-          {
-            "specifier": "NomActive",
-            "long_name": "Total nominal active fishing effort",
-            "unit": "kW.days"
-          }
-        ],
-        "comment": "[Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43). Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128/).",
-        "simulation_rounds": [
-          "ISIMIP3a"
-        ],
-        "sectors": [
-          "marine-fishery_global",
-          "marine-fishery_regional"
-        ],
-        "time_periods": [
-          "1961-2010"
-        ]
-      },
-      "fishing_effort_3b": {
-        "specifier_file": "effort",
+      "effort": {
         "title": "Fishing effort",
         "group": "fishing",
         "mandatory": true,
@@ -13341,6 +13197,58 @@
         ],
         "time_periods": [
           "1950-2014"
+        ]
+      },
+      "effort-artisanal-gridded": {
+        "title": "Gridded artisanal fishing effort",
+        "group": "fishing",
+        "mandatory": true,
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-artisanal-gridded_isimip3a_histsoc_1961_2010.csv",
+        "variables": [
+          {
+            "specifier": "NomActive",
+            "long_name": "Total nominal active fishing effort",
+            "unit": "kW.days"
+          }
+        ],
+        "comment": "[Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43). Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128/).",
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "marine-fishery_global",
+          "marine-fishery_regional"
+        ],
+        "time_periods": [
+          "1961-2010"
+        ]
+      },
+      "effort-industrial-gridded": {
+        "title": "Gridded industrial fishing effort",
+        "group": "fishing",
+        "mandatory": true,
+        "frequency": "annual",
+        "resolution": "0.5\u00b0 grid",
+        "path": "ISIMIP3a/InputData/socioeconomic/fishing/histsoc/effort-industrial-gridded_isimip3a_histsoc_1961_2010.csv",
+        "variables": [
+          {
+            "specifier": "NomActive",
+            "long_name": "Total nominal active fishing effort",
+            "unit": "kW.days"
+          }
+        ],
+        "comment": "[Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43). Input dataset documentation \u2192 [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/128/).",
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "marine-fishery_global",
+          "marine-fishery_regional"
+        ],
+        "time_periods": [
+          "1961-2010"
         ]
       },
       "forest_management": {
@@ -14059,62 +13967,7 @@
           ]
         }
       },
-      "population-gridded": {
-        "specifier_file": "population",
-        "title": "Population (gridded)",
-        "group": "population",
-        "mandatory": true,
-        "group3": true,
-        "frequency": "annual",
-        "resolution": "0.5\u00b0 grid",
-        "path": {
-          "ISIMIP3a": [
-            "ISIMIP3a/InputData/socioeconomic/pop/histsoc/population_histsoc_30arcmin_annual_<start>_<end>.nc",
-            "ISIMIP3a/InputData/socioeconomic/pop/2015soc/population_2015soc_30arcmin_annual_<start>_<end>.nc",
-            "ISIMIP3a/InputData/socioeconomic/pop/1901soc/population_1901soc_30arcmin_annual_<start>_<end>.nc"
-          ],
-          "ISIMIP3b": [
-            "ISIMIP3b/InputData/socioeconomic/pop/histsoc/population_histsoc_30arcmin_annual_<start>_<end>.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/2015soc/population_2015soc_30arcmin_annual_<start>_<end>.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/1850soc/population_1850soc_30arcmin_annual_<start>_<end>.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-noadapt/population_ssp1_30arcmin_annual_2015_2100.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-noadapt/population_ssp3_30arcmin_annual_2015_2100.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-noadapt/population_ssp5_30arcmin_annual_2015_2100.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-adapt/population_ssp1_30arcmin_annual_2015_2100.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-adapt/population_ssp3_30arcmin_annual_2015_2100.nc",
-            "ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-adapt/population_ssp5_30arcmin_annual_2015_2100.nc"
-          ]
-        },
-        "variables": [
-          {
-            "specifier": "total-population",
-            "long_name": "total population",
-            "unit": "1"
-          },
-          {
-            "specifier": "urban-population",
-            "long_name": "urban population",
-            "unit": "1"
-          },
-          {
-            "specifier": "rural-population",
-            "long_name": "rural population",
-            "unit": "1"
-          }
-        ],
-        "time_periods": {
-          "ISIMIP3a": [
-            "1850-1900",
-            "1901-2021"
-          ],
-          "ISIMIP3b": [
-            "1850-2014",
-            "2015-2100"
-          ]
-        }
-      },
-      "population-countrylevel": {
-        "specifier_file": "population",
+      "population": {
         "title": "Population (country-level)",
         "group": "population",
         "mandatory": true,
@@ -17194,23 +17047,6 @@
         "products": [
           "InputData",
           "SecondaryInputData"
-        ]
-      },
-      "lightning_fixed": {
-        "specifier_file": "lightning",
-        "long_name": "Flash Rate Monthly Climatology",
-        "group": "lightning",
-        "mandatory": true,
-        "unit": "km-2 d-1",
-        "frequency": "monthly",
-        "resolution": "0.5\u00b0 grid",
-        "path": {
-          "ISIMIP3a": "ISIMIP3a/InputData/climate/lightning/lightning_fixed.nc",
-          "ISIMIP3b": "ISIMIP3b/InputData/climate/lightning/lightning_fixed.nc"
-        },
-        "sectors": [
-          "fire",
-          "water_quality"
         ]
       },
       "lightning": {
@@ -22026,15 +21862,10 @@
           "SecondaryInputData"
         ]
       },
-      "cesm2-omip2": {
-        "specifier_file": "cesm2",
-        "title": "CESM2-OMIP2",
-        "time_period": "1958-2018",
-        "reanalysis": "JRA55-do",
-        "bias_adjustment_target": "none",
-        "priority": 1,
+      "cesm2": {
+        "title": "CESM2",
         "simulation_rounds": [
-          "ISIMIP3a"
+          "ISIMIP3b"
         ],
         "products": [
           "SecondaryInputData",
@@ -22043,10 +21874,11 @@
         "sectors": [
           "marine-fishery_global",
           "marine-fishery_regional"
-        ]
+        ],
+        "ensemble_member": "r1i1p1f1 (picontrol), r4i1p1f1 (other)",
+        "original_resolution": "320x384"
       },
       "gfdl-mom6-cobalt2": {
-        "specifier_file": "gfdl-mom6-cobalt2",
         "title": "GFDL-MOM6-COBALT2",
         "time_period": "1961-2010",
         "reanalysis": "JRA55",
@@ -22226,22 +22058,6 @@
         ],
         "ensemble_member": "r1i1p1f1",
         "original_resolution": "320x160"
-      },
-      "cesm2": {
-        "title": "CESM2",
-        "simulation_rounds": [
-          "ISIMIP3b"
-        ],
-        "products": [
-          "SecondaryInputData",
-          "SecondaryOutputData"
-        ],
-        "sectors": [
-          "marine-fishery_global",
-          "marine-fishery_regional"
-        ],
-        "ensemble_member": "r1i1p1f1 (picontrol), r4i1p1f1 (other)",
-        "original_resolution": "320x384"
       },
       "cesm2-waccm": {
         "title": "CESM2-WACCM",
