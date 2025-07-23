@@ -15,7 +15,9 @@ def main():
 
         for row in rows:
             specifier = row.pop('specifier')
-            glossary['terms'][identifier][specifier] = row
+            specifier_file = row.pop('specifier_file', None)
+
+            glossary['terms'][identifier][specifier_file or specifier] = row
 
     glossary_path = Path('output') / 'glossary.json'
     write_json(glossary_path, glossary)
