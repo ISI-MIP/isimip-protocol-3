@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/InputData/geo_conditions/ocean.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/InputData/geo_conditions/orography.yaml",
   "commit": "865f0706dbde823ffe8754fbb0b6a9e3dd9f461d",
   "type": "object",
   "required": [
@@ -10,22 +10,19 @@
     "specifiers": {
       "type": "object",
       "required": [
-        "climate_forcing",
         "geo_dataset",
         "resolution",
-        "region",
-        "time_step"
+        "region"
       ],
       "properties": {
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3-era5",
-            "20crv3",
-            "gswp3-w5e5",
-            "chelsa-w5e5",
-            "20crv3-w5e5",
-            "gfdl-mom6-cobalt2"
+            "gfdl-esm4",
+            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
+            "mri-esm2-0",
+            "ipsl-cm6a-lr"
           ]
         },
         "geo_dataset": {
@@ -78,18 +75,6 @@
             "along-track",
             "europe",
             "global"
-          ]
-        },
-        "time_step": {
-          "type": "string",
-          "enum": [
-            "monthly",
-            "fixed",
-            "daily",
-            "annual",
-            "annual-gs",
-            "hourly",
-            "monthly-gs"
           ]
         }
       }
