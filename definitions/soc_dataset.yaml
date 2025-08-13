@@ -1172,19 +1172,45 @@
     - 1850-2014
     - 2015-2100
 
-- specifier: area_using_seawater_desalination
-  title: Area Using Seawater Desalination
+
+- specifier: ausd-aridity-2015fixed
+  title: 'Area Using Seawater Desalination (fixed aridity)'
   group: desalination
+  mandatory: false
+  group3: true
   frequency: annual
   resolution: 0.5° grid
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - agriculture
+  - biomes
+  - fire
+  - peat
+  - permafrost
+  - water_global
   path:
-    ISIMIP3b: ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/<soc_scenario>/ausd_<climate_forcing>_<soc_pathway>_annual_2015_2100.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp126soc-noadapt/ausd-aridity-2015fixed_<climate-forcing>_ssp1_annual_2015_2100.nc
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp370soc-noadapt/ausd-aridity-2015fixed_<climate-forcing>_ssp3_annual_2015_2100.nc
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp585soc-noadapt/ausd-aridity-2015fixed_<climate-forcing>_ssp5_annual_2015_2100.nc
   variables:
   - specifier: ausd
     long_name: Area Using Seawater Desalination
     unit: 1
   comment: >-
     Input dataset documentation → [Seawater desalination (Group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/188/).
+  time_periods:
+    ISIMIP3b:
+    - 2015-2100
+
+- specifier: ausd-aridity-transient
+  title: 'Area Using Seawater Desalination (transient aridity)'
+  group: desalination
+  mandatory: false
+  group3: true
+  frequency: annual
+  resolution: 0.5° grid
   simulation_round:
   - ISIMIP3b
   sectors:
@@ -1194,6 +1220,17 @@
   - peat
   - permafrost
   - water_global
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp126soc-adapt/ausd-aridity-transient_<climate-forcing>_ssp126_annual_2015_2100.nc
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp370soc-adapt/ausd-aridity-transient_<climate-forcing>_ssp370_annual_2015_2100.nc
+    - ISIMIP3b/InputData/socioeconomic/area_using_seawater_desalination/ssp585soc-adapt/ausd-aridity-transient_<climate-forcing>_ssp585_annual_2015_2100.nc
+  variables:
+  - specifier: ausd
+    long_name: Area Using Seawater Desalination
+    unit: 1
+  comment: >-
+    Input dataset documentation → [Seawater desalination (Group III)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/188/).
   time_periods:
     ISIMIP3b:
     - 2015-2100
