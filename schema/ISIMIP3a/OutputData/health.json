@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/health.yaml",
-  "commit": "41fd4924c833140f6c93c35513519b5ad9513dd1",
+  "commit": "025bf991b212e518fb177ba8de0ec02373d714e3",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,10 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "20crv3-era5",
-            "20crv3-w5e5",
             "20crv3",
-            "gswp3-w5e5"
+            "gswp3-w5e5",
+            "20crv3-w5e5",
+            "20crv3-era5"
           ]
         },
         "detrending": {
@@ -41,15 +41,15 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "counterclim",
-            "obsclim"
+            "obsclim",
+            "counterclim"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc"
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -62,10 +62,10 @@
         "variable": {
           "type": "string",
           "enum": [
-            "btm",
             "anheat",
+            "ancold",
             "pop",
-            "ancold"
+            "btm"
           ]
         },
         "r": {
@@ -87,12 +87,13 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "hourly",
-            "monthly",
             "annual",
+            "daily",
+            "2hr",
             "fixed",
-            "daily"
+            "monthly",
+            "3hr",
+            "hourly"
           ]
         },
         "start_year": {

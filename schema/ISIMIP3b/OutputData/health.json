@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/health.yaml",
-  "commit": "41fd4924c833140f6c93c35513519b5ad9513dd1",
+  "commit": "025bf991b212e518fb177ba8de0ec02373d714e3",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,18 +26,18 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
-            "ipsl-cm6a-lr",
             "gfdl-esm4",
+            "mpi-esm1-2-hr",
+            "ukesm1-0-ll",
             "mri-esm2-0",
-            "ukesm1-0-ll"
+            "ipsl-cm6a-lr"
           ]
         },
         "bias_adjustment": {
           "type": "string",
           "enum": [
-            "nobasd",
-            "w5e5"
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
@@ -53,10 +53,10 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "1850soc",
+            "2015soc",
             "histsoc",
             "2015soc-from-histsoc",
-            "2015soc"
+            "1850soc"
           ]
         },
         "sens_scenario": {
@@ -69,10 +69,10 @@
         "variable": {
           "type": "string",
           "enum": [
-            "btm",
             "anheat",
+            "ancold",
             "pop",
-            "ancold"
+            "btm"
           ]
         },
         "r": {
@@ -94,12 +94,13 @@
         "time_step": {
           "type": "string",
           "enum": [
-            "3hr",
-            "hourly",
-            "monthly",
             "annual",
+            "daily",
+            "2hr",
             "fixed",
-            "daily"
+            "monthly",
+            "3hr",
+            "hourly"
           ]
         },
         "start_year": {
