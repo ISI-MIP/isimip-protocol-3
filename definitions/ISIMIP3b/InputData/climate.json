@@ -1,5 +1,5 @@
 {
-  "commit": "675b803690592766458aa047b7c403de0e4fa9a8",
+  "commit": "56df8ed909a2fe0d7cf1c02c301ea37ecbd5eff7",
   "group": [
     {
       "specifier": "tier1",
@@ -13719,7 +13719,7 @@
     {
       "specifier": "ssp370_ssp370soc-noadapt_extrasoc",
       "parent": "ssp370_ssp370soc-noadapt_default",
-      "title": "Extrasoc sensitivity CP7.0",
+      "title": "Extrasoc sensitivity RCP7.0",
       "subtitles": [
         "ssp370_ssp370soc-noadapt_extrasoc"
       ],
@@ -14302,6 +14302,74 @@
       "sectors": [
         "fire"
       ]
+    },
+    {
+      "specifier": "ssp126_ssp126soc-noadapt_nofire",
+      "parent": "ssp126_ssp126soc-noadapt_default",
+      "title": "No-fire sensitivity RCP2.6",
+      "subtitles": [
+        "picontrol_1850soc_nofire",
+        "historical_histsoc_nofire",
+        "ssp126_ssp126soc-noadapt_nofire"
+      ],
+      "priority": "2nd priority, see Table 2.5 for Group III experiment priorities",
+      "pre-industrial": "Does not have to be simulated, spin-up should not include any fire (see note below the table).",
+      "historical": "historical",
+      "future": "ssp126",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "ssp370_ssp370soc-noadapt_nofire",
+      "parent": "ssp370_ssp370soc-noadapt_default",
+      "title": "No-fire sensitivity RCP7.0",
+      "subtitles": [
+        "ssp370_ssp370soc-noadapt_nofire"
+      ],
+      "priority": "2nd priority, see Table 2.5 for Group III experiment priorities",
+      "pre-industrial": "Does not have to be simulated, spin-up should not include any fire (see note below the table).",
+      "historical": "Identical to the similar **historical/histsoc/nofire** run above.",
+      "future": "ssp370",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "ssp585_ssp585soc-noadapt_nofire",
+      "parent": "ssp585_ssp585soc-noadapt_default",
+      "title": "No-fire sensitivity RCP8.5",
+      "subtitles": [
+        "ssp585_ssp585soc-noadapt_nofire"
+      ],
+      "priority": "2nd priority, see Table 2.5 for Group III experiment priorities",
+      "pre-industrial": "Does not have to be simulated, spin-up should not include any fire (see note below the table).",
+      "historical": "Identical to the similar **historical/histsoc/nofire** run above.",
+      "future": "ssp585",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost"
+      ],
+      "group3": true
     }
   ],
   "soc_scenario": [
@@ -14536,6 +14604,20 @@
     {
       "specifier": "default",
       "description": "For all experiments other than the sensitivity experiments."
+    },
+    {
+      "specifier": "nofire",
+      "description": "Simulation with fire switched off to identify impact of fire within the model.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "fire",
+        "peat",
+        "permafrost"
+      ]
     },
     {
       "specifier": "2015co2",
