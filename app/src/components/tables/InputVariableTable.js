@@ -30,6 +30,15 @@ const InputVariableTable = function({ config, caption, rows, groups, actions }) 
       }
   }
 
+  const getPath = (row) => {
+    const path = filterField(config, row.path)
+    if (Array.isArray(path)) {
+      return path.map((p, index) => <code key={index} className="pre">{p}{'\n'}</code>)
+    } else {
+      return <code>{path}</code>
+    }
+  }
+
   const getResolutions = (row) => {
     const resolution = filterField(config, row.resolution)
     if (Array.isArray(resolution)) {
@@ -96,14 +105,14 @@ const InputVariableTable = function({ config, caption, rows, groups, actions }) 
                           </td>
                           <td colSpan="4" className="nowrap">
                             <div>
-                              {row.path && <code>{filterField(config, row.path)}</code>}
+                              {getPath(row)}
                               {row.url && <a href={row.url} target="_blank">{row.url}</a>}
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <td><strong>{getSpecifier(row)}</strong></td>
-                          <td>{row.unit}</td>
+                          <td>{filterField(config, row.unit)}</td>
                           <td>
                             <ul className="resolution-list">
                               {getResolutions(row)}

@@ -2,13 +2,21 @@
   long_name: Time associated with a given location of the time storm centre
   group: tropical-cyclones
   mandatory: true
-  unit: hours since 1950-01-01 00:00
-  frequency: at least 3-hourly
+  unit:
+    ISIMIP3a: hours since 1950-01-01 00:00
+    ISIMIP3b: days since 1950-01-01 (MIT), hours since 1901-01-01 (CHAZ)
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -17,12 +25,18 @@
   group: tropical-cyclones
   mandatory: true
   unit: degrees north
-  frequency: at least 3-hourly
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -32,12 +46,18 @@
   group: tropical-cyclones
   mandatory: true
   unit: degrees east
-  frequency: at least 3-hourly
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -46,15 +66,21 @@
   group: tropical-cyclones
   mandatory: true
   unit: ''
-  frequency: at least 3-hourly
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
   comment: >-
     Two-letter abbreviation: NA/SA (North/South Atlantic), EP/WP/SP (East/West/South
     Pacific), NI/SI (North/South Indian Ocean)
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -63,12 +89,17 @@
   group: tropical-cyclones
   mandatory: true
   unit: hPa
-  frequency: at least 3-hourly
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -76,13 +107,20 @@
   long_name: Environmental pressure (pressure of the outermost closed isobar)
   group: tropical-cyclones
   mandatory: true
-  unit: mbar
-  frequency: at least 3-hourly
+  unit:
+    ISIMIP3a: mbar
+    ISIMIP3b: hPa
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -90,13 +128,21 @@
   long_name: Maximum 1-minute sustained wind speed
   group: tropical-cyclones
   mandatory: true
-  unit: knots
-  frequency: at least 3-hourly
+  unit:
+    ISIMIP3a: knots
+    ISIMIP3b: m s-1
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -105,12 +151,33 @@
   group: tropical-cyclones
   mandatory: true
   unit: nautical miles
-  frequency: at least 3-hourly
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT)
   resolution: along-track
   path:
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
   simulation_rounds:
   - ISIMIP3a
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: rmwse
+  long_name: Radius of maximum wind speeds of any secondary eyewalls
+  group: tropical-cyclones
+  mandatory: true
+  unit: nautical miles
+  frequency:
+    ISIMIP3b: 2-hourly (MIT)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -125,6 +192,41 @@
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
   simulation_rounds:
   - ISIMIP3a
+  sectors:
+  - coastal
+
+- specifier: vp
+  long_name: Potential maximum 1-minute sustained wind speed
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT), 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: vse
+  long_name: Maximum 1-minute sustained wind speed secondary eyewall
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency:
+    ISIMIP3a: at least 3-hourly
+    ISIMIP3b: 2-hourly (MIT)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
   sectors:
   - coastal
 
@@ -156,6 +258,68 @@
   sectors:
   - coastal
 
+- specifier: ua850
+  long_name: Wind speed on the 850 hPa pressure level, zonal direction, eastward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 2-hourly (MIT), 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: va850
+  long_name: Wind speed on the 850 hPa pressure level, meridional direction, northward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 2-hourly (MIT), 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: ua250
+  long_name: Wind speed on the 850 hPa pressure level, zonal direction, eastward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: va250
+  long_name: Wind speed on the 250 hPa pressure level, meridional direction, northward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
 - specifier: t600
   long_name: Temperature on the 600 hPa pressure level
   group: tropical-cyclones
@@ -167,6 +331,83 @@
     ISIMIP3a: ISIMIP3a/InputData/climate/tropical_cyclones/obsclim/tracks/3hr/historical/tracks_obsclim_historical_1950_2021.nc
   simulation_rounds:
   - ISIMIP3a
+  sectors:
+  - coastal
+
+- specifier: ta600
+  long_name: Temperature on the 600 hPa pressure level
+  group: tropical-cyclones
+  mandatory: true
+  unit: K
+  frequency: 2-hourly (MIT), 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: rh600
+  long_name: Relative humidity (%) of the environment at 600 hPa
+  group: tropical-cyclones
+  mandatory: true
+  unit: '%'
+  frequency: 2-hourly (MIT), 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: shear
+  long_name: Wind shear magnitude
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 2-hourly (MIT)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/MIT/tracks/2hr/<climate-scenario>/<climate-forcing>/tracks_mit_<climate-forcing>_<climate-scenario>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: ushear
+  long_name: Wind shear, zonal direction, eastward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
+  sectors:
+  - coastal
+
+- specifier: vshear
+  long_name: Wind shear, zonal direction, meridional direction, northward
+  group: tropical-cyclones
+  mandatory: true
+  unit: ms^-1
+  frequency: 6-hourly (CHAZ)
+  resolution: along-track
+  path:
+    ISIMIP3b:
+    - ISIMIP3b/InputData/climate/tropical_cyclones/CHAZ/tracks/6hr/<climate-scenario>/<climate-forcing>/tracks_chaz_<climate-forcing>_<ensemble-member>_<climate-scenario>_<chaz-parameter>_<chaz-realisation>_<start-year>_<end-year>.nc
+  simulation_rounds:
+  - ISIMIP3b
   sectors:
   - coastal
 
