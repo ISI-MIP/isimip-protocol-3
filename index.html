@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 07 October 2025</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/1c5ea07732b8ceb9823e102e2d5d656496542892">1c5ea07732b8ceb9823e102e2d5d656496542892</a></p>
+<p>Last updated: 08 October 2025</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/1e5cf8ed62c6a75cb0edcfb64a83162e117dc658">1e5cf8ed62c6a75cb0edcfb64a83162e117dc658</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -2263,16 +2263,30 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "units": "m",
       "frequency": "daily if possible, else monthly",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Grid cell mean depth of snowpack.",
+      "comment": {
+        "other": "Grid cell mean depth of snowpack.",
+        "lakes_local": "Mean snowpack depth of representative lake associated with grid cell",
+        "lakes_global": "Mean snowpack depth of representative lake associated with grid cell"
+      },
       "sectors": [
         "biomes",
         "fire",
+        "lakes_local",
+        "lakes_global",
         "peat",
         "permafrost",
         "water_global"
       ],
-      "valid_max": 1000.0,
-      "valid_min": 0.0
+      "valid_max": {
+        "other": 1000.0,
+        "lakes_local": 5.0,
+        "lakes_global": 5.0
+      },
+      "valid_min": {
+        "other": 0.0,
+        "lakes_local": 0.0,
+        "lakes_global": 0.0
+      }
     },
     {
       "specifier": "snm",
@@ -6644,21 +6658,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "lakes_local"
       ],
       "valid_max": 100.0,
-      "valid_min": 0.0
-    },
-    {
-      "specifier": "snowthick",
-      "long_name": "Snow Thickness",
-      "group": "hydrothermal-variables",
-      "units": "m",
-      "frequency": "daily and monthly",
-      "resolution": "Representative lake associated with grid cell",
-      "comment": "",
-      "sectors": [
-        "lakes_global",
-        "lakes_local"
-      ],
-      "valid_max": 5.0,
       "valid_min": 0.0
     },
     {
