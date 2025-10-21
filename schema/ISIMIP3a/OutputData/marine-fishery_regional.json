@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/marine-fishery_regional.yaml",
-  "commit": "981a43e4a71104859b1b66f2ed8330f01efae0d3",
+  "commit": "27643ba4e09effea76b2fc0c7cb610755062a4e3",
   "type": "object",
   "required": [
     "specifiers"
@@ -15,7 +15,7 @@
         "soc_scenario",
         "sens_scenario",
         "variable",
-        "region",
+        "ocean_region",
         "time_step"
       ],
       "properties": {
@@ -44,63 +44,89 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "nat",
-            "histsoc"
+            "histsoc",
+            "nat"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
             "1955-riverine-input",
-            "60arcmin",
             "1955-riverine-input+60arcmin",
+            "60arcmin",
             "default"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
+            "cp30to90cm",
+            "bp30cm",
+            "bd90cm",
+            "tdc",
+            "bp30to90cm",
+            "cd30to90cm",
+            "cp90cm",
+            "bp90cm",
+            "cp30cm",
+            "bd30cm",
+            "tc",
+            "tcblog10",
+            "cd30cm",
+            "tcb",
+            "tclog10",
+            "bd30to90cm",
             "tdb",
             "cd90cm",
-            "bp90cm",
-            "cp30to90cm",
             "tpb",
-            "bd30to90cm",
-            "bd90cm",
-            "tclog10",
-            "tdc",
-            "cp30cm",
-            "bp30cm",
-            "cd30to90cm",
-            "bd30cm",
-            "tcblog10",
-            "cp90cm",
-            "tc",
-            "bp30to90cm",
-            "tcb",
-            "cd30cm",
             "tpc"
           ]
         },
-        "region": {
+        "ocean_region": {
           "type": "string",
           "enum": [
-            "europe",
-            "global",
-            "along-track"
+            "mediterraneansea",
+            "taiwancentralsouthpacific",
+            "northsea-ewe",
+            "prydz-bay",
+            "northsea-ibts",
+            "tasman-golden-bays-nz",
+            "hawaii",
+            "chatham-rise-ll-nz",
+            "se-australia",
+            "himi",
+            "seaustralia-mizer",
+            "cook-strait",
+            "hawaiian-longline",
+            "baltic-sea",
+            "nw-med-sea",
+            "kerguelen",
+            "brasil-ne",
+            "gulf-alaska",
+            "east-bearing-sea-shelf",
+            "east-bering-sea",
+            "med-glob",
+            "adriatic-sea",
+            "north-sea",
+            "humboldt-n",
+            "eastern-scotian-shelf",
+            "northernhumboldt",
+            "seaustralia-atlantis",
+            "benguela",
+            "east-bass-strait"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "hourly",
-            "3hr",
+            "fixed",
+            "daily",
+            "6hr",
             "2hr",
             "monthly",
-            "annual",
-            "6hr",
-            "fixed",
-            "daily"
+            "3hr",
+            "hourly",
+            "annual"
           ]
         },
         "start_year": {
