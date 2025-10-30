@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/DerivedInputData/TipESM2025.yaml",
+  "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/DerivedInputData/SPARCCLE2025.yaml",
   "commit": "15a57848aae0db4d69ca1bd9106f6ccf0c4aad62",
   "type": "object",
   "required": [
@@ -9,24 +9,14 @@
   "properties": {
     "specifiers": {
       "required": [
-        "model",
-        "tc_model",
         "climate_forcing",
+        "ensemble_member",
         "climate_scenario",
-        "climate_variable"
+        "climate_variable",
+        "region",
+        "time_step"
       ],
       "properties": {
-        "model": {
-          "type": "string"
-        },
-        "tc_model": {
-          "type": "string",
-          "enum": [
-            "chaz",
-            "mit",
-            "MIT"
-          ]
-        },
         "climate_forcing": {
           "type": "string",
           "enum": [
@@ -35,6 +25,21 @@
             "ukesm1-0-ll",
             "gfdl-esm4",
             "mri-esm2-0"
+          ]
+        },
+        "ensemble_member": {
+          "type": "string",
+          "enum": [
+            "r1i1p1f2",
+            "r1i1p1f1",
+            "r4i1p1f1"
+          ]
+        },
+        "bias_adjustment": {
+          "type": "string",
+          "enum": [
+            "w5e5",
+            "nobasd"
           ]
         },
         "climate_scenario": {
@@ -128,7 +133,33 @@
             "rmwse"
           ]
         },
+        "region": {
+          "type": "string",
+          "enum": [
+            "along-track",
+            "europe",
+            "global"
+          ]
+        },
+        "time_step": {
+          "type": "string",
+          "enum": [
+            "annual",
+            "annual-gs",
+            "monthly",
+            "monthly-gs",
+            "fixed",
+            "daily",
+            "6hr",
+            "2hr",
+            "3hr",
+            "hourly"
+          ]
+        },
         "start_year": {
+          "type": "number"
+        },
+        "end_year": {
           "type": "number"
         }
       }
