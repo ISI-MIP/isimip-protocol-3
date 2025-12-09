@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/health.yaml",
-  "commit": "22bfacf3be3384ee31d249c6ce3ac463b7716f79",
+  "commit": "b34c33bee8c92a1cc35762457e795e0c1c65acc2",
   "type": "object",
   "required": [
     "specifiers"
@@ -25,10 +25,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gswp3-w5e5",
-            "20crv3-w5e5",
             "20crv3-era5",
-            "20crv3"
+            "20crv3",
+            "20crv3-w5e5",
+            "gswp3-w5e5"
           ]
         },
         "detrending": {
@@ -62,39 +62,39 @@
         "variable": {
           "type": "string",
           "enum": [
-            "ancold",
+            "pop",
             "btm",
-            "anheat",
-            "pop"
+            "ancold",
+            "anheat"
           ]
         },
         "r": {
           "type": "string",
           "enum": [
-            "upper",
             "central",
-            "lower"
+            "lower",
+            "upper"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "global",
             "europe",
+            "global",
             "along-track"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
-            "daily",
-            "hourly",
-            "2hr",
+            "annual",
             "6hr",
             "monthly",
+            "2hr",
             "3hr",
-            "annual"
+            "fixed",
+            "hourly",
+            "daily"
           ]
         },
         "start_year": {
