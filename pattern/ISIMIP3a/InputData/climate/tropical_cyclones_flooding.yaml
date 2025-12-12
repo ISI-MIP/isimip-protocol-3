@@ -1,0 +1,27 @@
+path: >-
+  (?P<simulation_round>[A-Za-z0-9]+)
+  /(?P<product>[A-Za-z]+)
+  /(?P<category>[a-z0-9-_]+)
+  /(?P<subcategory>[a-z0-9-_]+)
+  /(?P<climate_scenario>[a-z]+)
+  /(?P<region>(global))
+  /(storm)
+  /(historical)
+  /(?P<model>[A-Za-z0-9-.]+)
+
+dataset: >-
+  (?P<model>[a-z0-9-.]+)
+  _(?P<climate_scenario>[a-z]+)
+  _(historical)
+  _(?P<climate_variable>[a-z]+)
+  _(?P<coastal_water_level_offset>[a-z]+)
+  _(?P<resolution>(30arcsec))
+
+file: >-
+  (?P<model>[a-z0-9-.]+)
+  _(?P<climate_scenario>[a-z]+)
+  _(historical)
+  _(?P<climate_variable>[a-z]+)
+  _(?P<coastal_water_level_offset>[a-z]+)
+  _(?P<resolution>(30arcsec))
+  _(?P<start_year>\d{4})
