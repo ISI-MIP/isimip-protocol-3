@@ -1,5 +1,5 @@
 {
-  "commit": "b34c33bee8c92a1cc35762457e795e0c1c65acc2",
+  "commit": "1f26ce20a09d7bbec7ef2b727700c1b0e1e9b246",
   "terms": {
     "group": {
       "tier1": {
@@ -91,6 +91,10 @@
       },
       "tropical-cyclones": {
         "title": "Tropical cyclones",
+        "identifier": "climate_variable"
+      },
+      "tropical-cyclones-flooding": {
+        "title": "Tropical cyclones flooding",
         "identifier": "climate_variable"
       },
       "lightning": {
@@ -479,7 +483,8 @@
       },
       "30arcsec": {
         "products": [
-          "InputData"
+          "InputData",
+          "SecondaryInputData"
         ]
       }
     },
@@ -7809,6 +7814,9 @@
       },
       "climate_variable": {
         "title": "Climate variable"
+      },
+      "coastal_water_level_offset": {
+        "title": "Coastal water level offset"
       },
       "crop": {
         "title": "Crop type"
@@ -20217,6 +20225,14 @@
           "SecondaryInputData"
         ]
       },
+      "1mslr": {
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "products": [
+          "SecondaryInputData"
+        ]
+      },
       "spinclim": {
         "simulation_rounds": [
           "ISIMIP3a"
@@ -22404,6 +22420,44 @@
           "DerivedInputData"
         ]
       },
+      "flddph": {
+        "long_name": "Flood depth during storm",
+        "group": "tropical-cyclones-flooding",
+        "mandatory": false,
+        "unit": "m",
+        "frequency": "per storm",
+        "resolution": "30arcsec",
+        "path": {
+          "ISIMIP3a": [
+            "ISIMIP3a/InputData/climate/tropical_cyclones_flooding/global/storm/historical/GeoClaw/geoclaw_<climate-forcing>_historical_fldarea_<coastal-water-level-offset>_30arcsec_<year>.nc"
+          ]
+        },
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "coastal"
+        ]
+      },
+      "fldarea": {
+        "long_name": "Flooded land grid cells",
+        "group": "tropical-cyclones-flooding",
+        "mandatory": false,
+        "unit": 1,
+        "frequency": "per storm",
+        "resolution": "30arcsec",
+        "path": {
+          "ISIMIP3a": [
+            "ISIMIP3a/InputData/climate/tropical_cyclones_flooding/global/storm/historical/GeoClaw/geoclaw_<climate-forcing>_historical_fldarea_<coastal-water-level-offset>_30arcsec_<year>.nc"
+          ]
+        },
+        "simulation_rounds": [
+          "ISIMIP3a"
+        ],
+        "sectors": [
+          "coastal"
+        ]
+      },
       "hurs": {
         "long_name": "Near-Surface Relative Humidity",
         "group": "atmospheric-variables",
@@ -23458,6 +23512,17 @@
       "velledalselva": {},
       "verdalsvassdraget": {},
       "vossovassdraget": {}
+    },
+    "coastal_water_level_offset": {
+      "tidesmin": {
+        "title": "Minimal coastal water level offset"
+      },
+      "tidesmean": {
+        "title": "Mean coastal water level offset"
+      },
+      "tidesmax": {
+        "title": "Maximum coastal water level offset"
+      }
     }
   }
 }
