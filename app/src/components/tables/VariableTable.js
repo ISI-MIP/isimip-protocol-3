@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import { isUndefined } from 'lodash'
 
 import Sectors from '../badges/Sectors'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
@@ -184,6 +185,50 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
     }
   }
 
+  const getValid = (row, field, label) => {
+    const value = filterField(config, row[field])
+
+    if (typeof value === 'object') {
+      if (Object.keys(value).length > 1) {
+        return <>
+          <p><strong>{label}</strong></p>
+          <ul>
+            {
+              Object.keys(value).map((sector, index) => {
+                return (
+                  <li key={index}>
+                    <em className="sector">{sector}:</em>{' '}{value[sector]}
+                    {
+                      (row.units != 1) && <>{' '}<span>{row.units}</span></>
+                    }
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </>
+      } else {
+        return (
+          <p>
+            <strong>{label}</strong>{' '}<span>{Object.values(value)[0]}</span>
+            {
+              (row.units && row.units != 1) && <>{' '}<span>{row.units}</span></>
+            }
+          </p>
+        )
+      }
+    } else {
+      return (
+        <p>
+          <strong>{label}</strong>{' '}<span>{value}</span>
+          {
+            (row.units && row.units != 1) && <>{' '}<span>{row.units}</span></>
+          }
+        </p>
+      )
+    }
+  }
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -194,7 +239,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
           <tr>
             <th style={{width: '20%'}}>Variable long name</th>
             <th style={{width: '15%'}}>Variable specifier</th>
-            <th style={{width: '15%'}}>Unit</th>
+            <th style={{width: '15%'}}>Unit / Valid range</th>
             <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '35%'}}>
               Comments
@@ -223,7 +268,9 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                       <tr key={index}>
                         <td>{row.long_name}</td>
                         <td>{getSpecifier(row)}</td>
-                        <td>{row.units}</td>
+                        <td>
+                          <p>{row.units}</p>
+                        </td>
                         <td>
                           <ul className="resolution-list">
                             {getResolution(row)}
@@ -237,6 +284,8 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {getDimensions(row)}
+                          {getValid(row, 'valid_min', 'Minimum valid value:')}
+                          {getValid(row, 'valid_max', 'Maximum valid value:')}
                           {getComment(row)}
                         </td>
                       </tr>
