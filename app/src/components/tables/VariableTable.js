@@ -185,48 +185,34 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
     }
   }
 
-  const getValid = (row, field, label) => {
-    const value = filterField(config, row[field])
-
-    if (typeof value === 'object') {
-      if (Object.keys(value).length > 1) {
-        return <>
-          <p><strong>{label}</strong></p>
-          <ul>
-            {
-              Object.keys(value).map((sector, index) => {
-                return (
-                  <li key={index}>
-                    <em className="sector">{sector}:</em>{' '}{value[sector]}
-                    {
-                      (row.units != 1) && <>{' '}<span>{row.units}</span></>
-                    }
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </>
-      } else {
-        return (
-          <p>
-            <strong>{label}</strong>{' '}<span>{Object.values(value)[0]}</span>
-            {
-              (row.units && row.units != 1) && <>{' '}<span>{row.units}</span></>
-            }
-          </p>
-        )
-      }
-    } else {
-      return (
-        <p>
-          <strong>{label}</strong>{' '}<span>{value}</span>
-          {
-            (row.units && row.units != 1) && <>{' '}<span>{row.units}</span></>
-          }
+  const getUnit = (row) => {
+    const unit = filterField(config, row.units)
+    return !isUndefined(unit) && (
+      <>
+        <p className="mb-1">
+          <strong>Unit:</strong>
         </p>
-      )
-    }
+        <p>
+          {unit}
+        </p>
+      </>
+    )
+  }
+
+  const getValid = (row) => {
+    const valid_min = filterField(config, row.valid_min)
+    const valid_max = filterField(config, row.valid_max)
+    return !isUndefined(valid_min) && !isUndefined(valid_max) && (
+      <>
+        <div className="separator"></div>
+        <p className="mb-1">
+          <strong>Valid range:</strong>
+        </p>
+        <p>
+          {valid_min} - {valid_max}
+        </p>
+      </>
+    )
   }
 
   return (
@@ -269,7 +255,8 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                         <td>{row.long_name}</td>
                         <td>{getSpecifier(row)}</td>
                         <td>
-                          <p>{row.units}</p>
+                          {getUnit(row)}
+                          {getValid(row)}
                         </td>
                         <td>
                           <ul className="resolution-list">
@@ -284,8 +271,6 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {getDimensions(row)}
-                          {getValid(row, 'valid_min', 'Minimum valid value:')}
-                          {getValid(row, 'valid_max', 'Maximum valid value:')}
                           {getComment(row)}
                         </td>
                       </tr>
