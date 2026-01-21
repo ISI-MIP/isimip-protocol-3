@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import { isUndefined } from 'lodash'
 
 import Sectors from '../badges/Sectors'
 import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
@@ -184,6 +185,36 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
     }
   }
 
+  const getUnit = (row) => {
+    const unit = filterField(config, row.units)
+    return !isUndefined(unit) && (
+      <>
+        <p className="mb-1">
+          <strong>Unit:</strong>
+        </p>
+        <p>
+          {unit}
+        </p>
+      </>
+    )
+  }
+
+  const getValid = (row) => {
+    const valid_min = filterField(config, row.valid_min)
+    const valid_max = filterField(config, row.valid_max)
+    return !isUndefined(valid_min) && !isUndefined(valid_max) && (
+      <>
+        <div className="separator"></div>
+        <p className="mb-1">
+          <strong>Valid range:</strong>
+        </p>
+        <p>
+          {valid_min} - {valid_max}
+        </p>
+      </>
+    )
+  }
+
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -194,7 +225,7 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
           <tr>
             <th style={{width: '20%'}}>Variable long name</th>
             <th style={{width: '15%'}}>Variable specifier</th>
-            <th style={{width: '15%'}}>Unit</th>
+            <th style={{width: '15%'}}>Unit / Valid range</th>
             <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '35%'}}>
               Comments
@@ -223,7 +254,10 @@ const VariableTable = function({ config, caption, rows, groups, actions }) {
                       <tr key={index}>
                         <td>{row.long_name}</td>
                         <td>{getSpecifier(row)}</td>
-                        <td>{row.units}</td>
+                        <td>
+                          {getUnit(row)}
+                          {getValid(row)}
+                        </td>
                         <td>
                           <ul className="resolution-list">
                             {getResolution(row)}
