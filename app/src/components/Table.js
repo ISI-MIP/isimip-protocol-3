@@ -19,9 +19,9 @@ import InputVariableTable from './tables/InputVariableTable'
 import IrrigationTable from './tables/IrrigationTable'
 import LakeSiteTable from './tables/LakeSiteTable'
 import OceanRegionTable from './tables/OceanRegionTable'
-import RiverBasinTable from './tables/RiverBasinTable'
 import ScenarioTable from './tables/ScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
+import StationTable from './tables/StationTable'
 import VariableTable from './tables/VariableTable'
 
 const Table = ({ definitions, config, identifier, caption, actions }) => {
@@ -59,8 +59,8 @@ const Table = ({ definitions, config, identifier, caption, actions }) => {
       return <LakeSiteTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'ocean_region':
       return <OceanRegionTable config={config} caption={caption} rows={rows} actions={actions} />
-    case 'river_basin':
-      return <RiverBasinTable config={config} caption={caption} rows={rows} actions={actions} />
+    case 'station':
+      return <StationTable config={config} caption={caption} rows={rows} actions={actions} />
     case 'sens_scenario':
       return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} group3={true} />
     case 'soc_dataset':

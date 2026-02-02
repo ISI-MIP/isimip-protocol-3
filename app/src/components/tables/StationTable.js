@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { filterRows } from '../../utils'
 
 
-const RiverBasinTable = function({ config, caption, rows, actions }) {
+const StationTable = function({ config, caption, rows, actions }) {
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
@@ -47,10 +47,10 @@ const RiverBasinTable = function({ config, caption, rows, actions }) {
   )
 }
 
-RiverBasinTable.propTypes = {
+StationTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired
 }
 
-export default RiverBasinTable
+export default StationTable
