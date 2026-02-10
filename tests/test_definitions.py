@@ -14,7 +14,8 @@ def read_instance(file_path):
     if file_path.is_dir():
         instance = []
         for group_path in file_path.iterdir():
-            instance += read_file(group_path)
+            if group_path.suffix == '.yaml':
+                instance += read_file(group_path)
         return instance
     else:
         return read_file(file_path)
@@ -25,16 +26,17 @@ def test_definitions():
         schema = json.load(fp)
 
     for file_path in Path('definitions').iterdir():
-        # read the instance
-        instance = read_instance(file_path)
+        if file_path.suffix == '.yaml':
+            # read the instance
+            instance = read_instance(file_path)
 
-        # validate json with meta json
-        jsonschema.validate(schema=schema, instance=instance)
+            # validate json with meta json
+            jsonschema.validate(schema=schema, instance=instance)
 
 
 def test_double_specifiers():
     for file_path in Path('definitions').iterdir():
-        if file_path.stem not in ['subcategory']:
+        if file_path.suffix == '.yaml' and file_path.stem not in ['subcategory']:
             # read the instance
             definitions = read_instance(file_path)
 
@@ -71,6 +73,20 @@ def test_variable():
                             assert key in sectors, field
 
 
+def test_river_stations():
+    # read rivers and stations
+    rivers = read_instance(Path('definitions') / 'river')
+    stations = read_instance(Path('definitions') / 'station')
+
+    for station in stations:
+        station_river = next(
+            river for river in rivers
+            if river['specifier'] == station['river_specifier']
+        )
+
+        assert station_river['title'] == station['river']
+
+
 def test_dataset_groups():
     for file in ['soc_dataset.yaml', 'geo_dataset.yaml']:
         groups = read_instance(Path('definitions') / 'group.yaml')
@@ -103,7 +119,7 @@ def test_nested_simulation_rounds():
     simulation_round_specifiers = [simulation_round['specifier'] for simulation_round in simulation_rounds]
 
     for file_path in Path('definitions').iterdir():
-        if file_path.name not in ['experiments.yaml']:
+        if file_path.suffix == '.yaml' and file_path.name not in ['experiments.yaml']:
             # read the instance
             instance = read_instance(file_path)
 
