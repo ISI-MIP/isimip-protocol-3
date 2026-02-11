@@ -112,7 +112,7 @@ const InputVariableTable = function({ config, caption, rows, groups, actions }) 
                         </tr>
                         <tr>
                           <td><strong>{getSpecifier(row)}</strong></td>
-                          <td>{filterField(config, row.unit)}</td>
+                          <td>{filterField(config, row.units)}</td>
                           <td>
                             <ul className="resolution-list">
                               {getResolutions(row)}

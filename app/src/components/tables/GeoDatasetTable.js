@@ -80,7 +80,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
                                   {' '}
                                   {variable.long_name && <span>({variable.long_name})</span>}
                                 </td>
-                                <td>{variable.unit}</td>
+                                <td>{variable.units}</td>
                                 {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>

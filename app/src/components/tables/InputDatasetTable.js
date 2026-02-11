@@ -102,7 +102,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, actions, gro
                               <tr key={i}>
                                 <td><strong>{variable.specifier}</strong>
                                 {variable.long_name && <span> ({variable.long_name})</span>}</td>
-                                <td>{variable.unit}</td>
+                                <td>{variable.units}</td>
                                 {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
