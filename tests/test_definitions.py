@@ -17,20 +17,19 @@ def read_instance(file_path):
             if group_path.suffix == '.yaml':
                 instance += read_file(group_path)
         return instance
-    else:
+    elif file_path.suffix == '.yaml':
         return read_file(file_path)
 
 
 def test_definitions():
-    with Path(__file__).parent.joinpath('meta.json').open() as fp:
-        schema = json.load(fp)
+    schema = read_file(Path(__file__).parent.joinpath('meta.yaml'))
 
     for file_path in Path('definitions').iterdir():
-        if file_path.suffix == '.yaml':
-            # read the instance
-            instance = read_instance(file_path)
+        # read the instance
+        instance = read_instance(file_path)
 
-            # validate json with meta json
+        if instance is not None:
+            # validate json with meta.yaml
             jsonschema.validate(schema=schema, instance=instance)
 
 
