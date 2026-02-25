@@ -1,11 +1,13 @@
-import React, { Component} from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'
 
-const Show = ({ config, simulationRound, sector, html }) => {
+const Show = ({ simulationRound, sector, html }) => {
+  const config = useSelector((store) => store.config)
+
   let className = 'show-component'
   let tocClassName = ''
 
@@ -50,16 +52,9 @@ const Show = ({ config, simulationRound, sector, html }) => {
 }
 
 Show.propTypes = {
-  config: PropTypes.object.isRequired,
   simulationRound: PropTypes.string,
   sector: PropTypes.string,
   html: PropTypes.string.isRequired
 }
 
-function mapStateToProps(state, props) {
-  return {
-    config: state.config
-  }
-}
-
-export default connect(mapStateToProps)(Show)
+export default Show

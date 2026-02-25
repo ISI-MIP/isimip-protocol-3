@@ -1,11 +1,11 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
 
-const SpeciesTable = function({ config, caption, rows, actions }) {
+const SpeciesTable = function({ config, caption, rows }) {
   return (
     <div className="w-50">
       <table className="table table-bordered table-fixed">

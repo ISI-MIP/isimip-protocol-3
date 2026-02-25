@@ -1,13 +1,13 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
 
-import { filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
-const ClimateForcingTable = function({ config, caption, rows, actions }) {
+const ClimateForcingTable = function({ config, caption, rows }) {
   const filteredRows = filterRows(config, rows)
 
   return (
@@ -88,8 +88,7 @@ const ClimateForcingTable = function({ config, caption, rows, actions }) {
 ClimateForcingTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  rows: PropTypes.array.isRequired
 }
 
 export default ClimateForcingTable

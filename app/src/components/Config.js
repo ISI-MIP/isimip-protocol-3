@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 
 import { actions } from '../store'
 
 
-const Config = ({ definitions, config, actions }) => {
+const Config = () => {
+  const dispatch = useDispatch()
+  const config = useSelector((store) => store.config)
+  const definitions = useSelector((store) => store.definitions)
+
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = 'Some data are still under construction (see Table 3.1), but models' +
     ' not needing those data may already start Group III simulations.'
@@ -67,7 +70,7 @@ const Config = ({ definitions, config, actions }) => {
                         <div className="float-right">
                           <input className="form-check-input" type="checkbox" id="control-group3"
                            checked={config.group3}
-                           onChange={(event) => actions.toggleGroup3()} />
+                           onChange={(event) => dispatch(actions.toggleGroup3())} />
                           <label className="form-check-label" htmlFor="control-group3">
                             <span className="badge badge-info">only Group III</span>
                           </label>
@@ -77,7 +80,7 @@ const Config = ({ definitions, config, actions }) => {
                     <input className="form-check-input" type="radio" id={id}
                            value={row.specifier}
                            checked={row.specifier == config.simulation_round}
-                           onChange={(event) => actions.changeSimulationRound(event.target.value)} />
+                           onChange={(event) => dispatch(actions.changeSimulationRound(event.target.value))} />
                     <label className="form-check-label" htmlFor={id}>{row.title}</label>
                   </div>
                 </React.Fragment>
@@ -98,7 +101,7 @@ const Config = ({ definitions, config, actions }) => {
                   <input className="form-check-input" type="checkbox" id={id}
                          value={row.specifier}
                          checked={config.sectors.includes(row.specifier)}
-                         onChange={(event) => actions.changeSector(event.target.value)} />
+                         onChange={(event) => dispatch(actions.changeSector(event.target.value))} />
                   <label className="form-check-label d-flex" htmlFor={id}>
                     <div>
                       {row.title}
@@ -123,7 +126,7 @@ const Config = ({ definitions, config, actions }) => {
                   <input className="form-check-input" type="checkbox" id={id}
                          value={row.specifier}
                          checked={config.sectors.includes(row.specifier)}
-                         onChange={(event) => actions.changeSector(event.target.value)} />
+                         onChange={(event) => dispatch(actions.changeSector(event.target.value))} />
                   <label className="form-check-label d-flex" htmlFor={id}>
                     <div>{row.title}</div>
                   </label>
@@ -146,22 +149,4 @@ const Config = ({ definitions, config, actions }) => {
   )
 }
 
-Config.propTypes = {
-  definitions: PropTypes.object.isRequired,
-  config: PropTypes.object.isRequired
-}
-
-function mapStateToProps(state, props) {
-  return {
-    definitions: state.definitions,
-    config: state.config
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Config)
+export default Config

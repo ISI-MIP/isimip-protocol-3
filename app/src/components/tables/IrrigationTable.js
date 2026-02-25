@@ -1,8 +1,8 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { filterRows, filterField } from '../../utils'
+import { filterRows, filterField } from '../../utils/filter'
 
 
 const IrrigationTable = function({ config, caption, rows }) {

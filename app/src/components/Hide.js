@@ -1,13 +1,21 @@
-import React, { Component} from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { isNil } from 'lodash'
 
-const Hide = ({ config, simulationRound, sector, html }) => {
+const Hide = ({ simulationRound, sector, html }) => {
+  const config = useSelector((store) => store.config)
   const sectors = (sector === undefined) ? [] : sector.split(',')
 
   let className = ''
-  if ((simulationRound === undefined || config.simulation_round == simulationRound) &&
-      (sector === undefined || config.sectors.length == 0 || sectors.filter(sector => config.sectors.includes(sector)).length)) {
+  if ((
+    simulationRound === undefined ||
+    config.simulation_round == simulationRound
+  ) && (
+    sector === undefined ||
+    config.sectors.length == 0 ||
+    sectors.filter(sector => config.sectors.includes(sector)).length
+  )) {
     className = 'hidden'
   }
 
@@ -15,16 +23,9 @@ const Hide = ({ config, simulationRound, sector, html }) => {
 }
 
 Hide.propTypes = {
-  config: PropTypes.object.isRequired,
   simulationRound: PropTypes.string,
   sector: PropTypes.string,
   html: PropTypes.string.isRequired
 }
 
-function mapStateToProps(state, props) {
-  return {
-    config: state.config
-  }
-}
-
-export default connect(mapStateToProps)(Hide)
+export default Hide

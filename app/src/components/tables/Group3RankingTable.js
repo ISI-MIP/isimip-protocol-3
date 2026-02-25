@@ -1,12 +1,13 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { filterGroups, filterRows, filterField, GroupToggleLink, toggleGroups } from '../../utils'
+import GroupToggleLink from '../links/GroupToggleLink'
 
-const Group3RankingTable = function({ config, caption, rows, groups, actions }) {
+import { filterGroups, filterRows, filterField } from '../../utils/filter'
 
-  const filteredGroups = filterGroups(config, rows, groups, actions)
+const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
+  const filteredGroups = filterGroups(config, rows, groups)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
@@ -54,19 +55,20 @@ const Group3RankingTable = function({ config, caption, rows, groups, actions }) 
       <tbody>
         {
           filteredGroups.map(group => {
-            const header = [
+            const getHeader = (group) => ([
               <tr key="-1">
                 <td colSpan="5" className="table-secondary">
-                  <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle} label="tier"/>
+                  <GroupToggleLink className="float-right" closed={group.closed} label="tier"
+                                   toggle={() => toggleGroup(group)} />
                   <strong>{group.title}</strong>
                 </td>
               </tr>
-            ]
+            ])
 
             if (group.closed) {
-              return header
+              return getHeader(group)
             } else {
-              return header.concat(
+              return getHeader(group).concat(
                 sortRows(group.rows).map((row, index) => {
                   return (
                     <tr key={index}>
@@ -91,8 +93,7 @@ const Group3RankingTable = function({ config, caption, rows, groups, actions }) 
 Group3RankingTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  rows: PropTypes.array.isRequired
 }
 
 export default Group3RankingTable
