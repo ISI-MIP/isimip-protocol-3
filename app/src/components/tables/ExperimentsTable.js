@@ -1,13 +1,14 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
+import GroupToggleLink from '../links/GroupToggleLink'
 
-import { GroupToggleLink, filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
-const ExperimentRow = function({ config, row, climateScenarios, socScenarios, sensScenarios, actions }) {
+const ExperimentRow = function({ config, row, climateScenarios, socScenarios, sensScenarios, toggleExperiments }) {
   let futureTableClass = 'table-danger'
   if (row.future && row.group3) {
     // group 3 experiments
@@ -43,7 +44,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                 <p className="experiments-toggle">
                   <GroupToggleLink
                     closed={!config.experiments.includes(row.specifier)}
-                    toggle={() => actions.toggleExperiments(row.specifier)}
+                    toggle={() => toggleExperiments(row)}
                     label={`${row.children.length} sensitivity experiment${row.children.length > 1 ? 's' : ''}`}
                   />
                 </p>
@@ -228,7 +229,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
   )
 }
 
-const ExperimentsTable = function({ definitions, config, caption, rows, actions }) {
+const ExperimentsTable = function({ definitions, config, caption, rows, toggleExperiments }) {
   const filteredRows = filterRows(config, rows, true)
 
   const climateScenarios = Object.fromEntries(filterRows(config, definitions.climate_scenario).map(scenario => {
@@ -297,7 +298,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
                 climateScenarios={climateScenarios}
                 socScenarios={socScenarios}
                 sensScenarios={sensScenarios}
-                actions={actions}
+                toggleExperiments={toggleExperiments}
               />
             ))
           }
@@ -317,8 +318,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, actions 
 ExperimentsTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  rows: PropTypes.array.isRequired
 }
 
 export default ExperimentsTable

@@ -1,9 +1,6 @@
-import React, { Component} from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-
-import { actions } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
@@ -24,79 +21,97 @@ import SpeciesTable from './tables/SpeciesTable'
 import StationTable from './tables/StationTable'
 import VariableTable from './tables/VariableTable'
 
-const Table = ({ definitions, config, identifier, caption, actions }) => {
+import { actions } from '../store'
+
+const Table = ({ identifier, caption }) => {
+  const dispatch = useDispatch()
+
+  const config = useSelector((store) => store.config)
+  const definitions = useSelector((store) => store.definitions)
+
   const groups = definitions.group.filter(group => group.identifier == identifier)
   const rows = definitions[identifier]
 
+  const toggleGroup = (group) => {
+    dispatch(actions.toggleGroup(group.specifier))
+  }
+  const toggleGroups = (groups, allOpen) => {
+    if (allOpen) {
+      // all groups are open, toggle them all, closing them
+      groups.forEach(group => toggleGroup(group))
+    } else {
+      // toggle groups which are closed to open them
+      groups.filter(group => group.closed).forEach(group => toggleGroup(group))
+    }
+  }
+  const toggleExperiments = (experiment) => {
+    dispatch(actions.toggleExperiments(experiment.specifier))
+  }
+
+  const props = {
+    config,
+    definitions,
+    caption,
+    rows,
+    groups,
+    toggleGroup,
+    toggleGroups,
+    toggleExperiments
+  }
+
   switch (identifier) {
     case 'bias_adjustment':
-      return <BiasAdjustmentTable config={config} caption={caption} rows={rows} />
+      return <BiasAdjustmentTable {...props} />
     case 'climate_forcing':
-      return <ClimateForcingTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <ClimateForcingTable {...props} />
     case 'climate_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <ScenarioTable {...props} />
     case 'climate_variable':
-      return <InputVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <InputVariableTable {...props} />
     case 'crop':
-      return <CropTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <CropTable {...props} />
     case 'experiments':
-      return <ExperimentsTable definitions={definitions} config={config} caption={caption} rows={rows} actions={actions} />
+      return <ExperimentsTable {...props} />
     case 'forcing_data':
-      return <ForcingDataTable definitions={definitions} config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <ForcingDataTable {...props} />
     case 'forest_stand':
-      return <ForestStandTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <ForestStandTable {...props} />
     case 'group3_ranking':
-      return <Group3RankingTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <Group3RankingTable {...props} />
     case 'group3_requirements':
-      return <Group3RequirementsTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <Group3RequirementsTable {...props} />
     case 'geo_dataset':
-      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <InputDatasetTable {...props} />
     case 'harmonization':
-      return <HarmonizationTable config={config} caption={caption} rows={rows} />
+      return <HarmonizationTable {...props} />
     case 'irrigation':
-      return <IrrigationTable config={config} caption={caption} rows={rows} />
+      return <IrrigationTable {...props} />
     case 'lake_site':
-      return <LakeSiteTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <LakeSiteTable {...props} />
     case 'ocean_region':
-      return <OceanRegionTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <OceanRegionTable {...props} />
     case 'station':
-      return <StationTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <StationTable {...props} />
     case 'sens_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} group3={true} />
+      return <ScenarioTable {...props} group3={true} />
     case 'soc_dataset':
-      return <InputDatasetTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} group3={true} />
+      return <InputDatasetTable {...props} group3={true} />
     case 'soc_scenario':
-      return <ScenarioTable config={config} caption={caption} rows={rows} actions={actions} group3={true} />
+      return <ScenarioTable {...props} group3={true} />
     case 'species':
-      return <SpeciesTable config={config} caption={caption} rows={rows} actions={actions} />
+      return <SpeciesTable {...props} />
     case 'upstream_variable':
-      return <InputVariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions}/>
+      return <InputVariableTable {...props} />
     case 'variable':
-      return <VariableTable config={config} caption={caption} rows={rows} groups={groups} actions={actions} />
+      return <VariableTable {...props} />
     default:
       return null
   }
 }
 
 Table.propTypes = {
-  definitions: PropTypes.object.isRequired,
-  config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  identifier: PropTypes.string.isRequired,
-  actions: PropTypes.object.isRequired
+  identifier: PropTypes.string.isRequired
 }
 
-function mapStateToProps(state, props) {
-  return {
-    definitions: state.definitions,
-    config: state.config
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Table)
+export default Table

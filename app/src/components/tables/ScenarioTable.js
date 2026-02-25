@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
@@ -6,7 +6,7 @@ import SimulationRounds from '../badges/SimulationRounds'
 import Sectors from '../badges/Sectors'
 import Status from '../badges/Status'
 
-import { filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
 
 const ScenarioTable = function({ config, caption, rows, group3 }) {

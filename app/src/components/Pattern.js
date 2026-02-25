@@ -1,12 +1,15 @@
-import React, { Component} from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import Sectors from './badges/Sectors'
 import SimulationRounds from './badges/SimulationRounds'
 
-const Pattern = ({ config, patterns }) => {
+const Pattern = () => {
+  const config = useSelector((store) => store.config)
+  const patterns = useSelector((store) => store.patterns)
   const sectors = Object.keys(patterns[config.simulation_round])
+
   const simple_pattern = (pattern) => {
     return pattern
       .replaceAll(/\[.*?\]\+/g, '')                     // remove [a-z0-9] etc.
@@ -44,16 +47,4 @@ const Pattern = ({ config, patterns }) => {
   )
 }
 
-Pattern.propTypes = {
-  config: PropTypes.object.isRequired,
-  patterns: PropTypes.object.isRequired
-}
-
-function mapStateToProps(state, props) {
-  return {
-    config: state.config,
-    patterns: state.patterns
-  }
-}
-
-export default connect(mapStateToProps)(Pattern)
+export default Pattern

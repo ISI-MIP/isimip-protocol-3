@@ -1,33 +1,4 @@
-import React, { Component } from 'react'
-
-const GroupToggleLink = ({ closed, toggle, all, label }) => {
-  const onClick = event => {
-    event.preventDefault()
-    toggle()
-  }
-
-  if (!label) {
-    label = all ? 'groups' : 'group'
-  }
-
-  if (all) {
-    return (
-      <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? `Show all ${label}` : `Hide all ${label}`}
-      </a>
-    )
-  } else {
-    return (
-      <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? `Show ${label}` : `Hide ${label}`}
-        {closed && <span className="toggle-group-down">&#65088;</span>}
-        {!closed && <span className="toggle-group-up">&#65087;</span>}
-      </a>
-    )
-  }
-}
-
-const filterRows = (config, rows, group3) => {
+export const filterRows = (config, rows, group3) => {
   if (Array.isArray(rows)) {
     return rows.filter(row => {
         if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
@@ -49,7 +20,7 @@ const filterRows = (config, rows, group3) => {
   }
 }
 
-const filterField = (config, field) => {
+export const filterField = (config, field) => {
   if (field === null) {
     return null
   } else if (Array.isArray(field)) {
@@ -78,23 +49,10 @@ const filterField = (config, field) => {
   }
 }
 
-const filterGroups = (config, rows, groups, actions, group3) => {
+export const filterGroups = (config, rows, groups, group3) => {
   return groups.map(group => {
     group.rows = filterRows(config, rows, group3).filter(row => row.group == group.specifier)
     group.closed = !config.groups.includes(group.specifier)
-    group.toggle = () => actions.toggleGroup(group.specifier)
     return group
   }).filter(group => group.rows.length > 0)
 }
-
-const toggleGroups = (groups, allOpen) => {
-  if (allOpen) {
-    // all groups are open, toggle them all, closing them
-    groups.forEach(group => group.toggle())
-  } else {
-    // toggle groups which are closed to open them
-    groups.filter(group => group.closed).forEach(group => group.toggle())
-  }
-}
-
-export { GroupToggleLink, filterRows, filterField, filterGroups, toggleGroups }

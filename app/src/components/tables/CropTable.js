@@ -1,12 +1,13 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { GroupToggleLink, filterGroups, toggleGroups } from '../../utils'
+import { filterGroups, toggleGroups } from '../../utils/filter'
 
+import GroupToggleLink from '../links/GroupToggleLink'
 
-const CropTable = function({ config, caption, rows, groups, actions }) {
-  const filteredGroups = filterGroups(config, rows, groups, actions)
+const CropTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
+  const filteredGroups = filterGroups(config, rows, groups)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
@@ -21,26 +22,27 @@ const CropTable = function({ config, caption, rows, groups, actions }) {
             <th style={{width: '50%'}}>Crop</th>
             <th style={{width: '50%'}}>
               Specifier
-              <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} label="datasets" />
+              <GroupToggleLink className="float-right" closed={!allOpen} all={true} label="datasets"
+                               toggle={allToggle} />
             </th>
           </tr>
         </thead>
         <tbody>
           {
             filteredGroups.map(group => {
-              const header = [
+              const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
                     <strong>{group.title}</strong>
                   </td>
                 </tr>
-              ]
+              ])
 
               if (group.closed) {
-                return header
+                return getHeader(group)
               } else {
-                return header.concat(
+                return getHeader(group).concat(
                   group.rows.map((row, index) => {
                     return (
                       <tr key={index}>
@@ -63,8 +65,7 @@ CropTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  groups: PropTypes.array.isRequired
 }
 
 export default CropTable

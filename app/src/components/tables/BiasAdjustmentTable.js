@@ -1,9 +1,9 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
 
 const BiasAdjustmentTable = function({ config, caption, rows }) {
