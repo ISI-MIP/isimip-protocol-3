@@ -1,12 +1,14 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
 import Sectors from '../badges/Sectors'
-import { GroupToggleLink, filterGroups, filterField, toggleGroups } from '../../utils'
+import GroupToggleLink from '../links/GroupToggleLink'
 
-const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
-  const filteredGroups = filterGroups(config, rows, groups, actions)
+import { filterGroups, filterField } from '../../utils/filter'
+
+const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
+  const filteredGroups = filterGroups(config, rows, groups)
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
@@ -41,19 +43,19 @@ const GeoDatasetTable = function({ config, caption, rows, groups, actions }) {
         <tbody>
           {
             filteredGroups.map(group => {
-              const header = [
+              const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={group.toggle}/>
+                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
                     <strong>{group.title}</strong>
                   </td>
                 </tr>
-              ]
+              ])
 
               if (group.closed) {
-                return header
+                return getHeader(group)
               } else {
-                return header.concat(
+                return getHeader(group).concat(
                   group.rows.map((row, index) => {
                     return (
                       <React.Fragment key={index}>
@@ -124,8 +126,7 @@ GeoDatasetTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  groups: PropTypes.array.isRequired
 }
 
 export default GeoDatasetTable

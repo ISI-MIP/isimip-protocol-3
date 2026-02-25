@@ -1,11 +1,11 @@
-import React, { Component} from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { filterRows } from '../../utils'
+import { filterRows } from '../../utils/filter'
 
 
-const OceanRegionTable = function({ config, caption, rows, actions }) {
+const OceanRegionTable = function({ config, caption, rows }) {
   return (
     <div className="w-75">
       <table className="table table-bordered table-fixed">
