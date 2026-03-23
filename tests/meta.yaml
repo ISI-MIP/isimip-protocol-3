@@ -23,6 +23,8 @@ items:
       type: array
     calenders_daily:
       type: array
+    check:
+      type: boolean
     climate_forcing:
       oneOf:
       - type: object
@@ -239,9 +241,13 @@ items:
             - type: number
         additionalProperties: false
     valid_max:
-      type: number
+      oneOf:
+      - type: boolean
+      - type: number
     valid_min:
-      type: number
+      oneOf:
+      - type: boolean
+      - type: number
     value:
       type: object
     west:
