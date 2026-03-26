@@ -17,7 +17,13 @@ as much structure as possible by machine-readable code under [definitions](defin
 Setup
 -----
 
-Building the protocol needs git and a recent Python version (> 3.6). The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
+Building the protocol requires:
+
+- **git**: for version control
+- **Python** (> 3.6)
+- **curl**: for downloading nvm in the app Makefile
+
+The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
 
 A `Makefile` is provided to help with the installation process.
 
@@ -39,6 +45,8 @@ The JavaScript part of the protocol needs to be build using NodeJS and Webpack. 
 ```bash
 make app
 ```
+
+`make app` bootstraps Node via nvm and requires `curl`.
 
 
 Build
