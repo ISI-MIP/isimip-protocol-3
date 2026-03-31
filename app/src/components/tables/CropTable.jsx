@@ -2,7 +2,7 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import { filterGroups, toggleGroups } from '../../utils/filter'
+import { filterGroups } from '../../utils/filter'
 
 import GroupToggleLink from '../links/GroupToggleLink'
 
