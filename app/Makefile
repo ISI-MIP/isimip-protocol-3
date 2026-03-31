@@ -1,16 +1,16 @@
 SHELL := bash
-export NVM_DIR=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))/nvm
+export NVM_DIR=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))nvm
 
-.PHONY: prod build watch
-
-prod: nvm node_modules
-	. "${NVM_DIR}/nvm.sh"; nvm use; npm run build:prod
+.PHONY: build watch lint
 
 build: nvm node_modules
-	. "${NVM_DIR}/nvm.sh"; nvm use; npm run build
+	. "${NVM_DIR}/nvm.sh"; nvm use && npm run build
 
 watch: nvm node_modules
-	. "${NVM_DIR}/nvm.sh"; nvm use; npm run watch
+	. "${NVM_DIR}/nvm.sh"; nvm use && npm run watch
+
+lint: nvm node_modules
+	. "${NVM_DIR}/nvm.sh"; nvm use && npm run lint
 
 nvm:
 	mkdir -p ${NVM_DIR}
@@ -19,7 +19,7 @@ nvm:
 	. "${NVM_DIR}/nvm.sh"; nvm install
 
 node_modules:
-	. "${NVM_DIR}/nvm.sh"; nvm use; npm ci
+	. "${NVM_DIR}/nvm.sh"; nvm use && npm ci
 
 clean:
 	rm -rf nvm node_modules
