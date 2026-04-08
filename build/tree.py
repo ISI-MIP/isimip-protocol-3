@@ -1,28 +1,28 @@
 import json
-import os
+import logging
 from pathlib import Path
 
-from utils import get_commit_hash, write_json
+from utils import get_commit_hash, setup_logs, write_json
 
+setup_logs()
 
 def main():
-    for root, dirs, files in os.walk('tree'):
-        for file_name in files:
-            tree_path = Path(root) / file_name
-            output_path = Path('output') / tree_path
+    for tree_path in Path('tree').rglob('**/*.json'):
+        output_path = Path('output') / tree_path
 
-            # step 2: open and read pattern
-            with open(tree_path, encoding='utf-8') as f:
-                identifiers = json.loads(f.read())
+        # open and read tree
+        logging.debug('read %s', tree_path)
+        with open(tree_path, encoding='utf-8') as f:
+            identifiers = json.loads(f.read())
 
-            # create a pattern json from scratch
-            tree_json = {
-                'commit': get_commit_hash(),
-                'identifiers': [identifier.replace(' ', '') for identifier in identifiers]
-            }
+        # create tree dict
+        tree = {
+            'commit': get_commit_hash(),
+            'identifiers': [identifier.replace(' ', '') for identifier in identifiers]
+        }
 
-            # step 3: write json file
-            write_json(output_path, tree_json)
+        # write tree as json
+        write_json(output_path, tree)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 from pathlib import Path
 
-from utils import get_commit_hash, read_definitions, write_json
+from utils import get_commit_hash, read_definitions, setup_logs, write_json
 
+setup_logs()
 
 def main():
     glossary = {
