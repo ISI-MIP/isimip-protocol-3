@@ -1,18 +1,13 @@
 ISIMIP3 simulation protocol
 ===========================
 
-This project builds sector-specific ISIMIP protocols from a common data source.
-Machine-readable data are under [definitions](definitions/), and text under [protocol](protocol/).
-
-The rendered protocols are found at https://protocol.isimip.org.
+This repository contains all information and tools to build the ISIMIP3 protocol as presented on [protocol.isimip.org](https://protocol.isimip.org). The YAML files containing the information for the tables are located under [definitions](definitions/) and the markdown files for the text under [protocol](protocol/).
 
 You can clone this repository and work and render the files locally as documented below.
 
-You can also edit the markdown files at github directly. With a delay of minutes,
-your updates will be visible at `https://protocol.isimip.org`.
+You can also edit the markdown files at github directly. With a delay of minutes, your updates will be visible at `https://protocol.isimip.org`.
 
-As a rule, the sector-specific text should be kept to a minimum and cover
-as much structure as possible by machine-readable code under [definitions](definitions/).
+As a rule, the sector-specific text should be kept to a minimum and cover as much structure as possible by machine-readable code under [definitions](definitions/).
 
 Setup
 -----
@@ -20,12 +15,10 @@ Setup
 Building the protocol requires:
 
 - **git**: for version control
-- **Python** (> 3.6)
+- **Python** (> 3.10)
 - **curl**: for downloading nvm in the app Makefile
 
-The installation of Python (and its developing packages), however differs from operating system to operating system. Instructions can be found [here](https://github.com/ISI-MIP/isimip-qc/blob/main/README.md#prerequisites).
-
-A `Makefile` is provided to help with the installation process.
+The installation of Python (and its developing packages) differs from operating system to operating system. Instructions to setup Python for your system can be found [here](https://utils.isimip.org/prerequisites/).
 
 If you work with different Python applications, we recommend to create a virtual environment for the protocol:
 
@@ -40,23 +33,20 @@ The Python requirements are installed using:
 pip install -r requirements.txt
 ```
 
-The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only:
+The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only ([nvm]() and the Node dependencies are downloaded automatically, this requires `curl`):
 
 ```bash
 make app
+make watch  # automatically rebuild when the source changes
 ```
-
-`make app` bootstraps Node via nvm and requires `curl`.
-
 
 Build
 -----
 
-```bash
-make                  # should work on Linux/macOS
-make dev              # like make, but lining the front-end assets for development
+The different `build` scripts can be run by using:
 
-make serve            # starts a http server on port :8000 so that you can access the protocol in your browser
+```bash
+make
 ```
 
 The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
@@ -65,13 +55,19 @@ The output files are located in `output`. The files, e.g. `index.html` can opene
 Development server
 ------------------
 
-The command `make serve` will open a local webserver on port `:8000`. The protocol can than be accessed at http://localhost:8080 from a browser.
+The command
+
+```bash
+make serve
+```
+
+will open a local webserver on port `:8080`. The protocol can than be accessed at http://localhost:8080 from a browser.
 
 
 Editing
 -------
 
-Edit the markdown files for each sector under [protocol](protocol).
+The textual part of the protocol can be edited using the markdown files in [protocol](protocol).
 
 The interactive tables have the following syntax:
 
