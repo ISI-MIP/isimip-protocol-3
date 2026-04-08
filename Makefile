@@ -1,20 +1,12 @@
-export NVM_DIR="${PWD}/app/nvm"
+SHELL := bash
 
-.PHONY: prod dev serve assets links csvtables definitions glossary pattern protocol schema tree \
-	typos app watch clean distclean
+export NVM_DIR=$(PWD)/nvm
+export NVM_VERSION=v0.40.4
 
-prod: assets csvtables definitions glossary pattern protocol schema tree
+.PHONY: all csvtablescsvtables definitions glossary pattern protocol schema tree \
+	serve typos app watch lint clean cleannode cleanenv distclean
 
-dev: links csvtables definitions glossary pattern protocol schema tree
-
-serve:
-	python3 -m http.server -b 127.0.0.1 8080 -d output
-
-assets:
-	python3 build/assets.py
-
-links:
-	python3 build/assets.py --link
+all: csvtables definitions glossary pattern protocol schema tree
 
 csvtables:
 	python3 build/csvtables.py
@@ -37,19 +29,40 @@ schema:
 tree:
 	python3 build/tree.py
 
+serve:
+	python3 -m http.server -b 127.0.0.1 8080 -d output
+
 typos:
 	typos --write-changes --force-exclude
 
-app:
-	make -C app
+app: nvm node_modules
+	. $(NVM_DIR)/nvm.sh; nvm use && npm run build
 
-watch:
-	make -C app watch
+watch: nvm node_modules
+	. $(NVM_DIR)/nvm.sh; nvm use && npm run watch
+
+lint: nvm node_modules
+	. $(NVM_DIR)/nvm.sh; nvm use && npm run lint
+
+nvm:
+	mkdir -p $(NVM_DIR)
+	NVM_DIR=$(NVM_DIR) PROFILE=/dev/null \
+		bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$(NVM_VERSION)/install.sh | bash > /dev/null'
+	. $(NVM_DIR)/nvm.sh; nvm install
+
+node_modules:
+	. $(NVM_DIR)/nvm.sh; nvm use && npm ci
 
 clean:
 	rm -fr output
 
+cleannode:
+	rm -rf nvm node_modules
+
+cleanenv:
+	rm -fr env
+
 distclean:
 	rm -fr output
+	rm -rf nvm node_modules
 	rm -fr env
-	make -C app clean
