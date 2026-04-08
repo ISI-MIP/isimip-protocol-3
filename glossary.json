@@ -1,5 +1,5 @@
 {
-  "commit": "f3977da2eabe44d2a7aa6a6558348521af1d25b6",
+  "commit": "edb507ef711516e6d03b8191abe8a78cca97e762",
   "terms": {
     "geo_dataset": {
       "landseamask": {
@@ -8275,6 +8275,21 @@
       "daycent": {
         "title": "DayCent"
       },
+      "dbem": {
+        "title": "DBEM",
+        "grid": {
+          "lat": {
+            "min": -89.75,
+            "max": 89.75,
+            "size": 360
+          },
+          "lon": {
+            "min": -179.75,
+            "max": 179.75,
+            "size": 720
+          }
+        }
+      },
       "dssat-pythia": {
         "title": "DSSAT-Pythia"
       },
@@ -12540,41 +12555,45 @@
             "300arcsec": 0.08333333,
             "1800arcsec": 0.5
           },
-          "lat_max": {
-            "30arcsec": 83.99569,
-            "90arcsec": 83.98736,
-            "300arcsec": 83.95819,
-            "1800arcsec": 83.74986
+          "lat": {
+            "max": {
+              "30arcsec": 83.99569,
+              "90arcsec": 83.98736,
+              "300arcsec": 83.95819,
+              "1800arcsec": 83.74986
+            },
+            "min": {
+              "30arcsec": -89.99597,
+              "90arcsec": -89.98764,
+              "300arcsec": -89.95847,
+              "1800arcsec": -89.75014
+            },
+            "size": {
+              "30arcsec": 20880,
+              "90arcsec": 6960,
+              "300arcsec": 2088,
+              "1800arcsec": 348
+            }
           },
-          "lat_min": {
-            "30arcsec": -89.99597,
-            "90arcsec": -89.98764,
-            "300arcsec": -89.95847,
-            "1800arcsec": -89.75014
-          },
-          "lat_size": {
-            "30arcsec": 20880,
-            "90arcsec": 6960,
-            "300arcsec": 2088,
-            "1800arcsec": 348
-          },
-          "lon_max": {
-            "30arcsec": 179.9957,
-            "90arcsec": 179.9874,
-            "300arcsec": 179.9582,
-            "1800arcsec": 179.7499
-          },
-          "lon_min": {
-            "30arcsec": -179.996,
-            "90arcsec": -179.9876,
-            "300arcsec": -179.9585,
-            "1800arcsec": -179.7501
-          },
-          "lon_size": {
-            "30arcsec": 43200,
-            "90arcsec": 14400,
-            "300arcsec": 4320,
-            "1800arcsec": 720
+          "lon": {
+            "max": {
+              "30arcsec": 179.9957,
+              "90arcsec": 179.9874,
+              "300arcsec": 179.9582,
+              "1800arcsec": 179.7499
+            },
+            "min": {
+              "30arcsec": -179.996,
+              "90arcsec": -179.9876,
+              "300arcsec": -179.9585,
+              "1800arcsec": -179.7501
+            },
+            "size": {
+              "30arcsec": 43200,
+              "90arcsec": 14400,
+              "300arcsec": 4320,
+              "1800arcsec": 720
+            }
           }
         }
       },
@@ -12656,35 +12675,39 @@
             "60arcmin": 1,
             "1955-riverine-input+60arcmin": 1
           },
-          "lat_max": {
-            "default": 89.875,
-            "60arcmin": 89.5,
-            "1955-riverine-input+60arcmin": 89.5
+          "lat": {
+            "max": {
+              "default": 89.875,
+              "60arcmin": 89.5,
+              "1955-riverine-input+60arcmin": 89.5
+            },
+            "min": {
+              "default": -89.875,
+              "60arcmin": -89.5,
+              "1955-riverine-input+60arcmin": -89.5
+            },
+            "size": {
+              "default": 720,
+              "60arcmin": 180,
+              "1955-riverine-input+60arcmin": 180
+            }
           },
-          "lat_min": {
-            "default": -89.875,
-            "60arcmin": -89.5,
-            "1955-riverine-input+60arcmin": -89.5
-          },
-          "lat_size": {
-            "default": 720,
-            "60arcmin": 180,
-            "1955-riverine-input+60arcmin": 180
-          },
-          "lon_max": {
-            "default": 179.875,
-            "60arcmin": 179.5,
-            "1955-riverine-input+60arcmin": 179.5
-          },
-          "lon_min": {
-            "default": -179.875,
-            "60arcmin": -179.5,
-            "1955-riverine-input+60arcmin": -179.5
-          },
-          "lon_size": {
-            "default": 1440,
-            "60arcmin": 360,
-            "1955-riverine-input+60arcmin": 360
+          "lon": {
+            "max": {
+              "default": 179.875,
+              "60arcmin": 179.5,
+              "1955-riverine-input+60arcmin": 179.5
+            },
+            "min": {
+              "default": -179.875,
+              "60arcmin": -179.5,
+              "1955-riverine-input+60arcmin": -179.5
+            },
+            "size": {
+              "default": 1440,
+              "60arcmin": 360,
+              "1955-riverine-input+60arcmin": 360
+            }
           }
         }
       },
@@ -13794,7 +13817,9 @@
         "urls": {
           "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/agriculture",
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/agriculture"
-        }
+        },
+        "valid_max": false,
+        "valid_min": false
       },
       "biodiversity": {
         "title": "Terrestrial biodiversity",
@@ -13842,6 +13867,18 @@
         "urls": {
           "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/forestry",
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/forestry"
+        },
+        "grid": {
+          "lat": {
+            "min": false,
+            "max": false,
+            "size": 1
+          },
+          "lon": {
+            "min": false,
+            "max": false,
+            "size": 1
+          }
         }
       },
       "fs-n": {
@@ -13885,6 +13922,18 @@
         "urls": {
           "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/lakes_local",
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/lakes_local"
+        },
+        "grid": {
+          "lat": {
+            "min": false,
+            "max": false,
+            "size": 1
+          },
+          "lon": {
+            "min": false,
+            "max": false,
+            "size": 1
+          }
         }
       },
       "marine-fishery_global": {
@@ -13899,6 +13948,18 @@
         "urls": {
           "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/marine-fishery_regional",
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/marine-fishery_regional"
+        },
+        "grid": {
+          "lat": {
+            "min": false,
+            "max": false,
+            "size": 1
+          },
+          "lon": {
+            "min": false,
+            "max": false,
+            "size": 1
+          }
         }
       },
       "peat": {
@@ -13930,6 +13991,18 @@
         "urls": {
           "ISIMIP3a": "https://protocol.isimip.org/#ISIMIP3a/water_regional",
           "ISIMIP3b": "https://protocol.isimip.org/#ISIMIP3b/water_regional"
+        },
+        "grid": {
+          "lat": {
+            "min": false,
+            "max": false,
+            "size": 1
+          },
+          "lon": {
+            "min": false,
+            "max": false,
+            "size": 1
+          }
         }
       },
       "water_quality": {
@@ -17042,14 +17115,16 @@
         "sectors": [
           "agriculture"
         ],
-        "increment": "months"
+        "increment": "months",
+        "check": false
       },
       "annual-gs": {
         "description": "per growing season",
         "sectors": [
           "agriculture"
         ],
-        "increment": "growing seasons"
+        "increment": "growing seasons",
+        "check": false
       },
       "30year-mean": {
         "description": "30-year period centered around 1995, 1980 \u2013 2009",
