@@ -1,14 +1,16 @@
 import json
+import logging
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 from markdown.extensions.toc import TocExtension
-from utils import get_commit_date, get_commit_hash, read_definitions, read_patterns
+from utils import get_commit_date, get_commit_hash, read_definitions, read_patterns, setup_logs
 
 from customblocks import CustomBlocksExtension
 from customblocks.utils import E, Markdown
 
+setup_logs()
 
 URL = 'https://github.com/ISI-MIP/isimip-protocol-3'
 
@@ -86,11 +88,17 @@ def main():
     output_path.parent.mkdir(parents=True, exist_ok=True)
     environment = Environment(loader=FileSystemLoader(['templates']))
 
+    logging.debug('read %s', template_path)
     with open(template_path, encoding='utf-8') as f:
         template = environment.from_string(f.read())
 
+    logging.info('write %s', output_path)
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(template.render(html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)))
+        f.write(template.render(
+            html=html,
+            definitions=json.dumps(definitions, indent=2),
+            patterns=json.dumps(patterns, indent=2)
+        ))
 
 
 if __name__ == "__main__":

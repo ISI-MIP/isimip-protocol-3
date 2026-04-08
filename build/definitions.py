@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from utils import (filter_row, filter_rows, get_commit_hash, read_definitions,
-                   write_json)
+from utils import filter_row, filter_rows, get_commit_hash, read_definitions, write_json, setup_logs
 
+setup_logs()
 
 def main():
     definitions = read_definitions()

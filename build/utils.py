@@ -1,11 +1,29 @@
 import csv
 import json
+import logging
+import os
 import re
 import subprocess
 from datetime import datetime
 from pathlib import Path
 
 import yaml
+from rich.logging import RichHandler
+
+
+def setup_logs():
+    logging.basicConfig(
+        level=os.getenv('ISIMIP_LOG_LEVEL', 'INFO'),
+        format="%(message)s",
+        datefmt="[%X]",
+        handlers=[
+            RichHandler(
+                show_time=os.getenv('ISIMIP_SHOW_TIME', False),
+                show_path=os.getenv('ISIMIP_SHOW_PATH', False)
+            )
+        ]
+    )
+
 
 def get_commit_hash():
     return subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
@@ -57,6 +75,7 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
 
 
 def read_yaml_file(file_path):
+    logging.debug('read %s', file_path)
     try:
         return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
     except AttributeError:
@@ -96,12 +115,14 @@ def read_patterns(simulation_rounds, sectors):
 
 
 def write_json(output_path, output):
+    logging.info('write %s', output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as fp:
         fp.write(json.dumps(output, indent=2))
 
 
 def write_csv(output_path, output, fieldnames):
+    logging.info('write %s', output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8', newline='') as fp:
         writer = csv.DictWriter(fp, fieldnames=fieldnames, extrasaction='ignore')

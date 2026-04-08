@@ -1,7 +1,8 @@
 from pathlib import Path
 
-from utils import (filter_row, filter_rows, read_definitions, write_csv)
+from utils import filter_row, filter_rows, read_definitions, write_csv, setup_logs
 
+setup_logs()
 
 def main():
     definitions = read_definitions()
@@ -12,9 +13,14 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            output_path = Path('output').joinpath('csv') \
-                                        .joinpath(simulation_round).joinpath('OutputData').joinpath(sector) \
-                                        .with_suffix('.csv')
+            output_path = (
+                Path('output')
+                .joinpath('csv')
+                .joinpath(simulation_round)
+                .joinpath('OutputData')
+                .joinpath(sector)
+                .with_suffix('.csv')
+            )
 
             variable_definitions = []
             variable_fieldnames = ['group', 'specifier', 'long_name', 'units', 'resolution', 'frequency',
