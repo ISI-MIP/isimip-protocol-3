@@ -1,25 +1,22 @@
 import json
-import logging
 from pathlib import Path
 
-from utils import get_commit_hash, setup_logs, write_json
+from utils import get_commit_hash, read_yaml_file, setup_logs, write_json
 
 setup_logs()
 
 
 def main():
-    for tree_path in Path('tree').rglob('**/*.json'):
+    for tree_path in Path('tree').rglob('**/*.yaml'):
         output_path = Path('output') / tree_path
 
         # open and read tree
-        logging.debug('read %s', tree_path)
-        with open(tree_path, encoding='utf-8') as f:
-            identifiers = json.loads(f.read())
+        tree_data = read_yaml_file(tree_path)
 
         # create tree dict
         tree = {
             'commit': get_commit_hash(),
-            'identifiers': [identifier.replace(' ', '') for identifier in identifiers],
+            'identifiers': [identifier.replace(' ', '') for identifier in tree_data],
         }
 
         # write tree as json
