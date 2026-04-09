@@ -3,6 +3,8 @@ SHELL := bash
 export NVM_DIR=$(PWD)/nvm
 export NVM_VERSION=v0.40.4
 
+export ISIMIP_LOG_LEVEL=WARNING
+
 .PHONY: all csvtablescsvtables definitions glossary pattern protocol schema tree \
 	serve typos app watch lint clean cleannode cleanenv distclean
 

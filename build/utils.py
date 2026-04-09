@@ -13,7 +13,7 @@ from rich.logging import RichHandler
 
 def setup_logs():
     logging.basicConfig(
-        level=os.getenv('ISIMIP_LOG_LEVEL', 'INFO'),
+        level=os.getenv('ISIMIP_LOG_LEVEL', 'WARNING'),
         format='%(message)s',
         datefmt='[%X]',
         handlers=[
