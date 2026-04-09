@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 
-import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'
+import SimulationRounds from './badges/SimulationRounds'
 
 const Show = ({ simulationRound, sector, html }) => {
   const config = useSelector((store) => store.config)
@@ -31,7 +31,7 @@ const Show = ({ simulationRound, sector, html }) => {
     }
   }
 
-  const matches = html.matchAll('<h3 id="(.*?)"');
+  const matches = html.matchAll('<h3 id="(.*?)"')
   for (const match of matches) {
     const id = match[1]
     const tocLinks = document.querySelectorAll(`a[href="#${id}"]`)

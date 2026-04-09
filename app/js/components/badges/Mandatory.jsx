@@ -6,7 +6,13 @@ const Mandatory = ({ mandatory }) => {
     return null
   } else if (mandatory) {
     return (
-      <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+      <span
+        className="badge badge-info badge-mandatory"
+        title={
+          'If your models uses input data of this kind, we require to use the specified dataset. ' +
+          'Please see the note above.'
+        }
+      >
         mandatory
       </span>
     )
@@ -20,7 +26,7 @@ const Mandatory = ({ mandatory }) => {
 }
 
 Mandatory.propTypes = {
-  status: PropTypes.string
+  mandatory: PropTypes.string
 }
 
 export default Mandatory

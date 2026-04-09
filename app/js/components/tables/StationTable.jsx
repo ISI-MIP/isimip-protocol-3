@@ -1,17 +1,16 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 import { orderBy } from 'lodash'
 
 import { filterRows } from '../../utils/filter'
-
 
 const StationTable = function({ config, caption, rows }) {
   return (
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>

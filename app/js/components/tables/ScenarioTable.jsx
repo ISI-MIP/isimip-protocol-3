@@ -1,19 +1,17 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
-
-import SimulationRounds from '../badges/SimulationRounds'
-import Sectors from '../badges/Sectors'
-import Status from '../badges/Status'
+import ReactMarkdown from 'react-markdown'
 
 import { filterRows } from '../../utils/filter'
 
+import Sectors from '../badges/Sectors'
+import SimulationRounds from '../badges/SimulationRounds'
 
 const ScenarioTable = function({ config, caption, rows, group3 }) {
   return (
     <table className="table table-bordered table-fixed">
       <caption>
-        <ReactMarkdown components={{p: 'span'}} children={caption} />
+        <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -23,7 +21,7 @@ const ScenarioTable = function({ config, caption, rows, group3 }) {
       </thead>
       <tbody>
         {
-          filterRows(config, rows, group3).map((row, index) => {
+          filterRows(config, rows, group3).map((row) => {
             return (
               <tr key={row.specifier}>
                 <td>
@@ -37,8 +35,8 @@ const ScenarioTable = function({ config, caption, rows, group3 }) {
                   </p>
                 </td>
                 <td>
-                  <ReactMarkdown children={row.description} />
-                  <ReactMarkdown children={row.description_note} />
+                  <ReactMarkdown>{row.description}</ReactMarkdown>
+                  <ReactMarkdown>{row.description_note}</ReactMarkdown>
                 </td>
               </tr>
             )

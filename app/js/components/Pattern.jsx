@@ -1,9 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
 
 import Sectors from './badges/Sectors'
-import SimulationRounds from './badges/SimulationRounds'
 
 const Pattern = () => {
   const config = useSelector((store) => store.config)
@@ -13,9 +11,9 @@ const Pattern = () => {
   const simple_pattern = (pattern) => {
     return pattern
       .replaceAll(/\[.*?\]\+/g, '')                     // remove [a-z0-9] etc.
-      .replaceAll(/\([a-z\|]*?\)/g, '')                 // ??
+      .replaceAll(/\([a-z|]*?\)/g, '')                  // ??
       .replaceAll('\\d{4}', '')                         // remove \d{4} etc.
-      .replaceAll('\?P', '')                            // remove ?P
+      .replaceAll('?P', '')                             // remove ?P
       .replaceAll('?', '')                              // remove ?
       .replaceAll('(<', '<').replaceAll('>)', '>')      // remove parentheses around (< ... >)
       .replaceAll(/>_/g, '>@').replaceAll(/_</g, '@<')  // replace underscore between identifiers with @

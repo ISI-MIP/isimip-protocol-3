@@ -1,12 +1,12 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
-
-import SimulationRounds from '../badges/SimulationRounds'
-import Sectors from '../badges/Sectors'
-import GroupToggleLink from '../links/GroupToggleLink'
+import ReactMarkdown from 'react-markdown'
 
 import { filterRows } from '../../utils/filter'
+
+import Sectors from '../badges/Sectors'
+import SimulationRounds from '../badges/SimulationRounds'
+import GroupToggleLink from '../links/GroupToggleLink'
 
 const ExperimentRow = function({ config, row, climateScenarios, socScenarios, sensScenarios, toggleExperiments }) {
   let futureTableClass = 'table-danger'
@@ -21,35 +21,35 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
     <React.Fragment>
       <tr>
         <td className={row.parent ? 'background' : ''} rowSpan="2">
-            <h4>{row.title}</h4>
-            {
-              row.subtitles && <div className="mb-2">
-                {
-                  row.subtitles.map((subtitle, subtitleIndex)  => (
-                    <p key={subtitleIndex} className="mb-0">
-                      <code>{subtitle}</code>
-                    </p>
-                  ))
-                }
-              </div>
-            }
-            {row.priority && <p><strong>{row.priority}</strong></p>}
-            <p>
-              <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
-              {row.group3 && <span className="badge badge-info">Group III</span>}
-              <Sectors config={config} sectors={row.sectors} />
-            </p>
-            {
-              !row.parent && row.children && (
-                <p className="experiments-toggle">
-                  <GroupToggleLink
-                    closed={!config.experiments.includes(row.specifier)}
-                    toggle={() => toggleExperiments(row)}
-                    label={`${row.children.length} sensitivity experiment${row.children.length > 1 ? 's' : ''}`}
-                  />
-                </p>
-              )
-            }
+          <h4>{row.title}</h4>
+          {
+            row.subtitles && <div className="mb-2">
+              {
+                row.subtitles.map((subtitle, subtitleIndex)  => (
+                  <p key={subtitleIndex} className="mb-0">
+                    <code>{subtitle}</code>
+                  </p>
+                ))
+              }
+            </div>
+          }
+          {row.priority && <p><strong>{row.priority}</strong></p>}
+          <p>
+            <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
+            {row.group3 && <span className="badge badge-info">Group III</span>}
+            <Sectors config={config} sectors={row.sectors} />
+          </p>
+          {
+            !row.parent && row.children && (
+              <p className="experiments-toggle">
+                <GroupToggleLink
+                  closed={!config.experiments.includes(row.specifier)}
+                  toggle={() => toggleExperiments(row)}
+                  label={`${row.children.length} sensitivity experiment${row.children.length > 1 ? 's' : ''}`}
+                />
+              </p>
+            )
+          }
         </td>
         {
           config.simulation_round.endsWith('a') && <React.Fragment>
@@ -68,7 +68,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                   </p>
                 }
               </td> : <td rowSpan="2">
-                <ReactMarkdown children={row.historical} />
+                <ReactMarkdown>{row.historical}</ReactMarkdown>
               </td>
             }
           </React.Fragment>
@@ -90,7 +90,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                   </p>
                 }
               </td> : <td rowSpan="2">
-                <ReactMarkdown children={row['pre-industrial']} />
+                <ReactMarkdown>{row['pre-industrial']}</ReactMarkdown>
               </td>
             }
             {
@@ -108,7 +108,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                   </p>
                 }
               </td> : <td rowSpan="2">
-                <ReactMarkdown children={row.historical} />
+                <ReactMarkdown>{row.historical}</ReactMarkdown>
               </td>
             }
             {
@@ -125,8 +125,8 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                     </strong>
                   </p>
                 }
-              </td> : <td rowspan="2">
-                <ReactMarkdown children={row.future} />
+              </td> : <td rowSpan="2">
+                <ReactMarkdown>{row.future}</ReactMarkdown>
               </td>
             }
           </React.Fragment>
@@ -143,7 +143,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
                   </strong>
                 </p>
                 {
-                  row.historical.soc_sens &&<p>
+                  row.historical.soc_sens && <p>
                     <strong title={sensScenarios[row.historical.soc_sens]}>
                       Sensitivity experiment: {row.historical.soc_sens}
                     </strong>
@@ -256,7 +256,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
     <div style={{ width: config.simulation_round.endsWith('a') ? '60%' : '100%'}}>
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -264,8 +264,8 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
               config.simulation_round.endsWith('a') && <React.Fragment>
                 <th style={{width: '70%'}}>Experiment</th>
                 <th style={{width: '30%'}}>
-                    <p>Period: Historical</p>
-                    <p>1901-2019</p>
+                  <p>Period: Historical</p>
+                  <p>1901-2019</p>
                 </th>
               </React.Fragment>
             }
@@ -273,16 +273,16 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
               config.simulation_round.endsWith('b') && <React.Fragment>
                 <th style={{width: '40%'}}>Experiment</th>
                 <th style={{width: '20%'}}>
-                    <p>Period: Pre-industrial</p>
-                    <p>1601-1849</p>
+                  <p>Period: Pre-industrial</p>
+                  <p>1601-1849</p>
                 </th>
                 <th style={{width: '20%'}}>
-                    <p>Period: Historical</p>
-                    <p>1850-2014</p>
+                  <p>Period: Historical</p>
+                  <p>1850-2014</p>
                 </th>
                 <th style={{width: '20%'}}>
-                    <p>Period: Future</p>
-                    <p>2015-2100</p>
+                  <p>Period: Future</p>
+                  <p>2015-2100</p>
                 </th>
               </React.Fragment>
             }
@@ -315,10 +315,21 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
   )
 }
 
+ExperimentRow.propTypes = {
+  config: PropTypes.object.isRequired,
+  row: PropTypes.object.isRequired,
+  climateScenarios: PropTypes.array.isRequired,
+  socScenarios: PropTypes.array.isRequired,
+  sensScenarios: PropTypes.array.isRequired,
+  toggleExperiments: PropTypes.func.isRequired
+}
+
 ExperimentsTable.propTypes = {
+  definitions: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  toggleExperiments: PropTypes.func.isRequired
 }
 
 export default ExperimentsTable

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
-import SimulationRounds from './badges/SimulationRounds'
 import Sectors from './badges/Sectors'
+import SimulationRounds from './badges/SimulationRounds'
 
 const useTitle = (title) => {
   useEffect(() => {
@@ -21,8 +20,11 @@ const Title = () => {
   const config = useSelector((store) => store.config)
 
   useTitle(
-    isEmpty(config.sectors) ? `${config.simulation_round} protocol`
-                            : `${config.simulation_round} protocol for ${config.sectors.join(', ')}`
+    isEmpty(config.sectors) ? (
+      `${config.simulation_round} protocol`
+    ) : (
+      `${config.simulation_round} protocol for ${config.sectors.join(', ')}`
+    )
   )
 
   return (

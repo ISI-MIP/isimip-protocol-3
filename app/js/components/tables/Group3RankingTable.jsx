@@ -1,10 +1,10 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
+
+import { filterGroups } from '../../utils/filter'
 
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterRows, filterField } from '../../utils/filter'
 
 const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
   const filteredGroups = filterGroups(config, rows, groups)
@@ -39,7 +39,7 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
   return (
     <table className="table table-bordered table-fixed w-70">
       <caption>
-        <ReactMarkdown components={{p: 'span'}} children={caption} />
+        <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
       <thead className="thead-dark">
         <tr>
@@ -58,8 +58,10 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
             const getHeader = (group) => ([
               <tr key="-1">
                 <td colSpan="5" className="table-secondary">
-                  <GroupToggleLink className="float-right" closed={group.closed} label="tier"
-                                   toggle={() => toggleGroup(group)} />
+                  <GroupToggleLink
+                    className="float-right" closed={group.closed} label="tier"
+                    toggle={() => toggleGroup(group)}
+                  />
                   <strong>{group.title}</strong>
                 </td>
               </tr>
@@ -93,7 +95,10 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
 Group3RankingTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default Group3RankingTable

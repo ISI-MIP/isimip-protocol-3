@@ -1,21 +1,20 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
-import { filterRows, filterField } from '../../utils/filter'
-
+import { filterRows } from '../../utils/filter'
 
 const HarmonizationTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed w-100">
       <caption>
-        <ReactMarkdown components={{p: 'span'}} children={caption} />
+        <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
       <thead className="thead-dark">
         <tr>
-        <th style={{width: '20%'}}>Simulation</th>
-        <th style={{width: '10%'}}>Specifier</th>
-        <th style={{width: '70%'}}>Description</th>
+          <th style={{width: '20%'}}>Simulation</th>
+          <th style={{width: '10%'}}>Specifier</th>
+          <th style={{width: '70%'}}>Description</th>
         </tr>
       </thead>
       <tbody>

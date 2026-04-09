@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isEmpty, isNil } from 'lodash'
 
 const Sectors = ({ config, sectors }) => {
   // config.sectors are the currently selected sectors
   // sectors are the sectors configured for this badge
   if (sectors === undefined) {
     return <span className="badge badge-success badge-sector">all sectors</span>
-  } else if (sectors === []) {
+  } else if (isEmpty(sectors)) {
     // by setting `sectors: []` the display of sectors can be omitted
     return null
-  } else if (sectors === null) {
+  } else if (isNil(sectors)) {
     // for the title just display the configured sectors
     if (config.sectors !== undefined && config.sectors.length > 0) {
-      return config.sectors.map((sector, index) => <span key={index} className="badge badge-success badge-sector">{sector}</span>)
+      return config.sectors.map((sector, index) => (
+        <span key={index} className="badge badge-success badge-sector">{sector}</span>
+      ))
     } else {
       return <span className="badge badge-success badge-sector">all sectors</span>
     }
@@ -29,7 +32,9 @@ const Sectors = ({ config, sectors }) => {
       })
     } else {
       // no sector is selected
-      return sectors.map((sector, index) => <span key={index} className="badge badge-success badge-sector">{sector}</span>)
+      return sectors.map((sector, index) => (
+        <span key={index} className="badge badge-success badge-sector">{sector}</span>
+      ))
     }
   }
 }

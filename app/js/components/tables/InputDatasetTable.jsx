@@ -1,12 +1,12 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
+import { filterField, filterGroups } from '../../utils/filter'
+
+import Mandatory from '../badges/Mandatory'
 import Sectors from '../badges/Sectors'
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterField } from '../../utils/filter'
-
 
 const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups, group3 }) {
   const filteredGroups = filterGroups(config, rows, groups, group3)
@@ -36,7 +36,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -71,20 +71,14 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                       <React.Fragment key={index}>
                         <tr>
                           <td rowSpan={row.variables.length + 1}>
-                            <p>{row.title || row.specifier }</p>
+                            <p>{row.title || row.specifier}</p>
                             {
                               (row.mandatory || row.group3) && (
                                 <p>
                                   {
                                     row.group3 && <span className="badge badge-info">Group III</span>
                                   }
-                                  {
-                                    row.mandatory && (
-                                      <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
-                                        mandatory
-                                      </span>
-                                    )
-                                  }
+                                  <Mandatory mandatory={row.mandatory} />
                                 </p>
                               )
                             }
@@ -92,7 +86,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                           <td colSpan="4" className="nowrap">
                             <div>
                               {getPath(row)}
-                              {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                              {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                             </div>
                           </td>
                         </tr>
@@ -103,7 +97,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                             return (
                               <tr key={i}>
                                 <td><strong>{variable.specifier}</strong>
-                                {variable.long_name && <span> ({variable.long_name})</span>}</td>
+                                  {variable.long_name && <span> ({variable.long_name})</span>}</td>
                                 <td>{variable.units}</td>
                                 {
                                   i == 0 && <React.Fragment>
@@ -128,7 +122,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                                       <p>
                                         <Sectors config={config} sectors={row.sectors} />
                                       </p>
-                                      {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                                      {row.comment && <ReactMarkdown>{filterField(config, row.comment)}</ReactMarkdown>}
                                     </td>
                                   </React.Fragment>
                                 }
@@ -161,6 +155,8 @@ InputDatasetTable.propTypes = {
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
   groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
   group3: PropTypes.bool
 }
 

@@ -1,27 +1,23 @@
-import 'bootstrap'
-
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { isNil, isEmpty, isNumber } from 'lodash'
-import ls from 'local-storage'
+import { createStore } from 'redux'
 
-import { actions, reducer } from './store'
+import { reducer } from './store'
+import { parseAnchor, parseLocation, updateAnchor, updateLocation } from './utils/location'
+import { getConfig, updateConfig } from './utils/ls'
 
 import Config from './components/Config'
 import Hide from './components/Hide'
-import Pattern from './components/Pattern'
 import Link from './components/Link'
+import Pattern from './components/Pattern'
 import Show from './components/Show'
-import Title from './components/Title'
 import Table from './components/Table'
+import Title from './components/Title'
 
-import { parseLocation, updateLocation, parseAnchor, updateAnchor } from './utils/location'
-import { getConfig, updateConfig } from './utils/ls'
+import 'bootstrap'
 
 const initConfig = () => {
-  const definitions = window.initialState.definitions
   const defaultConfig = {
     simulation_round: 'ISIMIP3a',
     sectors: [],
@@ -93,9 +89,11 @@ document.querySelectorAll('[data-component="config"]').forEach(el => {
 document.querySelectorAll('[data-component="show"]').forEach(el => {
   createRoot(el).render(
     <Provider store={store}>
-      <Show simulationRound={el.dataset.simulationRound}
-            sector={el.dataset.sector}
-            html={el.innerHTML} />
+      <Show
+        simulationRound={el.dataset.simulationRound}
+        sector={el.dataset.sector}
+        html={el.innerHTML}
+      />
     </Provider>
   )
 })
@@ -103,9 +101,11 @@ document.querySelectorAll('[data-component="show"]').forEach(el => {
 document.querySelectorAll('[data-component="hide"]').forEach(el => {
   createRoot(el).render(
     <Provider store={store}>
-      <Hide simulationRound={el.dataset.simulationRound}
-            sector={el.dataset.sector}
-            html={el.innerHTML} />
+      <Hide
+        simulationRound={el.dataset.simulationRound}
+        sector={el.dataset.sector}
+        html={el.innerHTML}
+      />
     </Provider>
   )
 })
@@ -133,8 +133,10 @@ setTimeout(() => {
   document.querySelectorAll('[data-component="table"]').forEach(el => {
     createRoot(el).render(
       <Provider store={store}>
-        <Table identifier={el.dataset.identifier}
-               caption={el.dataset.caption} />
+        <Table
+          identifier={el.dataset.identifier}
+          caption={el.dataset.caption}
+        />
       </Provider>
     )
   })

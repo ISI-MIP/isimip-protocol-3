@@ -1,11 +1,12 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
+import { filterField, filterGroups } from '../../utils/filter'
+
+import Mandatory from '../badges/Mandatory'
 import Sectors from '../badges/Sectors'
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterField } from '../../utils/filter'
 
 const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
   const filteredGroups = filterGroups(config, rows, groups)
@@ -26,7 +27,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -61,16 +62,12 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
                       <React.Fragment key={index}>
                         <tr>
                           <td rowSpan={row.variables.length + 1}>
-                            <p>{row.title || row.specifier }</p>
-                            {row.mandatory && <p>
-                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
-                                mandatory
-                              </span>
-                            </p>}
+                            <p>{row.title || row.specifier}</p>
+                            <p><Mandatory mandatory={row.mandatory} /></p>
                           </td>
                           <td colSpan="4">
                             {row.path && <code>{filterField(config, row.path)}</code>}
-                            {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                            {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                           </td>
                         </tr>
                         {
@@ -94,7 +91,11 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
                                       <p>
                                         <Sectors config={config} sectors={row.sectors} />
                                       </p>
-                                      {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                                      {
+                                        row.comment && (
+                                          <ReactMarkdown>{filterField(config, row.comment)} </ReactMarkdown>
+                                        )
+                                      }
                                     </td>
                                   </React.Fragment>
                                 }
@@ -112,7 +113,8 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
           {
             empty && <tr>
               <td colSpan="4">
-                No static geographic information datasets have been defined for this selection of simulation round and sectors, yet.
+                No static geographic information datasets have been defined for this
+                selection of simulation round and sectors, yet.
               </td>
             </tr>
           }
@@ -126,7 +128,9 @@ GeoDatasetTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default GeoDatasetTable

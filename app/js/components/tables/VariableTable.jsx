@@ -1,13 +1,12 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 import { isUndefined } from 'lodash'
+
+import { filterField, filterGroups } from '../../utils/filter'
 
 import Sectors from '../badges/Sectors'
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterField } from '../../utils/filter'
 
 const VariableTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
   const filteredGroups = filterGroups(config, rows, groups)
@@ -16,11 +15,11 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   const addExtension = (specifier, extension) => {
-      if (extension === null) {
-        return specifier
-      } else {
-        return specifier + '-' + extension
-      }
+    if (extension === null) {
+      return specifier
+    } else {
+      return specifier + '-' + extension
+    }
   }
 
   const getSpecifier = (row) => {
@@ -74,18 +73,24 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
             <li key={index}>
               <em className="sector">{key}:</em>
               {' '}
-              {typeof resolutions[key] === 'object' && (
-                <ul>
-                  {resolutions[key].map((r, i) => (
-                    <li key={i}>
-                      <ReactMarkdown children={r} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {typeof resolutions[key] !== 'object' && (
-                <ReactMarkdown children={resolutions[key]} />
-              )}
+              {
+                typeof resolutions[key] === 'object' && (
+                  <ul>
+                    {
+                      resolutions[key].map((r, i) => (
+                        <li key={i}>
+                          <ReactMarkdown>{r}</ReactMarkdown>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                )
+              }
+              {
+                typeof resolutions[key] !== 'object' && (
+                  <ReactMarkdown>{resolutions[key]}</ReactMarkdown>
+                )
+              }
             </li>
           )
         })
@@ -94,11 +99,11 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
         if (Array.isArray(res)) {
           return res.map((r, i) => (<li key={i}>{r}</li>))
         } else {
-          return <li><ReactMarkdown children={res} /></li>
+          return <li><ReactMarkdown>{res}</ReactMarkdown></li>
         }
       }
     } else {
-      return <li><ReactMarkdown children={resolutions} /></li>
+      return <li><ReactMarkdown>{resolutions}</ReactMarkdown></li>
     }
   }
 
@@ -175,15 +180,15 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
             <p key={index}>
               <em className="sector">{sector}:</em>
               {' '}
-              <ReactMarkdown components={{p: 'span'}} children={comment[sector]} />
+              <ReactMarkdown components={{p: 'span'}}>{comment[sector]}</ReactMarkdown>
             </p>
           )
         })
       } else {
-        return <ReactMarkdown children={Object.values(comment)[0]} />
+        return <ReactMarkdown>{Object.values(comment)[0]}</ReactMarkdown>
       }
     } else {
-      return <ReactMarkdown children={comment} />
+      return <ReactMarkdown>{comment}</ReactMarkdown>
     }
   }
 
@@ -221,7 +226,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -303,7 +308,9 @@ VariableTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default VariableTable

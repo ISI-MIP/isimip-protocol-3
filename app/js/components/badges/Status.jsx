@@ -4,7 +4,13 @@ import PropTypes from 'prop-types'
 const Status = ({ status }) => {
   if (status === 'mandatory') {
     return (
-      <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
+      <span
+        className="badge badge-info badge-mandatory"
+        title={
+          'If your models uses input data of this kind, we require to use the specified dataset. ' +
+          'Please see the note above.'
+        }
+      >
         mandatory
       </span>
     )

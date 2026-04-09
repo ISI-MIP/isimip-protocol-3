@@ -1,12 +1,13 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
-import Sectors from '../badges/Sectors'
+import { filterField, filterGroups } from '../../utils/filter'
+
 import ClimateForcing from '../badges/ClimateForcing'
+import Mandatory from '../badges/Mandatory'
+import Sectors from '../badges/Sectors'
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterField } from '../../utils/filter'
 
 const InputVariableTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
   const filteredGroups = filterGroups(config, rows, groups)
@@ -15,21 +16,21 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
   const getSpecifier = (row) => {
-      if (row.extension) {
-        if (Array.isArray(row.extension)) {
-          return row.extension.map(extension => {
-            if (extension === null) {
-              return row.specifier
-            } else {
-              return row.specifier + '-' + extension
-            }
-          }).join(', ')
-        } else {
-          return row.specifier + '-' + row.extension
-        }
+    if (row.extension) {
+      if (Array.isArray(row.extension)) {
+        return row.extension.map(extension => {
+          if (extension === null) {
+            return row.specifier
+          } else {
+            return row.specifier + '-' + extension
+          }
+        }).join(', ')
       } else {
-        return row.specifier
+        return row.specifier + '-' + row.extension
       }
+    } else {
+      return row.specifier
+    }
   }
 
   const getPath = (row) => {
@@ -63,7 +64,7 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -99,16 +100,12 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
                         <tr>
                           <td rowSpan="2">
                             <p>{row.long_name}</p>
-                            {row.mandatory && <p>
-                              <span className="badge badge-info badge-mandatory" title="If your models uses input data of this kind, we require to use the specified dataset. Please see the note above.">
-                                mandatory
-                              </span>
-                            </p>}
+                            <Mandatory mandatory={row.mandatory} />
                           </td>
                           <td colSpan="4" className="nowrap">
                             <div>
                               {getPath(row)}
-                              {row.url && <a href={row.url} target="_blank">{row.url}</a>}
+                              {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                             </div>
                           </td>
                         </tr>
@@ -132,7 +129,7 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
                                 <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} />
                               </p>
                             }
-                            {row.comment && <ReactMarkdown children={filterField(config, row.comment)} />}
+                            {row.comment && <ReactMarkdown>{filterField(config, row.comment)}</ReactMarkdown>}
                           </td>
                         </tr>
                       </React.Fragment>
@@ -159,7 +156,9 @@ InputVariableTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default InputVariableTable

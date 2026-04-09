@@ -1,6 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { actions } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
@@ -20,8 +22,6 @@ import ScenarioTable from './tables/ScenarioTable'
 import SpeciesTable from './tables/SpeciesTable'
 import StationTable from './tables/StationTable'
 import VariableTable from './tables/VariableTable'
-
-import { actions } from '../store'
 
 const Table = ({ identifier, caption }) => {
   const dispatch = useDispatch()

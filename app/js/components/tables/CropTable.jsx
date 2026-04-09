@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
 import { filterGroups } from '../../utils/filter'
 
@@ -15,15 +15,17 @@ const CropTable = function({ config, caption, rows, groups, toggleGroup, toggleG
     <div className="w-50">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
             <th style={{width: '50%'}}>Crop</th>
             <th style={{width: '50%'}}>
               Specifier
-              <GroupToggleLink className="float-right" closed={!allOpen} all={true} label="datasets"
-                               toggle={allToggle} />
+              <GroupToggleLink
+                className="float-right" closed={!allOpen} all={true} label="datasets"
+                toggle={allToggle}
+              />
             </th>
           </tr>
         </thead>
@@ -65,7 +67,9 @@ CropTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default CropTable

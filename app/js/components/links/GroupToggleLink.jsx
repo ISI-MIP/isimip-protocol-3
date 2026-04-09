@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const GroupToggleLink = ({ closed, toggle, all, label }) => {
   const onClick = event => {
@@ -25,6 +26,13 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
       </a>
     )
   }
+}
+
+GroupToggleLink.propTypes = {
+  closed: PropTypes.boolean,
+  toggle: PropTypes.func,
+  all: PropTypes.boolean,
+  label: PropTypes.string,
 }
 
 export default GroupToggleLink

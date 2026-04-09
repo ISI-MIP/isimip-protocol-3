@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 
-import Sectors from '../badges/Sectors'
-import Status from '../badges/Status'
+import { filterField, filterGroups } from '../../utils/filter'
+
 import Mandatory from '../badges/Mandatory'
+import Sectors from '../badges/Sectors'
 import SocForcing from '../badges/SocForcing'
+import Status from '../badges/Status'
 import GroupToggleLink from '../links/GroupToggleLink'
-
-import { filterGroups, filterField } from '../../utils/filter'
 
 const ForcingTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
   const filteredGroups = filterGroups(config, rows, groups, true)
@@ -20,7 +20,7 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -91,9 +91,9 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                 <>
                                   <p className="mb-0">Paths:</p>
                                   <ul className="list-unstyled mb-1">
-                                  {
-                                    path.map((p, i) => <div className="mb-0" key={i}><code>{p}</code></div>)
-                                  }
+                                    {
+                                      path.map((p, i) => <div className="mb-0" key={i}><code>{p}</code></div>)
+                                    }
                                   </ul>
                                 </>
                               ) : (
@@ -101,7 +101,9 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                   Path: <code>{filterField(config, row.path)}</code>
                                   {
                                     row.path_comment && <>
-                                      {' ('}<ReactMarkdown children={row.path_comment} components={{p: React.Fragment}}/>{')'}
+                                      {' ('}
+                                      <ReactMarkdown components={{p: React.Fragment}}>{row.path_comment}</ReactMarkdown>
+                                      {')'}
                                     </>
                                   }
                                 </p>
@@ -114,9 +116,11 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                 noadapt forcing:{' '}
                                 {
                                   Array.isArray(row.noadapt) ? (
-                                    row.noadapt.map((s, i) => <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur])
+                                    row.noadapt.map((s, i) => (
+                                      <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur]
+                                    ))
                                   ) : (
-                                    <ReactMarkdown children={row.noadapt} components={{p: React.Fragment}}/>
+                                    <ReactMarkdown components={{p: React.Fragment}}>{row.noadapt}</ReactMarkdown>
                                   )
                                 }
                               </p>
@@ -128,16 +132,18 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                 adapt forcing:{' '}
                                 {
                                   Array.isArray(row.adapt) ? (
-                                    row.adapt.map((s, i) => <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur])
+                                    row.adapt.map((s, i) => (
+                                      <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur]
+                                    ))
                                   ) : (
-                                    <ReactMarkdown children={row.adapt} components={{p: React.Fragment}}/>
+                                    <ReactMarkdown components={{p: React.Fragment}}>{row.adapt}</ReactMarkdown>
                                   )
                                 }
                               </p>
                             )
                           }
                           {
-                            row.comment && <ReactMarkdown children={filterField(config, row.comment)} />
+                            row.comment && <ReactMarkdown>{filterField(config, row.comment)}</ReactMarkdown>
                           }
                         </td>
                       </tr>
@@ -164,7 +170,9 @@ ForcingTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
   rows: PropTypes.array.isRequired,
-  groups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired,
+  toggleGroup: PropTypes.func.isRequired,
+  toggleGroups: PropTypes.func.isRequired,
 }
 
 export default ForcingTable

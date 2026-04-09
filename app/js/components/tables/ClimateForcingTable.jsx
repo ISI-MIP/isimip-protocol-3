@@ -1,11 +1,11 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
-
-import SimulationRounds from '../badges/SimulationRounds'
-import Sectors from '../badges/Sectors'
+import ReactMarkdown from 'react-markdown'
 
 import { filterRows } from '../../utils/filter'
+
+import Sectors from '../badges/Sectors'
+import SimulationRounds from '../badges/SimulationRounds'
 
 const ClimateForcingTable = function({ config, caption, rows }) {
   const filteredRows = filterRows(config, rows)
@@ -14,7 +14,7 @@ const ClimateForcingTable = function({ config, caption, rows }) {
     <div className="w-100">
       <table className="table table-bordered table-fixed">
         <caption>
-          <ReactMarkdown components={{p: 'span'}} children={caption} />
+          <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
         <thead className="thead-dark">
           <tr>
@@ -43,7 +43,7 @@ const ClimateForcingTable = function({ config, caption, rows }) {
                 <tr key={index}>
                   <td>
                     <p>
-                      {row.url ? <a href={row.url} target="_blank">{row.title}</a> : row.title}
+                      {row.url ? <a href={row.url} target="_blank" rel="noreferrer">{row.title}</a> : row.title}
                     </p>
                     <p>
                       <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
@@ -62,7 +62,11 @@ const ClimateForcingTable = function({ config, caption, rows }) {
                     config.simulation_round.endsWith('b') && <React.Fragment>
                       <td>
                         <p>Atmosphere: {row.original_resolution.other || row.original_resolution}</p>
-                        {row.original_resolution['marine-fishery_global'] && <p>Ocean: {row.original_resolution['marine-fishery_global']}</p>}
+                        {
+                          row.original_resolution['marine-fishery_global'] && (
+                            <p>Ocean: {row.original_resolution['marine-fishery_global']}</p>
+                          )
+                        }
                       </td>
                       <td>{row.ensemble_member}</td>
                     </React.Fragment>
@@ -88,7 +92,7 @@ const ClimateForcingTable = function({ config, caption, rows }) {
 ClimateForcingTable.propTypes = {
   config: PropTypes.object.isRequired,
   caption: PropTypes.string.isRequired,
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
 }
 
 export default ClimateForcingTable

@@ -53,6 +53,7 @@ export default defineConfig([
       'space-infix-ops': 'error',
       'one-var': ['error', 'never'],
       'comma-spacing': ['error', { before: false, after: true }],
+      'no-multiple-empty-lines': ['error', { 'max': 1 }],
       'multiline-ternary': ['error', 'never'],
       'object-curly-newline': ['error', {
         multiline: true,
@@ -71,7 +72,9 @@ export default defineConfig([
         ],
       }],
       'simple-import-sort/exports': 'error',
+      'jsx-quotes': ['error', 'prefer-double'],
       'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+      'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
       'react/jsx-curly-newline': [
         'error',
         {
@@ -86,7 +89,6 @@ export default defineConfig([
           'children': true
         }
       ],
-      'jsx-quotes': ['error', 'prefer-double'],
     },
     settings: {
       react: {

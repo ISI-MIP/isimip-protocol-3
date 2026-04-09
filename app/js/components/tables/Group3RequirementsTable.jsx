@@ -1,9 +1,9 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown'
 import { isEmpty } from 'lodash'
 
-import { filterRows, filterField } from '../../utils/filter'
+import { filterRows } from '../../utils/filter'
 
 import Sectors from '../badges/Sectors'
 
@@ -13,7 +13,7 @@ const Group3RequirementsTable = function({ config, caption, rows }) {
   return (
     <table className="table table-bordered table-fixed">
       <caption>
-        <ReactMarkdown components={{p: 'span'}} children={caption} />
+        <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
       <thead className="thead-dark">
         <tr>
