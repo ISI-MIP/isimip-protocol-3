@@ -7,6 +7,7 @@ from customblocks.utils import E, Markdown
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 from markdown.extensions.toc import TocExtension
+
 from utils import get_commit_date, get_commit_hash, read_definitions, read_patterns, setup_logs
 
 setup_logs()

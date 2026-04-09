@@ -2,9 +2,10 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import read_file
+from helpers import read_file
 
 tree_paths = list(Path('tree').rglob('*.yaml'))
+
 
 @pytest.mark.parametrize('tree_path', tree_paths, ids=lambda x: str(x))
 def test_tree(tree_path):

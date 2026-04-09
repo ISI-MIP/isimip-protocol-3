@@ -2,7 +2,7 @@ from pathlib import Path
 
 import jsonschema
 
-from .helpers import read_file, read_instance
+from helpers import read_file, read_instance
 
 meta_path = Path(__file__).parent.joinpath('meta.yaml')
 

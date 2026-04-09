@@ -1,11 +1,13 @@
 from pathlib import Path
 
 import pytest
+
 from jsonschema import Draft7Validator
 
-from .helpers import read_file
+from helpers import read_file
 
 schema_paths = sorted(Path('schema').rglob('*.yaml'))
+
 
 @pytest.mark.parametrize('schema_path', schema_paths, ids=lambda x: str(x))
 def test_schema(schema_path):

@@ -3,10 +3,11 @@ from pathlib import Path
 
 import pytest
 
-from .helpers import read_file
+from helpers import read_file
 
 pattern_keys = ['path', 'dataset', 'file']
 pattern_paths = list(Path('pattern').rglob('*.yaml'))
+
 
 @pytest.mark.parametrize('pattern_key', pattern_keys)
 @pytest.mark.parametrize('pattern_path', pattern_paths, ids=lambda x: str(x))
