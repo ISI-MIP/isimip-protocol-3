@@ -1,5 +1,3 @@
-import json
-
 from pathlib import Path
 
 import jsonschema
@@ -48,7 +46,7 @@ def test_double_specifiers():
                 else:
                     seen.add(definition['specifier'])
 
-            assert not doubles, '{} {}'.format(file_path, doubles)
+            assert not doubles, f'{file_path} {doubles}'
 
 
 def test_variable():
@@ -59,7 +57,7 @@ def test_variable():
     instance = read_instance(Path('definitions') / 'variable')
 
     for row in instance:
-        sectors = row.get('sectors', []) + ['other']
+        sectors = [*row.get('sectors', []), 'other']
         if sectors:
             for key, value in row.items():
                 if isinstance(value, dict):
@@ -78,10 +76,7 @@ def test_river_stations():
     stations = read_instance(Path('definitions') / 'station')
 
     for station in stations:
-        station_river = next(
-            river for river in rivers
-            if river['specifier'] == station['river_specifier']
-        )
+        station_river = next(river for river in rivers if river['specifier'] == station['river_specifier'])
 
         assert station_river['title'] == station['river']
 

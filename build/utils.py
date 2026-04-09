@@ -14,14 +14,14 @@ from rich.logging import RichHandler
 def setup_logs():
     logging.basicConfig(
         level=os.getenv('ISIMIP_LOG_LEVEL', 'INFO'),
-        format="%(message)s",
-        datefmt="[%X]",
+        format='%(message)s',
+        datefmt='[%X]',
         handlers=[
             RichHandler(
                 show_time=os.getenv('ISIMIP_SHOW_TIME', False),
-                show_path=os.getenv('ISIMIP_SHOW_PATH', False)
+                show_path=os.getenv('ISIMIP_SHOW_PATH', False),
             )
-        ]
+        ],
     )
 
 
@@ -30,7 +30,13 @@ def get_commit_hash():
 
 
 def get_commit_date():
-    commit_date = subprocess.check_output(['git', 'show', '-s', '--format=%ci', 'HEAD']).decode().strip()
+    commit_date = (
+        subprocess.check_output(
+            ['git', 'show', '-s', '--format=%ci', 'HEAD'],
+        )
+        .decode()
+        .strip()
+    )
     return datetime.strptime(commit_date, '%Y-%m-%d %H:%M:%S %z').strftime('%d %B %Y')
 
 
@@ -81,6 +87,7 @@ def read_yaml_file(file_path):
     except AttributeError:
         return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.SafeLoader)
 
+
 def read_definitions():
     definitions_path = Path('definitions')
     definitions = {}
@@ -103,13 +110,20 @@ def read_patterns(simulation_rounds, sectors):
         patterns[simulation_round['specifier']] = {}
         for sector in sectors:
             if sector.get('simulation_rounds') is None or simulation_round in sector.get('simulation_rounds'):
-                pattern_path = Path('pattern') / simulation_round['specifier'] / 'OutputData' / '{}.yaml'.format(sector['specifier'])
+                pattern_path = (
+                    Path('pattern')
+                    / simulation_round['specifier']
+                    / 'OutputData'
+                    / '{}.yaml'.format(sector['specifier'])
+                )
 
                 try:
                     pattern = read_yaml_file(pattern_path)
                     patterns[simulation_round['specifier']][sector['specifier']] = re.sub(r'\s+', '', pattern['file'])
                 except FileNotFoundError:
-                    patterns[simulation_round['specifier']][sector['specifier']] = 'No pattern has been defined for this simulation round and sector, yet.'
+                    patterns[simulation_round['specifier']][sector['specifier']] = (
+                        'No pattern has been defined for this simulation round and sector, yet.'
+                    )
 
     return patterns
 

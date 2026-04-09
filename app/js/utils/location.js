@@ -23,13 +23,19 @@ const parseLocation = () => {
     }
 
     const simulation_round = first(tokens)
-    if (definitions.simulation_round.map((simulation_round) => simulation_round.specifier)
-                                    .includes(simulation_round)) {
+    if (
+      definitions.simulation_round
+        .map((simulation_round) => simulation_round.specifier)
+        .includes(simulation_round)
+    ) {
       config.simulation_round = simulation_round
     }
 
     const sectors = tokens.slice(1)
-    if (definitions.sector.some((sector) => sectors.includes(sector.specifier))) {
+    if (
+      definitions.sector
+        .some((sector) => sectors.includes(sector.specifier))
+    ) {
       config.sectors = sectors
     }
 
@@ -99,4 +105,4 @@ const buildPath = (config) => {
   return path
 }
 
-export { parseLocation, updateLocation, parseAnchor, updateAnchor, buildPath }
+export { buildPath, parseAnchor, parseLocation, updateAnchor, updateLocation }

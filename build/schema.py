@@ -7,6 +7,7 @@ EXCLUDE = ['model']
 
 setup_logs()
 
+
 def main():
     definitions = read_definitions()
 
@@ -30,7 +31,7 @@ def main():
         schema = {
             '$schema': 'http://json-schema.org/draft-07/schema#',
             '$id': URL + schema_path.as_posix(),
-            'commit': get_commit_hash()
+            'commit': get_commit_hash(),
         }
         schema.update(schema_template)
 
@@ -56,5 +57,5 @@ def main():
         write_json(output_path, schema)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
