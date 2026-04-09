@@ -5,27 +5,23 @@ import { isEmpty } from 'lodash'
 import Sectors from './badges/Sectors'
 import SimulationRounds from './badges/SimulationRounds'
 
-const useTitle = (title) => {
+const Title = () => {
+  const config = useSelector((store) => store.config)
+
   useEffect(() => {
     const prevTitle = document.title
+    const title = isEmpty(config.sectors) ? (
+      `${config.simulation_round} protocol`
+    ) : (
+      `${config.simulation_round} protocol for ${config.sectors.join(', ')}`
+    )
+
     document.title = title
 
     return () => {
       document.title = prevTitle
     }
   })
-}
-
-const Title = () => {
-  const config = useSelector((store) => store.config)
-
-  useTitle(
-    isEmpty(config.sectors) ? (
-      `${config.simulation_round} protocol`
-    ) : (
-      `${config.simulation_round} protocol for ${config.sectors.join(', ')}`
-    )
-  )
 
   return (
     <div className="title">
