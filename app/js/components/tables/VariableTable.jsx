@@ -22,7 +22,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getSpecifier = (row) => {
+  const renderSpecifier = (row) => {
     const extension = filterField(config, row.extension)
     if (extension) {
       if (Array.isArray(extension)) {
@@ -61,7 +61,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getResolution = (row) => {
+  const renderResolution = (row) => {
     const resolutions = filterField(config, row.resolution)
 
     if (Array.isArray(resolutions)) {
@@ -107,7 +107,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getFrequency = (row) => {
+  const renderFrequency = (row) => {
     const frequency = filterField(config, row.frequency)
 
     if (typeof frequency === 'object') {
@@ -129,7 +129,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getDimensions = (row) => {
+  const renderDimensions = (row) => {
     const dimensions = filterField(config, row.dimensions)
 
     if (dimensions === null) {
@@ -170,7 +170,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getComment = (row) => {
+  const renderComment = (row) => {
     const comment = filterField(config, row.comment)
 
     if (typeof comment === 'object') {
@@ -192,7 +192,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     }
   }
 
-  const getUnit = (row) => {
+  const renderUnit = (row) => {
     const unit = filterField(config, row.units)
     return !isUndefined(unit) && (
       <>
@@ -206,7 +206,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     )
   }
 
-  const getValid = (row) => {
+  const renderValid = (row) => {
     const valid_min = filterField(config, row.valid_min)
     const valid_max = filterField(config, row.valid_max)
     return !isUndefined(valid_min) && !isUndefined(valid_max) && (
@@ -264,25 +264,25 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
                     return (
                       <tr key={index}>
                         <td>{row.long_name}</td>
-                        <td>{getSpecifier(row)}</td>
+                        <td>{renderSpecifier(row)}</td>
                         <td>
-                          {getUnit(row)}
-                          {getValid(row)}
+                          {renderUnit(row)}
+                          {renderValid(row)}
                         </td>
                         <td>
                           <ul className="resolution-list">
-                            {getResolution(row)}
+                            {renderResolution(row)}
                           </ul>
                           <ul className="resolution-list">
-                            {getFrequency(row)}
+                            {renderFrequency(row)}
                           </ul>
                         </td>
                         <td>
                           <p>
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
-                          {getDimensions(row)}
-                          {getComment(row)}
+                          {renderDimensions(row)}
+                          {renderComment(row)}
                         </td>
                       </tr>
                     )

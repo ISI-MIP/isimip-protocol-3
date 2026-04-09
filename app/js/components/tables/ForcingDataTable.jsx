@@ -86,7 +86,7 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                             )
                           }
                           {
-                            row.path && (
+                            path && (
                               Array.isArray(path) ? (
                                 <>
                                   <p className="mb-0">Paths:</p>
@@ -116,9 +116,9 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                 noadapt forcing:{' '}
                                 {
                                   Array.isArray(row.noadapt) ? (
-                                    row.noadapt.map((s, i) => (
-                                      <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur]
-                                    ))
+                                    row.noadapt
+                                      .map((s, i) => (<strong key={i}>{s}</strong>))
+                                      .reduce((agg, cur) => [agg, ', ', cur])
                                   ) : (
                                     <ReactMarkdown components={{p: React.Fragment}}>{row.noadapt}</ReactMarkdown>
                                   )
@@ -132,9 +132,9 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                                 adapt forcing:{' '}
                                 {
                                   Array.isArray(row.adapt) ? (
-                                    row.adapt.map((s, i) => (
-                                      <strong key={i}>{s}</strong>).reduce((agg, cur) => [agg, ', ', cur]
-                                    ))
+                                    row.adapt
+                                      .map((s, i) => (<strong key={i}>{s}</strong>))
+                                      .reduce((agg, cur) => [agg, ', ', cur])
                                   ) : (
                                     <ReactMarkdown components={{p: React.Fragment}}>{row.adapt}</ReactMarkdown>
                                   )

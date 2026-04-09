@@ -6,6 +6,8 @@ import { filterField, filterGroups } from '../../utils/filter'
 
 import Mandatory from '../badges/Mandatory'
 import Sectors from '../badges/Sectors'
+import Code from '../fields/Code'
+import List from '../fields/List'
 import GroupToggleLink from '../links/GroupToggleLink'
 
 const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups, group3 }) {
@@ -13,24 +15,6 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
-
-  const getPath = (row) => {
-    const path = filterField(config, row.path)
-    if (Array.isArray(path)) {
-      return path.map((p, index) => <code key={index} className="pre">{p}{'\n'}</code>)
-    } else {
-      return <code>{path}</code>
-    }
-  }
-
-  const getResolutions = (row) => {
-    const resolution = filterField(config, row.resolution)
-    if (Array.isArray(resolution)) {
-      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
-    } else {
-      return <li>{resolution}</li>
-    }
-  }
 
   return (
     <div className="w-100">
@@ -85,7 +69,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                           </td>
                           <td colSpan="4" className="nowrap">
                             <div>
-                              {getPath(row)}
+                              <Code lines={filterField(config, row.path)} />
                               {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                             </div>
                           </td>
@@ -107,16 +91,8 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                                           {time_periods.map((time_period, index) => <li key={index}>{time_period}</li>)}
                                         </ul>
                                       }
-                                      {
-                                        row.resolution && <ul className="resolution-list">
-                                          {getResolutions(row)}
-                                        </ul>
-                                      }
-                                      {
-                                        row.frequency && <ul className="resolution-list">
-                                          <li>{row.frequency}</li>
-                                        </ul>
-                                      }
+                                      <List items={filterField(config, row.resolution)} />
+                                      <List items={filterField(config, row.frequency)} />
                                     </td>
                                     <td rowSpan={row.variables.length}>
                                       <p>

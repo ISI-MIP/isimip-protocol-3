@@ -6,6 +6,8 @@ import { filterField, filterGroups } from '../../utils/filter'
 
 import Mandatory from '../badges/Mandatory'
 import Sectors from '../badges/Sectors'
+import Code from '../fields/Code'
+import List from '../fields/List'
 import GroupToggleLink from '../links/GroupToggleLink'
 
 const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
@@ -13,15 +15,6 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
   const empty = (filteredGroups.length == 0)
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
-
-  const getResolutions = (row) => {
-    const resolution = filterField(config, row.resolution)
-    if (Array.isArray(resolution)) {
-      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
-    } else {
-      return <li>{resolution}</li>
-    }
-  }
 
   return (
     <div className="w-100">
@@ -66,7 +59,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
                             <p><Mandatory mandatory={row.mandatory} /></p>
                           </td>
                           <td colSpan="4">
-                            {row.path && <code>{filterField(config, row.path)}</code>}
+                            <Code lines={filterField(config, row.path)} />
                             {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                           </td>
                         </tr>
@@ -83,9 +76,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
                                 {
                                   i == 0 && <React.Fragment>
                                     <td rowSpan={row.variables.length}>
-                                      <ul>
-                                        {getResolutions(row)}
-                                      </ul>
+                                      <List items={filterField(config, row.resolution)} />
                                     </td>
                                     <td rowSpan={row.variables.length}>
                                       <p>

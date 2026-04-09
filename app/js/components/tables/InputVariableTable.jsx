@@ -1,12 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import { isArray, isNil } from 'lodash'
 
 import { filterField, filterGroups } from '../../utils/filter'
 
 import ClimateForcing from '../badges/ClimateForcing'
 import Mandatory from '../badges/Mandatory'
 import Sectors from '../badges/Sectors'
+import Code from '../fields/Code'
+import List from '../fields/List'
 import GroupToggleLink from '../links/GroupToggleLink'
 
 const InputVariableTable = function({ config, caption, rows, groups, toggleGroup, toggleGroups }) {
@@ -15,48 +18,17 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
   const allOpen = filteredGroups.every(group => !group.closed)
   const allToggle = () => toggleGroups(filteredGroups, allOpen)
 
-  const getSpecifier = (row) => {
+  const renderSpecifier = (row) => {
     if (row.extension) {
-      if (Array.isArray(row.extension)) {
-        return row.extension.map(extension => {
-          if (extension === null) {
-            return row.specifier
-          } else {
-            return row.specifier + '-' + extension
-          }
-        }).join(', ')
+      if (isArray(row.extension)) {
+        return (
+          row.extension.map(extension => isNil(extension) ? row.specifier : row.specifier + '-' + extension).join(', ')
+        )
       } else {
         return row.specifier + '-' + row.extension
       }
     } else {
       return row.specifier
-    }
-  }
-
-  const getPath = (row) => {
-    const path = filterField(config, row.path)
-    if (Array.isArray(path)) {
-      return path.map((p, index) => <code key={index} className="pre">{p}{'\n'}</code>)
-    } else {
-      return <code>{path}</code>
-    }
-  }
-
-  const getResolutions = (row) => {
-    const resolution = filterField(config, row.resolution)
-    if (Array.isArray(resolution)) {
-      return resolution.map((resolution, index) => <li key={index}>{resolution}</li>)
-    } else {
-      return <li>{resolution}</li>
-    }
-  }
-
-  const getFrequencies = (row) => {
-    const frequency = filterField(config, row.frequency)
-    if (Array.isArray(frequency)) {
-      return frequency.map((frequency, index) => <li key={index}>{frequency}</li>)
-    } else {
-      return <li>{frequency}</li>
     }
   }
 
@@ -104,31 +76,23 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
                           </td>
                           <td colSpan="4" className="nowrap">
                             <div>
-                              {getPath(row)}
+                              <Code lines={filterField(config, row.path)} />
                               {row.url && <a href={row.url} target="_blank" rel="noreferrer">{row.url}</a>}
                             </div>
                           </td>
                         </tr>
                         <tr>
-                          <td><strong>{getSpecifier(row)}</strong></td>
+                          <td><strong>{renderSpecifier(row)}</strong></td>
                           <td>{filterField(config, row.units)}</td>
                           <td>
-                            <ul className="resolution-list">
-                              {getResolutions(row)}
-                            </ul>
-                            <ul className="resolution-list">
-                              {getFrequencies(row)}
-                            </ul>
+                            <List items={filterField(config, row.resolution)} />
+                            <List items={filterField(config, row.frequency)} />
                           </td>
                           <td>
                             <p>
                               <Sectors config={config} sectors={row.sectors} />
                             </p>
-                            {
-                              row.climate_forcing && <p>
-                                <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} />
-                              </p>
-                            }
+                            <ClimateForcing climateForcings={filterField(config, row.climate_forcing)} />
                             {row.comment && <ReactMarkdown>{filterField(config, row.comment)}</ReactMarkdown>}
                           </td>
                         </tr>
