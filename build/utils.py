@@ -1,5 +1,4 @@
 import csv
-import json
 import logging
 import os
 import re
@@ -7,6 +6,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+import orjson
 import yaml
 from rich.logging import RichHandler
 
@@ -26,7 +26,13 @@ def setup_logs():
 
 
 def get_commit_hash():
-    return subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    return (
+        subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD'],
+        )
+        .decode()
+        .strip()
+    )
 
 
 def get_commit_date():
@@ -130,13 +136,15 @@ def read_patterns(simulation_rounds, sectors):
 
 def write_json(output_path, output):
     logging.info('write %s', output_path)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as fp:
-        fp.write(json.dumps(output, indent=2))
+    with open(output_path, 'wb') as fp:
+        fp.write(orjson.dumps(output, option=orjson.OPT_INDENT_2))
 
 
 def write_csv(output_path, output, fieldnames):
     logging.info('write %s', output_path)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8', newline='') as fp:
         writer = csv.DictWriter(fp, fieldnames=fieldnames, extrasaction='ignore')
