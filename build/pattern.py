@@ -7,6 +7,8 @@ setup_logs()
 
 
 def main():
+    commit_hash = get_commit_hash()
+
     for pattern_path in Path('pattern').rglob('**/*.yaml'):
         output_path = (Path('output') / pattern_path).with_suffix('.json')
 
@@ -33,7 +35,7 @@ def main():
         file_pattern = re.sub(r'\s+', '', file_pattern)
 
         pattern_dict = {
-            'commit': get_commit_hash(),
+            'commit': commit_hash,
             'path': path_pattern,
             'dataset': dataset_pattern,
             'file': file_pattern,

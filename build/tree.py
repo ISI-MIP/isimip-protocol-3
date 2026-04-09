@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 from utils import get_commit_hash, read_yaml_file, setup_logs, write_json
@@ -7,6 +6,8 @@ setup_logs()
 
 
 def main():
+    commit_hash = get_commit_hash()
+
     for tree_path in Path('tree').rglob('**/*.yaml'):
         output_path = Path('output') / tree_path
 
@@ -15,7 +16,7 @@ def main():
 
         # create tree dict
         tree = {
-            'commit': get_commit_hash(),
+            'commit': commit_hash,
             'identifiers': [identifier.replace(' ', '') for identifier in tree_data],
         }
 

@@ -9,6 +9,8 @@ setup_logs()
 
 
 def main():
+    commit_hash = get_commit_hash()
+
     definitions = read_definitions()
 
     for schema_path in Path('schema').rglob('**/*.yaml'):
@@ -31,7 +33,7 @@ def main():
         schema = {
             '$schema': 'http://json-schema.org/draft-07/schema#',
             '$id': URL + schema_path.as_posix(),
-            'commit': get_commit_hash(),
+            'commit': commit_hash,
         }
         schema.update(schema_template)
 

@@ -6,8 +6,9 @@ setup_logs()
 
 
 def main():
-    definitions = read_definitions()
+    commit_hash = get_commit_hash()
 
+    definitions = read_definitions()
     simulation_rounds = [definition['specifier'] for definition in definitions['simulation_round']]
     products = [definition['specifier'] for definition in definitions['product']]
     categories = [definition['specifier'] for definition in definitions['category']]
@@ -26,7 +27,7 @@ def main():
                         .with_suffix('.json')
                     )
 
-                    output_definitions = {'commit': get_commit_hash()}
+                    output_definitions = {'commit': commit_hash}
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
                         for row in filter_rows(rows, simulation_round, product, category=category):
@@ -47,7 +48,7 @@ def main():
                         .with_suffix('.json')
                     )
 
-                    output_definitions = {'commit': get_commit_hash()}
+                    output_definitions = {'commit': commit_hash}
                     for definition_name, rows in definitions.items():
                         output_definitions[definition_name] = []
                         for row in filter_rows(rows, simulation_round, product, sector=sector):
