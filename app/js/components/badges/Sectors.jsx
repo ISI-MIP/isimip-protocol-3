@@ -7,7 +7,7 @@ const Sectors = ({ config, sectors }) => {
   // sectors are the sectors configured for this badge
   if (sectors === undefined) {
     return <span className="badge badge-success badge-sector">all sectors</span>
-  } else if (isEmpty(sectors)) {
+  } else if (isEmpty(sectors) && !isNil(sectors)) {
     // by setting `sectors: []` the display of sectors can be omitted
     return null
   } else if (isNil(sectors)) {
