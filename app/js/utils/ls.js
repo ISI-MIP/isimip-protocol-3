@@ -5,23 +5,35 @@ const getConfig = () => {
   const definitions = window.initialState.definitions
 
   const simulation_round = ls.get('simulation_round')
-  if (definitions.simulation_round.map((simulation_round) => simulation_round.specifier)
-                                  .includes(simulation_round)) {
+  if (
+    definitions.simulation_round
+      .map((simulation_round) => simulation_round.specifier)
+      .includes(simulation_round)
+  ) {
     config.simulation_round = simulation_round
   }
 
   const sectors = ls.get('sectors') ? JSON.parse(ls.get('sectors')) : []
-  if (definitions.sector.some((sector) => sectors.includes(sector.specifier))) {
+  if (
+    definitions.sector
+      .some((sector) => sectors.includes(sector.specifier))
+  ) {
     config.sectors = sectors
   }
 
   const experiments = ls.get('experiments') ? JSON.parse(ls.get('experiments')) : []
-  if (definitions.experiments.some((experiment) => experiments.includes(experiment.specifier))) {
+  if (
+    definitions.experiments
+      .some((experiment) => experiments.includes(experiment.specifier))
+  ) {
     config.experiments = experiments
   }
 
   const groups = ls.get('groups') ? JSON.parse(ls.get('groups')) : []
-  if (definitions.group.some((group) => groups.includes(group.specifier))) {
+  if (
+    definitions.group
+      .some((group) => groups.includes(group.specifier))
+  ) {
     config.groups = groups
   }
 

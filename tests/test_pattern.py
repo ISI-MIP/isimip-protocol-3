@@ -6,7 +6,7 @@ import pytest
 
 
 def test_patterns():
-    for root, dirs, files in os.walk('pattern'):
+    for root, _, files in os.walk('pattern'):
         for file_name in files:
             if file_name.endswith('.json'):
                 file_path = os.path.join(root, file_name)

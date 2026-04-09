@@ -1,15 +1,19 @@
 export const filterRows = (config, rows, group3) => {
   if (Array.isArray(rows)) {
     return rows.filter(row => {
-        if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
-            if (row.products === undefined || row.products.filter(product => config.products.includes(product)).length) {
-                if (row.sectors === undefined || config.sectors.length == 0 || row.sectors.filter(sector => config.sectors.includes(sector)).length) {
-                    return true
-                }
-            }
+      if (row.simulation_rounds === undefined || row.simulation_rounds.includes(config.simulation_round)) {
+        if (row.products === undefined || row.products.filter(product => config.products.includes(product)).length) {
+          if (
+            row.sectors === undefined ||
+            config.sectors.length == 0 ||
+            row.sectors.filter(sector => config.sectors.includes(sector)).length
+          ) {
+            return true
+          }
         }
+      }
 
-        return false
+      return false
     }).filter(row => {
       return row.hidden != true
     }).filter(row => {
@@ -34,7 +38,7 @@ export const filterField = (config, field) => {
       } else if (config.sectors.length == 1) {
         return (typeof field[config.sectors[0]] === 'undefined') ? field.other : field[config.sectors[0]]
       } else {
-        return Object.fromEntries(Object.entries(field).filter(([sector, value]) => {
+        return Object.fromEntries(Object.entries(field).filter((sector) => {
           if (sector == 'other') {
             // add the "other" entry only if there is a sector in the config which is not in the field
             return config.sectors.filter(s => !Object.keys(field).includes(s)).length > 0

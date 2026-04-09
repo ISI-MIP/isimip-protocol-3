@@ -1,8 +1,9 @@
 from pathlib import Path
 
-from utils import filter_row, filter_rows, read_definitions, write_csv, setup_logs
+from utils import filter_row, filter_rows, read_definitions, setup_logs, write_csv
 
 setup_logs()
+
 
 def main():
     definitions = read_definitions()
@@ -23,8 +24,17 @@ def main():
             )
 
             variable_definitions = []
-            variable_fieldnames = ['group', 'specifier', 'long_name', 'units', 'resolution', 'frequency',
-                                   'valid_min', 'valid_max', 'comment']
+            variable_fieldnames = [
+                'group',
+                'specifier',
+                'long_name',
+                'units',
+                'resolution',
+                'frequency',
+                'valid_min',
+                'valid_max',
+                'comment',
+            ]
             for row in filter_rows(definitions['variable'], simulation_round, 'OutputData', sector=sector):
                 variable_definitions.append(filter_row(row, simulation_round, 'OutputData', sector=sector))
 
@@ -34,5 +44,5 @@ def main():
             write_csv(output_path, variable_definitions, variable_fieldnames)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

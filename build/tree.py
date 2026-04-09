@@ -6,6 +6,7 @@ from utils import get_commit_hash, setup_logs, write_json
 
 setup_logs()
 
+
 def main():
     for tree_path in Path('tree').rglob('**/*.json'):
         output_path = Path('output') / tree_path
@@ -18,12 +19,12 @@ def main():
         # create tree dict
         tree = {
             'commit': get_commit_hash(),
-            'identifiers': [identifier.replace(' ', '') for identifier in identifiers]
+            'identifiers': [identifier.replace(' ', '') for identifier in identifiers],
         }
 
         # write tree as json
         write_json(output_path, tree)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

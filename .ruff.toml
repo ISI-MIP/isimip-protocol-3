@@ -1,0 +1,47 @@
+target-version = "py310"
+line-length = 120
+
+[lint]
+select = [
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # isort
+    "PGH",  # pygrep-hooks
+    "RUF",  # ruff
+    "UP",   # pyupgrade
+    "W",    # pycodestyle
+    "YTT",  # flake8-2020
+]
+
+[format]
+quote-style = "single"
+
+[lint.isort]
+known-first-party = [
+    "isimip_data"
+]
+section-order = [
+  "future",
+  "standard-library",
+  "pytest",
+  "django",
+  "rest_framework",
+  "third-party",
+  "first-party",
+  "local-folder"
+]
+
+[lint.isort.sections]
+pytest = ["pytest"]
+django = ["django"]
+rest_framework = ["rest_framework"]
+
+[lint.per-file-ignores]
+"config/settings/*.py" = [
+  "F401",
+  "F403",
+  "F405",
+  "F821",
+]

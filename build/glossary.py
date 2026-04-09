@@ -4,10 +4,11 @@ from utils import get_commit_hash, read_definitions, setup_logs, write_json
 
 setup_logs()
 
+
 def main():
     glossary = {
         'commit': get_commit_hash(),
-        'terms': {}
+        'terms': {},
     }
 
     for identifier, rows in read_definitions().items():
@@ -24,5 +25,5 @@ def main():
     write_json(glossary_path, glossary)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

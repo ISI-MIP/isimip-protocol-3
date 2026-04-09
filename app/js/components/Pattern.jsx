@@ -17,7 +17,7 @@ const Pattern = () => {
       .replaceAll('\\d{4}', '')                         // remove \d{4} etc.
       .replaceAll('\?P', '')                            // remove ?P
       .replaceAll('?', '')                              // remove ?
-      .replaceAll('(<', '<').replaceAll('>)', '>')      // remove parentesis around (< ... >)
+      .replaceAll('(<', '<').replaceAll('>)', '>')      // remove parentheses around (< ... >)
       .replaceAll(/>_/g, '>@').replaceAll(/_</g, '@<')  // replace underscore between identifiers with @
       .replaceAll('_', '-')                             // replace remaining _ with -
       .replaceAll('@', '_')                             // replace @ with _

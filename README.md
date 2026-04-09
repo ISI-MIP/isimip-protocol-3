@@ -121,7 +121,7 @@ The definition YAML files however can be changed without touching the JavaScript
 ...
 ```
 
-Here `1850soc` only applies to the givem set of sectors and only to `ISIMIP3b`, while `histsoc` is used both in `ISIMIP3a` and `ISIMIP3b` and in every sector. Some attributes (e.g. `frequency` in `definitions/variable`) can have objects as value, which the are evaluated for the particular sector.
+Here `1850soc` only applies to the given set of sectors and only to `ISIMIP3b`, while `histsoc` is used both in `ISIMIP3a` and `ISIMIP3b` and in every sector. Some attributes (e.g. `frequency` in `definitions/variable`) can have objects as value, which the are evaluated for the particular sector.
 
 In order to add a new sector, the following steps need to be taken:
 
