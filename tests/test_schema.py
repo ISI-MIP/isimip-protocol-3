@@ -1,16 +1,22 @@
-import json
-import os
+from pathlib import Path
 
+import pytest
 from jsonschema import Draft7Validator
 
+from .helpers import read_file
 
-def test_patterns():
-    for root, _, files in os.walk('schema'):
-        for file_name in files:
-            if file_name.endswith('.json'):
-                file_path = os.path.join(root, file_name)
+schema_paths = sorted(Path('schema').rglob('*.yaml'))
 
-                with open(file_path) as f:
-                    schema = json.loads(f.read())
+@pytest.mark.parametrize('schema_path', schema_paths, ids=lambda x: str(x))
+def test_schema(schema_path):
+    schema = read_file(schema_path)
 
-                assert Draft7Validator.check_schema(schema) is None
+    assert Draft7Validator.check_schema(schema) is None
+
+    assert schema['type'] == 'object'
+    assert 'specifiers' in schema['required']
+    assert 'specifiers' in schema['properties']
+
+    assert schema['properties']['specifiers']['type'] == 'object'
+    assert 'required' in schema['properties']['specifiers']
+    assert 'properties' in schema['properties']['specifiers']

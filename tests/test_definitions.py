@@ -1,26 +1,14 @@
 from pathlib import Path
 
 import jsonschema
-import yaml
 
+from .helpers import read_file, read_instance
 
-def read_file(file_path):
-    return yaml.safe_load(file_path.read_text(encoding='utf-8'))
-
-
-def read_instance(file_path):
-    if file_path.is_dir():
-        instance = []
-        for group_path in file_path.iterdir():
-            if group_path.suffix == '.yaml':
-                instance += read_file(group_path)
-        return instance
-    elif file_path.suffix == '.yaml':
-        return read_file(file_path)
+meta_path = Path(__file__).parent.joinpath('meta.yaml')
 
 
 def test_definitions():
-    schema = read_file(Path(__file__).parent.joinpath('meta.yaml'))
+    schema = read_file(meta_path)
 
     for file_path in Path('definitions').iterdir():
         # read the instance
