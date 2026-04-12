@@ -9,36 +9,31 @@ You can also edit the markdown files at github directly. With a delay of minutes
 
 As a rule, the sector-specific text should be kept to a minimum and cover as much structure as possible by machine-readable code under [definitions](definitions/).
 
+
 Setup
 -----
 
 Building the protocol requires:
 
-- **git**: for version control
 - **Python** (> 3.10)
-- **curl**: for downloading nvm in the app Makefile
+- **git** for version control
+- **curl** for downloading `nvm`
 
 The installation of Python (and its developing packages) differs from operating system to operating system. Instructions to setup Python for your system can be found [here](https://utils.isimip.org/prerequisites/).
 
-If you work with different Python applications, we recommend to create a virtual environment for the protocol:
+We recommend to create a virtual environment for the protocol:
 
 ```bash
 python3 -m venv env
 source env/bin/activate  # the env needs to be sourced everytime you use a new terminal
 ```
 
-The Python requirements are installed using:
+The Python requirements can be installed using:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using only ([nvm]() and the Node dependencies are downloaded automatically, this requires `curl`):
-
-```bash
-make app
-make watch  # automatically rebuild when the source changes
-```
 
 Build
 -----
@@ -49,7 +44,14 @@ The different `build` scripts can be run by using:
 make
 ```
 
-The output files are located in `output`. The files, e.g. `index.html` can opened with a web browser.
+The output files are located in `output`.
+
+The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using ([nvm](https://github.com/nvm-sh/nvm) and the Node dependencies are downloaded automatically, this requires `curl`):
+
+```bash
+make app
+make watch  # automatically rebuild when the source changes
+```
 
 
 Development server

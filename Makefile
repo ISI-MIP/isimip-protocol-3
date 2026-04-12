@@ -5,7 +5,7 @@ export NVM_VERSION=v0.40.4
 
 export ISIMIP_LOG_LEVEL=WARNING
 
-.PHONY: all csvtablescsvtables definitions glossary pattern protocol schema tree \
+.PHONY: all csvtables definitions glossary pattern protocol schema tree \
 	serve typos app watch lint clean cleannode cleanenv distclean
 
 all: csvtables definitions glossary pattern protocol schema tree
