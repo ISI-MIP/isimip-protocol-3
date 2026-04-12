@@ -1,18 +1,48 @@
 import csv
-import json
+import logging
+import os
 import re
 import subprocess
 from datetime import datetime
 from pathlib import Path
 
+import orjson
 import yaml
+from rich.logging import RichHandler
+
+
+def setup_logs():
+    logging.basicConfig(
+        level=os.getenv('ISIMIP_LOG_LEVEL', 'WARNING'),
+        format='%(message)s',
+        datefmt='[%X]',
+        handlers=[
+            RichHandler(
+                show_time=os.getenv('ISIMIP_SHOW_TIME', False),
+                show_path=os.getenv('ISIMIP_SHOW_PATH', False),
+            )
+        ],
+    )
+
 
 def get_commit_hash():
-    return subprocess.check_output(['git', 'rev-parse', 'HEAD']).decode().strip()
+    return (
+        subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD'],
+        )
+        .decode()
+        .strip()
+    )
 
 
 def get_commit_date():
-    commit_date = subprocess.check_output(['git', 'show', '-s', '--format=%ci', 'HEAD']).decode().strip()
+    commit_date = (
+        subprocess.check_output(
+            ['git', 'show', '-s', '--format=%ci', 'HEAD'],
+        )
+        .decode()
+        .strip()
+    )
     return datetime.strptime(commit_date, '%Y-%m-%d %H:%M:%S %z').strftime('%d %B %Y')
 
 
@@ -57,10 +87,12 @@ def filter_row(row, simulation_round, product, category=None, sector=None):
 
 
 def read_yaml_file(file_path):
+    logging.debug('read %s', file_path)
     try:
         return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.CSafeLoader)
     except AttributeError:
         return yaml.load(file_path.read_text(encoding='utf-8'), Loader=yaml.SafeLoader)
+
 
 def read_definitions():
     definitions_path = Path('definitions')
@@ -84,24 +116,35 @@ def read_patterns(simulation_rounds, sectors):
         patterns[simulation_round['specifier']] = {}
         for sector in sectors:
             if sector.get('simulation_rounds') is None or simulation_round in sector.get('simulation_rounds'):
-                pattern_path = Path('pattern') / simulation_round['specifier'] / 'OutputData' / '{}.yaml'.format(sector['specifier'])
+                pattern_path = (
+                    Path('pattern')
+                    / simulation_round['specifier']
+                    / 'OutputData'
+                    / '{}.yaml'.format(sector['specifier'])
+                )
 
                 try:
                     pattern = read_yaml_file(pattern_path)
                     patterns[simulation_round['specifier']][sector['specifier']] = re.sub(r'\s+', '', pattern['file'])
                 except FileNotFoundError:
-                    patterns[simulation_round['specifier']][sector['specifier']] = 'No pattern has been defined for this simulation round and sector, yet.'
+                    patterns[simulation_round['specifier']][sector['specifier']] = (
+                        'No pattern has been defined for this simulation round and sector, yet.'
+                    )
 
     return patterns
 
 
 def write_json(output_path, output):
+    logging.info('write %s', output_path)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as fp:
-        fp.write(json.dumps(output, indent=2))
+    with open(output_path, 'wb') as fp:
+        fp.write(orjson.dumps(output, option=orjson.OPT_INDENT_2))
 
 
 def write_csv(output_path, output, fieldnames):
+    logging.info('write %s', output_path)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8', newline='') as fp:
         writer = csv.DictWriter(fp, fieldnames=fieldnames, extrasaction='ignore')
