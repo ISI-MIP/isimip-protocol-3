@@ -46,7 +46,7 @@ make
 
 The output files are located in `output`.
 
-The JavaScript part of the protocol needs to be build using NodeJS and Webpack. For convenience this can be done by using ([nvm](https://github.com/nvm-sh/nvm) and the Node dependencies are downloaded automatically, this requires `curl`):
+The JavaScript part of the protocol needs to be build using [NodeJS](https://nodejs.org) and [vite](https://vite.dev/). For convenience this can be done by using ([nvm](https://github.com/nvm-sh/nvm) and the Node dependencies are downloaded automatically, this requires `curl`):
 
 ```bash
 make app
