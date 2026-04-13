@@ -53,6 +53,15 @@ make app
 make watch  # automatically rebuild when the source changes
 ```
 
+When working with different branches or after dependency changed, it the following make targets can be used to clean the local copy:
+
+```
+make clean      # removes the output directory
+make cleannode  # removes nvm and node_modules (JavaScript dependencies)
+make cleanenv   # removes the virtual environment (Python dependencies)
+make distclean  # runs all clean targets
+```
+
 
 Development server
 ------------------
