@@ -37,14 +37,14 @@ serve:
 typos:
 	typos --write-changes --force-exclude
 
-app: nvm node_modules
-	. $(NVM_DIR)/nvm.sh; nvm use && npm run build
+app: nvm
+	. $(NVM_DIR)/nvm.sh; nvm use && npm ci && npm run build
 
 watch: nvm node_modules
-	. $(NVM_DIR)/nvm.sh; nvm use && npm run watch
+	. $(NVM_DIR)/nvm.sh; nvm use && npm ci && npm run watch
 
 lint: nvm node_modules
-	. $(NVM_DIR)/nvm.sh; nvm use && npm run lint
+	. $(NVM_DIR)/nvm.sh; nvm use && npm ci && npm run lint
 
 nvm:
 	mkdir -p $(NVM_DIR)
