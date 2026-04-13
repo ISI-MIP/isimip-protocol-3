@@ -53,7 +53,7 @@ make app
 make watch  # automatically rebuild when the source changes
 ```
 
-When working with different branches or after dependency changed, it the following make targets can be used to clean the local copy:
+When working with different branches or after dependency changed, the following make targets can be used to clean the local copy:
 
 ```
 make clean      # removes the output directory
