@@ -1,13 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/energy.yaml",
-  "commit": "e01788b1b24e5d885bda11b6c11f9a6d87c1a4af",
+  "commit": "d233e670a3d00465464c2a5af4826fbd7f263aa1",
   "type": "object",
   "required": [
     "specifiers"
   ],
   "properties": {
     "specifiers": {
+      "type": "object",
       "required": [
         "model",
         "climate_forcing",
@@ -29,8 +30,8 @@
         "detrending": {
           "type": "string",
           "enum": [
-            "detrended",
-            "observed"
+            "observed",
+            "detrended"
           ]
         },
         "climate_scenario": {
@@ -57,21 +58,21 @@
           "type": "string",
           "enum": [
             "global",
-            "europe",
-            "along-track"
+            "along-track",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "fixed",
+            "6hr",
+            "hourly",
+            "daily",
+            "3hr",
             "monthly",
             "annual",
-            "3hr",
-            "daily",
-            "hourly",
-            "2hr",
-            "6hr"
+            "fixed",
+            "2hr"
           ]
         },
         "start_year": {
