@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from utils import (filter_row, filter_rows, read_definitions, write_csv)
+from utils import filter_row, filter_rows, read_definitions, setup_logs, write_csv
+
+setup_logs()
 
 
 def main():
@@ -12,13 +14,27 @@ def main():
 
     for simulation_round in simulation_rounds:
         for sector in sectors:
-            output_path = Path('output').joinpath('csv') \
-                                        .joinpath(simulation_round).joinpath('OutputData').joinpath(sector) \
-                                        .with_suffix('.csv')
+            output_path = (
+                Path('output')
+                .joinpath('csv')
+                .joinpath(simulation_round)
+                .joinpath('OutputData')
+                .joinpath(sector)
+                .with_suffix('.csv')
+            )
 
             variable_definitions = []
-            variable_fieldnames = ['group', 'specifier', 'long_name', 'units', 'resolution', 'frequency',
-                                   'valid_min', 'valid_max', 'comment']
+            variable_fieldnames = [
+                'group',
+                'specifier',
+                'long_name',
+                'units',
+                'resolution',
+                'frequency',
+                'valid_min',
+                'valid_max',
+                'comment',
+            ]
             for row in filter_rows(definitions['variable'], simulation_round, 'OutputData', sector=sector):
                 variable_definitions.append(filter_row(row, simulation_round, 'OutputData', sector=sector))
 
@@ -28,5 +44,5 @@ def main():
             write_csv(output_path, variable_definitions, variable_fieldnames)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

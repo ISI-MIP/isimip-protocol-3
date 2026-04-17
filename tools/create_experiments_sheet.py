@@ -10,7 +10,7 @@ with open('definitions/sector.json') as fp:
 
 sectors = [sector['specifier'] for sector in sectors_data]
 
-rows = [[''] + sectors]
+rows = [['', *sectors]]
 for experiment in experiments:
     if not experiment.get('hidden'):
         row = [experiment.get('specifier')]

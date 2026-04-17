@@ -1,21 +1,22 @@
-import json
-import os
 import re
+from pathlib import Path
 
 import pytest
 
+from helpers import read_file
 
-def test_patterns():
-    for root, dirs, files in os.walk('pattern'):
-        for file_name in files:
-            if file_name.endswith('.json'):
-                file_path = os.path.join(root, file_name)
+pattern_keys = ['path', 'dataset', 'file']
+pattern_paths = list(Path('pattern').rglob('*.yaml'))
 
-                with open(file_path) as f:
-                    pattern_json = json.loads(f.read())
-                    pattern = os.linesep.join(pattern_json)
 
-                    try:
-                        re.compile(pattern)
-                    except re.error:
-                        pytest.fail(file_path)
+@pytest.mark.parametrize('pattern_key', pattern_keys)
+@pytest.mark.parametrize('pattern_path', pattern_paths, ids=lambda x: str(x))
+def test_pattern(pattern_key, pattern_path):
+    pattern = read_file(pattern_path).get(pattern_key)
+    if pattern:
+        pattern = re.sub(r'\s+', '', pattern)
+
+        try:
+            re.compile(pattern)
+        except re.error as e:
+            pytest.fail(f'Error with "{pattern_key}" in {pattern_path}: {e}')

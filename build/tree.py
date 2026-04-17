@@ -1,29 +1,28 @@
-import json
-import os
 from pathlib import Path
 
-from utils import get_commit_hash, write_json
+from utils import get_commit_hash, read_yaml_file, setup_logs, write_json
+
+setup_logs()
 
 
 def main():
-    for root, dirs, files in os.walk('tree'):
-        for file_name in files:
-            tree_path = Path(root) / file_name
-            output_path = Path('output') / tree_path
+    commit_hash = get_commit_hash()
 
-            # step 2: open and read pattern
-            with open(tree_path, encoding='utf-8') as f:
-                identifiers = json.loads(f.read())
+    for tree_path in Path('tree').rglob('**/*.yaml'):
+        output_path = (Path('output') / tree_path).with_suffix('.json')
 
-            # create a pattern json from scratch
-            tree_json = {
-                'commit': get_commit_hash(),
-                'identifiers': [identifier.replace(' ', '') for identifier in identifiers]
-            }
+        # open and read tree
+        tree_data = read_yaml_file(tree_path)
 
-            # step 3: write json file
-            write_json(output_path, tree_json)
+        # create tree dict
+        tree = {
+            'commit': commit_hash,
+            'identifiers': [identifier.replace(' ', '') for identifier in tree_data],
+        }
+
+        # write tree as json
+        write_json(output_path, tree)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
