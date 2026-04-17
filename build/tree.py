@@ -9,7 +9,7 @@ def main():
     commit_hash = get_commit_hash()
 
     for tree_path in Path('tree').rglob('**/*.yaml'):
-        output_path = Path('output') / tree_path
+        output_path = (Path('output') / tree_path).with_suffix('.json')
 
         # open and read tree
         tree_data = read_yaml_file(tree_path)
