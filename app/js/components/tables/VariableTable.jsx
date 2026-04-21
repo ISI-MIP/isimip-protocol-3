@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
-import { isUndefined } from 'lodash'
+import { isEmpty, isNil, isUndefined } from 'lodash'
 
 import { filterField, filterGroups } from '../../utils/filter'
 
@@ -24,7 +24,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
 
   const renderSpecifier = (row) => {
     const extension = filterField(config, row.extension)
-    if (extension) {
+    if (!isEmpty(extension)) {
       if (Array.isArray(extension)) {
         return <strong>{extension.map(e => addExtension(row.specifier, e)).join(', ')}</strong>
       } else if (typeof extension === 'object') {
@@ -132,7 +132,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
   const renderDimensions = (row) => {
     const dimensions = filterField(config, row.dimensions)
 
-    if (dimensions === null) {
+    if (isNil(dimensions) || isEmpty(dimensions)) {
       return null
     } else if (Array.isArray(dimensions)) {
       return <p><b>Level dimensions:</b> ({dimensions.join(', ')}).</p>
