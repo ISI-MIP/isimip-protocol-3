@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isPlainObject, isUndefined } from 'lodash'
+import { isArray, isEmpty, isEqual, isPlainObject, isUndefined } from 'lodash'
 
 export const filterRows = (config, rows, group3) => {
   if (isArray(rows)) {
@@ -42,7 +42,7 @@ const filterFieldForSector = (config, field) => {
   } else if (config.sectors.length == 1) {
     return (isUndefined(field[config.sectors[0]])) ? field.other : field[config.sectors[0]]
   } else {
-    return Object.fromEntries(Object.entries(field).filter((sector) => {
+    const filteredField = Object.fromEntries(Object.entries(field).filter(([sector]) => {
       if (sector == 'other') {
         // add the "other" entry only if there is a sector in the config which is not in the field
         return config.sectors.filter(s => !Object.keys(field).includes(s)).length > 0
@@ -50,6 +50,13 @@ const filterFieldForSector = (config, field) => {
         return config.sectors.includes(sector)
       }
     }))
+
+    if (isEqual(Object.keys(filteredField), ['other'])) {
+      // filteredField contains only "other"
+      return filteredField.other
+    } else {
+      return filteredField
+    }
   }
 }
 
