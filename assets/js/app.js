@@ -15666,7 +15666,14 @@ function _s(e) {
 var vs = (e, t, n) => (0, M.isArray)(t) ? t.filter((t) => !!((t.simulation_rounds === void 0 || t.simulation_rounds.includes(e.simulation_round)) && (t.products === void 0 || t.products.filter((t) => e.products.includes(t)).length) && (t.sectors === void 0 || e.sectors.length == 0 || t.sectors.filter((t) => e.sectors.includes(t)).length))).filter((e) => e.hidden != 1).filter((t) => e.simulation_round.endsWith("a") || !n || !e.group3 || t.group3) : [], ys = (e, t) => {
 	let n = t[e.simulation_round];
 	return (0, M.isPlainObject)(n) ? bs(e, n) : n;
-}, bs = (e, t) => (0, M.isEmpty)(e.sectors) ? t : e.sectors.length == 1 ? (0, M.isUndefined)(t[e.sectors[0]]) ? t.other : t[e.sectors[0]] : Object.fromEntries(Object.entries(t).filter((n) => n == "other" ? e.sectors.filter((e) => !Object.keys(t).includes(e)).length > 0 : e.sectors.includes(n))), xs = (e, t) => (0, M.isPlainObject)(t) ? Object.keys(t).every((e) => /^[A-Z]/.test(e)) ? ys(e, t) : bs(e, t) : t, Ss = (e, t, n, r) => n.map((n) => (n.rows = vs(e, t, r).filter((e) => e.group == n.specifier), n.closed = !e.groups.includes(n.specifier), n)).filter((e) => e.rows.length > 0), Cs = function({ config: e, caption: t, rows: n }) {
+}, bs = (e, t) => {
+	if ((0, M.isEmpty)(e.sectors)) return t;
+	if (e.sectors.length == 1) return (0, M.isUndefined)(t[e.sectors[0]]) ? t.other : t[e.sectors[0]];
+	{
+		let n = Object.fromEntries(Object.entries(t).filter(([n]) => n == "other" ? e.sectors.filter((e) => !Object.keys(t).includes(e)).length > 0 : e.sectors.includes(n)));
+		return (0, M.isEqual)(Object.keys(n), ["other"]) ? n.other : n;
+	}
+}, xs = (e, t) => (0, M.isPlainObject)(t) ? Object.keys(t).every((e) => /^[A-Z]/.test(e)) ? ys(e, t) : bs(e, t) : t, Ss = (e, t, n, r) => n.map((n) => (n.rows = vs(e, t, r).filter((e) => e.group == n.specifier), n.closed = !e.groups.includes(n.specifier), n)).filter((e) => e.rows.length > 0), Cs = function({ config: e, caption: t, rows: n }) {
 	return /* @__PURE__ */ (0, P.jsxs)("table", {
 		className: "table table-bordered table-fixed",
 		children: [
@@ -17011,7 +17018,7 @@ qs.propTypes = {
 var Js = function({ config: e, caption: t, rows: n, groups: r, toggleGroup: i, toggleGroups: a }) {
 	let o = Ss(e, n, r), s = o.length == 0, c = o.every((e) => !e.closed), l = () => a(o, c), u = (e, t) => t === null ? e : e + "-" + t, d = (t) => {
 		let n = xs(e, t.extension);
-		return n ? Array.isArray(n) ? /* @__PURE__ */ (0, P.jsx)("strong", { children: n.map((e) => u(t.specifier, e)).join(", ") }) : typeof n == "object" ? /* @__PURE__ */ (0, P.jsx)("ul", {
+		return (0, M.isEmpty)(n) ? /* @__PURE__ */ (0, P.jsx)("strong", { children: t.specifier }) : Array.isArray(n) ? /* @__PURE__ */ (0, P.jsx)("strong", { children: n.map((e) => u(t.specifier, e)).join(", ") }) : typeof n == "object" ? /* @__PURE__ */ (0, P.jsx)("ul", {
 			className: "list-unstyled",
 			children: Object.keys(n).map((e, r) => Array.isArray(n[e]) ? /* @__PURE__ */ (0, P.jsxs)("li", { children: [
 				/* @__PURE__ */ (0, P.jsxs)("em", {
@@ -17028,7 +17035,7 @@ var Js = function({ config: e, caption: t, rows: n, groups: r, toggleGroup: i, t
 				" ",
 				/* @__PURE__ */ (0, P.jsx)("strong", { children: u(t.specifier, n[e]) })
 			] }, r))
-		}) : /* @__PURE__ */ (0, P.jsx)("strong", { children: t.specifier + "-" + n }) : /* @__PURE__ */ (0, P.jsx)("strong", { children: t.specifier });
+		}) : /* @__PURE__ */ (0, P.jsx)("strong", { children: t.specifier + "-" + n });
 	}, f = (t) => {
 		let n = xs(e, t.resolution);
 		if (Array.isArray(n)) return n.map((e, t) => /* @__PURE__ */ (0, P.jsx)("li", { children: e }, t));
@@ -17059,7 +17066,7 @@ var Js = function({ config: e, caption: t, rows: n, groups: r, toggleGroup: i, t
 		] }, t)) : /* @__PURE__ */ (0, P.jsxs)("li", { children: [Object.values(n)[0], " "] }) : /* @__PURE__ */ (0, P.jsx)("li", { children: n });
 	}, m = (t) => {
 		let n = xs(e, t.dimensions);
-		return n === null ? null : Array.isArray(n) ? /* @__PURE__ */ (0, P.jsxs)("p", { children: [
+		return (0, M.isNil)(n) || (0, M.isEmpty)(n) ? null : Array.isArray(n) ? /* @__PURE__ */ (0, P.jsxs)("p", { children: [
 			/* @__PURE__ */ (0, P.jsx)("b", { children: "Level dimensions:" }),
 			" (",
 			n.join(", "),
