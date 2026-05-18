@@ -8,7 +8,7 @@ const Link = () => {
   const href = baseUrl + buildPath(config)
 
   return (
-    <span className="title">
+    <span className="link">
       <a href={href}>{href}</a>
     </span>
   )

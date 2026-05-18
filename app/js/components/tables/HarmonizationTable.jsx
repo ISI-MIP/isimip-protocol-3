@@ -10,7 +10,7 @@ const HarmonizationTable = function({ config, caption, rows }) {
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th style={{width: '20%'}}>Simulation</th>
           <th style={{width: '10%'}}>Specifier</th>

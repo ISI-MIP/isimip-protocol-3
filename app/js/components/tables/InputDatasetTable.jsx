@@ -22,7 +22,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Dataset</th>
             <th style={{width: '15%'}}>Variable specifier</th>
@@ -60,7 +60,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                               (row.mandatory || row.group3) && (
                                 <p>
                                   {
-                                    row.group3 && <span className="badge badge-info">Group III</span>
+                                    row.group3 && <span className="badge badge-group3">Group III</span>
                                   }
                                   <Mandatory mandatory={row.mandatory} />
                                 </p>

@@ -38,7 +38,7 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Variable</th>
             <th style={{width: '15%'}}>Variable specifier</th>

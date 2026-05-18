@@ -228,7 +228,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Variable long name</th>
             <th style={{width: '15%'}}>Variable specifier</th>

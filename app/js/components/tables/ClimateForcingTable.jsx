@@ -16,7 +16,7 @@ const ClimateForcingTable = function({ config, caption, rows }) {
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '40%'}}>Title</th>
             <th style={{width: '15%'}}>Specifier</th>

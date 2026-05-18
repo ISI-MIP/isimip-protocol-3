@@ -20,7 +20,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
   return (
     <React.Fragment>
       <tr>
-        <td className={row.parent ? 'background' : ''} rowSpan="2">
+        <td className={row.parent ? 'table-light' : ''} rowSpan="2">
           <h4>{row.title}</h4>
           {
             row.subtitles && <div className="mb-2">
@@ -36,7 +36,7 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
           {row.priority && <p><strong>{row.priority}</strong></p>}
           <p>
             <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
-            {row.group3 && <span className="badge badge-info">Group III</span>}
+            {row.group3 && <span className="badge badge-group3">Group III</span>}
             <Sectors config={config} sectors={row.sectors} />
           </p>
           {
@@ -258,7 +258,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>

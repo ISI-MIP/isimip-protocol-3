@@ -17,7 +17,7 @@ const CropTable = function({ config, caption, rows, groups, toggleGroup, toggleG
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '50%'}}>Crop</th>
             <th style={{width: '50%'}}>

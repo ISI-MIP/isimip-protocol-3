@@ -20,28 +20,28 @@ const Config = () => {
 
   const group3_full_badge = (
     <span className="badge-split" title={group3_full_note}>
-      <span className="badge badge-info badge-left">
+      <span className="badge badge-group3 badge-start">
         <span className="circle circle-green"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
 
   const group3_half_badge = (
     <span className="badge-split" title={group3_half_note}>
-      <span className="badge badge-info badge-left">
-        <span className="circle-left circle-green"></span>
-        <span className="circle-right circle-yellow"></span>
+      <span className="badge badge-group3 badge-start">
+        <span className="circle-start circle-green"></span>
+        <span className="circle-end circle-yellow"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
   const group3_none_badge = (
     <span className="badge-split" title={group3_none_note}>
-      <span className="badge badge-info badge-left">
+      <span className="badge badge-group3 badge-start">
         <span className="circle circle-yellow"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
 
@@ -70,14 +70,14 @@ const Config = () => {
                   <div className="form-check">
                     {
                       row.specifier.endsWith('b') && (
-                        <div className="float-right">
+                        <div className="float-end">
                           <input
                             className="form-check-input" type="checkbox" id="control-group3"
                             checked={config.group3}
                             onChange={() => config.toggleGroup3()}
                           />
                           <label className="form-check-label" htmlFor="control-group3">
-                            <span className="badge badge-info">only Group III</span>
+                            <span className="badge badge-group3">only Group III</span>
                           </label>
                         </div>
                       )
@@ -115,7 +115,7 @@ const Config = () => {
                     <div>
                       {row.title}
                     </div>
-                    <div className="ml-auto text-nowrap">
+                    <div className="ms-auto text-nowrap">
                       &nbsp;{getGroup3Badge(row)}
                     </div>
                   </label>
