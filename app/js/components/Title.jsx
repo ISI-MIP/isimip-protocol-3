@@ -29,7 +29,7 @@ const Title = () => {
       <SimulationRounds config={config} /> protocol for <Sectors config={config} sectors={null} />
       {
         config.simulation_round.endsWith('b') && config.group3 && (
-          <span className="badge badge-info">only Group III</span>
+          <span className="badge badge-group3">only Group III</span>
         )
       }
     </div>

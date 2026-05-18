@@ -11,7 +11,7 @@ const OceanRegionTable = function({ config, caption, rows }) {
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '30%'}}>Ocean region</th>
             <th style={{width: '30%'}}>Specifier</th>

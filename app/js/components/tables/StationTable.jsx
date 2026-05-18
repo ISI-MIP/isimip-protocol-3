@@ -12,7 +12,7 @@ const StationTable = function({ config, caption, rows }) {
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>River Basin</th>
             <th style={{width: '20%'}}>Station</th>

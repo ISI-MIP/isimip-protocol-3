@@ -15,7 +15,7 @@ const Group3RequirementsTable = function({ config, caption, rows }) {
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th style={{width: '25%'}}>Forcing</th>
           <th style={{width: '25%'}}>Required</th>

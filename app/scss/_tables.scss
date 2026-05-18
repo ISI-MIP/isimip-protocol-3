@@ -1,0 +1,134 @@
+table.table {
+    overflow-wrap: break-word;
+    margin-bottom: 1rem;
+    font-size: small;
+    background-color: white;
+
+    &.table-fixed {
+        table-layout: fixed;
+    }
+
+    thead th {
+        vertical-align: top;
+    }
+    tbody.closed {
+        opacity: 0.2;
+    }
+
+    a.toggle-table,
+    a.toggle-group {
+        display: block;
+        float: right;
+    }
+
+    .experiments-toggle {
+        font-weight: bold;
+    }
+    .experiments-toggle a.toggle-group {
+        float: none;
+    }
+    a.toggle-group {
+        position: relative;
+        margin-right: 15px;
+    }
+    a.toggle-group .toggle-group-up,
+    a.toggle-group .toggle-group-down {
+        position: absolute;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    a.toggle-group .toggle-group-up {
+        top: -4px;
+    }
+    a.toggle-group .toggle-group-down {
+        top: 4px;
+    }
+    th .toggle-group {
+        color: white;
+        font-weight: normal;
+        margin-right: 0;
+    }
+    button.toggle-table {
+        display: block;
+        margin-top: -0.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem;
+        background-color: white;
+        border: 1px solid rgb(164, 164, 164);
+        font-size: smaller;
+    }
+    button.toggle-table:focus {
+        outline: 0;
+    }
+
+    tr.separator td {
+        padding: 1px 0 0 0;
+        background-color: #dee2e6;
+    }
+    tr.sens-title td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+    td {
+        padding: .75rem .75rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    td > ul {
+        margin-bottom: 0.5rem;
+
+        > li {
+            margin-bottom: 0.5rem;
+        }
+        > li > ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+        > li > ul > li {
+            margin-bottom: 0.5rem;
+        }
+    }
+    td p {
+        margin-bottom: 0.5rem;
+    }
+    td.nowrap {
+        padding: 0;
+    }
+    td.nowrap > div {
+        padding: 0.75rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    td.extra-border-bottom {
+        border-bottom-width: 3px;
+    }
+    td.no-border-bottom {
+        border-bottom-color: transparent;
+    }
+    td .badge {
+        margin-right: 3px;
+    }
+
+    // div.separator {
+    //     border-top: 1px solid #dee2e6;
+    //     margin-top: 0.75rem;
+    //     padding-top: 0.75rem;
+    // }
+
+    td, tr {
+        border-color: var(--isimip-light-gray);
+    }
+    thead.table-dark {
+        td, tr {
+            border-color: var(--bs-dark) !important;
+        }
+    }
+
+    .table-light,
+    .table-secondary {
+        --bs-table-border-color: inherit;
+    }
+}

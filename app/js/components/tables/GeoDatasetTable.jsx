@@ -22,7 +22,7 @@ const GeoDatasetTable = function({ config, caption, rows, groups, toggleGroup, t
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Dataset</th>
             <th style={{width: '15%'}}>Variable specifier</th>

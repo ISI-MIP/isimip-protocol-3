@@ -13,7 +13,7 @@ const ScenarioTable = function({ config, caption, rows, group3 }) {
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th style={{width: '30%'}}>Experiment specifier</th>
           <th style={{width: '70%'}}>Description</th>
@@ -30,7 +30,7 @@ const ScenarioTable = function({ config, caption, rows, group3 }) {
                   </p>
                   <p>
                     <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
-                    {row.group3 && <span className="badge badge-info">Group III</span>}
+                    {row.group3 && <span className="badge badge-group3">Group III</span>}
                     <Sectors config={config} sectors={row.sectors} />
                   </p>
                 </td>

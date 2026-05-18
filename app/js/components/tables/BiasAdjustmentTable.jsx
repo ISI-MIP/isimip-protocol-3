@@ -12,7 +12,7 @@ const BiasAdjustmentTable = function({ config, caption, rows }) {
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th style={{width: '25%'}}>Specifier</th>
           <th style={{width: '75%'}}>Description</th>

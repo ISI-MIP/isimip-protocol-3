@@ -11,7 +11,7 @@ const LakeSiteTable = function({ config, caption, rows }) {
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Lake name</th>
             <th style={{width: '20%'}}>Specifier</th>

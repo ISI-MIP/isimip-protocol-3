@@ -5,7 +5,7 @@ const Status = ({ status }) => {
   if (status === 'mandatory') {
     return (
       <span
-        className="badge badge-info badge-mandatory"
+        className="badge badge-mandatory"
         title={
           'If your models uses input data of this kind, we require to use the specified dataset. ' +
           'Please see the note above.'
@@ -16,13 +16,13 @@ const Status = ({ status }) => {
     )
   } else if (status == 'optional') {
     return (
-      <span className="badge badge-light badge-optional">
+      <span className="badge badge-optional">
         {status}
       </span>
     )
   } else if (status) {
     return (
-      <span className="badge badge-secondary badge-status">
+      <span className="badge badge-status">
         {status}
       </span>
     )

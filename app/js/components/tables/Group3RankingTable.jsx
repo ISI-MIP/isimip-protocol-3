@@ -41,7 +41,7 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
-      <thead className="thead-dark">
+      <thead className="table-dark">
         <tr>
           <th style={{width: '10%'}}>Priority</th>
           <th style={{width: '25%'}}>Climate forcing</th>

@@ -11,7 +11,7 @@ const ForestStandTable = function({ config, caption, rows }) {
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '10%'}}>Stand</th>
             <th style={{width: '15%'}}>Specifier</th>

@@ -89,7 +89,7 @@ def main():
             ),
         ],
     )
-    html = html.replace('[mandatory]', '<span class="badge badge-info">mandatory</span>')
+    html = html.replace('[mandatory]', '<span class="badge badge-mandatory">mandatory</span>')
 
     template_path = Path('templates') / 'layout.html'
     output_path = Path('output') / 'index.html'

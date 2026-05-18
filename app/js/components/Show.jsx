@@ -43,7 +43,7 @@ const Show = ({ simulationRound, sector, html }) => {
 
   return (
     <div className={className}>
-      <div className="float-right">
+      <div className="float-end">
         {simulationRounds.length > 0 && <SimulationRounds config={config} simulationRounds={simulationRounds} />}
         {sectors.length > 0 && <Sectors config={config} sectors={sectors} />}
       </div>

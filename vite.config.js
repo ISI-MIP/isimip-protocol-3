@@ -17,11 +17,6 @@ export default defineConfig(({ mode }) => ({
           src: 'app/img/*',
           dest: 'img',
           rename: { stripBase: true }
-        },
-        {
-          src: 'app/css/*',
-          dest: 'css',
-          rename: { stripBase: true }
         }
       ]
     })
@@ -42,5 +37,13 @@ export default defineConfig(({ mode }) => ({
     },
     sourcemap: mode === 'development',
     outDir: 'output/assets',
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+        silenceDeprecations: ['import', 'legacy-js-api', 'global-builtin', 'color-functions'],
+      },
+    },
   },
 }))

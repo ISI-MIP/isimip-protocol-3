@@ -22,7 +22,7 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '30%'}}>Forcing</th>
             <th style={{width: '70%'}}>
@@ -60,7 +60,7 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                         </td>
                         <td>
                           <p>
-                            {row.group3 && <span className="badge badge-info">Group III</span>}
+                            {row.group3 && <span className="badge badge-group3">Group III</span>}
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {

@@ -1,0 +1,33 @@
+@media print {
+    body {
+        /* fix colors in printing */
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    h1 {
+        margin-bottom: 2rem;
+    }
+    h2, h3 {
+        break-inside: avoid;
+        break-after: avoid;
+    }
+    h2::before,
+    h3::before,
+    h4::before {
+        content: none;
+    }
+    .config,
+    .toc,
+    .toggle-group {
+        display: none !important;
+    }
+    [data-identifier="experiments"] td:first-child {
+        height: 140px !important;
+    }
+    table thead {
+        display: table-row-group;
+    }
+    @page {
+        margin: 1in;
+    }
+}
