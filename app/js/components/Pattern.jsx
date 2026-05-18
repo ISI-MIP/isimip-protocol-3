@@ -1,11 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+
+import { patterns, useConfig } from '../store'
 
 import Sectors from './badges/Sectors'
 
 const Pattern = () => {
-  const config = useSelector((store) => store.config)
-  const patterns = useSelector((store) => store.patterns)
+  const config = useConfig()
   const sectors = Object.keys(patterns[config.simulation_round])
 
   const simple_pattern = (pattern) => {

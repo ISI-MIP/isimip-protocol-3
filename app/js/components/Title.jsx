@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { isEmpty } from 'lodash'
+
+import { useConfig } from '../store'
 
 import Sectors from './badges/Sectors'
 import SimulationRounds from './badges/SimulationRounds'
 
 const Title = () => {
-  const config = useSelector((store) => store.config)
+  const config = useConfig()
 
   useEffect(() => {
     const prevTitle = document.title

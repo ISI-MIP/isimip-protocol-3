@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { actions } from '../store'
+import { definitions, useConfig } from '../store'
 
 import BiasAdjustmentTable from './tables/BiasAdjustmentTable'
 import ClimateForcingTable from './tables/ClimateForcingTable'
@@ -24,17 +23,12 @@ import StationTable from './tables/StationTable'
 import VariableTable from './tables/VariableTable'
 
 const Table = ({ identifier, caption }) => {
-  const dispatch = useDispatch()
-
-  const config = useSelector((store) => store.config)
-  const definitions = useSelector((store) => store.definitions)
+  const config = useConfig()
 
   const groups = definitions.group.filter(group => group.identifier == identifier)
   const rows = definitions[identifier]
 
-  const toggleGroup = (group) => {
-    dispatch(actions.toggleGroup(group.specifier))
-  }
+  const toggleGroup = (group) => config.toggleGroup(group.specifier)
   const toggleGroups = (groups, allOpen) => {
     if (allOpen) {
       // all groups are open, toggle them all, closing them
@@ -44,9 +38,7 @@ const Table = ({ identifier, caption }) => {
       groups.filter(group => group.closed).forEach(group => toggleGroup(group))
     }
   }
-  const toggleExperiments = (experiment) => {
-    dispatch(actions.toggleExperiments(experiment.specifier))
-  }
+  const toggleExperiments = (experiment) => config.toggleExperiments(experiment.specifier)
 
   const props = {
     config,

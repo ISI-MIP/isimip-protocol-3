@@ -3,7 +3,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     viteStaticCopy({
@@ -40,6 +40,7 @@ export default defineConfig({
       formats: ['es'],
       fileName: 'js/app',
     },
+    sourcemap: mode === 'development',
     outDir: 'output/assets',
   },
-})
+}))

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+
+import { useConfig } from '../store'
 
 import Sectors from './badges/Sectors'
 import SimulationRounds from './badges/SimulationRounds'
 
 const Show = ({ simulationRound, sector, html }) => {
-  const config = useSelector((store) => store.config)
+  const config = useConfig()
 
   let className = 'show-component'
   let tocClassName = ''

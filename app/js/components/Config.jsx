@@ -1,12 +1,12 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { actions } from '../store'
+import { useScrollspy } from '../hooks'
+import { definitions, useConfig } from '../store'
 
 const Config = () => {
-  const dispatch = useDispatch()
-  const config = useSelector((store) => store.config)
-  const definitions = useSelector((store) => store.definitions)
+  const config = useConfig()
+
+  useScrollspy()
 
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = (
@@ -74,7 +74,7 @@ const Config = () => {
                           <input
                             className="form-check-input" type="checkbox" id="control-group3"
                             checked={config.group3}
-                            onChange={() => dispatch(actions.toggleGroup3())}
+                            onChange={() => config.toggleGroup3()}
                           />
                           <label className="form-check-label" htmlFor="control-group3">
                             <span className="badge badge-info">only Group III</span>
@@ -86,7 +86,7 @@ const Config = () => {
                       className="form-check-input" type="radio" id={id}
                       value={row.specifier}
                       checked={row.specifier == config.simulation_round}
-                      onChange={(event) => dispatch(actions.changeSimulationRound(event.target.value))}
+                      onChange={(event) => config.changeSimulationRound(event.target.value)}
                     />
                     <label className="form-check-label" htmlFor={id}>{row.title}</label>
                   </div>
@@ -109,7 +109,7 @@ const Config = () => {
                     className="form-check-input" type="checkbox" id={id}
                     value={row.specifier}
                     checked={config.sectors.includes(row.specifier)}
-                    onChange={(event) => dispatch(actions.changeSector(event.target.value))}
+                    onChange={(event) => config.changeSector(event.target.value)}
                   />
                   <label className="form-check-label d-flex" htmlFor={id}>
                     <div>
@@ -136,7 +136,7 @@ const Config = () => {
                     className="form-check-input" type="checkbox" id={id}
                     value={row.specifier}
                     checked={config.sectors.includes(row.specifier)}
-                    onChange={(event) => dispatch(actions.changeSector(event.target.value))}
+                    onChange={(event) => config.changeSector(event.target.value)}
                   />
                   <label className="form-check-label d-flex" htmlFor={id}>
                     <div>{row.title}</div>

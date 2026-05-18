@@ -1,11 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 
-import { reducer } from './store'
-import { parseAnchor, parseLocation, updateAnchor, updateLocation } from './utils/location'
-import { getConfig, updateConfig } from './utils/ls'
+import { useConfig } from './store'
 
 import Config from './components/Config'
 import Hide from './components/Hide'
@@ -17,45 +13,8 @@ import Title from './components/Title'
 
 import 'bootstrap'
 
-const initConfig = () => {
-  const defaultConfig = {
-    simulation_round: 'ISIMIP3a',
-    sectors: [],
-    experiments: [],
-    groups: [],
-    group3: false
-  }
-
-  return {...defaultConfig, ...getConfig(), ...parseLocation()}
-}
-
-const initialConfig = initConfig()
-const anchor = parseAnchor()
-
-updateLocation(initialConfig)
-updateConfig(initialConfig)
-
-const initialState = {
-  definitions: window.initialState.definitions,
-  patterns: window.initialState.patterns,
-  commit_date: window.initialState.commit_date,
-  commit_hash: window.initialState.commit_hash,
-  config: {
-    ...initialConfig,
-    baseurl: location.protocol + '//' + location.host + location.pathname,
-    products: ['OutputData']
-  }
-}
-
-const store = createStore(reducer, initialState)
-
-// update the local storage when the store changed
-store.subscribe(() => {
-  const { config } = store.getState()
-
-  updateLocation(config)
-  updateConfig(config)
-})
+// get the config store
+const config = useConfig.getState()
 
 // insert the toc in the navbar
 const toc = document.getElementsByClassName('toc')[0]
@@ -64,57 +23,45 @@ tocDropdown.appendChild(toc.cloneNode(true))
 
 document.querySelectorAll('[data-component="title"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Title />
-    </Provider>
+    <Title />
   )
 })
 
 document.querySelectorAll('[data-component="link"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Link />
-    </Provider>
+    <Link />
   )
 })
 
 document.querySelectorAll('[data-component="config"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Config />
-    </Provider>
+    <Config />
   )
 })
 
 document.querySelectorAll('[data-component="show"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Show
-        simulationRound={el.dataset.simulationRound}
-        sector={el.dataset.sector}
-        html={el.innerHTML}
-      />
-    </Provider>
+    <Show
+      simulationRound={el.dataset.simulationRound}
+      sector={el.dataset.sector}
+      html={el.innerHTML}
+    />
   )
 })
 
 document.querySelectorAll('[data-component="hide"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Hide
-        simulationRound={el.dataset.simulationRound}
-        sector={el.dataset.sector}
-        html={el.innerHTML}
-      />
-    </Provider>
+    <Hide
+      simulationRound={el.dataset.simulationRound}
+      sector={el.dataset.sector}
+      html={el.innerHTML}
+    />
   )
 })
 
 document.querySelectorAll('[data-component="pattern"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Pattern />
-    </Provider>
+    <Pattern />
   )
 })
 
@@ -124,7 +71,7 @@ document.querySelectorAll('.toc a').forEach(el => {
 
     const id = el.href.split('#').pop()
     document.getElementById(id).scrollIntoView()
-    updateAnchor(id)
+    config.changeAnchor(id)
   }
 })
 
@@ -132,19 +79,17 @@ setTimeout(() => {
   // otherwise the el.innerHTML would not work in Show/Hide ...
   document.querySelectorAll('[data-component="table"]').forEach(el => {
     createRoot(el).render(
-      <Provider store={store}>
-        <Table
-          identifier={el.dataset.identifier}
-          caption={el.dataset.caption}
-        />
-      </Provider>
+      <Table
+        identifier={el.dataset.identifier}
+        caption={el.dataset.caption}
+      />
     )
   })
 
   setTimeout(() => {
     // scroll to anchor or position once everything is settled
-    if (anchor) {
-      anchor.scrollIntoView()
+    if (config.anchor) {
+      document.getElementById(config.anchor).scrollIntoView()
     }
 
     // set the main height to auto
