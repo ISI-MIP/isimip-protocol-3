@@ -12,6 +12,12 @@ import Table from './components/Table'
 import Title from './components/Title'
 
 import 'bootstrap'
+import '../scss/app.scss'
+
+// disable scrollRestoration
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual'
+}
 
 // get the config store
 const config = useConfig.getState()
@@ -85,21 +91,10 @@ setTimeout(() => {
       />
     )
   })
-
-  setTimeout(() => {
-    // scroll to anchor or position once everything is settled
-    if (config.anchor) {
-      document.getElementById(config.anchor).scrollIntoView()
-    }
-
-    // set the main height to auto
-    const main = document.getElementsByTagName('main')[0]
-    main.style.height = 'auto'
-
-    setTimeout(() => {
-      // remove the cover div
-      const cover = document.getElementsByClassName('cover')[0]
-      cover.remove()
-    }, 100)
-  }, 200)
 }, 100)
+
+setTimeout(() => {
+  // remove the cover div
+  const cover = document.getElementsByClassName('cover')[0]
+  cover.remove()
+}, 200)

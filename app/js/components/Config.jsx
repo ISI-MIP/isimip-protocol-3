@@ -1,12 +1,9 @@
 import React from 'react'
 
-import { useScrollspy } from '../hooks'
 import { definitions, useConfig } from '../store'
 
 const Config = () => {
   const config = useConfig()
-
-  useScrollspy()
 
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = (

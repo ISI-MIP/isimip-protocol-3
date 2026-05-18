@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { isEmpty } from 'lodash'
 
+import { useScrollspy } from '../hooks'
 import { useConfig } from '../store'
 
 import Sectors from './badges/Sectors'
@@ -8,6 +9,8 @@ import SimulationRounds from './badges/SimulationRounds'
 
 const Title = () => {
   const config = useConfig()
+
+  useScrollspy()
 
   useEffect(() => {
     const prevTitle = document.title
