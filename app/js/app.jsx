@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { useConfig } from './store'
 
 import Config from './components/Config'
+import Help from './components/Help'
 import Hide from './components/Hide'
 import Link from './components/Link'
 import Pattern from './components/Pattern'
@@ -24,12 +25,21 @@ const config = useConfig.getState()
 
 // insert the toc in the navbar
 const toc = document.getElementsByClassName('toc')[0]
+const tocWrapper = document.getElementsByClassName('toc-wrapper')[0]
+tocWrapper.appendChild(toc.cloneNode(true))
 const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
+toc.remove()
 
 document.querySelectorAll('[data-component="title"]').forEach(el => {
   createRoot(el).render(
     <Title />
+  )
+})
+
+document.querySelectorAll('[data-component="help"]').forEach(el => {
+  createRoot(el).render(
+    <Help />
   )
 })
 
