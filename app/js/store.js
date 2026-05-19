@@ -8,6 +8,7 @@ const definitions = window.store.definitions
 const patterns = window.store.patterns
 const commitDate = window.store.commit_date
 const commitHash = window.store.commit_hash
+const commitUrl = window.store.commit_url
 const baseUrl = location.protocol + '//' + location.host + location.pathname
 
 const initialConfig = {
@@ -88,4 +89,4 @@ const useConfig = create(
 
 useConfig.subscribe((state) => updateLocation(state))
 
-export { baseUrl, commitDate, commitHash, definitions, patterns, useConfig }
+export { baseUrl, commitDate, commitHash, commitUrl, definitions, patterns, useConfig }

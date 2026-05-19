@@ -71,7 +71,7 @@ def main():
     environment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
     template = environment.from_string(template_string)
 
-    md = template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date)
+    md = template.render()
     html = markdown(
         md,
         extensions=[
@@ -104,7 +104,12 @@ def main():
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(
             template.render(
-                html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)
+                html=html,
+                definitions=json.dumps(definitions, indent=2),
+                patterns=json.dumps(patterns, indent=2),
+                commit_url=commit_url,
+                commit_hash=commit_hash,
+                commit_date=commit_date,
             )
         )
 
