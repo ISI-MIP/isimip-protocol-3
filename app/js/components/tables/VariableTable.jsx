@@ -235,12 +235,14 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
             <th style={{width: '15%'}}>Unit / Valid range</th>
             <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '35%'}}>
-              Comments
-              {
-                !empty && (
-                  <GroupToggleLink className="float-right" closed={!allOpen} all={true} toggle={allToggle} />
-                )
-              }
+              <span className="d-flex align-items-baseline justify-content-between">
+                Comments
+                {
+                  !empty && (
+                    <GroupToggleLink closed={!allOpen} all={true} toggle={allToggle} />
+                  )
+                }
+              </span>
             </th>
           </tr>
         </thead>
@@ -250,8 +252,10 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
               const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
-                    <strong>{group.title}</strong>
+                    <span className="d-flex align-items-baseline justify-content-between">
+                      <strong>{group.title}</strong>
+                      <GroupToggleLink closed={group.closed} toggle={() => toggleGroup(group)} />
+                    </span>
                   </td>
                 </tr>
               ])

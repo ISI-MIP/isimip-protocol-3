@@ -2,9 +2,9 @@ import React from 'react'
 
 import { commitDate, commitHash, commitUrl } from '../store'
 
-const Help = () => {
+const About = () => {
   return (
-    <div className="help">
+    <div className="about">
       <div><strong>About</strong></div>
       <p>
         The simulation protocol describes the experiments, input data sets and output variables necessary to
@@ -19,15 +19,11 @@ const Help = () => {
         </i>
       </p>
 
-      <p>
-        Last updated: {commitDate}
-      </p>
-
       <p className="mb-0">
-        Commit on GitHub: <a href={commitUrl}>{commitHash.substring(0, 7)}</a>
+        The protocol was last updated on {commitDate} (<a href={commitUrl}>{commitHash.substring(0, 7)}</a>).
       </p>
     </div>
   )
 }
 
-export default Help
+export default About

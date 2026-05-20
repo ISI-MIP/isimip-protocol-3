@@ -13,16 +13,18 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
 
   if (all) {
     return (
-      <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? `Show all ${label}` : `Hide all ${label}`}
+      <a className="d-flex align-items-center toggle-group flex-shrink-0" href="" onClick={onClick}>
+        <span className="text">{closed ? `Show all ${label}` : `Hide all ${label}`}</span>
+        {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
+        {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
       </a>
     )
   } else {
     return (
-      <a className="toggle-group" href="" onClick={onClick}>
-        {closed ? `Show ${label}` : `Hide ${label}`}
-        {closed && <span className="toggle-group-down">&#65088;</span>}
-        {!closed && <span className="toggle-group-up">&#65087;</span>}
+      <a className="d-flex align-items-center toggle-group flex-shrink-0" href="" onClick={onClick}>
+        <span className="text">{closed ? `Show ${label}` : `Hide ${label}`}</span>
+        {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
+        {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
       </a>
     )
   }

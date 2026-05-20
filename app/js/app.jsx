@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 
 import { useConfig } from './store'
 
+import About from './components/About'
 import Config from './components/Config'
-import Help from './components/Help'
 import Hide from './components/Hide'
 import Link from './components/Link'
 import Pattern from './components/Pattern'
@@ -50,9 +50,9 @@ document.querySelectorAll('[data-component="title"]').forEach(el => {
   )
 })
 
-document.querySelectorAll('[data-component="help"]').forEach(el => {
+document.querySelectorAll('[data-component="about"]').forEach(el => {
   createRoot(el).render(
-    <Help />
+    <About />
   )
 })
 

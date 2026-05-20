@@ -37,7 +37,7 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
   }
 
   return (
-    <table className="table table-bordered table-fixed w-70">
+    <table className="table table-bordered table-fixed">
       <caption>
         <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
       </caption>
@@ -47,8 +47,10 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
           <th style={{width: '25%'}}>Climate forcing</th>
           <th style={{width: '25%'}}>LU model</th>
           <th style={{width: '40%'}}>
-            Direct human forcing
-            <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} label="tiers" />
+            <span className="d-flex align-items-baseline justify-content-between">
+              Direct human forcing
+              <GroupToggleLink closed={!allOpen} all={true} toggle={allToggle} label="tiers" />
+            </span>
           </th>
         </tr>
       </thead>
@@ -58,11 +60,10 @@ const Group3RankingTable = function({ config, caption, rows, groups, toggleGroup
             const getHeader = (group) => ([
               <tr key="-1">
                 <td colSpan="5" className="table-secondary">
-                  <GroupToggleLink
-                    className="float-right" closed={group.closed} label="tier"
-                    toggle={() => toggleGroup(group)}
-                  />
-                  <strong>{group.title}</strong>
+                  <span className="d-flex align-items-baseline justify-content-between">
+                    <strong>{group.title}</strong>
+                    <GroupToggleLink closed={group.closed} label="tier" toggle={() => toggleGroup(group)} />
+                  </span>
                 </td>
               </tr>
             ])

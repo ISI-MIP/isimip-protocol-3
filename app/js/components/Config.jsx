@@ -101,7 +101,7 @@ const Config = () => {
             type="button" className="btn btn btn-link copy-to-clipboard float-end p-0"
             title="Copy link for this selection"
           >
-            <span className="material-symbols-rounded symbols-copy">content_copy</span>
+            <span className="material-symbols-rounded">content_copy</span>
             <code className="d-none">{href}</code>
           </button>
         </div>
@@ -163,7 +163,7 @@ const Config = () => {
               }
             </div>
           </div>
-          <div className="mb-0">
+          <div className="border border-group3 rounded p-2 mb-0">
             <div><strong>Group III readiness:</strong></div>
             <div className="d-flex align-items-top gap-3">
               <div className="flex-shrink-0">{group3_full_badge}</div>
