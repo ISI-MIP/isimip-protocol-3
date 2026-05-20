@@ -96,8 +96,17 @@ const Config = () => {
             }
           </div>
         </div>
+        <div className="col-md-6">
+          <button
+            type="button" className="btn btn btn-link copy-to-clipboard float-end p-0"
+            title="Copy link for this selection"
+          >
+            <span className="material-symbols-rounded symbols-copy">content_copy</span>
+            <code className="d-none">{href}</code>
+          </button>
+        </div>
       </div>
-      <div className="row mb-3">
+      <div className="row mb-0">
         <div className="col-md-6">
           <div>
             <div><strong>Filter for sectors:</strong></div>
@@ -154,7 +163,7 @@ const Config = () => {
               }
             </div>
           </div>
-          <div className="mb-2">
+          <div className="mb-0">
             <div><strong>Group III readiness:</strong></div>
             <div className="d-flex align-items-top gap-3">
               <div className="flex-shrink-0">{group3_full_badge}</div>
@@ -170,11 +179,6 @@ const Config = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <p className="mb-0">
-          Direct link for this selection: <a href={href}>{href}</a>
-        </p>
       </div>
     </div>
   )
