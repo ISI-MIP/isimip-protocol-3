@@ -197,7 +197,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
     return !isUndefined(unit) && (
       <>
         <p className="mb-1">
-          <strong>Unit:</strong>
+          <strong>Unit</strong>
         </p>
         <p>
           {unit}
@@ -213,7 +213,7 @@ const VariableTable = function({ config, caption, rows, groups, toggleGroup, tog
       <>
         <div className="separator"></div>
         <p className="mb-1">
-          <strong>Valid range:</strong>
+          <strong>Valid range</strong>
         </p>
         <p>
           {valid_min} - {valid_max}

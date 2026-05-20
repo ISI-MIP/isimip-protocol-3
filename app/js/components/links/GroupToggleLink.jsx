@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 const GroupToggleLink = ({ closed, toggle, all, label }) => {
   const onClick = event => {
@@ -11,9 +12,14 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
     label = all ? 'groups' : 'group'
   }
 
+  const className = classNames('d-flex align-items-center toggle-group flex-shrink-0', {
+    'show-group': closed && !all,
+    'hide-group': !closed && !all
+  })
+
   if (all) {
     return (
-      <a className="d-flex align-items-center toggle-group flex-shrink-0" href="" onClick={onClick}>
+      <a className={className} href="" onClick={onClick}>
         <span className="text">{closed ? `Show all ${label}` : `Hide all ${label}`}</span>
         {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
         {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
@@ -21,7 +27,7 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
     )
   } else {
     return (
-      <a className="d-flex align-items-center toggle-group flex-shrink-0" href="" onClick={onClick}>
+      <a className={className} href="" onClick={onClick}>
         <span className="text">{closed ? `Show ${label}` : `Hide ${label}`}</span>
         {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
         {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
