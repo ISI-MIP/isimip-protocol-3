@@ -31,6 +31,19 @@ const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
 toc.remove()
 
+// add copy-to-clipboard' functionality
+document.addEventListener('DOMContentLoaded', () => {
+  for (const element of document.getElementsByClassName('copy-to-clipboard')) {
+    element.addEventListener('click', () => {
+      const code = element.getElementsByTagName('code')[0]
+      const text = code.textContent
+      navigator.clipboard.writeText(text)
+    })
+  }
+})
+
+// render components
+
 document.querySelectorAll('[data-component="title"]').forEach(el => {
   createRoot(el).render(
     <Title />
