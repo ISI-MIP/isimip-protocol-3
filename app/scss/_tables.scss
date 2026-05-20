@@ -1,7 +1,7 @@
 table.table {
     overflow-wrap: break-word;
-    margin-bottom: 1rem;
-    font-size: small;
+    margin-bottom: 2rem;
+    font-size: var(--isimip-small);
     background-color: white;
 
     &.table-fixed {
@@ -15,51 +15,32 @@ table.table {
         opacity: 0.2;
     }
 
-    a.toggle-table,
     a.toggle-group {
         display: block;
-        float: right;
-    }
+        text-decoration: none;
 
-    .experiments-toggle {
-        font-weight: bold;
-    }
-    .experiments-toggle a.toggle-group {
-        float: none;
-    }
-    a.toggle-group {
-        position: relative;
-        margin-right: 15px;
-    }
-    a.toggle-group .toggle-group-up,
-    a.toggle-group .toggle-group-down {
-        position: absolute;
-        font-weight: bold;
-        margin-left: 5px;
-    }
-    a.toggle-group .toggle-group-up {
-        top: -4px;
-    }
-    a.toggle-group .toggle-group-down {
-        top: 4px;
+        .text {
+            font-size: var(--isimip-smaller);
+        }
+        &:hover > .text {
+            text-decoration: underline;
+        }
+        .material-symbols-rounded {
+            font-size: inherit;
+        }
     }
     th .toggle-group {
         color: white;
         font-weight: normal;
         margin-right: 0;
     }
-    button.toggle-table {
-        display: block;
-        margin-top: -0.5rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1rem;
-        background-color: white;
-        border: 1px solid rgb(164, 164, 164);
-        font-size: smaller;
+
+    .experiments-toggle {
+        font-weight: bold;
+        margin-bottom: 0;
     }
-    button.toggle-table:focus {
-        outline: 0;
+    .experiments-toggle a.toggle-group {
+        float: none;
     }
 
     tr.separator td {
@@ -70,9 +51,8 @@ table.table {
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
     }
+    th,
     td {
-        padding: .75rem .75rem;
-
         &:last-child {
             margin-bottom: 0;
         }

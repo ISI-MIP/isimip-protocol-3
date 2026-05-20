@@ -27,13 +27,13 @@ const ExperimentRow = function({ config, row, climateScenarios, socScenarios, se
               {
                 row.subtitles.map((subtitle, subtitleIndex)  => (
                   <p key={subtitleIndex} className="mb-0">
-                    <code>{subtitle}</code>
+                    <strong>{subtitle}</strong>
                   </p>
                 ))
               }
             </div>
           }
-          {row.priority && <p><strong>{row.priority}</strong></p>}
+          {row.priority && <p>{row.priority}</p>}
           <p>
             <SimulationRounds config={config} simulationRounds={row.simulation_rounds} />
             {row.group3 && <span className="badge badge-group3">Group III</span>}
@@ -252,8 +252,14 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
     }
   }, [])
 
+  const style = config.simulation_round.endsWith('a') ? {
+    width: '60%',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  } : {}
+
   return (
-    <div style={{ width: config.simulation_round.endsWith('a') ? '60%' : '100%'}}>
+    <div style={style}>
       <table className="table table-bordered table-fixed">
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
