@@ -7,6 +7,26 @@ const Config = () => {
   const config = useConfig()
   const href = baseUrl + buildPath(config)
 
+  const handleShowAll = (event) => {
+    event.preventDefault()
+
+    definitions.group.forEach(group => {
+      if (!config.groups.includes(group.specifier)) {
+        config.toggleGroup(group.specifier)
+      }
+    })
+  }
+
+  const handleHideAll = () => {
+    event.preventDefault()
+
+    definitions.group.forEach(group => {
+      if (config.groups.includes(group.specifier)) {
+        config.toggleGroup(group.specifier)
+      }
+    })
+  }
+
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = (
     'Some data are still under construction (see Table 3.1), but models ' +
@@ -59,7 +79,7 @@ const Config = () => {
     <div className="config mb-2">
       <div className="row mb-3">
         <div className="col-md-6">
-          <div><strong>Show protocol for:</strong></div>
+          <strong className="d-block mb-1">Show protocol for</strong>
           <div>
             {
               definitions.simulation_round.map((row, index) => {
@@ -104,12 +124,20 @@ const Config = () => {
             <span className="material-symbols-rounded">content_copy</span>
             <code className="d-none">{href}</code>
           </button>
+
+          <strong className="d-block mb-1">Tables</strong>
+          <a className="d-block" href="" onClick={handleShowAll}>
+            Show all groups in all tables
+          </a>
+          <a className="d-block" href="" onClick={handleHideAll}>
+            Hide all groups in all tables
+          </a>
         </div>
       </div>
       <div className="row mb-0">
         <div className="col-md-6">
           <div>
-            <div><strong>Filter for sectors:</strong></div>
+            <strong className="d-block mb-1">Filter for sectors:</strong>
             <div>
               {
                 definitions.sector.filter(row => !row.dev).map((row, index) => {
@@ -139,43 +167,45 @@ const Config = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="mb-3">
-            <div><strong>Sectors under development 🚧:</strong></div>
+          <div className="d-flex flex-column justify-content-between h-100">
             <div>
-              {
-                definitions.sector.filter(row => row.dev).map((row, index) => {
-                  const id = 'control-sector-' + row.specifier
+              <strong className="d-block mb-1">Sectors under development 🚧</strong>
+              <div>
+                {
+                  definitions.sector.filter(row => row.dev).map((row, index) => {
+                    const id = 'control-sector-' + row.specifier
 
-                  return (
-                    <div className="form-check" key={index}>
-                      <input
-                        className="form-check-input" type="checkbox" id={id}
-                        value={row.specifier}
-                        checked={config.sectors.includes(row.specifier)}
-                        onChange={(event) => config.changeSector(event.target.value)}
-                      />
-                      <label className="form-check-label d-flex" htmlFor={id}>
-                        <div>{row.title}</div>
-                      </label>
-                    </div>
-                  )
-                })
-              }
+                    return (
+                      <div className="form-check" key={index}>
+                        <input
+                          className="form-check-input" type="checkbox" id={id}
+                          value={row.specifier}
+                          checked={config.sectors.includes(row.specifier)}
+                          onChange={(event) => config.changeSector(event.target.value)}
+                        />
+                        <label className="form-check-label d-flex" htmlFor={id}>
+                          <div>{row.title}</div>
+                        </label>
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </div>
-          </div>
-          <div className="border border-group3 rounded p-2 mb-0">
-            <div><strong>Group III readiness:</strong></div>
-            <div className="d-flex align-items-top gap-3">
-              <div className="flex-shrink-0">{group3_full_badge}</div>
-              <div className="text-muted">{group3_full_note}</div>
-            </div>
-            <div className="d-flex align-items-top gap-3">
-              <div className="flex-shrink-0">{group3_half_badge}</div>
-              <div className="text-muted">{group3_half_note}</div>
-            </div>
-            <div className="d-flex align-items-top gap-3">
-              <div className="flex-shrink-0">{group3_none_badge}</div>
-              <div className="text-muted">{group3_none_note}</div>
+            <div className="border border-group3 rounded p-2">
+              <div><strong>Group III readiness</strong></div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_full_badge}</div>
+                <div className="text-muted">{group3_full_note}</div>
+              </div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_half_badge}</div>
+                <div className="text-muted">{group3_half_note}</div>
+              </div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_none_badge}</div>
+                <div className="text-muted">{group3_none_note}</div>
+              </div>
             </div>
           </div>
         </div>
