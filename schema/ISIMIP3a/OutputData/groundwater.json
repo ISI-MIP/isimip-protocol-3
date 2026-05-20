@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/groundwater.yaml",
-  "commit": "540340c82a59ae11a10f942ef7189f6aa41414e3",
+  "commit": "08c72662d8a0cdf83a5335461125fd5d2231fdd2",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,10 +27,10 @@
           "type": "string",
           "enum": [
             "20crv3-era5",
+            "chelsa-w5e5",
             "20crv3",
             "20crv3-w5e5",
-            "gswp3-w5e5",
-            "chelsa-w5e5"
+            "gswp3-w5e5"
           ]
         },
         "detrending": {
@@ -58,41 +58,41 @@
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "nowatermgt",
-            "30arcsec",
-            "1901co2",
             "300arcsec",
             "1800arcsec",
+            "nowatermgt",
+            "1901co2",
+            "default",
             "90arcsec",
-            "default"
+            "30arcsec"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "abs",
-            "lfrf",
-            "gwdrn",
-            "capillary",
-            "qrd",
-            "gwdrnspr",
-            "absind",
-            "absliv",
-            "lfff",
-            "lflf",
-            "lfn",
-            "sgd",
-            "groundwstor",
-            "gwdrnriv",
-            "gwdrnlak",
-            "absd",
             "wtd",
-            "gwdrnwet",
-            "depl",
+            "lflf",
+            "gwdrn",
             "absirr",
+            "groundwstor",
+            "qrd",
+            "depl",
+            "lfn",
+            "ret",
+            "gwdrnspr",
+            "gwdrnlak",
+            "capillary",
+            "lfrf",
             "absdom",
+            "gwdrnriv",
+            "lfff",
+            "absliv",
             "head",
-            "ret"
+            "abs",
+            "gwdrnwet",
+            "absd",
+            "sgd",
+            "absind"
           ]
         },
         "region": {
@@ -107,13 +107,13 @@
           "type": "string",
           "enum": [
             "annual",
+            "3hr",
+            "6hr",
             "fixed",
+            "daily",
             "hourly",
             "2hr",
-            "monthly",
-            "daily",
-            "3hr",
-            "6hr"
+            "monthly"
           ]
         },
         "start_year": {
