@@ -31,15 +31,10 @@ const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
 toc.remove()
 
-// add copy-to-clipboard' functionality
-document.addEventListener('DOMContentLoaded', () => {
-  for (const element of document.getElementsByClassName('copy-to-clipboard')) {
-    element.addEventListener('click', () => {
-      const code = element.getElementsByTagName('code')[0]
-      const text = code.textContent
-      navigator.clipboard.writeText(text)
-    })
-  }
+// scroll to top on a click on the brand
+document.getElementById('brand').addEventListener('click', (event) => {
+  event.preventDefault()
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 
 // render components
@@ -114,6 +109,16 @@ setTimeout(() => {
       />
     )
   })
+
+  // add copy-to-clipboard' functionality
+  for (const element of document.getElementsByClassName('copy-to-clipboard')) {
+    console.log(element)
+    element.addEventListener('click', () => {
+      const code = element.getElementsByTagName('code')[0]
+      const text = code.textContent
+      navigator.clipboard.writeText(text)
+    })
+  }
 }, 100)
 
 setTimeout(() => {
