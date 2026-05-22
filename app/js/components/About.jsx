@@ -13,9 +13,9 @@ const About = () => {
 
       <p>
         <i>
-          Please select the simulation round (ISIMIP3a, ISIMIP3b) and the sectors you are interested in from the
-          menu on the right. The page will then adjust to your selection. The parts of the protocol, which are
-          specific to a simulation round or sector are marked accordingly.
+          Please select the simulation round (ISIMIP3a or ISIMIP3b) and the sectors you are interested in from the
+          control panel below, or from the dropdown in the navigation bar. The page will then adjust to your selection.
+          The parts of the protocol, which are specific to a simulation round or sector are marked accordingly.
         </i>
       </p>
 
