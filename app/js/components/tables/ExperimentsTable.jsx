@@ -253,7 +253,7 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
   }, [])
 
   const style = config.simulation_round.endsWith('a') ? {
-    width: '60%',
+    width: '80%',
     marginLeft: 'auto',
     marginRight: 'auto'
   } : {}

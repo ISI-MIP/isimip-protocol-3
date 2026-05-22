@@ -73,7 +73,7 @@ const useConfig = create(
         })
     })),
     {
-      name: 'isimip-protocol-3',
+      name: 'isimip-protocol-4',
       merge: (persisted, current) => ({
         ...current,
         ...persisted,

@@ -7,7 +7,7 @@
     CO₂ concentration fixed at 1901 levels as a deviation from the `obsclim` climate
     + CO₂ forcing.
   simulation_rounds:
-  - ISIMIP3a
+  - ISIMIP4a
   sectors:
   - agriculture
   - biodiversity
@@ -32,7 +32,7 @@
     Observation-based CO₂ concentration (as in `obsclim`) used with `counterclim`
     atmospheric forcing.
   simulation_rounds:
-  - ISIMIP3a
+  - ISIMIP4a
   sectors:
   - biomes
   - fire
@@ -44,9 +44,9 @@
   description: >-
     No water management (e.g. no human water abstraction, no reservoirs) while other
     direct human forcings such as land use changes are considered according to `histsoc`
-    or `2015soc`.
+    or `2021soc`.
   simulation_rounds:
-  - ISIMIP3a
+  - ISIMIP4a
   sectors:
   - groundwater
   - water_global
@@ -58,7 +58,7 @@
     of other direct human influences such as land use changes according to `histsoc`.
     This experiment is related to the IRRMIP initiative.
   simulation_rounds:
-  - ISIMIP3a
+  - ISIMIP4a
   sectors:
   - water_global
   - water_regional
@@ -67,119 +67,19 @@
   description: >-
     Simulation with fire switched off to identify impact of fire within the model.
   simulation_rounds:
-  - ISIMIP3a
-  - ISIMIP3b
+  - ISIMIP4a
+  - ISIMIP4b
   sectors:
   - biomes
   - fire
   - peat
   - permafrost
 
-- specifier: 1955-riverine-input
+- specifier: 2021co2
   description: >-
-    For fisheries and marine ecosystems sector. JRA55 driven GFDL-MOM6-COBALT2 ocean
-    climate with constant riverine nutrient and freshwater influx.
-  description_note: Climate forcing to be taken from the `ctrlclim` inputs.
+    CO₂ concentration fixed at 2021 levels.
   simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-
-- specifier: 1955-riverine-input+60arcmin
-  description: >-
-    For fisheries and marine ecosystems sector combining JRA55 driven GFDL-MOM6-COBALT2
-    ocean climate with constant riverine nutrient and freshwater influx `1955-riverine-input`
-    with the `60arcmin` spatial resolution.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-
-- specifier: 30arcsec
-  description: >-
-    Observed climate forcing using `30arcsec` resolution used for sensitivity runs
-    to determine the best spatial resolution of climate input data for impact models.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - agriculture
-  - forestry
-  - groundwater
-  - labour
-  - lakes_global
-  - lakes_local
-  - permafrost
-  - water_global
-  - water_regional
-
-- specifier: 90arcsec
-  description: >-
-    Observed climate forcing using `90arcsec` resolution used for sensitivity runs
-    to determine the best spatial resolution of climate input data for impact models.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - agriculture
-  - forestry
-  - groundwater
-  - labour
-  - lakes_global
-  - lakes_local
-  - permafrost
-  - water_global
-  - water_regional
-
-- specifier: 300arcsec
-  description: >-
-    Observed climate forcing using `300arcsec` resolution used for sensitivity runs
-    to determine the best spatial resolution of climate input data for impact models.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - agriculture
-  - forestry
-  - groundwater
-  - labour
-  - lakes_global
-  - lakes_local
-  - permafrost
-  - water_global
-  - water_regional
-
-- specifier: 1800arcsec
-  description: >-
-    Observed climate forcing using `1800arcsec` resolution used for sensitivity runs
-    to determine the best spatial resolution of climate input data for impact models.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - agriculture
-  - forestry
-  - groundwater
-  - labour
-  - lakes_global
-  - lakes_local
-  - permafrost
-  - water_global
-  - water_regional
-
-- specifier: 60arcmin
-  description: >-
-    For fisheries and marine ecosystems sectors. Low resolution sensitivity experiment.
-    JRA55 driven GFDL-MOM6-COBALT2 ocean climate on one degree spatial resolution.
-  simulation_rounds:
-  - ISIMIP3a
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-
-- specifier: 2015co2
-  description: >-
-    CO₂ concentration fixed at 2015 levels.
-  simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - agriculture
   - biodiversity
@@ -202,49 +102,29 @@
   - water_regional
   - water_quality
 
-- specifier: extrasoc
+- specifier: hco2
   description: >-
-    Simulations with additional direct human forcings, such as desalination, inter-basin water transfer,
-    and irrigation techniques share datasets.
+    CO₂ concentration according to the *High emission scenario*.
   simulation_rounds:
-  - ISIMIP3b
-  sectors:
-  - water_global
-  group3: true
-
-- specifier: ssp585co2
-  description: >-
-    CO₂ concentration according to SSP5-8.5.
-  simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - peat
 
-- specifier: ssp126ndep
+- specifier: vlndep
   description: >-
-    Nitrogen deposition according to SSP1-2.6.
+    Nitrogen deposition according to the *Very Low emission scenario*.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   products:
   - SecondaryOutputData
   sectors:
   - biomes
 
-- specifier: ssp370ndep
+- specifier: hndep
   description: >-
-    Nitrogen deposition according to SSP5-7.0.
+    Nitrogen deposition according to *High emission scenario*.
   simulation_rounds:
-  - ISIMIP3b
-  products:
-  - SecondaryOutputData
-  sectors:
-  - biomes
-
-- specifier: ssp585ndep
-  description: >-
-    Nitrogen deposition according to SSP5-8.5.
-  simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - biomes
 
@@ -252,36 +132,36 @@
   description: >-
     No nitrogen cycling.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - biomes
 
-- specifier: nondep2015co2
+- specifier: nondep2021co2
   description: >-
-    No nitrogen cycling and CO₂ concentration fixed at 2015 levels.
+    No nitrogen cycling and CO₂ concentration fixed at 2021 levels.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - biomes
 
-- specifier: 2015gs
+- specifier: 2021gs
   description: >-
     In this sensitivity scenario all climate-related forcings and DHF change as indicated
     by the climate-related forcing or DHF specifier defined above while only growing
-    seasons are fixed at 2015 levels.
+    seasons are fixed at 2021 levels.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - agriculture
   group3: true
 
-- specifier: 2015fert
+- specifier: 2021fert
   description: >-
     In this sensitivity scenario all climate-related forcings and DHF change as
     indicated by the climate-related forcing or DHF specifier defined above while only
-    fertilizer inputs are fixed at 2015 levels.
+    fertilizer inputs are fixed at 2021 levels.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - agriculture
   group3: true
@@ -292,7 +172,7 @@
     indicated by the climate-related forcing or DHF specifier defined above, but fertilizer
     inputs are increased to a level that the crop is not limited by nitrogen deficits.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - agriculture
   group3: true
@@ -304,7 +184,7 @@
     UKESM output, modelers should **only perform this sensitivity experiment using
     UKESM climate forcing**, not with the other climate forcing datasets.
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   sectors:
   - fire
 
@@ -313,7 +193,7 @@
     CO₂ concentration fixed at 1850 levels.
   description_note: Only for allowing the QC-Tool to let such experiment pass
   simulation_rounds:
-  - ISIMIP3b
+  - ISIMIP4b
   products:
   - SecondaryOutputData
   sectors:

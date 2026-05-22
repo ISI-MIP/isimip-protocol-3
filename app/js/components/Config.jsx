@@ -27,54 +27,6 @@ const Config = () => {
     })
   }
 
-  const group3_full_note = 'Ready for Group III.'
-  const group3_half_note = (
-    'Some data are still under construction (see Table 3.1), but models ' +
-    'not needing those data may already start Group III simulations.'
-  )
-  const group3_none_note = (
-    'Since most of the data are still under construction, ' +
-    'the sector is not ready for Group III simulations.'
-  )
-
-  const group3_full_badge = (
-    <span className="badge-split" title={group3_full_note}>
-      <span className="badge badge-group3 badge-start">
-        <span className="circle circle-green"></span>
-      </span>
-      <span className="badge badge-group3 badge-end">III</span>
-    </span>
-  )
-
-  const group3_half_badge = (
-    <span className="badge-split" title={group3_half_note}>
-      <span className="badge badge-group3 badge-start">
-        <span className="circle-start circle-green"></span>
-        <span className="circle-end circle-yellow"></span>
-      </span>
-      <span className="badge badge-group3 badge-end">III</span>
-    </span>
-  )
-  const group3_none_badge = (
-    <span className="badge-split" title={group3_none_note}>
-      <span className="badge badge-group3 badge-start">
-        <span className="circle circle-yellow"></span>
-      </span>
-      <span className="badge badge-group3 badge-end">III</span>
-    </span>
-  )
-
-  const getGroup3Badge = (row) => {
-    switch (row.group3) {
-      case true:
-        return group3_full_badge
-      case 'dev':
-        return group3_half_badge
-      case false:
-        return group3_none_badge
-    }
-  }
-
   return (
     <div className="config mb-2">
       <div className="row mb-3">
@@ -88,20 +40,6 @@ const Config = () => {
                 return (
                   <React.Fragment key={index}>
                     <div className="form-check">
-                      {
-                        row.specifier.endsWith('b') && (
-                          <div className="float-end">
-                            <input
-                              className="form-check-input" type="checkbox" id="control-group3"
-                              checked={config.group3}
-                              onChange={() => config.toggleGroup3()}
-                            />
-                            <label className="form-check-label" htmlFor="control-group3">
-                              <span className="badge badge-group3">only Group III</span>
-                            </label>
-                          </div>
-                        )
-                      }
                       <input
                         className="form-check-input" type="radio" id={id}
                         value={row.specifier}
@@ -149,9 +87,6 @@ const Config = () => {
                         <div>
                           {row.title}
                         </div>
-                        <div className="ms-auto text-nowrap">
-                          &nbsp;{getGroup3Badge(row)}
-                        </div>
                       </label>
                     </div>
                   )
@@ -184,21 +119,6 @@ const Config = () => {
                     )
                   })
                 }
-              </div>
-            </div>
-            <div className="border border-group3 rounded p-2">
-              <div><strong>Group III readiness</strong></div>
-              <div className="d-flex align-items-top gap-3">
-                <div className="flex-shrink-0">{group3_full_badge}</div>
-                <div className="text-muted">{group3_full_note}</div>
-              </div>
-              <div className="d-flex align-items-top gap-3">
-                <div className="flex-shrink-0">{group3_half_badge}</div>
-                <div className="text-muted">{group3_half_note}</div>
-              </div>
-              <div className="d-flex align-items-top gap-3">
-                <div className="flex-shrink-0">{group3_none_badge}</div>
-                <div className="text-muted">{group3_none_note}</div>
               </div>
             </div>
           </div>
