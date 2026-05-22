@@ -14,7 +14,7 @@ def test_definitions():
         # read the instance
         instance = read_instance(file_path)
 
-        if instance is not None:
+        if instance:
             # validate json with meta.yaml
             jsonschema.validate(schema=schema, instance=instance)
 
