@@ -8,8 +8,19 @@
         {% endblock %}
 
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/js/app.css">
         <link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png"/>
+
+        {{ vite_tags() }}
+
+        <script>
+            window.store = {
+                definitions : {{ definitions }},
+                patterns: {{ patterns }},
+                commit_url: '{{ commit_url }}',
+                commit_hash: '{{ commit_hash }}',
+                commit_date: '{{ commit_date }}'
+            }
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -74,16 +85,5 @@
         </footer>
 
         <div class="cover"></div>
-
-        <script>
-            window.store = {
-                definitions : {{ definitions }},
-                patterns: {{ patterns }},
-                commit_url: '{{ commit_url }}',
-                commit_hash: '{{ commit_hash }}',
-                commit_date: '{{ commit_date }}'
-            }
-        </script>
-        <script src="assets/js/app.js"></script>
     </body>
 </html>
