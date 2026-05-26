@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 from docx.enum.table import WD_ROW_HEIGHT_RULE
 from docx.oxml import OxmlElement
@@ -128,4 +129,6 @@ for simulation_round in SIMULATION_ROUNDS:
                         add_paragraph(cell, value, bold=True)
                     set_background(cell, COLOR_GROUP3 if row['future']['soc'].endswith('adapt') else COLOR_FUTURE)
 
-    doc.save(f'{simulation_round}-{IDENTIFIER}.docx')
+    output_path = Path('docx') / f'{simulation_round}-{IDENTIFIER}.docx'
+    output_path.parent.mkdir(exist_ok=True)
+    doc.save(output_path)
