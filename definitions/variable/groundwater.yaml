@@ -32,7 +32,7 @@
   frequency: monthly
   resolution: 5' grid
   comment: >-
-    Upward flux from groundwater to soil (leaving aquifer = negative value).
+    Upward flux from groundwater to soil (leaving aquifer = negative values).
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -46,7 +46,7 @@
   resolution: 5' grid
   comment: >-
     Exchange flux between groundwater and surface water. Groundwater leaving the aquifer
-    = negative value. When surface water enters the aquifer, this is positive.
+    = negative values. When surface water enters the aquifer, this is positive.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -61,7 +61,7 @@
   comment: >-
     Same as gwdrn; if available, additional to the sum of exchange fluxes (gwdrn)
     also separate components can be provided.
-    Leaving the aquifer = negative values; entering the aquifer = positive value.
+    Leaving the aquifer = negative values; entering the aquifer = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -76,7 +76,7 @@
   comment: >-
     Same as gwdrn; if available, additional to the sum of exchange fluxes (gwdrn)
     also separate components can be provided.
-    Leaving the aquifer = negative values; entering the aquifer = positive value.
+    Leaving the aquifer = negative values; entering the aquifer = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -91,7 +91,7 @@
   comment: >-
     Same as gwdrn; if available, additional to the sum of exchange fluxes (gwdrn)
     also separate components can be provided.
-    Leaving the aquifer = negative values; entering the aquifer = positive value.
+    Leaving the aquifer = negative values; entering the aquifer = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -106,7 +106,7 @@
   comment: >-
     Same as gwdrn; if available, additional to the sum of exchange fluxes (gwdrn)
     also separate components can be provided.
-    Leaving the aquifer = negative values; entering the aquifer = positive value.
+    Leaving the aquifer = negative values; entering the aquifer = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -121,7 +121,7 @@
   comment: >-
     Flow of groundwater into oceans. The definition may vary by model. But in principle
     also models without density driven flow can submit this variable.
-    Leaving the aquifer = negative values; entering the aquifer = positive value.
+    Leaving the aquifer = negative values; entering the aquifer = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -134,7 +134,8 @@
   frequency: monthly
   resolution: 5' grid
   comment: >-
-    Groundwater pumped from the aquifer.
+    Groundwater pumped from the aquifer. Negative values represent return flows.
+    Use of variable ret is preferred.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -238,7 +239,7 @@
   frequency: monthly
   resolution: 5' grid
   comment: >-
-    Net cell-by-cell flow
+    Net cell-by-cell flow. Leaving the cell = negative values; entering the cell = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -251,7 +252,7 @@
   frequency: monthly
   resolution: 5' grid
   comment: >-
-    Cell-by-cell flow (right)
+    Cell-by-cell flow (right). Leaving the cell = negative values; entering the cell = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -264,7 +265,7 @@
   frequency: monthly
   resolution: 5' grid
   comment: >-
-    Cell-by-cell flow (front)
+    Cell-by-cell flow (front). Leaving the cell = negative values; entering the cell = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
@@ -278,6 +279,7 @@
   resolution: 5' grid
   comment: >-
     Cell-by-cell flow (lower) when more than 1 groundwater layer is simulated.
+    Leaving the cell = negative values; entering the cell = positive values.
   sectors:
   - groundwater
   valid_max: 20000.0
