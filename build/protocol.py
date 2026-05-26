@@ -54,6 +54,21 @@ def pattern_generator(ctx):
     )
 
 
+def vite_tags():
+    path = 'app/js/app.jsx'
+
+    manifest_path = Path('output') / 'assets' / '.vite' / 'manifest.json'
+    manifest = json.loads(manifest_path.read_text())
+
+    css_file = manifest[path]['css'][0]
+    js_file = manifest[path]['file']
+
+    return f"""
+        <link rel="stylesheet" href="assets/{css_file}">
+        <script type="module" src="assets/{js_file}"></script>
+    """
+
+
 def main():
     commit_hash = get_commit_hash()
     commit_date = get_commit_date()
@@ -110,6 +125,7 @@ def main():
                 commit_url=commit_url,
                 commit_hash=commit_hash,
                 commit_date=commit_date,
+                vite_tags=vite_tags,
             )
         )
 
