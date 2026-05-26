@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import KeyboardArrowDown from '@material-symbols/svg-400/rounded/keyboard_arrow_down.svg?react'
+import KeyboardArrowUp from '@material-symbols/svg-400/rounded/keyboard_arrow_up.svg?react'
+
 const GroupToggleLink = ({ closed, toggle, all, label }) => {
   const onClick = event => {
     event.preventDefault()
@@ -21,16 +24,16 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
     return (
       <a className={className} href="" onClick={onClick}>
         <span className="text">{closed ? `Show all ${label}` : `Hide all ${label}`}</span>
-        {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
-        {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
+        {closed && <KeyboardArrowDown className="material-symbol" />}
+        {!closed && <KeyboardArrowUp className="material-symbol" />}
       </a>
     )
   } else {
     return (
       <a className={className} href="" onClick={onClick}>
         <span className="text">{closed ? `Show ${label}` : `Hide ${label}`}</span>
-        {closed && <span className="material-symbols-rounded">keyboard_arrow_down</span>}
-        {!closed && <span className="material-symbols-rounded">keyboard_arrow_up</span>}
+        {closed && <KeyboardArrowDown className="material-symbol" />}
+        {!closed && <KeyboardArrowUp className="material-symbol" />}
       </a>
     )
   }
