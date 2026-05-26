@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import svgr from 'vite-plugin-svgr'
 
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
+    svgr(),
     viteStaticCopy({
       targets: [
         {

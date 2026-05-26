@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { baseUrl, definitions, useConfig } from '../store'
-import { buildPath } from '../utils/location'
+import { definitions, useConfig } from '../store'
+
+import CopyLocationLink from './links/CopyLocationLink'
 
 const Config = () => {
   const config = useConfig()
-  const href = baseUrl + buildPath(config)
 
   const handleShowAll = (event) => {
     event.preventDefault()
@@ -117,13 +117,7 @@ const Config = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <button
-            type="button" className="btn btn btn-link copy-to-clipboard float-end p-0"
-            title="Copy link for this selection"
-          >
-            <span className="material-symbols-rounded">content_copy</span>
-            <code className="d-none">{href}</code>
-          </button>
+          <CopyLocationLink />
 
           <strong className="d-block mb-1">Tables</strong>
           <a className="d-block" href="" onClick={handleShowAll}>
