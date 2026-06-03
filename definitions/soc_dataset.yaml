@@ -1203,17 +1203,17 @@
     ISIMIP4b:
     - 2022-2100
 
-- specifier: fishing_effort
-  specifier_file: effort
+- specifier: fishing-effort
   title: Fishing effort
   group: fishing
   mandatory: true
   frequency: annual
   resolution: Marine ecosystems or exclusive economic zones
   path:
-  - ISIMIP4a/InputData/socioeconomic/fishing/histsoc/effort_isimip3a_histsoc_1841_2010.csv
-  - ISIMIP4a/InputData/socioeconomic/fishing/histsoc/effort-artisanal-gridded_isimip3a_histsoc_1961_2010.csv
-  - ISIMIP4a/InputData/socioeconomic/fishing/histsoc/effort-industrial-gridded_isimip3a_histsoc_1961_2010.csv
+    ISIMIP4a:
+    - "?"
+    ISIMIP4b:
+    - "?"
   variables:
   - specifier: Sector
     long_name: Fishing sector (artisanal/industrial), defined by the law of the country
@@ -1235,127 +1235,11 @@
     units: kW.days
   - specifier: Phase
     long_name: Either "spin-up" or "transition"
-  comment: >-
-    [Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43).
-    Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment).
-  simulation_rounds:
-  - ISIMIP4a
   sectors:
   - marine-fishery_global
   - marine-fishery_regional
   time_periods:
-  - 1841-2010
-
-- specifier: gridded_artisanal_fishing_effort
-  specifier_file: effort-artisanal-gridded
-  title: Gridded artisanal fishing effort
-  group: fishing
-  mandatory: true
-  frequency: annual
-  resolution: 0.5° grid
-  path: ISIMIP4a/InputData/socioeconomic/fishing/histsoc/effort-artisanal-gridded_isimip3a_histsoc_1961_2010.csv
-  variables:
-  - specifier: NomActive
-    long_name: Total nominal active fishing effort
-    units: kW.days
-  comment: >-
-    [Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43).
-    Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment).
-  simulation_rounds:
-  - ISIMIP4a
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-  time_periods:
-  - 1961-2010
-
-- specifier: gridded_industrial_fishing_effort
-  specifier_file: effort-industrial-gridded
-  title: Gridded industrial fishing effort
-  group: fishing
-  mandatory: true
-  frequency: annual
-  resolution: 0.5° grid
-  path: ISIMIP4a/InputData/socioeconomic/fishing/histsoc/effort-industrial-gridded_isimip3a_histsoc_1961_2010.csv
-  variables:
-  - specifier: NomActive
-    long_name: Total nominal active fishing effort
-    units: kW.days
-  comment: >-
-    [Rousseau et al., 2024](https://doi.org/10.1038/s41597-023-02824-6) and [Rousseau et al., 2022](https://doi.org/10.25959/MNGY-0Q43).
-    Input dataset documentation → [Fishing effort](https://www.isimip.org/gettingstarted/input-data-bias-adjustment).
-  simulation_rounds:
-  - ISIMIP4a
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-  time_periods:
-  - 1961-2010
-
-- specifier: fishing_effort_3b
-  specifier_file: effort
-  title: Fishing effort
-  group: fishing
-  mandatory: true
-  frequency: annual
-  resolution: Marine ecosystems or exclusive economic zones
-  path: ISIMIP4b/InputData/socioeconomic/fishing/histsoc/effort_isimip3b-phase1_histsoc_1950_2014.csv
-  variables:
-  - specifier: FAO
-    long_name: The generic name of the FAO area in which the Effort/Catch is occurring
-    units: ''
-  - specifier: EEZ
-    long_name: The EEZ / high seas name in which the Effort/Catch is occurring
-    units: ''
-  - specifier: LME
-    long_name: The generic name of the Large Marine ecosystem in which the Effort/Catch
-      is occurring
-    units: ''
-  - specifier: FGroup
-    long_name: Functional Group of the target species
-    units: ''
-  - specifier: NomEffReported
-    long_name: Nominal (i.e. not including the technological creep) fishing effort
-      corresponding to the reported catch
-    units: kW.days
-  - specifier: NomEffIUU
-    long_name: Nominal (i.e. not including the technological creep) fishing effort
-      corresponding to the illegal catch and discards
-    units: kW.days
-  - specifier: Year
-    long_name: Year (end of the year) when the Effort/Catch is occurring
-    units: year
-  - specifier: AreaSqKm2
-    long_name: Water surface area
-    units: km2
-  - specifier: NbrCells
-    long_name: Number of 0.5 degree cell making up the area
-    units: ''
-  - specifier: Fcountry
-    long_name: Fishing country, in ISO3 notation. Ex supranational entities (USSR,
-      Yugoslavia) are disaggregated to their constituent countries. Serbian Fishing
-      Effort included with Montenegro
-    units: ''
-  - specifier: Sector
-    long_name: Fishing sector (artisanal/industrial), defined by the law of the country
-      (varies by country)
-    units: ''
-  - specifier: LMEnbr
-    long_name: A number code to the LME, as per NOAA notation
-    units: ''
-  - specifier: FAOnbr
-    long_name: A number code to the FAO area
-    units: ''
-  comment: >-
-    Data comprise the nominal effort of industrial and artisanal fleets aggregated
-    into 6 functional groups. Source: [Rousseau et al. (2019)](https://doi.org/10.1073/pnas.1820344116).
-  simulation_rounds:
-  - ISIMIP4b
-  sectors:
-  - marine-fishery_global
-  - marine-fishery_regional
-  time_periods:
-  - 1950-2021
+  - "?"
 
 - specifier: forest_management
   title: Forest management
