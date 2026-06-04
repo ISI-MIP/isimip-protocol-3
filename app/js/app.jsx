@@ -47,7 +47,7 @@ document.querySelectorAll('[data-component="title"]').forEach(el => {
 
 document.querySelectorAll('[data-component="about"]').forEach(el => {
   createRoot(el).render(
-    <About />
+    <About html={el.innerHTML} />
   )
 })
 
@@ -112,7 +112,6 @@ setTimeout(() => {
 
   // add copy-to-clipboard' functionality
   for (const element of document.getElementsByClassName('copy-to-clipboard')) {
-    console.log(element)
     element.addEventListener('click', () => {
       const code = element.getElementsByTagName('code')[0]
       const text = code.textContent

@@ -1,29 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { commitDate, commitHash, commitUrl } from '../store'
 
-const About = () => {
+const About = ({ html }) => {
   return (
     <div className="about">
-      <div><strong>About</strong></div>
-      <p>
-        The simulation protocol describes the experiments, input data sets and output variables necessary to
-        participate in the ISIMIP3 simulation round.
-      </p>
-
-      <p>
-        <i>
-          Please select the simulation round (ISIMIP3a or ISIMIP3b) and the sectors you are interested in from the
-          control panel below, or from the dropdown in the navigation bar. The page will then adjust to your selection.
-          The parts of the protocol, which are specific to a simulation round or sector are marked accordingly.
-        </i>
-      </p>
+      <div dangerouslySetInnerHTML={{__html: html}}></div>
 
       <p className="mb-0">
         The protocol was last updated on {commitDate} (<a href={commitUrl}>{commitHash.substring(0, 7)}</a>).
       </p>
     </div>
   )
+}
+
+About.propTypes = {
+  html: PropTypes.string.isRequired
 }
 
 export default About
