@@ -31,12 +31,12 @@ definitions = read_definitions()
 
 
 def add_paragraph(cell, value, font_size=10, color=COLOR_BLACK, bold=False):
-    value = value.replace('**', '')
+    value = value.replace('*', '')
 
     paragraph = cell.add_paragraph('') if cell.paragraphs[0].runs else cell.paragraphs[0]
     run = paragraph.add_run(value)
 
-    run.font.name = 'Calibri'
+    run.font.name = 'Arial'
     run.font.size = Pt(font_size)
     run.bold = bold
     run.font.color.rgb = RGBColor.from_string(color)
@@ -51,6 +51,26 @@ def set_background(cell, color):
     tc_pr.append(shd)
 
 
+def set_table_cell_margin(table, top=0, bottom=0, left=0, right=0):
+    tblPr = table._tbl.tblPr
+    if tblPr is None:
+        tblPr = OxmlElement('w:tblPr')
+        table._tbl.insert(0, tblPr)
+
+    tblCellMar = tblPr.find(qn('w:tblCellMar'))
+    if tblCellMar is None:
+        tblCellMar = OxmlElement('w:tblCellMar')
+        tblPr.append(tblCellMar)
+
+    for attr, val in [('top', top), ('bottom', bottom), ('start', left), ('end', right)]:
+        el = tblCellMar.find(qn(f'w:{attr}'))
+        if el is None:
+            el = OxmlElement(f'w:{attr}')
+            tblCellMar.append(el)
+        el.set(qn('w:w'), str(val))
+        el.set(qn('w:type'), 'dxa')
+
+
 for simulation_round in SIMULATION_ROUNDS:
     rows = list(filter_rows(definitions[IDENTIFIER], simulation_round, PRODUCT))
     columns = COLUMNS[simulation_round]
@@ -58,6 +78,7 @@ for simulation_round in SIMULATION_ROUNDS:
     doc = Document()
     table = doc.add_table(rows=len(rows) * 2 + 1, cols=len(columns))
     table.style = 'Table Grid'
+    set_table_cell_margin(table, top=100, bottom=100, left=100, right=100)
 
     for row in table.rows:
         row.height = Cm(2)
@@ -76,9 +97,9 @@ for simulation_round in SIMULATION_ROUNDS:
         cell = table.rows[index].cells[0]
         add_paragraph(cell, row['title'], font_size=12, bold=True)
 
-        # cell = table.rows[index].cells[0]
-        # for subtitle in row['subtitles']:
-        #     add_paragraph(cell, subtitle, bold=True)
+        cell = table.rows[index].cells[0]
+        for subtitle in row['subtitles']:
+            add_paragraph(cell, subtitle, bold=True)
 
         cell = table.rows[index].cells[0]
         add_paragraph(cell, row['priority'])
