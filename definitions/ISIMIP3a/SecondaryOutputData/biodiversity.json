@@ -1,31 +1,81 @@
 {
-  "commit": "3a187e282052974c71906d35ae789ee01bf96e9a",
+  "commit": "1e6862bb5117e033520f9eb3159c7135d8e603da",
   "sens_scenario": [
     {
       "specifier": "default",
       "description": "For all experiments other than the sensitivity experiments."
     },
     {
-      "specifier": "1901co2",
-      "description": "CO₂ concentration fixed at 1901 levels as a deviation from the `obsclim` climate + CO₂ forcing.",
+      "specifier": "30arcsec",
+      "description": "Observed climate forcing using `30arcsec` resolution used for sensitivity runs to determine the best spatial resolution of climate input data for impact models.",
       "simulation_rounds": [
         "ISIMIP3a"
       ],
       "sectors": [
         "agriculture",
         "biodiversity",
-        "biomes",
-        "coastal",
-        "diarrhea",
-        "energy_demand",
-        "fire",
         "forestry",
         "groundwater",
-        "health",
         "labour",
         "lakes_global",
         "lakes_local",
-        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "90arcsec",
+      "description": "Observed climate forcing using `90arcsec` resolution used for sensitivity runs to determine the best spatial resolution of climate input data for impact models.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "forestry",
+        "groundwater",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "300arcsec",
+      "description": "Observed climate forcing using `300arcsec` resolution used for sensitivity runs to determine the best spatial resolution of climate input data for impact models.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "forestry",
+        "groundwater",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "1800arcsec",
+      "description": "Observed climate forcing using `1800arcsec` resolution used for sensitivity runs to determine the best spatial resolution of climate input data for impact models.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "forestry",
+        "groundwater",
+        "labour",
+        "lakes_global",
+        "lakes_local",
         "permafrost",
         "water_global",
         "water_regional"
@@ -3613,6 +3663,25 @@
       ]
     },
     {
+      "specifier": "1901soc",
+      "description": "Fixed year-1901 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
+      "description_note": "Please only label your model run `1901soc` if it does not at all account for historical changes in direct human forcing, but they do represent constant year-1901 levels of direct human forcing for at least some direct human forcings. This scenario may be thought of an approximation of pre-industrial levels of human impacts.",
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biomes",
+        "biodiversity",
+        "groundwater",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global",
+        "water_quality"
+      ]
+    },
+    {
       "specifier": "2015soc",
       "description": "Fixed year-2015 direct human influences (e.g. land use, nitrogen deposition and fertilizer input, fishing effort).",
       "description_note": "Please label your simulations `2015soc` if they do not at all account for historical changes in direct human forcing, but they do represent constant year-2015 levels of direct human forcing for at least some direct human forcings.",
@@ -3638,6 +3707,23 @@
         "water_global",
         "water_regional",
         "water_quality"
+      ]
+    },
+    {
+      "specifier": "nat",
+      "description": "No direct human influences (naturalized run).",
+      "description_note": "Please only label your model run `nat` if it does not at all account for any direct human forcings, including e.g. human land use or fishing. For Nitrogen deposition please use the prepared files (with the values for 1850) or specify which other preindustrial value you used in the model documentation.",
+      "simulation_rounds": [
+        "ISIMIP3a",
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "biomes",
+        "biodiversity",
+        "forestry",
+        "peat",
+        "marine-fishery_global",
+        "marine-fishery_regional"
       ]
     }
   ],
@@ -5498,212 +5584,459 @@
   "variable": [
     {
       "specifier": "amphibianprob",
-      "long_name": "Amphibian Species Probability of Occurrence",
+      "long_name": "Amphibian Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianocc",
+      "long_name": "Amphibian Species Propability with Threshold of Occurrence",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianbuff",
+      "long_name": "Amphibian Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianpbuffer",
+      "long_name": "Amphibian Probability Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Amphibian probability masked by `Amphibian Buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianoccbuff",
+      "long_name": "Amphibian Occurrence Buffer",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Amphibian occurrence masked by `Amphibian buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
       "specifier": "birdprob",
-      "long_name": "Terrestrial Bird Species Probability of Occurrence",
+      "long_name": "Bird Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdocc",
+      "long_name": "Bird Species Propability with Threshold of Occurrence",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdbuff",
+      "long_name": "Bird Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdpbuffer",
+      "long_name": "Bird Probability Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Bird probability masked by `Bird Buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdoccbuff",
+      "long_name": "Bird Occurrence Buffer",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5° grid",
+      "comment": "Bird occurrence masked by `Bird buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
       "specifier": "mammalprob",
-      "long_name": "Terrestrial Mammal Species Probability of Occurrence",
+      "long_name": "Mammal Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "amphibiansumprob",
-      "long_name": "Amphibian Summed Probability of Occurrence",
+      "specifier": "mammalocc",
+      "long_name": "Mammal Species Propability with Threshold of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "birdsumprob",
-      "long_name": "Terrestrial Bird Summed Probability of Occurrence",
+      "specifier": "mammalbuff",
+      "long_name": "Mammal Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "mammalsumprob",
-      "long_name": "Terrestrial Mammal Summed Probability of Occurrence",
+      "specifier": "mammalpbuffer",
+      "long_name": "Mammal Probability Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Mammal probability masked by `Mammal Buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endamphibiansumprob",
-      "long_name": "Summed Probability of Endemic Amphibian Species",
+      "specifier": "mammaloccbuff",
+      "long_name": "Mammal Occurrence Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Mammal occurrence masked by `Mammal buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endbirdsumprob",
-      "long_name": "Summed Probability of Endemic Terrestrial Bird Species",
+      "specifier": "reptileprob",
+      "long_name": "Reptile Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endmammalsumprob",
-      "long_name": "Summed Probability of Endemic Terrestrial Mammal Species",
+      "specifier": "reptileocc",
+      "long_name": "Reptile Species Propability with Threshold of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thramphibiansumprob",
-      "long_name": "Summed Probability of Threatened Amphibian Species",
+      "specifier": "reptilebuff",
+      "long_name": "Reptile Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thrbirdsumprob",
-      "long_name": "Summed Probability of Threatened Terrestrial Bird Species",
+      "specifier": "reptilepbuffer",
+      "long_name": "Reptile Probability Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Reptile probability masked by `Reptile Buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thrmammalsumprob",
-      "long_name": "Summed Probability of Threatened Terrestrial Mammal Species",
+      "specifier": "reptileoccbuff",
+      "long_name": "Reptile Occurrence Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5° grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Reptile occurrence masked by `Reptile buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "amphibiansr",
-      "long_name": "Amphibian Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
+      "specifier": "cellarea",
+      "long_name": "Grid Cell Area",
+      "group": "static-variables",
+      "units": "km2",
+      "frequency": "fixed",
       "resolution": "0.5° grid",
-      "comment": "Results from macroecological richness models",
+      "comment": "The total area associated with each grid cell in the model.",
       "sectors": [
-        "biodiversity"
+        "biomes",
+        "biodiversity",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
-      "valid_max": 2500.0,
+      "valid_max": 3250.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "birdsr",
-      "long_name": "Terrestrial Bird Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
+      "specifier": "contfrac",
+      "long_name": "Continental Fraction of Grid Cell",
+      "group": "static-variables",
+      "units": "1",
+      "frequency": "fixed",
       "resolution": "0.5° grid",
-      "comment": "Results from macroecological richness models",
+      "comment": "The fraction of each grid cell that is assumed to be continent, i.e. including inland water bodies but excluding ocean shares. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
       "sectors": [
-        "biodiversity"
+        "biomes",
+        "biodiversity",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
-      "valid_max": 2500.0,
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "mammalsr",
-      "long_name": "Terrestrial Mammal Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
+      "specifier": "landfrac",
+      "long_name": "Land Fraction of Grid Cell",
+      "group": "static-variables",
+      "units": "1",
+      "frequency": "fixed",
       "resolution": "0.5° grid",
-      "comment": "Results from macroecological richness models",
+      "comment": "The fraction of each grid cell that is assumed to be land, i.e. excluding oceans and inland water bodies.",
       "sectors": [
-        "biodiversity"
+        "biomes",
+        "biodiversity",
+        "fire",
+        "peat",
+        "permafrost",
+        "water_global"
       ],
-      "valid_max": 2500.0,
+      "valid_max": 1.0,
       "valid_min": 0.0
     }
   ],
@@ -8641,6 +8974,52 @@
       ]
     },
     {
+      "specifier": "obsclim_1901soc_default",
+      "title": "Model evaluation",
+      "subtitles": [
+        "obsclim_1901soc_default"
+      ],
+      "priority": "2nd priority",
+      "historical": {
+        "climate": "obsclim",
+        "soc": "1901soc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "groundwater",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "obsclim_nat_default",
+      "title": "Model evaluation",
+      "subtitles": [
+        "obsclim_nat_default"
+      ],
+      "priority": "2nd priority",
+      "historical": {
+        "climate": "obsclim",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "forestry",
+        "peat"
+      ]
+    },
+    {
       "specifier": "counterclim_histsoc_default",
       "title": "Counterfactual climate",
       "subtitles": [
@@ -8708,16 +9087,62 @@
       ]
     },
     {
-      "specifier": "obsclim_histsoc_1901co2",
-      "parent": "obsclim_histsoc_default",
-      "title": "CO₂ sensitivity",
+      "specifier": "counterclim_1901soc_default",
+      "title": "Counterfactual climate",
       "subtitles": [
-        "obsclim_histsoc_1901co2"
+        "counterclim_1901soc_default"
       ],
       "priority": "2nd priority",
       "historical": {
+        "climate": "counterclim",
+        "soc": "1901soc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "groundwater",
+        "lakes_global",
+        "lakes_local",
+        "peat",
+        "permafrost",
+        "water_global"
+      ]
+    },
+    {
+      "specifier": "counterclim_nat_default",
+      "title": "Counterfactual climate",
+      "subtitles": [
+        "counterclim_nat_default"
+      ],
+      "priority": "2nd priority",
+      "historical": {
+        "climate": "counterclim",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "biodiversity",
+        "biomes",
+        "forestry",
+        "peat"
+      ]
+    },
+    {
+      "specifier": "obsclim_histsoc_30arcsec",
+      "parent": "obsclim_histsoc_default",
+      "title": "High-resolution sensitivity 1km",
+      "subtitles": [
+        "obsclim_histsoc_30arcsec"
+      ],
+      "priority": "2st priority",
+      "historical": {
         "climate": "obsclim",
-        "climate_sens": "1901co2",
+        "climate_sens": "30arcsec",
         "soc": "histsoc"
       },
       "simulation_rounds": [
@@ -8726,32 +9151,27 @@
       "sectors": [
         "agriculture",
         "biodiversity",
-        "biomes",
-        "diarrhea",
-        "fire",
         "forestry",
         "groundwater",
-        "health",
         "lakes_global",
         "lakes_local",
-        "peat",
         "permafrost",
         "water_global",
         "water_regional"
       ]
     },
     {
-      "specifier": "obsclim_2015soc_1901co2",
-      "parent": "obsclim_2015soc_default",
-      "title": "CO₂ sensitivity",
+      "specifier": "obsclim_histsoc_90arcsec",
+      "parent": "obsclim_histsoc_default",
+      "title": "High-resolution sensitivity 3km",
       "subtitles": [
-        "obsclim_2015soc_1901co2"
+        "obsclim_histsoc_90arcsec"
       ],
-      "priority": "2nd priority",
+      "priority": "2st priority",
       "historical": {
         "climate": "obsclim",
-        "climate_sens": "1901co2",
-        "soc": "2015soc"
+        "climate_sens": "90arcsec",
+        "soc": "histsoc"
       },
       "simulation_rounds": [
         "ISIMIP3a"
@@ -8759,14 +9179,70 @@
       "sectors": [
         "agriculture",
         "biodiversity",
-        "biomes",
-        "diarrhea",
-        "fire",
+        "forestry",
         "groundwater",
-        "health",
         "lakes_global",
         "lakes_local",
-        "peat",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "obsclim_histsoc_300arcsec",
+      "parent": "obsclim_histsoc_default",
+      "title": "High-resolution sensitivity 10km",
+      "subtitles": [
+        "obsclim_histsoc_300arcsec"
+      ],
+      "priority": "2st priority",
+      "historical": {
+        "climate": "obsclim",
+        "climate_sens": "300arcsec",
+        "soc": "histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "forestry",
+        "fs-n",
+        "groundwater",
+        "labour",
+        "lakes_global",
+        "lakes_local",
+        "permafrost",
+        "water_global",
+        "water_regional"
+      ]
+    },
+    {
+      "specifier": "obsclim_histsoc_1800arcsec",
+      "parent": "obsclim_histsoc_default",
+      "title": "High-resolution sensitivity 60km",
+      "subtitles": [
+        "obsclim_histsoc_1800arcsec"
+      ],
+      "priority": "2st priority",
+      "historical": {
+        "climate": "obsclim",
+        "climate_sens": "1800arcsec",
+        "soc": "histsoc"
+      },
+      "simulation_rounds": [
+        "ISIMIP3a"
+      ],
+      "sectors": [
+        "agriculture",
+        "biodiversity",
+        "forestry",
+        "fs-n",
+        "groundwater",
+        "labour",
+        "lakes_global",
+        "lakes_local",
         "permafrost",
         "water_global",
         "water_regional"

@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 29 May 2026</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/3a187e282052974c71906d35ae789ee01bf96e9a">3a187e282052974c71906d35ae789ee01bf96e9a</a></p>
+<p>Last updated: 10 June 2026</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/1e6862bb5117e033520f9eb3159c7135d8e603da">1e6862bb5117e033520f9eb3159c7135d8e603da</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -439,7 +439,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "coastal",
         "diarrhea",
@@ -539,6 +538,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "labour",
@@ -557,6 +557,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "labour",
@@ -575,6 +576,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "labour",
@@ -593,6 +595,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "labour",
@@ -622,7 +625,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "coastal",
         "diarrhea",
@@ -6163,6 +6165,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "biodiversity",
         "groundwater",
         "lakes_global",
         "lakes_local",
@@ -6238,6 +6241,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -6254,6 +6258,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -6270,6 +6275,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -6302,6 +6308,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -6318,6 +6325,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -6336,6 +6344,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "biomes",
+        "biodiversity",
         "forestry",
         "peat",
         "marine-fishery_global",
@@ -9090,212 +9099,402 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "amphibianprob",
-      "long_name": "Amphibian Species Probability of Occurrence",
+      "long_name": "Amphibian Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianocc",
+      "long_name": "Amphibian Species Propability with Threshold of Occurrence",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianbuff",
+      "long_name": "Amphibian Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianpbuffer",
+      "long_name": "Amphibian Probability Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Amphibian probability masked by `Amphibian Buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "amphibianoccbuff",
+      "long_name": "Amphibian Occurrence Buffer",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Amphibian occurrence masked by `Amphibian buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
       "specifier": "birdprob",
-      "long_name": "Terrestrial Bird Species Probability of Occurrence",
+      "long_name": "Bird Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdocc",
+      "long_name": "Bird Species Propability with Threshold of Occurrence",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdbuff",
+      "long_name": "Bird Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdpbuffer",
+      "long_name": "Bird Probability Buffer",
+      "group": "biodiversity-variables",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Bird probability masked by `Bird Buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
+      "valid_min": 0.0
+    },
+    {
+      "specifier": "birdoccbuff",
+      "long_name": "Bird Occurrence Buffer",
+      "group": "biodiversity-variables",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
+      "resolution": "0.5\u00b0 grid",
+      "comment": "Bird occurrence masked by `Bird buffer`.",
+      "sectors": [
+        "biodiversity"
+      ],
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
       "specifier": "mammalprob",
-      "long_name": "Terrestrial Mammal Species Probability of Occurrence",
+      "long_name": "Mammal Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "amphibiansumprob",
-      "long_name": "Amphibian Summed Probability of Occurrence",
+      "specifier": "mammalocc",
+      "long_name": "Mammal Species Propability with Threshold of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "birdsumprob",
-      "long_name": "Terrestrial Bird Summed Probability of Occurrence",
+      "specifier": "mammalbuff",
+      "long_name": "Mammal Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "mammalsumprob",
-      "long_name": "Terrestrial Mammal Summed Probability of Occurrence",
+      "specifier": "mammalpbuffer",
+      "long_name": "Mammal Probability Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Mammal probability masked by `Mammal Buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endamphibiansumprob",
-      "long_name": "Summed Probability of Endemic Amphibian Species",
+      "specifier": "mammaloccbuff",
+      "long_name": "Mammal Occurrence Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Mammal occurrence masked by `Mammal buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endbirdsumprob",
-      "long_name": "Summed Probability of Endemic Terrestrial Bird Species",
+      "specifier": "reptileprob",
+      "long_name": "Reptile Species Likelihood of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Likelihood that a given species is present at a specific location based on environmental conditions and model predictions. It represents a relative measure of habitat suitability rather than a direct observation of presence.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "endmammalsumprob",
-      "long_name": "Summed Probability of Endemic Terrestrial Mammal Species",
+      "specifier": "reptileocc",
+      "long_name": "Reptile Species Propability with Threshold of Occurrence",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Thresholded probability of occurrence classifying each location as either suitable (1) or unsuitable (0) for a species based on an optimized, species-specific threshold.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thramphibiansumprob",
-      "long_name": "Summed Probability of Threatened Amphibian Species",
+      "specifier": "reptilebuff",
+      "long_name": "Reptile Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Buffer around the presence points on which the model is trained. (for species distribution models a buffer of 1000km was applied and for dynamic occupancy models a buffer of 750km was applied)",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thrbirdsumprob",
-      "long_name": "Summed Probability of Threatened Terrestrial Bird Species",
+      "specifier": "reptilepbuffer",
+      "long_name": "Reptile Probability Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": 1,
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Reptile probability masked by `Reptile Buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
+      ],
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
-      "specifier": "thrmammalsumprob",
-      "long_name": "Summed Probability of Threatened Terrestrial Mammal Species",
+      "specifier": "reptileoccbuff",
+      "long_name": "Reptile Occurrence Buffer",
       "group": "biodiversity-variables",
-      "units": "Summed probability of occurrence per cell",
-      "frequency": "30year-mean",
+      "units": "0 or 1",
+      "frequency": "annual, 30year-mean (1981-2010) for SDMs",
       "resolution": "0.5\u00b0 grid",
-      "comment": "Aggregated results from individual SDMs assuming no dispersal.",
+      "comment": "Reptile occurrence masked by `Reptile buffer`.",
       "sectors": [
         "biodiversity"
       ],
-      "valid_max": 2500.0,
-      "valid_min": 0.0
-    },
-    {
-      "specifier": "amphibiansr",
-      "long_name": "Amphibian Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
-      "resolution": "0.5\u00b0 grid",
-      "comment": "Results from macroecological richness models",
-      "sectors": [
-        "biodiversity"
+      "dimensions": [
+        "time",
+        "species",
+        "lat",
+        "lon"
       ],
-      "valid_max": 2500.0,
-      "valid_min": 0.0
-    },
-    {
-      "specifier": "birdsr",
-      "long_name": "Terrestrial Bird Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
-      "resolution": "0.5\u00b0 grid",
-      "comment": "Results from macroecological richness models",
-      "sectors": [
-        "biodiversity"
-      ],
-      "valid_max": 2500.0,
-      "valid_min": 0.0
-    },
-    {
-      "specifier": "mammalsr",
-      "long_name": "Terrestrial Mammal Species Richness",
-      "group": "biodiversity-variables",
-      "units": "Estimated number of species (species richness) per cell",
-      "frequency": "30year-mean",
-      "resolution": "0.5\u00b0 grid",
-      "comment": "Results from macroecological richness models",
-      "sectors": [
-        "biodiversity"
-      ],
-      "valid_max": 2500.0,
+      "valid_max": 1.0,
       "valid_min": 0.0
     },
     {
@@ -10481,6 +10680,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "comment": "The total area associated with each grid cell in the model.",
       "sectors": [
         "biomes",
+        "biodiversity",
         "fire",
         "peat",
         "permafrost",
@@ -10499,6 +10699,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "comment": "The fraction of each grid cell that is assumed to be continent, i.e. including inland water bodies but excluding ocean shares. Should be 0 if the entire cell is assumed to be ocean, 1 if the entire cell is assumed to be covered by land or inland water bodies.",
       "sectors": [
         "biomes",
+        "biodiversity",
         "fire",
         "peat",
         "permafrost",
@@ -10517,6 +10718,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "comment": "The fraction of each grid cell that is assumed to be land, i.e. excluding oceans and inland water bodies.",
       "sectors": [
         "biomes",
+        "biodiversity",
         "fire",
         "peat",
         "permafrost",
@@ -24085,6 +24287,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "groundwater",
         "lakes_global",
@@ -24109,9 +24312,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "peat",
+        "biodiversity",
         "biomes",
-        "forestry"
+        "forestry",
+        "peat"
       ]
     },
     {
@@ -24196,6 +24400,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "groundwater",
         "lakes_global",
@@ -24220,9 +24425,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3a"
       ],
       "sectors": [
-        "peat",
+        "biodiversity",
         "biomes",
-        "forestry"
+        "forestry",
+        "peat"
       ]
     },
     {
@@ -24243,7 +24449,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "diarrhea",
         "fire",
@@ -24276,7 +24481,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "diarrhea",
         "fire",
@@ -24442,6 +24646,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "lakes_global",
@@ -24469,6 +24674,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "groundwater",
         "lakes_global",
@@ -24496,6 +24702,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "fs-n",
         "groundwater",
@@ -24525,6 +24732,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "forestry",
         "fs-n",
         "groundwater",
@@ -24761,7 +24969,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "coastal",
         "diarrhea",
@@ -24803,7 +25010,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
-        "biodiversity",
         "biomes",
         "coastal",
         "diarrhea",
@@ -25140,6 +25346,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "fire",
         "groundwater",
@@ -25171,6 +25378,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "forestry",
         "peat",
@@ -25196,6 +25404,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -25245,6 +25454,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -25394,6 +25604,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "fire",
         "groundwater",
@@ -25421,6 +25632,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "forestry",
         "peat"
@@ -25444,6 +25656,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -25493,6 +25706,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -25643,6 +25857,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "fire",
         "groundwater",
@@ -25670,6 +25885,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b"
       ],
       "sectors": [
+        "biodiversity",
         "biomes",
         "forestry",
         "marine-fishery_global",
@@ -25695,6 +25911,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -25744,6 +25961,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       ],
       "sectors": [
         "agriculture",
+        "biodiversity",
         "biomes",
         "fire",
         "peat",
@@ -26504,7 +26722,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
                 patterns: {
   "ISIMIP3a": {
     "agriculture": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
-    "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
+    "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "biomes": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "coastal": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "energy_demand": "No pattern has been defined for this simulation round and sector, yet.",
@@ -26526,7 +26744,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
   },
   "ISIMIP3b": {
     "agriculture": "(?P<model>[a-z0-9-.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)(\\+(?P<lu_model>[a-z]+))?_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
-    "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)-(?P<crop>[a-z0-9]+)-(?P<irrigation>[a-z]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
+    "biodiversity": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)(\\+(?P<lu_model>[a-z]+))?_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "biomes": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)(\\+(?P<lu_model>[a-z]+))?_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "coastal": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)_(?P<region>(global))_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})",
     "energy_demand": "No pattern has been defined for this simulation round and sector, yet.",
