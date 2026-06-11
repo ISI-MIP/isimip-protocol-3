@@ -11,7 +11,7 @@ const Pattern = () => {
   const simple_pattern = (pattern) => {
     return pattern
       .replaceAll(/\[.*?\]\+/g, '')                     // remove [a-z0-9] etc.
-      .replaceAll(/\([a-z|]*?\)/g, '')                  // ??
+      .replaceAll(/\([a-z|]*?\)/g, '')                  // remove explicit groups, e.g. (a|b|c)
       .replaceAll('\\d{4}', '')                         // remove \d{4} etc.
       .replaceAll('?P', '')                             // remove ?P
       .replaceAll('?', '')                              // remove ?
@@ -19,6 +19,8 @@ const Pattern = () => {
       .replaceAll(/>_/g, '>@').replaceAll(/_</g, '@<')  // replace underscore between identifiers with @
       .replaceAll('_', '-')                             // replace remaining _ with -
       .replaceAll('@', '_')                             // replace @ with _
+      .replaceAll('\\', '')                             // remove remaining /
+      .replaceAll('|', '')                              // remove remaining |
   }
 
   return (
