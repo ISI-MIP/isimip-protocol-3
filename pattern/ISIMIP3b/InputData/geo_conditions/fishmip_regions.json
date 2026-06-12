@@ -1,10 +1,12 @@
 {
-  "commit": "cff5b0bbb031de4f14ce4b768b1071c256eb4e40",
+  "commit": "43ee481609a9791f3d1286306681e3dd35b06c09",
   "path": "(?P<simulation_round>[A-Za-z0-9]+)/(?P<product>[A-Za-z]+)/(?P<category>[a-z0-9-_]+)/(?P<subcategory>[a-z0-9-_]+)$",
-  "dataset": "^(?P<geo_dataset>[A-Za-z0-9_]+)_(?P<resolution>[A-Za-z0-9]+)",
-  "file": "^(?P<geo_dataset>[A-Za-z0-9_]+)_(?P<resolution>[A-Za-z0-9]+)(.nc)$",
+  "dataset": "^(?P<geo_dataset>(LMEs66|mpa|RME_masks))(-(all|strict))?_(geotiff|netcdf|shapefile)(_(?P<resolution>(15arcmin|60arcmin)))?",
+  "file": "^(?P<geo_dataset>(LMEs66|mpa|RME_masks))(-(all|strict))?_(geotiff|netcdf|shapefile)(_(?P<resolution>(15arcmin|60arcmin)))?(_(?P<start_year>\\d{4}))?(_(?P<end_year>\\d{4}))?(.nc|.zip|.tif)$",
   "suffix": [
-    ".nc"
+    ".nc",
+    ".zip",
+    ".tif"
   ],
   "specifiers": {},
   "specifiers_map": {}

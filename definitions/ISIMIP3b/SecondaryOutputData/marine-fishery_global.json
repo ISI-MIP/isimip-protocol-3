@@ -1,5 +1,5 @@
 {
-  "commit": "cff5b0bbb031de4f14ce4b768b1071c256eb4e40",
+  "commit": "43ee481609a9791f3d1286306681e3dd35b06c09",
   "time_span": [
     {
       "specifier": "minimum",
@@ -5883,6 +5883,33 @@
       "format": "NetCDF"
     },
     {
+      "specifier": "mpa",
+      "specifier_file": "mpa",
+      "title": "Marine Protected Areas (MPA) masks",
+      "group": "ocean-static",
+      "resolution": [
+        "0.25° and 1° grid",
+        "NetCDF and GeoTIFF",
+        "zipped shapefiles"
+      ],
+      "path": [
+        "ISIMIP3b/InputData/geo_conditions/fishmip_regions/mpa-all_<resolution>_1958_2025.[nc|tif|zip]",
+        "ISIMIP3b/InputData/geo_conditions/fishmip_regions/mpa-strict_<resolution>_1958_2025.[nc|tif|zip]"
+      ],
+      "variables": [
+        {
+          "specifier": "mpa-<coverage>",
+          "units": "%"
+        }
+      ],
+      "comment": "Annual maps and gridded layers of global MPA coverage from 1958 to 2025, constructed from the ProtectedSeas Navigator database. Includes both comprehensive MPA coverage (`all`) and a `strict` protection subset, delivered as zipped shapefiles, NetCDF, and GeoTIFF formats at 1° and 0.25° spatial resolutions.",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "format": "NetCDF, GeoTIFF, Shape files"
+    },
+    {
       "specifier": "orog",
       "title": "Orography",
       "group": "orography",
@@ -6160,6 +6187,7 @@
       "group": "static-forcing",
       "title": "Large Marine Ecosystem masks",
       "status": "optional",
+      "doi": "https://doi.org/10.48364/ISIMIP.364229.1",
       "path": "ISIMIP3b/InputData/geo_conditions/fishmip_regions/LMEs66_mask_<resolution>.nc",
       "sectors": [
         "marine-fishery_global",
@@ -6171,7 +6199,23 @@
       "group": "static-forcing",
       "title": "Regional Marine Ecosystem masks",
       "status": "optional",
+      "doi": "https://doi.org/10.48364/ISIMIP.364229.1",
       "path": "ISIMIP3b/InputData/geo_conditions/fishmip_regions/RME_masks_<resolution>.nc",
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ]
+    },
+    {
+      "specifier": "mpa-masks",
+      "group": "static-forcing",
+      "title": "Marine Protected Areas (MPA) masks",
+      "status": "optional",
+      "doi": "https://doi.org/10.48364/ISIMIP.364229.1",
+      "path": [
+        "ISIMIP3b/InputData/geo_conditions/fishmip_regions/mpa-all_<resolution>_1958_2025.[nc|tif|zip]",
+        "ISIMIP3b/InputData/geo_conditions/fishmip_regions/mpa-strict_<resolution>_1958_2025.[nc|tif|zip]"
+      ],
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
