@@ -13,6 +13,15 @@ repos:
       - id: trailing-whitespace
       - id: debug-statements
 
+  - repo: local
+    hooks:
+      - id: forbid-yml-extension
+        name: Forbid .yml extension (use .yaml)
+        language: fail
+        entry: "Found .yml file — please rename to .yaml"
+        files: \.yml$
+        exclude: ^.github/
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: c60c980e561ed3e73101667fe8365c609d19a438  # frozen: v0.15.9
     hooks:
