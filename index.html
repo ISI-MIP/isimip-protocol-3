@@ -112,7 +112,7 @@
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
 <p>Last updated: 12 June 2026</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/c311dc1e08d76da91f5219e27fdefb1d7cd3d765">c311dc1e08d76da91f5219e27fdefb1d7cd3d765</a></p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/cff5b0bbb031de4f14ce4b768b1071c256eb4e40">cff5b0bbb031de4f14ce4b768b1071c256eb4e40</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -11222,7 +11222,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "amphibianocc",
-      "long_name": "Amphibian Species Propability with Threshold of Occurrence",
+      "long_name": "Amphibian Species Probability with Threshold of Occurrence",
       "group": "biodiversity-variables",
       "units": "0 or 1",
       "frequency": "annual, 30year-mean (1981-2010) for SDMs",
@@ -11322,7 +11322,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "birdocc",
-      "long_name": "Bird Species Propability with Threshold of Occurrence",
+      "long_name": "Bird Species Probability with Threshold of Occurrence",
       "group": "biodiversity-variables",
       "units": "0 or 1",
       "frequency": "annual, 30year-mean (1981-2010) for SDMs",
@@ -11422,7 +11422,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "mammalocc",
-      "long_name": "Mammal Species Propability with Threshold of Occurrence",
+      "long_name": "Mammal Species Probability with Threshold of Occurrence",
       "group": "biodiversity-variables",
       "units": "0 or 1",
       "frequency": "annual, 30year-mean (1981-2010) for SDMs",
@@ -11522,7 +11522,7 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     },
     {
       "specifier": "reptileocc",
-      "long_name": "Reptile Species Propability with Threshold of Occurrence",
+      "long_name": "Reptile Species Probability with Threshold of Occurrence",
       "group": "biodiversity-variables",
       "units": "0 or 1",
       "frequency": "annual, 30year-mean (1981-2010) for SDMs",
@@ -21116,6 +21116,117 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     }
   ],
   "forcing_data": [
+    {
+      "specifier": "biophysical-yield",
+      "group": "biophysical-forcing",
+      "title": "Crop Yields",
+      "mandatory": true,
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.370868.1"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.723340.2"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc",
+          "ISIMIP3b/OutputData/agriculture/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_yield-<irrigation>-<crop>_global_annual-gs.nc"
+        ]
+      },
+      "sectors": [
+        "fs-n"
+      ]
+    },
+    {
+      "specifier": "biophysical-qtot",
+      "group": "biophysical-forcing",
+      "title": "Runoff",
+      "mandatory": true,
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qtot_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "water_quality"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "biophysical-dis",
+      "group": "biophysical-forcing",
+      "title": "Water discharge",
+      "mandatory": true,
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_dis_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "groundwater",
+        "water_quality"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "biophysical-qrd",
+      "group": "biophysical-forcing",
+      "title": "Diffuse groundwater recharge",
+      "mandatory": true,
+      "doi": {
+        "ISIMIP3a": [
+          "https://doi.org/10.48364/ISIMIP.398165.5"
+        ],
+        "ISIMIP3b": [
+          "https://doi.org/10.48364/ISIMIP.230418.4"
+        ]
+      },
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/pre-industrial/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/historical/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc",
+          "ISIMIP3b/OutputData/water_global/<model>/<climate-forcing>/future/<model>_<climate-forcing>_w5e5_<climate-scenario>_<soc-scenario>_<sens-scenario>_qrd_global_daily.nc"
+        ]
+      },
+      "sectors": [
+        "groundwater"
+      ]
+    },
     {
       "specifier": "histsoc_pop",
       "group": "histsoc-forcing",
