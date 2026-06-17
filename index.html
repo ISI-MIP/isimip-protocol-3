@@ -111,8 +111,8 @@
 
 <div class="d-none d-print-block mb-3" data-component="title"></div>
 
-<p>Last updated: 15 June 2026</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/3ab89a093c7da06a62b9b6223c055b6df4228e0a">3ab89a093c7da06a62b9b6223c055b6df4228e0a</a></p>
+<p>Last updated: 17 June 2026</p>
+<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/f25cc8036c391fa3c78d0777fc9f9d7a9fbd3b16">f25cc8036c391fa3c78d0777fc9f9d7a9fbd3b16</a></p>
 <p>Direct link for this selection: <span data-component="link"></span></p>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-general-concept">1.1 General concept</h3>
@@ -4735,6 +4735,51 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       }
     },
     {
+      "specifier": "population-stratification",
+      "specifier_file": "population-stratification",
+      "title": "Population statification (country-level)",
+      "group": "population",
+      "mandatory": true,
+      "group3": true,
+      "frequency": "annual",
+      "resolution": "national",
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/InputData/socioeconomic/pop/histsoc/population-stratification_histsoc_national_annual_<age-stratification>_<start>_<end>.csv",
+          "ISIMIP3a/InputData/socioeconomic/pop/2015soc/population-stratification_2015soc_national_annual_<age-stratification>_<start>_<end>.csv",
+          "ISIMIP3a/InputData/socioeconomic/pop/1901soc/population-stratification_1901soc_national_annual_<age-stratification>_<start>_<end>.csv"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/InputData/socioeconomic/pop/histsoc/population-stratification_histsoc_national_annual_<age-stratification>_<start>_<end>.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/2015soc/population-stratification_2015soc_national_annual_<age-stratification>_<start>_<end>.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/1850soc/population-stratification_1850soc_national_annual_<age-stratification>_<start>_<end>.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-noadapt/population-stratification_ssp1_national_annual_<age-stratification>_2015_2100.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-noadapt/population-stratification_ssp3_national_annual_<age-stratification>_2015_2100.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-noadapt/population-stratification_ssp5_national_annual_<age-stratification>_2015_2100.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp126soc-adapt/population-stratification_ssp1_national_annual_<age-stratification>_2015_2100.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp370soc-adapt/population-stratification_ssp3_national_annual_<age-stratification>_2015_2100.csv",
+          "ISIMIP3b/InputData/socioeconomic/pop/ssp585soc-adapt/population-stratification_ssp5_national_annual_<age-stratification>_2015_2100.csv"
+        ]
+      },
+      "variables": [
+        {
+          "specifier": "population",
+          "long_name": "share of national population",
+          "units": 1
+        }
+      ],
+      "time_periods": {
+        "ISIMIP3a": [
+          "1850-1900",
+          "1901-2021"
+        ],
+        "ISIMIP3b": [
+          "1850-2014",
+          "2015-2100"
+        ]
+      }
+    },
+    {
       "specifier": "gdp-ppp-countrylevel",
       "title": "GDP PPP",
       "group": "gdp",
@@ -4819,6 +4864,60 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "ISIMIP3b": [
           "1850-2014",
           "2015-2100"
+        ]
+      }
+    },
+    {
+      "specifier": "gdp-ppp",
+      "title": "Gridded PPP GDP",
+      "group": "gdp",
+      "mandatory": true,
+      "group3": true,
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/InputData/socioeconomic/gdp/histsoc/gdp-ppp_histsoc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3a/InputData/socioeconomic/gdp/2015soc/gdp-ppp_2015soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3a/InputData/socioeconomic/gdp/1901soc/gdp-ppp_1901soc_30arcsec_annual_<start>_<end>.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/InputData/socioeconomic/gdp/histsoc/gdp-ppp_histsoc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/2015soc/gdp-ppp_2015soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/1850soc/gdp-ppp_1850soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-noadapt/gdp-ppp_ssp1_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-noadapt/gdp-ppp_ssp3_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-noadapt/gdp-ppp_ssp5_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-adapt/gdp-ppp_ssp1_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-adapt/gdp-ppp_ssp3_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-adapt/gdp-ppp_ssp5_ann30arcsec_ual_2015_2100.nc"
+        ]
+      }
+    },
+    {
+      "specifier": "gdp-ppp-pc",
+      "title": "Gridded PPP GDP per capita",
+      "group": "gdp",
+      "mandatory": true,
+      "group3": true,
+      "frequency": "annual",
+      "resolution": "0.5\u00b0 grid",
+      "path": {
+        "ISIMIP3a": [
+          "ISIMIP3a/InputData/socioeconomic/gdp/histsoc/gdp-ppp-pc_histsoc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3a/InputData/socioeconomic/gdp/2015soc/gdp-ppp-pc_2015soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3a/InputData/socioeconomic/gdp/1901soc/gdp-ppp-pc_1901soc_30arcsec_annual_<start>_<end>.nc"
+        ],
+        "ISIMIP3b": [
+          "ISIMIP3b/InputData/socioeconomic/gdp/histsoc/gdp-ppp-pc_histsoc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/2015soc/gdp-ppp-pc_2015soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/1850soc/gdp-ppp-pc_1850soc_30arcsec_annual_<start>_<end>.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-noadapt/gdp-ppp-pc_ssp1_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-noadapt/gdp-ppp-pc_ssp3_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-noadapt/gdp-ppp-pc_ssp5_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp126soc-adapt/gdp-ppp-pc_ssp1_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp370soc-adapt/gdp-ppp-pc_ssp3_ann30arcsec_ual_2015_2100.nc",
+          "ISIMIP3b/InputData/socioeconomic/gdp/ssp585soc-adapt/gdp-ppp-pc_ssp5_ann30arcsec_ual_2015_2100.nc"
         ]
       }
     }
@@ -19110,6 +19209,28 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "group3": true
     },
     {
+      "specifier": "ssp245soc-noadapt",
+      "description": "Varying direct human influences in the future period according to the SSP2-4.5 scenario, not accounting for the impact of climate change under a RCP4.5 climate.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "ssp245soc-adapt",
+      "description": "Varying direct human influences in the future period according to the SSP2-4.5 scenario accounting for the impact of climate change under a RCP4.5 climate.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "group3": true
+    },
+    {
       "specifier": "ssp370soc-noadapt",
       "description": "Varying direct human influences in the future period according to the SSP3-7.0 scenario, not accounting for the impact of climate change under a RCP7.0 climate.",
       "simulation_rounds": [
@@ -19139,6 +19260,28 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         "peat",
         "permafrost",
         "water_global"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "ssp460soc-noadapt",
+      "description": "Varying direct human influences in the future period according to the SSP4-6.0 scenario, not accounting for the impact of climate change under a RCP4.5 climate.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
+      ],
+      "group3": true
+    },
+    {
+      "specifier": "ssp460soc-adapt",
+      "description": "Varying direct human influences in the future period according to the SSP4-6.0 scenario accounting for the impact of climate change under a RCP4.5 climate.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "products": [
+        "SecondaryInputData"
       ],
       "group3": true
     },
@@ -19233,6 +19376,10 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     {
       "specifier": "acidification_type",
       "title": "Acidification type"
+    },
+    {
+      "specifier": "age_stratification",
+      "title": "Age stratification"
     },
     {
       "specifier": "bias_adjustment",
@@ -20188,21 +20335,24 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "format": "binary"
     },
     {
-      "specifier": "countrymasks",
+      "specifier": "countrymasks-binary",
       "group": "countrymasks",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": [
+        "0.5\u00b0 grid (30 arcmin)",
+        "30 arcsec"
+      ],
       "path": {
-        "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks.nc",
-        "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks.nc"
+        "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks-binary_<resolution>.nc",
+        "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks-binary_<resolution>.nc"
       },
       "variables": [
         {
           "specifier": "m_<country-code>",
-          "long_name": "countrymasks",
+          "long_name": "<country-name>",
           "units": ""
         }
       ],
-      "comment": "Country masks from the ISIpedia project. More formats are available at <https://github.com/ISI-MIP/isipedia-countries>.",
+      "comment": "The files contain an additional variable `m_world` which is a land-sea-mask constructed from the countrymasks.",
       "sectors": [
         "agriculture",
         "biodiversity",
@@ -20224,21 +20374,25 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
       "format": "binary"
     },
     {
-      "specifier": "countrymasks_fractional",
+      "specifier": "countrymasks-fractional",
       "group": "countrymasks",
-      "resolution": "0.5\u00b0 grid",
+      "resolution": [
+        "0.5\u00b0 grid (30 arcmin)",
+        "5 arcmin",
+        "1 arcmin"
+      ],
       "path": {
-        "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks_fractional.nc",
-        "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks_fractional.nc"
+        "ISIMIP3a": "ISIMIP3a/InputData/geo_conditions/countrymasks/countrymasks-binary_<resolution>.nc",
+        "ISIMIP3b": "ISIMIP3b/InputData/geo_conditions/countrymasks/countrymasks-binary_<resolution>.nc"
       },
       "variables": [
         {
           "specifier": "m_<country-code>",
-          "long_name": "fractional countrymasks",
+          "long_name": "<country-name>",
           "units": ""
         }
       ],
-      "comment": "Fractional country masks from the ISIpedia project. More formats are available at <https://github.com/ISI-MIP/isipedia-countries>.",
+      "comment": "The files contain an additional variable `m_world` which is a land-sea-mask constructed from the countrymasks.",
       "sectors": [
         "agriculture",
         "biodiversity",
