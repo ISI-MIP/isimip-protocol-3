@@ -1,71 +1,92 @@
-const actions = {
-  changeSimulationRound: function(value) {
-    return { type: 'changeSimulationRound', value }
-  },
-  changeSector: function(value) {
-    return { type: 'changeSector', value }
-  },
-  toggleExperiments: function(value) {
-    return { type: 'toggleExperiments', value }
-  },
-  toggleGroup: function(value) {
-    return { type: 'toggleGroup', value }
-  },
-  toggleGroup3: function() {
-    return { type: 'toggleGroup3' }
-  }
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
+
+import { parseLocation, updateLocation } from './utils/location'
+
+const definitions = window.store.definitions
+const patterns = window.store.patterns
+const commitDate = window.store.commit_date
+const commitHash = window.store.commit_hash
+const commitUrl = window.store.commit_url
+const baseUrl = location.protocol + '//' + location.host + location.pathname
+
+const initialConfig = {
+  simulation_round: 'ISIMIP3a',
+  products: ['OutputData'],
+  sectors: [],
+  experiments: [],
+  groups: [],
+  group3: false
 }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'changeSimulationRound': {
-      return { ...state, config: { ...state.config, simulation_round: action.value } }
-    }
-    case 'changeSector': {
-      if (state.config.sectors.find((sector) => sector === action.value)) {
-        return {
-          ...state,
-          config: { ...state.config, sectors: state.config.sectors.filter((sector) => sector !== action.value) }
-        }
-      } else {
-        return {
-          ...state,
-          config: { ...state.config, sectors: [...state.config.sectors, action.value] }
-        }
-      }
-    }
-    case 'toggleExperiments': {
-      if (state.config.experiments.find((value) => value === action.value)) {
-        return {
-          ...state,
-          config: { ...state.config, experiments: state.config.experiments.filter((value) => value !== action.value) }
-        }
-      } else {
-        return {
-          ...state,
-          config: { ...state.config, experiments: [...state.config.experiments, action.value] }
-        }
-      }
-    }
-    case 'toggleGroup': {
-      if (state.config.groups.find((value) => value === action.value)) {
-        return {
-          ...state,
-          config: { ...state.config, groups: state.config.groups.filter((value) => value !== action.value) }
-        }
-      } else {
-        return {
-          ...state,
-          config: { ...state.config, groups: [...state.config.groups, action.value] }
-        }
-      }
-    }
-    case 'toggleGroup3': {
-      return { ...state, config: { ...state.config, group3: !state.config.group3 }}
-    }
-    default:
-      return state
-  }
-}
+const useConfig = create(
+  persist(
+    immer((set) => ({
+      ...initialConfig,
 
-export { actions, reducer }
+      init: (config) =>
+        set((state) => {
+          Object.assign(state, initialConfig, config)
+        }),
+
+      changeSimulationRound: (value) =>
+        set((state) => {
+          state.simulation_round = value
+        }),
+
+      changeSector: (value) =>
+        set((state) => {
+          state.sectors = state.sectors.includes(value) ? (
+            state.sectors.filter((sector) => sector !== value)
+          ) : (
+            [...state.sectors, value]
+          )
+        }),
+
+      changeAnchor: (value) =>
+        set((state) => {
+          state.anchor = value
+        }),
+
+      toggleExperiments: (value) =>
+        set((state) => {
+          state.experiments = state.experiments.includes(value) ? (
+            state.experiments.filter((v) => v !== value)
+          ) : (
+            [...state.experiments, value]
+          )
+        }),
+
+      toggleGroup: (value) =>
+        set((state) => {
+          state.groups = state.groups.includes(value) ? (
+            state.groups.filter((v) => v !== value)
+          ) : (
+            [...state.groups, value]
+          )
+        }),
+
+      toggleGroup3: () =>
+        set((state) => {
+          state.group3 = !state.group3
+        })
+    })),
+    {
+      name: 'isimip-protocol-3',
+      merge: (persisted, current) => ({
+        ...current,
+        ...persisted,
+        ...parseLocation(definitions)
+      }),
+      onRehydrateStorage: () => (state) => {
+        updateLocation(state)
+        useConfig.setState({})  // triggers persist write
+      }
+    }
+  )
+)
+
+useConfig.subscribe((state) => updateLocation(state))
+
+export { baseUrl, commitDate, commitHash, commitUrl, definitions, patterns, useConfig }

@@ -38,15 +38,21 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '20%'}}>Variable</th>
             <th style={{width: '15%'}}>Variable specifier</th>
             <th style={{width: '15%'}}>Unit</th>
             <th style={{width: '15%'}}>Resolution</th>
             <th style={{width: '35%'}}>
-              Sectors / Comments
-              {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
+              <span className="d-flex align-items-baseline justify-content-between">
+                Sectors / Comments
+                {
+                  !empty && (
+                    <GroupToggleLink closed={!allOpen} all={true} toggle={allToggle} />
+                  )
+                }
+              </span>
             </th>
           </tr>
         </thead>
@@ -56,8 +62,10 @@ const InputVariableTable = function({ config, caption, rows, groups, toggleGroup
               const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
-                    <strong>{group.title}</strong>
+                    <span className="d-flex align-items-baseline justify-content-between">
+                      <strong>{group.title}</strong>
+                      <GroupToggleLink closed={group.closed} toggle={() => toggleGroup(group)} />
+                    </span>
                   </td>
                 </tr>
               ])

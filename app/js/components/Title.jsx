@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { isEmpty } from 'lodash'
+
+import { useScrollspy } from '../hooks'
+import { useConfig } from '../store'
 
 import Sectors from './badges/Sectors'
 import SimulationRounds from './badges/SimulationRounds'
 
 const Title = () => {
-  const config = useSelector((store) => store.config)
+  const config = useConfig()
+
+  useScrollspy()
 
   useEffect(() => {
     const prevTitle = document.title
@@ -28,7 +32,7 @@ const Title = () => {
       <SimulationRounds config={config} /> protocol for <Sectors config={config} sectors={null} />
       {
         config.simulation_round.endsWith('b') && config.group3 && (
-          <span className="badge badge-info">only Group III</span>
+          <span className="badge badge-group3">only Group III</span>
         )
       }
     </div>

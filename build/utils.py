@@ -102,9 +102,9 @@ def read_definitions():
             definitions[file_path.stem] = []
             for group_path in file_path.iterdir():
                 if group_path.suffix == '.yaml':
-                    definitions[file_path.stem] += read_yaml_file(group_path)
+                    definitions[file_path.stem] += read_yaml_file(group_path) or []
         elif file_path.suffix == '.yaml':
-            definitions[file_path.stem] = read_yaml_file(file_path)
+            definitions[file_path.stem] = read_yaml_file(file_path) or []
 
     return definitions
 

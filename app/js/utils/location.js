@@ -9,19 +9,19 @@ const splitLocationHash = () => {
   }
 }
 
-const parseLocation = () => {
+const parseLocation = (definitions) => {
   const tokens = splitLocationHash()
-  const definitions = window.initialState.definitions
   const config = {}
 
   if (isEmpty(tokens)) {
     return config
   } else {
-    // remove anchor id
+    // remove anchor id (always starts with a number)
     if (!isNil(last(tokens)) && last(tokens).match(/^\d/)) {
-      tokens.pop()
+      config.anchor = tokens.pop()
     }
 
+    // parse simulation_round
     const simulation_round = first(tokens)
     if (
       definitions.simulation_round
@@ -31,6 +31,7 @@ const parseLocation = () => {
       config.simulation_round = simulation_round
     }
 
+    // parse sectors
     const sectors = tokens.slice(1)
     if (
       definitions.sector
@@ -44,50 +45,10 @@ const parseLocation = () => {
 }
 
 const updateLocation = (config) => {
-  const tokens = splitLocationHash()
-
-  let pathname = window.location.pathname
-
-  if (isEmpty(tokens)) {
-    pathname += buildPath(config)
-  } else if (last(tokens).match(/^\d/)) {
-    pathname += buildPath(config) + '/' + last(tokens)
-  } else {
-    pathname += buildPath(config)
-  }
+  const pathname = window.location.pathname + buildPath(config)
 
   if (pathname != window.location.pathname) {
-    history.pushState(null, null, pathname)
-  }
-}
-
-const parseAnchor = () => {
-  const tokens = splitLocationHash()
-
-  if (isEmpty(tokens)) {
-    return null
-  } else if (last(tokens).match(/^\d/)) {
-    return document.getElementById(last(tokens))
-  } else {
-    return null
-  }
-}
-
-const updateAnchor = (anchor) => {
-  const tokens = splitLocationHash()
-
-  let pathname = window.location.pathname
-
-  if (isEmpty(tokens)) {
-    pathname += '#/' + anchor
-  } else if (last(tokens).match(/^\d/)) {
-    pathname += '#/' + tokens.slice(0, -1).join('/') + '/' + anchor
-  } else {
-    pathname += '#/' + tokens.join('/') + '/' + anchor
-  }
-
-  if (pathname != window.location.pathname) {
-    history.pushState(null, null, pathname)
+    history.replaceState(null, null, pathname)
   }
 }
 
@@ -102,7 +63,11 @@ const buildPath = (config) => {
     path += '/' + sector
   })
 
+  if (config.anchor) {
+    path += '/' + config.anchor
+  }
+
   return path
 }
 
-export { buildPath, parseAnchor, parseLocation, updateAnchor, updateLocation }
+export { buildPath, parseLocation, updateLocation }

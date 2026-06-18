@@ -1,12 +1,9 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 
-import { reducer } from './store'
-import { parseAnchor, parseLocation, updateAnchor, updateLocation } from './utils/location'
-import { getConfig, updateConfig } from './utils/ls'
+import { useConfig } from './store'
 
+import About from './components/About'
 import Config from './components/Config'
 import Hide from './components/Hide'
 import Link from './components/Link'
@@ -16,105 +13,79 @@ import Table from './components/Table'
 import Title from './components/Title'
 
 import 'bootstrap'
+import '../scss/app.scss'
 
-const initConfig = () => {
-  const defaultConfig = {
-    simulation_round: 'ISIMIP3a',
-    sectors: [],
-    experiments: [],
-    groups: [],
-    group3: false
-  }
-
-  return {...defaultConfig, ...getConfig(), ...parseLocation()}
+// disable scrollRestoration
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual'
 }
 
-const initialConfig = initConfig()
-const anchor = parseAnchor()
-
-updateLocation(initialConfig)
-updateConfig(initialConfig)
-
-const initialState = {
-  definitions: window.initialState.definitions,
-  patterns: window.initialState.patterns,
-  commit_date: window.initialState.commit_date,
-  commit_hash: window.initialState.commit_hash,
-  config: {
-    ...initialConfig,
-    baseurl: location.protocol + '//' + location.host + location.pathname,
-    products: ['OutputData']
-  }
-}
-
-const store = createStore(reducer, initialState)
-
-// update the local storage when the store changed
-store.subscribe(() => {
-  const { config } = store.getState()
-
-  updateLocation(config)
-  updateConfig(config)
-})
+// get the config store
+const config = useConfig.getState()
 
 // insert the toc in the navbar
 const toc = document.getElementsByClassName('toc')[0]
+const tocWrapper = document.getElementsByClassName('toc-wrapper')[0]
+tocWrapper.appendChild(toc.cloneNode(true))
 const tocDropdown = document.getElementsByClassName('toc-dropdown')[0]
 tocDropdown.appendChild(toc.cloneNode(true))
+toc.remove()
+
+// scroll to top on a click on the brand
+document.getElementById('brand').addEventListener('click', (event) => {
+  event.preventDefault()
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+})
+
+// render components
 
 document.querySelectorAll('[data-component="title"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Title />
-    </Provider>
+    <Title />
+  )
+})
+
+document.querySelectorAll('[data-component="about"]').forEach(el => {
+  createRoot(el).render(
+    <About html={el.innerHTML} />
   )
 })
 
 document.querySelectorAll('[data-component="link"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Link />
-    </Provider>
+    <Link />
   )
 })
 
 document.querySelectorAll('[data-component="config"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Config />
-    </Provider>
+    <Config />
   )
 })
 
 document.querySelectorAll('[data-component="show"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Show
-        simulationRound={el.dataset.simulationRound}
-        sector={el.dataset.sector}
-        html={el.innerHTML}
-      />
-    </Provider>
+    <Show
+      simulationRound={el.dataset.simulationRound}
+      sector={el.dataset.sector}
+      html={el.innerHTML}
+    />
   )
 })
 
 document.querySelectorAll('[data-component="hide"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Hide
-        simulationRound={el.dataset.simulationRound}
-        sector={el.dataset.sector}
-        html={el.innerHTML}
-      />
-    </Provider>
+    <Hide
+      simulationRound={el.dataset.simulationRound}
+      sector={el.dataset.sector}
+      html={el.innerHTML}
+    />
   )
 })
 
 document.querySelectorAll('[data-component="pattern"]').forEach(el => {
   createRoot(el).render(
-    <Provider store={store}>
-      <Pattern />
-    </Provider>
+    <Pattern />
   )
 })
 
@@ -124,7 +95,7 @@ document.querySelectorAll('.toc a').forEach(el => {
 
     const id = el.href.split('#').pop()
     document.getElementById(id).scrollIntoView()
-    updateAnchor(id)
+    config.changeAnchor(id)
   }
 })
 
@@ -132,29 +103,25 @@ setTimeout(() => {
   // otherwise the el.innerHTML would not work in Show/Hide ...
   document.querySelectorAll('[data-component="table"]').forEach(el => {
     createRoot(el).render(
-      <Provider store={store}>
-        <Table
-          identifier={el.dataset.identifier}
-          caption={el.dataset.caption}
-        />
-      </Provider>
+      <Table
+        identifier={el.dataset.identifier}
+        caption={el.dataset.caption}
+      />
     )
   })
 
-  setTimeout(() => {
-    // scroll to anchor or position once everything is settled
-    if (anchor) {
-      anchor.scrollIntoView()
-    }
-
-    // set the main height to auto
-    const main = document.getElementsByTagName('main')[0]
-    main.style.height = 'auto'
-
-    setTimeout(() => {
-      // remove the cover div
-      const cover = document.getElementsByClassName('cover')[0]
-      cover.remove()
-    }, 100)
-  }, 200)
+  // add copy-to-clipboard' functionality
+  for (const element of document.getElementsByClassName('copy-to-clipboard')) {
+    element.addEventListener('click', () => {
+      const code = element.getElementsByTagName('code')[0]
+      const text = code.textContent
+      navigator.clipboard.writeText(text)
+    })
+  }
 }, 100)
+
+setTimeout(() => {
+  // remove the cover div
+  const cover = document.getElementsByClassName('cover')[0]
+  cover.remove()
+}, 200)

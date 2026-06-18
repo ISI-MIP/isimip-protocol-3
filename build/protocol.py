@@ -54,6 +54,21 @@ def pattern_generator(ctx):
     )
 
 
+def vite_tags():
+    path = 'app/js/app.jsx'
+
+    manifest_path = Path('output') / 'assets' / '.vite' / 'manifest.json'
+    manifest = json.loads(manifest_path.read_text())
+
+    css_file = manifest[path]['css'][0]
+    js_file = manifest[path]['file']
+
+    return f"""
+        <link rel="stylesheet" href="assets/{css_file}">
+        <script type="module" src="assets/{js_file}"></script>
+    """
+
+
 def main():
     commit_hash = get_commit_hash()
     commit_date = get_commit_date()
@@ -71,7 +86,7 @@ def main():
     environment = Environment(loader=FileSystemLoader(['bibliography', 'protocol', 'templates']))
     template = environment.from_string(template_string)
 
-    md = template.render(commit_url=commit_url, commit_hash=commit_hash, commit_date=commit_date)
+    md = template.render()
     html = markdown(
         md,
         extensions=[
@@ -89,7 +104,7 @@ def main():
             ),
         ],
     )
-    html = html.replace('[mandatory]', '<span class="badge badge-info">mandatory</span>')
+    html = html.replace('[mandatory]', '<span class="badge badge-mandatory">mandatory</span>')
 
     template_path = Path('templates') / 'layout.html'
     output_path = Path('output') / 'index.html'
@@ -104,7 +119,13 @@ def main():
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(
             template.render(
-                html=html, definitions=json.dumps(definitions, indent=2), patterns=json.dumps(patterns, indent=2)
+                html=html,
+                definitions=json.dumps(definitions, indent=2),
+                patterns=json.dumps(patterns, indent=2),
+                commit_url=commit_url,
+                commit_hash=commit_hash,
+                commit_date=commit_date,
+                vite_tags=vite_tags,
             )
         )
 

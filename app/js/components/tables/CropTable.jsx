@@ -17,7 +17,7 @@ const CropTable = function({ config, caption, rows, groups, toggleGroup, toggleG
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '50%'}}>Crop</th>
             <th style={{width: '50%'}}>
@@ -35,8 +35,10 @@ const CropTable = function({ config, caption, rows, groups, toggleGroup, toggleG
               const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="5" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
-                    <strong>{group.title}</strong>
+                    <span className="d-flex align-items-baseline justify-content-between">
+                      <strong>{group.title}</strong>
+                      <GroupToggleLink closed={group.closed} toggle={() => toggleGroup(group)} />
+                    </span>
                   </td>
                 </tr>
               ])

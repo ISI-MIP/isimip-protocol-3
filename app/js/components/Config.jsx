@@ -1,12 +1,31 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { actions } from '../store'
+import { definitions, useConfig } from '../store'
+
+import CopyLocationLink from './links/CopyLocationLink'
 
 const Config = () => {
-  const dispatch = useDispatch()
-  const config = useSelector((store) => store.config)
-  const definitions = useSelector((store) => store.definitions)
+  const config = useConfig()
+
+  const handleShowAll = (event) => {
+    event.preventDefault()
+
+    definitions.group.forEach(group => {
+      if (!config.groups.includes(group.specifier)) {
+        config.toggleGroup(group.specifier)
+      }
+    })
+  }
+
+  const handleHideAll = () => {
+    event.preventDefault()
+
+    definitions.group.forEach(group => {
+      if (config.groups.includes(group.specifier)) {
+        config.toggleGroup(group.specifier)
+      }
+    })
+  }
 
   const group3_full_note = 'Ready for Group III.'
   const group3_half_note = (
@@ -20,28 +39,28 @@ const Config = () => {
 
   const group3_full_badge = (
     <span className="badge-split" title={group3_full_note}>
-      <span className="badge badge-info badge-left">
+      <span className="badge badge-group3 badge-start">
         <span className="circle circle-green"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
 
   const group3_half_badge = (
     <span className="badge-split" title={group3_half_note}>
-      <span className="badge badge-info badge-left">
-        <span className="circle-left circle-green"></span>
-        <span className="circle-right circle-yellow"></span>
+      <span className="badge badge-group3 badge-start">
+        <span className="circle-start circle-green"></span>
+        <span className="circle-end circle-yellow"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
   const group3_none_badge = (
     <span className="badge-split" title={group3_none_note}>
-      <span className="badge badge-info badge-left">
+      <span className="badge badge-group3 badge-start">
         <span className="circle circle-yellow"></span>
       </span>
-      <span className="badge badge-info badge-right">III</span>
+      <span className="badge badge-group3 badge-end">III</span>
     </span>
   )
 
@@ -57,105 +76,134 @@ const Config = () => {
   }
 
   return (
-    <div className="config">
-      <div className="mb-3">
-        <div><strong>Show protocol for:</strong></div>
-        <div>
-          {
-            definitions.simulation_round.map((row, index) => {
-              const id = 'control-simulation-round-' + row.specifier
+    <div className="config mb-2">
+      <div className="row mb-3">
+        <div className="col-md-6">
+          <strong className="d-block mb-1">Show protocol for</strong>
+          <div>
+            {
+              definitions.simulation_round.map((row, index) => {
+                const id = 'control-simulation-round-' + row.specifier
 
-              return (
-                <React.Fragment key={index}>
-                  <div className="form-check">
-                    {
-                      row.specifier.endsWith('b') && (
-                        <div className="float-right">
-                          <input
-                            className="form-check-input" type="checkbox" id="control-group3"
-                            checked={config.group3}
-                            onChange={() => dispatch(actions.toggleGroup3())}
-                          />
-                          <label className="form-check-label" htmlFor="control-group3">
-                            <span className="badge badge-info">only Group III</span>
-                          </label>
+                return (
+                  <React.Fragment key={index}>
+                    <div className="form-check">
+                      {
+                        row.specifier.endsWith('b') && (
+                          <div className="float-end">
+                            <input
+                              className="form-check-input" type="checkbox" id="control-group3"
+                              checked={config.group3}
+                              onChange={() => config.toggleGroup3()}
+                            />
+                            <label className="form-check-label" htmlFor="control-group3">
+                              <span className="badge badge-group3">only Group III</span>
+                            </label>
+                          </div>
+                        )
+                      }
+                      <input
+                        className="form-check-input" type="radio" id={id}
+                        value={row.specifier}
+                        checked={row.specifier == config.simulation_round}
+                        onChange={(event) => config.changeSimulationRound(event.target.value)}
+                      />
+                      <label className="form-check-label" htmlFor={id}>{row.title}</label>
+                    </div>
+                  </React.Fragment>
+                )
+              })
+            }
+          </div>
+        </div>
+        <div className="col-md-6">
+          <CopyLocationLink />
+
+          <strong className="d-block mb-1">Tables</strong>
+          <a className="d-block" href="" onClick={handleShowAll}>
+            Show all groups in all tables
+          </a>
+          <a className="d-block" href="" onClick={handleHideAll}>
+            Hide all groups in all tables
+          </a>
+        </div>
+      </div>
+      <div className="row mb-0">
+        <div className="col-md-6">
+          <div>
+            <strong className="d-block mb-1">Filter for sectors:</strong>
+            <div>
+              {
+                definitions.sector.filter(row => !row.dev).map((row, index) => {
+                  const id = 'control-sector-' + row.specifier
+
+                  return (
+                    <div className="form-check" key={index}>
+                      <input
+                        className="form-check-input" type="checkbox" id={id}
+                        value={row.specifier}
+                        checked={config.sectors.includes(row.specifier)}
+                        onChange={(event) => config.changeSector(event.target.value)}
+                      />
+                      <label className="form-check-label d-flex" htmlFor={id}>
+                        <div>
+                          {row.title}
                         </div>
-                      )
-                    }
-                    <input
-                      className="form-check-input" type="radio" id={id}
-                      value={row.specifier}
-                      checked={row.specifier == config.simulation_round}
-                      onChange={(event) => dispatch(actions.changeSimulationRound(event.target.value))}
-                    />
-                    <label className="form-check-label" htmlFor={id}>{row.title}</label>
-                  </div>
-                </React.Fragment>
-              )
-            })
-          }
+                        <div className="ms-auto text-nowrap">
+                          &nbsp;{getGroup3Badge(row)}
+                        </div>
+                      </label>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="d-flex flex-column justify-content-between h-100">
+            <div>
+              <strong className="d-block mb-1">Sectors under development 🚧</strong>
+              <div>
+                {
+                  definitions.sector.filter(row => row.dev).map((row, index) => {
+                    const id = 'control-sector-' + row.specifier
+
+                    return (
+                      <div className="form-check" key={index}>
+                        <input
+                          className="form-check-input" type="checkbox" id={id}
+                          value={row.specifier}
+                          checked={config.sectors.includes(row.specifier)}
+                          onChange={(event) => config.changeSector(event.target.value)}
+                        />
+                        <label className="form-check-label d-flex" htmlFor={id}>
+                          <div>{row.title}</div>
+                        </label>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <div className="border border-group3 rounded p-2">
+              <div><strong>Group III readiness</strong></div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_full_badge}</div>
+                <div className="text-muted">{group3_full_note}</div>
+              </div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_half_badge}</div>
+                <div className="text-muted">{group3_half_note}</div>
+              </div>
+              <div className="d-flex align-items-top gap-3">
+                <div className="flex-shrink-0">{group3_none_badge}</div>
+                <div className="text-muted">{group3_none_note}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="mb-3">
-        <div><strong>Filter for sectors:</strong></div>
-        <div className="mb-2">
-          {
-            definitions.sector.filter(row => !row.dev).map((row, index) => {
-              const id = 'control-sector-' + row.specifier
-
-              return (
-                <div className="form-check" key={index}>
-                  <input
-                    className="form-check-input" type="checkbox" id={id}
-                    value={row.specifier}
-                    checked={config.sectors.includes(row.specifier)}
-                    onChange={(event) => dispatch(actions.changeSector(event.target.value))}
-                  />
-                  <label className="form-check-label d-flex" htmlFor={id}>
-                    <div>
-                      {row.title}
-                    </div>
-                    <div className="ml-auto text-nowrap">
-                      &nbsp;{getGroup3Badge(row)}
-                    </div>
-                  </label>
-                </div>
-              )
-            })
-          }
-        </div>
-        <div><strong>Still under development 🚧:</strong></div>
-        <div>
-          {
-            definitions.sector.filter(row => row.dev).map((row, index) => {
-              const id = 'control-sector-' + row.specifier
-
-              return (
-                <div className="form-check" key={index}>
-                  <input
-                    className="form-check-input" type="checkbox" id={id}
-                    value={row.specifier}
-                    checked={config.sectors.includes(row.specifier)}
-                    onChange={(event) => dispatch(actions.changeSector(event.target.value))}
-                  />
-                  <label className="form-check-label d-flex" htmlFor={id}>
-                    <div>{row.title}</div>
-                  </label>
-                </div>
-              )
-            })
-          }
-        </div>
-      </div>
-      <p className="text-muted mb-1">
-        {group3_full_badge} {group3_full_note}
-      </p>
-      <p className="text-muted mb-1">
-        {group3_half_badge} {group3_half_note}
-      </p>
-      <p className="text-muted mb-1">
-        {group3_none_badge} {group3_none_note}
-      </p>
     </div>
   )
 }

@@ -10,7 +10,7 @@ def read_instance(file_path):
         instance = []
         for group_path in file_path.iterdir():
             if group_path.suffix == '.yaml':
-                instance += read_file(group_path)
+                instance += read_file(group_path) or []
         return instance
     elif file_path.suffix == '.yaml':
-        return read_file(file_path)
+        return read_file(file_path) or []

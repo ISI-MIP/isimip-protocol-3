@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+
+import { useConfig } from '../store'
 
 const Hide = ({ simulationRound, sector, html }) => {
-  const config = useSelector((store) => store.config)
+  const config = useConfig()
   const sectors = (sector === undefined) ? [] : sector.split(',')
 
   let className = ''

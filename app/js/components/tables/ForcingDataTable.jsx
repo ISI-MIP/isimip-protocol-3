@@ -22,12 +22,18 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
         <caption>
           <ReactMarkdown components={{p: 'span'}}>{caption}</ReactMarkdown>
         </caption>
-        <thead className="thead-dark">
+        <thead className="table-dark">
           <tr>
             <th style={{width: '30%'}}>Forcing</th>
             <th style={{width: '70%'}}>
-              DOI / Path / Documentation
-              {!empty && <GroupToggleLink className="float-right" closed={!allOpen} toggle={allToggle} all={true} />}
+              <span className="d-flex align-items-baseline justify-content-between">
+                DOI / Path / Documentation
+                {
+                  !empty && (
+                    <GroupToggleLink closed={!allOpen} all={true} toggle={allToggle} />
+                  )
+                }
+              </span>
             </th>
           </tr>
         </thead>
@@ -37,8 +43,10 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
               const getHeader = (group) => ([
                 <tr key="-1">
                   <td colSpan="6" className="table-secondary">
-                    <GroupToggleLink className="float-right" closed={group.closed} toggle={() => toggleGroup(group)} />
-                    <strong>{group.title[config.simulation_round] || group.title}</strong>
+                    <span className="d-flex align-items-baseline justify-content-between">
+                      <strong>{group.title[config.simulation_round] || group.title}</strong>
+                      <GroupToggleLink closed={group.closed} toggle={() => toggleGroup(group)} />
+                    </span>
                   </td>
                 </tr>
               ])
@@ -60,7 +68,7 @@ const ForcingTable = function({ config, caption, rows, groups, toggleGroup, togg
                         </td>
                         <td>
                           <p>
-                            {row.group3 && <span className="badge badge-info">Group III</span>}
+                            {row.group3 && <span className="badge badge-group3">Group III</span>}
                             <Sectors config={config} sectors={row.sectors} />
                           </p>
                           {

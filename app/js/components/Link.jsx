@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
+import { baseUrl, useConfig } from '../store'
 import { buildPath } from '../utils/location'
 
 const Link = () => {
-  const config = useSelector((state) => state.config)
-  const href = config.baseurl + buildPath(config)
+  const config = useConfig()
+  const href = baseUrl + buildPath(config)
 
   return (
-    <span className="title">
+    <span className="link">
       <a href={href}>{href}</a>
     </span>
   )

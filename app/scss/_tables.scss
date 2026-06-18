@@ -1,0 +1,103 @@
+table.table {
+    overflow-wrap: break-word;
+    margin-bottom: 2rem;
+    font-size: var(--isimip-small);
+    background-color: white;
+
+    &.table-fixed {
+        table-layout: fixed;
+    }
+
+    thead th {
+        vertical-align: top;
+    }
+    tbody.closed {
+        opacity: 0.2;
+    }
+
+    a.toggle-group {
+        display: block;
+        text-decoration: none;
+
+        .text {
+            font-size: var(--isimip-small);
+        }
+        &:hover > .text {
+            text-decoration: underline;
+        }
+    }
+    th .toggle-group {
+        color: white;
+        font-weight: normal;
+        margin-right: 0;
+
+        .material-symbol {
+            color: white;
+        }
+    }
+
+    .experiments-toggle {
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .experiments-toggle a.toggle-group {
+        float: none;
+    }
+
+    tr.separator td {
+        padding: 1px 0 0 0;
+        background-color: var(--isimip-light-gray);
+    }
+    tr.sens-title td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+    th,
+    td {
+        :last-child {
+            margin-bottom: 0;
+        }
+    }
+    td > ul {
+        margin-bottom: 0.5rem;
+
+        > li {
+            margin-bottom: 0.5rem;
+        }
+        > li > ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+        > li > ul > li {
+            margin-bottom: 0.5rem;
+        }
+    }
+    td p {
+        margin-bottom: 0.5rem;
+    }
+    td.nowrap {
+        padding: 0;
+    }
+    td.nowrap > div {
+        padding: 0.75rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    td .badge {
+        margin-right: 0.25rem;
+    }
+
+    td, tr {
+        border-color: var(--isimip-light-gray);
+    }
+    thead.table-dark {
+        td, tr {
+            border-color: var(--bs-dark) !important;
+        }
+    }
+
+    .table-light,
+    .table-secondary {
+        --bs-table-border-color: inherit;
+    }
+}
