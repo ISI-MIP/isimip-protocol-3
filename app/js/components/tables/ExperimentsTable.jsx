@@ -324,9 +324,9 @@ const ExperimentsTable = function({ definitions, config, caption, rows, toggleEx
 ExperimentRow.propTypes = {
   config: PropTypes.object.isRequired,
   row: PropTypes.object.isRequired,
-  climateScenarios: PropTypes.array.isRequired,
-  socScenarios: PropTypes.array.isRequired,
-  sensScenarios: PropTypes.array.isRequired,
+  climateScenarios: PropTypes.object.isRequired,
+  socScenarios: PropTypes.object.isRequired,
+  sensScenarios: PropTypes.object.isRequired,
   toggleExperiments: PropTypes.func.isRequired
 }
 
