@@ -29,10 +29,13 @@ def test_double_specifiers():
             seen = set()
             doubles = []
             for definition in definitions:
-                if definition['specifier'] in seen:
-                    doubles.append(definition['specifier'])
-                else:
-                    seen.add(definition['specifier'])
+                products = definition.get('products')
+                if products is None or not set(products).isdisjoint({'InputData', 'OutputData'}):
+                    # only check for definitions which will be rendered in the protocol
+                    if definition['specifier'] in seen:
+                        doubles.append(definition['specifier'])
+                    else:
+                        seen.add(definition['specifier'])
 
             assert not doubles, f'{file_path} {doubles}'
 
