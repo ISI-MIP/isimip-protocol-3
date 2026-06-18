@@ -40,9 +40,9 @@ const GroupToggleLink = ({ closed, toggle, all, label }) => {
 }
 
 GroupToggleLink.propTypes = {
-  closed: PropTypes.boolean,
+  closed: PropTypes.bool,
   toggle: PropTypes.func,
-  all: PropTypes.boolean,
+  all: PropTypes.bool,
   label: PropTypes.string,
 }
 

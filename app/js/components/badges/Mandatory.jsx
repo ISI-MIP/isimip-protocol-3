@@ -26,7 +26,7 @@ const Mandatory = ({ mandatory }) => {
 }
 
 Mandatory.propTypes = {
-  mandatory: PropTypes.string
+  mandatory: PropTypes.bool
 }
 
 export default Mandatory
