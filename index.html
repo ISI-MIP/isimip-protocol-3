@@ -8,423 +8,15 @@
         
 
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="shortcut icon" href="assets/img/favicon-32x32.png" type="image/png"/>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="assets/img/logo-white.png" alt="ISIMIP logo" />
-                </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
-                            <div data-component="title"></div>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="tocDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Table of contents
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right toc-dropdown" aria-labelledby="tocDropdown"
-                                 onclick="event.stopPropagation()">
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Simulation Round / Sectors
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="configDropdown"
-                                 onclick="event.stopPropagation()">
-                                <div data-component="config"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main>
-            <div class="container-lg">
-                
-                <h1 id="isimip3-simulation-protocol">ISIMIP3 simulation protocol</h1>
-<div class="-print-none group3-update">
-    <span class="badge badge-info float-right">Group III</span>
-    <p>
-        <strong>Update:</strong> ISIMIP3b Group III (simulations accounting for future changes in the direct human forcing) input data are now available and simulations can be started for a set of sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-green"></span></span><span class="badge badge-info badge-right">III</span></span> in the menu). For other sectors, some of the data are not available yet (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle-left circle-green"></span><span class="circle-right circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>), but models not needing those data may already start. For a third group of sectors (indicated by <span class="badge-split"><span class="badge badge-info badge-left"><span class="circle circle-yellow"></span></span><span class="badge badge-info badge-right">III</span></span>) Group III experiments have been defined but are not ready to begin because most of the data are still under construction.
-    </p>
-    <p>
-        With Group III we introduce new <strong>experiments</strong> (Table 2.1), new <strong>direct human forcing specifiers</strong> (Table 2.3), a new <strong>table of priorities</strong> (Table 2.5), a new <strong>table of requirements</strong> (Table 2.6), and the new <strong>input data</strong> are added to Tables 3.1 and 3.4.
-    </p>
-</div>
-
-<div data-component="config"></div>
-
-<div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#1-introduction">1. Introduction</a><ul>
-<li><a href="#11-general-concept">1.1 General concept</a></li>
-<li><a href="#12-simulation-round">1.2 Simulation round</a></li>
-<li><a href="#13-about-this-protocol">1.3 About this protocol</a></li>
-</ul>
-</li>
-<li><a href="#2-experiments">2. Experiments</a><ul>
-<li><a href="#21-experiments">2.1 Experiments</a></li>
-<li><a href="#22-experiment-specifiers">2.2 Experiment specifiers</a></li>
-<li><a href="#23-group-iii-experiment-priorities">2.3 Group III experiment priorities</a></li>
-<li><a href="#24-group-iii-requirements">2.4 Group III requirements</a></li>
-</ul>
-</li>
-<li><a href="#3-input-data">3. Input data</a><ul>
-<li><a href="#31-forcing-data">3.1 Forcing data</a></li>
-<li><a href="#32-climate-related-forcing">3.2 Climate related forcing</a></li>
-<li><a href="#33-direct-human-forcing">3.3 Direct human forcing</a></li>
-<li><a href="#34-static-geographic-information">3.4 Static geographic information</a></li>
-<li><a href="#35-biophysical-forcing">3.5 Biophysical forcing</a></li>
-</ul>
-</li>
-<li><a href="#4-output-data">4. Output data</a><ul>
-<li><a href="#41-output-dimensions">4.1 Output dimensions</a></li>
-<li><a href="#42-output-variables">4.2 Output variables</a></li>
-<li><a href="#43-sector-specific-identifiers">4.3 Sector specific identifiers</a></li>
-<li><a href="#44-sector-specific-notes">4.4 Sector specific notes</a></li>
-<li><a href="#45-bias-adjustment">4.5 Bias adjustment</a></li>
-</ul>
-</li>
-<li><a href="#5-reporting-model-results">5. Reporting model results</a></li>
-</ul>
-</div>
-<p class="d-print-none">
-    The simulation protocol describes the experiments, input data sets and output variables necessary to participate in the ISIMIP3 simulation round.
-</p>
-
-<p class="d-print-none">
-    <i>
-        Please select the simulation round (ISIMIP3a, ISIMIP3b) and the sectors you are interested in from the menu on the right. The page will then adjust to your selection. The parts of the protocol, which are specific to a simulation round or sector are marked accordingly.
-    </i>
-</p>
-
-<div class="d-none d-print-block mb-3" data-component="title"></div>
-
-<p>Last updated: 17 June 2026</p>
-<p>Commit hash: <a href="https://github.com/ISI-MIP/isimip-protocol-3/commit/0eb41b8b4d840b9ff9b1dc536d38660ecf1540c7">0eb41b8b4d840b9ff9b1dc536d38660ecf1540c7</a></p>
-<p>Direct link for this selection: <span data-component="link"></span></p>
-<h2 id="1-introduction">1. Introduction</h2>
-<h3 id="11-general-concept">1.1 General concept</h3>
-<p><a href="https://www.isimip.org">The Inter-Sectoral Impact Model Intercomparison Project (ISIMIP)</a> provides a framework for the collation of a consistent set of climate impact data across sectors and scales. It also provides a unique opportunity for considering interactions between climate change impacts across sectors through consistent scenarios.</p>
-<p>ISIMIP is intended to be structured in successive rounds connected to the different phases of the climate model intercomparison CMIP (<a href="https://www.isimip.org/documents/355/MissionAndImplementation_12Sep2018.pdf">ISIMIP Mission &amp; Implementation document</a>).</p>
-<p>The main components of the ISIMIP framework are:</p>
-<ul>
-<li>A common set of <strong>climate and other forcing data</strong> which will be distributed via a central database;</li>
-<li>A common <strong>modelling protocol</strong> to ensure consistency across sectors and scales in terms of data, format and experiment set-up;</li>
-<li>A central <strong>repository</strong> where the output data will be collected and made available to the scientific community.</li>
-</ul>
-<h3 id="12-simulation-round">1.2 Simulation round</h3>
-<div data-component="show" data-simulation-round="ISIMIP3a">
-<p><strong>ISIMIP3a</strong> is dedicated to <strong>model evaluation</strong> or <strong>impact attribution</strong>. To this end simulations are forced by observed climate and direct human forcing. In addition, a de-trended version of the observed climate allows for the generation of a <em>no climate change</em> baseline (counterfactual, if available).</p>
-<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<p><strong>ISIMIP3b</strong> is dedicated to a <strong>quantification of climate-related risks</strong> at different levels of climate change and direct human forcing. The <strong>Group I</strong> simulations refer to the pre-industrial and historical period of the CMIP6-based climate simulations. <strong>Group II</strong> covers all future projections assuming fixed 2015 levels of direct human forcing and different future projections of climate (SSP1-2.6, SSP3-7.0 and SSP5-8.5). <strong>Group III</strong> simulations account for future changes in the direct human forcing and are intended to be started once the corresponding direct human forcing input data are available.</p>
-<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
-</div>
-<h3 id="13-about-this-protocol">1.3 About this protocol</h3>
-<p>In this protocol we describe the <a href="#2-experiments">experiments</a>, the different <a href="#3-input-data">input datasets</a>, the <a href="#4-output-data">output variables</a>, and how to <a href="#5-reporting-model-results">report model results</a>.</p>
-<p>Throughout the protocol we use <strong>specifiers</strong> that denote a particular experiment, variable or other parameter. We use these specifiers in the tables below, in the filenames of the input data sets, and ask you to use the same specifiers in your output files. More on reporting data can be found <a href="#5-reporting-model-results">at the end</a> of this document.</p>
-<h2 id="2-experiments">2. Experiments</h2>
-<h3 id="21-experiments">2.1 Experiments</h3>
-<p>In Table 2.1, we describe the different experiments for ISIMIP3. Each default experiment is defined by its <strong>climate related forcing (CRF)</strong> and the assumptions regarding <strong>direct human forcing (DHF)</strong>. The associated specifications all have a label such as <code>obsclim</code> or <code>histsoc</code> that are provided in Table 2.1 and further specified in Tables 2.2 and 2.3. These specifiers are used in the file names of the corresponding input files and should also be used for the names of the output files (see report model results <a href="#5-reporting-model-results">report model results</a>). Sensitivity experiments are described as deviation from a default experiment and represented by labels that are used as a third specifier of the experiments. Their specific meanings are defined in Table 2.4.</p>
-<p>Please note that the experiments are different for ISIMIP3a and ISIMIP3b and some are sector specific. You can use the menu on the top-right of the page to select the simulation round and sectors you are interested in.</p>
-<div data-caption="Table 2.1: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row). Sensitivity labels indicate deviations from the default settings.  Experiments are colored by group: group I (grey), group II (red) and group III (blue). The subtitles in the first row indicate how the experiment is defined in filenames." data-component="table" data-identifier="experiments"></div>
-<h4 id="note-regarding-models-requiring-spin-up">Note regarding models requiring spin-up</h4>
-<div data-component="show" data-sector="agriculture,biodiversity,biomes,coastal,diarrhea,energy,fire,forestry,health,labour,lakes_global,lakes_local,peat,permafrost,water_global,water_regional" data-simulation-round="ISIMIP3a">
-<p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data. The files are located under <code>ISIMIP3a/InputData/climate/atmosphere/spinclim</code> at DKRZ and in the ISIMIP Repository. If more than 100 years of spin-up are needed, these data can be repeated as often as needed.</p>
-<p>For <code>historical</code> runs, use the <code>transclim</code> climate time series, historical CO₂ concentration and varying DHF, for the transition period from spin-up to the start of the experiment (1850-1900). When using a longer spin-up period that (nominally) extends back further than 1850, please keep CO₂ concentration and DHF constant at 1850 level until reaching the year corresponding to 1850.</p>
-<p>For experiments with fixed direct human influences (<code>1901soc</code>, <code>2015soc</code>), the spin-up should be based on the 1901 DHF or 2015 DHF, respectively.</p>
-<p>For sector-specific experiments without direct human influence (<code>nat</code>), the spin-up should not use any DHF. Likewise, the <code>nofire</code> experiment should include a spin-up without fire.</p>
-</div>
-<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
-<p>The model evaluation experiment starts in 1961. To capture historical fishing effort prior
-to 1961, we also provide input for a nominal spin-up (1841-1860, fishing held constant
-at 1861 levels) and pre-industrial transition period (1861-1960, reconstructed fishing
-effort).</p>
-<p>To set-up climate-forcing variables for the entire 1841-1960 period, we ask modellers to
-use the "control run" (<code>ctrlclim</code>) monthly output for the years 1961-1980 (inclusive) on
-repeat for six cycles. These years have been selected because they correspond with
-an entire ENSO cycle and because no climate trend is detectable prior to 1980 from the
-GFDL model.</p>
-<p>For models that require longer spin-up prior to 1841, please keep 1841 levels of fishing
-effort constant and, if needed, repeat the ENSO cycle (e.g. monthly values for 1961-
-1980 inclusive from <code>ctrlclim</code>) for as many times necessary.
-For the ‘no fishing’ runs (<code>nat</code>), the spin-up and pre-industrial transition should not use
-any fishing effort.</p>
-<p>We ask modellers to include all outputs from 1841 onwards for use in our analyses.</p>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed.</p>
-<p>Please note that the "pre-industrial control run" from 1601-1849 is part of the regular experiments that should be reported and hence the spin-up has to be finished before that.</p>
-<p>For experiments with fixed year-2015 direct human influences (<code>2015soc</code>), spin-up should be based on the 2015 DHF.</p>
-<p>For sector-specific experiments without direct human influence (nat), the spin-up should not use any DHF.</p>
-<p>Please note that there is no "pre-industrial control run" from 1601-1849 for these experiments (<code>2015soc</code>, <code>nat</code>, <code>fire</code>, <code>nondep</code>, <code>nondep2015co2</code>) and hence the spin-up links directly to the historical period.</p>
-<p>The simulations with nitrogen cycling or fire turned off should also be spun up with nitrogen cycling or fire turned off.</p>
-</div>
-<h3 id="22-experiment-specifiers">2.2 Experiment specifiers</h3>
-<p>Tables 2.2-2.4 describe the different specifiers for the different experiments as described in Table 2.1. They are used in the file names of the corresponding input files and should also be used for the names of the output files (see <a href="#5-reporting-model-results">report model results</a>).</p>
-<div data-caption="Table 2.2: Experiment specifiers: Climate-Related Forcings (`climate-scenario`)." data-component="table" data-identifier="climate_scenario"></div>
-<div data-caption="Table 2.3: Experiment specifiers: Direct Human Forcing (`soc-scenario`)." data-component="table" data-identifier="soc_scenario"></div>
-<div data-caption="Table 2.4: Experiment specifiers: Sensitivity runs (`sens-scenario`)." data-component="table" data-identifier="sens_scenario"></div>
-<div data-component="show" data-simulation-round="ISIMIP3a">
-<h4 id="general-note-regarding-sensitivity-experiments">General note regarding sensitivity experiments</h4>
-<p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as “default” in the sensitivity specifier of the file name even if the run would be identical to the <code>1901co2</code> sensitivity setting.</p>
-<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<h4 id="general-note-regarding-sensitivity-experiments_1">General note regarding sensitivity experiments</h4>
-<p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as <code>default</code> in the sensitivity specifier of the file name even if the run would be comparable to the <code>2015co2</code> sensitivity setting.</p>
-<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<h3 id="23-group-iii-experiment-priorities">2.3 Group III experiment priorities</h3>
-<p>Table 2.5 lists the priorities for the different <strong>group III</strong> experiments in ISIMIP3b. We kindly ask you to run the experiments marked as <strong>Tier 1: Core set</strong> in any case and the other experiments with the priority given.</p>
-<div data-caption="Table 2.5: Experiment priorities for ISIMIP3b group III." data-component="table" data-identifier="group3_ranking"></div>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<h3 id="24-group-iii-requirements">2.4 Group III requirements</h3>
-<p>Table 2.6 lists the <strong>direct human forcings (DHF)</strong> that are relevant for the different sectors for <strong>group III</strong> simulations in ISIMIP3b. <strong>Required</strong> means that the forcing has to be accounted for in the simulations in the given sectors to count as a group III simulation. In addition a forcing can be <strong>harmonized</strong> by e.g. prescribing the application of a specific forcing data set from Table 3.1, or the specific implementation of the forcing can be left to the individual modellers. The harmonization setting is closely connected to the <strong>mandatory</strong> / <strong>optional</strong> setting in Table 3.1 (mandatory means that all modelling teams must use the same forcings dataset and not an alternative one).</p>
-<div data-caption="Table 2.6: Direct Human Forcings (DHF) considered in the group III simulations." data-component="table" data-identifier="group3_requirements"></div>
-</div>
-<div data-component="show" data-sector="water_global" data-simulation-round="ISIMIP3b">
-<h4 id="note-regarding-group-iii-simulations-for-the-global-water-sector">Note regarding Group III simulations for the Global Water sector</h4>
-<p>For the ISIMIP3b Group III simulations, modelling teams in the global water sector are requested to first use the land use and irrigation direct human forcings, as well as non-irrigation water use for the models that need it. These are the <code>default</code> Group III simulations for the sector. These include adaptation and no adaptation runs; though note that non-irrigation water use forcing is the same for both.</p>
-<p>Then after that, as the <code>extrasoc</code> sensitivity experiment, modelling teams can choose by themselves which direct human forcings are included on top of land-use and irrigation (e.g. hydropower dams and inter-basin water transfer could be added by one model, while another model might add only desalination).</p>
-<p>Modelling teams are encouraged to contact the sector coordinators to help coordinate the extrasoc experiments between modelling teams.</p>
-</div>
-<div data-component="show" data-sector="energy_demand" data-simulation-round="ISIMIP3b">
-<h4 id="note-regarding-group-iii-simulations-for-the-energy-demand-sector">Note regarding Group III simulations for the Energy (demand) sector</h4>
-<p>In the <em>no-adaptation</em> runs (<code>no-adapt</code>), changes in the output variables such as the residential air conditioning penetration rate are driven by socioeconomic development only, whereas in the <em>adaptation</em> runs (<code>adapt</code>), these changes are additionally driven by climate change.</p>
-</div>
-<h2 id="3-input-data">3. Input data</h2>
-<h3 id="31-forcing-data">3.1 Forcing data</h3>
-<p>Table 3.1 describes the <strong>climate-related, direct human, static geographic, and biophysical forcing data</strong> provided for the different experiments. The datasets are grouped according to the main experiment specifiers described in 2.2 - 2.4. The different datasets and the variables they contain are described in more detail in Tables 3.3 - 3.6.</p>
-<p>For each dataset, we provide the path where modellers can obtain the data at DKRZ. The base directory for this is:</p>
-<pre><code>levante:/work/bb0820/ISIMIP/
-</code></pre>
-<p>The data are also available at the <a href="https://data.isimip.org">ISIMIP Repository</a> without login, or will be made available there in the future. Further information on accessing ISIMIP data can be found at <a href="https://www.isimip.org/gettingstarted/data-access/">ISIMIP - getting started</a>.</p>
-<p>Some of the datasets are tagged as <span class="badge badge-info">mandatory</span>. This does not mean that the data must be used in all cases, but <strong>if</strong> your models uses input data of this kind, we require to use the specified dataset. If an alternative data set is used instead, we cannot consider it an ISIMIP simulation. If the <span class="badge badge-info">mandatory</span> label is not given, you may use alternative data (please document this clearly).</p>
-<div data-caption="Table 3.1: Forcing data." data-component="table" data-identifier="forcing_data"></div>
-<h3 id="32-climate-related-forcing">3.2 Climate related forcing</h3>
-<div data-component="show" data-simulation-round="ISIMIP3a">
-<p>The climate forcing input files can be found on DKRZ using the following pattern:</p>
-<pre><code>ISIMIP3a/InputData/climate/atmosphere/&lt;climate-scenario&gt;/global/daily/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
-
-# ocean data for marine-fishery
-ISIMIP3a/InputData/climate/ocean/&lt;climate-scenario&gt;/global/monthly/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc
-</code></pre>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<p>The climate forcing input files can be found on DKRZ using the following pattern:</p>
-<pre><code>ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;bias-adjustment&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
-
-# ocean data for marine-fishery
-ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_onedeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 1° grid
-ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_halfdeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 0.5° grid
-</code></pre>
-</div>
-<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3b">
-<h4 id="note-on-ocean-data-availability">Note on ocean data availability</h4>
-<p>Variable availability is mainly based on the data published in ESGF
-and may vary between the CMIP experiments.</p>
-<p>Some variables are available as extracted versions from vertically resolved data. Their
-variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
-(surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
-</div>
-<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
-<h4 id="note-on-ocean-data-availability_1">Note on ocean data availability</h4>
-<p>Some variables are available as extracted versions from vertically resolved data. Their
-variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
-(surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
-</div>
-<h4 id="climate-forcing">Climate forcing</h4>
-<div data-caption="Table 3.2: Climate forcing datasets (`climate-forcing`)." data-component="table" data-identifier="climate_forcing"></div>
-<h4 id="note-on-climate-forcing-priority">Note on climate forcing priority</h4>
-<p>The priority for the different climate forcing datasets is given in the last column of Table 3.1. If you cannot use all climate forcing datasets, please concentrate on those with a higher priority. Please note, that for ISIMIP3b group III simulations we provide the priorities of the different experiments in Table 2.5.</p>
-<h4 id="climate-related-variables">Climate related variables</h4>
-<div data-caption="Table 3.3: Climate related forcing variables." data-component="table" data-identifier="climate_variable"></div>
-<h3 id="33-direct-human-forcing">3.3 Direct human forcing</h3>
-<div data-caption="Table 3.4: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
-<h3 id="34-static-geographic-information">3.4 Static geographic information</h3>
-<div data-caption="Table 3.5: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
-<h3 id="35-biophysical-forcing">3.5 Biophysical forcing</h3>
-<div data-caption="Table 3.6: Biophysical forcing data from other ISIMIP impact models." data-component="table" data-identifier="upstream_variable"></div>
-<div data-component="hide" data-sector="fs-n,groundwater">
-<p>No input data from other ISIMIP impact models are available for this selection of simulation round and sectors.</p>
-</div>
-<h2 id="4-output-data">4. Output data</h2>
-<h3 id="41-output-dimensions">4.1 Output dimensions</h3>
-<p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
-<div data-component="show" data-sector="agriculture">
-<h4 id="note-on-agriculture-output">Note on agriculture output</h4>
-<p>For agricultural output, variables are to be reported with the dimensions <strong>(time,lat,lon)</strong> where the time axis' unit is <code>growing seasons since 1901-01-01 00:00:00</code> resp. <code>growing seasons since 1601-01-01 00:00:00</code> for all variables unless these are reported on a monthly time axis, e.g. <code>soilmoist</code>. In many cases growing seasons are equivalent to years, as there is always only one planting event per year. However, due to temperature-sensitive growing season lengths, the growing seasons are not fully equivalent to years and users should note the difference. Reported variables on start and end of the growing season are supplied to allow allocating events to transient time axes if desired.</p>
-</div>
-<p>Many variables are defined per area (unit m-2). Typically, and unless otherwise defined, the corresponding reference area is the land area of the grid cell, excluding any water bodies. However, in some cases, it may be necessary or meaningful to report a variable relative to the continental area (including inland water bodies, lakes etc...). For example, evaporation could relate to the land area (excluding water bodies etc.), or to the continental area if the model evaporation occurs over both over land and over water. Also, for some variables, the "per PFT" reporting allows modellers to indicate whether inland water bodies are included in the model or not, and hence, what reference area the variable refers to. In such cases, please specify the reference area in a NetCDF global attribute (e.g. <code>:reference_area = "continental area (including inland water bodies)"</code>).</p>
-<h3 id="42-output-variables">4.2 Output variables</h3>
-<div data-caption="Table 4.1: Output variables (`variable`)." data-component="table" data-identifier="variable"></div>
-<h3 id="43-sector-specific-identifiers">4.3 Sector specific identifiers</h3>
-<div data-component="show" data-sector="agriculture">
-<h4 id="crop-priority-and-naming">Crop priority and naming</h4>
-<div data-caption="Table 4.2: Crop naming and priorities (`crop`)." data-component="table" data-identifier="crop"></div>
-<h4 id="irrigation">Irrigation</h4>
-<div data-caption="Table 4.3: Irrigation specifiers (`irrigation`)." data-component="table" data-identifier="irrigation"></div>
-<h4 id="harmonization">Harmonization</h4>
-<div data-caption="Table 4.4: Harmonization specifiers (`harmonization`)." data-component="table" data-identifier="harmonization"></div>
-</div>
-<div data-component="show" data-sector="forestry">
-<h4 id="species">Species</h4>
-<div data-caption="Table 4.5: Species specifiers (`species`)." data-component="table" data-identifier="species"></div>
-<h4 id="forest-stands">Forest stands</h4>
-<div data-caption="Table 4.6: Forest stand specifiers (`forest-stand`)." data-component="table" data-identifier="forest_stand"></div>
-</div>
-<div data-component="show" data-sector="lakes_local">
-<h4 id="lake-sites">Lake sites</h4>
-<div data-caption="Table 4.7: Lake site specifications for local lake models (`lake-site`)." data-component="table" data-identifier="lake_site"></div>
-<p>A document with additional information is maintained by the sector coordinators and provided at <a href="https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854">https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854</a>.</p>
-</div>
-<div data-component="show" data-sector="water_regional">
-<h4 id="catchment-gauging-stations">Catchment gauging stations</h4>
-<div data-caption="Table 4.9: Catchment gauging stations for reporting regional hydrological model results (`station`)." data-component="table" data-identifier="station"></div>
-</div>
-<div data-component="hide" data-sector="agriculture,forestry,lakes_local,water_regional">
-<p>No sector specific identifiers are available for this selection of simulation round and sectors.</p>
-</div>
-<h3 id="44-sector-specific-notes">4.4 Sector specific notes</h3>
-<div data-component="show" data-sector="agriculture">
-<h4 id="reporting-per-growing-seasons">Reporting per growing seasons</h4>
-<p>To resolve potential double harvests within one year, crop yields should be reported per growing season and not per calendar year. Thus, in the NetCDF output files, do not use a time dimension but instead a unitless coordinate variable with integer values; more information on how to construct these files is given below and on the ISIMIP website (<a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>).</p>
-<p>Cumulative growing season variables such as, e.g., actual evapotranspiration or precipitation are to be accumulated over the growing season. The first season in the file (level=0) is then the first complete growing season of the time period provided by the input data without any assumed spin-up data, which equates to the growing season with the first planting after this date. To ensure that data can be matched to individual years in post-processing, it is essential to also provide the actual planting dates (as day of the year), actual planting years (year), anthesis dates (as day of the year), year of anthesis (year), maturity dates (day of the year), and year of maturity (year). This procedure is identical to the GGCMI convention (Elliott et al., 2015, <a href="https://doi.org/10.5194/gmd-8-261-2015">https://doi.org/10.5194/gmd-8-261-2015</a>).</p>
-</div>
-<div data-component="show" data-sector="biomes,fire,permafrost,peat">
-<h4 id="information-about-pft-specific-outputs">Information about PFT-specific outputs</h4>
-<ul>
-<li>Unless otherwise defined, variables in ISIMIP should be reported relative to the grid cell land area.</li>
-<li>The output provided per Plant Functional Type (PFT) should be expressed relative to the respective PFT area so that e.g. sum(gpp-pft*pft-pft)=gpp-total.</li>
-<li>When your model allows several PFTs to grow on the same area and hence the total cover fraction can be more than one, please scale the PFT area to one and report this step in the model documentation on the ISIMIP homepage.</li>
-<li>When your model grows the same PFT on different land-use classes, e.g. the same c3-grass represents grasses growing on natural grasslands, pasture and possible even as crop, please differentiate this in your output by defining land-use specific PFT such as c3-grass-pasture, c3-grass-natural, c3-grass-crop and report this in model documentation on the ISIMIP homepage.</li>
-<li>For better understanding the abbreviations in the filename please provide the full PFT name in a <code>pft</code> variable attribute.</li>
-</ul>
-</div>
-<div data-component="show" data-sector="peat,permafrost">
-<h4 id="information-about-soil-organic-carbon-pools-of-different-turnover-times">Information about soil organic carbon pools of different turnover times</h4>
-<p>Some variables can be provided separately by soil organic carbon pools of different turnover times, if your model simulates those. This is done using the <code>-&lt;pool&gt;</code> extension. Please indicate them as <code>-fast</code>, <code>-slow</code>, and <code>-passive</code> and describe your definition of the turnover times in your model description. The extension is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
-</div>
-<div data-component="show" data-sector="peat">
-<h4 id="information-about-peat-outputs">Information about peat outputs</h4>
-<p>All variables should be reported separately for the peat fraction of the grid cell if they are calculated separately for peat and non-peat grid-cell fractions, with a peattype (<code>&lt;pt&gt;</code>) extension to the variable name. This extension can be <code>-naturalpeat</code>, <code>-drainpeat</code>, <code>-restorepeat</code>, or <code>-minl</code> for the non-peat (mineral) gridcell fraction. It is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
-</div>
-<div data-component="show" data-sector="health">
-<h4 id="additional-instructions-for-the-health-sector">Additional instructions for the health sector</h4>
-<ul>
-<li>If different realizations of the model are applied, then these should be indicated by the specifier <code>&lt;r&gt;</code>.
-    E.g. to reflect a central, upper, and lower estimate of the ERF: <code>&lt;r&gt; = lower, central, upper</code>.
-    Please explain the meaning of these realizations in the online model documentation; contact the ISIMIP coordination team in case of questions.</li>
-<li>If data are disaggregated e.g. by age group, gender, etc., they should be reported along an additional
-    dimension, described by an auxiliary coordinate variable, in the NetCDF files. See the example provided
-    at <a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>.</li>
-<li>For local (non-gridded) data, locations (cities/regions/countries) should be reported along an additional
-    dimension called location, with the location name given as string in an auxiliary coordinate variable
-    called location_name, in the NetCDF files. In addition, coordinates of the location should be reported
-    in auxiliary variables called location_lat and location_lon. See the example provided at
-    <a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>. The <code>&lt;region&gt;</code> specifier in the
-    file name should be set to <code>local</code>. For gridded data, the <code>&lt;region&gt;</code> specifier in the file name
-    should be <code>global</code> or indicate a region or country.</li>
-</ul>
-</div>
-<div data-component="show" data-sector="labour">
-<h4 id="additional-instructions-for-the-labour-sector">Additional instructions for the labour sector</h4>
-<ul>
-<li>The analysis uses a large collection of micro-survey data to estimate new, and robust global and regional temperature and wet-bulb globe temperature exposure-response functions (ERFs) for labour supply at both individual and sub-national regions across the world. The specifications control for income and both location (sub-national region/country) and temporal (week/month/year) fixed-effects along with extreme events such as droughts. In the case of country-specific studies using micro-surveys (Antonelli et al. 2020; Shahegh et al. 2020; Shahegh and Dasgupta 2022), specifications also include socioeconomic and demographic drivers such as gender, age, education, and total income. The response-functions are estimated separately for working conditions; high-exposure/outdoor in the sun (e.g. agricultural, hunting, forestry and fishing; mining and quarrying; and construction) and low-exposure/outdoor in the shade or indoor (e.g. manufacturing and utilities).</li>
-<li>This sector uses an augmented mean function, created from an ensemble of five labour productivity response-functions reported in Dasgupta et al. 2021.
-M1) Pilcher et al., 2002: Psychological performance, e.g. reaction time, tracking or memory task, at global scale.
-M2) Dunne et al., 2013: Individual capacity to safely perform heavy labour under heat stress at global scale.
-M3) Kjellstrom et al., 2014: Reduction of hourly work capacity for heavy work following the ISO standard at global scale.
-M4) Sahu et al., 2013: Work output per hour of rice farmers calculated by number of rice bundles laid down, at country-level for India.
-M5) Li et al., 2016: Time efficiency measures; direct, indirect, and idle time of rebar construction workers, at country-level for China.
-Work is underway to estimate labour productivity response-functions using empirical analysis.</li>
-</ul>
-</div>
-<div data-component="show" data-sector="fs-n">
-<h4 id="additional-instructions-for-the-food-security-and-nutrition-fs-n-sector">Additional instructions for the food-security and nutrition (FS-N) sector</h4>
-<ul>
-<li>This sector will use additional data: cereal import dependency from FAOSTAT (to prescribe dependence on trade or subsistence farming), age distribution and income level data. Econometric specifications will control for income and inequality (HDI). Data on trade dependency, subsistence farming, and age distribution will allow segregated projections considering vulnerability in terms of population dependency ratio and import dependency.</li>
-<li>Please consider that for simulations based on empirical models, not all the socioeconomic variables are used for projections. This is standard practice to isolate the climate signal. In these cases, variables used should be specified in the model output documentation.</li>
-</ul>
-</div>
-<div data-component="show" data-sector="water_quality">
-<h4 id="note-regarding-additional-forcings-for-the-water-quality-sector">Note regarding additional forcings for the Water quality sector</h4>
-<p>Additional agricultural-related model inputs such as N biological fixation, crop uptake, grassland uptake, animal manure use in cropland and on grassland and livestock numbers are not available for ISIMIP3b Groups I+II. These additional forcings will be available to simulate ISIMIP3b (Group III). The same holds for additional human-related model inputs for point sources such as sewage connections of urban/rural population, treatment removal fractions, anthropogenic point source inputs to surface waters (total effluents), wastewater production, collection, treatment and reuse.</p>
-</div>
-<div data-component="hide" data-sector="agriculture,biomes,fire,peat,permafrost,health,water_quality">
-<p>No sector specific notes are available for this selection of simulation round and sectors.</p>
-</div>
-<div data-component="show" data-simulation-round="ISIMIP3b">
-<h3 id="45-bias-adjustment">4.5 Bias adjustment</h3>
-<p>Depending on the used climate input data, the corresponding bias adjustment needs to be part of the output filename.</p>
-<div data-caption="Table 4.11: Bias adjustment specifiers." data-component="table" data-identifier="bias_adjustment"></div>
-</div>
-<h2 id="5-reporting-model-results">5. Reporting model results</h2>
-<p>The specification on how to submit the data, as well as further information and instructions are given on the ISIMIP website at:</p>
-<p><a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a></p>
-<p>It is important that you comply precisely with the formatting specified there, in order to facilitate the analysis of your simulation results in the ISIMIP framework. Incorrect formatting can
-seriously delay the analysis. The ISIMIP Team will be glad to assist with the preparation of these files if necessary.</p>
-<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b. If you cannot fulfill this, please indicate that by using a suffix for your model name (e.g. simple version numbering: MODEL-v1, MODEL-v2 or following <a href="https://semver.org">semantic versioning</a>: MODEL-2.0.0).</p>
-<p>This versioning does not only apply to changes in the computational logic of the model, but also to input parameters, calibration or setup. If model versions are not reported, we will name them according to the simulation round (e.g. MODEL-isimip3a). We require the strict versioning to ensure that differences between model results are fully attributable to the changes in model forcings.</p>
-<p>File names consist of a series of identifier, separated by underscores. Things to note:</p>
-<ul>
-<li>Report one variable per file.</li>
-<li>In filenames, use lowercase letters only.</li>
-<li>Use underscore (<code>_</code>) to separate identifiers.</li>
-<li>Variable names consist of a single word without hyphens or underscores.</li>
-<li>Use hyphens (<code>-</code>) to separate strings within an identifier, e.g. in a model name.</li>
-<li>If no specific <code>sens-scenario</code> is given in the experiments table, use <code>default</code>.</li>
-<li>Data model is NETCDF4_CLASSIC with minimum compression level of <code>5</code>.</li>
-<li>NetCDF file extension is <code>.nc</code>.</li>
-<li>The relative time axis' reference year is <code>1901</code> for ISIMIP3a and <code>1601</code> for ISIMIP3b.</li>
-<li><code>!!!</code><strong>[modified 2022-12-08]</strong> Use the <code>standard</code>, <code>proleptic_gregorian</code>, or <code>365_day</code> calendar depending on the temporal resolution of your model for <strong>all</strong> types of reported temporal resolutions and write data based on a <strong>daily time index</strong> (<code>days since ...</code>). Avoid using the <code>360_day</code> calendar for monthly and annual data.</li>
-<li>For fixed variables (e.g. cellarea, contfrac) omit the NetCDF-internal times dimension but add the period identifiers <code>0000_0000</code> in the file name.</li>
-<li>Set NetCDF internal chunking to use one chunk per record, i.e., one horizontal field, level, and one time step.</li>
-<li>The variable attributes <code>axis</code>, <code>standard_name</code>, <code>long_name</code>, <code>calendar</code>, <code>missing_value</code>, <code>units</code>, <code>comment</code>, <code>enteric_infection</code>, <code>description</code>, <code>unit_conversion_info</code>, <code>positive</code>, <code>bounds</code>, <code>classes</code>, <code>pft</code> and  <code>fuelclass</code> are whitelisted in the QC-Tool and will not be deleted during formal file checks. Keep in mind to put additional infomations only into these attributes.</li>
-<li>Add the <code>institution</code> and <code>contact</code> attributes to the global metadata of the NetCDF files, with the latter following the format “NAME <EMAIL>, ...”.</li>
-</ul>
-<p>Please name the files according to a sector specific pattern:</p>
-<div data-component="pattern"></div>
-<p>and replace the identifiers with the specifiers given in the different tables of this document:</p>
-<ul>
-<li><a href="#2-experiments">Experiments</a>: Table 2.2: <code>climate-scenario</code>, Table 2.3: <code>soc-scenario</code>, Table 2.4: <code>sens-scenario</code></li>
-<li><a href="#3-input-data">Input data</a>: Table 3.1: <code>climate-forcing</code>, Table 3.2: <code>bias-adjustment</code></li>
-<li><a href="#4-output-data">Output data</a>: Table 4.1: <code>variable</code>, <code>resolution</code>, <code>time-step</code>, Table 4.6 - 4.9: <code>region</code> (or <code>global</code> for most sectors)</li>
-</ul>
-<p>For questions or clarifications, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> or the data managers directly (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;">&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;</a>) before submitting files.</p>
-                
-            </div>
-        </main>
-
-        <footer>
-            <div class="container">
-                <div class="text-center">
-                    <a href="https://www.isimip.org">The Inter-Sectoral Impact Model Intercomparison Project</a>.
-                    For questions or clarifications, please contact <a href="mailto:info@isimip.org">info@isimip.org</a>.
-                </div>
-            </div>
-        </footer>
-
-        <div class="cover"></div>
+        
+        <link rel="stylesheet" href="assets/js/app-DdIrhOxY.css">
+        <script type="module" src="assets/js/app-CPOspgRn.js"></script>
+    
 
         <script>
-            window.initialState = {
+            window.store = {
                 definitions : {
   "time_span": [
     {
@@ -2579,178 +2171,6 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
         },
         {
           "specifier": "oil_crops_rapeseed_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        }
-      ],
-      "comment": {
-        "ISIMIP3a": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
-        "ISIMIP3b": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/112/)."
-      },
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "fire",
-        "forestry",
-        "groundwater",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional",
-        "water_quality"
-      ],
-      "time_periods": {
-        "ISIMIP3b": [
-          "2015-2100"
-        ]
-      }
-    },
-    {
-      "specifier": "n-fertilizer-15crops-specific",
-      "title": "Nitrogen fertilizer input (15 specific crops representative for each 15-crop group)",
-      "group": "n-fertilizer",
-      "mandatory": true,
-      "group3": true,
-      "frequency": "annual (growing season)",
-      "resolution": "0.5\u00b0 grid",
-      "path": {
-        "ISIMIP3b": [
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-noadapt/n-fertilizer-15crops-specific_<lu-model>_ssp1_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-noadapt/n-fertilizer-15crops-specific_<lu-model>_ssp3_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-noadapt/n-fertilizer-15crops-specific_<lu-model>_ssp5_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-adapt/n-fertilizer-15crops-specific_<lu-model>_<climate-forcing>_ssp126_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-adapt/n-fertilizer-15crops-specific_<lu-model>_<climate-forcing>_ssp370_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/n-fertilizer-15crops-specific_<lu-model>_<climate-forcing>_ssp585_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/n-fertilizer-15crops-specific_<lu-model>_<climate-forcing>_ssp585_2015co2_annual_2015_2100.nc"
-        ]
-      },
-      "variables": [
-        {
-          "specifier": "others_perennial_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "others_annual_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "others_N-fixing_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "tropical_roots_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "tropical_cereals_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "temperate_roots_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "temperate_cereals_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "pulses_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "oil_crops_sunflower_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "oil_crops_soybean_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "rice_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "maize_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "oil_crops_groundnut_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "oil_crops_rapeseed_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "c4per_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        }
-      ],
-      "comment": {
-        "ISIMIP3a": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/108/).",
-        "ISIMIP3b": "Input dataset documentation \u2192 [Nitrogen Fertilizer](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/112/)."
-      },
-      "sectors": [
-        "agriculture",
-        "biodiversity",
-        "biomes",
-        "diarrhea",
-        "fire",
-        "forestry",
-        "groundwater",
-        "health",
-        "lakes_global",
-        "lakes_local",
-        "peat",
-        "permafrost",
-        "water_global",
-        "water_regional",
-        "water_quality"
-      ],
-      "time_periods": {
-        "ISIMIP3b": [
-          "2015-2100"
-        ]
-      }
-    },
-    {
-      "specifier": "n-fertilizer-biofuel",
-      "title": "Nitrogen fertilizer input (biofuel)",
-      "group": "n-fertilizer",
-      "mandatory": true,
-      "group3": true,
-      "frequency": "annual (growing season)",
-      "resolution": "0.5\u00b0 grid",
-      "path": {
-        "ISIMIP3b": [
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-noadapt/n-fertilizer-biofuel_<lu-model>_ssp1_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-noadapt/n-fertilizer-biofuel_<lu-model>_ssp3_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-noadapt/n-fertilizer-biofuel_<lu-model>_ssp5_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-adapt/n-fertilizer-biofuel_<lu-model>_<climate-forcing>_ssp126_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-adapt/n-fertilizer-biofuel_<lu-model>_<climate-forcing>_ssp370_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/n-fertilizer-biofuel_<lu-model>_<climate-forcing>_ssp585_annual_2015_2100.nc",
-          "ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/n-fertilizer-biofuel_<lu-model>_<climate-forcing>_ssp585_2015co2_annual_2015_2100.nc"
-        ]
-      },
-      "variables": [
-        {
-          "specifier": "c3per_bioenergy_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "c3per_food_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "c4per_bioenergy_fertl",
-          "units": "kg ha-1 yr-1 (crop season)"
-        },
-        {
-          "specifier": "c4per_food_fertl",
           "units": "kg ha-1 yr-1 (crop season)"
         }
       ],
@@ -27292,10 +26712,441 @@ seriously delay the analysis. The ISIMIP Team will be glad to assist with the pr
     "water_quality": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<station>[a-z-]+)_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})"
   }
 },
-                commit_date: '',
-                commit_hash: ''
+                commit_url: 'https://github.com/ISI-MIP/isimip-protocol-3/commit/c06e41a7e8a7bb666c5692ca9f553c834f81cb8d',
+                commit_hash: 'c06e41a7e8a7bb666c5692ca9f553c834f81cb8d',
+                commit_date: '18 June 2026'
             }
         </script>
-        <script src="assets/js/app.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+            <div class="container">
+                <a id="brand" class="navbar-brand" href="">
+                    <img src="assets/img/logo-white.png" alt="ISIMIP logo" />
+                </a>
+                <button
+                    class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav align-items-center w-100">
+                        <li class="nav-item me-auto">
+                            <div data-component="title"></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle" href="#" id="tocDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            >
+                                Table of contents
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end toc-dropdown" aria-labelledby="tocDropdown"
+                                 onclick="event.stopPropagation()">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            >
+                                Simulation Round / Sectors
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="configDropdown"
+                                 onclick="event.stopPropagation()">
+                                <div data-component="config"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="corner-banner">ISIMIP3</div>
+        </nav>
+
+        <main>
+            <div class="container">
+                
+                <h1 id="isimip3-simulation-protocol">ISIMIP3 simulation protocol</h1>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#1-introduction">1. Introduction</a><ul>
+<li><a href="#11-general-concept">1.1 General concept</a></li>
+<li><a href="#12-simulation-round">1.2 Simulation round</a></li>
+<li><a href="#13-about-this-protocol">1.3 About this protocol</a></li>
+</ul>
+</li>
+<li><a href="#2-experiments">2. Experiments</a><ul>
+<li><a href="#21-experiments">2.1 Experiments</a></li>
+<li><a href="#22-experiment-specifiers">2.2 Experiment specifiers</a></li>
+<li><a href="#23-group-iii-experiment-priorities">2.3 Group III experiment priorities</a></li>
+<li><a href="#24-group-iii-requirements">2.4 Group III requirements</a></li>
+</ul>
+</li>
+<li><a href="#3-input-data">3. Input data</a><ul>
+<li><a href="#31-forcing-data">3.1 Forcing data</a></li>
+<li><a href="#32-climate-related-forcing">3.2 Climate related forcing</a></li>
+<li><a href="#33-direct-human-forcing">3.3 Direct human forcing</a></li>
+<li><a href="#34-static-geographic-information">3.4 Static geographic information</a></li>
+<li><a href="#35-biophysical-forcing">3.5 Biophysical forcing</a></li>
+</ul>
+</li>
+<li><a href="#4-output-data">4. Output data</a><ul>
+<li><a href="#41-output-dimensions">4.1 Output dimensions</a></li>
+<li><a href="#42-output-variables">4.2 Output variables</a></li>
+<li><a href="#43-sector-specific-identifiers">4.3 Sector specific identifiers</a></li>
+<li><a href="#44-sector-specific-notes">4.4 Sector specific notes</a></li>
+<li><a href="#45-bias-adjustment">4.5 Bias adjustment</a></li>
+</ul>
+</li>
+<li><a href="#5-reporting-model-results">5. Reporting model results</a></li>
+</ul>
+</div>
+<div class="d-print-none">
+
+<div data-component="about">
+<strong>About</strong>
+
+<p>
+    The simulation protocol describes the experiments, input data sets and output variables necessary to
+    participate in the ISIMIP3 simulation round.
+</p>
+
+<p>
+    <i>
+        Please select the simulation round (ISIMIP3a or ISIMIP3b) and the sectors you are interested in from the
+        control panel below, or from the dropdown in the navigation bar. The page will then adjust to your selection.
+        The parts of the protocol, which are specific to a simulation round or sector are marked accordingly.
+    </i>
+</p>
+</div>
+
+<div class="group3-update mb-3">
+    <span class="badge badge-group3 float-end ms-2">Group III</span>
+    <p>
+        <strong>Update:</strong> ISIMIP3b Group III (simulations accounting for future changes in the direct human forcing) input data are now available and simulations can be started for a set of sectors (indicated by <span class="badge-split"><span class="badge badge-group3 badge-start"><span class="circle circle-green"></span></span><span class="badge badge-group3 badge-end">III</span></span> in the menu). For other sectors, some of the data are not available yet (indicated by <span class="badge-split"><span class="badge badge-group3 badge-start"><span class="circle-start circle-green"></span><span class="circle-end circle-yellow"></span></span><span class="badge badge-group3 badge-end">III</span></span>), but models not needing those data may already start. For a third group of sectors (indicated by <span class="badge-split"><span class="badge badge-group3 badge-start"><span class="circle circle-yellow"></span></span><span class="badge badge-group3 badge-end">III</span></span>) Group III experiments have been defined but are not ready to begin because most of the data are still under construction.
+    </p>
+    <p>
+        With Group III we introduce new <strong>experiments</strong> (Table 2.1), new <strong>direct human forcing specifiers</strong> (Table 2.3), a new <strong>table of priorities</strong> (Table 2.5), a new <strong>table of requirements</strong> (Table 2.6), and the new <strong>input data</strong> are added to Tables 3.1 and 3.4.
+    </p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="toc-wrapper h-100"></div>
+    </div>
+    <div class="col-md-8">
+        <div class="h-100" data-component="config"></div>
+    </div>
+</div>
+
+</div>
+
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-general-concept">1.1 General concept</h3>
+<p><a href="https://www.isimip.org">The Inter-Sectoral Impact Model Intercomparison Project (ISIMIP)</a> provides a framework for the collation of a consistent set of climate impact data across sectors and scales. It also provides a unique opportunity for considering interactions between climate change impacts across sectors through consistent scenarios.</p>
+<p>ISIMIP is intended to be structured in successive rounds connected to the different phases of the climate model intercomparison CMIP (<a href="https://www.isimip.org/documents/355/MissionAndImplementation_12Sep2018.pdf">ISIMIP Mission &amp; Implementation document</a>).</p>
+<p>The main components of the ISIMIP framework are:</p>
+<ul>
+<li>A common set of <strong>climate and other forcing data</strong> which will be distributed via a central database;</li>
+<li>A common <strong>modelling protocol</strong> to ensure consistency across sectors and scales in terms of data, format and experiment set-up;</li>
+<li>A central <strong>repository</strong> where the output data will be collected and made available to the scientific community.</li>
+</ul>
+<h3 id="12-simulation-round">1.2 Simulation round</h3>
+<div data-component="show" data-simulation-round="ISIMIP3a">
+<p><strong>ISIMIP3a</strong> is dedicated to <strong>model evaluation</strong> or <strong>impact attribution</strong>. To this end simulations are forced by observed climate and direct human forcing. In addition, a de-trended version of the observed climate allows for the generation of a <em>no climate change</em> baseline (counterfactual, if available).</p>
+<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<p><strong>ISIMIP3b</strong> is dedicated to a <strong>quantification of climate-related risks</strong> at different levels of climate change and direct human forcing. The <strong>Group I</strong> simulations refer to the pre-industrial and historical period of the CMIP6-based climate simulations. <strong>Group II</strong> covers all future projections assuming fixed 2015 levels of direct human forcing and different future projections of climate (SSP1-2.6, SSP3-7.0 and SSP5-8.5). <strong>Group III</strong> simulations account for future changes in the direct human forcing and are intended to be started once the corresponding direct human forcing input data are available.</p>
+<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b.</p>
+</div>
+<h3 id="13-about-this-protocol">1.3 About this protocol</h3>
+<p>In this protocol we describe the <a href="#2-experiments">experiments</a>, the different <a href="#3-input-data">input datasets</a>, the <a href="#4-output-data">output variables</a>, and how to <a href="#5-reporting-model-results">report model results</a>.</p>
+<p>Throughout the protocol we use <strong>specifiers</strong> that denote a particular experiment, variable or other parameter. We use these specifiers in the tables below, in the filenames of the input data sets, and ask you to use the same specifiers in your output files. More on reporting data can be found <a href="#5-reporting-model-results">at the end</a> of this document.</p>
+<h2 id="2-experiments">2. Experiments</h2>
+<h3 id="21-experiments">2.1 Experiments</h3>
+<p>In Table 2.1, we describe the different experiments for ISIMIP3. Each default experiment is defined by its <strong>climate related forcing (CRF)</strong> and the assumptions regarding <strong>direct human forcing (DHF)</strong>. The associated specifications all have a label such as <code>obsclim</code> or <code>histsoc</code> that are provided in Table 2.1 and further specified in Tables 2.2 and 2.3. These specifiers are used in the file names of the corresponding input files and should also be used for the names of the output files (see report model results <a href="#5-reporting-model-results">report model results</a>). Sensitivity experiments are described as deviation from a default experiment and represented by labels that are used as a third specifier of the experiments. Their specific meanings are defined in Table 2.4.</p>
+<p>Please note that the experiments are different for ISIMIP3a and ISIMIP3b and some are sector specific. You can use the menu on the top-right of the page to select the simulation round and sectors you are interested in.</p>
+<div data-caption="Table 2.1: Experiment set-up. Each experiment is specified by the climate related forcing (top row) and the direct human forcing (bottom row). Sensitivity labels indicate deviations from the default settings.  Experiments are colored by group: group I (grey), group II (red) and group III (blue). The subtitles in the first row indicate how the experiment is defined in filenames." data-component="table" data-identifier="experiments"></div>
+<h4 id="note-regarding-models-requiring-spin-up">Note regarding models requiring spin-up</h4>
+<div data-component="show" data-sector="agriculture,biodiversity,biomes,coastal,diarrhea,energy,fire,forestry,health,labour,lakes_global,lakes_local,peat,permafrost,water_global,water_regional" data-simulation-round="ISIMIP3a">
+<p>For models requiring spin-up, we provide 100 years of spinclim data which is identical with the first 100 years of the counterclim data. The files are located under <code>ISIMIP3a/InputData/climate/atmosphere/spinclim</code> at DKRZ and in the ISIMIP Repository. If more than 100 years of spin-up are needed, these data can be repeated as often as needed.</p>
+<p>For <code>historical</code> runs, use the <code>transclim</code> climate time series, historical CO₂ concentration and varying DHF, for the transition period from spin-up to the start of the experiment (1850-1900). When using a longer spin-up period that (nominally) extends back further than 1850, please keep CO₂ concentration and DHF constant at 1850 level until reaching the year corresponding to 1850.</p>
+<p>For experiments with fixed direct human influences (<code>1901soc</code>, <code>2015soc</code>), the spin-up should be based on the 1901 DHF or 2015 DHF, respectively.</p>
+<p>For sector-specific experiments without direct human influence (<code>nat</code>), the spin-up should not use any DHF. Likewise, the <code>nofire</code> experiment should include a spin-up without fire.</p>
+</div>
+<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
+<p>The model evaluation experiment starts in 1961. To capture historical fishing effort prior
+to 1961, we also provide input for a nominal spin-up (1841-1860, fishing held constant
+at 1861 levels) and pre-industrial transition period (1861-1960, reconstructed fishing
+effort).</p>
+<p>To set-up climate-forcing variables for the entire 1841-1960 period, we ask modellers to
+use the "control run" (<code>ctrlclim</code>) monthly output for the years 1961-1980 (inclusive) on
+repeat for six cycles. These years have been selected because they correspond with
+an entire ENSO cycle and because no climate trend is detectable prior to 1980 from the
+GFDL model.</p>
+<p>For models that require longer spin-up prior to 1841, please keep 1841 levels of fishing
+effort constant and, if needed, repeat the ENSO cycle (e.g. monthly values for 1961-
+1980 inclusive from <code>ctrlclim</code>) for as many times necessary.
+For the ‘no fishing’ runs (<code>nat</code>), the spin-up and pre-industrial transition should not use
+any fishing effort.</p>
+<p>We ask modellers to include all outputs from 1841 onwards for use in our analyses.</p>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<p>For models requiring spin-up, please use the pre-industrial control data and CO₂ concentration and DHF fixed at 1850 levels for the spin up as long as needed.</p>
+<p>Please note that the "pre-industrial control run" from 1601-1849 is part of the regular experiments that should be reported and hence the spin-up has to be finished before that.</p>
+<p>For experiments with fixed year-2015 direct human influences (<code>2015soc</code>), spin-up should be based on the 2015 DHF.</p>
+<p>For sector-specific experiments without direct human influence (nat), the spin-up should not use any DHF.</p>
+<p>Please note that there is no "pre-industrial control run" from 1601-1849 for these experiments (<code>2015soc</code>, <code>nat</code>, <code>fire</code>, <code>nondep</code>, <code>nondep2015co2</code>) and hence the spin-up links directly to the historical period.</p>
+<p>The simulations with nitrogen cycling or fire turned off should also be spun up with nitrogen cycling or fire turned off.</p>
+</div>
+<h3 id="22-experiment-specifiers">2.2 Experiment specifiers</h3>
+<p>Tables 2.2-2.4 describe the different specifiers for the different experiments as described in Table 2.1. They are used in the file names of the corresponding input files and should also be used for the names of the output files (see <a href="#5-reporting-model-results">report model results</a>).</p>
+<div data-caption="Table 2.2: Experiment specifiers: Climate-Related Forcings (`climate-scenario`)." data-component="table" data-identifier="climate_scenario"></div>
+<div data-caption="Table 2.3: Experiment specifiers: Direct Human Forcing (`soc-scenario`)." data-component="table" data-identifier="soc_scenario"></div>
+<div data-caption="Table 2.4: Experiment specifiers: Sensitivity runs (`sens-scenario`)." data-component="table" data-identifier="sens_scenario"></div>
+<div data-component="show" data-simulation-round="ISIMIP3a">
+<h4 id="general-note-regarding-sensitivity-experiments">General note regarding sensitivity experiments</h4>
+<p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as “default” in the sensitivity specifier of the file name even if the run would be identical to the <code>1901co2</code> sensitivity setting.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<h4 id="general-note-regarding-sensitivity-experiments_1">General note regarding sensitivity experiments</h4>
+<p>The sensitivity experiments are meant to be deviations from the default settings. So for example if your model does not at all account for changes in CO₂ concentrations (no option to switch it on or off) the run should be labeled as <code>default</code> in the sensitivity specifier of the file name even if the run would be comparable to the <code>2015co2</code> sensitivity setting.</p>
+<p>The particular sensitivity specifier for an experiment is given in the experiments table above. For most experiments no sensitivity specifier is given, so the <code>default</code> label applies.</p>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<h3 id="23-group-iii-experiment-priorities">2.3 Group III experiment priorities</h3>
+<p>Table 2.5 lists the priorities for the different <strong>group III</strong> experiments in ISIMIP3b. We kindly ask you to run the experiments marked as <strong>Tier 1: Core set</strong> in any case and the other experiments with the priority given.</p>
+<div data-caption="Table 2.5: Experiment priorities for ISIMIP3b group III." data-component="table" data-identifier="group3_ranking"></div>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<h3 id="24-group-iii-requirements">2.4 Group III requirements</h3>
+<p>Table 2.6 lists the <strong>direct human forcings (DHF)</strong> that are relevant for the different sectors for <strong>group III</strong> simulations in ISIMIP3b. <strong>Required</strong> means that the forcing has to be accounted for in the simulations in the given sectors to count as a group III simulation. In addition a forcing can be <strong>harmonized</strong> by e.g. prescribing the application of a specific forcing data set from Table 3.1, or the specific implementation of the forcing can be left to the individual modellers. The harmonization setting is closely connected to the <strong>mandatory</strong> / <strong>optional</strong> setting in Table 3.1 (mandatory means that all modelling teams must use the same forcings dataset and not an alternative one).</p>
+<div data-caption="Table 2.6: Direct Human Forcings (DHF) considered in the group III simulations." data-component="table" data-identifier="group3_requirements"></div>
+</div>
+<div data-component="show" data-sector="water_global" data-simulation-round="ISIMIP3b">
+<h4 id="note-regarding-group-iii-simulations-for-the-global-water-sector">Note regarding Group III simulations for the Global Water sector</h4>
+<p>For the ISIMIP3b Group III simulations, modelling teams in the global water sector are requested to first use the land use and irrigation direct human forcings, as well as non-irrigation water use for the models that need it. These are the <code>default</code> Group III simulations for the sector. These include adaptation and no adaptation runs; though note that non-irrigation water use forcing is the same for both.</p>
+<p>Then after that, as the <code>extrasoc</code> sensitivity experiment, modelling teams can choose by themselves which direct human forcings are included on top of land-use and irrigation (e.g. hydropower dams and inter-basin water transfer could be added by one model, while another model might add only desalination).</p>
+<p>Modelling teams are encouraged to contact the sector coordinators to help coordinate the extrasoc experiments between modelling teams.</p>
+</div>
+<div data-component="show" data-sector="energy_demand" data-simulation-round="ISIMIP3b">
+<h4 id="note-regarding-group-iii-simulations-for-the-energy-demand-sector">Note regarding Group III simulations for the Energy (demand) sector</h4>
+<p>In the <em>no-adaptation</em> runs (<code>no-adapt</code>), changes in the output variables such as the residential air conditioning penetration rate are driven by socioeconomic development only, whereas in the <em>adaptation</em> runs (<code>adapt</code>), these changes are additionally driven by climate change.</p>
+</div>
+<h2 id="3-input-data">3. Input data</h2>
+<h3 id="31-forcing-data">3.1 Forcing data</h3>
+<p>Table 3.1 describes the <strong>climate-related, direct human, static geographic, and biophysical forcing data</strong> provided for the different experiments. The datasets are grouped according to the main experiment specifiers described in 2.2 - 2.4. The different datasets and the variables they contain are described in more detail in Tables 3.3 - 3.6.</p>
+<p>For each dataset, we provide the path where modellers can obtain the data at DKRZ. The base directory for this is:</p>
+<pre><code>levante:/work/bb0820/ISIMIP/
+</code></pre>
+<p>The data are also available at the <a href="https://data.isimip.org">ISIMIP Repository</a> without login, or will be made available there in the future. Further information on accessing ISIMIP data can be found at <a href="https://www.isimip.org/gettingstarted/data-access/">ISIMIP - getting started</a>.</p>
+<p>Some of the datasets are tagged as <span class="badge badge-mandatory">mandatory</span>. This does not mean that the data must be used in all cases, but <strong>if</strong> your models uses input data of this kind, we require to use the specified dataset. If an alternative data set is used instead, we cannot consider it an ISIMIP simulation. If the <span class="badge badge-mandatory">mandatory</span> label is not given, you may use alternative data (please document this clearly).</p>
+<div data-caption="Table 3.1: Forcing data." data-component="table" data-identifier="forcing_data"></div>
+<h3 id="32-climate-related-forcing">3.2 Climate related forcing</h3>
+<div data-component="show" data-simulation-round="ISIMIP3a">
+<p>The climate forcing input files can be found on DKRZ using the following pattern:</p>
+<pre><code>ISIMIP3a/InputData/climate/atmosphere/&lt;climate-scenario&gt;/global/daily/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
+
+# ocean data for marine-fishery
+ISIMIP3a/InputData/climate/ocean/&lt;climate-scenario&gt;/global/monthly/historical/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc
+</code></pre>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<p>The climate forcing input files can be found on DKRZ using the following pattern:</p>
+<pre><code>ISIMIP3b/InputData/climate/atmosphere/bias-adjusted/global/daily/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;bias-adjustment&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_global_daily_&lt;start-year&gt;_&lt;end-year&gt;.nc
+
+# ocean data for marine-fishery
+ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_onedeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 1° grid
+ISIMIP3b/InputData/climate/ocean/uncorrected/global/monthly/&lt;climate-scenario&gt;/&lt;climate-forcing&gt;/&lt;climate-forcing&gt;_&lt;ensemble-member&gt;_&lt;climate-scenario&gt;_&lt;climate-variable&gt;_halfdeg_global_monthly_&lt;start-year&gt;_&lt;end-year&gt;.nc  # 0.5° grid
+</code></pre>
+</div>
+<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3b">
+<h4 id="note-on-ocean-data-availability">Note on ocean data availability</h4>
+<p>Variable availability is mainly based on the data published in ESGF
+and may vary between the CMIP experiments.</p>
+<p>Some variables are available as extracted versions from vertically resolved data. Their
+variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
+(surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
+</div>
+<div data-component="show" data-sector="marine-fishery_global,marine-fishery_regional" data-simulation-round="ISIMIP3a">
+<h4 id="note-on-ocean-data-availability_1">Note on ocean data availability</h4>
+<p>Some variables are available as extracted versions from vertically resolved data. Their
+variable names have been suffixed with <strong>-bot</strong> (ocean bottom), <strong>-surf</strong>
+(surface values) or <strong>-vint</strong> (vertically integrated), respectively.</p>
+</div>
+<h4 id="climate-forcing">Climate forcing</h4>
+<div data-caption="Table 3.2: Climate forcing datasets (`climate-forcing`)." data-component="table" data-identifier="climate_forcing"></div>
+<h4 id="note-on-climate-forcing-priority">Note on climate forcing priority</h4>
+<p>The priority for the different climate forcing datasets is given in the last column of Table 3.1. If you cannot use all climate forcing datasets, please concentrate on those with a higher priority. Please note, that for ISIMIP3b group III simulations we provide the priorities of the different experiments in Table 2.5.</p>
+<h4 id="climate-related-variables">Climate related variables</h4>
+<div data-caption="Table 3.3: Climate related forcing variables." data-component="table" data-identifier="climate_variable"></div>
+<h3 id="33-direct-human-forcing">3.3 Direct human forcing</h3>
+<div data-caption="Table 3.4: Direct human forcing variables." data-component="table" data-identifier="soc_dataset"></div>
+<h3 id="34-static-geographic-information">3.4 Static geographic information</h3>
+<div data-caption="Table 3.5: Geographic data and information." data-component="table" data-identifier="geo_dataset"></div>
+<h3 id="35-biophysical-forcing">3.5 Biophysical forcing</h3>
+<div data-caption="Table 3.6: Biophysical forcing data from other ISIMIP impact models." data-component="table" data-identifier="upstream_variable"></div>
+<div data-component="hide" data-sector="fs-n,groundwater">
+<p>No input data from other ISIMIP impact models are available for this selection of simulation round and sectors.</p>
+</div>
+<h2 id="4-output-data">4. Output data</h2>
+<h3 id="41-output-dimensions">4.1 Output dimensions</h3>
+<p>ISIMIP output variables are usually reported with the dimensions <strong>(time,lat,lon)</strong>. For variables with a number of levels (e.g. layers or depth), an alternative set of dimensions is given in the comment column in the table below. More information about level dimensions can be found <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-fixed-levels">here</a> and <a href="https://www.isimip.org/protocol/preparing-simulation-files/#requirements-for-variables-with-varying-levels">here</a> on the ISIMIP webpage.</p>
+<div data-component="show" data-sector="agriculture">
+<h4 id="note-on-agriculture-output">Note on agriculture output</h4>
+<p>For agricultural output, variables are to be reported with the dimensions <strong>(time,lat,lon)</strong> where the time axis' unit is <code>growing seasons since 1901-01-01 00:00:00</code> resp. <code>growing seasons since 1601-01-01 00:00:00</code> for all variables unless these are reported on a monthly time axis, e.g. <code>soilmoist</code>. In many cases growing seasons are equivalent to years, as there is always only one planting event per year. However, due to temperature-sensitive growing season lengths, the growing seasons are not fully equivalent to years and users should note the difference. Reported variables on start and end of the growing season are supplied to allow allocating events to transient time axes if desired.</p>
+</div>
+<p>Many variables are defined per area (unit m-2). Typically, and unless otherwise defined, the corresponding reference area is the land area of the grid cell, excluding any water bodies. However, in some cases, it may be necessary or meaningful to report a variable relative to the continental area (including inland water bodies, lakes etc...). For example, evaporation could relate to the land area (excluding water bodies etc.), or to the continental area if the model evaporation occurs over both over land and over water. Also, for some variables, the "per PFT" reporting allows modellers to indicate whether inland water bodies are included in the model or not, and hence, what reference area the variable refers to. In such cases, please specify the reference area in a NetCDF global attribute (e.g. <code>:reference_area = "continental area (including inland water bodies)"</code>).</p>
+<h3 id="42-output-variables">4.2 Output variables</h3>
+<div data-caption="Table 4.1: Output variables (`variable`)." data-component="table" data-identifier="variable"></div>
+<h3 id="43-sector-specific-identifiers">4.3 Sector specific identifiers</h3>
+<div data-component="show" data-sector="agriculture">
+<h4 id="crop-priority-and-naming">Crop priority and naming</h4>
+<div data-caption="Table 4.2: Crop naming and priorities (`crop`)." data-component="table" data-identifier="crop"></div>
+<h4 id="irrigation">Irrigation</h4>
+<div data-caption="Table 4.3: Irrigation specifiers (`irrigation`)." data-component="table" data-identifier="irrigation"></div>
+<h4 id="harmonization">Harmonization</h4>
+<div data-caption="Table 4.4: Harmonization specifiers (`harmonization`)." data-component="table" data-identifier="harmonization"></div>
+</div>
+<div data-component="show" data-sector="forestry">
+<h4 id="species">Species</h4>
+<div data-caption="Table 4.5: Species specifiers (`species`)." data-component="table" data-identifier="species"></div>
+<h4 id="forest-stands">Forest stands</h4>
+<div data-caption="Table 4.6: Forest stand specifiers (`forest-stand`)." data-component="table" data-identifier="forest_stand"></div>
+</div>
+<div data-component="show" data-sector="lakes_local">
+<h4 id="lake-sites">Lake sites</h4>
+<div data-caption="Table 4.7: Lake site specifications for local lake models (`lake-site`)." data-component="table" data-identifier="lake_site"></div>
+<p>A document with additional information is maintained by the sector coordinators and provided at <a href="https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854">https://docs.google.com/spreadsheets/d/1UY_KSR02o7LtmNoOs6jOgOxdcFEKrf7MmhR2BYDlm-Q/edit#gid=555498854</a>.</p>
+</div>
+<div data-component="show" data-sector="water_regional">
+<h4 id="catchment-gauging-stations">Catchment gauging stations</h4>
+<div data-caption="Table 4.9: Catchment gauging stations for reporting regional hydrological model results (`station`)." data-component="table" data-identifier="station"></div>
+</div>
+<div data-component="hide" data-sector="agriculture,forestry,lakes_local,water_regional">
+<p>No sector specific identifiers are available for this selection of simulation round and sectors.</p>
+</div>
+<h3 id="44-sector-specific-notes">4.4 Sector specific notes</h3>
+<div data-component="show" data-sector="agriculture">
+<h4 id="reporting-per-growing-seasons">Reporting per growing seasons</h4>
+<p>To resolve potential double harvests within one year, crop yields should be reported per growing season and not per calendar year. Thus, in the NetCDF output files, do not use a time dimension but instead a unitless coordinate variable with integer values; more information on how to construct these files is given below and on the ISIMIP website (<a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>).</p>
+<p>Cumulative growing season variables such as, e.g., actual evapotranspiration or precipitation are to be accumulated over the growing season. The first season in the file (level=0) is then the first complete growing season of the time period provided by the input data without any assumed spin-up data, which equates to the growing season with the first planting after this date. To ensure that data can be matched to individual years in post-processing, it is essential to also provide the actual planting dates (as day of the year), actual planting years (year), anthesis dates (as day of the year), year of anthesis (year), maturity dates (day of the year), and year of maturity (year). This procedure is identical to the GGCMI convention (Elliott et al., 2015, <a href="https://doi.org/10.5194/gmd-8-261-2015">https://doi.org/10.5194/gmd-8-261-2015</a>).</p>
+</div>
+<div data-component="show" data-sector="biomes,fire,permafrost,peat">
+<h4 id="information-about-pft-specific-outputs">Information about PFT-specific outputs</h4>
+<ul>
+<li>Unless otherwise defined, variables in ISIMIP should be reported relative to the grid cell land area.</li>
+<li>The output provided per Plant Functional Type (PFT) should be expressed relative to the respective PFT area so that e.g. sum(gpp-pft*pft-pft)=gpp-total.</li>
+<li>When your model allows several PFTs to grow on the same area and hence the total cover fraction can be more than one, please scale the PFT area to one and report this step in the model documentation on the ISIMIP homepage.</li>
+<li>When your model grows the same PFT on different land-use classes, e.g. the same c3-grass represents grasses growing on natural grasslands, pasture and possible even as crop, please differentiate this in your output by defining land-use specific PFT such as c3-grass-pasture, c3-grass-natural, c3-grass-crop and report this in model documentation on the ISIMIP homepage.</li>
+<li>For better understanding the abbreviations in the filename please provide the full PFT name in a <code>pft</code> variable attribute.</li>
+</ul>
+</div>
+<div data-component="show" data-sector="peat,permafrost">
+<h4 id="information-about-soil-organic-carbon-pools-of-different-turnover-times">Information about soil organic carbon pools of different turnover times</h4>
+<p>Some variables can be provided separately by soil organic carbon pools of different turnover times, if your model simulates those. This is done using the <code>-&lt;pool&gt;</code> extension. Please indicate them as <code>-fast</code>, <code>-slow</code>, and <code>-passive</code> and describe your definition of the turnover times in your model description. The extension is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
+</div>
+<div data-component="show" data-sector="peat">
+<h4 id="information-about-peat-outputs">Information about peat outputs</h4>
+<p>All variables should be reported separately for the peat fraction of the grid cell if they are calculated separately for peat and non-peat grid-cell fractions, with a peattype (<code>&lt;pt&gt;</code>) extension to the variable name. This extension can be <code>-naturalpeat</code>, <code>-drainpeat</code>, <code>-restorepeat</code>, or <code>-minl</code> for the non-peat (mineral) gridcell fraction. It is used in addition to the extension expressing the Plant Functional Type (PFT) and needs to put before it.</p>
+</div>
+<div data-component="show" data-sector="health">
+<h4 id="additional-instructions-for-the-health-sector">Additional instructions for the health sector</h4>
+<ul>
+<li>If different realizations of the model are applied, then these should be indicated by the specifier <code>&lt;r&gt;</code>.
+    E.g. to reflect a central, upper, and lower estimate of the ERF: <code>&lt;r&gt; = lower, central, upper</code>.
+    Please explain the meaning of these realizations in the online model documentation; contact the ISIMIP coordination team in case of questions.</li>
+<li>If data are disaggregated e.g. by age group, gender, etc., they should be reported along an additional
+    dimension, described by an auxiliary coordinate variable, in the NetCDF files. See the example provided
+    at <a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>.</li>
+<li>For local (non-gridded) data, locations (cities/regions/countries) should be reported along an additional
+    dimension called location, with the location name given as string in an auxiliary coordinate variable
+    called location_name, in the NetCDF files. In addition, coordinates of the location should be reported
+    in auxiliary variables called location_lat and location_lon. See the example provided at
+    <a href="https://www.isimip.org/protocol/preparing-simulation-files/">https://www.isimip.org/protocol/preparing-simulation-files/</a>. The <code>&lt;region&gt;</code> specifier in the
+    file name should be set to <code>local</code>. For gridded data, the <code>&lt;region&gt;</code> specifier in the file name
+    should be <code>global</code> or indicate a region or country.</li>
+</ul>
+</div>
+<div data-component="show" data-sector="labour">
+<h4 id="additional-instructions-for-the-labour-sector">Additional instructions for the labour sector</h4>
+<ul>
+<li>The analysis uses a large collection of micro-survey data to estimate new, and robust global and regional temperature and wet-bulb globe temperature exposure-response functions (ERFs) for labour supply at both individual and sub-national regions across the world. The specifications control for income and both location (sub-national region/country) and temporal (week/month/year) fixed-effects along with extreme events such as droughts. In the case of country-specific studies using micro-surveys (Antonelli et al. 2020; Shahegh et al. 2020; Shahegh and Dasgupta 2022), specifications also include socioeconomic and demographic drivers such as gender, age, education, and total income. The response-functions are estimated separately for working conditions; high-exposure/outdoor in the sun (e.g. agricultural, hunting, forestry and fishing; mining and quarrying; and construction) and low-exposure/outdoor in the shade or indoor (e.g. manufacturing and utilities).</li>
+<li>This sector uses an augmented mean function, created from an ensemble of five labour productivity response-functions reported in Dasgupta et al. 2021.
+M1) Pilcher et al., 2002: Psychological performance, e.g. reaction time, tracking or memory task, at global scale.
+M2) Dunne et al., 2013: Individual capacity to safely perform heavy labour under heat stress at global scale.
+M3) Kjellstrom et al., 2014: Reduction of hourly work capacity for heavy work following the ISO standard at global scale.
+M4) Sahu et al., 2013: Work output per hour of rice farmers calculated by number of rice bundles laid down, at country-level for India.
+M5) Li et al., 2016: Time efficiency measures; direct, indirect, and idle time of rebar construction workers, at country-level for China.
+Work is underway to estimate labour productivity response-functions using empirical analysis.</li>
+</ul>
+</div>
+<div data-component="show" data-sector="fs-n">
+<h4 id="additional-instructions-for-the-food-security-and-nutrition-fs-n-sector">Additional instructions for the food-security and nutrition (FS-N) sector</h4>
+<ul>
+<li>This sector will use additional data: cereal import dependency from FAOSTAT (to prescribe dependence on trade or subsistence farming), age distribution and income level data. Econometric specifications will control for income and inequality (HDI). Data on trade dependency, subsistence farming, and age distribution will allow segregated projections considering vulnerability in terms of population dependency ratio and import dependency.</li>
+<li>Please consider that for simulations based on empirical models, not all the socioeconomic variables are used for projections. This is standard practice to isolate the climate signal. In these cases, variables used should be specified in the model output documentation.</li>
+</ul>
+</div>
+<div data-component="show" data-sector="water_quality">
+<h4 id="note-regarding-additional-forcings-for-the-water-quality-sector">Note regarding additional forcings for the Water quality sector</h4>
+<p>Additional agricultural-related model inputs such as N biological fixation, crop uptake, grassland uptake, animal manure use in cropland and on grassland and livestock numbers are not available for ISIMIP3b Groups I+II. These additional forcings will be available to simulate ISIMIP3b (Group III). The same holds for additional human-related model inputs for point sources such as sewage connections of urban/rural population, treatment removal fractions, anthropogenic point source inputs to surface waters (total effluents), wastewater production, collection, treatment and reuse.</p>
+</div>
+<div data-component="hide" data-sector="agriculture,biomes,fire,peat,permafrost,health,water_quality">
+<p>No sector specific notes are available for this selection of simulation round and sectors.</p>
+</div>
+<div data-component="show" data-simulation-round="ISIMIP3b">
+<h3 id="45-bias-adjustment">4.5 Bias adjustment</h3>
+<p>Depending on the used climate input data, the corresponding bias adjustment needs to be part of the output filename.</p>
+<div data-caption="Table 4.11: Bias adjustment specifiers." data-component="table" data-identifier="bias_adjustment"></div>
+</div>
+<h2 id="5-reporting-model-results">5. Reporting model results</h2>
+<p>The specification on how to submit the data, as well as further information and instructions are given on the ISIMIP website at: <a href="https://www.isimip.org/protocol/preparing-simulation-files">https://www.isimip.org/protocol/preparing-simulation-files</a>.</p>
+<p>It is important that you comply precisely with the formatting specified there, in order to facilitate the analysis of your simulation results in the ISIMIP framework. Incorrect formatting can
+seriously delay the analysis. The ISIMIP Team will be glad to assist with the preparation of these files if necessary.</p>
+<p>To ensure consistency between ISIMIP3a and ISIMIP3b as well as the different experiments within a simulation round, we require that modelling groups use the same version of an impact model for the experiments in ISIMIP3a and ISIMIP3b. If you cannot fulfill this, please indicate that by using a suffix for your model name (e.g. simple version numbering: MODEL-v1, MODEL-v2 or following <a href="https://semver.org">semantic versioning</a>: MODEL-2.0.0).</p>
+<p>This versioning does not only apply to changes in the computational logic of the model, but also to input parameters, calibration or setup. If model versions are not reported, we will name them according to the simulation round (e.g. MODEL-isimip3a). We require the strict versioning to ensure that differences between model results are fully attributable to the changes in model forcings.</p>
+<p>File names consist of a series of identifier, separated by underscores. Things to note:</p>
+<ul>
+<li>Report one variable per file.</li>
+<li>In filenames, use lowercase letters only.</li>
+<li>Use underscore (<code>_</code>) to separate identifiers.</li>
+<li>Variable names consist of a single word without hyphens or underscores.</li>
+<li>Use hyphens (<code>-</code>) to separate strings within an identifier, e.g. in a model name.</li>
+<li>If no specific <code>sens-scenario</code> is given in the experiments table, use <code>default</code>.</li>
+<li>Data model is NETCDF4_CLASSIC with minimum compression level of <code>5</code>.</li>
+<li>NetCDF file extension is <code>.nc</code>.</li>
+<li>The relative time axis' reference year is <code>1901</code> for ISIMIP3a and <code>1601</code> for ISIMIP3b.</li>
+<li><code>!!!</code><strong>[modified 2022-12-08]</strong> Use the <code>standard</code>, <code>proleptic_gregorian</code>, or <code>365_day</code> calendar depending on the temporal resolution of your model for <strong>all</strong> types of reported temporal resolutions and write data based on a <strong>daily time index</strong> (<code>days since ...</code>). Avoid using the <code>360_day</code> calendar for monthly and annual data.</li>
+<li>For fixed variables (e.g. cellarea, contfrac) omit the NetCDF-internal times dimension but add the period identifiers <code>0000_0000</code> in the file name.</li>
+<li>Set NetCDF internal chunking to use one chunk per record, i.e., one horizontal field, level, and one time step.</li>
+<li>The variable attributes <code>axis</code>, <code>standard_name</code>, <code>long_name</code>, <code>calendar</code>, <code>missing_value</code>, <code>units</code>, <code>comment</code>, <code>enteric_infection</code>, <code>description</code>, <code>unit_conversion_info</code>, <code>positive</code>, <code>bounds</code>, <code>classes</code>, <code>pft</code> and  <code>fuelclass</code> are whitelisted in the QC-Tool and will not be deleted during formal file checks. Keep in mind to put additional infomations only into these attributes.</li>
+<li>Add the <code>institution</code> and <code>contact</code> attributes to the global metadata of the NetCDF files, with the latter following the format “NAME <EMAIL>, ...”.</li>
+</ul>
+<p>Please name the files according to a sector specific pattern:</p>
+<div data-component="pattern"></div>
+<p>and replace the identifiers with the specifiers given in the different tables of this document:</p>
+<ul>
+<li><a href="#2-experiments">Experiments</a>: Table 2.2: <code>climate-scenario</code>, Table 2.3: <code>soc-scenario</code>, Table 2.4: <code>sens-scenario</code></li>
+<li><a href="#3-input-data">Input data</a>: Table 3.1: <code>climate-forcing</code>, Table 3.2: <code>bias-adjustment</code></li>
+<li><a href="#4-output-data">Output data</a>: Table 4.1: <code>variable</code>, <code>resolution</code>, <code>time-step</code>, Table 4.6 - 4.9: <code>region</code> (or <code>global</code> for most sectors)</li>
+</ul>
+<p>For questions or clarifications, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;">&#105;&#110;&#102;&#111;&#64;&#105;&#115;&#105;&#109;&#105;&#112;&#46;&#111;&#114;&#103;</a> or the data managers directly (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;">&#105;&#115;&#105;&#109;&#105;&#112;&#45;&#100;&#97;&#116;&#97;&#64;&#112;&#105;&#107;&#8208;&#112;&#111;&#116;&#115;&#100;&#97;&#109;&#46;&#100;&#101;</a>) before submitting files.</p>
+                
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="text-center">
+                    <a href="https://www.isimip.org">The Inter-Sectoral Impact Model Intercomparison Project</a>.
+                    For questions or clarifications, please contact <a href="mailto:info@isimip.org">info@isimip.org</a>.
+                </div>
+            </div>
+        </footer>
+
+        <div class="cover"></div>
     </body>
 </html>
