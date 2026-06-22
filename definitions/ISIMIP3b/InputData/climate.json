@@ -1,5 +1,5 @@
 {
-  "commit": "cff3c5b0270119064ca329211bef016f843831dd",
+  "commit": "99247ea2e0a17b4c0d0704b42f4f5075de592965",
   "time_span": [
     {
       "specifier": "minimum",
@@ -3834,6 +3834,26 @@
         "water_global"
       ],
       "group3": true
+    },
+    {
+      "specifier": "1850co2",
+      "description": "CO₂ concentration assuming the historical value for 1850 of 284.73 ppm, which is also used for the `picontrol` experiments.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
+    },
+    {
+      "specifier": "histco2",
+      "description": "CO₂ concentration according to the historical changes in CO₂ concentrations, as used in the GCM-based `historical` experiments.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
     },
     {
       "specifier": "ssp585co2",
@@ -19037,6 +19057,25 @@
       ]
     },
     {
+      "specifier": "picontrol_nat_ssp370co2",
+      "parent": "picontrol_nat_default",
+      "title": "Pre-industrial control and CO₂ sensitivity RCP7.0",
+      "subtitles": [
+        "picontrol_nat_histco2",
+        "picontrol_nat_ssp370co2"
+      ],
+      "priority": "1st priority",
+      "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+      "historical": "picontrol",
+      "future": "picontrol",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
+    },
+    {
       "specifier": "picontrol_ssp126soc-noadapt_default",
       "title": "Pre-industrial control",
       "subtitles": [
@@ -19514,6 +19553,25 @@
         "biodiversity",
         "biomes",
         "forestry",
+        "peat"
+      ]
+    },
+    {
+      "specifier": "ssp370_nat_1850co2",
+      "parent": "ssp370_nat_default",
+      "title": "Pre-industrial CO₂ sensitivity RCP7.0",
+      "subtitles": [
+        "historical_nat_1850co2",
+        "ssp370_nat_1850co2"
+      ],
+      "priority": "1st priority",
+      "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+      "historical": "historical",
+      "future": "ssp370",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
         "peat"
       ]
     },

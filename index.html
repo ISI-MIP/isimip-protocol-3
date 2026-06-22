@@ -4587,6 +4587,26 @@
       "group3": true
     },
     {
+      "specifier": "1850co2",
+      "description": "CO\u2082 concentration assuming the historical value for 1850 of 284.73 ppm, which is also used for the `picontrol` experiments.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
+    },
+    {
+      "specifier": "histco2",
+      "description": "CO\u2082 concentration according to the historical changes in CO\u2082 concentrations, as used in the GCM-based `historical` experiments.",
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
+    },
+    {
       "specifier": "ssp585co2",
       "description": "CO\u2082 concentration according to SSP5-8.5.",
       "simulation_rounds": [
@@ -23807,6 +23827,33 @@
       ]
     },
     {
+      "specifier": "picontrol_nat_ssp370co2",
+      "parent": "picontrol_nat_default",
+      "title": "Pre-industrial control and CO\u2082 sensitivity RCP7.0",
+      "subtitles": [
+        "picontrol_nat_histco2",
+        "picontrol_nat_ssp370co2"
+      ],
+      "priority": "1st priority",
+      "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+      "historical": {
+        "climate": "picontrol",
+        "climate_sens": "histco2",
+        "soc": "nat"
+      },
+      "future": {
+        "climate": "picontrol",
+        "climate_sens": "ssp370co2",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
+        "peat"
+      ]
+    },
+    {
       "specifier": "picontrol_ssp126soc-noadapt_default",
       "title": "Pre-industrial control",
       "subtitles": [
@@ -24356,6 +24403,33 @@
         "biodiversity",
         "biomes",
         "forestry",
+        "peat"
+      ]
+    },
+    {
+      "specifier": "ssp370_nat_1850co2",
+      "parent": "ssp370_nat_default",
+      "title": "Pre-industrial CO\u2082 sensitivity RCP7.0",
+      "subtitles": [
+        "historical_nat_1850co2",
+        "ssp370_nat_1850co2"
+      ],
+      "priority": "1st priority",
+      "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+      "historical": {
+        "climate": "historical",
+        "climate_sens": "1850co2",
+        "soc": "nat"
+      },
+      "future": {
+        "climate": "ssp370",
+        "climate_sens": "1850co2",
+        "soc": "nat"
+      },
+      "simulation_rounds": [
+        "ISIMIP3b"
+      ],
+      "sectors": [
         "peat"
       ]
     },
@@ -26736,9 +26810,9 @@
     "water_quality": "(?P<model>[a-z0-9-+.]+)_(?P<climate_forcing>[a-z0-9-]+)_(?P<bias_adjustment>[a-z0-9-]+)_(?P<climate_scenario>[a-z0-9-]+)_(?P<soc_scenario>[a-z0-9-]+)_(?P<sens_scenario>[a-z0-9-]+)_(?P<variable>[a-z0-9]+)(-(?P<crop>[a-z0-9]{3})-(?P<irrigation>(firr|cirr|noirr))|-(?P<pft>[a-z0-9-]+))?_(?P<station>[a-z-]+)_(?P<time_step>[a-z0-9-]+)_(?P<start_year>\\d{4})_(?P<end_year>\\d{4})"
   }
 },
-                commit_url: 'https://github.com/ISI-MIP/isimip-protocol-3/commit/cff3c5b0270119064ca329211bef016f843831dd',
-                commit_hash: 'cff3c5b0270119064ca329211bef016f843831dd',
-                commit_date: '18 June 2026'
+                commit_url: 'https://github.com/ISI-MIP/isimip-protocol-3/commit/99247ea2e0a17b4c0d0704b42f4f5075de592965',
+                commit_hash: '99247ea2e0a17b4c0d0704b42f4f5075de592965',
+                commit_date: '22 June 2026'
             }
         </script>
     </head>

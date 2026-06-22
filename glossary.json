@@ -1,5 +1,5 @@
 {
-  "commit": "cff3c5b0270119064ca329211bef016f843831dd",
+  "commit": "99247ea2e0a17b4c0d0704b42f4f5075de592965",
   "terms": {
     "time_span": {
       "minimum": {
@@ -4153,6 +4153,28 @@
         ],
         "group3": true
       },
+      "1850co2": {
+        "description": "CO₂ concentration fixed at 1850 levels.",
+        "description_note": "Only for allowing the QC-Tool to let such experiment pass",
+        "simulation_rounds": [
+          "ISIMIP3b"
+        ],
+        "products": [
+          "SecondaryOutputData"
+        ],
+        "sectors": [
+          "water_global"
+        ]
+      },
+      "histco2": {
+        "description": "CO₂ concentration according to the historical changes in CO₂ concentrations, as used in the GCM-based `historical` experiments.",
+        "simulation_rounds": [
+          "ISIMIP3b"
+        ],
+        "sectors": [
+          "peat"
+        ]
+      },
       "ssp585co2": {
         "description": "CO₂ concentration according to SSP5-8.5.",
         "simulation_rounds": [
@@ -4251,19 +4273,6 @@
         ],
         "sectors": [
           "fire"
-        ]
-      },
-      "1850co2": {
-        "description": "CO₂ concentration fixed at 1850 levels.",
-        "description_note": "Only for allowing the QC-Tool to let such experiment pass",
-        "simulation_rounds": [
-          "ISIMIP3b"
-        ],
-        "products": [
-          "SecondaryOutputData"
-        ],
-        "sectors": [
-          "water_global"
         ]
       }
     },
@@ -22085,6 +22094,32 @@
           "peat"
         ]
       },
+      "picontrol_nat_ssp370co2": {
+        "parent": "picontrol_nat_default",
+        "title": "Pre-industrial control and CO₂ sensitivity RCP7.0",
+        "subtitles": [
+          "picontrol_nat_histco2",
+          "picontrol_nat_ssp370co2"
+        ],
+        "priority": "1st priority",
+        "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+        "historical": {
+          "climate": "picontrol",
+          "climate_sens": "histco2",
+          "soc": "nat"
+        },
+        "future": {
+          "climate": "picontrol",
+          "climate_sens": "ssp370co2",
+          "soc": "nat"
+        },
+        "simulation_rounds": [
+          "ISIMIP3b"
+        ],
+        "sectors": [
+          "peat"
+        ]
+      },
       "picontrol_ssp126soc-noadapt_default": {
         "title": "Pre-industrial control",
         "subtitles": [
@@ -22616,6 +22651,32 @@
           "biodiversity",
           "biomes",
           "forestry",
+          "peat"
+        ]
+      },
+      "ssp370_nat_1850co2": {
+        "parent": "ssp370_nat_default",
+        "title": "Pre-industrial CO₂ sensitivity RCP7.0",
+        "subtitles": [
+          "historical_nat_1850co2",
+          "ssp370_nat_1850co2"
+        ],
+        "priority": "1st priority",
+        "pre-industrial": "Does not have to be simulated, spin-up should not use any DHF (see note below the table).",
+        "historical": {
+          "climate": "historical",
+          "climate_sens": "1850co2",
+          "soc": "nat"
+        },
+        "future": {
+          "climate": "ssp370",
+          "climate_sens": "1850co2",
+          "soc": "nat"
+        },
+        "simulation_rounds": [
+          "ISIMIP3b"
+        ],
+        "sectors": [
           "peat"
         ]
       },

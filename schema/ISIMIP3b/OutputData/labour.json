@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/labour.yaml",
-  "commit": "cff3c5b0270119064ca329211bef016f843831dd",
+  "commit": "99247ea2e0a17b4c0d0704b42f4f5075de592965",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,10 +27,10 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mri-esm2-0",
-            "ipsl-cm6a-lr",
             "gfdl-esm4",
+            "mri-esm2-0",
             "ukesm1-0-ll",
+            "ipsl-cm6a-lr",
             "mpi-esm1-2-hr"
           ]
         },
@@ -44,20 +44,20 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
+            "ssp585",
             "ssp126",
             "ssp370",
             "picontrol",
-            "ssp585",
             "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "1850soc",
-            "histsoc",
+            "2015soc-from-histsoc",
             "2015soc",
-            "2015soc-from-histsoc"
+            "histsoc",
+            "1850soc"
           ]
         },
         "sens_scenario": {
@@ -70,30 +70,30 @@
         "variable": {
           "type": "string",
           "enum": [
-            "labeff",
             "labsupp",
-            "labprod"
+            "labprod",
+            "labeff"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
+            "along-track",
             "europe",
-            "global",
-            "along-track"
+            "global"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "2hr",
-            "daily",
-            "annual",
-            "3hr",
-            "hourly",
-            "6hr",
             "fixed",
-            "monthly"
+            "annual",
+            "6hr",
+            "monthly",
+            "3hr",
+            "daily",
+            "hourly",
+            "2hr"
           ]
         },
         "start_year": {
