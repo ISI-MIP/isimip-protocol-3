@@ -196,7 +196,7 @@
 
 - specifier: sspsoc_n_fertilizer
   group: sspsoc-forcing
-  title: Synthetic fertilizers N
+  title: Synthetic N-fertilizers (ISIMIP)
   status: mandatory
   path:
   - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-noadapt/
@@ -237,11 +237,51 @@
   - MAgPIE
   - IMAGE
   - GLOBIOM
-  comment: GLOBIOM is not yet available.
+  comment: >-
+    Input dataset documentation → [N-Fertilizer (ISIMIP3b)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/112/). GLOBIOM is not yet available.
 
-- specifier: sspsoc_synthetic_fetilizers_n
+- specifier: sspsoc_n_fertilizer-ggcmi
   group: sspsoc-forcing
-  title: Synthetic fertilizers (N, cropland/grassland)
+  title: Synthetic N-fertilizers (GGCMI)
+  status: mandatory
+  path:
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp126soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp370soc-adapt/
+  - ISIMIP3b/InputData/socioeconomic/n-fertilizer/ssp585soc-adapt/
+  sectors:
+  - agriculture
+  - biodiversity
+  - biomes
+  - diarrhea
+  - fire
+  - forestry
+  - groundwater
+  - health
+  - labour
+  - lakes_global
+  - lakes_local
+  - peat
+  - permafrost
+  - water_global
+  - water_regional
+  - water_quality
+  simulation_rounds:
+  - ISIMIP3b
+  group3: true
+  adapt:
+  - ssp126
+  - ssp370
+  - ssp585
+  soc_forcing:
+  - MAgPIE
+  - IMAGE
+  comment: >-
+    Input dataset documentation → [N-Fertilizer GGCMI (ISIMIP3b)](https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/197/).
+
+
+- specifier: sspsoc_synthetic_fertilizers_n
+  group: sspsoc-forcing
+  title: Synthetic N-fertilizers (cropland/grassland)
   mandatory: true
   status: under construction
   sectors:
@@ -265,9 +305,9 @@
   soc_forcing:
   - IMAGE-GNM
 
-- specifier: sspsoc_applied_synthetic_fetilizers_p
+- specifier: sspsoc_applied_synthetic_fertilizers_p
   group: sspsoc-forcing
-  title: Applied synthetic fertilizers (P, cropland/grassland)
+  title: Applied synthetic P-fertilizers (cropland/grassland)
   mandatory: true
   status: under construction
   sectors:
