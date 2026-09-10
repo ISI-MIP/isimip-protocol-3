@@ -10,6 +10,8 @@ export ISIMIP_LOG_LEVEL=WARNING
 
 all: csvtables definitions glossary pattern protocol schema tree
 
+slim: definitions glossary pattern schema tree
+
 csvtables:
 	python3 build/csvtables.py
 
