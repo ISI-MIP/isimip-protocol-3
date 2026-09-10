@@ -58,10 +58,14 @@ def vite_tags():
     path = 'app/js/app.jsx'
 
     manifest_path = Path('output') / 'assets' / '.vite' / 'manifest.json'
-    manifest = json.loads(manifest_path.read_text())
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
 
-    css_file = manifest[path]['css'][0]
-    js_file = manifest[path]['file']
+        css_file = manifest[path]['css'][0]
+        js_file = manifest[path]['file']
+    else:
+        css_file = 'js/app.css'
+        js_file = 'js/app.js'
 
     return f"""
         <link rel="stylesheet" href="assets/{css_file}">
