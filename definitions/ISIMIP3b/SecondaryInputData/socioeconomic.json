@@ -1,5 +1,5 @@
 {
-  "commit": "b8fe9fada570ca1d7b1052777d7b65a8b61a3e4a",
+  "commit": "432195e41061f1537ab781ee08ca84f2be2eb5ab",
   "sens_scenario": [
     {
       "specifier": "default",
@@ -9395,7 +9395,7 @@
     },
     {
       "specifier": "ocean-static",
-      "title": "Ocean static properties",
+      "title": "Ocean properties",
       "mandatory": false,
       "identifier": "geo_dataset"
     },
@@ -10508,16 +10508,17 @@
       ]
     },
     {
-      "specifier": "orography",
+      "specifier": "static-ocean",
       "group": "static-forcing",
-      "title": "Sea floor depth",
+      "title": "Static ocean properties",
       "status": "optional",
       "doi": "https://doi.org/10.48364/ISIMIP.575744.5",
       "path": "ISIMIP3b/InputData/geo_conditions/ocean/",
       "sectors": [
         "marine-fishery_global",
         "marine-fishery_regional"
-      ]
+      ],
+      "comment": "Contains *Sea floor depth* and *Grid-Cell Area for Ocean Variables*."
     },
     {
       "specifier": "orography",
@@ -10525,10 +10526,8 @@
       "title": "Orography",
       "status": "optional",
       "doi": null,
-      "path": {
-        "ISIMIP4a": "ISIMIP4a/InputData/geo_conditions/orography/",
-        "ISIMIP4b": "ISIMIP4b/InputData/geo_conditions/orography/"
-      }
+      "path": "ISIMIP3b/InputData/geo_conditions/orography/",
+      "comment": "Orography from [CHELSA-W5E5 v1.0](https://data.isimip.org/10.48364/ISIMIP.836809.3)."
     },
     {
       "specifier": "countrymasks",
@@ -14181,6 +14180,26 @@
       "format": "NetCDF"
     },
     {
+      "specifier": "areacello",
+      "title": "Grid-Cell Area for Ocean Variables",
+      "group": "ocean-static",
+      "resolution": [
+        "1° grid"
+      ],
+      "path": "ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_areacello_<resolution>_global_fixed.nc",
+      "variables": [
+        {
+          "specifier": "areacello",
+          "units": "m2"
+        }
+      ],
+      "sectors": [
+        "marine-fishery_global",
+        "marine-fishery_regional"
+      ],
+      "format": "NetCDF"
+    },
+    {
       "specifier": "bathymetry",
       "specifier_file": "deptho",
       "title": "Sea Floor Depth",
@@ -14189,7 +14208,7 @@
         "0.25° grid",
         "1° grid"
       ],
-      "path": "ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_<ensemble_member>_picontrol_deptho_onedeg_global_fixed.nc",
+      "path": "ISIMIP3b/InputData/geo_conditions/ocean/<climate-forcing>_deptho_<resolution>_global_fixed.nc",
       "variables": [
         {
           "specifier": "deptho",
