@@ -327,7 +327,7 @@ ExperimentRow.propTypes = {
   climateScenarios: PropTypes.object.isRequired,
   socScenarios: PropTypes.object.isRequired,
   sensScenarios: PropTypes.object.isRequired,
-  toggleExperiments: PropTypes.func.isRequired
+  toggleExperiments: PropTypes.func
 }
 
 ExperimentsTable.propTypes = {
