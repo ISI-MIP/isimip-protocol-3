@@ -33,7 +33,7 @@ const ForestStandTable = function({ config, caption, rows }) {
                   <td>{row.country}</td>
                   <td>{row.lat}, {row.lon}</td>
                   <td>{row.type}</td>
-                  <td>{row.species.join(', ')}</td>
+                  <td>{row.species?.join(', ')}</td>
                   <td>{row.thinning}</td>
                   <td>{row.comment}</td>
                 </tr>
