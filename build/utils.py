@@ -150,3 +150,7 @@ def write_csv(output_path, output, fieldnames):
         writer = csv.DictWriter(fp, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
         writer.writerows(output)
+
+
+def clean_dict(d):
+    return {k: v for k, v in d.items() if v}
