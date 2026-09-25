@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/labour.yaml",
-  "commit": "a78103a4dce375a50cf53ac5a61f01f8056fc468",
+  "commit": "782d22bb641decb1893ce63d00ce21b5a65ee9c8",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,11 +27,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
+            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
             "ukesm1-0-ll",
-            "mpi-esm1-2-hr",
-            "mri-esm2-0",
-            "gfdl-esm4"
+            "gfdl-esm4",
+            "mri-esm2-0"
           ]
         },
         "bias_adjustment": {
@@ -44,8 +44,8 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "picontrol",
             "ssp370",
+            "picontrol",
             "ssp126",
             "ssp585",
             "historical"
@@ -54,10 +54,10 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
-            "2015soc",
             "1850soc",
-            "2015soc-from-histsoc"
+            "2015soc-from-histsoc",
+            "2015soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -70,30 +70,30 @@
         "variable": {
           "type": "string",
           "enum": [
-            "labeff",
             "labsupp",
+            "labeff",
             "labprod"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "global",
+            "europe",
             "along-track"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
-            "daily",
             "3hr",
-            "hourly",
+            "2hr",
+            "daily",
             "monthly",
             "6hr",
-            "2hr",
-            "annual",
-            "fixed"
+            "fixed",
+            "hourly",
+            "annual"
           ]
         },
         "start_year": {
