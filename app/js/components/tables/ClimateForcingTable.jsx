@@ -18,22 +18,25 @@ const ClimateForcingTable = function({ config, caption, rows }) {
         </caption>
         <thead className="table-dark">
           <tr>
-            <th style={{width: '40%'}}>Title</th>
-            <th style={{width: '15%'}}>Specifier</th>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
-                <th style={{width: '10%'}}>Time period</th>
-                <th style={{width: '15%'}}>Reanalysis</th>
-                <th style={{width: '10%'}}>Bias adjustment target</th>
+                <th style={{width: '30%'}}>Title</th>
+                <th style={{width: '15%'}}>Specifier</th>
+                <th style={{width: '15%'}}>Time period</th>
+                <th style={{width: '18%'}}>Reanalysis</th>
+                <th style={{width: '14%'}}>Bias adjustment target</th>
+                <th style={{width: ' 8%'}}>Priority</th>
               </React.Fragment>
             }
             {
               config.simulation_round.endsWith('b') && <React.Fragment>
-                <th style={{width: '20%'}}>Native resolution</th>
-                <th style={{width: '15%'}}>Ensemble member</th>
+                <th style={{width: '45%'}}>Title</th>
+                <th style={{width: '15%'}}>Specifier</th>
+                <th style={{width: '18%'}}>Native resolution</th>
+                <th style={{width: '14%'}}>Ensemble member</th>
+                <th style={{width: ' 8%'}}>Priority</th>
               </React.Fragment>
             }
-            <th style={{width: '10%'}}>Priority</th>
           </tr>
         </thead>
         <tbody>
