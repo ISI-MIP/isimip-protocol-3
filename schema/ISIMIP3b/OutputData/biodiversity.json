@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/biodiversity.yaml",
-  "commit": "e7025f8aa6d491c0e4cf6340f5870fda3dc8d9dc",
+  "commit": "2509702450f5c32bc9d7334c5e915a8fd560b42f",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,11 +27,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
             "mri-esm2-0",
+            "gfdl-esm4",
+            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -45,26 +45,26 @@
           "type": "string",
           "enum": [
             "picontrol",
-            "historical",
-            "ssp126",
             "ssp585",
-            "ssp370"
+            "ssp370",
+            "ssp126",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
             "2015soc",
-            "1850soc",
-            "ssp370soc-noadapt",
             "2015soc-from-histsoc",
-            "ssp585soc-noadapt",
+            "ssp126soc-adapt",
+            "1850soc",
+            "ssp585soc-adapt",
             "nat",
             "ssp370soc-adapt",
-            "ssp126soc-adapt",
             "ssp126soc-noadapt",
-            "ssp585soc-adapt"
+            "ssp370soc-noadapt",
+            "ssp585soc-noadapt",
+            "histsoc"
           ]
         },
         "sens_scenario": {
@@ -76,51 +76,51 @@
         "variable": {
           "type": "string",
           "enum": [
-            "birdoccbuff",
-            "mammalbuff",
-            "cellarea",
-            "amphibianbuff",
-            "reptilebuff",
-            "mammaloccbuff",
-            "amphibianpbuffer",
-            "amphibianocc",
-            "contfrac",
-            "amphibianprob",
-            "mammalpbuffer",
-            "mammalocc",
-            "birdprob",
-            "reptilepbuffer",
             "reptileprob",
+            "mammalprob",
+            "amphibianbuff",
+            "reptileoccbuff",
+            "contfrac",
+            "mammalpbuffer",
+            "amphibianprob",
+            "mammalocc",
+            "cellarea",
+            "birdoccbuff",
+            "mammaloccbuff",
+            "landfrac",
+            "amphibianpbuffer",
+            "mammalbuff",
+            "reptilepbuffer",
             "reptileocc",
-            "amphibianoccbuff",
             "birdpbuffer",
             "birdocc",
-            "mammalprob",
-            "landfrac",
-            "reptileoccbuff",
-            "birdbuff"
+            "birdbuff",
+            "birdprob",
+            "amphibianocc",
+            "amphibianoccbuff",
+            "reptilebuff"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "along-track",
-            "global"
+            "global",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "hourly",
+            "fixed",
+            "3hr",
+            "monthly",
+            "daily",
             "2hr",
             "6hr",
-            "3hr",
-            "daily",
-            "30year-mean",
-            "monthly",
             "annual",
-            "fixed",
-            "hourly"
+            "30year-mean"
           ]
         },
         "start_year": {

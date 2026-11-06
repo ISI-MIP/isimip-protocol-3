@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/coastal.yaml",
-  "commit": "e7025f8aa6d491c0e4cf6340f5870fda3dc8d9dc",
+  "commit": "2509702450f5c32bc9d7334c5e915a8fd560b42f",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,11 +27,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "gfdl-esm4",
-            "ukesm1-0-ll",
             "mri-esm2-0",
+            "gfdl-esm4",
+            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "mpi-esm1-2-hr"
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -45,26 +45,26 @@
           "type": "string",
           "enum": [
             "picontrol",
-            "historical",
-            "ssp126",
             "ssp585",
-            "ssp370"
+            "ssp370",
+            "ssp126",
+            "historical"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "histsoc",
             "2015soc",
             "2015soc-from-histsoc",
-            "1850soc"
+            "1850soc",
+            "histsoc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
@@ -74,22 +74,22 @@
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "along-track",
-            "global"
+            "global",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "hourly",
+            "fixed",
+            "3hr",
+            "monthly",
+            "daily",
             "2hr",
             "6hr",
-            "3hr",
-            "daily",
-            "monthly",
-            "annual",
-            "fixed",
-            "hourly"
+            "annual"
           ]
         },
         "start_year": {
