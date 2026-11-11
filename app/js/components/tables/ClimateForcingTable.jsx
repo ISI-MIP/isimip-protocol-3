@@ -20,11 +20,10 @@ const ClimateForcingTable = function({ config, caption, rows }) {
           <tr>
             {
               config.simulation_round.endsWith('a') && <React.Fragment>
-                <th style={{width: '30%'}}>Title</th>
+                <th style={{width: '45%'}}>Title</th>
                 <th style={{width: '15%'}}>Specifier</th>
-                <th style={{width: '15%'}}>Time period</th>
-                <th style={{width: '18%'}}>Reanalysis</th>
-                <th style={{width: '14%'}}>Bias adjustment target</th>
+                <th style={{width: '14%'}}>Time period</th>
+                <th style={{width: '18%'}}>Sources</th>
                 <th style={{width: ' 8%'}}>Priority</th>
               </React.Fragment>
             }
@@ -57,8 +56,7 @@ const ClimateForcingTable = function({ config, caption, rows }) {
                   {
                     config.simulation_round.endsWith('a') && <React.Fragment>
                       <td>{row.time_period}</td>
-                      <td>{row.reanalysis}</td>
-                      <td>{row.bias_adjustment_target}</td>
+                      <td><ReactMarkdown>{row.sources}</ReactMarkdown></td>
                     </React.Fragment>
                   }
                   {
