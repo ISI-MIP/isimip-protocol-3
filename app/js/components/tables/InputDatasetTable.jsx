@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import { isNil } from 'lodash'
 
 import { filterField, filterGroups } from '../../utils/filter'
 
@@ -65,7 +66,7 @@ const InputDatasetTable = function({ config, caption, rows, groups, toggleGroup,
                           <td rowSpan={row.variables.length + 1}>
                             <p>{row.title || row.specifier}</p>
                             {
-                              (row.mandatory || row.group3) && (
+                              (!isNil(row.mandatory) || !isNil(row.group3)) && (
                                 <p>
                                   {
                                     row.group3 && <span className="badge badge-group3">Group III</span>
