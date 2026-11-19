@@ -53,6 +53,7 @@
   sectors: []
   datasets:
   - Protein uptake per capita
+  hidden: True
 
 - specifier: landuse
   title: Land use
@@ -83,7 +84,18 @@
   - permafrost
   - water_global
   datasets:
-  - Land use and irrigation data
+  - Land use and irrigation
+
+- specifier: irrigation
+  title: Irrigation
+  required:
+  - water_global
+  harmonized:
+  - water_global
+  sectors:
+  - water_global
+  datasets:
+  - Irrigation
 
 - specifier: n-deposition
   title: Nitrogen Deposition
@@ -107,7 +119,8 @@
 
 - specifier: n-fertilizer
   title: Synthetic N-fertilizer
-  required: []
+  required:
+  - agriculture
   harmonized:
   - agriculture
   - biomes
@@ -147,17 +160,7 @@
   - water_global
   datasets:
   - Animal manure N
-
-- specifier: irrigation
-  title: Irrigation
-  required:
-  - water_global
-  harmonized:
-  - water_global
-  sectors:
-  - water_global
-  datasets:
-  - Irrigation
+  hidden: True
 
 - specifier: forest-harvests
   title: Wood harvests
@@ -197,14 +200,15 @@
   sectors: []
   datasets:
   - Protein uptake per capita
+  hidden: True
 
 - specifier: growing-seasons
   title: Growing seasons
-  required: []
-  harmonized:
-  - water_global
+  required:
+  - agriculture
+  harmonized: []
   sectors:
-  - water_global
+  - agriculture
   datasets:
   - Crop calendar
 
@@ -272,3 +276,4 @@
   sectors: []
   datasets:
   - Biological fixation (N, cropland/grassland/natural)
+  hidden: True
