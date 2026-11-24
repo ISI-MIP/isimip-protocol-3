@@ -57,7 +57,7 @@
   valid_min: 0.0
 
 - specifier: density
-  long_name: Stand Density
+  long_name: Stand Density by DBH-Class
   group: forestry-variables
   extension:
   - total
@@ -65,14 +65,20 @@
   units: tree number ha-1
   frequency: annual
   resolution: stand
-  comment: ""
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
   sectors:
   - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
   valid_max: 150.0
   valid_min: 0.0
 
 - specifier: ba
-  long_name: Basal Area
+  long_name: Basal Area by DBH-Class
   group: forestry-variables
   extension:
   - total
@@ -80,9 +86,15 @@
   units: m2 ha-1
   frequency: annual
   resolution: stand
-  comment: ""
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
   sectors:
   - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
   valid_max: 150.0
   valid_min: 0.0
 
@@ -122,17 +134,17 @@
   valid_max: 1500.0
   valid_min: 0.0
 
-- specifier: stemno
-  long_name: Remaining Stem Number after Disturbance and Management by DBH-Class
+- specifier: harvc
+  long_name: Carbon Mass in Harvest by DBH-Class
   group: forestry-variables
   extension:
   - total
   - <species>
-  units: ha-1
+  units: kg m-2
   frequency: annual
   resolution: stand
   comment: >-
-    DBH-Class Resolution: Either DBH-Classes or Total per Species
+    DBH class resolution: Either DBH classes or total per species
   sectors:
   - forestry
   dimensions:
@@ -140,11 +152,9 @@
   - dbhclass
   - lat
   - lon
-  valid_max: 500000.0
-  valid_min: 0.0
 
 - specifier: vol
-  long_name: Stand Volume
+  long_name: Stand Volume by DBH-Class
   group: forestry-variables
   extension:
   - total
@@ -152,9 +162,15 @@
   units: m3 ha-1
   frequency: annual
   resolution: stand
-  comment: ""
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
   sectors:
   - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
   valid_max: 1500.0
   valid_min: 0.0
 
@@ -181,7 +197,7 @@
 
 
 - specifier: mai
-  long_name: Mean Annual Increment
+  long_name: Mean Annual Increment by DBH-Class
   group: forestry-variables
   extension:
   - total
@@ -189,9 +205,15 @@
   units: m3 ha-1
   frequency: annual
   resolution: stand
-  comment: ""
+  comment: >-
+    DBH class resolution: Either DBH classes or total per species
   sectors:
   - forestry
+  dimensions:
+  - time
+  - dbhclass
+  - lat
+  - lon
   valid_max: 40.0
   valid_min: 0.0
 
