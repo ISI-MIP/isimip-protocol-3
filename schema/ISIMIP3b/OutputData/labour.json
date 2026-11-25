@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3b/OutputData/labour.yaml",
-  "commit": "b0327a913b71a60b747b82c1b607091dc10ec5c2",
+  "commit": "9b73fcd26a8dff8d2e9f1816e86d7ccb9dad4ff3",
   "type": "object",
   "required": [
     "specifiers"
@@ -27,11 +27,11 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "mpi-esm1-2-hr",
             "mri-esm2-0",
-            "ukesm1-0-ll",
+            "mpi-esm1-2-hr",
             "ipsl-cm6a-lr",
-            "gfdl-esm4"
+            "gfdl-esm4",
+            "ukesm1-0-ll"
           ]
         },
         "bias_adjustment": {
@@ -44,55 +44,55 @@
         "climate_scenario": {
           "type": "string",
           "enum": [
-            "ssp126",
-            "historical",
             "picontrol",
+            "ssp126",
             "ssp585",
+            "historical",
             "ssp370"
           ]
         },
         "soc_scenario": {
           "type": "string",
           "enum": [
+            "1850soc",
             "2015soc-from-histsoc",
             "histsoc",
-            "1850soc",
             "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "2015co2",
-            "default"
+            "default",
+            "2015co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
+            "labprod",
             "labeff",
-            "labsupp",
-            "labprod"
+            "labsupp"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "along-track",
-            "global"
+            "global",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "3hr",
+            "fixed",
+            "hourly",
             "daily",
+            "monthly",
             "annual",
             "6hr",
-            "3hr",
-            "hourly",
-            "monthly",
-            "fixed",
             "2hr"
           ]
         },

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://protocol.isimip.org/schema/schema/ISIMIP3a/OutputData/groundwater.yaml",
-  "commit": "b0327a913b71a60b747b82c1b607091dc10ec5c2",
+  "commit": "9b73fcd26a8dff8d2e9f1816e86d7ccb9dad4ff3",
   "type": "object",
   "required": [
     "specifiers"
@@ -26,19 +26,19 @@
         "climate_forcing": {
           "type": "string",
           "enum": [
-            "chelsa-w5e5",
-            "20crv3",
-            "20crv3-w5e5",
             "20crv3-era5",
             "gswp3-era5",
-            "gswp3-w5e5"
+            "20crv3-w5e5",
+            "chelsa-w5e5",
+            "gswp3-w5e5",
+            "20crv3"
           ]
         },
         "detrending": {
           "type": "string",
           "enum": [
-            "observed",
-            "detrended"
+            "detrended",
+            "observed"
           ]
         },
         "climate_scenario": {
@@ -51,69 +51,69 @@
         "soc_scenario": {
           "type": "string",
           "enum": [
-            "1901soc",
             "histsoc",
+            "1901soc",
             "2015soc"
           ]
         },
         "sens_scenario": {
           "type": "string",
           "enum": [
-            "1800arcsec",
-            "30arcsec",
-            "1901co2",
             "nowatermgt",
             "300arcsec",
+            "90arcsec",
+            "1800arcsec",
+            "30arcsec",
             "default",
-            "90arcsec"
+            "1901co2"
           ]
         },
         "variable": {
           "type": "string",
           "enum": [
-            "gwdrn",
-            "wtd",
-            "absind",
-            "gwdrnwet",
-            "gwdrnspr",
-            "lfrf",
-            "lfff",
-            "absdom",
-            "abs",
-            "gwdrnriv",
             "gwdrnlak",
+            "absdom",
             "capillary",
             "absliv",
+            "lfrf",
+            "absind",
+            "qrd",
+            "gwdrn",
+            "groundwstor",
             "ret",
             "head",
-            "absirr",
+            "abs",
+            "gwdrnriv",
             "lfn",
-            "sgd",
-            "depl",
-            "lflf",
             "absd",
-            "qrd",
-            "groundwstor"
+            "wtd",
+            "depl",
+            "absirr",
+            "lflf",
+            "gwdrnwet",
+            "sgd",
+            "lfff",
+            "gwdrnspr"
           ]
         },
         "region": {
           "type": "string",
           "enum": [
-            "europe",
             "along-track",
-            "global"
+            "global",
+            "europe"
           ]
         },
         "time_step": {
           "type": "string",
           "enum": [
+            "3hr",
+            "fixed",
+            "hourly",
             "daily",
+            "monthly",
             "annual",
             "6hr",
-            "3hr",
-            "hourly",
-            "monthly",
-            "fixed",
             "2hr"
           ]
         },
